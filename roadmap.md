@@ -50,6 +50,14 @@ Liste des évolutions possibles. Rien n'est figé : on pioche dedans au fur et �
 - [x] Filtres en haut, 3 cartes par ligne sur mobile
 - [x] Mode sombre (bascule mémorisée, suit le système par défaut)
 - [x] Bouton retour en haut (apparaît après défilement)
+- [x] **Navigation par onglets** (Série / Ma collection / Statistiques / Échange) au lieu de
+      liens texte sous le titre — une ligne, défilement horizontal si besoin
+- [x] **Icônes SVG inline** (thème, compte, installation, recherche, chevrons) à la place des
+      emoji, qui rendaient différemment selon l'appareil
+- [x] **États vides soignés** : icône discrète + texte, centrés dans l'espace disponible sur
+      ordinateur
+- [x] Noms de blocs de statistiques sur deux lignes plutôt que tronqués ; barre de progression
+      empilée sous le nom sur écran étroit
 
 **Statistiques**
 - [x] Progression par bloc / génération

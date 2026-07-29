@@ -197,3 +197,24 @@ propriété intellectuelle Nintendo).
 - Pas de framework, pas de build. Rester en HTML/CSS/JS simple et lisible.
 - CSS : palette beige/orange (variables CSS en tête de `<style>`), formatage sobre.
 - Tester la logique avant de livrer (le projet a été construit en validant chaque étape).
+
+## Interface — points de structure
+
+- **Navigation par onglets** : une seule variable `view` (`"set"` | `"collection"` | `"stats"`
+  | `"trade"`) pilote la vue affichée, et `render()` synchronise la classe `.on` des onglets
+  `#viewTabs`. Il n'y a plus de booléens séparés par vue (`collectionView`/`statsView`/…) :
+  ne pas les réintroduire, un seul état évite les combinaisons impossibles.
+  Les onglets restent sur **une ligne** avec défilement horizontal (`overflow-x:auto`,
+  `white-space:nowrap`) — un onglet supplémentaire défilera au lieu de casser la mise en page.
+- **Icônes** : petites SVG inline, construites par `svgIco(paths, cls)` à partir du
+  dictionnaire `ICONS`. Trait fin, `stroke="currentColor"` → la couleur est héritée du parent,
+  donc compatible clair/sombre sans règle supplémentaire. Plus d'emoji dans les commandes
+  (ils rendaient différemment selon l'OS) ; ♡/♥ sont conservés car porteurs de sens et colorés.
+- **États vides / erreurs** : passer par `emptyMsg(icon, html)` pour garder icône + texte
+  cohérents. La hauteur minimale qui les centre verticalement est **réservée au desktop**
+  (`@media (min-width:821px)`) : sur mobile le panneau empilé occupe déjà le haut de l'écran,
+  et centrer dans 360 px de plus poussait le texte sous la ligne de flottaison.
+- **Statistiques** : les noms de blocs passent à la ligne (pas de troncature `…`). Sous 560 px,
+  `grid-template-areas` fait passer la barre de progression **sous** le nom, qui récupère toute
+  la largeur. Toute modification de `.stat-row` / `.stat-block-summary` doit garder les deux
+  jeux d'aires cohérents (desktop en ligne, mobile empilé).
