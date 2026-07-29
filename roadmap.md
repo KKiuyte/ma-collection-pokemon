@@ -24,7 +24,7 @@ Liste des évolutions possibles. Rien n'est figé : on pioche dedans au fur et �
 - [x] Fiche en grand au clic (image, nom, série, numéro)
 - [x] Rareté affichée sur la fiche
 - [x] Versions de carte (Normale, Reverse Holo, Holo, 1re édition, Promo)
-- [x] Quantité, état et langue gérés **par version**
+- [x] Quantité, état et langue gérés **par exemplaire individuel** (au sein de chaque version)
 - [x] Liste de souhaits (♥ + filtre dédié + vue globale)
 
 **Prix & valeur**

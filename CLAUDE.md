@@ -160,9 +160,23 @@ hors-ligne, bouton d'installation, mise à jour), **mode sombre**, bouton retour
 - OCR : exiger le motif complet `nombre/nombre`, modes PSM ['6','11','7','4'] SANS arrêt
   anticipé, SANS liste blanche de caractères (sinon les lettres deviennent des chiffres
   parasites), langue 'fra', corrections de confusions (O→0, S→5, B→8, Z→2).
-- **Prochaine étape** : campagne de test ~30 cartes contre le catalogue complet pour
-  décider de l'intégration dans l'appli. Services payants étudiés puis écartés (Ximilar
-  59 €/mois obligatoire ; CardSight à revérifier).
+- **Retour d'Ariel après test réel** : l'OCR lit mal des numéros pourtant lisibles à l'œil nu.
+  Le mode « lecture complète ou rien » gaspillait toute information dès qu'un seul chiffre
+  était mal lu, forçant un repli sur l'image seule *sur tout le catalogue*.
+- **Ajouté (non testé en conditions réelles) — lecture partielle par confiance** : si la
+  lecture complète échoue, on exploite la confiance par caractère de Tesseract
+  (`data.blocks[].paragraphs[].lines[].words[].symbols[].confidence`, seuil `CONF_THRESHOLD = 60`)
+  pour construire un motif à trous (ex. `0?4/159`). Les totaux connus (petit ensemble via
+  `setOfficial`) et les numéros de série sont filtrés par ce motif AVANT l'empreinte visuelle,
+  qui ne tranche plus que parmi les candidats restants au lieu de tout le catalogue. Logique
+  testée unitairement (fonctions pures) mais **jamais essayée avec de vraies photos** — la
+  structure `data.blocks`/`symbols` de Tesseract.js n'a pas pu être vérifiée en conditions
+  réelles depuis cet environnement (pas d'appareil photo). Le diagnostic affiché à l'écran
+  (`ocrInfo`) indique si le détail par caractère était disponible ou non.
+- **Prochaine étape** : Ariel teste avec de vraies cartes sur son téléphone (page déployée),
+  vérifie que la lecture partielle se déclenche bien, puis campagne de test ~30 cartes contre
+  le catalogue complet pour décider de l'intégration dans l'appli. Services payants étudiés
+  puis écartés (Ximilar 59 €/mois obligatoire ; CardSight à revérifier).
 
 **Décidé, non retenu** : publication sur les stores (obstacle des 12 testeurs 14 j pour
 Google Play ; App Store très difficile + connexion Google KO en webview ; risque de

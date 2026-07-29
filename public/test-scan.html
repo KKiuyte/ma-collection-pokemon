@@ -138,6 +138,8 @@ canvas { display:none; }
 <script>
 const GRID = 12;
 let catalog = null, photoReady = false, setCounts = {}, setOfficial = {};
+// confiance Tesseract (0-100) sous laquelle un chiffre est traité comme incertain (méthode 1 : lecture partielle)
+const CONF_THRESHOLD = 60;
 
 // ---------- empreinte : STRICTEMENT identique à build_hashes.py ----------
 function boxResize(rgb, w, h, grid){
@@ -372,6 +374,64 @@ function buildStrip(cx, cy, cw, ch){
 
 let ocrInfo = '';   // diagnostic affiché à l'écran
 
+// ---------- méthode 1 : lecture partielle basée sur la confiance par caractère ----------
+/** Aplatit la structure hiérarchique de Tesseract (blocks→paragraphs→lines→words→symbols)
+ *  en une chaîne de caractères + un tableau de confiances parallèle. Essaie d'abord
+ *  data.words à plat (au cas où), puis la structure imbriquée en repli. */
+function flattenSymbols(data){
+  let wordsList = [];
+  if (Array.isArray(data.words) && data.words.length){
+    wordsList = data.words;
+  } else {
+    for (const bl of (data.blocks || []))
+      for (const p of (bl.paragraphs || []))
+        for (const l of (p.lines || []))
+          for (const w of (l.words || [])) wordsList.push(w);
+  }
+  const chars = [], confs = [];
+  for (const w of wordsList){
+    const syms = w.symbols;
+    if (syms && syms.length){
+      for (const s of syms){ chars.push(s.text); confs.push(s.confidence); }
+    } else {
+      for (const ch of (w.text || '')){ chars.push(ch); confs.push(w.confidence || 0); }
+    }
+    chars.push(' '); confs.push(100);
+  }
+  return { text: chars.join(''), confs };
+}
+/** Repère où se trouve le motif nombre/nombre dans le texte, renvoie les positions
+ *  de chaque chiffre pour pouvoir aller chercher leur confiance individuelle. */
+function locateNumberSpan(text){
+  const re = /(\d{1,3})(\s*[\/|]\s*)(\d{1,3})/;
+  const m = re.exec(text);
+  if (!m) return null;
+  const numStart = m.index, numLen = m[1].length;
+  const totalStart = numStart + m[1].length + m[2].length, totalLen = m[3].length;
+  return { numStart, numLen, totalStart, totalLen };
+}
+/** Construit un motif avec des « ? » aux positions où la confiance est trop basse. */
+function wildcardOf(text, confs, start, len){
+  let out = '';
+  for (let i = start; i < start + len; i++){
+    const c = confs[i];
+    out += (typeof c === 'number' && c < CONF_THRESHOLD) ? '?' : text[i];
+  }
+  return out;
+}
+function countKnown(pattern){ return [...pattern].filter(ch => ch !== '?').length; }
+/** Un motif ("0?4") correspond à une valeur ("074") si chaque position non-joker est identique. */
+function matchesPattern(value, pattern){
+  if (!value || value.length !== pattern.length) return false;
+  for (let i = 0; i < pattern.length; i++)
+    if (pattern[i] !== '?' && pattern[i] !== value[i]) return false;
+  return true;
+}
+function padDigits(raw, len){
+  const n = parseInt(String(raw || '').replace(/\D/g, ''), 10);
+  return Number.isFinite(n) ? String(n).padStart(len, '0') : null;
+}
+
 /** Extrait le motif « 074/159 » d'un texte OCR.
  *  On EXIGE le motif complet nombre/nombre : un numéro isolé est trop souvent
  *  une erreur de lecture, et une fausse lecture écrase une bonne reconnaissance
@@ -419,6 +479,8 @@ async function readNumber(canvas){
   // Pas de liste blanche : forcer les chiffres transforme les lettres en chiffres parasites.
   const modes = ['6', '11', '7', '4'];
   const seen = [];
+  let bestPartial = null; // meilleur motif partiel trouvé si aucune lecture complète ne réussit
+  let sawSymbols = false;
   for (const psm of modes){
     try {
       await ocrWorker.setParameters({ tessedit_pageseg_mode: psm, tessedit_char_whitelist: '' });
@@ -426,17 +488,42 @@ async function readNumber(canvas){
       const raw = (data.text || '').replace(/\s+/g, ' ').trim();
       if (!raw) continue;
       seen.push(`m${psm}:« ${raw.slice(0, 40)} »`);
+
+      // 1) lecture complète et propre : comportement historique, prioritaire
       const found = extractNumber(raw);
       if (found){
         ocrInfo = `« ${raw.slice(0, 40)} » → ${found.num}/${found.total} (mode ${psm})`;
-        return { num: found.num, total: found.total, raw };
+        return { mode: 'full', num: found.num, total: found.total, raw };
       }
+
+      // 2) repli (méthode 1) : motif partiel via la confiance par caractère de Tesseract
+      try {
+        const flat = flattenSymbols(data);
+        if (flat.text) sawSymbols = true;
+        const span = flat.text ? locateNumberSpan(flat.text) : null;
+        if (span){
+          const numPattern = wildcardOf(flat.text, flat.confs, span.numStart, span.numLen);
+          const totalPattern = wildcardOf(flat.text, flat.confs, span.totalStart, span.totalLen);
+          const known = countKnown(numPattern) + countKnown(totalPattern);
+          if (known > 0 && (!bestPartial || known > bestPartial.known)){
+            bestPartial = { numPattern, totalPattern, raw, known, psm };
+          }
+        }
+      } catch { /* simple repli : une erreur ici ne doit pas casser la lecture */ }
     } catch (e){
       ocrInfo = 'erreur de lecture : ' + e.message;
     }
   }
+
+  if (bestPartial){
+    const total = bestPartial.numPattern.length + bestPartial.totalPattern.length;
+    ocrInfo = `« ${bestPartial.raw.slice(0, 40)} » → motif partiel ${bestPartial.numPattern}/${bestPartial.totalPattern} `
+      + `(${bestPartial.known}/${total} chiffres fiables, mode ${bestPartial.psm})`;
+    return { mode: 'partial', numPattern: bestPartial.numPattern, totalPattern: bestPartial.totalPattern, raw: bestPartial.raw };
+  }
   ocrInfo = seen.length
     ? 'motif nombre/nombre introuvable — ' + seen.slice(0, 2).join(' · ')
+      + (seen.length && !sawSymbols ? ' (détail par caractère indisponible)' : '')
     : (ocrInfo || 'aucun texte détecté dans la bande');
   return null;
 }
@@ -476,7 +563,7 @@ document.getElementById('go').onclick = async () => {
     //    le total imprimé (le « /159 ») sert alors à écarter les séries trop petites.
     let list = ranked.slice(0, 5), verdict, cls = 'ok', byNum = null;
 
-    if (read){
+    if (read && read.mode === 'full'){
       let hits = catalog.filter(c => normNum(c.n) === normNum(read.num));
       const before = hits.length;
       let narrowedBy = '';
@@ -516,6 +603,37 @@ document.getElementById('go').onclick = async () => {
         verdict = `Numéro lu « ${read.num} » — aucune carte de ce numéro dans le catalogue`;
         cls = 'err';
       }
+    } else if (read && read.mode === 'partial'){
+      // méthode 1 : motif à trous (ex. « 0?4 ») — on réduit le champ avec ce qui est
+      // fiable, sans exiger une lecture parfaite. Les totaux connus (peu nombreux)
+      // servent à retrouver la/les série(s) même avec un chiffre incertain.
+      const knownTotals = [...new Set(Object.values(setOfficial))]
+        .map(t => String(t)).filter(t => t.length === read.totalPattern.length);
+      const totalMatches = knownTotals.filter(t => matchesPattern(t, read.totalPattern));
+      const seriesOk = totalMatches.length
+        ? Object.keys(setOfficial).filter(sid => totalMatches.includes(String(setOfficial[sid])))
+        : null; // aucun total connu ne colle : on ne restreint pas par série
+
+      let hits = catalog.filter(c => {
+        if (seriesOk && !seriesOk.includes(c.set)) return false;
+        return matchesPattern(padDigits(c.n, read.numPattern.length), read.numPattern);
+      });
+
+      if (hits.length && hits.length < catalog.length){
+        const best = hits.map(c => ({ c, d: distance(q, c) })).sort((a,b) => a.d - b.d);
+        byNum = best[0].c;
+        const agree = ranked[0].c.id === byNum.id;
+        list = [{ c: byNum, d: best[0].d, tag: agree ? 'motif partiel + image' : 'motif partiel' }]
+               .concat(best.slice(1, 3).map(x => ({ ...x, tag: 'motif partiel' })))
+               .concat(ranked.filter(r => !best.slice(0,3).some(b => b.c.id === r.c.id))
+                             .slice(0, 2));
+        verdict = `Motif partiel ${read.numPattern}/${read.totalPattern} → ${hits.length} candidate(s) → « ${byNum.t} »`
+          + (agree ? ' (confirmé par l’image)' : ` (l'image seule proposait « ${ranked[0].c.t} »)`);
+        cls = agree ? 'ok' : 'err';
+      } else {
+        verdict = `Motif partiel ${read.numPattern}/${read.totalPattern} — aucune réduction possible, image seule`;
+        cls = gap > 0.005 ? 'ok' : 'err';
+      }
     } else {
       verdict = zone === 'off' ? 'Numéro non lu (désactivé)' : 'Numéro illisible — image seule';
       cls = gap > 0.005 ? 'ok' : 'err';
@@ -527,7 +645,7 @@ document.getElementById('go').onclick = async () => {
     render(list);
     s.innerHTML = verdict; s.className = 'status ' + cls;
     lastResult = { top: list[0].c.t, dist: list[0].d, margin: gap,
-                   num: read ? read.num : null, byNum: !!byNum };
+                   num: read ? (read.num || read.numPattern || null) : null, byNum: !!byNum };
     document.getElementById('record').style.display = 'block';
   } catch (err) {
     s.textContent = 'Erreur : ' + err.message; s.className = 'status err';
