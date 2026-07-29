@@ -147,7 +147,8 @@ propres à chaque copie), liste de souhaits, **prix par version**, **valeur tota
 collection (cache 24 h), compte + synchro Firebase temps réel, **PWA** complète (installable,
 hors-ligne, bouton d'installation, mise à jour), **mode sombre**, bouton retour en haut,
 **statistiques** (progression par bloc, répartition par rareté — les ajouts récents restent
-à faire), **déploiement continu** (GitHub Actions).
+à faire), **liste d'échange** (doubles regroupés par version), **déploiement continu**
+(GitHub Actions).
 
 **En cours — reconnaissance de carte par photo** (`public/test-scan.html`) :
 - Approche **gratuite, locale** : empreinte visuelle (grille 12×12, chromaticité

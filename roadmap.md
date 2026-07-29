@@ -84,7 +84,18 @@ réactiver le Worker Cloudflare (`collection-sync.ariesam.workers.dev`) comme in
 - [ ] Filtre par rareté aussi dans la **recherche globale** et la vue collection
 - [x] **Liste d'échange** : regrouper automatiquement les doubles (≥ 2 exemplaires d'une
       **même version** — Normale et Holo comptent comme deux cartes distinctes)
-- [ ] **Partage en lecture seule** d'une collection ou d'une liste de souhaits (facile avec Firebase)
+- [ ] **Partage en lecture seule** d'une collection ou d'une liste de souhaits — **mis de côté**,
+      pistes étudiées et consignées ci-dessous pour ne pas refaire le travail
+
+  > **Pistes étudiées :** Firestore protège aujourd'hui chaque collection par utilisateur — un
+  > partage public doit ouvrir un accès **contrôlé**, pas exposer tout le compte.
+  > - **Lien basé sur l'identifiant du compte** : simple, mais le lien révèle l'identifiant
+  >   Firebase et reste valable tant que le partage est actif.
+  > - **Lien à code aléatoire dédié** (ex. `/voir/x7f9k2m1`), *recommandé* : un peu plus de
+  >   travail (générer/stocker le code, écrire la règle Firestore qui lit via ce code sans
+  >   exposer le reste du compte), mais révocable et ne révèle rien sur le compte.
+  > - Prévoir aussi : une page d'affichage sans aucun bouton d'ajout/retrait (vraiment lecture
+  >   seule), et la possibilité de partager collection et/ou souhaits séparément.
 
 ## 💰 Priorité 3 — Prix, suite
 - [ ] Suivre l'**évolution de la valeur** dans le temps (relevé mensuel dans Firestore)
