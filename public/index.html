@@ -1,0 +1,1414 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#f0eee9" />
+<title>Ma Collection Pokémon</title>
+<link rel="manifest" href="manifest.json" />
+<link rel="icon" href="icon-192.png" />
+<link rel="apple-touch-icon" href="icon-192.png" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="default" />
+<meta name="apple-mobile-web-app-title" content="Ma Collection" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<style>
+* { box-sizing: border-box; }
+body {
+  --ink:#1a1d29; --muted:#8a8f9c; --bg:#f0eee9; --surface:#fff;
+  --gold:#ffcb3d; --gold-deep:#e6a700; --navy:#1c2333;
+  --accent:#ff8a00; --accent-deep:#e67a00; --line:rgba(0,0,0,.08); --field:#f6f7fa;
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  color:var(--ink); background:var(--bg); margin:0; padding:20px 16px 64px; min-height:100vh;
+}
+.wrap { max-width:1100px; margin:0 auto; }
+
+/* --- en-tête --- */
+.head { display:flex; align-items:center; gap:12px; margin-bottom:18px; }
+.ball { width:30px; height:30px; border-radius:50%; flex:none; position:relative;
+  background:linear-gradient(to bottom,#e63946 50%,#fff 50%); border:2.5px solid var(--ink); }
+.ball::before { content:""; position:absolute; left:-2.5px; right:-2.5px; top:50%; height:2.5px;
+  background:var(--ink); transform:translateY(-50%); }
+.ball::after { content:""; position:absolute; width:9px; height:9px; border-radius:50%;
+  background:#fff; border:2.5px solid var(--ink); top:50%; left:50%; transform:translate(-50%,-50%); }
+.head-text { flex:1; min-width:0; }
+.title { font-size:20px; font-weight:800; letter-spacing:-.3px; line-height:1.1; }
+.sub { font-size:12.5px; color:var(--muted); font-weight:600; margin-top:3px; }
+.viewall { font-family:inherit; font-weight:700; font-size:12.5px; color:var(--accent);
+  background:none; border:none; cursor:pointer; padding:0; }
+.viewall:active { opacity:.6; }
+.syncbtn { width:38px; height:38px; border:none; border-radius:50%; background:var(--surface);
+  box-shadow:0 1px 3px rgba(0,0,0,.1); font-size:18px; cursor:pointer; line-height:1;
+  color:var(--navy); flex:none; }
+.syncbtn.on { background:var(--gold); }
+.syncbtn:active { transform:scale(.92); }
+.installbtn { width:38px; height:38px; border:none; border-radius:50%; background:var(--gold);
+  box-shadow:0 1px 3px rgba(0,0,0,.12); font-size:16px; font-weight:900; cursor:pointer;
+  line-height:1; color:var(--ink); flex:none; }
+.installbtn:active { transform:scale(.92); }
+.installbtn[hidden] { display:none; }
+.ios-steps { margin:0 0 4px; padding-left:20px; font-size:14px; font-weight:600; line-height:1.55; }
+.ios-steps li { margin-bottom:9px; }
+
+/* --- mise en page : barre latérale + grille --- */
+.layout { display:flex; gap:18px; align-items:flex-start; }
+.controls { flex:0 0 244px; background:var(--surface); border-radius:16px; padding:16px;
+  display:flex; flex-direction:column; gap:14px; box-shadow:0 1px 3px rgba(0,0,0,.05);
+  position:sticky; top:16px; }
+#content { flex:1; min-width:0; }
+
+.ctrl-label { font-size:10.5px; font-weight:800; text-transform:uppercase; letter-spacing:.05em;
+  color:var(--muted); margin-bottom:6px; }
+.divider { height:1px; background:var(--line); }
+
+/* --- sélecteur de série (avec recherche) --- */
+.combo { position:relative; }
+#setInput { width:100%; font-family:inherit; font-weight:700; font-size:13.5px; color:var(--ink);
+  padding:9px 11px; border-radius:10px; border:1px solid var(--line); background:var(--field);
+  -webkit-appearance:none; appearance:none; }
+#setInput:focus { outline:none; border-color:var(--accent); }
+.combo-menu { position:absolute; left:0; right:0; top:calc(100% + 6px); z-index:20; background:#fff;
+  border:1px solid var(--line); border-radius:12px; max-height:300px; overflow-y:auto;
+  box-shadow:0 12px 30px rgba(0,0,0,.12); }
+.combo-menu[hidden] { display:none; }
+.combo-item { padding:11px 13px; font-weight:700; font-size:14px; cursor:pointer;
+  border-bottom:1px solid #f2f3f6; }
+.combo-item:last-child { border-bottom:none; }
+.combo-item.on { color:var(--accent-deep); }
+.combo-item:active { background:var(--field); }
+.combo-block { padding:11px 13px 4px; font-size:10.5px; font-weight:900; text-transform:uppercase;
+  letter-spacing:.05em; color:var(--accent-deep); background:#fbfbfc; }
+.combo-empty { padding:13px; color:var(--muted); font-weight:700; text-align:center; }
+
+/* --- progression --- */
+.bar { height:6px; background:#e6e4de; border-radius:3px; overflow:hidden; margin-top:9px; }
+.fill { height:100%; width:0; background:var(--accent); border-radius:3px;
+  transition:width .5s cubic-bezier(.2,.8,.2,1); }
+.count { font-size:11px; color:var(--muted); font-weight:700; margin-top:5px; }
+
+/* --- recherche --- */
+.searchbar { position:relative; }
+.searchbar input { width:100%; font-family:inherit; font-weight:600; font-size:13.5px; color:var(--ink);
+  padding:9px 32px 9px 30px; border-radius:10px; border:1px solid var(--line); background:var(--field);
+  -webkit-appearance:none; }
+.searchbar input:focus { outline:none; border-color:var(--accent); }
+.searchbar input::placeholder { color:#a7abb8; font-weight:600; }
+.search-ic { position:absolute; left:10px; top:50%; transform:translateY(-50%); font-size:13px;
+  opacity:.5; pointer-events:none; }
+.clear { position:absolute; right:6px; top:50%; transform:translateY(-50%); width:24px; height:24px;
+  border:none; border-radius:50%; background:#e6e4de; color:var(--muted); font-size:16px;
+  font-weight:900; cursor:pointer; line-height:1; }
+.clear[hidden] { display:none; }
+
+/* --- filtres --- */
+.filters { display:flex; gap:6px; flex-wrap:wrap; margin-bottom:16px; }
+.chip { font-family:inherit; font-weight:600; font-size:12.5px; cursor:pointer; padding:7px 12px;
+  border-radius:20px; border:none; background:#f1f2f6; color:#5b6170; transition:.15s; white-space:nowrap; }
+.chip.on { background:var(--navy); color:#fff; }
+
+/* --- sélecteurs rareté / tri --- */
+.ctrl-select { width:100%; font-family:inherit; font-weight:600; font-size:13.5px; color:var(--ink);
+  padding:9px 11px; border-radius:10px; border:1px solid var(--line); background:var(--field);
+  -webkit-appearance:none; appearance:none; }
+.ctrl-select:focus { outline:none; border-color:var(--accent); }
+
+/* --- grille de cartes --- */
+.grid { display:grid; gap:12px; grid-template-columns:repeat(auto-fill,minmax(110px,1fr)); }
+.slot { position:relative; cursor:pointer; border-radius:11px; aspect-ratio:63/88; border:none;
+  padding:0; background:none; transition:transform .12s ease; }
+.slot:active { transform:scale(.94); }
+.slot img { width:100%; height:100%; object-fit:contain; border-radius:9px; display:block; }
+.slot.owned { box-shadow:0 0 0 2.5px var(--gold), 0 4px 12px rgba(255,203,61,.3); }
+.slot.wish { box-shadow:0 0 0 2.5px #ff5c8a, 0 4px 12px rgba(255,92,138,.25); }
+.check { position:absolute; top:-6px; right:-6px; width:22px; height:22px; background:var(--gold);
+  color:var(--ink); border-radius:50%; display:grid; place-items:center; font-weight:800;
+  font-size:12px; box-shadow:0 2px 5px rgba(0,0,0,.2); }
+.wishbadge { position:absolute; top:-6px; right:-6px; width:22px; height:22px; background:#ff5c8a;
+  color:#fff; border-radius:50%; display:grid; place-items:center; font-weight:900; font-size:12px;
+  box-shadow:0 2px 5px rgba(0,0,0,.2); }
+.qtybadge { position:absolute; top:-6px; left:-6px; min-width:20px; height:20px; padding:0 5px;
+  background:var(--navy); color:#fff; border-radius:10px; display:grid; place-items:center;
+  font-weight:800; font-size:10.5px; box-shadow:0 2px 5px rgba(0,0,0,.2); }
+.num { position:absolute; bottom:5px; left:5px; font-size:10px; font-weight:800; color:#fff;
+  background:rgba(26,29,41,.8); padding:1px 6px; border-radius:6px;
+  font-family:ui-monospace,Menlo,monospace; }
+.noimg { width:100%; height:100%; display:grid; place-items:center; font-size:11px; font-weight:800;
+  color:#9aa2b1; padding:6px; text-align:center; }
+
+/* --- messages, sections --- */
+.msg { text-align:center; padding:48px 16px; color:var(--muted); font-weight:700; }
+.spin { width:26px; height:26px; margin:0 auto 12px; border-radius:50%;
+  border:3px solid #e6e4de; border-top-color:var(--accent); animation:spin .8s linear infinite; }
+@keyframes spin { to { transform:rotate(360deg); } }
+.section-head { display:flex; align-items:baseline; gap:10px; margin:22px 2px 12px;
+  padding-bottom:8px; border-bottom:1px solid var(--line); }
+.section-head span { font-weight:900; font-size:15px; color:var(--navy); }
+.section-head small { font-weight:800; font-size:11px; color:#fff; background:var(--accent);
+  padding:2px 9px; border-radius:999px; }
+.hint { font-size:13px; font-weight:700; color:var(--muted); margin:0 0 12px 2px; }
+
+/* --- fiche carte & compte (modales) --- */
+.overlay { position:fixed; inset:0; background:rgba(20,25,40,.55); z-index:50;
+  display:flex; align-items:center; justify-content:center; padding:20px; }
+.overlay[hidden] { display:none; }
+.modal { background:var(--surface); border-radius:20px; padding:20px; width:100%; max-width:360px;
+  max-height:90vh; overflow-y:auto; position:relative; box-shadow:0 20px 60px rgba(0,0,0,.3);
+  animation:pop .25s ease; }
+@keyframes pop { 0%{transform:scale(.94)} 60%{transform:scale(1.02)} 100%{transform:scale(1)} }
+.modal-close { position:absolute; right:12px; top:12px; width:32px; height:32px; border:none;
+  border-radius:50%; background:#f1f2f6; color:var(--muted); font-size:20px; font-weight:900;
+  cursor:pointer; line-height:1; z-index:2; }
+.modal-img { text-align:center; margin:4px 0 14px; }
+.modal-img img { max-width:54%; max-height:31vh; border-radius:10px; box-shadow:0 10px 26px rgba(0,0,0,.18); }
+.modal-name { font-weight:900; font-size:19px; margin:0 0 2px; text-align:center; }
+.modal-meta { color:var(--muted); font-weight:700; font-size:13.5px; margin:0 0 14px; text-align:center; }
+.rarity-tag { display:inline-block; background:var(--navy); color:#fff; font-weight:800;
+  font-size:11.5px; padding:2px 10px; border-radius:999px; margin-left:4px; vertical-align:1px; }
+.big-btn { width:100%; font-family:inherit; font-weight:800; font-size:15px; cursor:pointer;
+  padding:14px; border-radius:12px; border:none; }
+.btn-add { background:var(--gold); color:var(--ink); }
+.btn-remove { background:#fff0ef; color:#d0392b; border:1px solid #ffd9d5; margin-top:14px; }
+.btn-wish { background:#fff0f4; color:#d63a6b; border:1px solid #ffd3e0; margin-top:12px; }
+.owned-tag { text-align:center; font-weight:800; color:var(--accent-deep); margin:0 0 12px; }
+.field { margin-bottom:14px; }
+.field-row { display:flex; gap:12px; }
+.field-row .field { flex:1; min-width:0; }
+.field > label { font-size:11px; font-weight:800; text-transform:uppercase; letter-spacing:.05em;
+  color:var(--muted); display:block; margin-bottom:8px; }
+.field select { width:100%; font-family:inherit; font-weight:700; font-size:14px; color:var(--ink);
+  padding:11px 13px; border-radius:10px; border:1px solid var(--line); background:var(--field);
+  -webkit-appearance:none; appearance:none; }
+.qty { display:flex; align-items:center; gap:16px; }
+.qty button { width:44px; height:44px; border-radius:11px; border:1px solid var(--line); background:#fff;
+  font-size:22px; font-weight:900; color:var(--navy); cursor:pointer; }
+.qty span { font-size:22px; font-weight:900; min-width:30px; text-align:center; }
+
+/* --- versions d'une carte --- */
+.vlist { display:flex; flex-direction:column; gap:12px; }
+.vcard { border:1px solid var(--line); border-radius:14px; padding:13px; background:#fbfbfc; }
+.vcard.has { border-color:var(--gold); background:#fffdf4; }
+.vhead { display:flex; align-items:center; justify-content:space-between; margin-bottom:10px; }
+.vname { font-weight:900; font-size:14.5px; }
+.vright { display:flex; align-items:center; gap:8px; }
+.vprice { font-weight:900; font-size:13.5px; color:var(--accent-deep); }
+.cardvalue { color:var(--accent-deep); }
+.pricenote { text-align:center; font-size:11.5px; font-weight:700; color:var(--muted);
+  margin:12px 0 0; }
+
+/* --- valeur estimée de la collection --- */
+.value-amount { font-size:21px; font-weight:900; color:var(--accent-deep); line-height:1.15; }
+.value-note { font-size:11px; font-weight:700; color:var(--muted); margin-top:3px; }
+.value-btn { font-family:inherit; font-weight:800; font-size:13.5px; cursor:pointer; width:100%;
+  padding:10px; border-radius:10px; border:none; background:var(--gold); color:var(--ink);
+  margin-top:8px; }
+.value-btn.small { font-size:12px; padding:7px; background:var(--field); color:var(--muted);
+  border:1px solid var(--line); }
+.value-msg { font-size:12.5px; font-weight:700; color:var(--muted); display:flex;
+  align-items:center; gap:8px; padding:4px 0; }
+.mini-spin { width:14px; height:14px; border-radius:50%; border:2px solid #e6e4de;
+  border-top-color:var(--accent); animation:spin .8s linear infinite; flex:none; }
+.vqty { font-weight:800; font-size:12px; color:#fff; background:var(--navy);
+  padding:2px 9px; border-radius:999px; }
+.vcard .big-btn { padding:11px; font-size:14px; }
+.vcard .field { margin-bottom:10px; }
+.vcard .qty button { width:38px; height:38px; font-size:19px; }
+.vcard .qty span { font-size:18px; min-width:24px; }
+
+/* --- responsive : placé en fin de feuille pour bien l'emporter --- */
+@media (max-width:820px){
+  .layout { flex-direction:column; }
+  .controls { flex:none; width:100%; position:static; }
+  .grid { grid-template-columns:repeat(3,1fr); gap:10px; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="head">
+    <span class="ball"></span>
+    <div class="head-text">
+      <div class="title">Ma Collection</div>
+      <div class="sub"><span id="sub">0 carte dans ta collection</span> &middot; <button id="viewAll" class="viewall">Voir toute ma collection &#9656;</button></div>
+    </div>
+    <button id="installBtn" class="installbtn" hidden title="Installer l'application" aria-label="Installer l'application">&#11015;</button>
+    <button id="syncBtn" class="syncbtn" title="Synchronisation">&#9729;</button>
+  </div>
+
+  <div class="filters">
+    <button class="chip on" data-f="all">Toutes</button>
+    <button class="chip" data-f="owned">Poss&eacute;d&eacute;es</button>
+    <button class="chip" data-f="missing">Manquantes</button>
+    <button class="chip" data-f="wishlist">Souhaits &hearts;</button>
+  </div>
+
+  <div class="layout">
+    <aside class="controls">
+      <div>
+        <div class="ctrl-label">S&eacute;rie</div>
+        <div class="combo">
+          <input id="setInput" autocomplete="off" placeholder="Rechercher une s&eacute;rie&hellip;">
+          <div id="setMenu" class="combo-menu" hidden></div>
+        </div>
+        <div class="bar"><div class="fill" id="fill"></div></div>
+        <div class="count"><span id="have">0</span> / <span id="total">0</span></div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="searchbar">
+        <span class="search-ic">&#128269;</span>
+        <input id="search" type="search" inputmode="search" autocomplete="off" placeholder="Nom ou num&eacute;ro (ex. 136/202)">
+        <button class="clear" id="clear" hidden aria-label="Effacer">&times;</button>
+      </div>
+
+      <div>
+        <div class="ctrl-label">Raret&eacute;</div>
+        <select id="raritySel" class="ctrl-select"><option value="">Toutes les raret&eacute;s</option></select>
+      </div>
+      <div>
+        <div class="ctrl-label">Trier</div>
+        <select id="sortSel" class="ctrl-select">
+          <option value="num-asc">Num&eacute;ro &uarr;</option>
+          <option value="num-desc">Num&eacute;ro &darr;</option>
+          <option value="name-asc">Nom A&rarr;Z</option>
+          <option value="name-desc">Nom Z&rarr;A</option>
+        </select>
+      </div>
+
+      <div class="divider"></div>
+
+      <div>
+        <div class="ctrl-label">Valeur estim&eacute;e</div>
+        <div id="valueBox"></div>
+      </div>
+    </aside>
+
+    <div id="content"></div>
+  </div>
+</div>
+
+<div id="overlay" class="overlay" hidden>
+  <div class="modal" role="dialog" aria-modal="true">
+    <button class="modal-close" id="mClose" aria-label="Fermer">×</button>
+    <div class="modal-img" id="mImg"></div>
+    <h2 class="modal-name" id="mName"></h2>
+    <p class="modal-meta" id="mMeta"></p>
+    <div id="mBody"></div>
+  </div>
+</div>
+
+<div id="syncOverlay" class="overlay" hidden>
+  <div class="modal" role="dialog" aria-modal="true">
+    <button class="modal-close" id="syncClose" aria-label="Fermer">×</button>
+    <h2 class="modal-name">Mon compte</h2>
+    <p class="modal-meta">Connecte-toi pour retrouver ta collection sur tous tes appareils.</p>
+    <div id="authBody"></div>
+    <p id="authStatus" style="text-align:center;font-weight:800;font-size:14px;margin:14px 0 0;"></p>
+  </div>
+</div>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+import { getAuth, GoogleAuthProvider, signInWithPopup, signInWithEmailAndPassword,
+         createUserWithEmailAndPassword, signOut, onAuthStateChanged }
+  from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+import { getFirestore, doc, getDoc, setDoc, onSnapshot }
+  from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyCiGgrj28Jrqn8jEGM9pWFsVhnfs-VKyiU",
+  authDomain: "ma-collection-pokemon.firebaseapp.com",
+  projectId: "ma-collection-pokemon",
+  storageBucket: "ma-collection-pokemon.firebasestorage.app",
+  messagingSenderId: "1058168439830",
+  appId: "1:1058168439830:web:9b3c787f9286e888112137",
+  measurementId: "G-06PBS01Y0L"
+};
+const fbApp = initializeApp(firebaseConfig);
+const auth = getAuth(fbApp);
+const db = getFirestore(fbApp);
+const googleProvider = new GoogleAuthProvider();
+
+const API = "https://api.tcgdex.net/v2/fr";
+const KEY = "collection_pokemon_v1";
+const WISH_KEY = "collection_pokemon_wishlist";
+const CONDITIONS = ["Neuve", "Excellent", "Très bon", "Bon", "Moyen", "Mauvais"];
+const DEFAULT_VARIANT = "Normale";
+// correspondance entre les versions renvoyées par TCGdex et leur nom en français
+const VARIANT_LABELS = {
+  normal: "Normale",
+  reverse: "Reverse Holo",
+  holo: "Holo",
+  firstEdition: "1re édition",
+  wPromo: "Promo",
+};
+const VARIANT_ORDER = ["Normale", "Reverse Holo", "Holo", "1re édition", "Promo"];
+const variantCache = {}; // idCarte -> liste des versions disponibles
+const rarityByCard = {}; // idCarte -> rareté (récupérée avec les versions)
+const pricingByCard = {}; // idCarte -> données de prix (Cardmarket / TCGplayer)
+const metaTs = {};       // idCarte -> date de récupération (pour le rafraîchissement quotidien)
+const META_KEY = "collection_pokemon_meta";   // cache local des versions/raretés/prix
+const VALUE_KEY = "collection_pokemon_value"; // dernière valeur totale calculée
+const PRICE_TTL = 24 * 3600 * 1000;           // prix rafraîchis une fois par jour
+const LANGUAGES = ["Français", "Anglais", "Japonais", "Allemand", "Italien", "Espagnol", "Chinois", "Autre"];
+
+let owned = load();
+let wishlist = loadWishlist(); // { idCarte: true } des cartes "à acheter"
+let cards = [];
+let filter = "all";
+let sortBy = "num-asc";   // tri courant
+let rarityFilter = "";    // "" = toutes les raretés
+let rarityIds = null;     // Set d'ids de la série courante ayant la rareté choisie (ou null)
+let rarities = [];        // liste des raretés disponibles (pour le menu)
+const rarityCache = {};   // "idSérie|rareté" -> Set d'ids (évite de re-demander)
+let search = "";
+let allCards = null;      // toutes les cartes (chargées à la 1re recherche)
+let loadingAll = false;
+let collectionView = false; // vue "toute ma collection" active ?
+let setList = [];         // liste des séries, plus récente en premier
+const setNameById = {};   // id de série -> nom
+const setOfficialById = {}; // id de série -> nombre de cartes "officiel" (le YYY imprimé)
+let blocks = [];          // regroupement par bloc : [{ id, name, sets: [...] }]
+const blockNameById = {}; // id de bloc -> nom
+const setBlockById = {};  // id de série -> id de bloc
+let blocksReady = false;  // structure des blocs chargée ?
+let saveTimer = null;      // pour regrouper les sauvegardes en ligne
+let currentUser = null;    // utilisateur connecté (null = déconnecté)
+let cloudUnsub = null;     // pour arrêter l'écoute temps réel
+let interactiveLogin = false; // connexion déclenchée par un clic (vs. session restaurée)
+
+// Format actuel : owned[idCarte] = { v: { "Normale": {qty,cond,lang}, "Reverse Holo": {...} } }
+// Les anciens formats sont convertis automatiquement (tout devient la version "Normale").
+function entry(qty, cond, lang){
+  return { qty: Math.max(1, qty || 1), cond: cond || "Neuve", lang: lang || "Français" };
+}
+function migrate(raw){
+  const out = {};
+  for (const id in raw){
+    const v = raw[id];
+    if (!v) continue;
+    if (typeof v === "number"){                        // tout premier format
+      out[id] = { v: { [DEFAULT_VARIANT]: entry(v) } };
+    } else if (v.v && typeof v.v === "object"){        // déjà au bon format
+      const vv = {};
+      for (const name in v.v){
+        const e = v.v[name] || {};
+        vv[name] = entry(e.qty, e.cond, e.lang);
+      }
+      if (Object.keys(vv).length) out[id] = { v: vv };
+    } else if (typeof v === "object"){                 // format intermédiaire {qty,cond,lang}
+      out[id] = { v: { [DEFAULT_VARIANT]: entry(v.qty, v.cond, v.lang) } };
+    }
+  }
+  return out;
+}
+function load(){
+  let raw = {};
+  try { raw = JSON.parse(localStorage.getItem(KEY)) || {}; } catch { raw = {}; }
+  return migrate(raw);
+}
+// quantité totale d'une carte, toutes versions confondues
+function cardQty(rec){
+  if (!rec || !rec.v) return 0;
+  return Object.values(rec.v).reduce((n, e) => n + (e.qty || 1), 0);
+}
+// nombre de versions différentes possédées pour une carte
+function variantCount(rec){
+  return rec && rec.v ? Object.keys(rec.v).length : 0;
+}
+function loadWishlist(){
+  try { return JSON.parse(localStorage.getItem(WISH_KEY)) || {}; } catch { return {}; }
+}
+function saveLocal(){
+  try { localStorage.setItem(KEY, JSON.stringify(owned)); } catch {}
+  try { localStorage.setItem(WISH_KEY, JSON.stringify(wishlist)); } catch {}
+}
+function save(){ saveLocal(); scheduleCloudSave(); }
+// sauvegarde immédiate en ligne (pour l'ajout et le retrait)
+function saveNow(){ saveLocal(); clearTimeout(saveTimer); saveCloud(); }
+
+// --- connexion & stockage en ligne (Firebase) ---
+function setAuthStatus(text, ok){
+  const el = document.getElementById("authStatus");
+  if (el){ el.textContent = text || ""; el.style.color = ok === false ? "#d0392b" : (ok ? "#2e9a4f" : "var(--muted)"); }
+}
+function updateAccountButton(){
+  const b = document.getElementById("syncBtn");
+  if (b) b.classList.toggle("on", !!currentUser);
+}
+async function saveCloud(){
+  if (!currentUser) return;
+  try {
+    await setDoc(doc(db, "collections", currentUser.uid), { cards: owned, wishlist: wishlist, updatedAt: Date.now() });
+  } catch {
+    // hors-ligne : Firestore renverra les données tout seul au retour de la connexion
+  }
+}
+function scheduleCloudSave(){
+  if (!currentUser) return;
+  clearTimeout(saveTimer);
+  saveTimer = setTimeout(saveCloud, 1500);
+}
+// écoute en temps réel les changements venus des autres appareils
+function listenCloud(){
+  if (cloudUnsub) cloudUnsub();
+  cloudUnsub = onSnapshot(doc(db, "collections", currentUser.uid), (snap) => {
+    if (snap.metadata.hasPendingWrites) return; // ignore nos propres écritures
+    const data = snap.exists() ? snap.data() : {};
+    owned = migrate(data.cards || {});
+    wishlist = data.wishlist || {};
+    saveLocal(); render();
+  });
+}
+
+// À la connexion : fusion initiale, puis écoute temps réel
+async function onLogin(user){
+  const interactive = interactiveLogin; interactiveLogin = false;
+  currentUser = user;
+  updateAccountButton();
+  renderAccountBody();
+  setAuthStatus("Connecté : " + (user.email || "compte Google"), true);
+  try {
+    const ref = doc(db, "collections", user.uid);
+    const snap = await getDoc(ref);
+    const data = snap.exists() ? snap.data() : null;
+    const remote = data ? (data.cards || {}) : null;
+    const remoteWish = data ? (data.wishlist || {}) : {};
+    if (remote && Object.keys(remote).length){
+      let replace = true;
+      const differ = JSON.stringify(owned) !== JSON.stringify(remote);
+      if (interactive && Object.keys(owned).length && differ){
+        replace = confirm("Une collection existe déjà pour ce compte.\n\nOK = la charger sur cet appareil (remplace la collection locale).\nAnnuler = garder la collection locale et l'envoyer en ligne.");
+      }
+      if (replace){ owned = migrate(remote); wishlist = remoteWish; saveLocal(); }
+      else { await saveCloud(); }
+    } else {
+      await saveCloud(); // rien en ligne : on envoie la collection locale
+    }
+    render();
+  } catch {}
+  listenCloud();
+}
+
+function onLogout(){
+  if (cloudUnsub){ cloudUnsub(); cloudUnsub = null; }
+  currentUser = null;
+  updateAccountButton();
+  renderAccountBody();
+  setAuthStatus("Déconnecté. Ta collection reste sur cet appareil.");
+}
+
+const $ = (id) => document.getElementById(id);
+const content = $("content");
+const setInput = $("setInput"), setMenu = $("setMenu");
+let currentSetId = null;
+
+function totalOwned(){ return Object.keys(owned).length; }
+
+// totaux toutes séries confondues : cartes différentes + exemplaires (quantités)
+function collectionTotals(){
+  const ids = Object.keys(owned);
+  let copies = 0;
+  ids.forEach(id => copies += cardQty(owned[id]));
+  return { distinct: ids.length, copies };
+}
+function updateSub(){
+  const { distinct, copies } = collectionTotals();
+  const wishCount = Object.keys(wishlist).length;
+  const wishTxt = wishCount ? " · " + wishCount + " à acheter" : "";
+  if (!distinct){ $("sub").textContent = wishCount ? wishCount + " carte" + (wishCount>1?"s":"") + " à acheter" : "Aucune carte dans ta collection pour l'instant"; return; }
+  $("sub").textContent =
+    distinct + " carte" + (distinct>1?"s":"") + " différente" + (distinct>1?"s":"")
+    + " · " + copies + " au total" + wishTxt;
+}
+
+// enlève accents/majuscules pour une recherche souple
+function normalize(s){
+  return String(s).toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").trim();
+}
+// une carte correspond-elle à la recherche (nom OU numéro) ?
+function matchesSearch(c){
+  if (!search) return true;
+  const q = normalize(search);
+  const hasSlash = q.includes("/");
+
+  // recherche par nom (sauf si on a tapé un "/", signe d'une recherche par numéro)
+  if (!hasSlash && normalize(c.name).includes(q)) return true;
+
+  // recherche par numéro : "066" ou "066/063"
+  let numPart = q, totalPart = null;
+  if (hasSlash){ const p = q.split("/"); numPart = p[0].trim(); totalPart = p[1].trim(); }
+  if (!numPart) return false;
+
+  const id = normalize(c.localId);
+  const idClean = id.replace(/^0+/, ""), numClean = numPart.replace(/^0+/, "");
+
+  if (totalPart){
+    // le YYY est fourni : on cible la/les séries qui ont ce total, et match exact du numéro
+    const sid = c.id.slice(0, c.id.lastIndexOf("-")) || c.id;
+    const off = setOfficialById[sid];
+    if (off != null && off !== totalPart.replace(/^0+/, "")) return false;
+    return idClean === numClean || id === numPart;
+  }
+  // pas de YYY : correspondance progressive (au fur et à mesure de la frappe)
+  return id.startsWith(numPart) || idClean.startsWith(numClean);
+}
+
+async function init(){
+  try {
+    const sets = await (await fetch(API + "/sets")).json();
+    const list = Array.isArray(sets) ? sets.slice().reverse() : [];
+    setList = list;
+    list.forEach(s => {
+      setNameById[s.id] = s.name;
+      const off = s.cardCount ? (s.cardCount.official ?? s.cardCount.total) : null;
+      setOfficialById[s.id] = off != null ? String(off) : null;
+    });
+    if (list.length) selectSet(list[0].id);
+    else content.innerHTML = `<div class="msg">Aucune série trouvée.</div>`;
+  } catch {
+    content.innerHTML = `<div class="msg">Impossible de charger les séries.<br>Vérifie ta connexion internet, puis recharge la page.</div>`;
+  }
+  updateSub();
+  updateAccountButton();
+  hydrateMeta();
+  renderValueBox();
+  loadBlocks();
+  loadRarities();
+}
+
+// charge la liste des raretés en arrière-plan, pour remplir le menu
+async function loadRarities(){
+  try {
+    const list = await (await fetch(API + "/rarities")).json();
+    rarities = Array.isArray(list) ? list : [];
+    fillRaritySelect();
+  } catch {
+    // pas de raretés disponibles : le menu reste sur "Toutes"
+  }
+}
+function fillRaritySelect(){
+  const sel = document.getElementById("raritySel");
+  if (!sel) return;
+  const opts = ['<option value="">Toutes les raretés</option>'];
+  rarities.forEach(r => {
+    const label = typeof r === "string" ? r : (r.name || r.id || String(r));
+    opts.push(`<option value="${label}">${label}</option>`);
+  });
+  sel.innerHTML = opts.join("");
+  sel.value = rarityFilter;
+}
+// récupère (une fois, puis en cache) les ids de la série courante ayant la rareté choisie
+async function ensureRarityIds(){
+  if (!rarityFilter || !currentSetId){ rarityIds = null; return; }
+  const key = currentSetId + "|" + rarityFilter;
+  if (rarityCache[key]){ rarityIds = rarityCache[key]; return; }
+  try {
+    const url = API + "/cards?rarity=" + encodeURIComponent(rarityFilter) + "&id=" + encodeURIComponent(currentSetId) + "-";
+    const arr = await (await fetch(url)).json();
+    const s = new Set((Array.isArray(arr) ? arr : []).map(c => c.id));
+    rarityCache[key] = s;
+    rarityIds = s;
+  } catch {
+    rarityIds = new Set(); // en cas d'échec, on n'affiche rien plutôt que de tout montrer
+  }
+}
+
+// charge la structure des blocs en arrière-plan (ne bloque pas le démarrage)
+async function loadBlocks(){
+  try {
+    const seriesList = await (await fetch(API + "/series")).json();
+    const ordered = Array.isArray(seriesList) ? seriesList.slice().reverse() : []; // bloc le plus récent d'abord
+    const details = await Promise.all(ordered.map(s =>
+      fetch(API + "/series/" + s.id).then(r => r.json()).catch(() => null)));
+    const built = [];
+    details.forEach((serie, i) => {
+      if (!serie) return;
+      const id = ordered[i].id, name = serie.name || ordered[i].name;
+      blockNameById[id] = name;
+      const sets = (serie.sets || []).slice().reverse(); // série la plus récente d'abord dans le bloc
+      sets.forEach(s => { setBlockById[s.id] = id; });
+      built.push({ id, name, sets });
+    });
+    blocks = built;
+    blocksReady = true;
+    if (!setMenu.hidden) renderSetMenu(""); // rafraîchit le menu s'il est ouvert
+  } catch {
+    // en cas d'échec, on garde le sélecteur "à plat"
+  }
+}
+
+async function loadSet(id){
+  filter = "all";
+  search = "";
+  collectionView = false;
+  rarityFilter = "";
+  rarityIds = null;
+  const rs = $("raritySel"); if (rs) rs.value = "";
+  const si = $("search"); if (si) si.value = "";
+  $("clear").hidden = true;
+  document.querySelectorAll(".chip").forEach(c => c.classList.toggle("on", c.dataset.f==="all"));
+  content.innerHTML = `<div class="msg"><div class="spin"></div>Chargement des cartes…</div>`;
+  try {
+    const data = await (await fetch(API + "/sets/" + id)).json();
+    cards = data.cards || [];
+    render();
+  } catch {
+    content.innerHTML = `<div class="msg">Impossible de charger cette série. Réessaie.</div>`;
+  }
+}
+
+// construit un bouton-carte réutilisable
+function cardButton(c){
+  const rec = owned[c.id];
+  const has = !!rec;
+  const wish = !!wishlist[c.id];
+  const b = document.createElement("button");
+  b.className = "slot" + (has ? " owned" : (wish ? " wish" : ""));
+  b.title = c.name;
+  const img = c.image ? c.image + "/low.webp" : null;
+  b.innerHTML =
+    (img ? `<img src="${img}" alt="${c.name}" loading="lazy">` : `<div class="noimg">${c.name}</div>`)
+    + (has ? `<span class="check">✓</span>` : ``)
+    + (!has && wish ? `<span class="wishbadge">♥</span>` : ``)
+    + (has && cardQty(rec) > 1 ? `<span class="qtybadge">×${cardQty(rec)}</span>` : ``)
+    + `<span class="num">${c.localId}</span>`;
+  b.onclick = () => openModal(c);
+  return b;
+}
+
+// --- fiche carte (modale) ---
+let openCard = null;
+
+function openModal(c){
+  openCard = c;
+  const hi = c.image ? c.image + "/high.webp" : null;
+  $("mImg").innerHTML = hi ? `<img src="${hi}" alt="${c.name}">` : `<div class="noimg">${c.name}</div>`;
+  $("mName").textContent = c.name;
+  updateModalMeta();
+  renderModalBody();
+  $("overlay").hidden = false;
+  loadVariants(c.id); // récupère les versions disponibles, puis rafraîchit la fiche
+}
+
+// --- cache local des infos de carte (versions, rareté, prix) ---
+function hydrateMeta(){
+  let raw = {};
+  try { raw = JSON.parse(localStorage.getItem(META_KEY)) || {}; } catch { raw = {}; }
+  for (const id in raw){
+    const m = raw[id]; if (!m) continue;
+    if (m.v) variantCache[id] = m.v;
+    if (m.r) rarityByCard[id] = m.r;
+    if (m.p) pricingByCard[id] = m.p;
+    metaTs[id] = m.t || 0;
+  }
+}
+function persistMeta(){
+  const out = {};
+  for (const id in metaTs){
+    out[id] = { v: variantCache[id], r: rarityByCard[id], p: pricingByCard[id], t: metaTs[id] };
+  }
+  try { localStorage.setItem(META_KEY, JSON.stringify(out)); }
+  catch { /* espace saturé : on garde le cache en mémoire seulement */ }
+}
+function metaStale(cardId){
+  return !metaTs[cardId] || (Date.now() - metaTs[cardId] > PRICE_TTL);
+}
+// récupère versions + rareté + prix d'une carte (une requête)
+async function fetchMeta(cardId){
+  try {
+    const data = await (await fetch(API + "/cards/" + encodeURIComponent(cardId))).json();
+    const v = data && data.variants ? data.variants : {};
+    const list = Object.keys(VARIANT_LABELS).filter(k => v[k]).map(k => VARIANT_LABELS[k]);
+    variantCache[cardId] = list.length ? list : [DEFAULT_VARIANT];
+    if (data && data.rarity) rarityByCard[cardId] = data.rarity;
+    if (data && data.pricing) pricingByCard[cardId] = data.pricing;
+    metaTs[cardId] = Date.now();
+    return true;
+  } catch {
+    if (!variantCache[cardId]) variantCache[cardId] = [DEFAULT_VARIANT]; // repli
+    return false;
+  }
+}
+
+// versions et rareté d'une carte (récupérées une fois, puis mises en cache)
+async function loadVariants(cardId){
+  if (variantCache[cardId] && !metaStale(cardId)) return;
+  if (variantCache[cardId] && pricingByCard[cardId]){
+    // données présentes mais anciennes : on rafraîchit en arrière-plan sans bloquer l'affichage
+    fetchMeta(cardId).then(() => {
+      persistMeta();
+      if (openCard && openCard.id === cardId){ updateModalMeta(); renderModalBody(); }
+    });
+    return;
+  }
+  await fetchMeta(cardId);
+  persistMeta();
+  if (openCard && openCard.id === cardId){ updateModalMeta(); renderModalBody(); }
+}
+
+// ligne d'infos sous le nom : série · numéro · rareté
+function updateModalMeta(){
+  const c = openCard; if (!c) return;
+  const sid = c.id.slice(0, c.id.lastIndexOf("-")) || c.id;
+  const total = setOfficialById[sid];
+  const rarity = rarityByCard[c.id];
+  $("mMeta").innerHTML =
+    (setNameById[sid] || sid) + " · " + c.localId + (total ? " / " + total : "")
+    + (rarity ? ` <span class="rarity-tag">${rarity}</span>` : "");
+}
+
+// liste des versions à afficher : celles disponibles + celles déjà possédées
+function variantsFor(cardId){
+  const avail = variantCache[cardId] || null;
+  const ownedNames = owned[cardId] && owned[cardId].v ? Object.keys(owned[cardId].v) : [];
+  const set = new Set([...(avail || [DEFAULT_VARIANT]), ...ownedNames]);
+  const list = [...set];
+  list.sort((a, b) => {
+    const ia = VARIANT_ORDER.indexOf(a), ib = VARIANT_ORDER.indexOf(b);
+    return (ia < 0 ? 99 : ia) - (ib < 0 ? 99 : ib);
+  });
+  return { list, loading: !avail };
+}
+
+// --- prix estimés (données TCGdex : Cardmarket en €, TCGplayer en $) ---
+// On privilégie Cardmarket (marché européen), avec repli sur TCGplayer.
+function priceForVariant(cardId, variantName){
+  const p = pricingByCard[cardId];
+  if (!p) return null;
+  const cm = p.cardmarket, tp = p.tcgplayer;
+  const num = (x) => (typeof x === "number" && isFinite(x) && x > 0) ? x : null;
+  const avail = variantCache[cardId] || [];
+  const hasNormal = avail.includes("Normale");
+  const hasHolo = avail.includes("Holo");
+  const isFoil = variantName === "Holo" || variantName === "Reverse Holo";
+
+  if (cm){
+    const base = () => num(cm.trend) ?? num(cm.avg) ?? num(cm.avg30);
+    const holo = () => num(cm["trend-holo"]) ?? num(cm["avg-holo"]) ?? num(cm["avg30-holo"]);
+    let v = null;
+    if (!isFoil){
+      v = base();                          // version non brillante
+    } else if (!hasNormal){
+      v = base() ?? holo();                // la carte n'existe qu'en brillant : le prix de base est le sien
+    } else if (variantName === "Holo" || !hasHolo){
+      v = holo();                          // version brillante d'une carte qui existe aussi en normal
+    }
+    if (v) return { value: v, unit: "EUR", source: "Cardmarket" };
+  }
+  // TCGplayer : sous-objets par version (normal / reverse / holo)
+  if (tp){
+    const key = variantName === "Reverse Holo" ? "reverse" : variantName === "Holo" ? "holo" : "normal";
+    const b = tp[key] || tp.holo || tp.normal;
+    if (b){
+      const v = num(b.marketPrice) ?? num(b.midPrice) ?? num(b.lowPrice);
+      if (v) return { value: v, unit: "USD", source: "TCGplayer" };
+    }
+  }
+  return null;
+}
+function formatPrice(p){
+  if (!p) return null;
+  return p.value.toLocaleString("fr-FR", { style: "currency", currency: p.unit, maximumFractionDigits: 2 });
+}
+// valeur estimée d'une carte possédée (toutes ses versions × quantités)
+function cardValue(cardId){
+  const rec = owned[cardId];
+  if (!rec || !rec.v) return null;
+  let total = 0, unit = null, partial = false;
+  for (const name in rec.v){
+    const p = priceForVariant(cardId, name);
+    if (!p){ partial = true; continue; }
+    if (unit && p.unit !== unit){ partial = true; continue; } // devises différentes : on n'additionne pas
+    unit = p.unit;
+    total += p.value * (rec.v[name].qty || 1);
+  }
+  return unit ? { value: total, unit, partial } : null;
+}
+
+// --- valeur totale de la collection ---
+// Somme des prix de chaque version possédée × sa quantité.
+function collectionValue(){
+  let eur = 0, usd = 0, missing = 0;
+  for (const id in owned){
+    const rec = owned[id]; if (!rec || !rec.v) continue;
+    for (const name in rec.v){
+      const q = rec.v[name].qty || 1;
+      const p = priceForVariant(id, name);
+      if (!p){ missing += q; continue; }
+      if (p.unit === "EUR") eur += p.value * q; else usd += p.value * q;
+    }
+  }
+  return { eur, usd, missing };
+}
+function formatAmount(v, unit){
+  return v.toLocaleString("fr-FR", { style: "currency", currency: unit, maximumFractionDigits: 2 });
+}
+function valueSummary(){
+  const { eur, usd, missing } = collectionValue();
+  const parts = [];
+  if (eur > 0) parts.push(formatAmount(eur, "EUR"));
+  if (usd > 0) parts.push(formatAmount(usd, "USD"));
+  return { text: parts.length ? parts.join(" + ") : "—", missing };
+}
+
+let computing = false;
+// récupère les prix manquants ou périmés, puis affiche le total
+async function computeValue(){
+  if (computing) return;
+  const ids = Object.keys(owned);
+  if (!ids.length){ renderValueBox("Ta collection est vide."); return; }
+  computing = true;
+  const todo = ids.filter(metaStale);
+  let done = 0;
+  const step = () => renderValueBox(`Calcul… ${done} / ${todo.length}`, true);
+  step();
+  const CHUNK = 6; // quelques cartes à la fois, pour ne pas surcharger l'API
+  for (let i = 0; i < todo.length; i += CHUNK){
+    await Promise.all(todo.slice(i, i + CHUNK).map(async id => { await fetchMeta(id); done++; }));
+    step();
+  }
+  persistMeta();
+  const { text, missing } = valueSummary();
+  try { localStorage.setItem(VALUE_KEY, JSON.stringify({ text, missing, t: Date.now() })); } catch {}
+  computing = false;
+  renderValueBox();
+}
+
+function renderValueBox(msg, busy){
+  const box = document.getElementById("valueBox");
+  if (!box) return;
+  if (msg){
+    box.innerHTML = `<div class="value-msg">${busy ? `<span class="mini-spin"></span>` : ""}${msg}</div>`;
+    return;
+  }
+  let saved = null;
+  try { saved = JSON.parse(localStorage.getItem(VALUE_KEY)); } catch {}
+  const live = Object.keys(owned).length ? valueSummary() : null;
+  const shown = (live && live.text !== "—") ? live : saved;
+  if (!shown){
+    box.innerHTML = `<button id="calcValue" class="value-btn">Calculer la valeur</button>`;
+  } else {
+    box.innerHTML =
+      `<div class="value-amount">${shown.text}</div>` +
+      (shown.missing ? `<div class="value-note">${shown.missing} carte${shown.missing>1?"s":""} sans prix connu</div>` : ``) +
+      `<button id="calcValue" class="value-btn small">Recalculer</button>`;
+  }
+  const b = document.getElementById("calcValue");
+  if (b) b.onclick = computeValue;
+}
+
+function renderModalBody(){
+  const c = openCard, body = $("mBody");
+  const rec = owned[c.id];
+  const { list, loading } = variantsFor(c.id);
+  const wish = !!wishlist[c.id];
+  const totalQty = cardQty(rec);
+
+  const val = cardValue(c.id);
+  let html = totalQty
+    ? `<p class="owned-tag">✓ ${totalQty} exemplaire${totalQty>1?"s":""} · ${variantCount(rec)} version${variantCount(rec)>1?"s":""}${
+        val ? ` · <span class="cardvalue">${formatPrice(val)}${val.partial ? "+" : ""}</span>` : ""}</p>`
+    : `<p class="owned-tag" style="color:var(--muted)">Pas encore dans ta collection</p>`;
+
+  html += `<div class="vlist">`;
+  list.forEach((name, i) => {
+    const e = rec && rec.v ? rec.v[name] : null;
+    const p = priceForVariant(c.id, name);
+    html += `<div class="vcard${e ? " has" : ""}">
+      <div class="vhead"><span class="vname">${name}</span>
+        <span class="vright">${p ? `<span class="vprice" title="${p.source}">${formatPrice(p)}</span>` : ``}${
+          e ? `<span class="vqty">×${e.qty}</span>` : ``}</span></div>`;
+    if (!e){
+      html += `<button class="big-btn btn-add vadd" data-v="${i}">Ajouter cette version</button>`;
+    } else {
+      html += `
+        <div class="field"><label>Quantité</label>
+          <div class="qty"><button class="vminus" data-v="${i}" aria-label="Moins">−</button>
+            <span>${e.qty}</span>
+            <button class="vplus" data-v="${i}" aria-label="Plus">+</button></div>
+        </div>
+        <div class="field-row">
+          <div class="field"><label>État</label>
+            <select class="vcond" data-v="${i}">${CONDITIONS.map(o => `<option ${o===e.cond?"selected":""}>${o}</option>`).join("")}</select>
+          </div>
+          <div class="field"><label>Langue</label>
+            <select class="vlang" data-v="${i}">${LANGUAGES.map(o => `<option ${o===e.lang?"selected":""}>${o}</option>`).join("")}</select>
+          </div>
+        </div>
+        <button class="big-btn btn-remove vremove" data-v="${i}" style="margin-top:4px">Retirer cette version</button>`;
+    }
+    html += `</div>`;
+  });
+  html += `</div>`;
+  if (loading) html += `<p class="hint" style="text-align:center;margin:10px 0 0">Recherche des autres versions…</p>`;
+  const src = pricingByCard[c.id];
+  if (src){
+    const cm = src.cardmarket, tp = src.tcgplayer;
+    const upd = (cm && cm.updated) || (tp && tp.updated);
+    const who = cm ? "Cardmarket" : "TCGplayer";
+    html += `<p class="pricenote">Prix indicatifs · ${who}${
+      upd ? " · " + new Date(upd).toLocaleDateString("fr-FR") : ""}</p>`;
+  }
+  html += `<button class="big-btn btn-wish" id="mWish">${wish ? "♥ Retirer de ma liste de souhaits" : "♡ Ajouter à ma liste de souhaits"}</button>`;
+  body.innerHTML = html;
+
+  const nameOf = (el) => list[Number(el.dataset.v)];
+  const recOf  = (el) => owned[c.id] && owned[c.id].v ? owned[c.id].v[nameOf(el)] : null;
+
+  body.querySelectorAll(".vadd").forEach(btn => btn.onclick = () => {
+    if (!owned[c.id]) owned[c.id] = { v: {} };
+    owned[c.id].v[nameOf(btn)] = entry(1);
+    delete wishlist[c.id]; // je l'ai : plus besoin de l'acheter
+    saveNow(); renderModalBody(); render();
+  });
+  body.querySelectorAll(".vplus").forEach(btn => btn.onclick = () => {
+    const e = recOf(btn); if (e){ e.qty++; save(); renderModalBody(); render(); }
+  });
+  body.querySelectorAll(".vminus").forEach(btn => btn.onclick = () => {
+    const e = recOf(btn); if (e && e.qty > 1){ e.qty--; save(); renderModalBody(); render(); }
+  });
+  body.querySelectorAll(".vcond").forEach(sel => sel.onchange = () => {
+    const e = recOf(sel); if (e){ e.cond = sel.value; save(); }
+  });
+  body.querySelectorAll(".vlang").forEach(sel => sel.onchange = () => {
+    const e = recOf(sel); if (e){ e.lang = sel.value; save(); }
+  });
+  body.querySelectorAll(".vremove").forEach(btn => btn.onclick = () => {
+    const r = owned[c.id];
+    if (r && r.v){
+      delete r.v[nameOf(btn)];
+      if (!Object.keys(r.v).length) delete owned[c.id]; // plus aucune version : carte non possédée
+    }
+    saveNow(); renderModalBody(); render();
+  });
+  $("mWish").onclick = () => {
+    if (wishlist[c.id]) delete wishlist[c.id]; else wishlist[c.id] = true;
+    saveNow(); renderModalBody(); render();
+  };
+}
+
+function closeModal(){ $("overlay").hidden = true; openCard = null; }
+
+function passFilter(c){
+  if (filter === "owned") return !!owned[c.id];
+  if (filter === "missing") return !owned[c.id];
+  if (filter === "wishlist") return !!wishlist[c.id];
+  return true;
+}
+
+// trie une liste de cartes selon le tri courant (renvoie une copie)
+function sortCards(list){
+  const arr = list.slice();
+  const num = (a, b) => String(a.localId).localeCompare(String(b.localId), undefined, { numeric: true });
+  const name = (a, b) => (a.name || "").localeCompare(b.name || "", "fr");
+  if (sortBy === "num-asc")  arr.sort(num);
+  else if (sortBy === "num-desc")  arr.sort((a, b) => num(b, a));
+  else if (sortBy === "name-asc")  arr.sort(name);
+  else if (sortBy === "name-desc") arr.sort((a, b) => name(b, a));
+  return arr;
+}
+
+function render(){
+  // la barre de progression reste celle de la série sélectionnée
+  const have = cards.filter(c => owned[c.id]).length;
+  const total = cards.length;
+  $("have").textContent = have;
+  $("total").textContent = total;
+  $("fill").style.width = total ? Math.round(have/total*100) + "%" : "0%";
+  updateSub();
+  $("viewAll").textContent = collectionView ? "◂ Revenir à la série" : "Voir toute ma collection ▸";
+  if (!computing) renderValueBox();
+
+  if (search) renderSearch();
+  else if (collectionView) renderCollection();
+  else renderSet();
+}
+
+// affichage normal : une seule série
+function renderSet(){
+  let list = cards.filter(passFilter);
+  if (rarityFilter && rarityIds) list = list.filter(c => rarityIds.has(c.id));
+  const shown = sortCards(list);
+  if (!shown.length){
+    const m = rarityFilter ? "Aucune carte de cette rareté dans cette série (avec ce filtre)."
+      : filter==="missing" ? "Bravo, tu as toutes les cartes de cette série !"
+      : filter==="owned" ? "Aucune carte de cette série pour l'instant. Touche une carte pour l'ajouter."
+      : filter==="wishlist" ? "Aucune carte de cette série dans ta liste de souhaits."
+      : "Aucune carte à afficher.";
+    content.innerHTML = `<div class="msg">${m}</div>`;
+    return;
+  }
+  const grid = document.createElement("div");
+  grid.className = "grid";
+  shown.forEach(c => grid.appendChild(cardButton(c)));
+  content.innerHTML = "";
+  content.appendChild(grid);
+}
+
+// affichage groupé par série (réutilisé par la recherche et la vue collection)
+function renderGrouped(list, hintText){
+  const groups = {};
+  for (const c of list){
+    const sid = c.id.slice(0, c.id.lastIndexOf("-")) || c.id;
+    (groups[sid] = groups[sid] || []).push(c);
+  }
+  const orderedIds = setList.map(s => s.id).filter(id => groups[id]);
+  Object.keys(groups).forEach(id => { if (!orderedIds.includes(id)) orderedIds.push(id); });
+
+  content.innerHTML = "";
+  const hint = document.createElement("p");
+  hint.className = "hint";
+  hint.textContent = hintText(list.length, orderedIds.length);
+  content.appendChild(hint);
+
+  const CAP = 500;
+  let rendered = 0, capped = false;
+  for (const sid of orderedIds){
+    if (rendered >= CAP){ capped = true; break; }
+    const head = document.createElement("div");
+    head.className = "section-head";
+    head.innerHTML = `<span>${setNameById[sid] || sid}</span><small>${groups[sid].length}</small>`;
+    content.appendChild(head);
+    const grid = document.createElement("div");
+    grid.className = "grid";
+    for (const c of sortCards(groups[sid])){
+      if (rendered >= CAP){ capped = true; break; }
+      grid.appendChild(cardButton(c));
+      rendered++;
+    }
+    content.appendChild(grid);
+  }
+  if (capped){
+    const note = document.createElement("p");
+    note.className = "hint";
+    note.textContent = "Affichage limité à 500 cartes. Utilise la recherche pour cibler.";
+    content.appendChild(note);
+  }
+}
+
+// affichage recherche : toutes les séries, regroupées par section
+async function renderSearch(){
+  if (!allCards){
+    content.innerHTML = `<div class="msg"><div class="spin"></div>Préparation de la recherche… (une seule fois)</div>`;
+    await loadAllCards();
+    if (allCards && search) renderSearch();
+    return;
+  }
+  const results = allCards.filter(c => passFilter(c) && matchesSearch(c));
+  if (!results.length){
+    content.innerHTML = `<div class="msg">Aucune carte ne correspond à ta recherche.</div>`;
+    return;
+  }
+  renderGrouped(results, (n, m) =>
+    n + " résultat" + (n>1?"s":"") + " dans " + m + " série" + (m>1?"s":""));
+}
+
+// affichage global : ma collection (possédées) ou ma liste de souhaits, regroupée par série
+async function renderCollection(){
+  const wish = filter === "wishlist";
+  const source = wish ? wishlist : owned;
+  if (!Object.keys(source).length){
+    content.innerHTML = `<div class="msg">${wish
+      ? "Ta liste de souhaits est vide.<br>Ouvre une carte et ajoute-la avec ♡."
+      : "Ta collection est vide pour l'instant.<br>Touche une carte pour l'ajouter."}</div>`;
+    return;
+  }
+  if (!allCards){
+    content.innerHTML = `<div class="msg"><div class="spin"></div>Préparation… (une seule fois)</div>`;
+    await loadAllCards();
+    if (allCards && collectionView) renderCollection();
+    return;
+  }
+  const results = allCards.filter(c => source[c.id]);
+  renderGrouped(results, (n, m) => wish
+    ? n + " carte" + (n>1?"s":"") + " à acheter dans " + m + " série" + (m>1?"s":"")
+    : n + " carte" + (n>1?"s":"") + " différente" + (n>1?"s":"") + " dans " + m + " série" + (m>1?"s":""));
+}
+
+// charge une seule fois la liste complète des cartes
+async function loadAllCards(){
+  if (allCards || loadingAll) return;
+  loadingAll = true;
+  try {
+    allCards = await (await fetch(API + "/cards")).json();
+  } catch {
+    allCards = null;
+    content.innerHTML = `<div class="msg">Impossible de charger toutes les cartes.<br>Vérifie ta connexion, puis réessaie.</div>`;
+  } finally {
+    loadingAll = false;
+  }
+}
+
+// --- sélecteur de série avec recherche ---
+function renderSetMenu(q){
+  const nq = normalize(q);
+  const item = s => `<div class="combo-item${s.id===currentSetId?" on":""}" data-id="${s.id}">${s.name}</div>`;
+  if (!blocksReady){
+    // liste à plat tant que les blocs ne sont pas chargés
+    const items = setList.filter(s => !nq || normalize(s.name).includes(nq));
+    setMenu.innerHTML = items.length ? items.map(item).join("") : `<div class="combo-empty">Aucune série trouvée</div>`;
+    return;
+  }
+  let html = "";
+  for (const block of blocks){
+    const matches = block.sets.filter(s => !nq || normalize(s.name).includes(nq));
+    if (!matches.length) continue;
+    html += `<div class="combo-block">${block.name}</div>` + matches.map(item).join("");
+  }
+  setMenu.innerHTML = html || `<div class="combo-empty">Aucune série trouvée</div>`;
+}
+function selectSet(id){
+  currentSetId = id;
+  setInput.value = setNameById[id] || id;
+  setMenu.hidden = true;
+  setInput.blur();
+  loadSet(id);
+}
+setInput.addEventListener("focus", () => { setInput.select(); renderSetMenu(""); setMenu.hidden = false; });
+setInput.addEventListener("input", () => { renderSetMenu(setInput.value); setMenu.hidden = false; });
+setMenu.addEventListener("click", (e) => {
+  const it = e.target.closest(".combo-item");
+  if (it) selectSet(it.dataset.id);
+});
+document.addEventListener("click", (e) => { if (!e.target.closest(".combo")) setMenu.hidden = true; });
+
+$("mClose").onclick = closeModal;
+$("overlay").onclick = (e) => { if (e.target === $("overlay")) closeModal(); };
+document.addEventListener("keydown", (e) => { if (e.key === "Escape"){ closeModal(); $("syncOverlay").hidden = true; } });
+
+const searchInput = $("search"), clearBtn = $("clear");
+searchInput.addEventListener("input", (e) => {
+  search = e.target.value;
+  if (search) collectionView = false;
+  clearBtn.hidden = !search;
+  render();
+});
+clearBtn.addEventListener("click", () => {
+  search = "";
+  searchInput.value = "";
+  clearBtn.hidden = true;
+  searchInput.focus();
+  render();
+});
+
+$("viewAll").addEventListener("click", () => {
+  collectionView = !collectionView;
+  if (collectionView){ search = ""; searchInput.value = ""; clearBtn.hidden = true; }
+  render();
+  window.scrollTo({ top: 0, behavior: "smooth" });
+});
+
+document.querySelectorAll(".chip").forEach(chip => {
+  chip.onclick = () => {
+    filter = chip.dataset.f;
+    document.querySelectorAll(".chip").forEach(c => c.classList.remove("on"));
+    chip.classList.add("on");
+    render();
+  };
+});
+
+$("sortSel").addEventListener("change", (e) => { sortBy = e.target.value; render(); });
+
+$("raritySel").addEventListener("change", async (e) => {
+  rarityFilter = e.target.value;
+  if (rarityFilter){
+    content.innerHTML = `<div class="msg"><div class="spin"></div>Filtrage par rareté…</div>`;
+    await ensureRarityIds();
+  } else {
+    rarityIds = null;
+  }
+  render();
+});
+
+// --- fenêtre "Mon compte" (connexion) ---
+const inputStyle = "width:100%;font-family:inherit;font-weight:700;font-size:15px;color:var(--ink);padding:12px 14px;border-radius:12px;border:2px solid #e2e6ef;background:#fbfcfe;-webkit-appearance:none;";
+
+function renderAccountBody(){
+  const body = document.getElementById("authBody");
+  if (!body) return;
+  if (currentUser){
+    body.innerHTML =
+      `<p style="text-align:center;font-weight:800;margin:0 0 16px;">Connecté : ${currentUser.email || "compte Google"}</p>
+       <button class="big-btn btn-remove" id="btnLogout">Se déconnecter</button>`;
+    document.getElementById("btnLogout").onclick = () => signOut(auth);
+    return;
+  }
+  body.innerHTML =
+    `<button class="big-btn btn-add" id="btnGoogle" style="margin-bottom:18px;">Se connecter avec Google</button>
+     <div class="field"><label>Email</label>
+       <input id="authEmail" type="email" autocomplete="email" style="${inputStyle}"></div>
+     <div class="field"><label>Mot de passe</label>
+       <input id="authPass" type="password" autocomplete="current-password" style="${inputStyle}"></div>
+     <div class="field-row">
+       <button class="big-btn btn-add" id="btnLogin">Se connecter</button>
+       <button class="big-btn" id="btnSignup" style="background:#eef1f7;color:var(--navy);">Créer un compte</button>
+     </div>`;
+  document.getElementById("btnGoogle").onclick = async () => {
+    interactiveLogin = true;
+    setAuthStatus("Connexion à Google…");
+    try { await signInWithPopup(auth, googleProvider); }
+    catch (e){ interactiveLogin = false; setAuthStatus(authError(e), false); }
+  };
+  const email = () => document.getElementById("authEmail").value.trim();
+  const pass  = () => document.getElementById("authPass").value;
+  document.getElementById("btnLogin").onclick = async () => {
+    interactiveLogin = true;
+    setAuthStatus("Connexion…");
+    try { await signInWithEmailAndPassword(auth, email(), pass()); }
+    catch (e){ interactiveLogin = false; setAuthStatus(authError(e), false); }
+  };
+  document.getElementById("btnSignup").onclick = async () => {
+    interactiveLogin = true;
+    setAuthStatus("Création du compte…");
+    try { await createUserWithEmailAndPassword(auth, email(), pass()); }
+    catch (e){ interactiveLogin = false; setAuthStatus(authError(e), false); }
+  };
+}
+
+function authError(e){
+  const c = (e && e.code) || "";
+  if (c.includes("invalid-credential") || c.includes("wrong-password")) return "Email ou mot de passe incorrect.";
+  if (c.includes("email-already-in-use")) return "Un compte existe déjà avec cet email. Connecte-toi.";
+  if (c.includes("weak-password")) return "Mot de passe trop court (6 caractères minimum).";
+  if (c.includes("invalid-email")) return "Email invalide.";
+  if (c.includes("popup-closed") || c.includes("cancelled-popup")) return "Connexion Google annulée.";
+  if (c.includes("unauthorized-domain")) return "Connexion Google indisponible ici : à tester une fois la page hébergée (étape 4).";
+  return "Erreur de connexion. Réessaie.";
+}
+
+$("syncBtn").addEventListener("click", () => {
+  renderAccountBody();
+  setAuthStatus(currentUser ? "Synchro active." : "");
+  $("syncOverlay").hidden = false;
+});
+$("syncClose").addEventListener("click", () => { $("syncOverlay").hidden = true; });
+$("syncOverlay").addEventListener("click", (e) => { if (e.target === $("syncOverlay")) $("syncOverlay").hidden = true; });
+
+// réagit à la connexion / déconnexion
+onAuthStateChanged(auth, (user) => { if (user) onLogin(user); else onLogout(); });
+
+init();
+</script>
+<script>
+// --- Enregistrement du service worker (mode appli + hors-ligne) ---
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("sw.js").then((reg) => {
+      if (reg.waiting) showUpdateBar(); // une nouvelle version attendait déjà
+      // Une nouvelle version est disponible : on prévient et on recharge après accord.
+      reg.addEventListener("updatefound", () => {
+        const sw = reg.installing;
+        if (!sw) return;
+        sw.addEventListener("statechange", () => {
+          if (sw.state === "installed" && navigator.serviceWorker.controller) {
+            showUpdateBar();
+          }
+        });
+      });
+    }).catch(() => { /* pas de service worker : l'appli fonctionne normalement */ });
+
+    // Rechargement une fois la nouvelle version active
+    let reloading = false;
+    navigator.serviceWorker.addEventListener("controllerchange", () => {
+      if (reloading) return;
+      reloading = true;
+      location.reload();
+    });
+  });
+}
+
+function showUpdateBar() {
+  if (document.getElementById("updateBar")) return;
+  const bar = document.createElement("div");
+  bar.id = "updateBar";
+  bar.innerHTML = `<span>Nouvelle version disponible</span><button id="updateBtn">Mettre à jour</button>`;
+  Object.assign(bar.style, {
+    position: "fixed", left: "16px", right: "16px", bottom: "16px", zIndex: 100,
+    background: "#1c2333", color: "#fff", borderRadius: "14px", padding: "13px 16px",
+    display: "flex", alignItems: "center", justifyContent: "space-between", gap: "12px",
+    fontFamily: "system-ui, sans-serif", fontWeight: "700", fontSize: "14px",
+    boxShadow: "0 10px 30px rgba(0,0,0,.3)", maxWidth: "520px", margin: "0 auto",
+  });
+  document.body.appendChild(bar);
+  const btn = document.getElementById("updateBtn");
+  Object.assign(btn.style, {
+    background: "#ffcb3d", color: "#1a1d29", border: "none", borderRadius: "9px",
+    padding: "8px 14px", fontFamily: "inherit", fontWeight: "800", fontSize: "13px",
+    cursor: "pointer", flex: "none",
+  });
+  btn.onclick = () => {
+    navigator.serviceWorker.getRegistration().then((reg) => {
+      if (reg && reg.waiting) reg.waiting.postMessage({ type: "SKIP_WAITING" });
+      else location.reload();
+    });
+    bar.remove();
+  };
+}
+// --- Bouton d'installation (Android/Chrome natif, instructions sur iPhone) ---
+(function () {
+  const btn = document.getElementById("installBtn");
+  if (!btn) return;
+
+  // Déjà installée ? On ne propose rien.
+  const installed = window.matchMedia("(display-mode: standalone)").matches
+    || navigator.standalone === true;
+  if (installed) return;
+
+  const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent)
+    || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+
+  let deferred = null;
+
+  // Android / Chrome : le navigateur nous signale que l'installation est possible
+  window.addEventListener("beforeinstallprompt", (e) => {
+    e.preventDefault();     // on garde la main pour déclencher via notre bouton
+    deferred = e;
+    btn.hidden = false;
+  });
+
+  window.addEventListener("appinstalled", () => {
+    btn.hidden = true;
+    deferred = null;
+  });
+
+  // iPhone : aucun signal n'existe, on affiche le bouton pour expliquer la marche à suivre
+  if (isIOS) btn.hidden = false;
+
+  btn.onclick = async () => {
+    if (deferred) {
+      deferred.prompt();
+      const choice = await deferred.userChoice;
+      deferred = null;
+      if (choice && choice.outcome === "accepted") btn.hidden = true;
+      return;
+    }
+    showIosHelp();
+  };
+
+  function showIosHelp() {
+    if (document.getElementById("iosHelp")) return;
+    const ov = document.createElement("div");
+    ov.id = "iosHelp";
+    ov.className = "overlay";
+    ov.innerHTML =
+      `<div class="modal" role="dialog" aria-modal="true">
+         <button class="modal-close" aria-label="Fermer">&times;</button>
+         <h2 class="modal-name">Installer l'application</h2>
+         <p class="modal-meta">Sur iPhone et iPad, l'installation passe par le menu de partage de Safari.</p>
+         <ol class="ios-steps">
+           <li>Touche le bouton <strong>Partager</strong> en bas de Safari (le carré avec une flèche vers le haut).</li>
+           <li>Fais défiler, puis choisis <strong>« Sur l'écran d'accueil »</strong>.</li>
+           <li>Confirme avec <strong>Ajouter</strong>.</li>
+         </ol>
+         <p class="pricenote">L'icône apparaîtra ensuite sur ton écran d'accueil.</p>
+       </div>`;
+    document.body.appendChild(ov);
+    const close = () => ov.remove();
+    ov.querySelector(".modal-close").onclick = close;
+    ov.onclick = (e) => { if (e.target === ov) close(); };
+  }
+})();
+</script>
+</body>
+</html>

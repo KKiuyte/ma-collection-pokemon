@@ -1,0 +1,177 @@
+# Ma Collection Pokémon — mémoire du projet
+
+> Ce fichier est lu automatiquement par Claude Code. Il contient tout ce qu'il faut
+> savoir pour reprendre le projet sans rien redécouvrir. **À jour au moment du passage
+> depuis le chat vers Claude Code.**
+
+## Qui, quoi
+
+Application web **personnelle** de suivi d'une collection de cartes Pokémon, faite pour
+et avec **Ariel** (francophone, débutant en code, sur Android). L'interface, les textes
+et les échanges sont **en français**.
+
+Attentes de travail (important) : avancer **une fonctionnalité à la fois**, tester avant
+de livrer, être **honnête sur les limites** plutôt que sur-vendre, expliquer les étapes
+clairement. Pas de jargon inutile. Quand une approche a un défaut, le dire.
+
+## Nature technique — à lire avant de toucher au code
+
+- L'application est **un seul fichier HTML autonome** : `public/index.html`. Tout y est
+  (HTML, CSS dans un `<style>`, JS dans un `<script type="module">`). **Ce n'est pas**
+  une application React/Vue/bundlée. Il n'y a **pas** d'étape de build, pas de `npm run`,
+  pas de dépendances à installer pour l'appli elle-même.
+- On édite donc **directement `public/index.html`**. (Historiquement il existait un
+  doublon `ma-collection-pokemon.html` recopié vers `index.html` ; ce doublon est
+  **supprimé** — il n'y a plus qu'un seul fichier source.)
+- Les bibliothèques externes sont chargées par CDN à l'exécution : Firebase (gstatic
+  v10.12.0) dans l'appli, et Tesseract.js (jsdelivr) dans la page de scan.
+
+## Structure du dépôt
+
+```
+public/                 ← ce qui est déployé (le site)
+  index.html            ← L'APPLICATION (fichier unique, source de vérité)
+  manifest.json         ← PWA
+  sw.js                 ← service worker (cache + hors-ligne)
+  icon-192/512/maskable ← icônes PWA
+  test-scan.html        ← banc d'essai de la reconnaissance par photo (autonome)
+tools/
+  build_hashes.py       ← génère les empreintes visuelles (à lancer dans Cloud Shell)
+archive/                ← obsolète, conservé volontairement (voir plus bas)
+roadmap.md              ← feuille de route détaillée + notes
+```
+
+Fichiers **git-ignorés** car volumineux et régénérables : `public/catalogue-fr.json` et
+`public/hashes-*.json` (les empreintes de cartes, ~13 Mo). Ils sont générés par
+`tools/build_hashes.py` et déployés séparément.
+
+## Infrastructure en ligne
+
+- **Hébergement** : Firebase Hosting → https://ma-collection-pokemon.web.app/
+- **Projet Firebase** : `ma-collection-pokemon`
+  - apiKey `AIzaSyCiGgrj28Jrqn8jEGM9pWFsVhnfs-VKyiU` (clé publique, non secrète)
+  - messagingSenderId `1058168439830`
+  - appId `1:1058168439830:web:9b3c787f9286e888112137`
+- **Auth** : Firebase Authentication — Google + email/mot de passe (activés).
+- **Base** : Firestore, document `collections/{uid}` (chaque personne n'accède qu'à la
+  sienne, via les règles de sécurité). Champs `cards` et `wishlist`.
+- **Données des cartes et prix** : API communautaire **TCGdex** (`https://api.tcgdex.net/v2/fr`).
+  Rien n'est auto-hébergé.
+
+## Modèle de données
+
+```js
+// owned : cartes possédées, PAR VERSION
+owned[idCarte] = { v: { "Normale":     { qty, cond, lang },
+                        "Reverse Holo": { qty, cond, lang }, ... } }
+// wishlist : liste de souhaits, par carte
+wishlist[idCarte] = true
+```
+
+- Versions possibles (libellés FR) : `Normale`, `Reverse Holo`, `Holo`, `1re édition`, `Promo`.
+- `CONDITIONS = [Neuve, Excellent, Très bon, Bon, Moyen, Mauvais]`
+- `LANGUAGES = [Français, Anglais, Japonais, Allemand, Italien, Espagnol, Chinois, Autre]`
+- La fonction **`migrate()`** convertit automatiquement les anciens formats de données
+  (nombre seul, ou `{qty,cond,lang}` sans versions → version « Normale »). Elle est
+  appliquée au chargement local ET aux données venues de Firestore. **Ne pas la casser** :
+  d'anciennes collections en dépendent.
+- Une carte est « possédée » si son entrée existe avec ≥ 1 version. Quand on retire la
+  dernière version, on **supprime** l'entrée `owned[id]`.
+
+## TCGdex — points clés
+
+- La **liste légère** des cartes (`/cards`, `/sets/{id}`) ne contient que
+  `id / localId / name / image`. **Ni versions, ni rareté, ni prix.**
+- Versions, rareté et **prix** nécessitent une requête **par carte** : `/cards/{id}`.
+  On met donc ces infos en cache local (clé `collection_pokemon_meta`, TTL 24 h).
+- **Prix** (champ `pricing` de `/cards/{id}`) : Cardmarket en € (priorité, marché
+  européen) et TCGplayer en $ (repli). Règles fines dans `priceForVariant()` :
+  - carte à version unique → le prix « de base » Cardmarket lui revient ;
+  - Reverse Holo d'une carte **sans** Holo distincte → prix `-holo` Cardmarket (€) ;
+  - Reverse Holo d'une carte **avec** Holo distincte → repli TCGplayer ($), car
+    Cardmarket ne distingue pas les deux. Limite des données, pas un bug.
+  - Surveiller le futur champ `variants_detailed` de TCGdex : il donnera les prix par
+    version et réglera ce dernier cas.
+- Regroupement des séries par **bloc/génération** via `/series` et `/series/{id}`.
+
+## ⚠️ Pièges connus (déjà rencontrés — ne pas refaire)
+
+1. **CSS : le bloc `@media` doit être en FIN de feuille de style.** À priorité égale,
+   la dernière règle gagne. Une media-query placée avant la règle de base `.grid` était
+   silencieusement écrasée → le responsive ne s'appliquait pas. Toute règle responsive
+   va après les règles de base.
+2. **PWA : incrémenter `VERSION` dans `public/sw.js` à CHAQUE déploiement** (`"v3"` → `"v4"`…).
+   Sinon l'ancienne version reste en cache chez les utilisateurs. Un bandeau
+   « Nouvelle version disponible » gère la bascule côté client.
+3. **Service worker et navigation** : ne PAS renvoyer `index.html` pour toute navigation
+   (ça masquait `test-scan.html`). Le repli sur l'accueil ne doit se faire que **hors-ligne**.
+4. **Cache navigateur tenace** : après un déploiement, tester en **navigation privée**
+   pour voir la vraie version.
+5. **Empreintes visuelles : le calcul Python (`tools/build_hashes.py`) et le calcul
+   JavaScript (`test-scan.html`) doivent être identiques OCTET POUR OCTET.** Ils utilisent
+   un moyennage par blocs sans interpolation (`box_resize`) et des arrondis harmonisés
+   (`round`, pas de troncature). Toute modification d'un côté doit être répercutée et
+   revérifiée de l'autre.
+
+## Déploiement
+
+Le déploiement reste manuel via Firebase. Deux façons :
+
+**Depuis le PC** (si `firebase-tools` est installé) ou **depuis Google Cloud Shell** :
+```
+# 1) incrémenter VERSION dans public/sw.js si sw.js (ou l'appli) a changé
+# 2) déployer
+firebase deploy --only hosting
+```
+
+Historiquement, Ariel déployait depuis **Cloud Shell** (son ancien PC de travail ne
+permettait aucune installation) : upload des fichiers → `mv` vers `public/` → deploy.
+Piège de cette méthode : le navigateur renomme les téléchargements (`index(1).html`),
+donc vérifier `ls -lt` avant tout `mv`. Sur PC perso avec un dépôt Git, ce piège disparaît.
+
+Automatisation possible plus tard : déploiement continu GitHub → Firebase
+(`firebase init hosting:github`). Non fait pour l'instant.
+
+## État d'avancement
+
+Voir `roadmap.md` pour le détail. En résumé :
+
+**Fait** : navigation par série/bloc, recherche (nom, numéro « 074/159 », globale),
+filtres, tri, rareté, **versions de carte** (qty/état/langue par version), liste de
+souhaits, **prix par version**, **valeur totale** de la collection (cache 24 h),
+compte + synchro Firebase temps réel, **PWA** complète (installable, hors-ligne, bouton
+d'installation, mise à jour).
+
+**En cours — reconnaissance de carte par photo** (`public/test-scan.html`) :
+- Approche **gratuite, locale** : empreinte visuelle (grille 12×12, chromaticité
+  r/(r+g+b),g/(r+g+b) insensible à l'éclairage) + **lecture du numéro par OCR** (Tesseract.js).
+- Idée maîtresse : le **numéro imprimé** « 074/159 » restreint le champ (le total /159
+  cible la série par correspondance exacte du `cardCount.official`), l'**empreinte tranche**.
+- Résultats mesurés sur une série : ~67 % en 1er (communes 88 %, holos 67 %, full art 43 %).
+  La marge distingue bien vrai/faux (~0.012 vs ~0.002) → un **seuil de confiance ~0.005**
+  permet de dire « je ne reconnais pas » plutôt que de proposer faux.
+- OCR : exiger le motif complet `nombre/nombre`, modes PSM ['6','11','7','4'] SANS arrêt
+  anticipé, SANS liste blanche de caractères (sinon les lettres deviennent des chiffres
+  parasites), langue 'fra', corrections de confusions (O→0, S→5, B→8, Z→2).
+- **Prochaine étape** : campagne de test ~30 cartes contre le catalogue complet pour
+  décider de l'intégration dans l'appli. Services payants étudiés puis écartés (Ximilar
+  59 €/mois obligatoire ; CardSight à revérifier).
+
+**Décidé, non retenu** : publication sur les stores (obstacle des 12 testeurs 14 j pour
+Google Play ; App Store très difficile + connexion Google KO en webview ; risque de
+propriété intellectuelle Nintendo).
+
+## archive/ — à ne PAS supprimer
+
+- `worker-sync.js` : ancien Worker Cloudflare (synchro par code, remplacé par Firebase).
+  **Conservé** car il resservira d'intermédiaire si on branche un service de
+  reconnaissance payant (la clé d'API ne doit jamais être dans la page web).
+- `ma-collection-pokemon.jsx` : tout premier prototype React (Claude Design), jamais
+  utilisé. L'appli n'a jamais été en React.
+
+## Conventions de code
+
+- Français pour l'UI, les commentaires et les messages.
+- Pas de framework, pas de build. Rester en HTML/CSS/JS simple et lisible.
+- CSS : palette beige/orange (variables CSS en tête de `<style>`), formatage sobre.
+- Tester la logique avant de livrer (le projet a été construit en validant chaque étape).

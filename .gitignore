@@ -1,0 +1,10 @@
+# dépendances / artefacts
+node_modules/
+.firebase/
+__pycache__/
+*.pyc
+.DS_Store
+
+# empreintes de cartes : volumineuses et régénérables (tools/build_hashes.py)
+public/catalogue-fr.json
+public/hashes-*.json
