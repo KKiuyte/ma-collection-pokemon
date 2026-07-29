@@ -152,6 +152,18 @@ body {
 .stat-bar-fill.rarity { background:var(--ink); }
 .stat-value { font-size:12.5px; font-weight:800; color:var(--muted); white-space:nowrap; text-align:right; min-width:56px; }
 
+.stat-block { border-bottom:1px solid var(--line); padding-bottom:11px; }
+.stat-block-summary { display:grid; grid-template-columns:16px 1fr 120px auto; align-items:center;
+  gap:12px; cursor:pointer; list-style:none; padding:2px 0; }
+.stat-block-summary::-webkit-details-marker { display:none; }
+.stat-caret { font-size:11px; color:var(--muted); transition:transform .15s ease; display:inline-block; }
+.stat-block[open] .stat-caret { transform:rotate(90deg); }
+.stat-sublist { display:flex; flex-direction:column; gap:9px; margin:11px 0 0 28px; }
+.stat-subrow { display:grid; grid-template-columns:1fr 120px auto; align-items:center; gap:12px;
+  width:100%; font-family:inherit; background:none; border:none; padding:0; cursor:pointer; text-align:left; }
+.stat-subrow .stat-label { color:var(--accent-deep); }
+.stat-subrow:active { opacity:.6; }
+
 /* --- grille de cartes --- */
 .grid { display:grid; gap:12px; grid-template-columns:repeat(auto-fill,minmax(110px,1fr)); }
 .slot { position:relative; cursor:pointer; border-radius:11px; aspect-ratio:63/88; border:none;
@@ -1214,17 +1226,24 @@ async function renderStats(){
 
 // nombre de cartes possédées par bloc, comparé au total officiel du bloc
 function blockProgress(ids){
-  const haveByBlock = {};
+  const haveBySet = {};
   for (const id of ids){
     const sid = id.slice(0, id.lastIndexOf("-")) || id;
-    const bid = setBlockById[sid];
-    if (!bid) continue;
-    haveByBlock[bid] = (haveByBlock[bid] || 0) + 1;
+    haveBySet[sid] = (haveBySet[sid] || 0) + 1;
   }
   return blocks
     .map(b => {
-      const total = b.sets.reduce((sum, s) => sum + (parseInt(setOfficialById[s.id], 10) || 0), 0);
-      return { name: b.name, have: haveByBlock[b.id] || 0, total };
+      const sets = b.sets
+        .map(s => ({
+          id: s.id,
+          name: s.name,
+          have: haveBySet[s.id] || 0,
+          total: parseInt(setOfficialById[s.id], 10) || 0,
+        }))
+        .filter(s => s.total > 0);
+      const have = sets.reduce((sum, s) => sum + s.have, 0);
+      const total = sets.reduce((sum, s) => sum + s.total, 0);
+      return { name: b.name, have, total, sets };
     })
     .filter(b => b.total > 0);
 }
@@ -1260,13 +1279,33 @@ function renderStatsContent(ids){
   } else {
     blockStats.forEach(b => {
       const pct = b.total ? Math.round(b.have / b.total * 100) : 0;
-      const row = document.createElement("div");
-      row.className = "stat-row";
-      row.innerHTML =
-        `<div class="stat-label">${b.name}</div>
+      const details = document.createElement("details");
+      details.className = "stat-block";
+      const summary = document.createElement("summary");
+      summary.className = "stat-block-summary";
+      summary.innerHTML =
+        `<span class="stat-caret">▸</span>
+         <div class="stat-label">${b.name}</div>
          <div class="stat-bar-track"><div class="stat-bar-fill" style="width:${pct}%"></div></div>
          <div class="stat-value">${b.have} / ${b.total}</div>`;
-      blockList.appendChild(row);
+      details.appendChild(summary);
+
+      const sublist = document.createElement("div");
+      sublist.className = "stat-sublist";
+      b.sets.forEach(s => {
+        const spct = s.total ? Math.round(s.have / s.total * 100) : 0;
+        const subrow = document.createElement("button");
+        subrow.type = "button";
+        subrow.className = "stat-subrow";
+        subrow.innerHTML =
+          `<div class="stat-label">${s.name}</div>
+           <div class="stat-bar-track"><div class="stat-bar-fill" style="width:${spct}%"></div></div>
+           <div class="stat-value">${s.have} / ${s.total}</div>`;
+        subrow.onclick = () => selectSet(s.id);
+        sublist.appendChild(subrow);
+      });
+      details.appendChild(sublist);
+      blockList.appendChild(details);
     });
   }
   content.appendChild(blockList);
