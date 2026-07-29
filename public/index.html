@@ -230,11 +230,6 @@ body {
 .field select { width:100%; font-family:inherit; font-weight:700; font-size:14px; color:var(--ink);
   padding:11px 13px; border-radius:10px; border:1px solid var(--line); background:var(--field);
   -webkit-appearance:none; appearance:none; }
-.qty { display:flex; align-items:center; gap:16px; }
-.qty button { width:44px; height:44px; border-radius:11px; border:1px solid var(--line); background:var(--surface);
-  font-size:22px; font-weight:900; color:var(--ink); cursor:pointer; }
-.qty span { font-size:22px; font-weight:900; min-width:30px; text-align:center; }
-
 /* --- versions d'une carte --- */
 .vlist { display:flex; flex-direction:column; gap:12px; }
 .vcard { border:1px solid var(--line); border-radius:14px; padding:13px; background:var(--surface-3); }
@@ -244,6 +239,22 @@ body {
 .vright { display:flex; align-items:center; gap:8px; }
 .vprice { font-weight:900; font-size:13.5px; color:var(--accent-deep); }
 .cardvalue { color:var(--accent-deep); }
+
+/* --- exemplaires individuels d'une version --- */
+.copy-list { display:flex; flex-direction:column; gap:8px; margin-bottom:10px; }
+.copy-row { display:grid; grid-template-columns:18px 1fr 1fr 30px; gap:7px; align-items:center; }
+.copy-num { font-size:11px; font-weight:800; color:var(--muted); }
+.copy-row select { width:100%; font-family:inherit; font-weight:600; font-size:12px; color:var(--ink);
+  padding:7px 6px; border-radius:8px; border:1px solid var(--line); background:var(--field);
+  -webkit-appearance:none; appearance:none; }
+.copy-remove { width:28px; height:28px; border-radius:8px; border:1px solid var(--danger-border);
+  background:var(--danger-bg); color:var(--danger-fg); font-size:15px; font-weight:900; cursor:pointer;
+  line-height:1; flex:none; }
+.copy-add-toggle { width:100%; font-family:inherit; font-weight:800; font-size:12.5px; cursor:pointer;
+  padding:9px; border-radius:10px; border:1px dashed var(--line); background:none; color:var(--accent-deep); }
+.copy-add-form { margin-top:10px; padding-top:10px; border-top:1px dashed var(--line); }
+.copy-add-form .field-row { margin-bottom:10px; }
+.copy-add-form[hidden] { display:none; }
 .pricenote { text-align:center; font-size:11.5px; font-weight:700; color:var(--muted);
   margin:12px 0 0; }
 
@@ -263,8 +274,6 @@ body {
   padding:2px 9px; border-radius:999px; }
 .vcard .big-btn { padding:11px; font-size:14px; }
 .vcard .field { margin-bottom:10px; }
-.vcard .qty button { width:38px; height:38px; font-size:19px; }
-.vcard .qty span { font-size:18px; min-width:24px; }
 
 /* --- bouton retour en haut --- */
 .top-btn { position:fixed; right:18px; bottom:18px; width:46px; height:46px; border-radius:50%;
@@ -442,10 +451,15 @@ let currentUser = null;    // utilisateur connecté (null = déconnecté)
 let cloudUnsub = null;     // pour arrêter l'écoute temps réel
 let interactiveLogin = false; // connexion déclenchée par un clic (vs. session restaurée)
 
-// Format actuel : owned[idCarte] = { v: { "Normale": {qty,cond,lang}, "Reverse Holo": {...} } }
+// Format actuel : owned[idCarte] = { v: { "Normale": [ {cond,lang}, {cond,lang} ], "Reverse Holo": [...] } }
+// Chaque exemplaire d'une version a son propre état et sa propre langue.
 // Les anciens formats sont convertis automatiquement (tout devient la version "Normale").
-function entry(qty, cond, lang){
-  return { qty: Math.max(1, qty || 1), cond: cond || "Neuve", lang: lang || "Français" };
+function copyEntry(cond, lang){
+  return { cond: cond || "Neuve", lang: lang || "Français" };
+}
+// fabrique `qty` exemplaires identiques (pour convertir les anciennes données groupées)
+function makeCopies(qty, cond, lang){
+  return Array.from({ length: Math.max(1, qty || 1) }, () => copyEntry(cond, lang));
 }
 function migrate(raw){
   const out = {};
@@ -453,16 +467,20 @@ function migrate(raw){
     const v = raw[id];
     if (!v) continue;
     if (typeof v === "number"){                        // tout premier format
-      out[id] = { v: { [DEFAULT_VARIANT]: entry(v) } };
-    } else if (v.v && typeof v.v === "object"){        // déjà au bon format
+      out[id] = { v: { [DEFAULT_VARIANT]: makeCopies(v) } };
+    } else if (v.v && typeof v.v === "object"){        // déjà au bon format (ou version par exemplaires)
       const vv = {};
       for (const name in v.v){
-        const e = v.v[name] || {};
-        vv[name] = entry(e.qty, e.cond, e.lang);
+        const e = v.v[name];
+        if (!e) continue;
+        const copies = Array.isArray(e)
+          ? e.map(cp => copyEntry(cp && cp.cond, cp && cp.lang))
+          : makeCopies(e.qty, e.cond, e.lang);
+        if (copies.length) vv[name] = copies;
       }
       if (Object.keys(vv).length) out[id] = { v: vv };
     } else if (typeof v === "object"){                 // format intermédiaire {qty,cond,lang}
-      out[id] = { v: { [DEFAULT_VARIANT]: entry(v.qty, v.cond, v.lang) } };
+      out[id] = { v: { [DEFAULT_VARIANT]: makeCopies(v.qty, v.cond, v.lang) } };
     }
   }
   return out;
@@ -475,7 +493,7 @@ function load(){
 // quantité totale d'une carte, toutes versions confondues
 function cardQty(rec){
   if (!rec || !rec.v) return 0;
-  return Object.values(rec.v).reduce((n, e) => n + (e.qty || 1), 0);
+  return Object.values(rec.v).reduce((n, copies) => n + (copies ? copies.length : 0), 0);
 }
 // nombre de versions différentes possédées pour une carte
 function variantCount(rec){
@@ -888,7 +906,7 @@ function cardValue(cardId){
     if (!p){ partial = true; continue; }
     if (unit && p.unit !== unit){ partial = true; continue; } // devises différentes : on n'additionne pas
     unit = p.unit;
-    total += p.value * (rec.v[name].qty || 1);
+    total += p.value * rec.v[name].length;
   }
   return unit ? { value: total, unit, partial } : null;
 }
@@ -900,7 +918,7 @@ function collectionValue(){
   for (const id in owned){
     const rec = owned[id]; if (!rec || !rec.v) continue;
     for (const name in rec.v){
-      const q = rec.v[name].qty || 1;
+      const q = rec.v[name].length;
       const p = priceForVariant(id, name);
       if (!p){ missing += q; continue; }
       if (p.unit === "EUR") eur += p.value * q; else usd += p.value * q;
@@ -983,32 +1001,42 @@ function renderModalBody(){
     : `<p class="owned-tag" style="color:var(--muted)">Pas encore dans ta collection</p>`;
 
   html += `<div class="vlist">`;
-  list.forEach((name, i) => {
-    const e = rec && rec.v ? rec.v[name] : null;
+  list.forEach(name => {
+    const copies = rec && rec.v ? rec.v[name] : null;
+    const n = copies ? copies.length : 0;
     const p = priceForVariant(c.id, name);
-    html += `<div class="vcard${e ? " has" : ""}">
+    html += `<div class="vcard${n ? " has" : ""}">
       <div class="vhead"><span class="vname">${name}</span>
         <span class="vright">${p ? `<span class="vprice" title="${p.source}">${formatPrice(p)}</span>` : ``}${
-          e ? `<span class="vqty">×${e.qty}</span>` : ``}</span></div>`;
-    if (!e){
-      html += `<button class="big-btn btn-add vadd" data-v="${i}">Ajouter cette version</button>`;
-    } else {
-      html += `
-        <div class="field"><label>Quantité</label>
-          <div class="qty"><button class="vminus" data-v="${i}" aria-label="Moins">−</button>
-            <span>${e.qty}</span>
-            <button class="vplus" data-v="${i}" aria-label="Plus">+</button></div>
-        </div>
-        <div class="field-row">
-          <div class="field"><label>État</label>
-            <select class="vcond" data-v="${i}">${CONDITIONS.map(o => `<option ${o===e.cond?"selected":""}>${o}</option>`).join("")}</select>
-          </div>
-          <div class="field"><label>Langue</label>
-            <select class="vlang" data-v="${i}">${LANGUAGES.map(o => `<option ${o===e.lang?"selected":""}>${o}</option>`).join("")}</select>
-          </div>
-        </div>
-        <button class="big-btn btn-remove vremove" data-v="${i}" style="margin-top:4px">Retirer cette version</button>`;
+          n ? `<span class="vqty">×${n}</span>` : ``}</span></div>`;
+    if (n){
+      html += `<div class="copy-list">`;
+      copies.forEach((cp, i) => {
+        html += `
+          <div class="copy-row">
+            <span class="copy-num">#${i + 1}</span>
+            <select class="vcond" data-name="${name}" data-i="${i}">${CONDITIONS.map(o => `<option ${o===cp.cond?"selected":""}>${o}</option>`).join("")}</select>
+            <select class="vlang" data-name="${name}" data-i="${i}">${LANGUAGES.map(o => `<option ${o===cp.lang?"selected":""}>${o}</option>`).join("")}</select>
+            <button type="button" class="copy-remove" data-name="${name}" data-i="${i}" aria-label="Retirer cet exemplaire">×</button>
+          </div>`;
+      });
+      html += `</div>`;
     }
+    html += n
+      ? `<button type="button" class="copy-add-toggle" data-name="${name}">+ Ajouter un exemplaire</button>`
+      : `<button type="button" class="big-btn btn-add copy-add-toggle" data-name="${name}">Ajouter cette version</button>`;
+    html += `
+        <div class="copy-add-form" data-name="${name}" hidden>
+          <div class="field-row">
+            <div class="field"><label>État</label>
+              <select class="new-cond">${CONDITIONS.map(o => `<option${o==="Neuve"?" selected":""}>${o}</option>`).join("")}</select>
+            </div>
+            <div class="field"><label>Langue</label>
+              <select class="new-lang">${LANGUAGES.map(o => `<option${o==="Français"?" selected":""}>${o}</option>`).join("")}</select>
+            </div>
+          </div>
+          <button type="button" class="big-btn btn-add copy-add-confirm" data-name="${name}">Confirmer l'ajout</button>
+        </div>`;
     html += `</div>`;
   });
   html += `</div>`;
@@ -1024,31 +1052,38 @@ function renderModalBody(){
   html += `<button class="big-btn btn-wish" id="mWish">${wish ? "♥ Retirer de ma liste de souhaits" : "♡ Ajouter à ma liste de souhaits"}</button>`;
   body.innerHTML = html;
 
-  const nameOf = (el) => list[Number(el.dataset.v)];
-  const recOf  = (el) => owned[c.id] && owned[c.id].v ? owned[c.id].v[nameOf(el)] : null;
-
-  body.querySelectorAll(".vadd").forEach(btn => btn.onclick = () => {
+  // ouvre/ferme le petit formulaire état+langue avant d'ajouter un exemplaire
+  body.querySelectorAll(".copy-add-toggle").forEach(btn => btn.onclick = () => {
+    const form = btn.nextElementSibling;
+    if (form && form.classList.contains("copy-add-form")) form.hidden = !form.hidden;
+  });
+  body.querySelectorAll(".copy-add-confirm").forEach(btn => btn.onclick = () => {
+    const form = btn.closest(".copy-add-form");
+    const name = btn.dataset.name;
+    const cond = form.querySelector(".new-cond").value;
+    const lang = form.querySelector(".new-lang").value;
     if (!owned[c.id]) owned[c.id] = { v: {} };
-    owned[c.id].v[nameOf(btn)] = entry(1);
+    if (!owned[c.id].v[name]) owned[c.id].v[name] = [];
+    owned[c.id].v[name].push(copyEntry(cond, lang));
     delete wishlist[c.id]; // je l'ai : plus besoin de l'acheter
     saveNow(); renderModalBody(); render();
   });
-  body.querySelectorAll(".vplus").forEach(btn => btn.onclick = () => {
-    const e = recOf(btn); if (e){ e.qty++; save(); renderModalBody(); render(); }
+  body.querySelectorAll(".copy-row .vcond").forEach(sel => sel.onchange = () => {
+    const copies = owned[c.id] && owned[c.id].v ? owned[c.id].v[sel.dataset.name] : null;
+    const cp = copies && copies[Number(sel.dataset.i)];
+    if (cp){ cp.cond = sel.value; save(); }
   });
-  body.querySelectorAll(".vminus").forEach(btn => btn.onclick = () => {
-    const e = recOf(btn); if (e && e.qty > 1){ e.qty--; save(); renderModalBody(); render(); }
+  body.querySelectorAll(".copy-row .vlang").forEach(sel => sel.onchange = () => {
+    const copies = owned[c.id] && owned[c.id].v ? owned[c.id].v[sel.dataset.name] : null;
+    const cp = copies && copies[Number(sel.dataset.i)];
+    if (cp){ cp.lang = sel.value; save(); }
   });
-  body.querySelectorAll(".vcond").forEach(sel => sel.onchange = () => {
-    const e = recOf(sel); if (e){ e.cond = sel.value; save(); }
-  });
-  body.querySelectorAll(".vlang").forEach(sel => sel.onchange = () => {
-    const e = recOf(sel); if (e){ e.lang = sel.value; save(); }
-  });
-  body.querySelectorAll(".vremove").forEach(btn => btn.onclick = () => {
+  body.querySelectorAll(".copy-remove").forEach(btn => btn.onclick = () => {
     const r = owned[c.id];
-    if (r && r.v){
-      delete r.v[nameOf(btn)];
+    const copies = r && r.v ? r.v[btn.dataset.name] : null;
+    if (copies){
+      copies.splice(Number(btn.dataset.i), 1);
+      if (!copies.length) delete r.v[btn.dataset.name]; // plus aucun exemplaire : version retirée
       if (!Object.keys(r.v).length) delete owned[c.id]; // plus aucune version : carte non possédée
     }
     saveNow(); renderModalBody(); render();

@@ -61,9 +61,9 @@ Fichiers **git-ignorés** car volumineux et régénérables : `public/catalogue-
 ## Modèle de données
 
 ```js
-// owned : cartes possédées, PAR VERSION
-owned[idCarte] = { v: { "Normale":     { qty, cond, lang },
-                        "Reverse Holo": { qty, cond, lang }, ... } }
+// owned : cartes possédées, PAR VERSION, chaque exemplaire ayant son propre état/langue
+owned[idCarte] = { v: { "Normale":     [ {cond, lang}, {cond, lang} ],
+                        "Reverse Holo": [ {cond, lang} ], ... } }
 // wishlist : liste de souhaits, par carte
 wishlist[idCarte] = true
 ```
@@ -71,12 +71,16 @@ wishlist[idCarte] = true
 - Versions possibles (libellés FR) : `Normale`, `Reverse Holo`, `Holo`, `1re édition`, `Promo`.
 - `CONDITIONS = [Neuve, Excellent, Très bon, Bon, Moyen, Mauvais]`
 - `LANGUAGES = [Français, Anglais, Japonais, Allemand, Italien, Espagnol, Chinois, Autre]`
+- Chaque **exemplaire** d'une version est un objet indépendant `{cond, lang}` dans un tableau —
+  deux exemplaires « Normale » de la même carte peuvent avoir un état et une langue différents.
+  La quantité affichée est simplement `tableau.length`.
 - La fonction **`migrate()`** convertit automatiquement les anciens formats de données
-  (nombre seul, ou `{qty,cond,lang}` sans versions → version « Normale »). Elle est
-  appliquée au chargement local ET aux données venues de Firestore. **Ne pas la casser** :
-  d'anciennes collections en dépendent.
-- Une carte est « possédée » si son entrée existe avec ≥ 1 version. Quand on retire la
-  dernière version, on **supprime** l'entrée `owned[id]`.
+  (nombre seul, `{qty,cond,lang}` groupé, ou déjà en tableau) vers ce format par exemplaires.
+  Elle est appliquée au chargement local ET aux données venues de Firestore. **Ne pas la
+  casser** : d'anciennes collections en dépendent.
+- Une carte est « possédée » si son entrée existe avec ≥ 1 version (≥ 1 exemplaire). Quand on
+  retire le dernier exemplaire d'une version, la version disparaît ; quand il ne reste plus
+  aucune version, on **supprime** l'entrée `owned[id]`.
 
 ## TCGdex — points clés
 
@@ -138,12 +142,12 @@ uploader les fichiers modifiés (menu ⋮ → Upload) → `mv -f ~/index.html ~/
 Voir `roadmap.md` pour le détail. En résumé :
 
 **Fait** : navigation par série/bloc, recherche (nom, numéro « 074/159 », globale),
-filtres, tri, rareté, **versions de carte** (qty/état/langue par version), liste de
-souhaits, **prix par version**, **valeur totale** de la collection (cache 24 h),
-compte + synchro Firebase temps réel, **PWA** complète (installable, hors-ligne, bouton
-d'installation, mise à jour), **mode sombre**, bouton retour en haut, **statistiques**
-(progression par bloc, répartition par rareté — les ajouts récents restent à faire),
-**déploiement continu** (GitHub Actions).
+filtres, tri, rareté, **versions de carte** avec **exemplaires individuels** (état/langue
+propres à chaque copie), liste de souhaits, **prix par version**, **valeur totale** de la
+collection (cache 24 h), compte + synchro Firebase temps réel, **PWA** complète (installable,
+hors-ligne, bouton d'installation, mise à jour), **mode sombre**, bouton retour en haut,
+**statistiques** (progression par bloc, répartition par rareté — les ajouts récents restent
+à faire), **déploiement continu** (GitHub Actions).
 
 **En cours — reconnaissance de carte par photo** (`public/test-scan.html`) :
 - Approche **gratuite, locale** : empreinte visuelle (grille 12×12, chromaticité

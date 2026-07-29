@@ -91,7 +91,8 @@ réactiver le Worker Cloudflare (`collection-sync.ariesam.workers.dev`) comme in
       Cardmarket/TCGplayer **par version**, ce qui réglera le cas des Reverse Holo affichées en dollars
 
 ## 🎨 Priorité 4 — Finitions
-- [ ] Distinguer plusieurs exemplaires d'une **même version** (états différents par copie)
+- [x] Distinguer plusieurs exemplaires d'une **même version** (état/langue par copie individuelle,
+      ajout via un petit formulaire qui redemande état/langue à chaque fois)
 
 ---
 
@@ -113,7 +114,8 @@ réactiver le Worker Cloudflare (`collection-sync.ariesam.workers.dev`) comme in
   hébergés sur **Firebase Hosting**.
 - Connexion via **Firebase Authentication** (Google + email).
 - Données dans **Firestore**, document `collections/{identifiant utilisateur}` :
-  - `cards` : `{ idCarte: { v: { "Normale": {qty, cond, lang}, "Reverse Holo": {...} } } }`
+  - `cards` : `{ idCarte: { v: { "Normale": [{cond, lang}, ...], "Reverse Holo": [...] } } }`
+    (un objet `{cond, lang}` par exemplaire, la quantité = longueur du tableau)
   - `wishlist` : `{ idCarte: true }`
 - Les anciens formats sont **convertis automatiquement** au chargement (fonction `migrate`).
 - Cache local (localStorage) : collection, souhaits, et infos de carte (versions/rareté/prix,
