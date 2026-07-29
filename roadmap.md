@@ -82,7 +82,8 @@ réactiver le Worker Cloudflare (`collection-sync.ariesam.workers.dev`) comme in
 
 ## 🔎 Priorité 2 — Confort
 - [ ] Filtre par rareté aussi dans la **recherche globale** et la vue collection
-- [ ] **Liste d'échange** : regrouper automatiquement les doubles (quantité ≥ 2)
+- [x] **Liste d'échange** : regrouper automatiquement les doubles (≥ 2 exemplaires d'une
+      **même version** — Normale et Holo comptent comme deux cartes distinctes)
 - [ ] **Partage en lecture seule** d'une collection ou d'une liste de souhaits (facile avec Firebase)
 
 ## 💰 Priorité 3 — Prix, suite

@@ -275,6 +275,19 @@ body {
 .vcard .big-btn { padding:11px; font-size:14px; }
 .vcard .field { margin-bottom:10px; }
 
+/* --- liste d'échange --- */
+.trade-list { display:flex; flex-direction:column; gap:8px; margin-bottom:18px; }
+.trade-row { display:flex; align-items:center; gap:12px; padding:9px 11px; border-radius:12px;
+  border:1px solid var(--line); background:var(--surface-3); cursor:pointer; width:100%;
+  font-family:inherit; text-align:left; }
+.trade-row:active { opacity:.7; }
+.trade-row img { width:38px; border-radius:6px; flex:none; display:block; }
+.trade-info { flex:1; min-width:0; }
+.trade-name { font-weight:800; font-size:13.5px; color:var(--ink); }
+.trade-version { font-size:12px; color:var(--muted); font-weight:600; }
+.trade-badge { font-weight:900; font-size:11.5px; color:#fff; background:var(--navy);
+  padding:4px 10px; border-radius:999px; flex:none; white-space:nowrap; }
+
 /* --- bouton retour en haut --- */
 .top-btn { position:fixed; right:18px; bottom:18px; width:46px; height:46px; border-radius:50%;
   border:none; background:var(--navy); color:#fff; font-size:20px; font-weight:900; cursor:pointer;
@@ -298,7 +311,7 @@ body {
     <span class="ball"></span>
     <div class="head-text">
       <div class="title">Ma Collection</div>
-      <div class="sub"><span id="sub">0 carte dans ta collection</span> &middot; <button id="viewAll" class="viewall">Voir toute ma collection &#9656;</button> &middot; <button id="statsBtn" class="viewall">Statistiques &#9656;</button></div>
+      <div class="sub"><span id="sub">0 carte dans ta collection</span> &middot; <button id="viewAll" class="viewall">Voir toute ma collection &#9656;</button> &middot; <button id="statsBtn" class="viewall">Statistiques &#9656;</button> &middot; <button id="tradeBtn" class="viewall">Liste d'échange &#9656;</button></div>
     </div>
     <button id="installBtn" class="installbtn" hidden title="Installer l'application" aria-label="Installer l'application">&#11015;</button>
     <button id="themeBtn" class="syncbtn" title="Changer de th&egrave;me" aria-label="Changer de th&egrave;me">&#127769;</button>
@@ -439,6 +452,7 @@ let allCards = null;      // toutes les cartes (chargées à la 1re recherche)
 let loadingAll = false;
 let collectionView = false; // vue "toute ma collection" active ?
 let statsView = false;      // vue "statistiques" active ?
+let tradeView = false;      // vue "liste d'échange" active ?
 let setList = [];         // liste des séries, plus récente en premier
 const setNameById = {};   // id de série -> nom
 const setOfficialById = {}; // id de série -> nombre de cartes "officiel" (le YYY imprimé)
@@ -727,6 +741,7 @@ async function loadSet(id){
   search = "";
   collectionView = false;
   statsView = false;
+  tradeView = false;
   rarityFilter = "";
   rarityIds = null;
   const rs = $("raritySel"); if (rs) rs.value = "";
@@ -1125,10 +1140,12 @@ function render(){
   updateSub();
   $("viewAll").textContent = collectionView ? "◂ Revenir à la série" : "Voir toute ma collection ▸";
   $("statsBtn").textContent = statsView ? "◂ Revenir à la série" : "Statistiques ▸";
+  $("tradeBtn").textContent = tradeView ? "◂ Revenir à la série" : "Liste d'échange ▸";
   if (!computing) renderValueBox();
 
   if (search) renderSearch();
   else if (statsView) renderStats();
+  else if (tradeView) renderTrade();
   else if (collectionView) renderCollection();
   else renderSet();
 }
@@ -1232,6 +1249,80 @@ async function renderCollection(){
   renderGrouped(results, (n, m) => wish
     ? n + " carte" + (n>1?"s":"") + " à acheter dans " + m + " série" + (m>1?"s":"")
     : n + " carte" + (n>1?"s":"") + " différente" + (n>1?"s":"") + " dans " + m + " série" + (m>1?"s":""));
+}
+
+// --- liste d'échange : versions possédées en double (≥ 2 exemplaires) ---
+// Une Normale et une Holo de la même carte sont deux entrées distinctes : on
+// compte les doubles PAR VERSION, pas sur le total toutes versions confondues.
+function tradeEntries(){
+  const out = [];
+  for (const id in owned){
+    const rec = owned[id]; if (!rec || !rec.v) continue;
+    for (const name in rec.v){
+      const n = rec.v[name].length;
+      if (n >= 2) out.push({ id, version: name, count: n, extra: n - 1 });
+    }
+  }
+  return out;
+}
+
+async function renderTrade(){
+  const entries = tradeEntries();
+  if (!entries.length){
+    content.innerHTML = `<div class="msg">Aucun double pour l'instant.<br>Une version avec au moins 2 exemplaires apparaîtra ici.</div>`;
+    return;
+  }
+  if (!allCards){
+    content.innerHTML = `<div class="msg"><div class="spin"></div>Préparation… (une seule fois)</div>`;
+    await loadAllCards();
+    if (allCards && tradeView) renderTrade();
+    return;
+  }
+  const byId = {};
+  for (const c of allCards) byId[c.id] = c;
+
+  const groups = {};
+  entries.forEach(e => {
+    const sid = e.id.slice(0, e.id.lastIndexOf("-")) || e.id;
+    (groups[sid] = groups[sid] || []).push(e);
+  });
+  const orderedIds = setList.map(s => s.id).filter(id => groups[id]);
+  Object.keys(groups).forEach(id => { if (!orderedIds.includes(id)) orderedIds.push(id); });
+
+  content.innerHTML = "";
+  const totalExtra = entries.reduce((s, e) => s + e.extra, 0);
+  const hint = document.createElement("p");
+  hint.className = "hint";
+  hint.textContent = `${entries.length} version${entries.length>1?"s":""} en double dans ${orderedIds.length} série${orderedIds.length>1?"s":""} · `
+    + `${totalExtra} exemplaire${totalExtra>1?"s":""} en trop à échanger`;
+  content.appendChild(hint);
+
+  for (const sid of orderedIds){
+    const head = document.createElement("div");
+    head.className = "section-head";
+    head.innerHTML = `<span>${setNameById[sid] || sid}</span><small>${groups[sid].length}</small>`;
+    content.appendChild(head);
+
+    const list = document.createElement("div");
+    list.className = "trade-list";
+    groups[sid].forEach(e => {
+      const card = byId[e.id];
+      if (!card) return;
+      const row = document.createElement("button");
+      row.type = "button";
+      row.className = "trade-row";
+      row.innerHTML =
+        (card.image ? `<img src="${card.image}/low.webp" alt="">` : `<div class="noimg" style="width:38px;height:53px;border-radius:6px;"></div>`)
+        + `<div class="trade-info">
+             <div class="trade-name">${card.name}</div>
+             <div class="trade-version">${e.version} · n° ${card.localId}</div>
+           </div>
+           <span class="trade-badge">${e.extra} en trop</span>`;
+      row.onclick = () => openModal(card);
+      list.appendChild(row);
+    });
+    content.appendChild(list);
+  }
 }
 
 // --- statistiques : progression par bloc + répartition par rareté ---
@@ -1421,7 +1512,7 @@ document.addEventListener("keydown", (e) => { if (e.key === "Escape"){ closeModa
 const searchInput = $("search"), clearBtn = $("clear");
 searchInput.addEventListener("input", (e) => {
   search = e.target.value;
-  if (search){ collectionView = false; statsView = false; }
+  if (search){ collectionView = false; statsView = false; tradeView = false; }
   clearBtn.hidden = !search;
   render();
 });
@@ -1435,14 +1526,21 @@ clearBtn.addEventListener("click", () => {
 
 $("viewAll").addEventListener("click", () => {
   collectionView = !collectionView;
-  if (collectionView){ search = ""; searchInput.value = ""; clearBtn.hidden = true; statsView = false; }
+  if (collectionView){ search = ""; searchInput.value = ""; clearBtn.hidden = true; statsView = false; tradeView = false; }
   render();
   window.scrollTo({ top: 0, behavior: "smooth" });
 });
 
 $("statsBtn").addEventListener("click", () => {
   statsView = !statsView;
-  if (statsView){ search = ""; searchInput.value = ""; clearBtn.hidden = true; collectionView = false; }
+  if (statsView){ search = ""; searchInput.value = ""; clearBtn.hidden = true; collectionView = false; tradeView = false; }
+  render();
+  window.scrollTo({ top: 0, behavior: "smooth" });
+});
+
+$("tradeBtn").addEventListener("click", () => {
+  tradeView = !tradeView;
+  if (tradeView){ search = ""; searchInput.value = ""; clearBtn.hidden = true; collectionView = false; statsView = false; }
   render();
   window.scrollTo({ top: 0, behavior: "smooth" });
 });
