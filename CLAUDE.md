@@ -115,22 +115,23 @@ wishlist[idCarte] = true
 
 ## Déploiement
 
-Le déploiement reste manuel via Firebase. Deux façons :
+**Automatique depuis fin juillet 2026** : chaque `git push origin main` déclenche un
+déploiement Firebase Hosting via GitHub Actions (`.github/workflows/deploy.yml`). Suivre
+la progression sur https://github.com/KKiuyte/ma-collection-pokemon/actions.
 
-**Depuis le PC** (si `firebase-tools` est installé) ou **depuis Google Cloud Shell** :
-```
-# 1) incrémenter VERSION dans public/sw.js si sw.js (ou l'appli) a changé
-# 2) déployer
-firebase deploy --only hosting
-```
+1. Incrémenter `VERSION` dans `public/sw.js` si `index.html` ou `sw.js` a changé.
+2. `git add`, `git commit`, `git push origin main`.
+3. Vérifier en navigation privée sur https://ma-collection-pokemon.web.app (cache tenace).
 
-Historiquement, Ariel déployait depuis **Cloud Shell** (son ancien PC de travail ne
-permettait aucune installation) : upload des fichiers → `mv` vers `public/` → deploy.
-Piège de cette méthode : le navigateur renomme les téléchargements (`index(1).html`),
-donc vérifier `ls -lt` avant tout `mv`. Sur PC perso avec un dépôt Git, ce piège disparaît.
+Le workflow s'authentifie via un compte de service GCP (`github-deploy@ma-collection-pokemon.iam.gserviceaccount.com`,
+rôle `roles/firebasehosting.admin`), dont la clé est dans le secret GitHub `FIREBASE_SERVICE_ACCOUNT`.
+Si l'authentification échoue, régénérer une clé (`gcloud iam service-accounts keys create`) et la
+poser avec `gh secret set FIREBASE_SERVICE_ACCOUNT --repo KKiuyte/ma-collection-pokemon`.
 
-Automatisation possible plus tard : déploiement continu GitHub → Firebase
-(`firebase init hosting:github`). Non fait pour l'instant.
+**Dépannage manuel** (si GitHub Actions est indisponible) : Cloud Shell → `cd ~/collection` →
+uploader les fichiers modifiés (menu ⋮ → Upload) → `mv -f ~/index.html ~/sw.js public/` →
+`firebase deploy --only hosting`. Piège connu : le navigateur renomme les téléchargements
+(`index(1).html`), vérifier `ls -lt ~/*.html` avant tout `mv`.
 
 ## État d'avancement
 
@@ -140,7 +141,9 @@ Voir `roadmap.md` pour le détail. En résumé :
 filtres, tri, rareté, **versions de carte** (qty/état/langue par version), liste de
 souhaits, **prix par version**, **valeur totale** de la collection (cache 24 h),
 compte + synchro Firebase temps réel, **PWA** complète (installable, hors-ligne, bouton
-d'installation, mise à jour).
+d'installation, mise à jour), **mode sombre**, bouton retour en haut, **statistiques**
+(progression par bloc, répartition par rareté — les ajouts récents restent à faire),
+**déploiement continu** (GitHub Actions).
 
 **En cours — reconnaissance de carte par photo** (`public/test-scan.html`) :
 - Approche **gratuite, locale** : empreinte visuelle (grille 12×12, chromaticité

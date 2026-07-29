@@ -143,6 +143,15 @@ body {
   -webkit-appearance:none; appearance:none; }
 .ctrl-select:focus { outline:none; border-color:var(--accent); }
 
+/* --- statistiques --- */
+.stat-list { display:flex; flex-direction:column; gap:11px; margin:0 2px 22px; }
+.stat-row { display:grid; grid-template-columns:1fr 120px auto; align-items:center; gap:12px; }
+.stat-label { font-size:13.5px; font-weight:700; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.stat-bar-track { background:var(--track); border-radius:6px; height:10px; overflow:hidden; }
+.stat-bar-fill { background:var(--accent); height:100%; border-radius:6px; min-width:3px; transition:width .4s ease; }
+.stat-bar-fill.rarity { background:var(--ink); }
+.stat-value { font-size:12.5px; font-weight:800; color:var(--muted); white-space:nowrap; text-align:right; min-width:56px; }
+
 /* --- grille de cartes --- */
 .grid { display:grid; gap:12px; grid-template-columns:repeat(auto-fill,minmax(110px,1fr)); }
 .slot { position:relative; cursor:pointer; border-radius:11px; aspect-ratio:63/88; border:none;
@@ -268,7 +277,7 @@ body {
     <span class="ball"></span>
     <div class="head-text">
       <div class="title">Ma Collection</div>
-      <div class="sub"><span id="sub">0 carte dans ta collection</span> &middot; <button id="viewAll" class="viewall">Voir toute ma collection &#9656;</button></div>
+      <div class="sub"><span id="sub">0 carte dans ta collection</span> &middot; <button id="viewAll" class="viewall">Voir toute ma collection &#9656;</button> &middot; <button id="statsBtn" class="viewall">Statistiques &#9656;</button></div>
     </div>
     <button id="installBtn" class="installbtn" hidden title="Installer l'application" aria-label="Installer l'application">&#11015;</button>
     <button id="themeBtn" class="syncbtn" title="Changer de th&egrave;me" aria-label="Changer de th&egrave;me">&#127769;</button>
@@ -408,6 +417,7 @@ let search = "";
 let allCards = null;      // toutes les cartes (chargées à la 1re recherche)
 let loadingAll = false;
 let collectionView = false; // vue "toute ma collection" active ?
+let statsView = false;      // vue "statistiques" active ?
 let setList = [];         // liste des séries, plus récente en premier
 const setNameById = {};   // id de série -> nom
 const setOfficialById = {}; // id de série -> nombre de cartes "officiel" (le YYY imprimé)
@@ -676,6 +686,7 @@ async function loadBlocks(){
     blocks = built;
     blocksReady = true;
     if (!setMenu.hidden) renderSetMenu(""); // rafraîchit le menu s'il est ouvert
+    if (statsView) render(); // les blocs viennent d'arriver : la vue statistiques peut se compléter
   } catch {
     // en cas d'échec, on garde le sélecteur "à plat"
   }
@@ -685,6 +696,7 @@ async function loadSet(id){
   filter = "all";
   search = "";
   collectionView = false;
+  statsView = false;
   rarityFilter = "";
   rarityIds = null;
   const rs = $("raritySel"); if (rs) rs.value = "";
@@ -895,6 +907,19 @@ function valueSummary(){
   return { text: parts.length ? parts.join(" + ") : "—", missing };
 }
 
+// récupère les métadonnées (versions/rareté/prix) manquantes ou périmées pour une liste de cartes
+async function fetchMissingMeta(ids, onProgress){
+  const todo = ids.filter(metaStale);
+  let done = 0;
+  if (onProgress) onProgress(done, todo.length);
+  const CHUNK = 6; // quelques cartes à la fois, pour ne pas surcharger l'API
+  for (let i = 0; i < todo.length; i += CHUNK){
+    await Promise.all(todo.slice(i, i + CHUNK).map(async id => { await fetchMeta(id); done++; }));
+    if (onProgress) onProgress(done, todo.length);
+  }
+  persistMeta();
+}
+
 let computing = false;
 // récupère les prix manquants ou périmés, puis affiche le total
 async function computeValue(){
@@ -902,16 +927,7 @@ async function computeValue(){
   const ids = Object.keys(owned);
   if (!ids.length){ renderValueBox("Ta collection est vide."); return; }
   computing = true;
-  const todo = ids.filter(metaStale);
-  let done = 0;
-  const step = () => renderValueBox(`Calcul… ${done} / ${todo.length}`, true);
-  step();
-  const CHUNK = 6; // quelques cartes à la fois, pour ne pas surcharger l'API
-  for (let i = 0; i < todo.length; i += CHUNK){
-    await Promise.all(todo.slice(i, i + CHUNK).map(async id => { await fetchMeta(id); done++; }));
-    step();
-  }
-  persistMeta();
+  await fetchMissingMeta(ids, (done, total) => renderValueBox(`Calcul… ${done} / ${total}`, true));
   const { text, missing } = valueSummary();
   try { localStorage.setItem(VALUE_KEY, JSON.stringify({ text, missing, t: Date.now() })); } catch {}
   computing = false;
@@ -1061,9 +1077,11 @@ function render(){
   $("fill").style.width = total ? Math.round(have/total*100) + "%" : "0%";
   updateSub();
   $("viewAll").textContent = collectionView ? "◂ Revenir à la série" : "Voir toute ma collection ▸";
+  $("statsBtn").textContent = statsView ? "◂ Revenir à la série" : "Statistiques ▸";
   if (!computing) renderValueBox();
 
   if (search) renderSearch();
+  else if (statsView) renderStats();
   else if (collectionView) renderCollection();
   else renderSet();
 }
@@ -1169,6 +1187,112 @@ async function renderCollection(){
     : n + " carte" + (n>1?"s":"") + " différente" + (n>1?"s":"") + " dans " + m + " série" + (m>1?"s":""));
 }
 
+// --- statistiques : progression par bloc + répartition par rareté ---
+let loadingStats = false;
+async function renderStats(){
+  const ids = Object.keys(owned);
+  if (!ids.length){
+    content.innerHTML = `<div class="msg">Ta collection est vide pour l'instant.<br>Les statistiques apparaîtront une fois que tu auras ajouté des cartes.</div>`;
+    return;
+  }
+  if (!blocksReady){
+    content.innerHTML = `<div class="msg"><div class="spin"></div>Préparation des statistiques…</div>`;
+    return; // loadBlocks() relance l'affichage une fois prêt
+  }
+  if (loadingStats) return;
+  const todo = ids.filter(metaStale);
+  if (todo.length){
+    loadingStats = true;
+    content.innerHTML = `<div class="msg"><div class="spin"></div>Calcul des statistiques…</div>`;
+    await fetchMissingMeta(ids, (done, total) => {
+      content.innerHTML = `<div class="msg"><div class="spin"></div>Calcul des statistiques… ${done} / ${total}</div>`;
+    });
+    loadingStats = false;
+  }
+  renderStatsContent(ids);
+}
+
+// nombre de cartes possédées par bloc, comparé au total officiel du bloc
+function blockProgress(ids){
+  const haveByBlock = {};
+  for (const id of ids){
+    const sid = id.slice(0, id.lastIndexOf("-")) || id;
+    const bid = setBlockById[sid];
+    if (!bid) continue;
+    haveByBlock[bid] = (haveByBlock[bid] || 0) + 1;
+  }
+  return blocks
+    .map(b => {
+      const total = b.sets.reduce((sum, s) => sum + (parseInt(setOfficialById[s.id], 10) || 0), 0);
+      return { name: b.name, have: haveByBlock[b.id] || 0, total };
+    })
+    .filter(b => b.total > 0);
+}
+
+// nombre de cartes possédées par rareté
+function rarityBreakdown(ids){
+  const counts = {};
+  for (const id of ids){
+    const r = rarityByCard[id] || "Rareté inconnue";
+    counts[r] = (counts[r] || 0) + 1;
+  }
+  return Object.entries(counts).sort((a, b) => b[1] - a[1]);
+}
+
+function renderStatsContent(ids){
+  content.innerHTML = "";
+
+  const hint = document.createElement("p");
+  hint.className = "hint";
+  hint.textContent = ids.length + " carte" + (ids.length > 1 ? "s" : "") + " différente" + (ids.length > 1 ? "s" : "") + " dans ta collection";
+  content.appendChild(hint);
+
+  const blockHead = document.createElement("div");
+  blockHead.className = "section-head";
+  blockHead.innerHTML = `<span>Progression par bloc</span>`;
+  content.appendChild(blockHead);
+
+  const blockStats = blockProgress(ids);
+  const blockList = document.createElement("div");
+  blockList.className = "stat-list";
+  if (!blockStats.length){
+    blockList.innerHTML = `<p class="hint">Pas encore de série reconnue par bloc.</p>`;
+  } else {
+    blockStats.forEach(b => {
+      const pct = b.total ? Math.round(b.have / b.total * 100) : 0;
+      const row = document.createElement("div");
+      row.className = "stat-row";
+      row.innerHTML =
+        `<div class="stat-label">${b.name}</div>
+         <div class="stat-bar-track"><div class="stat-bar-fill" style="width:${pct}%"></div></div>
+         <div class="stat-value">${b.have} / ${b.total}</div>`;
+      blockList.appendChild(row);
+    });
+  }
+  content.appendChild(blockList);
+
+  const rarityHead = document.createElement("div");
+  rarityHead.className = "section-head";
+  rarityHead.innerHTML = `<span>Répartition par rareté</span>`;
+  content.appendChild(rarityHead);
+
+  const rarityStats = rarityBreakdown(ids);
+  const rarityList = document.createElement("div");
+  rarityList.className = "stat-list";
+  const maxCount = Math.max(...rarityStats.map(([, n]) => n), 1);
+  rarityStats.forEach(([name, count]) => {
+    const pct = Math.round(count / maxCount * 100);
+    const row = document.createElement("div");
+    row.className = "stat-row";
+    row.innerHTML =
+      `<div class="stat-label">${name}</div>
+       <div class="stat-bar-track"><div class="stat-bar-fill rarity" style="width:${pct}%"></div></div>
+       <div class="stat-value">${count}</div>`;
+    rarityList.appendChild(row);
+  });
+  content.appendChild(rarityList);
+}
+
 // charge une seule fois la liste complète des cartes
 async function loadAllCards(){
   if (allCards || loadingAll) return;
@@ -1223,7 +1347,7 @@ document.addEventListener("keydown", (e) => { if (e.key === "Escape"){ closeModa
 const searchInput = $("search"), clearBtn = $("clear");
 searchInput.addEventListener("input", (e) => {
   search = e.target.value;
-  if (search) collectionView = false;
+  if (search){ collectionView = false; statsView = false; }
   clearBtn.hidden = !search;
   render();
 });
@@ -1237,7 +1361,14 @@ clearBtn.addEventListener("click", () => {
 
 $("viewAll").addEventListener("click", () => {
   collectionView = !collectionView;
-  if (collectionView){ search = ""; searchInput.value = ""; clearBtn.hidden = true; }
+  if (collectionView){ search = ""; searchInput.value = ""; clearBtn.hidden = true; statsView = false; }
+  render();
+  window.scrollTo({ top: 0, behavior: "smooth" });
+});
+
+$("statsBtn").addEventListener("click", () => {
+  statsView = !statsView;
+  if (statsView){ search = ""; searchInput.value = ""; clearBtn.hidden = true; collectionView = false; }
   render();
   window.scrollTo({ top: 0, behavior: "smooth" });
 });

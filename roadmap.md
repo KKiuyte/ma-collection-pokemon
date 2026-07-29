@@ -48,6 +48,13 @@ Liste des évolutions possibles. Rien n'est figé : on pioche dedans au fur et �
 - [x] Palette beige/orange, panneau de contrôles regroupé
 - [x] Barre latérale sur ordinateur, panneau compact sur mobile
 - [x] Filtres en haut, 3 cartes par ligne sur mobile
+- [x] Mode sombre (bascule mémorisée, suit le système par défaut)
+- [x] Bouton retour en haut (apparaît après défilement)
+
+**Statistiques**
+- [x] Progression par bloc / génération
+- [x] Répartition par rareté
+- [ ] Ajouts récents (nécessite d'enregistrer une date d'ajout par carte — pas encore fait)
 
 ---
 
@@ -84,8 +91,6 @@ réactiver le Worker Cloudflare (`collection-sync.ariesam.workers.dev`) comme in
       Cardmarket/TCGplayer **par version**, ce qui réglera le cas des Reverse Holo affichées en dollars
 
 ## 🎨 Priorité 4 — Finitions
-- [ ] **Mode sombre**
-- [ ] Statistiques (progression par bloc, ajouts récents, répartition par rareté)
 - [ ] Distinguer plusieurs exemplaires d'une **même version** (états différents par copie)
 
 ---
@@ -118,16 +123,25 @@ réactiver le Worker Cloudflare (`collection-sync.ariesam.workers.dev`) comme in
 - ⚠️ En CSS, garder le bloc `@media` **en fin de feuille de style** (sinon il est écrasé).
 
 ## 🔁 Pour publier une mise à jour
-1. **Incrémenter `VERSION`** en haut de `sw.js` (`"v2"` → `"v3"`). Sans ça, l'ancienne version
-   reste en cache chez les utilisateurs.
-2. Ouvrir **Cloud Shell** depuis la console Firebase, puis `cd collection`
-3. Uploader les fichiers modifiés (menu ⋮ → Upload), puis
-   `mv -f ~/index.html ~/manifest.json ~/sw.js ~/icon-*.png public/`
-4. Vérifier : `ls public/` (6 fichiers) et `grep -c "repeat(3,1fr)" public/index.html` (doit afficher `1`)
-5. `firebase deploy --only hosting`
+**Déploiement automatique depuis fin juillet 2026** : chaque `git push origin main` déclenche
+un déploiement Firebase Hosting tout seul via GitHub Actions (`.github/workflows/deploy.yml`).
+Plus besoin de Cloud Shell ni d'upload manuel.
 
-💡 Piège connu : si le navigateur a renommé le téléchargement (`index(1).html`…), le `mv` déplace
-un ancien fichier. Vérifier avec `ls -lt ~/*.html`.
+1. **Incrémenter `VERSION`** en haut de `sw.js` (`"v4"` → `"v5"`…) si `index.html` ou `sw.js` a changé.
+   Sans ça, l'ancienne version reste en cache chez les utilisateurs.
+2. `git add`, `git commit`, `git push origin main`
+3. Suivre le déploiement (1-2 min) sur https://github.com/KKiuyte/ma-collection-pokemon/actions
+4. Vérifier en **navigation privée** sur https://ma-collection-pokemon.web.app (le cache navigateur est tenace)
+
+Dépannage : le déploiement s'appuie sur un compte de service Google Cloud (`github-deploy@ma-collection-pokemon.iam.gserviceaccount.com`,
+rôle `roles/firebasehosting.admin`) dont la clé est stockée dans le secret GitHub `FIREBASE_SERVICE_ACCOUNT`.
+Si le déploiement échoue côté authentification, il faut régénérer une clé (`gcloud iam service-accounts keys create`)
+et la ranger avec `gh secret set FIREBASE_SERVICE_ACCOUNT --repo KKiuyte/ma-collection-pokemon`.
+
+**Méthode manuelle (dépannage uniquement, si GitHub Actions est indisponible) :**
+Cloud Shell → `cd ~/collection` → uploader les fichiers modifiés (menu ⋮ → Upload) → `mv -f ~/index.html ~/sw.js public/`
+→ `firebase deploy --only hosting`. 💡 Piège connu : si le navigateur a renommé le téléchargement
+(`index(1).html`…), le `mv` déplace un ancien fichier — vérifier avec `ls -lt ~/*.html` avant.
 
 ## 🗂️ Devenu inutile
 - Le système de **code de synchro Cloudflare** (Worker + KV) — remplacé par Firebase.
