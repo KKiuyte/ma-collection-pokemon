@@ -105,6 +105,17 @@ body {
   color:var(--muted); margin-bottom:6px; }
 .divider { height:1px; background:var(--line); }
 
+/* --- sections de commandes (Navigation / Filtres) --- */
+.ctrl-section { display:flex; flex-direction:column; gap:14px; }
+/* un contrôle n'apparaît que s'il agit sur l'onglet actif : sinon on le retire vraiment.
+   (ces éléments ont un display explicite qui masquerait l'attribut `hidden` natif) */
+.ctrl-section[hidden], .filters[hidden], .ctrl-hint[hidden] { display:none; }
+.ctrl-heading { font-size:11px; font-weight:900; letter-spacing:.04em; text-transform:uppercase;
+  color:var(--ink); }
+.ctrl-hint { display:flex; align-items:flex-start; gap:6px; font-size:11.5px; font-weight:600;
+  color:var(--muted); margin:0; line-height:1.35; }
+.ctrl-hint svg { margin-top:1px; flex:none; color:var(--accent); }
+
 /* --- sélecteur de série (avec recherche) --- */
 .combo { position:relative; }
 #setInput { width:100%; font-family:inherit; font-weight:700; font-size:13.5px; color:var(--ink);
@@ -377,7 +388,7 @@ body {
     <button class="tab" data-view="trade">&Eacute;change</button>
   </nav>
 
-  <div class="filters">
+  <div class="filters" id="filters">
     <button class="chip on" data-f="all">Toutes</button>
     <button class="chip" data-f="owned">Poss&eacute;d&eacute;es</button>
     <button class="chip" data-f="missing">Manquantes</button>
@@ -386,41 +397,52 @@ body {
 
   <div class="layout">
     <aside class="controls">
-      <div>
-        <div class="ctrl-label">S&eacute;rie</div>
-        <div class="combo">
-          <input id="setInput" autocomplete="off" placeholder="Rechercher une s&eacute;rie&hellip;">
-          <div id="setMenu" class="combo-menu" hidden></div>
+      <!-- Navigation : emmène vers la vue Série, quel que soit l'onglet courant -->
+      <div class="ctrl-section" id="navSection">
+        <div class="ctrl-heading">Navigation</div>
+        <div>
+          <div class="ctrl-label">S&eacute;rie</div>
+          <div class="combo">
+            <input id="setInput" autocomplete="off" placeholder="Rechercher une s&eacute;rie&hellip;">
+            <div id="setMenu" class="combo-menu" hidden></div>
+          </div>
+          <div class="bar"><div class="fill" id="fill"></div></div>
+          <div class="count"><span id="have">0</span> / <span id="total">0</span></div>
         </div>
-        <div class="bar"><div class="fill" id="fill"></div></div>
-        <div class="count"><span id="have">0</span> / <span id="total">0</span></div>
+
+        <div class="searchbar">
+          <span class="search-ic"><svg class="ico ico-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></svg></span>
+          <input id="search" type="search" inputmode="search" autocomplete="off" placeholder="Nom ou num&eacute;ro (ex. 136/202)">
+          <button class="clear" id="clear" hidden aria-label="Effacer">&times;</button>
+        </div>
+
+        <p class="ctrl-hint" id="navHint" hidden>
+          <svg class="ico ico-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          <span>S&eacute;rie et recherche ouvrent la vue &laquo;&nbsp;S&eacute;rie&nbsp;&raquo;</span>
+        </p>
       </div>
 
-      <div class="divider"></div>
-
-      <div class="searchbar">
-        <span class="search-ic"><svg class="ico ico-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></svg></span>
-        <input id="search" type="search" inputmode="search" autocomplete="off" placeholder="Nom ou num&eacute;ro (ex. 136/202)">
-        <button class="clear" id="clear" hidden aria-label="Effacer">&times;</button>
+      <!-- Filtres de la vue : n'agissent que sur ce qui est affiché à l'écran -->
+      <div class="ctrl-section" id="filterSection">
+        <div class="divider"></div>
+        <div class="ctrl-heading">Filtres de la vue</div>
+        <div id="rarityField">
+          <div class="ctrl-label">Raret&eacute;</div>
+          <select id="raritySel" class="ctrl-select"><option value="">Toutes les raret&eacute;s</option></select>
+        </div>
+        <div id="sortField">
+          <div class="ctrl-label">Trier</div>
+          <select id="sortSel" class="ctrl-select">
+            <option value="num-asc">Num&eacute;ro &uarr;</option>
+            <option value="num-desc">Num&eacute;ro &darr;</option>
+            <option value="name-asc">Nom A&rarr;Z</option>
+            <option value="name-desc">Nom Z&rarr;A</option>
+          </select>
+        </div>
       </div>
 
-      <div>
-        <div class="ctrl-label">Raret&eacute;</div>
-        <select id="raritySel" class="ctrl-select"><option value="">Toutes les raret&eacute;s</option></select>
-      </div>
-      <div>
-        <div class="ctrl-label">Trier</div>
-        <select id="sortSel" class="ctrl-select">
-          <option value="num-asc">Num&eacute;ro &uarr;</option>
-          <option value="num-desc">Num&eacute;ro &darr;</option>
-          <option value="name-asc">Nom A&rarr;Z</option>
-          <option value="name-desc">Nom Z&rarr;A</option>
-        </select>
-      </div>
-
-      <div class="divider"></div>
-
-      <div>
+      <div class="ctrl-section">
+        <div class="divider"></div>
         <div class="ctrl-label">Valeur estim&eacute;e</div>
         <div id="valueBox"></div>
       </div>
@@ -1205,6 +1227,34 @@ function sortCards(list){
   return arr;
 }
 
+// N'affiche que les commandes qui agissent réellement sur l'onglet courant.
+// Deux familles : « Navigation » (Série + recherche, toujours là, mènent à la vue Série)
+// et « Filtres de la vue » (puces + rareté + tri, propres à ce qu'on regarde).
+function syncControls(){
+  const isSet = view === "set";
+  const isColl = view === "collection";
+  const isStatsTrade = view === "stats" || view === "trade";
+
+  // Puces : Manquantes/Possédées n'ont de sens que dans une série ; dans « Ma collection »
+  // on ne garde que Toutes + Souhaits (Possédées ferait doublon avec Toutes).
+  const chipVis = { all: isSet || isColl, owned: isSet, missing: isSet, wishlist: isSet || isColl };
+  if (!chipVis[filter]) filter = "all"; // le filtre courant n'existe plus ici → retour à Toutes
+  document.querySelectorAll(".chip").forEach(c => {
+    c.hidden = !chipVis[c.dataset.f];
+    c.classList.toggle("on", c.dataset.f === filter);
+  });
+  $("filters").hidden = isStatsTrade; // aucune puce pertinente sur Statistiques / Échange
+
+  // Rareté : uniquement la vue Série (le calcul est propre à la série affichée).
+  // Trier : Série + Ma collection. Aucun des deux sur Statistiques / Échange (ordre figé).
+  $("rarityField").hidden = !isSet;
+  $("sortField").hidden = !(isSet || isColl);
+  $("filterSection").hidden = isStatsTrade;
+
+  // L'indice « ouvre la vue Série » n'a de sens que si on n'y est pas déjà.
+  $("navHint").hidden = isSet;
+}
+
 function render(){
   // la barre de progression reste celle de la série sélectionnée
   const have = cards.filter(c => owned[c.id]).length;
@@ -1215,6 +1265,7 @@ function render(){
   updateSub();
   document.querySelectorAll("#viewTabs .tab").forEach(t =>
     t.classList.toggle("on", t.dataset.view === view));
+  syncControls();
   if (!computing) renderValueBox();
 
   if (search) renderSearch();
@@ -1611,9 +1662,7 @@ document.querySelectorAll("#viewTabs .tab").forEach(tab => {
 
 document.querySelectorAll(".chip").forEach(chip => {
   chip.onclick = () => {
-    filter = chip.dataset.f;
-    document.querySelectorAll(".chip").forEach(c => c.classList.remove("on"));
-    chip.classList.add("on");
+    filter = chip.dataset.f; // l'état actif des puces est appliqué par syncControls()
     render();
   };
 });

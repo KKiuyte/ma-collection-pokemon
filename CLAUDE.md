@@ -230,3 +230,15 @@ propriété intellectuelle Nintendo).
   `grid-template-areas` fait passer la barre de progression **sous** le nom, qui récupère toute
   la largeur. Toute modification de `.stat-row` / `.stat-block-summary` doit garder les deux
   jeux d'aires cohérents (desktop en ligne, mobile empilé).
+- **Commandes contextuelles par onglet** : `syncControls()` (appelée dans `render()`) n'affiche
+  que les commandes qui **agissent réellement** sur l'onglet courant — jamais de commande visible
+  mais sans effet. Deux familles distinctes dans la colonne de gauche : **Navigation** (sélecteur
+  de série + recherche, toujours présents, mènent à la vue `set` ; l'indice `#navHint` ne s'affiche
+  que hors `set`) et **Filtres de la vue** (`#filterSection` : rareté + tri). Règles : les puces
+  Possédées/Manquantes n'existent que sur `set` ; `collection` ne garde que Toutes + Souhaits ;
+  la rareté n'agit que sur `set` (calcul propre à la série) ; le tri sur `set` + `collection` ;
+  `stats`/`trade` masquent puces + rareté + tri (ne restent que Navigation + Valeur estimée).
+  Si le `filter` courant n'est plus disponible dans la vue, `syncControls()` le ramène à `"all"`.
+  ⚠️ Piège : les conteneurs masqués via l'attribut `hidden` qui ont un `display` explicite
+  (`.filters`, `.ctrl-section`, `.ctrl-hint`) ont besoin d'une règle `[hidden]{display:none}`,
+  sinon le `display` l'emporte et l'élément reste visible.
