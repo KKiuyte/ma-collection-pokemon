@@ -36,14 +36,26 @@ public/                 ← ce qui est déployé (le site)
   icon-192/512/maskable ← icônes PWA
   test-scan.html        ← banc d'essai de la reconnaissance par photo (autonome)
 tools/
-  build_hashes.py       ← génère les empreintes visuelles (à lancer dans Cloud Shell)
+  build_hashes.py       ← génère les empreintes visuelles (à lancer en local, Python 3)
 archive/                ← obsolète, conservé volontairement (voir plus bas)
 roadmap.md              ← feuille de route détaillée + notes
 ```
 
-Fichiers **git-ignorés** car volumineux et régénérables : `public/catalogue-fr.json` et
-`public/hashes-*.json` (les empreintes de cartes, ~13 Mo). Ils sont générés par
-`tools/build_hashes.py` et déployés séparément.
+**Catalogue d'empreintes** (`public/catalogue-fr.json`, ~13 Mo) : le fichier lu par la page
+de reconnaissance (`test-scan.html`). Il est **versionné dans Git** (donc déployé
+automatiquement) — indispensable depuis le passage au déploiement auto GitHub, qui ne publie
+que ce qui est dans Git. Il est **régénérable localement** avec `tools/build_hashes.py`
+(Python 3 + `pillow numpy requests`). Les fichiers intermédiaires par série
+`public/hashes-*.json` restent git-ignorés (seul le catalogue fusionné compte).
+
+**Régénérer / améliorer le catalogue** (ex. ajouter des séries ou, plus tard, des langues
+étrangères) :
+```
+python tools/build_hashes.py --all         # régénère toutes les séries dans ~/hashes
+python tools/build_hashes.py --merge        # fusionne en ~/hashes/catalogue-fr.json
+cp ~/hashes/catalogue-fr.json public/       # (Windows : copier vers public\)
+git add public/catalogue-fr.json && git commit && git push   # déploie
+```
 
 ## Infrastructure en ligne
 

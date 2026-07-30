@@ -2,20 +2,23 @@
 """
 Construit le catalogue d'empreintes visuelles d'une ou plusieurs séries Pokémon.
 
-À lancer dans Cloud Shell :
+À lancer localement (Python 3 + pillow numpy requests installés) :
     pip install --user pillow numpy requests
-    python3 build_hashes.py sv09              # une série
-    python3 build_hashes.py sv09 sv08         # plusieurs
-    python3 build_hashes.py --all             # toutes (~20 min, 13 Mo)
-    python3 build_hashes.py --all --force     # tout refaire depuis zéro
-    python3 build_hashes.py --merge           # fusionne tout en catalogue-fr.json
+    python build_hashes.py sv09              # une série
+    python build_hashes.py sv09 sv08         # plusieurs
+    python build_hashes.py --all             # toutes (~20 min, 13 Mo)
+    python build_hashes.py --all --force     # tout refaire depuis zéro
+    python build_hashes.py --merge           # fusionne tout en catalogue-fr.json
 
-REPRENABLE : les séries déjà traitées sont ignorées. Si Cloud Shell se déconnecte,
+Puis copier le catalogue fusionné vers public/ et déployer (git push) :
+    ~/hashes/catalogue-fr.json  →  public/catalogue-fr.json
+
+REPRENABLE : les séries déjà traitées sont ignorées. Si le script s'interrompt,
 relance simplement la même commande.
 
 Tout est écrit dans  ~/hashes/  — TOUJOURS au même endroit, quel que soit le dossier
 depuis lequel tu lances le script. C'est ce qui rend la reprise fiable après une
-déconnexion de Cloud Shell.
+interruption. (Sous Windows : C:\\Users\\<toi>\\hashes)
 
 ⚠️ Le calcul de l'empreinte doit être REPRODUCTIBLE à l'identique en JavaScript.
    C'est pourquoi on n'utilise que du moyennage par blocs, sans interpolation :

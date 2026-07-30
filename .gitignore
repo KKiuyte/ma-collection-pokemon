@@ -5,7 +5,9 @@ __pycache__/
 *.pyc
 .DS_Store
 
-# empreintes de cartes : volumineuses et régénérables (tools/build_hashes.py)
-public/catalogue-fr.json
+# empreintes de cartes intermédiaires (une par série), régénérables (tools/build_hashes.py)
+# Le catalogue fusionné public/catalogue-fr.json est VOLONTAIREMENT versionné : c'est lui
+# qui est déployé pour la reconnaissance par photo. Sans ça, le déploiement auto GitHub
+# publierait un site sans catalogue (il ne pousse que ce qui est dans Git).
 public/hashes-*.json
 firebase-debug.log
