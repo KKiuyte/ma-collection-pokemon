@@ -232,9 +232,10 @@ propriété intellectuelle Nintendo).
   jeux d'aires cohérents (desktop en ligne, mobile empilé).
 - **Commandes contextuelles par onglet** : `syncControls()` (appelée dans `render()`) n'affiche
   que les commandes qui **agissent réellement** sur l'onglet courant — jamais de commande visible
-  mais sans effet. Deux familles distinctes dans la colonne de gauche : **Navigation** (sélecteur
-  de série + recherche, toujours présents, mènent à la vue `set` ; l'indice `#navHint` ne s'affiche
-  que hors `set`) et **Filtres de la vue** (`#filterSection` : rareté + tri). Règles : les puces
+  mais sans effet. Deux familles distinctes dans la colonne de gauche : **Navigation** (recherche toujours
+  présente ; le bloc sélecteur de série + progression `#serieField` n'apparaît que sur `set`,
+  car il montrerait sinon la progression d'une seule série sans rapport avec la vue d'ensemble ;
+  l'indice `#navHint` s'affiche hors `set`) et **Filtres de la vue** (`#filterSection` : rareté + tri). Règles : les puces
   Possédées/Manquantes n'existent que sur `set` ; `collection` ne garde que Toutes + Souhaits ;
   la rareté n'agit que sur `set` (calcul propre à la série) ; le tri sur `set` + `collection` ;
   `stats`/`trade` masquent puces + rareté + tri (ne restent que Navigation + Valeur estimée).

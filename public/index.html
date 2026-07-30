@@ -400,7 +400,7 @@ body {
       <!-- Navigation : emmène vers la vue Série, quel que soit l'onglet courant -->
       <div class="ctrl-section" id="navSection">
         <div class="ctrl-heading">Navigation</div>
-        <div>
+        <div id="serieField">
           <div class="ctrl-label">S&eacute;rie</div>
           <div class="combo">
             <input id="setInput" autocomplete="off" placeholder="Rechercher une s&eacute;rie&hellip;">
@@ -418,7 +418,7 @@ body {
 
         <p class="ctrl-hint" id="navHint" hidden>
           <svg class="ico ico-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-          <span>S&eacute;rie et recherche ouvrent la vue &laquo;&nbsp;S&eacute;rie&nbsp;&raquo;</span>
+          <span>La recherche ouvre la vue &laquo;&nbsp;S&eacute;rie&nbsp;&raquo;</span>
         </p>
       </div>
 
@@ -1251,7 +1251,11 @@ function syncControls(){
   $("sortField").hidden = !(isSet || isColl);
   $("filterSection").hidden = isStatsTrade;
 
-  // L'indice « ouvre la vue Série » n'a de sens que si on n'y est pas déjà.
+  // Le sélecteur de série (et sa progression) n'a de sens que dans la vue Série : sur les
+  // vues d'ensemble, il afficherait la progression d'une seule série sans rapport avec l'écran.
+  // La recherche, elle, reste (c'est un raccourci de navigation).
+  $("serieField").hidden = !isSet;
+  // L'indice « la recherche ouvre la vue Série » n'a de sens que si on n'y est pas déjà.
   $("navHint").hidden = isSet;
 }
 
