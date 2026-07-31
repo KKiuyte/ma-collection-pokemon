@@ -326,6 +326,23 @@ body {
 .trade-badge { font-weight:900; font-size:11.5px; color:#fff; background:var(--navy);
   padding:4px 10px; border-radius:999px; flex:none; white-space:nowrap; }
 
+/* --- partage : autoriser par pseudo (fenêtre Mon compte) --- */
+.grant-row { display:flex; gap:8px; align-items:stretch; }
+.grant-input { flex:1; min-width:0; font-family:inherit; font-weight:700; font-size:14px; color:var(--ink);
+  padding:10px 12px; border-radius:10px; border:2px solid var(--line); background:var(--field); -webkit-appearance:none; }
+.grant-input:focus { outline:none; border-color:var(--accent); }
+.grant-input::placeholder { color:var(--placeholder); font-weight:600; }
+.grant-btn { flex:none; font-family:inherit; font-weight:800; font-size:13px; cursor:pointer;
+  padding:0 15px; border-radius:10px; border:none; background:var(--gold); color:var(--ink-solid); }
+.grant-btn:active { opacity:.8; }
+.grant-list { display:flex; flex-wrap:wrap; gap:6px; margin-top:8px; }
+.grant-chip { display:inline-flex; align-items:center; gap:2px; background:var(--surface-2); color:var(--ink);
+  font-weight:700; font-size:12.5px; padding:4px 4px 4px 11px; border-radius:999px; }
+.grant-remove { border:none; background:none; color:var(--muted); font-size:15px; font-weight:900;
+  cursor:pointer; line-height:1; padding:2px 6px; border-radius:999px; }
+.grant-remove:active { color:var(--danger-fg); }
+.grant-empty { font-size:12px; color:var(--muted); font-weight:600; margin:8px 0 0; }
+
 /* --- bouton retour en haut --- */
 .top-btn { position:fixed; right:18px; bottom:18px; width:46px; height:46px; border-radius:50%;
   border:none; background:var(--navy); color:#fff; font-size:20px; font-weight:900; cursor:pointer;
@@ -481,7 +498,7 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/fireba
 import { getAuth, GoogleAuthProvider, signInWithPopup, signInWithEmailAndPassword,
          createUserWithEmailAndPassword, signOut, onAuthStateChanged }
   from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
-import { getFirestore, doc, getDoc, setDoc, onSnapshot, runTransaction }
+import { getFirestore, doc, getDoc, setDoc, deleteDoc, onSnapshot, runTransaction }
   from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
 const firebaseConfig = {
@@ -567,6 +584,14 @@ let interactiveLogin = false; // connexion déclenchée par un clic (vs. session
 // pseudo : 3 à 20 caractères, lettres/chiffres/tiret/underscore
 const PSEUDO_RE = /^[A-Za-z0-9_-]{3,20}$/;
 
+// Périmètres partageables. Extensible : ajouter { key, col, label } (+ un bloc de règles
+// Firestore) suffira pour publier plus tard la collection complète.
+const SHARE_SCOPES = [
+  { key: "wishlist", col: "shared_wishlist", label: "Souhaits" },
+  { key: "trades",   col: "shared_trades",   label: "Échanges" },
+];
+let myGrants = { wishlist: [], trades: [] }; // qui j'autorise, par périmètre : [{uid, pseudo}]
+
 // Format actuel : owned[idCarte] = { v: { "Normale": [ {cond,lang}, {cond,lang} ], "Reverse Holo": [...] } }
 // Chaque exemplaire d'une version a son propre état et sa propre langue.
 // Les anciens formats sont convertis automatiquement (tout devient la version "Normale").
@@ -639,6 +664,7 @@ async function saveCloud(){
   if (!currentUser) return;
   try {
     await setDoc(doc(db, "collections", currentUser.uid), { cards: owned, wishlist: wishlist, updatedAt: Date.now() });
+    refreshPublishedShares(); // garde les copies partagées à jour (souhaits / échanges)
   } catch {
     // hors-ligne : Firestore renverra les données tout seul au retour de la connexion
   }
@@ -668,7 +694,8 @@ async function onLogin(user){
   renderAccountBody();
   setAuthStatus("Connecté : " + (user.email || "compte Google"), true);
   await loadUserProfile();
-  renderAccountBody(); // ré-affiche avec le pseudo une fois chargé
+  await loadMyGrants();
+  renderAccountBody(); // ré-affiche avec le pseudo et les partages une fois chargés
   if (!userProfile || !userProfile.pseudo)
     setAuthStatus("Choisis un pseudo ci-dessous pour pouvoir partager ta collection plus tard.");
   try {
@@ -697,6 +724,7 @@ function onLogout(){
   if (cloudUnsub){ cloudUnsub(); cloudUnsub = null; }
   currentUser = null;
   userProfile = null;
+  myGrants = { wishlist: [], trades: [] };
   updateAccountButton();
   renderAccountBody();
   setAuthStatus("Déconnecté. Ta collection reste sur cet appareil.");
@@ -745,6 +773,73 @@ async function savePseudo(raw){
       : "Impossible d'enregistrer le pseudo. Réessaie.", false);
     return false;
   }
+}
+
+// --- partage : octroi d'accès par pseudo (étape 1b, côté propriétaire) ---
+async function pseudoOf(uid){
+  try { const s = await getDoc(doc(db, "users", uid)); return (s.exists() && s.data().pseudo) || "?"; }
+  catch { return "?"; }
+}
+// charge, pour chaque périmètre, la liste des personnes que J'AI autorisées
+async function loadMyGrants(){
+  myGrants = { wishlist: [], trades: [] };
+  if (!currentUser) return;
+  for (const s of SHARE_SCOPES){
+    try {
+      const snap = await getDoc(doc(db, s.col, currentUser.uid));
+      const viewers = snap.exists() ? (snap.data().viewers || []) : [];
+      myGrants[s.key] = await Promise.all(viewers.map(async uid => ({ uid, pseudo: await pseudoOf(uid) })));
+    } catch { myGrants[s.key] = []; }
+  }
+}
+// données publiées pour un périmètre (jamais la collection complète pour "trades")
+function shareData(key){
+  if (key === "wishlist") return Object.keys(wishlist);
+  if (key === "trades") return tradeEntries().map(e => ({ id: e.id, v: e.version, x: e.extra }));
+  return [];
+}
+// publie (ou supprime si plus aucun autorisé) le document partagé d'un périmètre
+async function publishScope(key){
+  if (!currentUser) return;
+  const s = SHARE_SCOPES.find(x => x.key === key);
+  const ref = doc(db, s.col, currentUser.uid);
+  const viewers = myGrants[key].map(g => g.uid);
+  try {
+    if (!viewers.length){ await deleteDoc(ref); return; }
+    await setDoc(ref, {
+      owner: currentUser.uid,
+      ownerPseudo: (userProfile && userProfile.pseudo) || "Un membre",
+      viewers, data: shareData(key), updatedAt: Date.now(),
+    });
+  } catch {}
+}
+// re-publie les périmètres partagés après une modif de collection (copies à jour)
+async function refreshPublishedShares(){
+  if (!currentUser) return;
+  for (const s of SHARE_SCOPES) if (myGrants[s.key].length) await publishScope(s.key);
+}
+async function grantAccess(key, pseudoRaw){
+  const pseudo = (pseudoRaw || "").trim();
+  if (!pseudo) return;
+  if (!PSEUDO_RE.test(pseudo)){ setAuthStatus("Pseudo invalide.", false); return; }
+  const lower = pseudo.toLowerCase();
+  if (userProfile && userProfile.pseudoLower === lower){ setAuthStatus("C'est ton propre pseudo.", false); return; }
+  setAuthStatus("Recherche du pseudo…");
+  let uid = null;
+  try { const snap = await getDoc(doc(db, "pseudos", lower)); if (snap.exists()) uid = snap.data().uid; } catch {}
+  if (!uid){ setAuthStatus("Aucun membre avec ce pseudo.", false); return; }
+  if (myGrants[key].some(g => g.uid === uid)){ setAuthStatus("Cette personne a déjà accès.", false); return; }
+  const realPseudo = await pseudoOf(uid);
+  myGrants[key].push({ uid, pseudo: realPseudo });
+  await publishScope(key);
+  const label = SHARE_SCOPES.find(s => s.key === key).label.toLowerCase();
+  setAuthStatus(`Accès à tes ${label} accordé à ${realPseudo}.`, true);
+  renderAccountBody();
+}
+async function revokeAccess(key, uid){
+  myGrants[key] = myGrants[key].filter(g => g.uid !== uid);
+  await publishScope(key);
+  renderAccountBody();
 }
 
 const $ = (id) => document.getElementById(id);
@@ -1744,19 +1839,51 @@ function renderAccountBody(){
   const body = document.getElementById("authBody");
   if (!body) return;
   if (currentUser){
+    const esc = (s) => String(s).replace(/&/g,"&amp;").replace(/"/g,"&quot;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
     const p = userProfile && userProfile.pseudo;
-    const safe = p ? p.replace(/&/g,"&amp;").replace(/"/g,"&quot;").replace(/</g,"&lt;") : "";
-    body.innerHTML =
+    let html =
       `<p style="text-align:center;font-weight:800;margin:0 0 16px;">Connecté : ${currentUser.email || "compte Google"}</p>
        <div class="field">
          <label>Ton pseudo${p ? "" : " &mdash; à définir"}</label>
          <input id="pseudoInput" maxlength="20" autocomplete="off" spellcheck="false"
-                placeholder="ex. sam_du_92" value="${safe}" style="${inputStyle}">
-         <p class="pricenote" style="text-align:left;margin-top:8px;">3 à 20 caractères : lettres, chiffres, - ou _. Visible par les autres membres pour te partager une collection (bientôt).</p>
+                placeholder="ex. sam_du_92" value="${p ? esc(p) : ""}" style="${inputStyle}">
+         <p class="pricenote" style="text-align:left;margin-top:8px;">3 à 20 caractères : lettres, chiffres, - ou _. Visible par les autres membres pour te retrouver et te partager une collection.</p>
        </div>
        <button class="big-btn btn-add" id="btnPseudo" style="margin-bottom:14px;">${p ? "Mettre à jour le pseudo" : "Enregistrer le pseudo"}</button>
-       <button class="big-btn btn-remove" id="btnLogout">Se déconnecter</button>`;
+
+       <div class="divider" style="margin:2px 0 14px;"></div>
+       <div class="ctrl-heading" style="margin-bottom:10px;">Partage en lecture seule</div>`;
+
+    if (!p){
+      html += `<p class="pricenote" style="text-align:left;margin:0 0 14px;">Choisis d'abord un pseudo ci-dessus pour pouvoir partager.</p>`;
+    } else {
+      html += `<p class="pricenote" style="text-align:left;margin:0 0 12px;">Autorise quelqu'un, par son pseudo, à voir en lecture seule :</p>`;
+      for (const s of SHARE_SCOPES){
+        const chips = myGrants[s.key].map(g =>
+          `<span class="grant-chip">${esc(g.pseudo)}<button class="grant-remove" data-k="${s.key}" data-uid="${esc(g.uid)}" aria-label="Retirer ${esc(g.pseudo)}">&times;</button></span>`
+        ).join("");
+        html += `
+          <div class="field">
+            <label>${s.label}</label>
+            <div class="grant-row">
+              <input class="grant-input" data-k="${s.key}" maxlength="20" autocomplete="off" spellcheck="false" placeholder="pseudo à autoriser">
+              <button type="button" class="grant-btn" data-k="${s.key}">Autoriser</button>
+            </div>
+            ${chips ? `<div class="grant-list">${chips}</div>` : `<p class="grant-empty">Personne pour l'instant.</p>`}
+          </div>`;
+      }
+    }
+
+    html += `<button class="big-btn btn-remove" id="btnLogout" style="margin-top:6px;">Se déconnecter</button>`;
+    body.innerHTML = html;
+
     document.getElementById("btnPseudo").onclick = () => savePseudo(document.getElementById("pseudoInput").value);
+    body.querySelectorAll(".grant-btn").forEach(b => b.onclick = () => {
+      const input = b.parentElement.querySelector(".grant-input");
+      grantAccess(b.dataset.k, input.value);
+      input.value = "";
+    });
+    body.querySelectorAll(".grant-remove").forEach(b => b.onclick = () => revokeAccess(b.dataset.k, b.dataset.uid));
     document.getElementById("btnLogout").onclick = () => signOut(auth);
     return;
   }
