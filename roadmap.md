@@ -92,18 +92,23 @@ réactiver le Worker Cloudflare (`collection-sync.ariesam.workers.dev`) comme in
 - [ ] Filtre par rareté aussi dans la **recherche globale** et la vue collection
 - [x] **Liste d'échange** : regrouper automatiquement les doubles (≥ 2 exemplaires d'une
       **même version** — Normale et Holo comptent comme deux cartes distinctes)
-- [ ] **Partage en lecture seule** d'une collection ou d'une liste de souhaits — **mis de côté**,
-      pistes étudiées et consignées ci-dessous pour ne pas refaire le travail
+- [ ] **Partage — accès géré entre comptes** (choix retenu plutôt que le lien anonyme) :
+      ID1 autorise ID2 à voir ses souhaits / échanges / collection, par personne, révocable ;
+      ID2 pourra aussi demander l'accès. Construit **par étapes** :
+  - [x] **1a — Pseudo** : chaque compte a un pseudo unique (insensible à la casse, 3-20
+        caractères `[A-Za-z0-9_-]`), stocké dans `users/{uid}` + registre `pseudos/{minuscule}`
+        (unicité + recherche). Champ dans « Mon compte », réservation atomique par transaction.
+        ⚠️ **Règles Firestore à publier** (`firestore.rules`, console) pour que ça fonctionne.
+  - [ ] **1b — Octroi + lecture seule** : publier chaque périmètre partagé dans un document
+        séparé avec liste d'autorisés (les règles Firestore lisent un document entier ou rien →
+        granularité = documents séparés) ; autoriser par pseudo ; espace « Partagé avec moi » ;
+        rendu lecture seule (sans boutons d'ajout/retrait).
+  - [ ] **2 — Demandes d'accès** : ID2 demande, ID1 approuve (boîte de réception de demandes).
 
-  > **Pistes étudiées :** Firestore protège aujourd'hui chaque collection par utilisateur — un
-  > partage public doit ouvrir un accès **contrôlé**, pas exposer tout le compte.
-  > - **Lien basé sur l'identifiant du compte** : simple, mais le lien révèle l'identifiant
-  >   Firebase et reste valable tant que le partage est actif.
-  > - **Lien à code aléatoire dédié** (ex. `/voir/x7f9k2m1`), *recommandé* : un peu plus de
-  >   travail (générer/stocker le code, écrire la règle Firestore qui lit via ce code sans
-  >   exposer le reste du compte), mais révocable et ne révèle rien sur le compte.
-  > - Prévoir aussi : une page d'affichage sans aucun bouton d'ajout/retrait (vraiment lecture
-  >   seule), et la possibilité de partager collection et/ou souhaits séparément.
+  > **Écarté :** lien anonyme (pas de contrôle par personne) et intermédiaire serveur
+  > (Cloud Function / Worker : surdimensionné pour de la lecture seule). Approche B « copie
+  > publiée par périmètre avec liste d'autorisés » retenue : pas de backend, révocable,
+  > n'expose jamais la collection principale.
 
 ## 💰 Priorité 3 — Prix, suite
 - [ ] Suivre l'**évolution de la valeur** dans le temps (relevé mensuel dans Firestore)

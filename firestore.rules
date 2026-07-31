@@ -1,0 +1,40 @@
+rules_version = '2';
+
+// Règles de sécurité Firestore de « Ma Collection Pokémon ».
+//
+// ⚠️ Ce fichier N'EST PAS déployé automatiquement (le workflow GitHub ne publie que
+//    l'hébergement). Pour l'appliquer : console Firebase → Firestore Database → Règles
+//    → coller ce contenu → Publier. (Ou, en local : firebase deploy --only firestore:rules)
+//
+// Étape 1a du partage : ajout du profil public (pseudo) et du registre des pseudos.
+// La collection de chaque personne reste strictement privée.
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Collection de chaque personne — lecture/écriture réservées à son propriétaire.
+    match /collections/{uid} {
+      allow read, write: if request.auth != null && request.auth.uid == uid;
+    }
+
+    // Profil public léger : { pseudo, pseudoLower, email }. Lisible par tout membre
+    // connecté (pour retrouver quelqu'un par son pseudo lors du partage à venir),
+    // modifiable seulement par son propriétaire.
+    match /users/{uid} {
+      allow read:  if request.auth != null;
+      allow write: if request.auth != null && request.auth.uid == uid;
+    }
+
+    // Registre des pseudos : garantit l'unicité (clé = pseudo en minuscules) et permet
+    // la recherche pseudo -> compte. Un membre ne peut réserver / libérer qu'un pseudo
+    // qui pointe vers SON propre compte, ce qui empêche de voler celui d'un autre.
+    match /pseudos/{pseudo} {
+      allow read:   if request.auth != null;
+      allow create: if request.auth != null && request.resource.data.uid == request.auth.uid;
+      allow delete: if request.auth != null && resource.data.uid == request.auth.uid;
+      allow update: if request.auth != null
+                       && resource.data.uid == request.auth.uid
+                       && request.resource.data.uid == request.auth.uid;
+    }
+  }
+}

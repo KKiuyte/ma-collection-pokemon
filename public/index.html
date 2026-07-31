@@ -481,7 +481,7 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/fireba
 import { getAuth, GoogleAuthProvider, signInWithPopup, signInWithEmailAndPassword,
          createUserWithEmailAndPassword, signOut, onAuthStateChanged }
   from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
-import { getFirestore, doc, getDoc, setDoc, onSnapshot }
+import { getFirestore, doc, getDoc, setDoc, onSnapshot, runTransaction }
   from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
 const firebaseConfig = {
@@ -561,8 +561,11 @@ const setBlockById = {};  // id de série -> id de bloc
 let blocksReady = false;  // structure des blocs chargée ?
 let saveTimer = null;      // pour regrouper les sauvegardes en ligne
 let currentUser = null;    // utilisateur connecté (null = déconnecté)
+let userProfile = null;    // profil public { pseudo, pseudoLower, email } ou null
 let cloudUnsub = null;     // pour arrêter l'écoute temps réel
 let interactiveLogin = false; // connexion déclenchée par un clic (vs. session restaurée)
+// pseudo : 3 à 20 caractères, lettres/chiffres/tiret/underscore
+const PSEUDO_RE = /^[A-Za-z0-9_-]{3,20}$/;
 
 // Format actuel : owned[idCarte] = { v: { "Normale": [ {cond,lang}, {cond,lang} ], "Reverse Holo": [...] } }
 // Chaque exemplaire d'une version a son propre état et sa propre langue.
@@ -664,6 +667,10 @@ async function onLogin(user){
   updateAccountButton();
   renderAccountBody();
   setAuthStatus("Connecté : " + (user.email || "compte Google"), true);
+  await loadUserProfile();
+  renderAccountBody(); // ré-affiche avec le pseudo une fois chargé
+  if (!userProfile || !userProfile.pseudo)
+    setAuthStatus("Choisis un pseudo ci-dessous pour pouvoir partager ta collection plus tard.");
   try {
     const ref = doc(db, "collections", user.uid);
     const snap = await getDoc(ref);
@@ -689,9 +696,55 @@ async function onLogin(user){
 function onLogout(){
   if (cloudUnsub){ cloudUnsub(); cloudUnsub = null; }
   currentUser = null;
+  userProfile = null;
   updateAccountButton();
   renderAccountBody();
   setAuthStatus("Déconnecté. Ta collection reste sur cet appareil.");
+}
+
+// --- pseudo (profil public, base du partage à venir) ---
+async function loadUserProfile(){
+  if (!currentUser){ userProfile = null; return; }
+  try {
+    const snap = await getDoc(doc(db, "users", currentUser.uid));
+    userProfile = snap.exists() ? snap.data() : null;
+  } catch { userProfile = null; }
+}
+
+// Réserve un pseudo de façon atomique : le registre `pseudos/{minuscule}` garantit
+// l'unicité (insensible à la casse) et sert plus tard à retrouver un compte par son pseudo.
+async function savePseudo(raw){
+  if (!currentUser) return false;
+  const pseudo = (raw || "").trim();
+  if (!PSEUDO_RE.test(pseudo)){
+    setAuthStatus("Pseudo invalide : 3 à 20 caractères (lettres, chiffres, - ou _).", false);
+    return false;
+  }
+  const lower = pseudo.toLowerCase();
+  const oldLower = userProfile && userProfile.pseudoLower;
+  setAuthStatus("Enregistrement du pseudo…");
+  try {
+    await runTransaction(db, async (tx) => {
+      const claimRef = doc(db, "pseudos", lower);
+      const claimSnap = await tx.get(claimRef);              // (lecture avant écritures)
+      if (claimSnap.exists() && claimSnap.data().uid !== currentUser.uid)
+        throw new Error("PSEUDO_TAKEN");
+      if (oldLower && oldLower !== lower)                    // libère l'ancien pseudo
+        tx.delete(doc(db, "pseudos", oldLower));
+      tx.set(claimRef, { uid: currentUser.uid });
+      tx.set(doc(db, "users", currentUser.uid),
+             { pseudo, pseudoLower: lower, email: currentUser.email || null, updatedAt: Date.now() });
+    });
+    userProfile = { pseudo, pseudoLower: lower, email: currentUser.email || null };
+    setAuthStatus("Pseudo enregistré : " + pseudo, true);
+    renderAccountBody();
+    return true;
+  } catch (e){
+    setAuthStatus(e.message === "PSEUDO_TAKEN"
+      ? "Ce pseudo est déjà pris. Choisis-en un autre."
+      : "Impossible d'enregistrer le pseudo. Réessaie.", false);
+    return false;
+  }
 }
 
 const $ = (id) => document.getElementById(id);
@@ -1691,9 +1744,19 @@ function renderAccountBody(){
   const body = document.getElementById("authBody");
   if (!body) return;
   if (currentUser){
+    const p = userProfile && userProfile.pseudo;
+    const safe = p ? p.replace(/&/g,"&amp;").replace(/"/g,"&quot;").replace(/</g,"&lt;") : "";
     body.innerHTML =
       `<p style="text-align:center;font-weight:800;margin:0 0 16px;">Connecté : ${currentUser.email || "compte Google"}</p>
+       <div class="field">
+         <label>Ton pseudo${p ? "" : " &mdash; à définir"}</label>
+         <input id="pseudoInput" maxlength="20" autocomplete="off" spellcheck="false"
+                placeholder="ex. Ariel_74" value="${safe}" style="${inputStyle}">
+         <p class="pricenote" style="text-align:left;margin-top:8px;">3 à 20 caractères : lettres, chiffres, - ou _. Visible par les autres membres pour te partager une collection (bientôt).</p>
+       </div>
+       <button class="big-btn btn-add" id="btnPseudo" style="margin-bottom:14px;">${p ? "Mettre à jour le pseudo" : "Enregistrer le pseudo"}</button>
        <button class="big-btn btn-remove" id="btnLogout">Se déconnecter</button>`;
+    document.getElementById("btnPseudo").onclick = () => savePseudo(document.getElementById("pseudoInput").value);
     document.getElementById("btnLogout").onclick = () => signOut(auth);
     return;
   }
