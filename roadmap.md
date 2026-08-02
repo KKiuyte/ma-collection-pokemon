@@ -129,10 +129,30 @@ réactiver le Worker Cloudflare (`collection-sync.ariesam.workers.dev`) comme in
   > publiée par périmètre avec liste d'autorisés » retenue : pas de backend, révocable,
   > n'expose jamais la collection principale.
 
+  - [ ] **3 — Suggestions d'échange automatiques** : entre deux comptes qui se partagent leurs
+        échanges, croiser tes doubles avec les souhaits de l'autre (et inversement) pour repérer
+        automatiquement les échanges gagnant-gagnant, sans chercher à la main. S'appuie sur les
+        copies déjà publiées (`shared_wishlist`, `shared_trades`) — pas de nouvelle donnée à
+        stocker, juste un calcul de croisement côté client.
+
 ## 💰 Priorité 3 — Prix, suite
 - [ ] Suivre l'**évolution de la valeur** dans le temps (relevé mensuel dans Firestore)
 - [ ] Surveiller le champ `variants_detailed` annoncé par TCGdex : il apportera les identifiants
       Cardmarket/TCGplayer **par version**, ce qui réglera le cas des Reverse Holo affichées en dollars
+
+## 📈 Suivi (admin)
+- [x] **Google Analytics for Firebase activé** (`measurementId` présent depuis le début mais
+      jamais branché : le SDK n'était ni importé ni initialisé). Ajouté dans `index.html` :
+      import de `firebase-analytics.js`, initialisation conditionnelle via `isSupported()`
+      (ne casse rien si le navigateur bloque Analytics — navigation privée stricte, bloqueurs),
+      et événements `login` / `sign_up` (avec `method: "google"` ou `"password"`) envoyés sur
+      les 3 boutons de connexion. Pour Google, `getAdditionalUserInfo(result).isNewUser`
+      distingue une première connexion (`sign_up`) d'un retour (`login`). Les métriques
+      « nouveaux utilisateurs / utilisateurs actifs » apparaissent dans la console Firebase →
+      Analytics (délai de traitement ~24-48 h, normal côté Google). Pas de page admin dans
+      l'appli : la console Firebase suffit et ne demande aucune donnée en plus à stocker.
+      ⚠️ **Analytics à activer dans le projet Firebase (console) si ce n'est pas déjà le cas**,
+      sinon les événements sont envoyés mais rien ne s'affiche.
 
 ## 🎨 Priorité 4 — Finitions
 - [x] Distinguer plusieurs exemplaires d'une **même version** (état/langue par copie individuelle,

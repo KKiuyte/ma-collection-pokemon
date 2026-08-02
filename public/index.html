@@ -505,11 +505,13 @@ body {
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
 import { getAuth, GoogleAuthProvider, signInWithPopup, signInWithEmailAndPassword,
-         createUserWithEmailAndPassword, signOut, onAuthStateChanged }
+         createUserWithEmailAndPassword, signOut, onAuthStateChanged, getAdditionalUserInfo }
   from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
 import { getFirestore, doc, getDoc, setDoc, deleteDoc, onSnapshot, runTransaction,
          collection, query, where, getDocs }
   from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+import { getAnalytics, isSupported as analyticsSupported, logEvent }
+  from "https://www.gstatic.com/firebasejs/10.12.0/firebase-analytics.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyCiGgrj28Jrqn8jEGM9pWFsVhnfs-VKyiU",
@@ -524,6 +526,11 @@ const fbApp = initializeApp(firebaseConfig);
 const auth = getAuth(fbApp);
 const db = getFirestore(fbApp);
 const googleProvider = new GoogleAuthProvider();
+// Analytics : indisponible dans certains contextes (navigation privée stricte, bloqueurs) —
+// on l'active seulement si le navigateur le permet, pour ne jamais casser l'appli.
+let analytics = null;
+analyticsSupported().then(ok => { if (ok) analytics = getAnalytics(fbApp); }).catch(() => {});
+function track(name, params){ if (analytics) try { logEvent(analytics, name, params); } catch {} }
 
 const API = "https://api.tcgdex.net/v2/fr";
 const KEY = "collection_pokemon_v1";
@@ -2171,7 +2178,11 @@ function renderAccountBody(){
   document.getElementById("btnGoogle").onclick = async () => {
     interactiveLogin = true;
     setAuthStatus("Connexion à Google…");
-    try { await signInWithPopup(auth, googleProvider); }
+    try {
+      const result = await signInWithPopup(auth, googleProvider);
+      const isNew = getAdditionalUserInfo(result)?.isNewUser;
+      track(isNew ? "sign_up" : "login", { method: "google" });
+    }
     catch (e){ interactiveLogin = false; setAuthStatus(authError(e), false); }
   };
   const email = () => document.getElementById("authEmail").value.trim();
@@ -2179,13 +2190,13 @@ function renderAccountBody(){
   document.getElementById("btnLogin").onclick = async () => {
     interactiveLogin = true;
     setAuthStatus("Connexion…");
-    try { await signInWithEmailAndPassword(auth, email(), pass()); }
+    try { await signInWithEmailAndPassword(auth, email(), pass()); track("login", { method: "password" }); }
     catch (e){ interactiveLogin = false; setAuthStatus(authError(e), false); }
   };
   document.getElementById("btnSignup").onclick = async () => {
     interactiveLogin = true;
     setAuthStatus("Création du compte…");
-    try { await createUserWithEmailAndPassword(auth, email(), pass()); }
+    try { await createUserWithEmailAndPassword(auth, email(), pass()); track("sign_up", { method: "password" }); }
     catch (e){ interactiveLogin = false; setAuthStatus(authError(e), false); }
   };
 }
