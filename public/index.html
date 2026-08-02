@@ -342,6 +342,14 @@ body {
   cursor:pointer; line-height:1; padding:2px 6px; border-radius:999px; }
 .grant-remove:active { color:var(--danger-fg); }
 .grant-empty { font-size:12px; color:var(--muted); font-weight:600; margin:8px 0 0; }
+.request-row { display:flex; align-items:center; justify-content:space-between; gap:10px;
+  background:var(--surface-2); border-radius:12px; padding:9px 12px; margin-top:8px; }
+.request-text { font-size:13px; font-weight:700; color:var(--ink); }
+.request-actions { display:flex; gap:6px; flex:none; }
+.request-btn { font-family:inherit; font-weight:800; font-size:12px; cursor:pointer; border:none;
+  border-radius:8px; padding:6px 12px; }
+.request-btn.accept { background:var(--gold); color:var(--ink-solid); }
+.request-btn.decline { background:var(--field); color:var(--muted); border:1px solid var(--line); }
 
 /* --- bouton retour en haut --- */
 .top-btn { position:fixed; right:18px; bottom:18px; width:46px; height:46px; border-radius:50%;
@@ -596,6 +604,8 @@ const SHARE_SCOPES = [
 let myGrants = { wishlist: [], trades: [] }; // qui j'autorise, par périmètre : [{uid, pseudo}]
 let sharedList = [];    // ce qu'on me partage : [{scopeKey, scopeLabel, ownerPseudo, items}]
 let sharedLoaded = false; // chargé une fois par connexion (bouton « Actualiser » pour rafraîchir)
+let incomingRequests = []; // demandes reçues : [{id, owner, requester, requesterPseudo, scopeKey, scopeLabel}]
+let outgoingRequests = []; // demandes envoyées : [{id, owner, ownerPseudo, requester, scopeKey, scopeLabel}]
 
 // Format actuel : owned[idCarte] = { v: { "Normale": [ {cond,lang}, {cond,lang} ], "Reverse Holo": [...] } }
 // Chaque exemplaire d'une version a son propre état et sa propre langue.
@@ -701,6 +711,7 @@ async function onLogin(user){
   setAuthStatus("Connecté : " + (user.email || "compte Google"), true);
   await loadUserProfile();
   await loadMyGrants();
+  await loadShareRequests();
   renderAccountBody(); // ré-affiche avec le pseudo et les partages une fois chargés
   if (!userProfile || !userProfile.pseudo)
     setAuthStatus("Choisis un pseudo ci-dessous pour pouvoir partager ta collection plus tard.");
@@ -732,6 +743,7 @@ function onLogout(){
   userProfile = null;
   myGrants = { wishlist: [], trades: [] };
   sharedList = []; sharedLoaded = false;
+  incomingRequests = []; outgoingRequests = [];
   updateAccountButton();
   renderAccountBody();
   setAuthStatus("Déconnecté. Ta collection reste sur cet appareil.");
@@ -846,6 +858,68 @@ async function grantAccess(key, pseudoRaw){
 async function revokeAccess(key, uid){
   myGrants[key] = myGrants[key].filter(g => g.uid !== uid);
   await publishScope(key);
+  renderAccountBody();
+}
+
+// --- partage : demandes d'accès (étape 2) ---
+// Un identifiant déterministe (propriétaire_demandeur_périmètre) évite les doublons :
+// redemander après un refus republie simplement le même document.
+function requestId(ownerUid, requesterUid, key){ return ownerUid + "_" + requesterUid + "_" + key; }
+
+async function loadShareRequests(){
+  incomingRequests = []; outgoingRequests = [];
+  if (!currentUser) return;
+  try {
+    const snap = await getDocs(query(collection(db, "share_requests"), where("owner", "==", currentUser.uid)));
+    incomingRequests = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+  } catch {}
+  try {
+    const snap = await getDocs(query(collection(db, "share_requests"), where("requester", "==", currentUser.uid)));
+    outgoingRequests = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+  } catch {}
+}
+
+async function sendAccessRequest(key, pseudoRaw){
+  const pseudo = (pseudoRaw || "").trim();
+  if (!pseudo) return;
+  if (!PSEUDO_RE.test(pseudo)){ setAuthStatus("Pseudo invalide.", false); return; }
+  const lower = pseudo.toLowerCase();
+  if (userProfile && userProfile.pseudoLower === lower){ setAuthStatus("C'est ton propre pseudo.", false); return; }
+  setAuthStatus("Recherche du pseudo…");
+  let ownerUid = null;
+  try { const snap = await getDoc(doc(db, "pseudos", lower)); if (snap.exists()) ownerUid = snap.data().uid; } catch {}
+  if (!ownerUid){ setAuthStatus("Aucun membre avec ce pseudo.", false); return; }
+  const label = SHARE_SCOPES.find(s => s.key === key).label;
+  const realOwnerPseudo = await pseudoOf(ownerUid);
+  try {
+    await setDoc(doc(db, "share_requests", requestId(ownerUid, currentUser.uid, key)), {
+      owner: ownerUid, ownerPseudo: realOwnerPseudo,
+      requester: currentUser.uid, requesterPseudo: (userProfile && userProfile.pseudo) || "Un membre",
+      scopeKey: key, scopeLabel: label, createdAt: Date.now(),
+    });
+    setAuthStatus(`Demande envoyée à ${realOwnerPseudo} pour ses ${label.toLowerCase()}.`, true);
+    await loadShareRequests();
+    renderAccountBody();
+  } catch { setAuthStatus("Impossible d'envoyer la demande. Réessaie.", false); }
+}
+
+async function cancelRequest(id){
+  try { await deleteDoc(doc(db, "share_requests", id)); } catch {}
+  outgoingRequests = outgoingRequests.filter(r => r.id !== id);
+  renderAccountBody();
+}
+
+async function declineRequest(id){
+  try { await deleteDoc(doc(db, "share_requests", id)); } catch {}
+  incomingRequests = incomingRequests.filter(r => r.id !== id);
+  renderAccountBody();
+}
+
+// accepter = le même octroi que « Mon compte » ferait à la main, puis la demande disparaît
+async function approveRequest(req){
+  await grantAccess(req.scopeKey, req.requesterPseudo);
+  try { await deleteDoc(doc(db, "share_requests", req.id)); } catch {}
+  incomingRequests = incomingRequests.filter(r => r.id !== req.id);
   renderAccountBody();
 }
 
@@ -1961,9 +2035,24 @@ function renderAccountBody(){
                 placeholder="ex. sam_du_92" value="${p ? esc(p) : ""}" style="${inputStyle}">
          <p class="pricenote" style="text-align:left;margin-top:8px;">3 à 20 caractères : lettres, chiffres, - ou _. Visible par les autres membres pour te retrouver et te partager une collection.</p>
        </div>
-       <button class="big-btn btn-add" id="btnPseudo" style="margin-bottom:14px;">${p ? "Mettre à jour le pseudo" : "Enregistrer le pseudo"}</button>
+       <button class="big-btn btn-add" id="btnPseudo" style="margin-bottom:14px;">${p ? "Mettre à jour le pseudo" : "Enregistrer le pseudo"}</button>`;
 
-       <div class="divider" style="margin:2px 0 14px;"></div>
+    if (incomingRequests.length){
+      html += `<div class="ctrl-heading" style="margin-bottom:6px;">Demandes reçues</div>`;
+      for (const r of incomingRequests){
+        html += `
+          <div class="request-row" data-req="${esc(r.id)}">
+            <span class="request-text">${esc(r.requesterPseudo)} veut voir tes ${esc(r.scopeLabel.toLowerCase())}</span>
+            <span class="request-actions">
+              <button type="button" class="request-btn accept" data-req="${esc(r.id)}">Accepter</button>
+              <button type="button" class="request-btn decline" data-req="${esc(r.id)}">Refuser</button>
+            </span>
+          </div>`;
+      }
+    }
+
+    html +=
+      `<div class="divider" style="margin:2px 0 14px;"></div>
        <div class="ctrl-heading" style="margin-bottom:10px;">Partage en lecture seule</div>`;
 
     if (!p){
@@ -1984,18 +2073,43 @@ function renderAccountBody(){
             ${chips ? `<div class="grant-list">${chips}</div>` : `<p class="grant-empty">Personne pour l'instant.</p>`}
           </div>`;
       }
+
+      const reqChips = outgoingRequests.map(r =>
+        `<span class="grant-chip">${esc(r.ownerPseudo)} · ${esc(r.scopeLabel)}<button class="grant-remove" data-req="${esc(r.id)}" aria-label="Annuler la demande à ${esc(r.ownerPseudo)}">&times;</button></span>`
+      ).join("");
+      html += `
+        <div class="divider" style="margin:2px 0 14px;"></div>
+        <div class="ctrl-heading" style="margin-bottom:10px;">Demander l'accès à quelqu'un</div>
+        <div class="field">
+          <input id="reqPseudoInput" maxlength="20" autocomplete="off" spellcheck="false" placeholder="pseudo de la personne" style="${inputStyle}">
+          <div class="field-row" style="margin-top:8px;">
+            ${SHARE_SCOPES.map(s => `<button type="button" class="grant-btn req-send-btn" data-k="${s.key}" style="flex:1;">Ses ${s.label.toLowerCase()}</button>`).join("")}
+          </div>
+          ${reqChips ? `<div class="grant-list">${reqChips}</div>` : ``}
+        </div>`;
     }
 
     html += `<button class="big-btn btn-remove" id="btnLogout" style="margin-top:6px;">Se déconnecter</button>`;
     body.innerHTML = html;
 
     document.getElementById("btnPseudo").onclick = () => savePseudo(document.getElementById("pseudoInput").value);
-    body.querySelectorAll(".grant-btn").forEach(b => b.onclick = () => {
+    body.querySelectorAll(".grant-btn:not(.req-send-btn)").forEach(b => b.onclick = () => {
       const input = b.parentElement.querySelector(".grant-input");
       grantAccess(b.dataset.k, input.value);
       input.value = "";
     });
-    body.querySelectorAll(".grant-remove").forEach(b => b.onclick = () => revokeAccess(b.dataset.k, b.dataset.uid));
+    body.querySelectorAll(".req-send-btn").forEach(b => b.onclick = () => {
+      const input = document.getElementById("reqPseudoInput");
+      sendAccessRequest(b.dataset.k, input.value);
+      input.value = "";
+    });
+    body.querySelectorAll(".grant-remove[data-uid]").forEach(b => b.onclick = () => revokeAccess(b.dataset.k, b.dataset.uid));
+    body.querySelectorAll(".grant-remove[data-req]").forEach(b => b.onclick = () => cancelRequest(b.dataset.req));
+    body.querySelectorAll(".request-btn.accept").forEach(b => b.onclick = () => {
+      const req = incomingRequests.find(r => r.id === b.dataset.req);
+      if (req) approveRequest(req);
+    });
+    body.querySelectorAll(".request-btn.decline").forEach(b => b.onclick = () => declineRequest(b.dataset.req));
     document.getElementById("btnLogout").onclick = () => signOut(auth);
     return;
   }

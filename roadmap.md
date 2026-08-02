@@ -110,7 +110,13 @@ réactiver le Worker Cloudflare (`collection-sync.ariesam.workers.dev`) comme in
         les souhaits et le style `trade-row` pour les échanges — cliquer sur une carte ouvre la
         fiche habituelle, qui agit sur TA collection (ex. l'ajouter à tes souhaits), jamais sur
         celle de la personne qui partage. Chargé une fois par connexion, bouton « Actualiser ».
-  - [ ] **2 — Demandes d'accès** : ID2 demande, ID1 approuve (boîte de réception de demandes).
+  - [x] **2 — Demandes d'accès** : dans « Mon compte », ID2 demande l'accès (par pseudo, par
+        périmètre) — document `share_requests/{proprio}_{demandeur}_{périmètre}` (id déterministe,
+        redemander après refus republie le même document). ID1 voit ses demandes reçues en haut de
+        « Mon compte » avec Accepter/Refuser ; Accepter réutilise `grantAccess()` (même octroi
+        qu'à la main) puis supprime la demande. ID2 voit ses demandes envoyées en attente
+        (chips, annulables). ⚠️ **Nouvelle collection Firestore `share_requests` : règles à
+        publier** (`firestore.rules`) comme pour les étapes précédentes.
 
   > **Écarté :** lien anonyme (pas de contrôle par personne) et intermédiaire serveur
   > (Cloud Function / Worker : surdimensionné pour de la lecture seule). Approche B « copie

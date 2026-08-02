@@ -67,7 +67,7 @@ git add public/catalogue-fr.json && git commit && git push   # déploie
 - **Auth** : Firebase Authentication — Google + email/mot de passe (activés).
 - **Base** : Firestore, document `collections/{uid}` (chaque personne n'accède qu'à la
   sienne, via les règles de sécurité). Champs `cards` et `wishlist`.
-- **Partage — étapes 1a, 1b-1 et 1b-2 faites** :
+- **Partage — étapes 1a, 1b-1, 1b-2 et 2 faites** :
   - **Pseudo (1a)** : `users/{uid}` (`{pseudo, pseudoLower, email}`, profil public lisible par
     tout membre connecté) + registre `pseudos/{minuscule} = {uid}` (unicité insensible à la casse
     + recherche pseudo→compte). Réservation atomique par `runTransaction`.
@@ -81,8 +81,12 @@ git add public/catalogue-fr.json && git commit && git push   # déploie
     `SHARE_SCOPES` (`loadShared()`). Groupé par pseudo du propriétaire ; réutilise `cardButton`
     (souhaits, en grille) et le style `trade-row` (échanges). Cliquer sur une carte ouvre la fiche
     habituelle — elle modifie TA collection à toi, jamais celle du propriétaire. Chargé une seule
-    fois par connexion (`sharedLoaded`), bouton « Actualiser » pour reforcer. Reste **étape 2**
-    (demandes d'accès, ID2 demande / ID1 approuve) — voir `roadmap.md`.
+    fois par connexion (`sharedLoaded`), bouton « Actualiser » pour reforcer.
+  - **Demandes d'accès (2)** : collection `share_requests/{proprio}_{demandeur}_{périmètre}`
+    (id déterministe — redemander après refus republie le même document). Le demandeur crée sa
+    demande (`sendAccessRequest`) ; le propriétaire la voit en haut de « Mon compte »
+    (`loadShareRequests`) avec Accepter (réutilise `grantAccess`, puis supprime la demande) ou
+    Refuser (supprime). Le demandeur voit ses demandes en attente (chips annulables).
   - **Règles de sécurité versionnées dans `firestore.rules`** — ⚠️ NON déployées par le workflow
     (hosting seulement) : à (re)publier à la main dans la console Firebase (Firestore → Règles) ou
     `firebase deploy --only firestore:rules` **à chaque modification de ce fichier**.

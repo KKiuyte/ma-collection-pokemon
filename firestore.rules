@@ -52,5 +52,20 @@ service cloud.firestore {
                       && (request.auth.uid == uid || request.auth.uid in resource.data.viewers);
       allow write: if request.auth != null && request.auth.uid == uid;
     }
+
+    // Étape 2 — demandes d'accès : ID2 demande à ID1 de l'autoriser. Identifiant déterministe
+    // (propriétaire_demandeur_périmètre), donc un seul document par (demandeur, propriétaire,
+    // périmètre) — redemander après un refus écrase simplement l'ancien document.
+    // Seul le demandeur écrit sa propre demande ; propriétaire et demandeur peuvent la lire ou
+    // la supprimer (accepter/refuser côté propriétaire, annuler côté demandeur).
+    match /share_requests/{id} {
+      allow read: if request.auth != null
+                     && (request.auth.uid == resource.data.owner || request.auth.uid == resource.data.requester);
+      allow create, update: if request.auth != null
+                     && request.auth.uid == request.resource.data.requester
+                     && request.resource.data.owner != request.auth.uid;
+      allow delete: if request.auth != null
+                     && (request.auth.uid == resource.data.owner || request.auth.uid == resource.data.requester);
+    }
   }
 }
