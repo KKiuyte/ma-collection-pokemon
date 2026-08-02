@@ -104,9 +104,12 @@ réactiver le Worker Cloudflare (`collection-sync.ariesam.workers.dev`) comme in
         structure extensible via `SHARE_SCOPES`). Publication dans `shared_wishlist/{uid}` et
         `shared_trades/{uid}` (données du périmètre + liste `viewers`), tenues à jour à chaque
         sauvegarde. ⚠️ **Règles Firestore à republier** (`firestore.rules`).
-  - [ ] **1b-2 — Lecture seule (côté destinataire)** : nouvel onglet « Partagé » qui liste ce
-        qu'on t'a partagé (requête `viewers array-contains moi`) et l'affiche sans boutons
-        d'ajout/retrait.
+  - [x] **1b-2 — Lecture seule (côté destinataire)** : nouvel onglet « Partagé » qui liste ce
+        qu'on t'a partagé (requête `viewers array-contains moi` sur `shared_wishlist` /
+        `shared_trades`), groupé par pseudo du propriétaire. Réutilise `cardButton` (grille) pour
+        les souhaits et le style `trade-row` pour les échanges — cliquer sur une carte ouvre la
+        fiche habituelle, qui agit sur TA collection (ex. l'ajouter à tes souhaits), jamais sur
+        celle de la personne qui partage. Chargé une fois par connexion, bouton « Actualiser ».
   - [ ] **2 — Demandes d'accès** : ID2 demande, ID1 approuve (boîte de réception de demandes).
 
   > **Écarté :** lien anonyme (pas de contrôle par personne) et intermédiaire serveur

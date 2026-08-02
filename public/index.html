@@ -403,6 +403,7 @@ body {
     <button class="tab" data-view="collection">Ma collection</button>
     <button class="tab" data-view="stats">Statistiques</button>
     <button class="tab" data-view="trade">&Eacute;change</button>
+    <button class="tab" data-view="shared">Partag&eacute;</button>
   </nav>
 
   <div class="filters" id="filters">
@@ -498,7 +499,8 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/fireba
 import { getAuth, GoogleAuthProvider, signInWithPopup, signInWithEmailAndPassword,
          createUserWithEmailAndPassword, signOut, onAuthStateChanged }
   from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
-import { getFirestore, doc, getDoc, setDoc, deleteDoc, onSnapshot, runTransaction }
+import { getFirestore, doc, getDoc, setDoc, deleteDoc, onSnapshot, runTransaction,
+         collection, query, where, getDocs }
   from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
 const firebaseConfig = {
@@ -552,6 +554,7 @@ const ICONS = {
   heart: `<path d="M12 20s-7-4.3-7-9.1A3.9 3.9 0 0 1 12 8a3.9 3.9 0 0 1 7 2.9C19 15.7 12 20 12 20Z"/>`,
   swap: `<path d="M4 8h13l-3.5-3.5M20 16H7l3.5 3.5"/>`,
   chart: `<path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/>`,
+  eye: `<path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/>`,
 };
 // message d'état (vide, erreur) : icône discrète + texte, centré dans l'espace disponible
 const emptyMsg = (icon, html) => `<div class="msg">${svgIco(icon, "msg-ico")}<div>${html}</div></div>`;
@@ -567,7 +570,7 @@ const rarityCache = {};   // "idSérie|rareté" -> Set d'ids (évite de re-deman
 let search = "";
 let allCards = null;      // toutes les cartes (chargées à la 1re recherche)
 let loadingAll = false;
-// vue courante, pilotée par les onglets : "set" | "collection" | "stats" | "trade"
+// vue courante, pilotée par les onglets : "set" | "collection" | "stats" | "trade" | "shared"
 let view = "set";
 let setList = [];         // liste des séries, plus récente en premier
 const setNameById = {};   // id de série -> nom
@@ -591,6 +594,8 @@ const SHARE_SCOPES = [
   { key: "trades",   col: "shared_trades",   label: "Échanges" },
 ];
 let myGrants = { wishlist: [], trades: [] }; // qui j'autorise, par périmètre : [{uid, pseudo}]
+let sharedList = [];    // ce qu'on me partage : [{scopeKey, scopeLabel, ownerPseudo, items}]
+let sharedLoaded = false; // chargé une fois par connexion (bouton « Actualiser » pour rafraîchir)
 
 // Format actuel : owned[idCarte] = { v: { "Normale": [ {cond,lang}, {cond,lang} ], "Reverse Holo": [...] } }
 // Chaque exemplaire d'une version a son propre état et sa propre langue.
@@ -690,6 +695,7 @@ function listenCloud(){
 async function onLogin(user){
   const interactive = interactiveLogin; interactiveLogin = false;
   currentUser = user;
+  sharedList = []; sharedLoaded = false;
   updateAccountButton();
   renderAccountBody();
   setAuthStatus("Connecté : " + (user.email || "compte Google"), true);
@@ -725,6 +731,7 @@ function onLogout(){
   currentUser = null;
   userProfile = null;
   myGrants = { wishlist: [], trades: [] };
+  sharedList = []; sharedLoaded = false;
   updateAccountButton();
   renderAccountBody();
   setAuthStatus("Déconnecté. Ta collection reste sur cet appareil.");
@@ -842,6 +849,25 @@ async function revokeAccess(key, uid){
   renderAccountBody();
 }
 
+// --- partage : ce qu'on me partage (étape 1b-2, côté destinataire) ---
+// Chaque périmètre est interrogé séparément : la personne peut m'avoir donné accès
+// à ses souhaits, ses échanges, ou les deux — chacun vit dans sa propre collection Firestore.
+async function loadShared(){
+  const out = [];
+  for (const s of SHARE_SCOPES){
+    try {
+      const q = query(collection(db, s.col), where("viewers", "array-contains", currentUser.uid));
+      const snap = await getDocs(q);
+      snap.forEach(d => {
+        const doc = d.data();
+        out.push({ scopeKey: s.key, scopeLabel: s.label, ownerPseudo: doc.ownerPseudo || "Un membre", items: doc.data || [] });
+      });
+    } catch { /* règles Firestore pas encore publiées, ou hors-ligne : on ignore ce périmètre */ }
+  }
+  out.sort((a, b) => a.ownerPseudo.localeCompare(b.ownerPseudo, "fr"));
+  sharedList = out;
+}
+
 const $ = (id) => document.getElementById(id);
 const content = $("content");
 const setInput = $("setInput"), setMenu = $("setMenu");
@@ -865,6 +891,9 @@ function updateSub(){
     distinct + " carte" + (distinct>1?"s":"") + " différente" + (distinct>1?"s":"")
     + " · " + copies + " au total" + wishTxt;
 }
+
+// échappe une chaîne pour l'insérer sans risque dans du HTML (pseudos, noms venus de Firestore)
+function esc(s){ return String(s).replace(/&/g,"&amp;").replace(/"/g,"&quot;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
 
 // enlève accents/majuscules pour une recherche souple
 function normalize(s){
@@ -1381,7 +1410,7 @@ function sortCards(list){
 function syncControls(){
   const isSet = view === "set";
   const isColl = view === "collection";
-  const isStatsTrade = view === "stats" || view === "trade";
+  const isBareView = view === "stats" || view === "trade" || view === "shared";
 
   // Puces : Manquantes/Possédées n'ont de sens que dans une série ; dans « Ma collection »
   // on ne garde que Toutes + Souhaits (Possédées ferait doublon avec Toutes).
@@ -1391,13 +1420,13 @@ function syncControls(){
     c.hidden = !chipVis[c.dataset.f];
     c.classList.toggle("on", c.dataset.f === filter);
   });
-  $("filters").hidden = isStatsTrade; // aucune puce pertinente sur Statistiques / Échange
+  $("filters").hidden = isBareView; // aucune puce pertinente sur Statistiques / Échange / Partagé
 
   // Rareté : uniquement la vue Série (le calcul est propre à la série affichée).
-  // Trier : Série + Ma collection. Aucun des deux sur Statistiques / Échange (ordre figé).
+  // Trier : Série + Ma collection. Aucun des deux sur Statistiques / Échange / Partagé (ordre figé).
   $("rarityField").hidden = !isSet;
   $("sortField").hidden = !(isSet || isColl);
-  $("filterSection").hidden = isStatsTrade;
+  $("filterSection").hidden = isBareView;
 
   // Le sélecteur de série (et sa progression) n'a de sens que dans la vue Série : sur les
   // vues d'ensemble, il afficherait la progression d'une seule série sans rapport avec l'écran.
@@ -1423,6 +1452,7 @@ function render(){
   if (search) renderSearch();
   else if (view === "stats") renderStats();
   else if (view === "trade") renderTrade();
+  else if (view === "shared") renderShared();
   else if (view === "collection") renderCollection();
   else renderSet();
 }
@@ -1599,6 +1629,89 @@ async function renderTrade(){
       list.appendChild(row);
     });
     content.appendChild(list);
+  }
+}
+
+// --- vue « Partagé » : ce que d'autres membres t'ont autorisé à voir (lecture seule) ---
+// Cliquer sur une carte ouvre la fiche habituelle : ça gère TA collection à toi (ex. l'ajouter
+// à tes souhaits), jamais celle de la personne qui partage — sa collection reste intouchée.
+async function renderShared(){
+  if (!currentUser){
+    content.innerHTML = emptyMsg(ICONS.eye, "Connecte-toi pour voir ce qu'on te partage.");
+    return;
+  }
+  if (!sharedLoaded){
+    content.innerHTML = `<div class="msg"><div class="spin"></div>Chargement de ce qu'on te partage…</div>`;
+    await loadShared();
+    sharedLoaded = true;
+    if (view === "shared") renderShared();
+    return;
+  }
+  if (!sharedList.length){
+    content.innerHTML = emptyMsg(ICONS.eye, "Personne ne t'a encore partagé ses souhaits ou ses échanges.<br>Demande à un membre de t'autoriser dans « Mon compte ».");
+    return;
+  }
+  if (!allCards){
+    content.innerHTML = `<div class="msg"><div class="spin"></div>Préparation… (une seule fois)</div>`;
+    await loadAllCards();
+    if (allCards && view === "shared") renderShared();
+    return;
+  }
+  const byId = {};
+  for (const c of allCards) byId[c.id] = c;
+
+  content.innerHTML = "";
+  const names = [...new Set(sharedList.map(s => s.ownerPseudo))];
+  const hint = document.createElement("p");
+  hint.className = "hint";
+  hint.textContent = `Partagé par ${names.length} membre${names.length>1?"s":""} · lecture seule`;
+  content.appendChild(hint);
+
+  const refresh = document.createElement("button");
+  refresh.type = "button";
+  refresh.className = "value-btn small";
+  refresh.style.cssText = "width:auto;display:inline-block;margin-bottom:14px;";
+  refresh.textContent = "Actualiser";
+  refresh.onclick = () => { sharedLoaded = false; renderShared(); };
+  content.appendChild(refresh);
+
+  for (const s of sharedList){
+    const isWish = s.scopeKey === "wishlist";
+    const cardsList = isWish ? s.items.map(id => byId[id]).filter(Boolean) : null;
+    const tradeList = isWish ? null : s.items.filter(e => byId[e.id]);
+    const count = isWish ? cardsList.length : tradeList.length;
+    if (!count) continue;
+
+    const head = document.createElement("div");
+    head.className = "section-head";
+    head.innerHTML = `<span>${esc(s.scopeLabel)} de ${esc(s.ownerPseudo)}</span><small>${count}</small>`;
+    content.appendChild(head);
+
+    if (isWish){
+      const grid = document.createElement("div");
+      grid.className = "grid";
+      sortCards(cardsList).forEach(c => grid.appendChild(cardButton(c)));
+      content.appendChild(grid);
+    } else {
+      const list = document.createElement("div");
+      list.className = "trade-list";
+      tradeList.forEach(e => {
+        const card = byId[e.id];
+        const row = document.createElement("button");
+        row.type = "button";
+        row.className = "trade-row";
+        row.innerHTML =
+          (card.image ? `<img src="${card.image}/low.webp" alt="">` : `<div class="noimg" style="width:38px;height:53px;border-radius:6px;"></div>`)
+          + `<div class="trade-info">
+               <div class="trade-name">${esc(card.name)}</div>
+               <div class="trade-version">${esc(e.v)} · n° ${esc(card.localId)}</div>
+             </div>
+             <span class="trade-badge">${e.x} en trop</span>`;
+        row.onclick = () => openModal(card);
+        list.appendChild(row);
+      });
+      content.appendChild(list);
+    }
   }
 }
 
@@ -1839,7 +1952,6 @@ function renderAccountBody(){
   const body = document.getElementById("authBody");
   if (!body) return;
   if (currentUser){
-    const esc = (s) => String(s).replace(/&/g,"&amp;").replace(/"/g,"&quot;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
     const p = userProfile && userProfile.pseudo;
     let html =
       `<p style="text-align:center;font-weight:800;margin:0 0 16px;">Connecté : ${currentUser.email || "compte Google"}</p>
