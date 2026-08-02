@@ -572,7 +572,6 @@ let cards = [];
 let filter = "all";
 let sortBy = "num-asc";   // tri courant
 let rarityFilter = "";    // "" = toutes les raretés
-let rarityIds = null;     // Set d'ids de la série courante ayant la rareté choisie (ou null)
 let rarities = [];        // liste des raretés disponibles (pour le menu)
 const rarityCache = {};   // "idSérie|rareté" -> Set d'ids (évite de re-demander)
 let search = "";
@@ -1045,20 +1044,30 @@ function fillRaritySelect(){
   sel.innerHTML = opts.join("");
   sel.value = rarityFilter;
 }
-// récupère (une fois, puis en cache) les ids de la série courante ayant la rareté choisie
-async function ensureRarityIds(){
-  if (!rarityFilter || !currentSetId){ rarityIds = null; return; }
-  const key = currentSetId + "|" + rarityFilter;
-  if (rarityCache[key]){ rarityIds = rarityCache[key]; return; }
-  try {
-    const url = API + "/cards?rarity=" + encodeURIComponent(rarityFilter) + "&id=" + encodeURIComponent(currentSetId) + "-";
-    const arr = await (await fetch(url)).json();
-    const s = new Set((Array.isArray(arr) ? arr : []).map(c => c.id));
-    rarityCache[key] = s;
-    rarityIds = s;
-  } catch {
-    rarityIds = new Set(); // en cas d'échec, on n'affiche rien plutôt que de tout montrer
-  }
+// clé de cache pour une série donnée + la rareté actuellement choisie
+function rarityKey(setId){ return setId + "|" + rarityFilter; }
+// une carte a-t-elle la rareté choisie ? (suppose que sa série est déjà en cache)
+function cardHasRarity(c){
+  const sid = c.id.slice(0, c.id.lastIndexOf("-")) || c.id;
+  const s = rarityCache[rarityKey(sid)];
+  return s ? s.has(c.id) : false;
+}
+// s'assure que le cache contient, pour la rareté choisie, chacune des séries données
+// (une requête par série manquante, en parallèle ; sert la vue Série comme les vues
+// qui mélangent plusieurs séries : recherche globale, Ma collection)
+async function ensureRarityIdsForSets(setIds){
+  if (!rarityFilter) return;
+  const todo = [...new Set(setIds)].filter(sid => !rarityCache[rarityKey(sid)]);
+  if (!todo.length) return;
+  await Promise.all(todo.map(async sid => {
+    try {
+      const url = API + "/cards?rarity=" + encodeURIComponent(rarityFilter) + "&id=" + encodeURIComponent(sid) + "-";
+      const arr = await (await fetch(url)).json();
+      rarityCache[rarityKey(sid)] = new Set((Array.isArray(arr) ? arr : []).map(c => c.id));
+    } catch {
+      rarityCache[rarityKey(sid)] = new Set(); // en cas d'échec, on n'affiche rien plutôt que de tout montrer
+    }
+  }));
 }
 
 // charge la structure des blocs en arrière-plan (ne bloque pas le démarrage)
@@ -1091,7 +1100,6 @@ async function loadSet(id){
   search = "";
   view = "set";
   rarityFilter = "";
-  rarityIds = null;
   const rs = $("raritySel"); if (rs) rs.value = "";
   const si = $("search"); if (si) si.value = "";
   $("clear").hidden = true;
@@ -1496,9 +1504,9 @@ function syncControls(){
   });
   $("filters").hidden = isBareView; // aucune puce pertinente sur Statistiques / Échange / Partagé
 
-  // Rareté : uniquement la vue Série (le calcul est propre à la série affichée).
-  // Trier : Série + Ma collection. Aucun des deux sur Statistiques / Échange / Partagé (ordre figé).
-  $("rarityField").hidden = !isSet;
+  // Rareté et tri : Série (recherche comprise, elle force la vue Série) + Ma collection.
+  // Aucun des deux sur Statistiques / Échange / Partagé (ordre figé, pas de notion de série).
+  $("rarityField").hidden = isBareView;
   $("sortField").hidden = !(isSet || isColl);
   $("filterSection").hidden = isBareView;
 
@@ -1532,9 +1540,17 @@ function render(){
 }
 
 // affichage normal : une seule série
-function renderSet(){
+async function renderSet(){
   let list = cards.filter(passFilter);
-  if (rarityFilter && rarityIds) list = list.filter(c => rarityIds.has(c.id));
+  if (rarityFilter){
+    if (!rarityCache[rarityKey(currentSetId)]){
+      content.innerHTML = `<div class="msg"><div class="spin"></div>Filtrage par rareté…</div>`;
+      await ensureRarityIdsForSets([currentSetId]);
+      if (view === "set" && !search) renderSet();
+      return;
+    }
+    list = list.filter(cardHasRarity);
+  }
   const shown = sortCards(list);
   if (!shown.length){
     const m = rarityFilter ? "Aucune carte de cette rareté dans cette série (avec ce filtre)."
@@ -1550,6 +1566,11 @@ function renderSet(){
   shown.forEach(c => grid.appendChild(cardButton(c)));
   content.innerHTML = "";
   content.appendChild(grid);
+}
+
+// séries distinctes présentes dans une liste de cartes (pour précharger la rareté par lots)
+function distinctSetIds(list){
+  return [...new Set(list.map(c => c.id.slice(0, c.id.lastIndexOf("-")) || c.id))];
 }
 
 // affichage groupé par série (réutilisé par la recherche et la vue collection)
@@ -1606,7 +1627,22 @@ async function renderSearch(){
     content.innerHTML = emptyMsg(ICONS.search, "Aucune carte ne correspond à ta recherche.");
     return;
   }
-  renderGrouped(results, (n, m) =>
+  let shown = results;
+  if (rarityFilter){
+    const missing = distinctSetIds(results).filter(sid => !rarityCache[rarityKey(sid)]);
+    if (missing.length){
+      content.innerHTML = `<div class="msg"><div class="spin"></div>Filtrage par rareté…</div>`;
+      await ensureRarityIdsForSets(missing);
+      if (search) renderSearch();
+      return;
+    }
+    shown = results.filter(cardHasRarity);
+    if (!shown.length){
+      content.innerHTML = emptyMsg(ICONS.search, "Aucune carte de cette rareté ne correspond à ta recherche.");
+      return;
+    }
+  }
+  renderGrouped(shown, (n, m) =>
     n + " résultat" + (n>1?"s":"") + " dans " + m + " série" + (m>1?"s":""));
 }
 
@@ -1626,7 +1662,22 @@ async function renderCollection(){
     if (allCards && view === "collection") renderCollection();
     return;
   }
-  const results = allCards.filter(c => source[c.id]);
+  let results = allCards.filter(c => source[c.id]);
+  if (rarityFilter){
+    const missing = distinctSetIds(results).filter(sid => !rarityCache[rarityKey(sid)]);
+    if (missing.length){
+      content.innerHTML = `<div class="msg"><div class="spin"></div>Filtrage par rareté…</div>`;
+      await ensureRarityIdsForSets(missing);
+      if (allCards && view === "collection") renderCollection();
+      return;
+    }
+    results = results.filter(cardHasRarity);
+    if (!results.length){
+      content.innerHTML = emptyMsg(wish ? ICONS.heart : ICONS.cards,
+        "Aucune carte de cette rareté" + (wish ? " dans ta liste de souhaits." : " dans ta collection."));
+      return;
+    }
+  }
   renderGrouped(results, (n, m) => wish
     ? n + " carte" + (n>1?"s":"") + " à acheter dans " + m + " série" + (m>1?"s":"")
     : n + " carte" + (n>1?"s":"") + " différente" + (n>1?"s":"") + " dans " + m + " série" + (m>1?"s":""));
@@ -2008,14 +2059,8 @@ document.querySelectorAll(".chip").forEach(chip => {
 
 $("sortSel").addEventListener("change", (e) => { sortBy = e.target.value; render(); });
 
-$("raritySel").addEventListener("change", async (e) => {
-  rarityFilter = e.target.value;
-  if (rarityFilter){
-    content.innerHTML = `<div class="msg"><div class="spin"></div>Filtrage par rareté…</div>`;
-    await ensureRarityIds();
-  } else {
-    rarityIds = null;
-  }
+$("raritySel").addEventListener("change", (e) => {
+  rarityFilter = e.target.value; // le préchargement (si besoin) est géré par chaque vue au rendu
   render();
 });
 

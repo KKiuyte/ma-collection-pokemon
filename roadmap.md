@@ -89,7 +89,13 @@ réactiver le Worker Cloudflare (`collection-sync.ariesam.workers.dev`) comme in
 - [ ] Message d'avertissement avant toute action qui pourrait tout effacer
 
 ## 🔎 Priorité 2 — Confort
-- [ ] Filtre par rareté aussi dans la **recherche globale** et la vue collection
+- [x] **Filtre par rareté aussi dans la recherche globale et la vue collection** : le filtre
+      chargeait jusque-là les ids d'une seule série (celle affichée). Généralisé en
+      `ensureRarityIdsForSets(setIds)` : précharge (en parallèle, en cache par
+      `idSérie|rareté`) toutes les séries présentes dans les résultats, quelle que soit la vue.
+      Recherche globale et Ma collection pouvant mélanger beaucoup de séries, le premier
+      filtrage par une rareté rare peut déclencher plusieurs requêtes réseau (mise en cache
+      ensuite, donc sans coût les fois suivantes dans la session).
 - [x] **Liste d'échange** : regrouper automatiquement les doubles (≥ 2 exemplaires d'une
       **même version** — Normale et Holo comptent comme deux cartes distinctes)
 - [ ] **Partage — accès géré entre comptes** (choix retenu plutôt que le lien anonyme) :
