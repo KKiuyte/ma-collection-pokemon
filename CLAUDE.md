@@ -67,26 +67,44 @@ git add public/catalogue-fr.json && git commit && git push   # déploie
 - **Auth** : Firebase Authentication — Google + email/mot de passe (activés).
 - **Base** : Firestore, document `collections/{uid}` (chaque personne n'accède qu'à la
   sienne, via les règles de sécurité). Champs `cards` et `wishlist`.
-- **Partage — étapes 1a, 1b-1, 1b-2 et 2 faites** :
+- **Partage — étapes 1a, 1b-1, 1b-2, 2 et 3 faites** :
   - **Pseudo (1a)** : `users/{uid}` (`{pseudo, pseudoLower, email}`, profil public lisible par
     tout membre connecté) + registre `pseudos/{minuscule} = {uid}` (unicité insensible à la casse
-    + recherche pseudo→compte). Réservation atomique par `runTransaction`.
+    + recherche pseudo→compte). Réservation atomique par `runTransaction`. Reste géré dans
+    « Mon compte » : affiché en lecture seule une fois défini, bouton **Modifier** → confirmation
+    (`confirm()`) avant d'écraser un pseudo existant (`pseudoEditing`) — le tout premier réglage
+    reste direct. `loadUserProfile()` retente une fois en cas d'échec réseau et distingue
+    « profil pas encore vérifié » (`profileLoadFailed`) de « pas de pseudo », pour ne jamais
+    proposer d'en recréer un par erreur sur un appareil neuf.
+  - **Toute la gestion des accès (octroi, comptes autorisés, demandes) vit dans l'onglet
+    « Partagé », pas dans « Mon compte »** — seul le pseudo reste dans « Mon compte ». L'onglet
+    « Partagé » a 3 sous-onglets (`sharedSubTab`, variable locale à la vue, non persistée) :
+    **Partages** (`renderSharedFeedPanel`, ex-contenu unique de `renderShared`), **Comptes
+    partagés** (`renderShareGrantsPanel`, ex-octroi) et **Demandes d'accès**
+    (`renderShareRequestsPanel`, reçues + envoyer une nouvelle demande). `renderShared()` est la
+    coquille commune : sous-onglets + `#shareStatus` (retour des actions, équivalent de
+    `#authStatus` mais pour cette vue) + délégation au panneau actif.
   - **Octroi côté propriétaire (1b-1)** : copies publiées par périmètre `shared_wishlist/{uid}` et
     `shared_trades/{uid}` = `{ owner, ownerPseudo, viewers:[uid…], data, updatedAt }`. Lisibles par
     le propriétaire ou une personne dans `viewers`. `SHARE_SCOPES` liste les périmètres (extensible
-    à la collection complète). Autoriser/révoquer par pseudo dans « Mon compte » ; `saveCloud()`
-    republie les copies (`refreshPublishedShares`) pour les garder à jour.
-  - **Lecture seule côté destinataire (1b-2)** : onglet « Partagé » (`renderShared()`), requête
+    à la collection complète). Autoriser/révoquer par pseudo dans l'onglet Partagé → Comptes
+    partagés ; `saveCloud()` republie les copies (`refreshPublishedShares`) pour les garder à jour.
+  - **Lecture seule côté destinataire (1b-2)** : sous-onglet Partages, requête
     `query(collection(db, s.col), where("viewers","array-contains", uid))` sur chaque périmètre de
     `SHARE_SCOPES` (`loadShared()`). Groupé par pseudo du propriétaire ; réutilise `cardButton`
-    (souhaits, en grille) et le style `trade-row` (échanges). Cliquer sur une carte ouvre la fiche
-    habituelle — elle modifie TA collection à toi, jamais celle du propriétaire. Chargé une seule
-    fois par connexion (`sharedLoaded`), bouton « Actualiser » pour reforcer.
+    (souhaits, en grille) et le style `trade-row` (échanges, via le helper `tradeRow()`). Cliquer
+    sur une carte ouvre la fiche habituelle — elle modifie TA collection à toi, jamais celle du
+    propriétaire. Chargé une seule fois par connexion (`sharedLoaded`), bouton « Actualiser ».
   - **Demandes d'accès (2)** : collection `share_requests/{proprio}_{demandeur}_{périmètre}`
     (id déterministe — redemander après refus republie le même document). Le demandeur crée sa
-    demande (`sendAccessRequest`) ; le propriétaire la voit en haut de « Mon compte »
-    (`loadShareRequests`) avec Accepter (réutilise `grantAccess`, puis supprime la demande) ou
-    Refuser (supprime). Le demandeur voit ses demandes en attente (chips annulables).
+    demande (`sendAccessRequest`) depuis le sous-onglet Demandes d'accès ; le propriétaire y voit
+    ses demandes reçues (`loadShareRequests`) avec Accepter (réutilise `grantAccess`, puis supprime
+    la demande) ou Refuser (supprime). Le demandeur voit ses demandes en attente (chips annulables).
+  - **Suggestions d'échange automatiques (3)** : dans le sous-onglet Partages, `tradeSuggestions()`
+    croise `sharedList` (déjà chargé) avec ta wishlist locale et `tradeEntries()` — aucune donnée
+    supplémentaire stockée. Par personne : ses échanges partagés présents dans ta wishlist
+    (« tu pourrais demander ») et tes doubles présents dans sa wishlist partagée (« tu pourrais
+    proposer »).
   - **Règles de sécurité versionnées dans `firestore.rules`** — ⚠️ NON déployées par le workflow
     (hosting seulement) : à (re)publier à la main dans la console Firebase (Firestore → Règles) ou
     `firebase deploy --only firestore:rules` **à chaque modification de ce fichier**.

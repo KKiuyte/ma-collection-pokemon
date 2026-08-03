@@ -133,6 +133,17 @@ réactiver le Worker Cloudflare (`collection-sync.ariesam.workers.dev`) comme in
         seulement si les deux périmètres sont partagés dans les deux sens ; sinon une seule
         direction s'affiche, ce qui reste utile. Réutilise le style `trade-row` existant
         (helper `tradeRow()` factorisé, aussi utilisé par les listes brutes de la même vue).
+  - [x] **4 — Réorganisation : tout dans l'onglet « Partagé »** : l'octroi d'accès et les
+        demandes vivaient dans « Mon compte », mélangés avec le pseudo — déplacés dans l'onglet
+        « Partagé », qui gagne 3 sous-onglets : **Partages** (ce qu'on te partage, ex-contenu
+        unique de l'onglet), **Comptes partagés** (à qui tu donnes accès, ex-« Partage en lecture
+        seule ») et **Demandes d'accès** (reçues + en envoyer une nouvelle). « Mon compte » ne
+        garde que le pseudo et la déconnexion. Au passage : le pseudo déjà enregistré s'affiche en
+        lecture seule avec un bouton **Modifier**, qui ouvre le champ puis demande confirmation
+        (`confirm()`) avant d'écraser un pseudo existant — évite un changement accidentel en un
+        clic, vu que c'est ce qui permet aux autres de te retrouver. Corrigé au passage : un bouton
+        `.big-btn` avec `flex:0 0 auto` sans `width:auto` gardait son `width:100%` comme base flex
+        (`flex-shrink:0` empêchant de rétrécir) → débordement horizontal sur mobile.
 
   > **Écarté :** lien anonyme (pas de contrôle par personne) et intermédiaire serveur
   > (Cloud Function / Worker : surdimensionné pour de la lecture seule). Approche B « copie

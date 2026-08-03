@@ -161,6 +161,12 @@ body {
   border-radius:20px; border:none; background:var(--surface-2); color:var(--chip-fg); transition:.15s; white-space:nowrap; }
 .chip.on { background:var(--navy); color:#fff; }
 
+/* --- sous-onglets (ex. Partagé : Partages / Comptes partagés / Demandes d'accès) --- */
+.subtabs { display:flex; gap:6px; flex-wrap:wrap; margin-bottom:16px; }
+.subtab { font-family:inherit; font-weight:600; font-size:12.5px; cursor:pointer; padding:7px 12px;
+  border-radius:20px; border:none; background:var(--surface-2); color:var(--chip-fg); transition:.15s; white-space:nowrap; }
+.subtab.on { background:var(--navy); color:#fff; }
+
 /* --- sélecteurs rareté / tri --- */
 .ctrl-select { width:100%; font-family:inherit; font-weight:600; font-size:13.5px; color:var(--ink);
   padding:9px 11px; border-radius:10px; border:1px solid var(--line); background:var(--field);
@@ -676,10 +682,13 @@ function save(){ saveLocal(); scheduleCloudSave(); }
 function saveNow(){ saveLocal(); clearTimeout(saveTimer); saveCloud(); }
 
 // --- connexion & stockage en ligne (Firebase) ---
-function setAuthStatus(text, ok){
-  const el = document.getElementById("authStatus");
+function setStatusMsg(id, text, ok){
+  const el = document.getElementById(id);
   if (el){ el.textContent = text || ""; el.style.color = ok === false ? "#d0392b" : (ok ? "#2e9a4f" : "var(--muted)"); }
 }
+function setAuthStatus(text, ok){ setStatusMsg("authStatus", text, ok); }
+// message de retour pour les actions de partage (onglet Partagé, hors de la fenêtre Mon compte)
+function setShareStatus(text, ok){ setStatusMsg("shareStatus", text, ok); }
 function updateAccountButton(){
   const b = document.getElementById("syncBtn");
   if (b) b.classList.toggle("on", !!currentUser);
@@ -753,7 +762,7 @@ function onLogout(){
   currentUser = null;
   userProfile = null;
   myGrants = { wishlist: [], trades: [] };
-  sharedList = []; sharedLoaded = false; pseudoEditing = false;
+  sharedList = []; sharedLoaded = false; pseudoEditing = false; sharedSubTab = "feed";
   incomingRequests = []; outgoingRequests = [];
   updateAccountButton();
   renderAccountBody();
@@ -864,25 +873,25 @@ async function refreshPublishedShares(){
 async function grantAccess(key, pseudoRaw){
   const pseudo = (pseudoRaw || "").trim();
   if (!pseudo) return;
-  if (!PSEUDO_RE.test(pseudo)){ setAuthStatus("Pseudo invalide.", false); return; }
+  if (!PSEUDO_RE.test(pseudo)){ setShareStatus("Pseudo invalide.", false); return; }
   const lower = pseudo.toLowerCase();
-  if (userProfile && userProfile.pseudoLower === lower){ setAuthStatus("C'est ton propre pseudo.", false); return; }
-  setAuthStatus("Recherche du pseudo…");
+  if (userProfile && userProfile.pseudoLower === lower){ setShareStatus("C'est ton propre pseudo.", false); return; }
+  setShareStatus("Recherche du pseudo…");
   let uid = null;
   try { const snap = await getDoc(doc(db, "pseudos", lower)); if (snap.exists()) uid = snap.data().uid; } catch {}
-  if (!uid){ setAuthStatus("Aucun membre avec ce pseudo.", false); return; }
-  if (myGrants[key].some(g => g.uid === uid)){ setAuthStatus("Cette personne a déjà accès.", false); return; }
+  if (!uid){ setShareStatus("Aucun membre avec ce pseudo.", false); return; }
+  if (myGrants[key].some(g => g.uid === uid)){ setShareStatus("Cette personne a déjà accès.", false); return; }
   const realPseudo = await pseudoOf(uid);
   myGrants[key].push({ uid, pseudo: realPseudo });
   await publishScope(key);
   const label = SHARE_SCOPES.find(s => s.key === key).label.toLowerCase();
-  setAuthStatus(`Accès à tes ${label} accordé à ${realPseudo}.`, true);
-  renderAccountBody();
+  renderShared();
+  setShareStatus(`Accès à tes ${label} accordé à ${realPseudo}.`, true);
 }
 async function revokeAccess(key, uid){
   myGrants[key] = myGrants[key].filter(g => g.uid !== uid);
   await publishScope(key);
-  renderAccountBody();
+  renderShared();
 }
 
 // --- partage : demandes d'accès (étape 2) ---
@@ -906,13 +915,13 @@ async function loadShareRequests(){
 async function sendAccessRequest(key, pseudoRaw){
   const pseudo = (pseudoRaw || "").trim();
   if (!pseudo) return;
-  if (!PSEUDO_RE.test(pseudo)){ setAuthStatus("Pseudo invalide.", false); return; }
+  if (!PSEUDO_RE.test(pseudo)){ setShareStatus("Pseudo invalide.", false); return; }
   const lower = pseudo.toLowerCase();
-  if (userProfile && userProfile.pseudoLower === lower){ setAuthStatus("C'est ton propre pseudo.", false); return; }
-  setAuthStatus("Recherche du pseudo…");
+  if (userProfile && userProfile.pseudoLower === lower){ setShareStatus("C'est ton propre pseudo.", false); return; }
+  setShareStatus("Recherche du pseudo…");
   let ownerUid = null;
   try { const snap = await getDoc(doc(db, "pseudos", lower)); if (snap.exists()) ownerUid = snap.data().uid; } catch {}
-  if (!ownerUid){ setAuthStatus("Aucun membre avec ce pseudo.", false); return; }
+  if (!ownerUid){ setShareStatus("Aucun membre avec ce pseudo.", false); return; }
   const label = SHARE_SCOPES.find(s => s.key === key).label;
   const realOwnerPseudo = await pseudoOf(ownerUid);
   try {
@@ -921,30 +930,29 @@ async function sendAccessRequest(key, pseudoRaw){
       requester: currentUser.uid, requesterPseudo: (userProfile && userProfile.pseudo) || "Un membre",
       scopeKey: key, scopeLabel: label, createdAt: Date.now(),
     });
-    setAuthStatus(`Demande envoyée à ${realOwnerPseudo} pour ses ${label.toLowerCase()}.`, true);
     await loadShareRequests();
-    renderAccountBody();
-  } catch { setAuthStatus("Impossible d'envoyer la demande. Réessaie.", false); }
+    renderShared();
+    setShareStatus(`Demande envoyée à ${realOwnerPseudo} pour ses ${label.toLowerCase()}.`, true);
+  } catch { setShareStatus("Impossible d'envoyer la demande. Réessaie.", false); }
 }
 
 async function cancelRequest(id){
   try { await deleteDoc(doc(db, "share_requests", id)); } catch {}
   outgoingRequests = outgoingRequests.filter(r => r.id !== id);
-  renderAccountBody();
+  renderShared();
 }
 
 async function declineRequest(id){
   try { await deleteDoc(doc(db, "share_requests", id)); } catch {}
   incomingRequests = incomingRequests.filter(r => r.id !== id);
-  renderAccountBody();
+  renderShared();
 }
 
-// accepter = le même octroi que « Mon compte » ferait à la main, puis la demande disparaît
+// accepter = le même octroi que le ferait le propriétaire à la main, puis la demande disparaît
 async function approveRequest(req){
-  await grantAccess(req.scopeKey, req.requesterPseudo);
   try { await deleteDoc(doc(db, "share_requests", req.id)); } catch {}
   incomingRequests = incomingRequests.filter(r => r.id !== req.id);
-  renderAccountBody();
+  await grantAccess(req.scopeKey, req.requesterPseudo); // ré-affiche et donne le message final
 }
 
 // --- partage : ce qu'on me partage (étape 1b-2, côté destinataire) ---
@@ -1858,40 +1866,77 @@ function renderTradeSuggestions(container, byId){
   });
 }
 
-// --- vue « Partagé » : ce que d'autres membres t'ont autorisé à voir (lecture seule) ---
-// Cliquer sur une carte ouvre la fiche habituelle : ça gère TA collection à toi (ex. l'ajouter
-// à tes souhaits), jamais celle de la personne qui partage — sa collection reste intouchée.
+// --- vue « Partagé » : 3 sous-onglets --------------------------------------------------
+// Feed  : ce que d'autres membres t'ont autorisé à voir (lecture seule) + suggestions d'échange.
+// Grants: à qui TU as donné accès à tes souhaits/échanges (octroi, ex-« Mon compte »).
+// Requests: demandes d'accès reçues (accepter/refuser) et envoyées (nouvelle demande, en attente).
+let sharedSubTab = "feed"; // "feed" | "grants" | "requests"
+const SHARED_SUBTABS = [
+  { key: "feed",     label: "Partages" },
+  { key: "grants",   label: "Comptes partagés" },
+  { key: "requests", label: "Demandes d'accès" },
+];
+function sharedSubTabBar(){
+  const wrap = document.createElement("div");
+  wrap.className = "subtabs";
+  wrap.innerHTML = SHARED_SUBTABS.map(t =>
+    `<button type="button" class="subtab${sharedSubTab === t.key ? " on" : ""}" data-sub="${t.key}">${t.label}</button>`
+  ).join("");
+  wrap.querySelectorAll(".subtab").forEach(b => b.onclick = () => {
+    if (sharedSubTab === b.dataset.sub) return;
+    sharedSubTab = b.dataset.sub;
+    renderShared();
+  });
+  return wrap;
+}
 async function renderShared(){
   if (!currentUser){
     content.innerHTML = emptyMsg(ICONS.eye, "Connecte-toi pour voir ce qu'on te partage.");
     return;
   }
+  content.innerHTML = "";
+  content.appendChild(sharedSubTabBar());
+  const status = document.createElement("p");
+  status.id = "shareStatus";
+  status.style.cssText = "text-align:center;font-weight:800;font-size:14px;margin:0 0 12px;min-height:1.1em;";
+  content.appendChild(status);
+  const panel = document.createElement("div");
+  content.appendChild(panel);
+  if (sharedSubTab === "grants") renderShareGrantsPanel(panel);
+  else if (sharedSubTab === "requests") renderShareRequestsPanel(panel);
+  else await renderSharedFeedPanel(panel);
+}
+
+// Sous-onglet « Partages » : ce qu'on te partage (lecture seule).
+// Cliquer sur une carte ouvre la fiche habituelle : ça gère TA collection à toi (ex. l'ajouter
+// à tes souhaits), jamais celle de la personne qui partage — sa collection reste intouchée.
+async function renderSharedFeedPanel(panel){
   if (!sharedLoaded){
-    content.innerHTML = `<div class="msg"><div class="spin"></div>Chargement de ce qu'on te partage…</div>`;
+    panel.innerHTML = `<div class="msg"><div class="spin"></div>Chargement de ce qu'on te partage…</div>`;
     await loadShared();
     sharedLoaded = true;
-    if (view === "shared") renderShared();
+    if (view === "shared" && sharedSubTab === "feed") renderShared();
     return;
   }
   if (!sharedList.length){
-    content.innerHTML = emptyMsg(ICONS.eye, "Personne ne t'a encore partagé ses souhaits ou ses échanges.<br>Demande à un membre de t'autoriser dans « Mon compte ».");
+    panel.innerHTML = emptyMsg(ICONS.eye, "Personne ne t'a encore partagé ses souhaits ou ses échanges.<br>Demande à un membre de t'autoriser dans « Demandes d'accès ».");
     return;
   }
   if (!allCards){
-    content.innerHTML = `<div class="msg"><div class="spin"></div>Préparation… (une seule fois)</div>`;
+    panel.innerHTML = `<div class="msg"><div class="spin"></div>Préparation… (une seule fois)</div>`;
     await loadAllCards();
-    if (allCards && view === "shared") renderShared();
+    if (allCards && view === "shared" && sharedSubTab === "feed") renderShared();
     return;
   }
   const byId = {};
   for (const c of allCards) byId[c.id] = c;
 
-  content.innerHTML = "";
+  panel.innerHTML = "";
   const names = [...new Set(sharedList.map(s => s.ownerPseudo))];
   const hint = document.createElement("p");
   hint.className = "hint";
   hint.textContent = `Partagé par ${names.length} membre${names.length>1?"s":""} · lecture seule`;
-  content.appendChild(hint);
+  panel.appendChild(hint);
 
   const refresh = document.createElement("button");
   refresh.type = "button";
@@ -1899,9 +1944,9 @@ async function renderShared(){
   refresh.style.cssText = "width:auto;display:inline-block;margin-bottom:14px;";
   refresh.textContent = "Actualiser";
   refresh.onclick = () => { sharedLoaded = false; renderShared(); };
-  content.appendChild(refresh);
+  panel.appendChild(refresh);
 
-  renderTradeSuggestions(content, byId);
+  renderTradeSuggestions(panel, byId);
 
   for (const s of sharedList){
     const isWish = s.scopeKey === "wishlist";
@@ -1913,13 +1958,13 @@ async function renderShared(){
     const head = document.createElement("div");
     head.className = "section-head";
     head.innerHTML = `<span>${esc(s.scopeLabel)} de ${esc(s.ownerPseudo)}</span><small>${count}</small>`;
-    content.appendChild(head);
+    panel.appendChild(head);
 
     if (isWish){
       const grid = document.createElement("div");
       grid.className = "grid";
       sortCards(cardsList).forEach(c => grid.appendChild(cardButton(c)));
-      content.appendChild(grid);
+      panel.appendChild(grid);
     } else {
       const list = document.createElement("div");
       list.className = "trade-list";
@@ -1927,9 +1972,89 @@ async function renderShared(){
         const card = byId[e.id];
         list.appendChild(tradeRow(card, e.v, e.x, `${e.x} en trop`));
       });
-      content.appendChild(list);
+      panel.appendChild(list);
     }
   }
+}
+
+// Sous-onglet « Comptes partagés » : à qui j'autorise l'accès (ex-« Partage en lecture seule »
+// de Mon compte). Nécessite un pseudo (c'est ce nom que la personne autorisée verra).
+function renderShareGrantsPanel(panel){
+  const p = userProfile && userProfile.pseudo;
+  if (!p){
+    panel.innerHTML = emptyMsg(ICONS.eye, "Choisis d'abord un pseudo dans « Mon compte » pour pouvoir partager ta collection.");
+    return;
+  }
+  let html = `<p class="pricenote" style="text-align:left;margin:0 0 12px;">Autorise quelqu'un, par son pseudo, à voir en lecture seule :</p>`;
+  for (const s of SHARE_SCOPES){
+    const chips = myGrants[s.key].map(g =>
+      `<span class="grant-chip">${esc(g.pseudo)}<button class="grant-remove" data-k="${s.key}" data-uid="${esc(g.uid)}" aria-label="Retirer ${esc(g.pseudo)}">&times;</button></span>`
+    ).join("");
+    html += `
+      <div class="field">
+        <label>${s.label}</label>
+        <div class="grant-row">
+          <input class="grant-input" data-k="${s.key}" maxlength="20" autocomplete="off" spellcheck="false" placeholder="pseudo à autoriser">
+          <button type="button" class="grant-btn" data-k="${s.key}">Autoriser</button>
+        </div>
+        ${chips ? `<div class="grant-list">${chips}</div>` : `<p class="grant-empty">Personne pour l'instant.</p>`}
+      </div>`;
+  }
+  panel.innerHTML = html;
+  panel.querySelectorAll(".grant-btn").forEach(b => b.onclick = () => {
+    const input = b.parentElement.querySelector(".grant-input");
+    grantAccess(b.dataset.k, input.value);
+    input.value = "";
+  });
+  panel.querySelectorAll(".grant-remove[data-uid]").forEach(b => b.onclick = () => revokeAccess(b.dataset.k, b.dataset.uid));
+}
+
+// Sous-onglet « Demandes d'accès » : reçues (accepter/refuser) + envoyer une nouvelle demande.
+function renderShareRequestsPanel(panel){
+  let html = "";
+  if (incomingRequests.length){
+    html += `<div class="ctrl-heading" style="margin-bottom:6px;">Demandes reçues</div>`;
+    for (const r of incomingRequests){
+      html += `
+        <div class="request-row" data-req="${esc(r.id)}">
+          <span class="request-text">${esc(r.requesterPseudo)} veut voir tes ${esc(r.scopeLabel.toLowerCase())}</span>
+          <span class="request-actions">
+            <button type="button" class="request-btn accept" data-req="${esc(r.id)}">Accepter</button>
+            <button type="button" class="request-btn decline" data-req="${esc(r.id)}">Refuser</button>
+          </span>
+        </div>`;
+    }
+    html += `<div class="divider" style="margin:14px 0;"></div>`;
+  }
+  const p = userProfile && userProfile.pseudo;
+  if (!p){
+    html += `<p class="pricenote" style="text-align:left;margin:0;">Choisis d'abord un pseudo dans « Mon compte » pour pouvoir demander l'accès à quelqu'un.</p>`;
+  } else {
+    const reqChips = outgoingRequests.map(r =>
+      `<span class="grant-chip">${esc(r.ownerPseudo)} · ${esc(r.scopeLabel)}<button class="grant-remove" data-req="${esc(r.id)}" aria-label="Annuler la demande à ${esc(r.ownerPseudo)}">&times;</button></span>`
+    ).join("");
+    html += `
+      <div class="ctrl-heading" style="margin-bottom:10px;">Demander l'accès à quelqu'un</div>
+      <div class="field">
+        <input id="reqPseudoInput" maxlength="20" autocomplete="off" spellcheck="false" placeholder="pseudo de la personne" style="${inputStyle}">
+        <div class="field-row" style="margin-top:8px;">
+          ${SHARE_SCOPES.map(s => `<button type="button" class="grant-btn req-send-btn" data-k="${s.key}" style="flex:1;">Ses ${s.label.toLowerCase()}</button>`).join("")}
+        </div>
+        ${reqChips ? `<div class="grant-list">${reqChips}</div>` : ``}
+      </div>`;
+  }
+  panel.innerHTML = html || emptyMsg(ICONS.eye, "Rien pour l'instant.");
+  panel.querySelectorAll(".request-btn.accept").forEach(b => b.onclick = () => {
+    const req = incomingRequests.find(r => r.id === b.dataset.req);
+    if (req) approveRequest(req);
+  });
+  panel.querySelectorAll(".request-btn.decline").forEach(b => b.onclick = () => declineRequest(b.dataset.req));
+  panel.querySelectorAll(".req-send-btn").forEach(b => b.onclick = () => {
+    const input = document.getElementById("reqPseudoInput");
+    sendAccessRequest(b.dataset.k, input.value);
+    input.value = "";
+  });
+  panel.querySelectorAll(".grant-remove[data-req]").forEach(b => b.onclick = () => cancelRequest(b.dataset.req));
 }
 
 // --- statistiques : progression par bloc + répartition par rareté ---
@@ -2201,7 +2326,7 @@ function renderAccountBody(){
        </div>
        <div class="field-row" style="margin-bottom:14px;">
          <button class="big-btn btn-add" id="btnPseudo" style="flex:1;">${p ? "Confirmer le nouveau pseudo" : "Enregistrer le pseudo"}</button>
-         ${p ? `<button type="button" class="big-btn" id="btnCancelPseudo" style="flex:0 0 auto;background:var(--surface-2);color:var(--ink);">Annuler</button>` : ``}
+         ${p ? `<button type="button" class="big-btn" id="btnCancelPseudo" style="flex:0 0 auto;width:auto;background:var(--surface-2);color:var(--ink);">Annuler</button>` : ``}
        </div>`;
     } else {
       html += `
@@ -2209,63 +2334,12 @@ function renderAccountBody(){
          <label>Ton pseudo</label>
          <div class="field-row" style="align-items:center;">
            <p style="flex:1;font-weight:800;font-size:15px;margin:0;">${esc(p)}</p>
-           <button type="button" class="big-btn" id="btnEditPseudo" style="flex:0 0 auto;background:var(--surface-2);color:var(--ink);">Modifier</button>
+           <button type="button" class="big-btn" id="btnEditPseudo" style="flex:0 0 auto;width:auto;background:var(--surface-2);color:var(--ink);">Modifier</button>
          </div>
        </div>`;
     }
 
-    if (incomingRequests.length){
-      html += `<div class="ctrl-heading" style="margin-bottom:6px;">Demandes reçues</div>`;
-      for (const r of incomingRequests){
-        html += `
-          <div class="request-row" data-req="${esc(r.id)}">
-            <span class="request-text">${esc(r.requesterPseudo)} veut voir tes ${esc(r.scopeLabel.toLowerCase())}</span>
-            <span class="request-actions">
-              <button type="button" class="request-btn accept" data-req="${esc(r.id)}">Accepter</button>
-              <button type="button" class="request-btn decline" data-req="${esc(r.id)}">Refuser</button>
-            </span>
-          </div>`;
-      }
-    }
-
-    html +=
-      `<div class="divider" style="margin:2px 0 14px;"></div>
-       <div class="ctrl-heading" style="margin-bottom:10px;">Partage en lecture seule</div>`;
-
-    if (!p){
-      html += `<p class="pricenote" style="text-align:left;margin:0 0 14px;">Choisis d'abord un pseudo ci-dessus pour pouvoir partager.</p>`;
-    } else {
-      html += `<p class="pricenote" style="text-align:left;margin:0 0 12px;">Autorise quelqu'un, par son pseudo, à voir en lecture seule :</p>`;
-      for (const s of SHARE_SCOPES){
-        const chips = myGrants[s.key].map(g =>
-          `<span class="grant-chip">${esc(g.pseudo)}<button class="grant-remove" data-k="${s.key}" data-uid="${esc(g.uid)}" aria-label="Retirer ${esc(g.pseudo)}">&times;</button></span>`
-        ).join("");
-        html += `
-          <div class="field">
-            <label>${s.label}</label>
-            <div class="grant-row">
-              <input class="grant-input" data-k="${s.key}" maxlength="20" autocomplete="off" spellcheck="false" placeholder="pseudo à autoriser">
-              <button type="button" class="grant-btn" data-k="${s.key}">Autoriser</button>
-            </div>
-            ${chips ? `<div class="grant-list">${chips}</div>` : `<p class="grant-empty">Personne pour l'instant.</p>`}
-          </div>`;
-      }
-
-      const reqChips = outgoingRequests.map(r =>
-        `<span class="grant-chip">${esc(r.ownerPseudo)} · ${esc(r.scopeLabel)}<button class="grant-remove" data-req="${esc(r.id)}" aria-label="Annuler la demande à ${esc(r.ownerPseudo)}">&times;</button></span>`
-      ).join("");
-      html += `
-        <div class="divider" style="margin:2px 0 14px;"></div>
-        <div class="ctrl-heading" style="margin-bottom:10px;">Demander l'accès à quelqu'un</div>
-        <div class="field">
-          <input id="reqPseudoInput" maxlength="20" autocomplete="off" spellcheck="false" placeholder="pseudo de la personne" style="${inputStyle}">
-          <div class="field-row" style="margin-top:8px;">
-            ${SHARE_SCOPES.map(s => `<button type="button" class="grant-btn req-send-btn" data-k="${s.key}" style="flex:1;">Ses ${s.label.toLowerCase()}</button>`).join("")}
-          </div>
-          ${reqChips ? `<div class="grant-list">${reqChips}</div>` : ``}
-        </div>`;
-    }
-
+    html += `<p class="pricenote" style="text-align:left;margin:0 0 14px;">Gère qui peut voir ta collection et tes demandes d'accès dans l'onglet « Partagé ».</p>`;
     html += `<button class="big-btn btn-remove" id="btnLogout" style="margin-top:6px;">Se déconnecter</button>`;
     body.innerHTML = html;
 
@@ -2282,23 +2356,6 @@ function renderAccountBody(){
     } else {
       document.getElementById("btnEditPseudo").onclick = () => { pseudoEditing = true; renderAccountBody(); };
     }
-    body.querySelectorAll(".grant-btn:not(.req-send-btn)").forEach(b => b.onclick = () => {
-      const input = b.parentElement.querySelector(".grant-input");
-      grantAccess(b.dataset.k, input.value);
-      input.value = "";
-    });
-    body.querySelectorAll(".req-send-btn").forEach(b => b.onclick = () => {
-      const input = document.getElementById("reqPseudoInput");
-      sendAccessRequest(b.dataset.k, input.value);
-      input.value = "";
-    });
-    body.querySelectorAll(".grant-remove[data-uid]").forEach(b => b.onclick = () => revokeAccess(b.dataset.k, b.dataset.uid));
-    body.querySelectorAll(".grant-remove[data-req]").forEach(b => b.onclick = () => cancelRequest(b.dataset.req));
-    body.querySelectorAll(".request-btn.accept").forEach(b => b.onclick = () => {
-      const req = incomingRequests.find(r => r.id === b.dataset.req);
-      if (req) approveRequest(req);
-    });
-    body.querySelectorAll(".request-btn.decline").forEach(b => b.onclick = () => declineRequest(b.dataset.req));
     document.getElementById("btnLogout").onclick = () => signOut(auth);
     return;
   }
