@@ -597,6 +597,7 @@ let blocksReady = false;  // structure des blocs chargée ?
 let saveTimer = null;      // pour regrouper les sauvegardes en ligne
 let currentUser = null;    // utilisateur connecté (null = déconnecté)
 let userProfile = null;    // profil public { pseudo, pseudoLower, email } ou null
+let profileLoadFailed = false; // la lecture du profil a échoué (réseau) : ne pas confondre avec "pas de pseudo"
 let cloudUnsub = null;     // pour arrêter l'écoute temps réel
 let interactiveLogin = false; // connexion déclenchée par un clic (vs. session restaurée)
 // pseudo : 3 à 20 caractères, lettres/chiffres/tiret/underscore
@@ -720,7 +721,9 @@ async function onLogin(user){
   await loadMyGrants();
   await loadShareRequests();
   renderAccountBody(); // ré-affiche avec le pseudo et les partages une fois chargés
-  if (!userProfile || !userProfile.pseudo)
+  if (profileLoadFailed)
+    setAuthStatus("Impossible de vérifier ton pseudo (connexion). Ouvre « Mon compte » pour réessayer.", false);
+  else if (!userProfile || !userProfile.pseudo)
     setAuthStatus("Choisis un pseudo ci-dessous pour pouvoir partager ta collection plus tard.");
   try {
     const ref = doc(db, "collections", user.uid);
@@ -757,18 +760,31 @@ function onLogout(){
 }
 
 // --- pseudo (profil public, base du partage à venir) ---
+// Sur un appareil "neuf" (pas de cache local), la toute première lecture peut échouer
+// (réseau lent, jeton d'authentification pas encore prêt) : un essai suffit rarement à
+// distinguer "pas encore de pseudo" d'un simple raté réseau. On retente une fois, et en cas
+// d'échec persistant on le signale via profileLoadFailed plutôt que de prétendre à tort
+// qu'il n'y a pas de pseudo (ce qui pousserait à en réenregistrer un nouveau pour rien).
 async function loadUserProfile(){
-  if (!currentUser){ userProfile = null; return; }
-  try {
-    const snap = await getDoc(doc(db, "users", currentUser.uid));
-    userProfile = snap.exists() ? snap.data() : null;
-  } catch { userProfile = null; }
+  if (!currentUser){ userProfile = null; profileLoadFailed = false; return; }
+  profileLoadFailed = false;
+  for (let attempt = 0; attempt < 2; attempt++){
+    try {
+      const snap = await getDoc(doc(db, "users", currentUser.uid));
+      userProfile = snap.exists() ? snap.data() : null;
+      return;
+    } catch {
+      if (attempt === 0) await new Promise(r => setTimeout(r, 800));
+    }
+  }
+  profileLoadFailed = true;
 }
 
 // Réserve un pseudo de façon atomique : le registre `pseudos/{minuscule}` garantit
 // l'unicité (insensible à la casse) et sert plus tard à retrouver un compte par son pseudo.
 async function savePseudo(raw){
   if (!currentUser) return false;
+  if (profileLoadFailed){ setAuthStatus("Profil pas encore vérifié : réessaie d'abord.", false); return false; }
   const pseudo = (raw || "").trim();
   if (!PSEUDO_RE.test(pseudo)){
     setAuthStatus("Pseudo invalide : 3 à 20 caractères (lettres, chiffres, - ou _).", false);
@@ -2148,6 +2164,26 @@ function renderAccountBody(){
   const body = document.getElementById("authBody");
   if (!body) return;
   if (currentUser){
+    if (profileLoadFailed){
+      // On ne sait pas si un pseudo existe déjà : ne surtout pas montrer le formulaire
+      // d'enregistrement (il ferait croire à un nouveau compte et risquerait de créer un
+      // second pseudo en plus de l'existant). On propose seulement de réessayer la lecture.
+      body.innerHTML =
+        `<p style="text-align:center;font-weight:800;margin:0 0 16px;">Connecté : ${currentUser.email || "compte Google"}</p>
+         <p class="pricenote" style="text-align:left;margin:0 0 14px;">Impossible de vérifier ton profil (pseudo, partages) pour l'instant — vérifie ta connexion.</p>
+         <button class="big-btn btn-add" id="btnRetryProfile" style="margin-bottom:14px;">Réessayer</button>
+         <button class="big-btn btn-remove" id="btnLogout" style="margin-top:6px;">Se déconnecter</button>`;
+      document.getElementById("btnRetryProfile").onclick = async () => {
+        setAuthStatus("Nouvelle tentative…");
+        await loadUserProfile();
+        await loadMyGrants();
+        await loadShareRequests();
+        renderAccountBody();
+        setAuthStatus(profileLoadFailed ? "Toujours impossible de vérifier ton profil." : "", !profileLoadFailed);
+      };
+      document.getElementById("btnLogout").onclick = () => signOut(auth);
+      return;
+    }
     const p = userProfile && userProfile.pseudo;
     let html =
       `<p style="text-align:center;font-weight:800;margin:0 0 16px;">Connecté : ${currentUser.email || "compte Google"}</p>
