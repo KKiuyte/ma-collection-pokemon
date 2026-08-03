@@ -147,8 +147,20 @@ wishlist[idCarte] = true
   - Reverse Holo d'une carte **sans** Holo distincte → prix `-holo` Cardmarket (€) ;
   - Reverse Holo d'une carte **avec** Holo distincte → repli TCGplayer ($), car
     Cardmarket ne distingue pas les deux. Limite des données, pas un bug.
-  - Surveiller le futur champ `variants_detailed` de TCGdex : il donnera les prix par
-    version et réglera ce dernier cas.
+  - Le champ `variants_detailed` (repéré le 2026-08-03) **existe déjà** dans `/cards/{id}`
+    (un tableau `{type, size, variantId, pricing}` par version, prix inclus) — ce n'est plus
+    « à venir ». Pas encore exploité dans `priceForVariant()` : à intégrer quand il sera
+    fiable, il réglera le cas Reverse Holo ci-dessus avec un prix propre par version.
+  - ⚠️ **Décalage observé entre le dépôt source et l'API publique** : pour une carte toute
+    récente (`me04-007`, série sortie 22/05/2026), le dépôt GitHub public
+    (`tcgdex/cards-database`, `data/{Série}/{Set}/{numéro}.ts`) listait déjà la version
+    Reverse Holo, mais `/cards/{id}` (et `variants_detailed`) ne la renvoyait pas encore —
+    `variants.reverse` restait à `false` pour toute la série (`cardCount.reverse: 0`).
+    Décidé de ne rien coder côté appli (2026-08-03) : c'est un délai de publication TCGdex,
+    pas un manque permanent ni un bug d'ici — se corrige tout seul quand ils republient
+    l'API. Se reproduira probablement à chaque sortie de série récente ; si ça devient
+    gênant, l'idée mise de côté était un bouton « ajouter quand même une autre version »
+    sur la fiche carte (contournerait `variantCache` pour n'importe quelle version).
 - Regroupement des séries par **bloc/génération** via `/series` et `/series/{id}`.
 
 ## ⚠️ Pièges connus (déjà rencontrés — ne pas refaire)
