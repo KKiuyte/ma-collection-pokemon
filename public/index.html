@@ -598,6 +598,7 @@ let saveTimer = null;      // pour regrouper les sauvegardes en ligne
 let currentUser = null;    // utilisateur connecté (null = déconnecté)
 let userProfile = null;    // profil public { pseudo, pseudoLower, email } ou null
 let profileLoadFailed = false; // la lecture du profil a échoué (réseau) : ne pas confondre avec "pas de pseudo"
+let pseudoEditing = false; // affiche le champ de modification du pseudo (geste explicite, pas d'édition directe)
 let cloudUnsub = null;     // pour arrêter l'écoute temps réel
 let interactiveLogin = false; // connexion déclenchée par un clic (vs. session restaurée)
 // pseudo : 3 à 20 caractères, lettres/chiffres/tiret/underscore
@@ -713,7 +714,7 @@ function listenCloud(){
 async function onLogin(user){
   const interactive = interactiveLogin; interactiveLogin = false;
   currentUser = user;
-  sharedList = []; sharedLoaded = false;
+  sharedList = []; sharedLoaded = false; pseudoEditing = false;
   updateAccountButton();
   renderAccountBody();
   setAuthStatus("Connecté : " + (user.email || "compte Google"), true);
@@ -752,7 +753,7 @@ function onLogout(){
   currentUser = null;
   userProfile = null;
   myGrants = { wishlist: [], trades: [] };
-  sharedList = []; sharedLoaded = false;
+  sharedList = []; sharedLoaded = false; pseudoEditing = false;
   incomingRequests = []; outgoingRequests = [];
   updateAccountButton();
   renderAccountBody();
@@ -2185,15 +2186,33 @@ function renderAccountBody(){
       return;
     }
     const p = userProfile && userProfile.pseudo;
-    let html =
-      `<p style="text-align:center;font-weight:800;margin:0 0 16px;">Connecté : ${currentUser.email || "compte Google"}</p>
+    // Un pseudo déjà enregistré s'affiche en lecture seule : il faut un geste explicite
+    // (« Modifier ») pour ouvrir le champ, puis confirmer, plutôt que de pouvoir l'écraser
+    // en un clic. Un tout premier pseudo (pas encore de p) reste direct : rien à perdre.
+    const showPseudoForm = !p || pseudoEditing;
+    let html = `<p style="text-align:center;font-weight:800;margin:0 0 16px;">Connecté : ${currentUser.email || "compte Google"}</p>`;
+    if (showPseudoForm){
+      html += `
        <div class="field">
          <label>Ton pseudo${p ? "" : " &mdash; à définir"}</label>
          <input id="pseudoInput" maxlength="20" autocomplete="off" spellcheck="false"
                 placeholder="ex. sam_du_92" value="${p ? esc(p) : ""}" style="${inputStyle}">
          <p class="pricenote" style="text-align:left;margin-top:8px;">3 à 20 caractères : lettres, chiffres, - ou _. Visible par les autres membres pour te retrouver et te partager une collection.</p>
        </div>
-       <button class="big-btn btn-add" id="btnPseudo" style="margin-bottom:14px;">${p ? "Mettre à jour le pseudo" : "Enregistrer le pseudo"}</button>`;
+       <div class="field-row" style="margin-bottom:14px;">
+         <button class="big-btn btn-add" id="btnPseudo" style="flex:1;">${p ? "Confirmer le nouveau pseudo" : "Enregistrer le pseudo"}</button>
+         ${p ? `<button type="button" class="big-btn" id="btnCancelPseudo" style="flex:0 0 auto;background:var(--surface-2);color:var(--ink);">Annuler</button>` : ``}
+       </div>`;
+    } else {
+      html += `
+       <div class="field">
+         <label>Ton pseudo</label>
+         <div class="field-row" style="align-items:center;">
+           <p style="flex:1;font-weight:800;font-size:15px;margin:0;">${esc(p)}</p>
+           <button type="button" class="big-btn" id="btnEditPseudo" style="flex:0 0 auto;background:var(--surface-2);color:var(--ink);">Modifier</button>
+         </div>
+       </div>`;
+    }
 
     if (incomingRequests.length){
       html += `<div class="ctrl-heading" style="margin-bottom:6px;">Demandes reçues</div>`;
@@ -2250,7 +2269,19 @@ function renderAccountBody(){
     html += `<button class="big-btn btn-remove" id="btnLogout" style="margin-top:6px;">Se déconnecter</button>`;
     body.innerHTML = html;
 
-    document.getElementById("btnPseudo").onclick = () => savePseudo(document.getElementById("pseudoInput").value);
+    if (showPseudoForm){
+      document.getElementById("btnPseudo").onclick = async () => {
+        const val = document.getElementById("pseudoInput").value;
+        if (p && !confirm(`Changer ton pseudo en « ${(val || "").trim()} » ?\nLes autres te retrouveront désormais sous ce nouveau nom.`)) return;
+        pseudoEditing = false; // en cas de succès, savePseudo() réaffiche déjà en lecture seule
+        const ok = await savePseudo(val);
+        if (!ok) pseudoEditing = true; // échec (pseudo invalide/pris) : on reste en édition, rien n'a changé à l'écran
+      };
+      const cancelBtn = document.getElementById("btnCancelPseudo");
+      if (cancelBtn) cancelBtn.onclick = () => { pseudoEditing = false; renderAccountBody(); };
+    } else {
+      document.getElementById("btnEditPseudo").onclick = () => { pseudoEditing = true; renderAccountBody(); };
+    }
     body.querySelectorAll(".grant-btn:not(.req-send-btn)").forEach(b => b.onclick = () => {
       const input = b.parentElement.querySelector(".grant-input");
       grantAccess(b.dataset.k, input.value);
