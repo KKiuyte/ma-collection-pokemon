@@ -192,6 +192,19 @@ réactiver le Worker Cloudflare (`collection-sync.ariesam.workers.dev`) comme in
       repeuplée uniquement si `renderSet()` s'exécute. Flèches ← → du clavier aussi actives
       quand la fiche est ouverte. ⚠️ Non testé dans un navigateur réel depuis cet environnement
       (pas d'outil Chrome connecté) — seulement vérifié par relecture + `node --check`.
+- [x] **Tri par prix (croissant/décroissant)** dans « Série », « Ma collection » et la recherche
+      globale. `sortPrice(id)` utilise `cardValue()` (valeur des exemplaires possédés) si la
+      carte est possédée, sinon son prix « de base » via `priceForVariant()` — nécessaire pour
+      trier la liste de souhaits, qui ne contient jamais de cartes possédées. Cardmarket (€) et
+      TCGplayer ($) ne sont pas convertis dans la même devise (comme pour la valeur totale) :
+      les montants sont comparés tels quels, limite connue. Une carte sans prix connu reste
+      toujours en dernier, quel que soit le sens du tri. Les 3 vues préchargent les prix
+      manquants avant de trier (même schéma que le préchargement de la rareté), avec un message
+      « Chargement des prix… » le temps du premier calcul ; ensuite mis en cache 24 h comme le
+      reste des métadonnées. Corrigé au passage : `fetchMeta()` ne marquait jamais `metaTs` en
+      cas d'échec réseau, donc `metaStale()` restait vrai pour toujours sur une carte en échec —
+      inoffensif jusqu'ici, mais aurait bouclé indéfiniment avec le rechargement du tri par prix.
+      ⚠️ Non testé dans un navigateur réel (pas d'outil Chrome connecté).
 
 ---
 

@@ -477,6 +477,8 @@ body {
             <option value="num-desc">Num&eacute;ro &darr;</option>
             <option value="name-asc">Nom A&rarr;Z</option>
             <option value="name-desc">Nom Z&rarr;A</option>
+            <option value="price-asc">Prix &uarr;</option>
+            <option value="price-desc">Prix &darr;</option>
           </select>
         </div>
       </div>
@@ -1250,7 +1252,8 @@ async function fetchMeta(cardId){
     return true;
   } catch {
     if (!variantCache[cardId]) variantCache[cardId] = [DEFAULT_VARIANT]; // repli
-    return false;
+    metaTs[cardId] = Date.now(); // marqué comme tenté malgré l'échec, sinon metaStale() le
+    return false;                // redemanderait à chaque rendu (boucle avec le tri par prix)
   }
 }
 
@@ -1541,7 +1544,31 @@ function passFilter(c){
   return true;
 }
 
+// prix utilisé pour le tri : la valeur de ce que tu possèdes de cette carte si tu l'as,
+// sinon son prix "de base" (utile pour trier la liste de souhaits, qui ne contient jamais
+// de cartes possédées). Cardmarket (EUR) et TCGplayer ($) ne sont jamais convertis dans la
+// même devise (comme pour la valeur totale) — limite connue, les montants sont comparés tels quels.
+function sortPrice(cardId){
+  const v = cardValue(cardId);
+  if (v) return v.value;
+  const avail = variantCache[cardId];
+  if (!avail || !avail.length) return null;
+  const variant = avail.includes(DEFAULT_VARIANT) ? DEFAULT_VARIANT : avail[0];
+  const p = priceForVariant(cardId, variant);
+  return p ? p.value : null;
+}
 // trie une liste de cartes selon le tri courant (renvoie une copie)
+// Une carte sans prix connu reste toujours en dernier, quel que soit le sens du tri
+// (jamais confondue avec "gratuite").
+function priceCmp(dir){
+  return (a, b) => {
+    const pa = sortPrice(a.id), pb = sortPrice(b.id);
+    if (pa == null && pb == null) return 0;
+    if (pa == null) return 1;
+    if (pb == null) return -1;
+    return dir * (pa - pb);
+  };
+}
 function sortCards(list){
   const arr = list.slice();
   const num = (a, b) => String(a.localId).localeCompare(String(b.localId), undefined, { numeric: true });
@@ -1550,6 +1577,8 @@ function sortCards(list){
   else if (sortBy === "num-desc")  arr.sort((a, b) => num(b, a));
   else if (sortBy === "name-asc")  arr.sort(name);
   else if (sortBy === "name-desc") arr.sort((a, b) => name(b, a));
+  else if (sortBy === "price-asc")  arr.sort(priceCmp(1));
+  else if (sortBy === "price-desc") arr.sort(priceCmp(-1));
   return arr;
 }
 
@@ -1621,6 +1650,12 @@ async function renderSet(){
       return;
     }
     list = list.filter(cardHasRarity);
+  }
+  if (sortBy.startsWith("price") && list.some(c => metaStale(c.id))){
+    content.innerHTML = `<div class="msg"><div class="spin"></div>Chargement des prix…</div>`;
+    await fetchMissingMeta(list.map(c => c.id));
+    if (view === "set" && !search) renderSet();
+    return;
   }
   const shown = sortCards(list);
   setViewCards = shown; // pour les flèches précédente/suivante de la fiche carte
@@ -1714,6 +1749,12 @@ async function renderSearch(){
       return;
     }
   }
+  if (sortBy.startsWith("price") && shown.some(c => metaStale(c.id))){
+    content.innerHTML = `<div class="msg"><div class="spin"></div>Chargement des prix…</div>`;
+    await fetchMissingMeta(shown.map(c => c.id));
+    if (search) renderSearch();
+    return;
+  }
   renderGrouped(shown, (n, m) =>
     n + " résultat" + (n>1?"s":"") + " dans " + m + " série" + (m>1?"s":""));
 }
@@ -1749,6 +1790,12 @@ async function renderCollection(){
         "Aucune carte de cette rareté" + (wish ? " dans ta liste de souhaits." : " dans ta collection."));
       return;
     }
+  }
+  if (sortBy.startsWith("price") && results.some(c => metaStale(c.id))){
+    content.innerHTML = `<div class="msg"><div class="spin"></div>Chargement des prix…</div>`;
+    await fetchMissingMeta(results.map(c => c.id));
+    if (allCards && view === "collection") renderCollection();
+    return;
   }
   renderGrouped(results, (n, m) => wish
     ? n + " carte" + (n>1?"s":"") + " à acheter dans " + m + " série" + (m>1?"s":"")

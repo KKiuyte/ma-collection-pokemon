@@ -3,7 +3,7 @@
 //
 // ⚠️ À CHAQUE MISE À JOUR DE L'APPLI, INCRÉMENTER LE NUMÉRO CI-DESSOUS.
 // C'est ce qui déclenche le remplacement de l'ancienne version chez les utilisateurs.
-const VERSION = "v24";
+const VERSION = "v25";
 
 const APP_CACHE  = "app-" + VERSION;   // la page, le manifeste, les icônes
 const DATA_CACHE = "data-" + VERSION;  // les réponses de l'API TCGdex
