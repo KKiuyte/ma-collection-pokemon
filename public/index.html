@@ -1764,6 +1764,80 @@ async function renderTrade(){
   }
 }
 
+// --- partage : suggestions d'échange automatiques (étape 3) ---
+// Croise ce qu'on te partage (déjà chargé dans sharedList) avec ta collection locale :
+// aucune donnée supplémentaire à stocker, juste un calcul côté client.
+// - leurs doubles (échanges partagés) qui sont dans TA wishlist → tu pourrais demander
+// - TES doubles qui sont dans SA wishlist partagée → tu pourrais proposer
+function tradeSuggestions(){
+  const byPseudo = {};
+  for (const s of sharedList){
+    const g = byPseudo[s.ownerPseudo] = byPseudo[s.ownerPseudo] || { pseudo: s.ownerPseudo, theirWishlist: null, theirTrades: null };
+    if (s.scopeKey === "wishlist") g.theirWishlist = s.items; // ids
+    else g.theirTrades = s.items; // {id, v, x}
+  }
+  const myTrades = tradeEntries();
+  const out = [];
+  for (const pseudo in byPseudo){
+    const g = byPseudo[pseudo];
+    const iCouldGet = g.theirTrades ? g.theirTrades.filter(e => wishlist[e.id]) : [];
+    const iCouldGive = g.theirWishlist ? myTrades.filter(e => g.theirWishlist.includes(e.id)) : [];
+    if (iCouldGet.length || iCouldGive.length) out.push({ pseudo, iCouldGet, iCouldGive });
+  }
+  out.sort((a, b) => a.pseudo.localeCompare(b.pseudo, "fr"));
+  return out;
+}
+function tradeRow(card, versionLabel, extra, badgeText){
+  const row = document.createElement("button");
+  row.type = "button";
+  row.className = "trade-row";
+  row.innerHTML =
+    (card.image ? `<img src="${card.image}/low.webp" alt="">` : `<div class="noimg" style="width:38px;height:53px;border-radius:6px;"></div>`)
+    + `<div class="trade-info">
+         <div class="trade-name">${esc(card.name)}</div>
+         <div class="trade-version">${esc(versionLabel)} · n° ${esc(card.localId)}</div>
+       </div>
+       <span class="trade-badge">${esc(badgeText)}</span>`;
+  row.onclick = () => openModal(card);
+  return row;
+}
+function renderTradeSuggestions(container, byId){
+  const suggestions = tradeSuggestions();
+  if (!suggestions.length) return;
+  const head = document.createElement("div");
+  head.className = "section-head";
+  head.innerHTML = `<span>Suggestions d'échange</span><small>${suggestions.length}</small>`;
+  container.appendChild(head);
+  suggestions.forEach(sug => {
+    if (sug.iCouldGet.length){
+      const sub = document.createElement("p");
+      sub.className = "hint";
+      sub.textContent = `Chez ${sug.pseudo}, tu pourrais demander :`;
+      container.appendChild(sub);
+      const list = document.createElement("div");
+      list.className = "trade-list";
+      sug.iCouldGet.forEach(e => {
+        const card = byId[e.id];
+        if (card) list.appendChild(tradeRow(card, e.v, e.x, `${e.x} en trop chez ${sug.pseudo}`));
+      });
+      container.appendChild(list);
+    }
+    if (sug.iCouldGive.length){
+      const sub = document.createElement("p");
+      sub.className = "hint";
+      sub.textContent = `À ${sug.pseudo}, tu pourrais proposer :`;
+      container.appendChild(sub);
+      const list = document.createElement("div");
+      list.className = "trade-list";
+      sug.iCouldGive.forEach(e => {
+        const card = byId[e.id];
+        if (card) list.appendChild(tradeRow(card, e.version, e.extra, `${e.extra} en trop, dans ses souhaits`));
+      });
+      container.appendChild(list);
+    }
+  });
+}
+
 // --- vue « Partagé » : ce que d'autres membres t'ont autorisé à voir (lecture seule) ---
 // Cliquer sur une carte ouvre la fiche habituelle : ça gère TA collection à toi (ex. l'ajouter
 // à tes souhaits), jamais celle de la personne qui partage — sa collection reste intouchée.
@@ -1807,6 +1881,8 @@ async function renderShared(){
   refresh.onclick = () => { sharedLoaded = false; renderShared(); };
   content.appendChild(refresh);
 
+  renderTradeSuggestions(content, byId);
+
   for (const s of sharedList){
     const isWish = s.scopeKey === "wishlist";
     const cardsList = isWish ? s.items.map(id => byId[id]).filter(Boolean) : null;
@@ -1829,18 +1905,7 @@ async function renderShared(){
       list.className = "trade-list";
       tradeList.forEach(e => {
         const card = byId[e.id];
-        const row = document.createElement("button");
-        row.type = "button";
-        row.className = "trade-row";
-        row.innerHTML =
-          (card.image ? `<img src="${card.image}/low.webp" alt="">` : `<div class="noimg" style="width:38px;height:53px;border-radius:6px;"></div>`)
-          + `<div class="trade-info">
-               <div class="trade-name">${esc(card.name)}</div>
-               <div class="trade-version">${esc(e.v)} · n° ${esc(card.localId)}</div>
-             </div>
-             <span class="trade-badge">${e.x} en trop</span>`;
-        row.onclick = () => openModal(card);
-        list.appendChild(row);
+        list.appendChild(tradeRow(card, e.v, e.x, `${e.x} en trop`));
       });
       content.appendChild(list);
     }

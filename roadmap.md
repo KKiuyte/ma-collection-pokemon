@@ -123,17 +123,21 @@ réactiver le Worker Cloudflare (`collection-sync.ariesam.workers.dev`) comme in
         qu'à la main) puis supprime la demande. ID2 voit ses demandes envoyées en attente
         (chips, annulables). ⚠️ **Nouvelle collection Firestore `share_requests` : règles à
         publier** (`firestore.rules`) comme pour les étapes précédentes.
+  - [x] **3 — Suggestions d'échange automatiques** : dans l'onglet « Partagé », nouvelle section
+        « Suggestions d'échange » (fonction `tradeSuggestions()`) calculée à partir des données
+        déjà chargées (`sharedList` + ta wishlist locale + `tradeEntries()`), sans rien stocker
+        de plus. Par personne qui partage : « tu pourrais demander » (ses échanges partagés
+        présents dans ta wishlist, nécessite qu'elle partage ses **Échanges**) et « tu pourrais
+        proposer » (tes doubles présents dans sa wishlist partagée, nécessite qu'elle partage ses
+        **Souhaits**). Un même vrai échange gagnant-gagnant apparaît dans les deux listes
+        seulement si les deux périmètres sont partagés dans les deux sens ; sinon une seule
+        direction s'affiche, ce qui reste utile. Réutilise le style `trade-row` existant
+        (helper `tradeRow()` factorisé, aussi utilisé par les listes brutes de la même vue).
 
   > **Écarté :** lien anonyme (pas de contrôle par personne) et intermédiaire serveur
   > (Cloud Function / Worker : surdimensionné pour de la lecture seule). Approche B « copie
   > publiée par périmètre avec liste d'autorisés » retenue : pas de backend, révocable,
   > n'expose jamais la collection principale.
-
-  - [ ] **3 — Suggestions d'échange automatiques** : entre deux comptes qui se partagent leurs
-        échanges, croiser tes doubles avec les souhaits de l'autre (et inversement) pour repérer
-        automatiquement les échanges gagnant-gagnant, sans chercher à la main. S'appuie sur les
-        copies déjà publiées (`shared_wishlist`, `shared_trades`) — pas de nouvelle donnée à
-        stocker, juste un calcul de croisement côté client.
 
 ## 💰 Priorité 3 — Prix, suite
 - [ ] Suivre l'**évolution de la valeur** dans le temps (relevé mensuel dans Firestore)
