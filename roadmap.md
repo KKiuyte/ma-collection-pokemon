@@ -183,6 +183,15 @@ réactiver le Worker Cloudflare (`collection-sync.ariesam.workers.dev`) comme in
 ## 🎨 Priorité 4 — Finitions
 - [x] Distinguer plusieurs exemplaires d'une **même version** (état/langue par copie individuelle,
       ajout via un petit formulaire qui redemande état/langue à chaque fois)
+- [x] **Fiche carte : flèches précédente/suivante** dans la vue « Série ». Deux boutons ronds
+      (chevron réutilisé, celui de gauche pivoté à 180°) superposés à l'image, masqués par
+      défaut. `renderSet()` alimente `setViewCards` (liste triée/filtrée actuellement affichée) ;
+      `updateModalNav()` cherche la position de la carte ouverte dedans pour montrer/masquer et
+      brancher les flèches. Scopé à la vue Série seulement (pas recherche/collection/partagé, où
+      l'ordre n'aurait pas de sens) — `setViewCards` est vidée en tête de `render()` et
+      repeuplée uniquement si `renderSet()` s'exécute. Flèches ← → du clavier aussi actives
+      quand la fiche est ouverte. ⚠️ Non testé dans un navigateur réel depuis cet environnement
+      (pas d'outil Chrome connecté) — seulement vérifié par relecture + `node --check`.
 
 ---
 

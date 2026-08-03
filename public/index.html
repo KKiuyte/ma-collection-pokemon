@@ -256,6 +256,14 @@ body {
   cursor:pointer; line-height:1; z-index:2; }
 .modal-img { text-align:center; margin:4px 0 14px; }
 .modal-img img { max-width:54%; max-height:31vh; border-radius:10px; box-shadow:0 10px 26px rgba(0,0,0,.18); }
+.modal-img-wrap { position:relative; }
+.modal-nav { position:absolute; top:50%; transform:translateY(-50%); width:32px; height:32px;
+  border:none; border-radius:50%; background:var(--surface-2); color:var(--muted);
+  cursor:pointer; display:flex; align-items:center; justify-content:center; z-index:2; }
+.modal-nav[hidden] { display:none; }
+.modal-nav-prev { left:2px; }
+.modal-nav-prev .ico { transform:rotate(180deg); }
+.modal-nav-next { right:2px; }
 .modal-name { font-weight:900; font-size:19px; margin:0 0 2px; text-align:center; }
 .modal-meta { color:var(--muted); font-weight:700; font-size:13.5px; margin:0 0 14px; text-align:center; }
 .rarity-tag { display:inline-block; background:var(--navy); color:#fff; font-weight:800;
@@ -491,7 +499,11 @@ body {
 <div id="overlay" class="overlay" hidden>
   <div class="modal" role="dialog" aria-modal="true">
     <button class="modal-close" id="mClose" aria-label="Fermer">×</button>
-    <div class="modal-img" id="mImg"></div>
+    <div class="modal-img-wrap">
+      <button type="button" class="modal-nav modal-nav-prev" id="mPrev" aria-label="Carte précédente" hidden></button>
+      <div class="modal-img" id="mImg"></div>
+      <button type="button" class="modal-nav modal-nav-next" id="mNext" aria-label="Carte suivante" hidden></button>
+    </div>
     <h2 class="modal-name" id="mName"></h2>
     <p class="modal-meta" id="mMeta"></p>
     <div id="mBody"></div>
@@ -1170,6 +1182,10 @@ function cardButton(c){
 
 // --- fiche carte (modale) ---
 let openCard = null;
+// liste ordonnée de la série affichée (vue "set" uniquement) : permet les flèches
+// précédente/suivante dans la fiche, sans naviguer entre cartes d'écrans différents
+// (recherche, collection…) où l'ordre n'aurait pas de sens pour l'utilisateur.
+let setViewCards = [];
 
 function openModal(c){
   openCard = c;
@@ -1178,8 +1194,24 @@ function openModal(c){
   $("mName").textContent = c.name;
   updateModalMeta();
   renderModalBody();
+  updateModalNav();
   $("overlay").hidden = false;
   loadVariants(c.id); // récupère les versions disponibles, puis rafraîchit la fiche
+}
+
+// affiche/masque et branche les flèches précédente/suivante selon la position de la
+// carte ouverte dans setViewCards (vide si la fiche vient d'ailleurs que la vue "set")
+function updateModalNav(){
+  const prevBtn = $("mPrev"), nextBtn = $("mNext");
+  const idx = openCard ? setViewCards.findIndex(c => c.id === openCard.id) : -1;
+  const prev = idx > 0 ? setViewCards[idx - 1] : null;
+  const next = idx >= 0 && idx < setViewCards.length - 1 ? setViewCards[idx + 1] : null;
+  prevBtn.hidden = !prev;
+  nextBtn.hidden = !next;
+  prevBtn.innerHTML = prev ? svgIco(ICONS.chevron) : "";
+  nextBtn.innerHTML = next ? svgIco(ICONS.chevron) : "";
+  prevBtn.onclick = prev ? () => openModal(prev) : null;
+  nextBtn.onclick = next ? () => openModal(next) : null;
 }
 
 // --- cache local des infos de carte (versions, rareté, prix) ---
@@ -1566,6 +1598,10 @@ function render(){
   syncControls();
   if (!computing) renderValueBox();
 
+  // les flèches précédente/suivante de la fiche carte n'ont de sens que dans la vue "set" ;
+  // renderSet() la repeuplera juste après si c'est bien la vue affichée.
+  setViewCards = [];
+
   if (search) renderSearch();
   else if (view === "stats") renderStats();
   else if (view === "trade") renderTrade();
@@ -1587,6 +1623,7 @@ async function renderSet(){
     list = list.filter(cardHasRarity);
   }
   const shown = sortCards(list);
+  setViewCards = shown; // pour les flèches précédente/suivante de la fiche carte
   if (!shown.length){
     const m = rarityFilter ? "Aucune carte de cette rareté dans cette série (avec ce filtre)."
       : filter==="missing" ? "Bravo, tu as toutes les cartes de cette série !"
@@ -2241,7 +2278,12 @@ document.addEventListener("click", (e) => { if (!e.target.closest(".combo")) set
 
 $("mClose").onclick = closeModal;
 $("overlay").onclick = (e) => { if (e.target === $("overlay")) closeModal(); };
-document.addEventListener("keydown", (e) => { if (e.key === "Escape"){ closeModal(); $("syncOverlay").hidden = true; } });
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape"){ closeModal(); $("syncOverlay").hidden = true; return; }
+  if (!openCard || $("overlay").hidden) return;
+  if (e.key === "ArrowLeft" && !$("mPrev").hidden) $("mPrev").click();
+  else if (e.key === "ArrowRight" && !$("mNext").hidden) $("mNext").click();
+});
 
 const searchInput = $("search"), clearBtn = $("clear");
 searchInput.addEventListener("input", (e) => {
