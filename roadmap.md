@@ -169,6 +169,17 @@ réactiver le Worker Cloudflare (`collection-sync.ariesam.workers.dev`) comme in
       ⚠️ **Analytics à activer dans le projet Firebase (console) si ce n'est pas déjà le cas**,
       sinon les événements sont envoyés mais rien ne s'affiche.
 
+## 🐛 Corrigé — mise à jour invisible hors navigation privée
+- [x] Le service worker incrémentait bien `VERSION`, mais son installation utilisait
+      `caches.addAll()` : un `fetch()` simple, qui pouvait renvoyer la page déjà présente dans
+      le **cache HTTP du navigateur** au lieu du réseau — la nouvelle version du service worker
+      recachait alors l'ANCIENNE page. D'où le besoin systématique de la navigation privée
+      (aucun cache HTTP à contourner) pour voir un déploiement. Corrigé par deux changements
+      complémentaires : `sw.js` fetch chaque fichier avec `{ cache: "reload" }` (force le
+      réseau, contourne le cache HTTP) ; `firebase.json` envoie désormais
+      `Cache-Control: no-cache` sur les fichiers `*.html` et `sw.js` (le navigateur revalide
+      toujours avant de réutiliser une copie en cache, au lieu de la servir telle quelle).
+
 ## 🎨 Priorité 4 — Finitions
 - [x] Distinguer plusieurs exemplaires d'une **même version** (état/langue par copie individuelle,
       ajout via un petit formulaire qui redemande état/langue à chaque fois)

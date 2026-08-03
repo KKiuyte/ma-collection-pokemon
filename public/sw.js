@@ -3,7 +3,7 @@
 //
 // ⚠️ À CHAQUE MISE À JOUR DE L'APPLI, INCRÉMENTER LE NUMÉRO CI-DESSOUS.
 // C'est ce qui déclenche le remplacement de l'ancienne version chez les utilisateurs.
-const VERSION = "v22";
+const VERSION = "v23";
 
 const APP_CACHE  = "app-" + VERSION;   // la page, le manifeste, les icônes
 const DATA_CACHE = "data-" + VERSION;  // les réponses de l'API TCGdex
@@ -20,9 +20,17 @@ const APP_FILES = [
 // --- installation : on met l'appli en cache ---
 // On n'active PAS tout de suite : la nouvelle version attend l'accord de l'utilisateur
 // (bandeau « Mettre à jour »), pour ne pas recharger la page en pleine utilisation.
+// ⚠️ cache:"reload" est indispensable : un simple fetch() (ce que fait caches.addAll())
+// peut renvoyer la page déjà présente dans le cache HTTP du navigateur — la nouvelle
+// version du service worker recacherait alors l'ANCIENNE page, rendant la mise à jour
+// invisible tant qu'on n'est pas en navigation privée (pas de cache HTTP à contourner).
 self.addEventListener("install", (e) => {
   e.waitUntil(
-    caches.open(APP_CACHE).then((c) => c.addAll(APP_FILES))
+    caches.open(APP_CACHE).then((c) =>
+      Promise.all(APP_FILES.map((url) =>
+        fetch(url, { cache: "reload" }).then((res) => c.put(url, res))
+      ))
+    )
   );
 });
 

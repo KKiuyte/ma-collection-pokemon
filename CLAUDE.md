@@ -162,8 +162,16 @@ wishlist[idCarte] = true
    « Nouvelle version disponible » gère la bascule côté client.
 3. **Service worker et navigation** : ne PAS renvoyer `index.html` pour toute navigation
    (ça masquait `test-scan.html`). Le repli sur l'accueil ne doit se faire que **hors-ligne**.
-4. **Cache navigateur tenace** : après un déploiement, tester en **navigation privée**
-   pour voir la vraie version.
+4. **Cache navigateur tenace (corrigé)** : le service worker mettait bien à jour son
+   `VERSION`, mais son étape d'installation utilisait `caches.addAll()` — un simple `fetch()`
+   qui pouvait renvoyer la page déjà présente dans le **cache HTTP du navigateur**, recachant
+   ainsi l'ANCIENNE page sous le nouveau numéro de version. D'où le besoin de tester en
+   navigation privée (aucun cache HTTP à contourner). Corrigé par deux changements : (1)
+   `sw.js` fetch chaque fichier avec `{ cache: "reload" }` pour forcer le réseau ; (2)
+   `firebase.json` envoie `Cache-Control: no-cache` sur les `*.html` et `sw.js` (le navigateur
+   revalide toujours avant d'utiliser une copie en cache). La navigation privée ne devrait
+   plus être nécessaire pour voir une mise à jour — si le problème revient, vérifier que ces
+   deux points n'ont pas été défaits.
 5. **Empreintes visuelles : le calcul Python (`tools/build_hashes.py`) et le calcul
    JavaScript (`test-scan.html`) doivent être identiques OCTET POUR OCTET.** Ils utilisent
    un moyennage par blocs sans interpolation (`box_resize`) et des arrondis harmonisés
