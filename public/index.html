@@ -589,6 +589,7 @@ let view = "set";
 let setList = [];         // liste des séries, plus récente en premier
 const setNameById = {};   // id de série -> nom
 const setOfficialById = {}; // id de série -> nombre de cartes "officiel" (le YYY imprimé)
+const setTotalById = {};    // id de série -> nombre RÉEL de cartes (secrètes incluses) : pour les statistiques
 let blocks = [];          // regroupement par bloc : [{ id, name, sets: [...] }]
 const blockNameById = {}; // id de bloc -> nom
 const setBlockById = {};  // id de série -> id de bloc
@@ -1016,6 +1017,8 @@ async function init(){
       setNameById[s.id] = s.name;
       const off = s.cardCount ? (s.cardCount.official ?? s.cardCount.total) : null;
       setOfficialById[s.id] = off != null ? String(off) : null;
+      const tot = s.cardCount ? (s.cardCount.total ?? s.cardCount.official) : null;
+      setTotalById[s.id] = tot != null ? String(tot) : null;
     });
     if (list.length) selectSet(list[0].id);
     else content.innerHTML = emptyMsg(ICONS.cards, "Aucune série trouvée.");
@@ -1937,7 +1940,9 @@ async function renderStats(){
   renderStatsContent(ids);
 }
 
-// nombre de cartes possédées par bloc, comparé au total officiel du bloc
+// nombre de cartes possédées par bloc, comparé au nombre RÉEL de cartes du bloc (secrètes
+// incluses) — le nombre "officiel" (le YYY imprimé) exclut les cartes secrètes/spéciales
+// au-delà de ce numéro, ce qui donnait des ratios impossibles (ex. 100/86) dès qu'on en possédait.
 function blockProgress(ids){
   const haveBySet = {};
   for (const id of ids){
@@ -1951,7 +1956,7 @@ function blockProgress(ids){
           id: s.id,
           name: s.name,
           have: haveBySet[s.id] || 0,
-          total: parseInt(setOfficialById[s.id], 10) || 0,
+          total: parseInt(setTotalById[s.id], 10) || 0,
         }))
         .filter(s => s.total > 0);
       const have = sets.reduce((sum, s) => sum + s.have, 0);
