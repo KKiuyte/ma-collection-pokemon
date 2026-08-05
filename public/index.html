@@ -570,6 +570,7 @@ const VARIANT_ORDER = ["Normale", "Reverse Holo", "Holo", "1re édition", "Promo
 const variantCache = {}; // idCarte -> liste des versions disponibles
 const rarityByCard = {}; // idCarte -> rareté (récupérée avec les versions)
 const pricingByCard = {}; // idCarte -> données de prix (Cardmarket / TCGplayer)
+const variantsDetailedByCard = {}; // idCarte -> tableau variants_detailed TCGdex (prix par version)
 const metaTs = {};       // idCarte -> date de récupération (pour le rafraîchissement quotidien)
 const META_KEY = "collection_pokemon_meta";   // cache local des versions/raretés/prix
 const VALUE_KEY = "collection_pokemon_value"; // dernière valeur totale calculée
@@ -1226,13 +1227,15 @@ function hydrateMeta(){
     if (m.v) variantCache[id] = m.v;
     if (m.r) rarityByCard[id] = m.r;
     if (m.p) pricingByCard[id] = m.p;
+    if (m.d) variantsDetailedByCard[id] = m.d;
     metaTs[id] = m.t || 0;
   }
 }
 function persistMeta(){
   const out = {};
   for (const id in metaTs){
-    out[id] = { v: variantCache[id], r: rarityByCard[id], p: pricingByCard[id], t: metaTs[id] };
+    out[id] = { v: variantCache[id], r: rarityByCard[id], p: pricingByCard[id],
+                d: variantsDetailedByCard[id], t: metaTs[id] };
   }
   try { localStorage.setItem(META_KEY, JSON.stringify(out)); }
   catch { /* espace saturé : on garde le cache en mémoire seulement */ }
@@ -1249,6 +1252,7 @@ async function fetchMeta(cardId){
     variantCache[cardId] = list.length ? list : [DEFAULT_VARIANT];
     if (data && data.rarity) rarityByCard[cardId] = data.rarity;
     if (data && data.pricing) pricingByCard[cardId] = data.pricing;
+    if (data && Array.isArray(data.variants_detailed)) variantsDetailedByCard[cardId] = data.variants_detailed;
     metaTs[cardId] = Date.now();
     return true;
   } catch {
@@ -1300,11 +1304,37 @@ function variantsFor(cardId){
 
 // --- prix estimés (données TCGdex : Cardmarket en €, TCGplayer en $) ---
 // On privilégie Cardmarket (marché européen), avec repli sur TCGplayer.
+
+// variants_detailed donne, pour certaines cartes, un prix Cardmarket propre à une version
+// quand TCGdex la vend comme un produit à part (ex. Holo Rare séparée de Normale/Reverse) —
+// vérifié le 2026-08-05 sur plusieurs cartes réelles de l'API. Le champ "type" s'écrit tantôt
+// "Normal" tantôt "normal" selon la carte, d'où la comparaison en minuscules. Piège observé :
+// l'entrée "reverse" reste TOUJOURS le parallèle brillant du produit auquel elle appartient
+// (ce produit peut être celui de Normale OU celui de Holo selon la carte) — ses propres champs
+// "avg"/"trend" décrivent alors l'AUTRE version de ce même produit, jamais Reverse Holo.
+// D'où le suffixe "-holo" systématique pour elle, alors que "normal" et "holo" sont chacun la
+// version de base de leur produit (partagé ou dédié) et utilisent directement leurs propres champs.
+function detailedCardmarketPrice(cardId, variantName){
+  const list = variantsDetailedByCard[cardId];
+  if (!Array.isArray(list)) return null;
+  const type = variantName === "Reverse Holo" ? "reverse" : variantName === "Holo" ? "holo" : "normal";
+  const entry = list.find(e => e && typeof e.type === "string" && e.type.toLowerCase() === type);
+  const cm = entry && entry.pricing ? entry.pricing.cardmarket : null;
+  if (!cm) return null;
+  const num = (x) => (typeof x === "number" && isFinite(x) && x > 0) ? x : null;
+  return variantName === "Reverse Holo"
+    ? (num(cm["trend-holo"]) ?? num(cm["avg-holo"]) ?? num(cm["avg30-holo"]))
+    : (num(cm.trend) ?? num(cm.avg) ?? num(cm.avg30));
+}
+
 function priceForVariant(cardId, variantName){
+  const num = (x) => (typeof x === "number" && isFinite(x) && x > 0) ? x : null;
+  const detailed = detailedCardmarketPrice(cardId, variantName);
+  if (detailed) return { value: detailed, unit: "EUR", source: "Cardmarket" };
+
   const p = pricingByCard[cardId];
   if (!p) return null;
   const cm = p.cardmarket, tp = p.tcgplayer;
-  const num = (x) => (typeof x === "number" && isFinite(x) && x > 0) ? x : null;
   const avail = variantCache[cardId] || [];
   const hasNormal = avail.includes("Normale");
   const hasHolo = avail.includes("Holo");
@@ -1323,10 +1353,12 @@ function priceForVariant(cardId, variantName){
     }
     if (v) return { value: v, unit: "EUR", source: "Cardmarket" };
   }
-  // TCGplayer : sous-objets par version (normal / reverse / holo)
+  // TCGplayer : sous-objets par version. Noms réels de l'API (vérifiés le 2026-08-05) :
+  // "normal", "reverse-holofoil", "holofoil" — pas "reverse"/"holo" comme on utilisait avant,
+  // ce qui faisait silencieusement retomber Holo et Reverse Holo sur le prix de la version Normale.
   if (tp){
-    const key = variantName === "Reverse Holo" ? "reverse" : variantName === "Holo" ? "holo" : "normal";
-    const b = tp[key] || tp.holo || tp.normal;
+    const key = variantName === "Reverse Holo" ? "reverse-holofoil" : variantName === "Holo" ? "holofoil" : "normal";
+    const b = tp[key] || tp.holofoil || tp.normal;
     if (b){
       const v = num(b.marketPrice) ?? num(b.midPrice) ?? num(b.lowPrice);
       if (v) return { value: v, unit: "USD", source: "TCGplayer" };

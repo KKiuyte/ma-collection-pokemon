@@ -145,12 +145,37 @@ wishlist[idCarte] = true
   européen) et TCGplayer en $ (repli). Règles fines dans `priceForVariant()` :
   - carte à version unique → le prix « de base » Cardmarket lui revient ;
   - Reverse Holo d'une carte **sans** Holo distincte → prix `-holo` Cardmarket (€) ;
-  - Reverse Holo d'une carte **avec** Holo distincte → repli TCGplayer ($), car
-    Cardmarket ne distingue pas les deux. Limite des données, pas un bug.
-  - Le champ `variants_detailed` (repéré le 2026-08-03) **existe déjà** dans `/cards/{id}`
-    (un tableau `{type, size, variantId, pricing}` par version, prix inclus) — ce n'est plus
-    « à venir ». Pas encore exploité dans `priceForVariant()` : à intégrer quand il sera
-    fiable, il réglera le cas Reverse Holo ci-dessus avec un prix propre par version.
+  - **`variants_detailed` exploité (2026-08-05)** — `detailedCardmarketPrice()`, essayé en
+    priorité avant le repli ci-dessous. Vérifié sur plusieurs cartes réelles de l'API (pas
+    seulement lu dans la doc) : le tableau `{type, size, variantId, pricing}` de `/cards/{id}`
+    donne un prix Cardmarket **propre à chaque produit distinct** — utile quand une carte a
+    une version Holo vendue comme un produit à part (idProduct différent de Normale/Reverse).
+    Piège découvert en creusant : le `type` d'une entrée ne dit pas quel champ lire à
+    l'intérieur — une entrée `"reverse"` reste **toujours** le parallèle brillant du produit
+    auquel elle appartient (ce produit peut être celui de Normale OU celui de Holo selon la
+    carte), donc ses propres champs `avg`/`trend` décrivent l'AUTRE version de ce même
+    produit, jamais Reverse Holo elle-même — d'où l'usage systématique du suffixe `-holo`
+    pour elle, alors que `normal` et `holo` sont chacun la version de base de leur produit
+    (partagé ou dédié) et utilisent directement leurs propres champs. Confirmé par comparaison
+    directe : sur `swsh4-25`, Holo a son propre `idProduct` (avg 8.61 €) alors que Normale et
+    Reverse partagent le même produit (avg 2.49 € / avg-holo 3.53 €) ; sur `swsh3-25`
+    (Heatran, sans version Normale), Holo et Reverse partagent un seul produit où c'est cette
+    fois `avg` qui vaut pour Holo (0.31 €) et `avg-holo` pour Reverse (0.77 €) — la règle
+    « `reverse` = toujours `-holo` » tient dans les deux cas, contrairement à une règle qui
+    se serait basée sur la présence d'une version Normale.
+  - Cache : `variantsDetailedByCard[cardId]`, persisté dans `collection_pokemon_meta` (clé
+    courte `d`), même cycle de vie que `variantCache`/`pricingByCard` (TTL 24 h).
+  - Si l'entrée correspondante est absente ou sans prix (ex. `variantId:"generated"` sans
+    `pricing` du tout, observé sur certaines cartes), repli intact sur l'ancienne logique
+    (`-holo` du prix de base, ou TCGplayer) — donc pour une carte avec Holo distincte, le
+    cas Reverse Holo qui retombait avant sur TCGplayer $ (« Cardmarket ne distingue pas les
+    deux ») ne devrait plus quasiment jamais s'y retrouver, mais le repli reste utile en
+    sécurité pour les entrées incomplètes.
+  - **Bug corrigé au passage** (indépendant de `variants_detailed`) : les clés TCGplayer
+    utilisées pour Holo/Reverse Holo étaient `"holo"`/`"reverse"`, alors que l'API renvoie
+    en réalité `"holofoil"`/`"reverse-holofoil"` — ces deux variantes retombaient donc
+    silencieusement sur le prix TCGplayer de la version **Normale** au lieu du bon
+    sous-objet, depuis l'écriture initiale de `priceForVariant()`. Corrigé.
   - ⚠️ **Décalage observé entre le dépôt source et l'API publique** : pour une carte toute
     récente (`me04-007`, série sortie 22/05/2026), le dépôt GitHub public
     (`tcgdex/cards-database`, `data/{Série}/{Set}/{numéro}.ts`) listait déjà la version

@@ -152,8 +152,10 @@ réactiver le Worker Cloudflare (`collection-sync.ariesam.workers.dev`) comme in
 
 ## 💰 Priorité 3 — Prix, suite
 - [ ] Suivre l'**évolution de la valeur** dans le temps (relevé mensuel dans Firestore)
-- [ ] Surveiller le champ `variants_detailed` annoncé par TCGdex : il apportera les identifiants
-      Cardmarket/TCGplayer **par version**, ce qui réglera le cas des Reverse Holo affichées en dollars
+- [x] **Exploiter `variants_detailed`** (2026-08-05) : prix Cardmarket propre par version quand
+      TCGdex la vend comme un produit à part (ex. Holo Rare séparée de Normale/Reverse). Réglé
+      au passage le cas des Reverse Holo qui retombaient sur TCGplayer en dollars, et corrigé un
+      bug indépendant (mauvaises clés TCGplayer pour Holo/Reverse Holo). Détails dans CLAUDE.md.
 
 ## 📈 Suivi (admin)
 - [x] **Google Analytics for Firebase activé** (`measurementId` présent depuis le début mais
