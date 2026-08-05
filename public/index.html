@@ -339,6 +339,7 @@ body {
 .trade-version { font-size:12px; color:var(--muted); font-weight:600; }
 .trade-badge { font-weight:900; font-size:11.5px; color:#fff; background:var(--navy);
   padding:4px 10px; border-radius:999px; flex:none; white-space:nowrap; }
+.trade-tier { color:var(--accent-deep); font-weight:800; }
 
 /* --- partage : autoriser par pseudo (fenêtre Mon compte) --- */
 .grant-row { display:flex; gap:8px; align-items:stretch; }
@@ -1337,6 +1338,16 @@ function formatPrice(p){
   if (!p) return null;
   return p.value.toLocaleString("fr-FR", { style: "currency", currency: p.unit, maximumFractionDigits: 2 });
 }
+// Ordre de grandeur, pas le prix exact : € et $ mélangés dans les mêmes paliers,
+// utile pour repérer un échange déséquilibré sans faire semblant de convertir les devises.
+function priceTier(cardId, variantName){
+  const p = priceForVariant(cardId, variantName);
+  if (!p) return null;
+  if (p.value < 2) return "€";
+  if (p.value < 10) return "€€";
+  if (p.value < 40) return "€€€";
+  return "€€€€";
+}
 // valeur estimée d'une carte possédée (toutes ses versions × quantités)
 function cardValue(cardId){
   const rec = owned[cardId];
@@ -1899,7 +1910,7 @@ function tradeSuggestions(){
   out.sort((a, b) => a.pseudo.localeCompare(b.pseudo, "fr"));
   return out;
 }
-function tradeRow(card, versionLabel, extra, badgeText){
+function tradeRow(card, versionLabel, extra, badgeText, tier){
   const row = document.createElement("button");
   row.type = "button";
   row.className = "trade-row";
@@ -1907,14 +1918,13 @@ function tradeRow(card, versionLabel, extra, badgeText){
     (card.image ? `<img src="${card.image}/low.webp" alt="">` : `<div class="noimg" style="width:38px;height:53px;border-radius:6px;"></div>`)
     + `<div class="trade-info">
          <div class="trade-name">${esc(card.name)}</div>
-         <div class="trade-version">${esc(versionLabel)} · n° ${esc(card.localId)}</div>
+         <div class="trade-version">${esc(versionLabel)} · n° ${esc(card.localId)}${tier ? ` · <span class="trade-tier">${esc(tier)}</span>` : ""}</div>
        </div>
        <span class="trade-badge">${esc(badgeText)}</span>`;
   row.onclick = () => openModal(card);
   return row;
 }
-function renderTradeSuggestions(container, byId){
-  const suggestions = tradeSuggestions();
+function renderTradeSuggestions(container, byId, suggestions){
   if (!suggestions.length) return;
   const head = document.createElement("div");
   head.className = "section-head";
@@ -1930,7 +1940,7 @@ function renderTradeSuggestions(container, byId){
       list.className = "trade-list";
       sug.iCouldGet.forEach(e => {
         const card = byId[e.id];
-        if (card) list.appendChild(tradeRow(card, e.v, e.x, `${e.x} en trop chez ${sug.pseudo}`));
+        if (card) list.appendChild(tradeRow(card, e.v, e.x, `${e.x} en trop chez ${sug.pseudo}`, priceTier(e.id, e.v)));
       });
       container.appendChild(list);
     }
@@ -1943,7 +1953,7 @@ function renderTradeSuggestions(container, byId){
       list.className = "trade-list";
       sug.iCouldGive.forEach(e => {
         const card = byId[e.id];
-        if (card) list.appendChild(tradeRow(card, e.version, e.extra, `${e.extra} en trop, dans ses souhaits`));
+        if (card) list.appendChild(tradeRow(card, e.version, e.extra, `${e.extra} en trop, dans ses souhaits`, priceTier(e.id, e.version)));
       });
       container.appendChild(list);
     }
@@ -2015,6 +2025,15 @@ async function renderSharedFeedPanel(panel){
   const byId = {};
   for (const c of allCards) byId[c.id] = c;
 
+  const suggestions = tradeSuggestions();
+  const sugIds = [...new Set(suggestions.flatMap(g => [...g.iCouldGet, ...g.iCouldGive]).map(e => e.id))];
+  if (sugIds.length && sugIds.some(metaStale)){
+    panel.innerHTML = `<div class="msg"><div class="spin"></div>Chargement des prix…</div>`;
+    await fetchMissingMeta(sugIds);
+    if (view === "shared" && sharedSubTab === "feed") renderShared();
+    return;
+  }
+
   panel.innerHTML = "";
   const names = [...new Set(sharedList.map(s => s.ownerPseudo))];
   const hint = document.createElement("p");
@@ -2030,7 +2049,7 @@ async function renderSharedFeedPanel(panel){
   refresh.onclick = () => { sharedLoaded = false; renderShared(); };
   panel.appendChild(refresh);
 
-  renderTradeSuggestions(panel, byId);
+  renderTradeSuggestions(panel, byId, suggestions);
 
   for (const s of sharedList){
     const isWish = s.scopeKey === "wishlist";
