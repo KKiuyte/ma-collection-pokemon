@@ -247,10 +247,51 @@ hors-ligne, bouton d'installation, mise à jour), **mode sombre**, bouton retour
   structure `data.blocks`/`symbols` de Tesseract.js n'a pas pu être vérifiée en conditions
   réelles depuis cet environnement (pas d'appareil photo). Le diagnostic affiché à l'écran
   (`ocrInfo`) indique si le détail par caractère était disponible ou non.
+- **Campagne de test réelle (2026-08-05, 25 cartes, sur téléphone)** :
+  - 1re position : 18/25 (72 %) — top 3 : 22/25 (88 %)
+  - Marge moyenne quand c'est juste : 0.0078 — quand c'est faux : 0.0013 (bonne séparation,
+    confirme le seuil ~0.005 envisagé)
+  - Numéro lu et exploité (lecture complète ou partielle) : 19/25 (76 %)
+  - Par type : communes/peu communes 8/11 (73 %), holos/reverse 6/6 (100 %,
+    net progrès vs 67 % du 1er test — probablement grâce à la lecture partielle par confiance),
+    full art/SIR 4/8 (50 %, toujours le point faible malgré un léger mieux vs 43 %)
+  - Le top 3 (88 %) est nettement plus fiable que le 1er choix seul (72 %) → piste à retenir
+    si on intègre un jour : proposer 3 candidates à confirmer plutôt qu'une seule réponse.
+  - **Décision d'intégration pas encore prise** — résultats notés, à rediscuter plus tard.
+- **Troisième couche ajoutée (2026-08-05, non testée en conditions réelles) — OCR du nom** :
+  en plus du numéro (bas de carte) et de l'empreinte visuelle, `test-scan.html` lit maintenant
+  aussi le **nom en haut de la carte** (`readName()`/`extractName()`), pensé pour combler le
+  point faible des full art (empreinte peu fiable sur fond très chargé, mais le nom reste
+  lisible). Bande de crop `cropRectName()` : haut de carte, largeur limitée à 68 % pour éviter
+  le bloc PV/type à droite ; mots à une lettre et « PV »/« HP » filtrés (`NAME_NOISE`) car ils
+  débordent parfois sur la bande. Comparaison floue par distance d'édition normalisée
+  (`nameSimilarity()`, accents/casse ignorés) contre `c.t` du catalogue (déjà présent, aucune
+  régénération du catalogue nécessaire). Toggle Lire/Ne pas lire dans l'UI de test
+  (`nameZoneOn`, on par défaut).
+  - **Algorithme en cascade** (numéro → nom → image), chaque étage **réduisant** l'ensemble de
+    candidats plutôt que de trancher seul, pour qu'une erreur d'un seul OCR n'élimine pas la
+    bonne carte : `narrowByName(pool, nameGuess)` ne garde que les candidats à ≤ 0.15 du
+    meilleur score de similarité (`NAME_SIM_THRESHOLD = 0.45` sous lequel on ne fait pas
+    confiance au nom lu). Appliqué (a) pour départager quand le numéro (lecture complète ou
+    motif partiel) laisse plusieurs candidats, et (b) en repli seul quand aucun numéro n'est
+    exploitable — nouveau mode « nom » symétrique du mode « motif partiel ».
+  - Journal de test étendu : `byName` suit si le nom a effectivement été exploité, comme
+    `byNum` pour le numéro ; récapitulatif affiche désormais « Nom lu et exploité : X/Y ».
+    Badge visuel bleu (`.badge.nam`) distinct du badge vert du numéro.
+  - ⚠️ **Non testé avec de vraies photos** (pas d'appareil photo depuis cet environnement) —
+    seulement vérifié par relecture + `node --check` sur le script extrait, et par un test
+    unitaire de `nameSimilarity()`/`narrowByName()` avec des chaînes fabriquées (confirmé :
+    une lecture bruitée « oracaufeu ex » distingue toujours correctement « Dracaufeu ex » de
+    « Dracaufeu » et « Dracaufeu V » dans un mini-catalogue). La bande de crop (haut de carte,
+    marge droite pour éviter les PV) est une **première estimation géométrique**, pas calibrée
+    sur de vraies cartes — à ajuster selon les résultats du prochain test réel.
+  - Double le nombre d'appels OCR par scan (numéro + nom) : la reconnaissance sera plus lente.
+    Pas un problème pour la page de test, à surveiller si intégré dans l'appli.
 - **Prochaine étape** : Ariel teste avec de vraies cartes sur son téléphone (page déployée),
-  vérifie que la lecture partielle se déclenche bien, puis campagne de test ~30 cartes contre
-  le catalogue complet pour décider de l'intégration dans l'appli. Services payants étudiés
-  puis écartés (Ximilar 59 €/mois obligatoire ; CardSight à revérifier).
+  vérifie que la bande de crop du nom cadre bien le texte et que la lecture apporte un vrai
+  gain (comparer les nouveaux résultats — surtout sur les full art — à la campagne du
+  2026-08-05 ci-dessus, avant/après). Décision d'intégration dans l'appli toujours en attente.
+  Services payants étudiés puis écartés (Ximilar 59 €/mois obligatoire ; CardSight à revérifier).
 
 **Décidé, non retenu** : publication sur les stores (obstacle des 12 testeurs 14 j pour
 Google Play ; App Store très difficile + connexion Google KO en webview ; risque de
