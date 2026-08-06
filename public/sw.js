@@ -3,7 +3,7 @@
 //
 // ⚠️ À CHAQUE MISE À JOUR DE L'APPLI, INCRÉMENTER LE NUMÉRO CI-DESSOUS.
 // C'est ce qui déclenche le remplacement de l'ancienne version chez les utilisateurs.
-const VERSION = "v27";
+const VERSION = "v28";
 
 const APP_CACHE  = "app-" + VERSION;   // la page, le manifeste, les icônes
 const DATA_CACHE = "data-" + VERSION;  // les réponses de l'API TCGdex
@@ -12,6 +12,7 @@ const IMG_CACHE  = "img-" + VERSION;   // les images de cartes
 const APP_FILES = [
   "./",
   "./index.html",
+  "./scan.html",
   "./manifest.json",
   "./icon-192.png",
   "./icon-512.png",

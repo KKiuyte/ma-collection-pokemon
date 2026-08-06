@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#f0eee9" />
+<script>
+// appliqué avant le CSS pour éviter un flash de mauvais thème au chargement
+(function(){
+  try {
+    var t = localStorage.getItem("collection_pokemon_theme");
+    if (t !== "light" && t !== "dark") t = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    document.documentElement.setAttribute("data-theme", t);
+  } catch (e) {}
+})();
+</script>
+<title>Scanner une carte — Ma Collection Pokémon</title>
+<link rel="manifest" href="manifest.json" />
+<link rel="icon" href="icon-192.png" />
+<link rel="apple-touch-icon" href="icon-192.png" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="default" />
+<meta name="apple-mobile-web-app-title" content="Scanner" />
+<style>
+* { box-sizing: border-box; }
+:root {
+  --gold:#ffcb3d; --gold-deep:#e6a700; --navy:#1c2333;
+  --accent:#ff8a00; --accent-deep:#e67a00;
+  --ink-solid:#1a1d29;
+  --ink:#1a1d29; --muted:#8a8f9c; --bg:#f0eee9; --surface:#fff;
+  --line:rgba(0,0,0,.08); --field:#f6f7fa;
+  --surface-2:#f1f2f6; --surface-3:#fbfbfc; --surface-accent:#fffdf4;
+  --track:#e6e4de; --placeholder:#a7abb8;
+  --danger-bg:#fff0ef; --danger-fg:#d0392b; --danger-border:#ffd9d5;
+}
+:root[data-theme="dark"] {
+  --ink:#eef0f4; --muted:#9aa3b5; --bg:#14161d; --surface:#1f2230;
+  --line:rgba(255,255,255,.1); --field:#242735;
+  --surface-2:#2a2e3d; --surface-3:#242735; --surface-accent:#2e2a1c;
+  --track:#333748; --placeholder:#7d8296;
+  --danger-bg:#3a2020; --danger-fg:#ff8b7f; --danger-border:#5a2b28;
+}
+body {
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  color:var(--ink); background:var(--bg); margin:0; padding:20px 16px 64px; min-height:100vh;
+}
+.wrap { max-width:560px; margin:0 auto; }
+
+.head { display:flex; align-items:center; gap:10px; margin-bottom:18px; }
+.back-btn { width:38px; height:38px; border:none; border-radius:50%; background:var(--surface);
+  box-shadow:0 1px 3px rgba(0,0,0,.1); cursor:pointer; display:grid; place-items:center;
+  color:var(--ink); flex:none; text-decoration:none; }
+.ball { width:26px; height:26px; border-radius:50%; flex:none; position:relative;
+  background:linear-gradient(to bottom,#e63946 50%,#fff 50%); border:2.2px solid var(--ink-solid); }
+.ball::before { content:""; position:absolute; left:-2px; right:-2px; top:50%; height:2.2px;
+  background:var(--ink-solid); transform:translateY(-50%); }
+.ball::after { content:""; position:absolute; width:7px; height:7px; border-radius:50%;
+  background:#fff; border:2.2px solid var(--ink-solid); top:50%; left:50%; transform:translate(-50%,-50%); }
+.head-text { flex:1; min-width:0; }
+.title { font-size:19px; font-weight:800; letter-spacing:-.3px; line-height:1.1; }
+.sub { font-size:12.5px; color:var(--muted); font-weight:600; margin-top:3px; }
+.theme-btn { width:38px; height:38px; border:none; border-radius:50%; background:var(--surface);
+  box-shadow:0 1px 3px rgba(0,0,0,.1); cursor:pointer; display:grid; place-items:center;
+  color:var(--ink); flex:none; }
+
+.ico { width:19px; height:19px; display:block; margin:auto; flex:none; }
+
+#catStatus { font-size:12.5px; font-weight:700; color:var(--muted); text-align:center; margin:0 0 14px; }
+#catStatus.ok { color:#2e9a4f; }
+#catStatus.err { color:var(--danger-fg); }
+
+.card { background:var(--surface); border-radius:16px; padding:16px; margin-bottom:14px;
+  box-shadow:0 1px 3px rgba(0,0,0,.06); }
+
+button, label.btn { font-family:inherit; font-weight:800; font-size:14px; cursor:pointer;
+  padding:12px 15px; border-radius:12px; border:none; background:var(--gold); color:var(--ink-solid);
+  display:inline-block; text-align:center; }
+button[disabled] { opacity:.42; cursor:default; }
+.ghost { background:var(--field); color:var(--ink); border:1px solid var(--line); }
+input[type=file] { display:none; }
+
+.big-btn { width:100%; font-size:15px; padding:14px; border-radius:12px; }
+.btn-add { background:var(--gold); color:var(--ink-solid); }
+.link-btn { width:100%; background:none; color:var(--accent-deep); font-weight:700; font-size:13px;
+  padding:10px; border:none; text-decoration:underline; text-underline-offset:2px; }
+
+#stage { position:relative; width:100%; touch-action:none; display:none; margin-top:12px; }
+#photo { width:100%; display:block; border-radius:12px; }
+#box { position:absolute; border:2px solid var(--accent); box-shadow:0 0 0 9999px rgba(0,0,0,.42);
+  cursor:move; }
+.handle { position:absolute; width:30px; height:30px; background:var(--accent); border-radius:50%;
+  right:-15px; bottom:-15px; cursor:nwse-resize; box-shadow:0 2px 6px rgba(0,0,0,.3); }
+.hint { font-size:12px; color:var(--muted); font-weight:600; margin-top:10px; }
+
+.msg { display:flex; flex-direction:column; align-items:center; justify-content:center;
+  gap:12px; text-align:center; padding:26px 16px; color:var(--muted); font-weight:700; }
+.msg.err { color:var(--danger-fg); }
+.spin { width:26px; height:26px; margin:0 auto; border-radius:50%;
+  border:3px solid var(--track); border-top-color:var(--accent); animation:spin .8s linear infinite; }
+@keyframes spin { to { transform:rotate(360deg); } }
+
+.status { font-size:14px; font-weight:800; text-align:center; margin:0 0 12px; color:var(--ink); }
+.status.ok { color:#2e9a4f; }
+
+.scan-picked-btn { width:100%; background:none; border:none; padding:0; cursor:pointer;
+  display:block; text-align:center; margin-bottom:14px; }
+.scan-picked-btn img { width:130px; border-radius:12px; box-shadow:0 8px 22px rgba(0,0,0,.18);
+  margin-bottom:10px; }
+.scan-picked-name { font-weight:900; font-size:17px; }
+.scan-picked-meta { font-size:12.5px; color:var(--muted); font-weight:700; margin-top:3px; }
+
+.scan-results { display:flex; flex-direction:column; gap:10px; margin:10px 0; }
+.scan-card { display:flex; gap:12px; align-items:center; padding:11px; border-radius:14px;
+  border:1px solid var(--line); background:var(--surface-3); cursor:pointer; width:100%;
+  font-family:inherit; text-align:left; }
+.scan-card:active { opacity:.7; }
+.scan-card img { width:44px; border-radius:6px; flex:none; display:block; }
+.scan-card .nm { font-weight:800; font-size:14px; }
+.scan-card .meta { font-size:12px; color:var(--muted); font-weight:600; }
+
+.scan-picked-mini { display:flex; gap:12px; align-items:center; margin-bottom:16px; }
+.scan-picked-mini img { width:50px; border-radius:6px; flex:none; }
+.scan-picked-mini .nm { font-weight:800; font-size:14.5px; }
+.scan-picked-mini .meta { font-size:12px; color:var(--muted); font-weight:600; }
+
+.field { margin-bottom:14px; }
+.field-row { display:flex; gap:12px; }
+.field-row .field { flex:1; min-width:0; }
+.field > label { font-size:11px; font-weight:800; text-transform:uppercase; letter-spacing:.05em;
+  color:var(--muted); display:block; margin-bottom:8px; }
+.field select { width:100%; font-family:inherit; font-weight:700; font-size:14px; color:var(--ink);
+  padding:11px 13px; border-radius:10px; border:1px solid var(--line); background:var(--field);
+  -webkit-appearance:none; appearance:none; }
+.field-fixed { font-weight:700; font-size:14px; padding:11px 13px; border-radius:10px;
+  border:1px solid var(--line); background:var(--field); color:var(--ink); }
+
+.done-icon { width:52px; height:52px; margin:0 auto 12px; border-radius:50%; background:#2e9a4f;
+  color:#fff; display:grid; place-items:center; }
+.done-title { text-align:center; font-weight:900; font-size:17px; margin-bottom:4px; }
+.done-sub { text-align:center; font-size:13px; color:var(--muted); font-weight:600; margin-bottom:18px; }
+
+canvas { display:none; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="head">
+    <a class="back-btn" href="index.html" aria-label="Retour à l'appli" title="Retour à l'appli">
+      <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg>
+    </a>
+    <span class="ball"></span>
+    <div class="head-text">
+      <div class="title">Scanner une carte</div>
+      <div class="sub" id="sub">Photographie une carte pour l'ajouter</div>
+    </div>
+    <button class="theme-btn" id="themeBtn" aria-label="Changer de thème" title="Changer de thème"></button>
+  </div>
+
+  <p id="catStatus">Préparation du catalogue…</p>
+
+  <div class="card" id="captureCard">
+    <label class="btn" style="width:100%;display:block;margin-bottom:8px">Prendre une photo
+      <input type="file" id="fPhoto" accept="image/*" capture="environment">
+    </label>
+    <label class="btn ghost" style="width:100%;display:block">Depuis mes fichiers
+      <input type="file" id="fFile" accept="image/*">
+    </label>
+    <div id="stage">
+      <img id="photo" alt="">
+      <div id="box"><div class="handle" id="handle"></div></div>
+    </div>
+    <p class="hint" id="hint" style="display:none">
+      Ajuste le cadre orange sur la carte : glisse pour déplacer, tire le rond pour redimensionner.
+    </p>
+    <button type="button" class="big-btn btn-add" id="go" style="margin-top:14px" disabled>Identifier la carte</button>
+  </div>
+
+  <div class="card" id="resultCard" hidden>
+    <p class="status" id="resultStatus"></p>
+    <div id="resultBody"></div>
+  </div>
+
+  <div class="card" id="addCard" hidden>
+    <div id="addBody"></div>
+  </div>
+
+  <div class="card" id="doneCard" hidden>
+    <div class="done-icon">
+      <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg>
+    </div>
+    <div class="done-title">Ajoutée à ta collection</div>
+    <div class="done-sub" id="doneSub"></div>
+    <button type="button" class="big-btn btn-add" id="scanAnother">Scanner une autre carte</button>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+import { getFirestore, doc, getDoc, setDoc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyCiGgrj28Jrqn8jEGM9pWFsVhnfs-VKyiU",
+  authDomain: "ma-collection-pokemon.firebaseapp.com",
+  projectId: "ma-collection-pokemon",
+  storageBucket: "ma-collection-pokemon.firebasestorage.app",
+  messagingSenderId: "1058168439830",
+  appId: "1:1058168439830:web:9b3c787f9286e888112137",
+};
+const fbApp = initializeApp(firebaseConfig);
+const auth = getAuth(fbApp);
+const db = getFirestore(fbApp);
+
+const API = "https://api.tcgdex.net/v2/fr";
+const KEY = "collection_pokemon_v1";
+const WISH_KEY = "collection_pokemon_wishlist";
+const CONDITIONS = ["Neuve", "Excellent", "Très bon", "Bon", "Moyen", "Mauvais"];
+const LANGUAGES = ["Français", "Anglais", "Japonais", "Allemand", "Italien", "Espagnol", "Chinois", "Autre"];
+const DEFAULT_VARIANT = "Normale";
+const VARIANT_LABELS = { normal:"Normale", reverse:"Reverse Holo", holo:"Holo", firstEdition:"1re édition", wPromo:"Promo" };
+
+function esc(s){ return String(s).replace(/&/g,"&amp;").replace(/"/g,"&quot;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
+
+// ---------- données de la collection (mêmes clés/format que index.html) ----------
+function copyEntry(cond, lang){ return { cond: cond || "Neuve", lang: lang || "Français" }; }
+function makeCopies(qty, cond, lang){ return Array.from({ length: Math.max(1, qty || 1) }, () => copyEntry(cond, lang)); }
+function migrate(raw){
+  const out = {};
+  for (const id in raw){
+    const v = raw[id];
+    if (!v) continue;
+    if (typeof v === "number"){
+      out[id] = { v: { [DEFAULT_VARIANT]: makeCopies(v) } };
+    } else if (v.v && typeof v.v === "object"){
+      const vv = {};
+      for (const name in v.v){
+        const e = v.v[name];
+        if (!e) continue;
+        const copies = Array.isArray(e)
+          ? e.map(cp => copyEntry(cp && cp.cond, cp && cp.lang))
+          : makeCopies(e.qty, e.cond, e.lang);
+        if (copies.length) vv[name] = copies;
+      }
+      if (Object.keys(vv).length) out[id] = { v: vv };
+    } else if (typeof v === "object"){
+      out[id] = { v: { [DEFAULT_VARIANT]: makeCopies(v.qty, v.cond, v.lang) } };
+    }
+  }
+  return out;
+}
+function loadOwned(){ try { return migrate(JSON.parse(localStorage.getItem(KEY)) || {}); } catch { return {}; } }
+function loadWishlist(){ try { return JSON.parse(localStorage.getItem(WISH_KEY)) || {}; } catch { return {}; } }
+let owned = loadOwned();
+let wishlist = loadWishlist();
+function saveLocal(){
+  try { localStorage.setItem(KEY, JSON.stringify(owned)); } catch {}
+  try { localStorage.setItem(WISH_KEY, JSON.stringify(wishlist)); } catch {}
+}
+async function saveCloud(){
+  if (!currentUser) return;
+  try { await setDoc(doc(db, "collections", currentUser.uid), { cards: owned, wishlist: wishlist, updatedAt: Date.now() }); }
+  catch { /* hors-ligne : la prochaine ouverture de l'appli remettra tout d'aplomb */ }
+}
+
+// Le scan écrit dans les MÊMES données que l'appli (localStorage + Firestore) : il faut donc
+// partir de la version la plus fraîche du cloud avant d'ajouter quoi que ce soit, sinon on
+// risque d'écraser un changement fait depuis un autre appareil. Le bouton « Ajouter » reste
+// désactivé tant que cette vérification n'est pas terminée (voir cloudReady).
+let currentUser = null, cloudReady = true;
+onAuthStateChanged(auth, async (user) => {
+  currentUser = user;
+  if (!user) { cloudReady = true; return; }
+  cloudReady = false;
+  try {
+    const snap = await getDoc(doc(db, "collections", user.uid));
+    if (snap.exists()){
+      const data = snap.data();
+      owned = migrate(data.cards || {});
+      wishlist = data.wishlist || {};
+      saveLocal();
+    }
+  } catch { /* hors-ligne : on continue avec les données locales */ }
+  cloudReady = true;
+  syncAddButtonState();
+});
+
+async function fetchVariants(cardId){
+  try {
+    const data = await (await fetch(API + "/cards/" + encodeURIComponent(cardId))).json();
+    const v = data && data.variants ? data.variants : {};
+    const list = Object.keys(VARIANT_LABELS).filter(k => v[k]).map(k => VARIANT_LABELS[k]);
+    return list.length ? list : [DEFAULT_VARIANT];
+  } catch { return [DEFAULT_VARIANT]; }
+}
+
+// ---------- thème clair / sombre (même clé que index.html) ----------
+const THEME_KEY = "collection_pokemon_theme";
+const themeBtn = document.getElementById("themeBtn");
+const ICON_SUN = `<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.6v2.2M12 19.2v2.2M4.6 12H2.4M21.6 12h-2.2M6.8 6.8 5.2 5.2M18.8 18.8l-1.6-1.6M17.2 6.8l1.6-1.6M5.2 18.8l1.6-1.6"/></svg>`;
+const ICON_MOON = `<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>`;
+function applyTheme(theme){
+  document.documentElement.setAttribute("data-theme", theme);
+  try { localStorage.setItem(THEME_KEY, theme); } catch {}
+  const meta = document.querySelector('meta[name="theme-color"]');
+  if (meta) meta.setAttribute("content", theme === "dark" ? "#14161d" : "#f0eee9");
+  themeBtn.innerHTML = theme === "dark" ? ICON_SUN : ICON_MOON;
+}
+applyTheme(document.documentElement.getAttribute("data-theme") === "dark" ? "dark" : "light");
+themeBtn.onclick = () => applyTheme(document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark");
+
+// ---------- empreinte : STRICTEMENT identique à build_hashes.py et test-scan.html ----------
+const GRID = 12;
+function boxResize(rgb, w, h, grid){
+  const ys = [], xs = [];
+  for (let i = 0; i <= grid; i++){ ys.push(Math.trunc(i*h/grid)); xs.push(Math.trunc(i*w/grid)); }
+  ys[grid] = h; xs[grid] = w;
+  const out = new Float64Array(grid*grid*3);
+  for (let i = 0; i < grid; i++){
+    const y0 = ys[i], y1 = Math.max(ys[i+1], ys[i]+1);
+    for (let j = 0; j < grid; j++){
+      const x0 = xs[j], x1 = Math.max(xs[j+1], xs[j]+1);
+      let r=0,g=0,b=0,n=0;
+      for (let y=y0; y<y1; y++){
+        let p = (y*w+x0)*3;
+        for (let x=x0; x<x1; x++){ r+=rgb[p]; g+=rgb[p+1]; b+=rgb[p+2]; p+=3; n++; }
+      }
+      const o = (i*grid+j)*3;
+      out[o]=r/n; out[o+1]=g/n; out[o+2]=b/n;
+    }
+  }
+  return out;
+}
+function fingerprint(rgb, w, h){
+  const small = boxResize(rgb, w, h, GRID), n = GRID*GRID;
+  const chroma = new Uint8Array(n*2), lumf = new Float64Array(n);
+  for (let i=0;i<n;i++){
+    const r=small[i*3], g=small[i*3+1], b=small[i*3+2], s=r+g+b+1e-6;
+    chroma[i*2]   = Math.min(255, Math.max(0, Math.round(r/s*255)));
+    chroma[i*2+1] = Math.min(255, Math.max(0, Math.round(g/s*255)));
+    lumf[i] = 0.299*r + 0.587*g + 0.114*b;
+  }
+  let m=0; for (let i=0;i<n;i++) m+=lumf[i]; m/=n;
+  let v=0; for (let i=0;i<n;i++) v+=(lumf[i]-m)**2; v/=n;
+  const sd = Math.sqrt(v), luma = new Uint8Array(n);
+  for (let i=0;i<n;i++)
+    luma[i] = Math.min(255, Math.max(0, Math.round((lumf[i]-m)/(sd+1e-6)*40+128)));
+  return { luma, chroma };
+}
+function b64ToBytes(b64){
+  const s = atob(b64), a = new Uint8Array(s.length);
+  for (let i=0;i<s.length;i++) a[i] = s.charCodeAt(i);
+  return a;
+}
+function distance(q, r){
+  let dc=0; for (let i=0;i<q.chroma.length;i++) dc += Math.abs(q.chroma[i]-r.chroma[i]);
+  dc /= q.chroma.length*255;
+  let dl=0; for (let i=0;i<q.luma.length;i++) dl += Math.abs(q.luma[i]-r.luma[i]);
+  dl /= q.luma.length*255;
+  return 0.75*dc + 0.25*dl;
+}
+
+// ---------- catalogue (chargement automatique, sans étape manuelle) ----------
+let catalog = null, setCounts = {}, setOfficial = {};
+const catStatus = document.getElementById("catStatus");
+async function loadSetTotals(){
+  if (Object.keys(setOfficial).length) return;
+  try {
+    const r = await fetch(API + "/sets");
+    for (const st of await r.json()){
+      const n = st.cardCount ? (st.cardCount.official ?? st.cardCount.total) : null;
+      if (n) setOfficial[st.id] = n;
+    }
+  } catch { /* sans cette info, on retombe sur une estimation */ }
+}
+async function loadCatalog(){
+  try {
+    const r = await fetch("catalogue-fr.json");
+    if (!r.ok) throw new Error("fichier absent (" + r.status + ")");
+    const data = await r.json();
+    const all = [];
+    for (const c of data.cards)
+      all.push({ id:c.id, n:c.n, t:c.t, i:c.i, set:c.s || data.set, luma:b64ToBytes(c.l), chroma:b64ToBytes(c.c) });
+    catalog = all;
+    setCounts = {};
+    for (const c of all) setCounts[c.set] = (setCounts[c.set] || 0) + 1;
+    catStatus.textContent = `Catalogue prêt · ${catalog.length.toLocaleString("fr-FR")} cartes`;
+    catStatus.classList.add("ok");
+    maybeEnable();
+    loadSetTotals();
+  } catch (err) {
+    catStatus.textContent = "Catalogue indisponible (hors-ligne ?) : " + err.message;
+    catStatus.classList.add("err");
+  }
+}
+loadCatalog();
+
+// ---------- photo + cadre ajustable ----------
+const img = document.getElementById("photo"), stage = document.getElementById("stage");
+const box = document.getElementById("box"), handle = document.getElementById("handle");
+const hint = document.getElementById("hint"), goBtn = document.getElementById("go");
+let photoReady = false;
+function loadPhoto(e){
+  const f = e.target.files[0]; if (!f) return;
+  resetResults();
+  img.onload = () => {
+    stage.style.display = "block";
+    hint.style.display = "block";
+    const W = stage.clientWidth, H = img.clientHeight;
+    const h = Math.min(H*0.8, W*0.8*88/63), w = h*63/88;
+    Object.assign(box.style, { left:(W-w)/2+"px", top:(H-h)/2+"px", width:w+"px", height:h+"px" });
+    photoReady = true; maybeEnable();
+  };
+  img.src = URL.createObjectURL(f);
+}
+document.getElementById("fPhoto").onchange = loadPhoto;
+document.getElementById("fFile").onchange  = loadPhoto;
+
+let drag = null;
+function pt(e){ const t = e.touches ? e.touches[0] : e; return { x:t.clientX, y:t.clientY }; }
+box.addEventListener("pointerdown", e => {
+  if (e.target === handle) return;
+  drag = { mode:"move", ...pt(e), l:box.offsetLeft, t:box.offsetTop };
+  box.setPointerCapture(e.pointerId);
+});
+handle.addEventListener("pointerdown", e => {
+  e.stopPropagation();
+  drag = { mode:"size", ...pt(e), w:box.offsetWidth };
+  handle.setPointerCapture(e.pointerId);
+});
+function onMove(e){
+  if (!drag) return;
+  const p = pt(e);
+  if (drag.mode === "move"){
+    box.style.left = Math.max(0, Math.min(stage.clientWidth - box.offsetWidth, drag.l + p.x - drag.x)) + "px";
+    box.style.top  = Math.max(0, Math.min(img.clientHeight - box.offsetHeight, drag.t + p.y - drag.y)) + "px";
+  } else {
+    const w = Math.max(60, Math.min(stage.clientWidth - box.offsetLeft, drag.w + p.x - drag.x));
+    box.style.width = w + "px";
+    box.style.height = (w*88/63) + "px";
+  }
+}
+document.addEventListener("pointermove", onMove);
+document.addEventListener("pointerup", () => { drag = null; });
+
+function maybeEnable(){ goBtn.disabled = !(catalog && photoReady); }
+
+// ---------- lecture du numéro (OCR), essai bas-gauche puis bas-droite si besoin ----------
+let ocrWorker = null, zone = "bl";
+function cropRect(cx, cy, cw, ch){
+  const y = cy + ch*0.902, h = ch*0.088;
+  if (zone === "br") return [cx + cw*0.56, y, cw*0.41, h];
+  return [cx + cw*0.03, y, cw*0.42, h];
+}
+function cropRectName(cx, cy, cw, ch){
+  const y = cy + ch*0.035, h = ch*0.075;
+  return [cx + cw*0.05, y, cw*0.68, h];
+}
+function buildStripFromRect(rect){
+  const [sx, sy, sw, sh] = rect.map(Math.round);
+  const scale = Math.max(1, Math.min(8, 180 / Math.max(1, sh)));
+  const cv = document.createElement("canvas");
+  cv.width = Math.round(sw*scale); cv.height = Math.round(sh*scale);
+  const ctx = cv.getContext("2d", { willReadFrequently:true });
+  ctx.imageSmoothingEnabled = true;
+  ctx.imageSmoothingQuality = "high";
+  ctx.drawImage(img, sx, sy, sw, sh, 0, 0, cv.width, cv.height);
+
+  const d = ctx.getImageData(0, 0, cv.width, cv.height);
+  const px = d.data;
+  let mn = 255, mx = 0, sum = 0;
+  for (let i = 0; i < px.length; i += 4){
+    const g = 0.299*px[i] + 0.587*px[i+1] + 0.114*px[i+2];
+    px[i] = px[i+1] = px[i+2] = g;
+    if (g < mn) mn = g; if (g > mx) mx = g; sum += g;
+  }
+  const mean = sum/(px.length/4), range = Math.max(1, mx - mn);
+  const invert = mean < 118;
+  for (let i = 0; i < px.length; i += 4){
+    let v = (px[i] - mn)/range*255;
+    if (invert) v = 255 - v;
+    v = v < 128 ? Math.max(0, v*0.55) : Math.min(255, 128 + (v-128)*1.7);
+    px[i] = px[i+1] = px[i+2] = v;
+  }
+  ctx.putImageData(d, 0, 0);
+  return cv;
+}
+function buildStrip(cx, cy, cw, ch){ return buildStripFromRect(cropRect(cx, cy, cw, ch)); }
+function buildNameStrip(cx, cy, cw, ch){ return buildStripFromRect(cropRectName(cx, cy, cw, ch)); }
+
+const CONF_THRESHOLD = 60;
+function flattenSymbols(data){
+  let wordsList = [];
+  if (Array.isArray(data.words) && data.words.length){
+    wordsList = data.words;
+  } else {
+    for (const bl of (data.blocks || []))
+      for (const p of (bl.paragraphs || []))
+        for (const l of (p.lines || []))
+          for (const w of (l.words || [])) wordsList.push(w);
+  }
+  const chars = [], confs = [];
+  for (const w of wordsList){
+    const syms = w.symbols;
+    if (syms && syms.length){
+      for (const s of syms){ chars.push(s.text); confs.push(s.confidence); }
+    } else {
+      for (const ch of (w.text || "")){ chars.push(ch); confs.push(w.confidence || 0); }
+    }
+    chars.push(" "); confs.push(100);
+  }
+  return { text: chars.join(""), confs };
+}
+function locateNumberSpan(text){
+  const re = /(\d{1,3})(\s*[\/|]\s*)(\d{1,3})/;
+  const m = re.exec(text);
+  if (!m) return null;
+  const numStart = m.index, numLen = m[1].length;
+  const totalStart = numStart + m[1].length + m[2].length, totalLen = m[3].length;
+  return { numStart, numLen, totalStart, totalLen };
+}
+function wildcardOf(text, confs, start, len){
+  let out = "";
+  for (let i = start; i < start + len; i++){
+    const c = confs[i];
+    out += (typeof c === "number" && c < CONF_THRESHOLD) ? "?" : text[i];
+  }
+  return out;
+}
+function countKnown(pattern){ return [...pattern].filter(ch => ch !== "?").length; }
+function matchesPattern(value, pattern){
+  if (!value || value.length !== pattern.length) return false;
+  for (let i = 0; i < pattern.length; i++)
+    if (pattern[i] !== "?" && pattern[i] !== value[i]) return false;
+  return true;
+}
+function padDigits(raw, len){
+  const n = parseInt(String(raw || "").replace(/\D/g, ""), 10);
+  return Number.isFinite(n) ? String(n).padStart(len, "0") : null;
+}
+function extractNumber(text){
+  const tryOn = (t) => {
+    const re = /(\d{1,3})\s*[\/|]\s*(\d{1,3})/g;
+    let m;
+    while ((m = re.exec(t)) !== null){
+      const num = parseInt(m[1], 10), total = parseInt(m[2], 10);
+      if (total >= 10 && total <= 400 && num >= 1 && num <= total + 60)
+        return { num: m[1], total: m[2] };
+    }
+    return null;
+  };
+  let r = tryOn(text);
+  if (r) return r;
+  const fixed = text.replace(/[OoQD]/g, "0").replace(/[Ss]/g, "5").replace(/[Bb]/g, "8").replace(/[Zz]/g, "2");
+  return tryOn(fixed);
+}
+async function readNumber(canvas){
+  if (!window.Tesseract) return null;
+  try { if (!ocrWorker) ocrWorker = await Tesseract.createWorker("fra"); }
+  catch { ocrWorker = null; return null; }
+
+  const modes = ["6", "11", "7", "4"];
+  let bestPartial = null;
+  for (const psm of modes){
+    try {
+      await ocrWorker.setParameters({ tessedit_pageseg_mode: psm, tessedit_char_whitelist: "" });
+      const { data } = await ocrWorker.recognize(canvas);
+      const raw = (data.text || "").replace(/\s+/g, " ").trim();
+      if (!raw) continue;
+
+      const found = extractNumber(raw);
+      if (found) return { mode: "full", num: found.num, total: found.total };
+
+      try {
+        const flat = flattenSymbols(data);
+        const span = flat.text ? locateNumberSpan(flat.text) : null;
+        if (span){
+          const numPattern = wildcardOf(flat.text, flat.confs, span.numStart, span.numLen);
+          const totalPattern = wildcardOf(flat.text, flat.confs, span.totalStart, span.totalLen);
+          const known = countKnown(numPattern) + countKnown(totalPattern);
+          if (known > 0 && (!bestPartial || known > bestPartial.known))
+            bestPartial = { numPattern, totalPattern, known };
+        }
+      } catch {}
+    } catch {}
+  }
+  return bestPartial ? { mode: "partial", numPattern: bestPartial.numPattern, totalPattern: bestPartial.totalPattern } : null;
+}
+// essaie d'abord bas-gauche (mise en page la plus courante), puis bas-droite seulement
+// si la première bande n'a rien donné — évite de doubler systématiquement le temps de lecture
+async function readNumberBothZones(cx, cy, cw, chh){
+  let best = null;
+  for (const z of ["bl", "br"]){
+    zone = z;
+    const r = await readNumber(buildStrip(cx, cy, cw, chh));
+    if (r && r.mode === "full") return r;
+    if (r && r.mode === "partial"){
+      const known = countKnown(r.numPattern) + countKnown(r.totalPattern);
+      if (!best || known > best.known) best = { ...r, known };
+    }
+  }
+  return best;
+}
+
+// ---------- lecture du nom (bande du haut) ----------
+const NAME_NOISE = new Set(["pv", "hp"]);
+function extractName(raw){
+  const words = (raw.match(/[A-Za-zÀ-ÖØ-öø-ÿ]+/g) || [])
+    .filter(w => w.length >= 2 && !NAME_NOISE.has(w.toLowerCase()));
+  return words.length ? words.join(" ") : null;
+}
+async function readName(canvas){
+  if (!window.Tesseract) return null;
+  try { if (!ocrWorker) ocrWorker = await Tesseract.createWorker("fra"); }
+  catch { ocrWorker = null; return null; }
+
+  const modes = ["7", "6", "11"];
+  let best = null;
+  for (const psm of modes){
+    try {
+      await ocrWorker.setParameters({ tessedit_pageseg_mode: psm, tessedit_char_whitelist: "" });
+      const { data } = await ocrWorker.recognize(canvas);
+      const raw = (data.text || "").replace(/\s+/g, " ").trim();
+      if (!raw) continue;
+      const guess = extractName(raw);
+      if (guess && (!best || guess.length > best.guess.length)) best = { guess };
+    } catch {}
+  }
+  return best;
+}
+function normalizeName(s){
+  return String(s || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase().replace(/[^a-z0-9 ]/g, " ").replace(/\s+/g, " ").trim();
+}
+function editDistance(a, b){
+  const m = a.length, n = b.length;
+  if (!m) return n; if (!n) return m;
+  const dp = new Array(n + 1);
+  for (let j = 0; j <= n; j++) dp[j] = j;
+  for (let i = 1; i <= m; i++){
+    let prev = dp[0]; dp[0] = i;
+    for (let j = 1; j <= n; j++){
+      const tmp = dp[j];
+      dp[j] = a[i-1] === b[j-1] ? prev : 1 + Math.min(prev, dp[j], dp[j-1]);
+      prev = tmp;
+    }
+  }
+  return dp[n];
+}
+function nameSimilarity(a, b){
+  const na = normalizeName(a), nb = normalizeName(b);
+  if (!na || !nb) return 0;
+  return 1 - editDistance(na, nb) / Math.max(na.length, nb.length);
+}
+const NAME_SIM_THRESHOLD = 0.45;
+function narrowByName(pool, nameGuess){
+  if (!nameGuess) return { pool, tag: null };
+  const scored = pool.map(c => ({ c, sim: nameSimilarity(nameGuess, c.t) })).sort((a, b) => b.sim - a.sim);
+  const top = scored[0] ? scored[0].sim : 0;
+  if (top < NAME_SIM_THRESHOLD) return { pool, tag: null };
+  const kept = scored.filter(s => s.sim >= top - 0.15).map(s => s.c);
+  if (!kept.length || kept.length >= pool.length) return { pool, tag: null };
+  return { pool: kept, tag: "nom" };
+}
+const normNum = (s) => String(s || "").replace(/\D/g, "").replace(/^0+/, "") || "0";
+
+// ---------- reconnaissance combinée : numéro → nom → image ----------
+const resultCard = document.getElementById("resultCard");
+const resultStatus = document.getElementById("resultStatus");
+const resultBody = document.getElementById("resultBody");
+
+goBtn.onclick = async () => {
+  goBtn.disabled = true;
+  resultCard.hidden = false;
+  resultStatus.textContent = "";
+  resultBody.innerHTML = `<div class="msg"><div class="spin"></div>Analyse de la photo…</div>`;
+  try {
+    const sx = img.naturalWidth/img.clientWidth, sy = img.naturalHeight/img.clientHeight;
+    const cx = Math.round(box.offsetLeft*sx),  cy = Math.round(box.offsetTop*sy);
+    const cw = Math.round(box.offsetWidth*sx), chh = Math.round(box.offsetHeight*sy);
+
+    const cv = document.createElement("canvas");
+    cv.width = cw; cv.height = chh;
+    const ctx = cv.getContext("2d", { willReadFrequently:true });
+    ctx.drawImage(img, cx, cy, cw, chh, 0, 0, cw, chh);
+    const d = ctx.getImageData(0, 0, cw, chh).data;
+    const rgb = new Uint8Array(cw*chh*3);
+    for (let i=0, j=0; i<d.length; i+=4, j+=3){ rgb[j]=d[i]; rgb[j+1]=d[i+1]; rgb[j+2]=d[i+2]; }
+    const q = fingerprint(rgb, cw, chh);
+    const ranked = catalog.map(c => ({ c, d: distance(q, c) })).sort((a,b) => a.d - b.d);
+
+    resultBody.innerHTML = `<div class="msg"><div class="spin"></div>Lecture du numéro…</div>`;
+    const read = await readNumberBothZones(cx, cy, cw, chh);
+
+    resultBody.innerHTML = `<div class="msg"><div class="spin"></div>Lecture du nom…</div>`;
+    const nameRead = await readName(buildNameStrip(cx, cy, cw, chh));
+    const nameGuess = nameRead ? nameRead.guess : null;
+
+    let list = ranked.slice(0, 5), byNum = null, confirmedBy = [];
+    const rank3 = (best) => list = [{ c: best[0].c, d: best[0].d }]
+      .concat(best.slice(1, 3))
+      .concat(ranked.filter(r => !best.slice(0,3).some(b => b.c.id === r.c.id)).slice(0, 2));
+
+    if (read && read.mode === "full"){
+      let hits = catalog.filter(c => normNum(c.n) === normNum(read.num));
+      if (read.total){
+        const T = parseInt(read.total, 10);
+        let nar = hits.filter(c => setOfficial[c.set] === T);
+        if (!nar.length) nar = hits.filter(c => Math.abs((setOfficial[c.set] || 0) - T) <= 2);
+        if (!nar.length) nar = hits.filter(c => (setCounts[c.set] || 0) >= T*0.9);
+        if (nar.length) hits = nar;
+      }
+      let byName = false;
+      if (hits.length > 1 && nameGuess){
+        const n = narrowByName(hits, nameGuess);
+        if (n.tag){ hits = n.pool; byName = true; }
+      }
+      if (hits.length){
+        const best = hits.map(c => ({ c, d: distance(q, c) })).sort((a,b) => a.d - b.d);
+        byNum = best[0].c;
+        confirmedBy = ["numéro"];
+        if (byName) confirmedBy.push("nom");
+        if (ranked[0].c.id === byNum.id) confirmedBy.push("image");
+        rank3(best);
+      }
+    } else if (read && read.mode === "partial"){
+      const knownTotals = [...new Set(Object.values(setOfficial))].map(t => String(t)).filter(t => t.length === read.totalPattern.length);
+      const totalMatches = knownTotals.filter(t => matchesPattern(t, read.totalPattern));
+      const seriesOk = totalMatches.length ? Object.keys(setOfficial).filter(sid => totalMatches.includes(String(setOfficial[sid]))) : null;
+      let hits = catalog.filter(c => {
+        if (seriesOk && !seriesOk.includes(c.set)) return false;
+        return matchesPattern(padDigits(c.n, read.numPattern.length), read.numPattern);
+      });
+      let byName = false;
+      if (hits.length > 1 && nameGuess){
+        const n = narrowByName(hits, nameGuess);
+        if (n.tag){ hits = n.pool; byName = true; }
+      }
+      if (hits.length && hits.length < catalog.length){
+        const best = hits.map(c => ({ c, d: distance(q, c) })).sort((a,b) => a.d - b.d);
+        byNum = best[0].c;
+        confirmedBy = ["numéro (partiel)"];
+        if (byName) confirmedBy.push("nom");
+        if (ranked[0].c.id === byNum.id) confirmedBy.push("image");
+        rank3(best);
+      }
+    } else if (nameGuess){
+      const n = narrowByName(catalog, nameGuess);
+      if (n.tag && n.pool.length < catalog.length){
+        const best = n.pool.map(c => ({ c, d: distance(q, c) })).sort((a,b) => a.d - b.d);
+        byNum = best[0].c;
+        confirmedBy = ["nom"];
+        if (ranked[0].c.id === byNum.id) confirmedBy.push("image");
+        rank3(best);
+      }
+    }
+
+    const agree = !!byNum && ranked[0].c.id === byNum.id;
+    showResults(list, agree, confirmedBy);
+  } catch (err) {
+    resultBody.innerHTML = `<div class="msg err">Erreur pendant l'analyse : ${esc(err.message)}</div>`;
+  } finally {
+    goBtn.disabled = false;
+  }
+};
+
+function cardRowHtml(c){
+  return `<button type="button" class="scan-card" data-id="${esc(c.id)}">
+    ${c.i ? `<img src="${c.i}/low.webp" alt="">` : ""}
+    <div><div class="nm">${esc(c.t)}</div><div class="meta">n° ${esc(c.n)}</div></div>
+  </button>`;
+}
+function bindResultRows(container, cards){
+  container.querySelectorAll(".scan-card").forEach((btn, i) => btn.onclick = () => openAddForm(cards[i]));
+}
+function showResults(list, agree, confirmedBy){
+  if (agree){
+    const c = list[0].c;
+    resultStatus.textContent = "Carte reconnue";
+    resultStatus.className = "status ok";
+    resultBody.innerHTML = `
+      <button type="button" class="scan-picked-btn" id="pickTop">
+        ${c.i ? `<img src="${c.i}/low.webp" alt="">` : ""}
+        <div class="scan-picked-name">${esc(c.t)}</div>
+        <div class="scan-picked-meta">n° ${esc(c.n)}${confirmedBy.length ? " · confirmé par " + confirmedBy.join(", ") : ""}</div>
+      </button>
+      <button type="button" class="big-btn btn-add" id="addTop">Ajouter à ma collection</button>
+      <button type="button" class="link-btn" id="showAlt">Ce n'est pas la bonne carte ? Voir d'autres possibilités</button>
+      <div class="scan-results" id="altList" hidden></div>`;
+    document.getElementById("addTop").onclick = () => openAddForm(c);
+    document.getElementById("pickTop").onclick = () => openAddForm(c);
+    document.getElementById("showAlt").onclick = () => {
+      const alt = document.getElementById("altList");
+      alt.hidden = !alt.hidden;
+      if (!alt.hidden){
+        const others = list.slice(1, 3).map(r => r.c);
+        alt.innerHTML = others.map(cardRowHtml).join("");
+        bindResultRows(alt, others);
+      }
+    };
+  } else {
+    resultStatus.textContent = "Plusieurs possibilités — choisis la bonne carte";
+    resultStatus.className = "status";
+    const top3 = list.slice(0, 3).map(r => r.c);
+    resultBody.innerHTML = `<div class="scan-results" id="candList"></div>
+      <button type="button" class="link-btn" id="retakeBtn">Aucune de ces cartes ? Reprendre la photo</button>`;
+    const candList = document.getElementById("candList");
+    candList.innerHTML = top3.map(cardRowHtml).join("");
+    bindResultRows(candList, top3);
+    document.getElementById("retakeBtn").onclick = () => { resultCard.hidden = true; };
+  }
+}
+
+// ---------- ajout à la collection ----------
+const addCard = document.getElementById("addCard"), addBody = document.getElementById("addBody");
+const doneCard = document.getElementById("doneCard"), doneSub = document.getElementById("doneSub");
+let selectedCard = null;
+
+function syncAddButtonState(){
+  const btn = document.getElementById("confirmAdd");
+  if (!btn) return;
+  btn.disabled = !cloudReady;
+  btn.textContent = cloudReady ? "Ajouter à ma collection" : "Synchronisation de ta collection…";
+}
+
+async function openAddForm(card){
+  selectedCard = card;
+  resultCard.hidden = true;
+  addCard.hidden = false;
+  addBody.innerHTML = `<div class="msg"><div class="spin"></div>Vérification des versions disponibles…</div>`;
+  const versions = await fetchVariants(card.id);
+  addBody.innerHTML = `
+    <div class="scan-picked-mini">
+      ${card.i ? `<img src="${card.i}/low.webp" alt="">` : ""}
+      <div><div class="nm">${esc(card.t)}</div><div class="meta">n° ${esc(card.n)}</div></div>
+    </div>
+    ${versions.length > 1
+      ? `<div class="field"><label>Version</label>
+           <select id="addVersion">${versions.map(v => `<option>${esc(v)}</option>`).join("")}</select>
+         </div>`
+      : `<div class="field"><label>Version</label><div class="field-fixed">${esc(versions[0])}</div>
+           <input type="hidden" id="addVersion" value="${esc(versions[0])}"></div>`}
+    <div class="field-row">
+      <div class="field"><label>État</label>
+        <select id="addCond">${CONDITIONS.map(o => `<option${o==="Neuve"?" selected":""}>${o}</option>`).join("")}</select>
+      </div>
+      <div class="field"><label>Langue</label>
+        <select id="addLang">${LANGUAGES.map(o => `<option${o==="Français"?" selected":""}>${o}</option>`).join("")}</select>
+      </div>
+    </div>
+    <button type="button" class="big-btn btn-add" id="confirmAdd">Ajouter à ma collection</button>
+    <button type="button" class="link-btn" id="cancelAdd">Annuler</button>`;
+  syncAddButtonState();
+  document.getElementById("confirmAdd").onclick = confirmAdd;
+  document.getElementById("cancelAdd").onclick = () => { addCard.hidden = true; resultCard.hidden = false; };
+}
+
+async function confirmAdd(){
+  const version = document.getElementById("addVersion").value;
+  const cond = document.getElementById("addCond").value;
+  const lang = document.getElementById("addLang").value;
+  if (!owned[selectedCard.id]) owned[selectedCard.id] = { v: {} };
+  if (!owned[selectedCard.id].v[version]) owned[selectedCard.id].v[version] = [];
+  owned[selectedCard.id].v[version].push(copyEntry(cond, lang));
+  delete wishlist[selectedCard.id];
+  saveLocal();
+  await saveCloud();
+  addCard.hidden = true;
+  doneCard.hidden = false;
+  doneSub.textContent = `${selectedCard.t} · ${version} · ${cond} · ${lang}`;
+}
+
+document.getElementById("scanAnother").onclick = resetForNextScan;
+
+function resetResults(){
+  resultCard.hidden = true; addCard.hidden = true; doneCard.hidden = true;
+  selectedCard = null;
+}
+function resetForNextScan(){
+  resetResults();
+  document.getElementById("fPhoto").value = "";
+  document.getElementById("fFile").value = "";
+  photoReady = false;
+  stage.style.display = "none";
+  hint.style.display = "none";
+  maybeEnable();
+}
+
+if ("serviceWorker" in navigator) navigator.serviceWorker.register("sw.js").catch(() => {});
+</script>
+</body>
+</html>

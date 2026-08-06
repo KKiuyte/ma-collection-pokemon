@@ -80,6 +80,7 @@ body {
   line-height:1; color:var(--ink-solid); flex:none; }
 .installbtn:active { transform:scale(.92); }
 .installbtn[hidden] { display:none; }
+#scanBtn { text-decoration:none; }
 
 /* --- onglets de vue (Série / Collection / Statistiques / Échange) --- */
 /* défilement horizontal plutôt que retour à la ligne : reste propre même avec un onglet en plus */
@@ -415,6 +416,9 @@ body {
     <button id="installBtn" class="installbtn" hidden title="Installer l'application" aria-label="Installer l'application">
       <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.5v11M7.5 10.5 12 15l4.5-4.5M4.5 19.5h15"/></svg>
     </button>
+    <a id="scanBtn" class="syncbtn" href="scan.html" title="Scanner une carte" aria-label="Scanner une carte">
+      <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2.5"/><path d="M8 7l1.4-2.5h5.2L16 7"/><circle cx="12" cy="13.5" r="3.5"/></svg>
+    </a>
     <button id="themeBtn" class="syncbtn" title="Changer de th&egrave;me" aria-label="Changer de th&egrave;me"></button>
     <button id="syncBtn" class="syncbtn" title="Mon compte" aria-label="Mon compte">
       <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="3.6"/><path d="M5 20c0-3.5 3.1-5.7 7-5.7s7 2.2 7 5.7"/></svg>

@@ -66,21 +66,30 @@ Liste des évolutions possibles. Rien n'est figé : on pioche dedans au fur et �
 
 ---
 
-## 📸 En attente — Reconnaissance de carte par photo
-Mise de côté après étude. **Les recherches sont consignées ici pour ne pas refaire le travail.**
-
-Point clé : TCGdex ne fait **pas** de reconnaissance d'image. C'est un métier à part.
+## 📸 Reconnaissance de carte par photo
+✅ **Piste A poursuivie et intégrée** : `public/scan.html` (empreinte + OCR numéro + OCR nom,
+bouton « Scanner » dans l'appli). Détails, chiffres de précision et limites connues dans
+`CLAUDE.md`. Les pistes payantes ci-dessous restent écartées (recherches conservées pour ne
+pas refaire le travail si le sujet revient) :
 
 | Piste | Coût | Verdict |
 |---|---|---|
-| **A — OCR du numéro** (Tesseract.js dans le navigateur) | Gratuit, sans serveur | Réutilise la recherche « XXX/YYY » déjà en place. Fiabilité imparfaite (petit texte, reflets, angle). Inopérant sur cartes anciennes sans numéro. |
 | **B — Ximilar** | ⚠️ **59 €/mois** (plan Business 100K obligatoire) | Excellent mais hors budget perso. Accès d'essai temporaire possible en écrivant à tech@ximilar.com. L'identification coûte 10 crédits/carte, mais le plan gratuit n'ouvre **pas** l'accès au service. |
 | **B bis — CardSight AI** | Palier gratuit annoncé : **750 appels/mois** | 🔍 **À vérifier en premier si on relance le sujet.** Catalogue 12M cartes, API REST. Chiffres non vérifiés (marketing du fournisseur). |
 | **C — Modèle de vision via le Worker** | Quelques centimes par appel | Souple, moins précis qu'un système entraîné sur les cartes. |
 | **D — Empreintes visuelles en local** | Gratuit mais plusieurs Go | Écarté : revient au miroir complet de la base. |
 
-⚠️ Dans tous les cas sauf A : la **clé d'API ne doit jamais être dans la page web**. Il faudrait
+⚠️ Pistes payantes : la **clé d'API ne doit jamais être dans la page web**. Il faudrait
 réactiver le Worker Cloudflare (`collection-sync.ariesam.workers.dev`) comme intermédiaire.
+
+- [ ] **Détection automatique des contours de la carte** (évoquée le 2026-08-06) : au lieu du
+      cadre orange à ajuster à la main dans `scan.html`, détecter les bords de la carte et
+      recadrer tout seul (comme les apps de scan de documents). Techniquement possible via
+      OpenCV.js (détection de contours + plus grand rectangle + correction de perspective si la
+      carte est prise de travers) — pas de piste plus légère identifiée. Mis de côté pour
+      l'instant : bibliothèque WebAssembly lourde (~8-10 Mo) et réglages fins à faire (fonds
+      variés, reflets, angle), effort comparable à celui du scan actuel. À reprendre dans une
+      session dédiée, une fois le cadrage manuel actuel testé et validé en conditions réelles.
 
 ---
 

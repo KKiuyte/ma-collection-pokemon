@@ -34,7 +34,11 @@ public/                 ← ce qui est déployé (le site)
   manifest.json         ← PWA
   sw.js                 ← service worker (cache + hors-ligne)
   icon-192/512/maskable ← icônes PWA
-  test-scan.html        ← banc d'essai de la reconnaissance par photo (autonome)
+  scan.html             ← PAGE PUBLIQUE de scan (2026-08-06), accessible via le bouton caméra
+                           de l'en-tête d'index.html ; identifie une carte puis l'ajoute
+                           directement à la collection (Firebase inclus, cf. section dédiée)
+  test-scan.html        ← banc d'essai de la reconnaissance par photo (autonome, gardé pour
+                           les campagnes de test — pas de lien depuis l'appli)
 tools/
   build_hashes.py       ← génère les empreintes visuelles (à lancer en local, Python 3)
 archive/                ← obsolète, conservé volontairement (voir plus bas)
@@ -248,7 +252,8 @@ hors-ligne, bouton d'installation, mise à jour), **mode sombre**, bouton retour
 à faire), **liste d'échange** (doubles regroupés par version), **déploiement continu**
 (GitHub Actions).
 
-**En cours — reconnaissance de carte par photo** (`public/test-scan.html`) :
+**Scan de carte par photo — intégré dans l'appli mais pas encore testé en conditions réelles**
+(voir tout en bas de cette section pour l'état actuel : `public/scan.html`) :
 - Approche **gratuite, locale** : empreinte visuelle (grille 12×12, chromaticité
   r/(r+g+b),g/(r+g+b) insensible à l'éclairage) + **lecture du numéro par OCR** (Tesseract.js).
 - Idée maîtresse : le **numéro imprimé** « 074/159 » restreint le champ (le total /159
@@ -312,11 +317,48 @@ hors-ligne, bouton d'installation, mise à jour), **mode sombre**, bouton retour
     sur de vraies cartes — à ajuster selon les résultats du prochain test réel.
   - Double le nombre d'appels OCR par scan (numéro + nom) : la reconnaissance sera plus lente.
     Pas un problème pour la page de test, à surveiller si intégré dans l'appli.
-- **Prochaine étape** : Ariel teste avec de vraies cartes sur son téléphone (page déployée),
-  vérifie que la bande de crop du nom cadre bien le texte et que la lecture apporte un vrai
-  gain (comparer les nouveaux résultats — surtout sur les full art — à la campagne du
-  2026-08-05 ci-dessus, avant/après). Décision d'intégration dans l'appli toujours en attente.
-  Services payants étudiés puis écartés (Ximilar 59 €/mois obligatoire ; CardSight à revérifier).
+- **Intégré dans l'appli (2026-08-06) — `public/scan.html`, page publique** : bouton caméra
+  dans l'en-tête d'`index.html` (`#scanBtn`, à côté du thème/compte) → `scan.html`. Reprend le
+  pipeline validé ci-dessus (empreinte + numéro + nom, cascade numéro→nom→image) mais réécrit
+  pour un usage réel, pas un banc d'essai :
+  - **Plus de choix manuel lire/pas lire** : le numéro est tenté bas-gauche puis bas-droite
+    automatiquement (`readNumberBothZones()`, ne tente la 2e bande que si la 1re n'a rien donné
+    — évite de systématiquement doubler le temps de lecture), le nom est toujours lu.
+  - **Résultat affiché** : 1 seule carte en grand si le numéro/nom-narrowed et l'image seule
+    tombent sur la même carte (`agree`, avec un lien « pas la bonne carte » qui révèle 2
+    autres possibilités) ; jusqu'à 3 cartes à choisir sinon. Aucun signal exploitable → 3
+    candidates par l'image seule (jamais de résultat unique sur l'image seule : on demande
+    toujours confirmation dans ce cas, contrairement à `test-scan.html` qui l'affichait via un
+    seuil de marge).
+  - **Ajout direct à la collection** : sélectionner une carte ouvre un petit formulaire
+    version/état/langue (identique à celui de la fiche carte dans `index.html`, versions
+    récupérées via `/cards/{id}`), puis écrit dans les **mêmes données** que l'appli
+    (`localStorage` clés `collection_pokemon_v1`/`collection_pokemon_wishlist` + Firestore
+    `collections/{uid}` si connecté). Bouton « Scanner une autre carte » pour enchaîner.
+  - ⚠️ **Piège de cohérence identifié et traité** : `onLogin()` dans `index.html` ne redemande
+    confirmation avant de remplacer la collection locale par celle du cloud que sur une
+    connexion *interactive* — une session déjà ouverte (cas courant) remplace **sans prévenir**
+    dès que les deux diffèrent. Une page de scan qui écrirait juste dans `localStorage` sans
+    toucher Firestore risquerait donc de voir la carte fraîchement ajoutée silencieusement
+    écrasée à la prochaine ouverture de l'appli. `scan.html` importe donc son propre Firebase
+    (même config, non secrète), récupère la version cloud la plus fraîche **avant** d'ajouter
+    quoi que ce soit (`onAuthStateChanged` → `getDoc` → fusion), et le bouton « Ajouter » reste
+    désactivé (`cloudReady`) tant que cette fusion n'est pas terminée — pour ne jamais pousser
+    un `owned` obsolète par-dessus un changement fait depuis un autre appareil.
+  - `test-scan.html` **conservé tel quel**, pas de lien depuis l'appli : reste le banc d'essai
+    pour continuer à mesurer la précision (dernier chiffre connu : 72 % en 1er / 88 % en top 3,
+    campagne du 2026-08-05, avant l'ajout de la couche nom ci-dessus). Les deux fichiers
+    dupliquent le même cœur de reconnaissance (empreinte/OCR) — **toute correction ou réglage
+    faite dans l'un doit être répercutée dans l'autre**, même piège que `build_hashes.py`.
+  - `scan.html` ajouté au précache du service worker (`APP_FILES` dans `sw.js`) pour ouvrir
+    instantanément même en connexion faible ; `catalogue-fr.json` reste chargé à la demande
+    (13 Mo, jamais précaché).
+  - ⚠️ **Rien de tout ça n'a été testé dans un vrai navigateur** (pas d'appareil photo ni
+    d'outil Chrome connecté depuis cet environnement) — vérifié uniquement par relecture et
+    `node --check` sur les scripts extraits. Premier vrai test à faire par Ariel sur son
+    téléphone : cadrage de la photo, temps de reconnaissance réel (jusqu'à ~11 appels Tesseract
+    dans le pire cas — numéro illisible des deux côtés + nom), et surtout que l'ajout à la
+    collection se reflète bien dans l'appli principale après un scan.
 
 **Décidé, non retenu** : publication sur les stores (obstacle des 12 testeurs 14 j pour
 Google Play ; App Store très difficile + connexion Google KO en webview ; risque de
