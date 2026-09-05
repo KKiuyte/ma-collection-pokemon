@@ -24,11 +24,17 @@
   --ink:#1a1d29; --muted:#8a8f9c; --bg:#f0eee9; --surface:#fff;
   --line:rgba(0,0,0,.08); --field:#f6f7fa; --surface-2:#f1f2f6;
   --track:#e6e4de; --chip-fg:#5b6170;
+  --deal-bg:#e7f8ee; --deal-fg:#12864a; --deal-line:#7fd3a5;
+  --over-bg:#f3f0ea; --over-fg:#9a8f78;
+  --mid-bg:#fef4e0; --mid-fg:#a9761c;
 }
 :root[data-theme="dark"] {
   --ink:#eef0f4; --muted:#9aa3b5; --bg:#14161d; --surface:#1f2230;
   --line:rgba(255,255,255,.1); --field:#242735; --surface-2:#2a2e3d;
   --track:#333748; --chip-fg:#aab0c2;
+  --deal-bg:#12331f; --deal-fg:#5fd08c; --deal-line:#2f6b45;
+  --over-bg:#2a2b30; --over-fg:#8b8f9c;
+  --mid-bg:#332a17; --mid-fg:#d6a94e;
 }
 body {
   font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
@@ -58,6 +64,11 @@ h1 { font-size:1.25rem; margin:0; }
   border:1px solid var(--line); background:var(--surface); color:var(--chip-fg);
 }
 .chip.on { background:var(--accent); border-color:var(--accent); color:var(--ink-solid); font-weight:600; }
+.dealtoggle {
+  font:inherit; font-size:.82rem; cursor:pointer; padding:6px 12px; border-radius:999px;
+  border:1px solid var(--deal-line); background:var(--surface); color:var(--deal-fg); font-weight:600;
+}
+.dealtoggle.on { background:var(--deal-fg); border-color:var(--deal-fg); color:#fff; }
 .count { color:var(--muted); font-size:.8rem; margin-left:auto; }
 
 .grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(150px,1fr)); gap:12px; }
@@ -65,6 +76,7 @@ h1 { font-size:1.25rem; margin:0; }
   display:flex; flex-direction:column; background:var(--surface);
   border:1px solid var(--line); border-radius:12px; overflow:hidden; text-decoration:none;
 }
+.card.deal { border-color:var(--deal-line); box-shadow:0 0 0 2px var(--deal-line) inset; }
 .card:active { transform:scale(.99); }
 .thumb {
   aspect-ratio:310/430; background:var(--surface-2) center/cover no-repeat;
@@ -76,10 +88,22 @@ h1 { font-size:1.25rem; margin:0; }
 }
 .badge.g10 { background:#37c978; color:#03210f; }
 .badge.none { background:var(--track); color:var(--chip-fg); }
+.dealtag {
+  position:absolute; top:6px; right:6px; font-size:.72rem; font-weight:800;
+  padding:2px 7px; border-radius:999px; background:var(--deal-fg); color:#fff;
+}
 .body { padding:8px 9px 10px; display:flex; flex-direction:column; gap:4px; flex:1; }
 .title { font-size:.8rem; line-height:1.3; overflow:hidden; display:-webkit-box;
-  -webkit-line-clamp:3; -webkit-box-orient:vertical; }
-.meta { margin-top:auto; display:flex; align-items:baseline; gap:6px; }
+  -webkit-line-clamp:2; -webkit-box-orient:vertical; }
+.psaline { font-size:.7rem; color:var(--muted); display:flex; flex-wrap:wrap; gap:4px 6px; align-items:baseline; }
+.psaest { color:var(--ink); font-weight:600; }
+.ratio { padding:1px 6px; border-radius:999px; font-weight:800; font-size:.68rem; }
+.ratio.good { background:var(--deal-bg); color:var(--deal-fg); }
+.ratio.mid  { background:var(--mid-bg);  color:var(--mid-fg); }
+.ratio.over { background:var(--over-bg); color:var(--over-fg); }
+.psawait { font-size:.68rem; color:var(--muted); font-style:italic; }
+.certlink { font-size:.66rem; color:var(--accent-deep); text-decoration:none; }
+.meta { margin-top:auto; display:flex; align-items:baseline; gap:6px; flex-wrap:wrap; }
 .price { font-weight:800; font-size:.95rem; }
 .total { font-size:.72rem; color:var(--muted); }
 .cond { font-size:.7rem; color:var(--muted); }
@@ -96,20 +120,24 @@ h1 { font-size:1.25rem; margin:0; }
   <p class="sub" id="sub">Chargement…</p>
 
   <div class="warn">
-    Page de test (étape 1). C'est la liste <strong>brute</strong> des annonces Vinted dont le
-    titre mentionne « PSA » — aucune vérification de la carte, aucune détection de bonne
-    affaire pour l'instant. Les données sont rafraîchies périodiquement, elles peuvent avoir
-    quelques heures de retard. Certaines annonces sont du bourrage de mots-clés (« psa pca tcg »)
-    sur des cartes non gradées : c'est normal à ce stade.
+    Annonces Vinted « PSA », enrichies quand c'est possible : le <strong>numéro de
+    certification</strong> est lu sur les photos (OCR), puis la fiche PSA donne la carte
+    exacte, le grade et une <strong>estimation de prix</strong>. Le ratio compare le prix
+    demandé à cette estimation (convertie en €). Limites : l'OCR ne réussit pas sur toutes
+    les photos, l'estimation PSA n'existe pas pour toutes les cartes et peut être peu fiable
+    (confiance « Low »), et les données ont quelques heures de retard.
   </div>
 
   <div class="controls">
     <input type="search" id="q" placeholder="Filtrer par nom, numéro…" autocomplete="off" />
     <div class="chips" id="grades"></div>
+    <button class="dealtoggle" id="dealOnly">Bonnes affaires</button>
     <select id="sort">
+      <option value="smart">Affaires d'abord</option>
       <option value="recent">Plus récentes</option>
       <option value="price-asc">Prix croissant</option>
       <option value="price-desc">Prix décroissant</option>
+      <option value="ratio">Ratio prix / estimation</option>
     </select>
     <span class="count" id="count"></span>
   </div>
@@ -121,10 +149,12 @@ h1 { font-size:1.25rem; margin:0; }
 const GRADES = ["Tous", "10", "9", "8", "Autres"];
 let DATA = null;
 let fGrade = "Tous";
+let dealOnly = false;
 
 const $ = (s) => document.querySelector(s);
 
 function fmtAge(iso) {
+  if (!iso) return "?";
   const d = new Date(iso), now = new Date();
   const min = Math.round((now - d) / 60000);
   if (min < 60) return "il y a " + min + " min";
@@ -145,12 +175,46 @@ function matchesGrade(item) {
   return item.grade === fGrade;
 }
 
+function ratioPill(psa) {
+  if (!psa || psa.status !== "priced" || typeof psa.ratio !== "number") return "";
+  const pct = Math.round((psa.ratio - 1) * 100);
+  const cls = psa.ratio <= 0.8 ? "good" : psa.ratio <= 1.05 ? "mid" : "over";
+  const label = pct <= 0 ? pct + " %" : "+" + pct + " %";
+  return `<span class="ratio ${cls}">${label}</span>`;
+}
+
+function psaLine(it) {
+  const p = it.psa;
+  if (!p) return "";
+  if (p.status === "priced") {
+    return `<div class="psaline">
+      <span class="psaest">est. ${Math.round(p.est_eur)} €</span>
+      ${ratioPill(p)}
+      ${p.confidence ? `<span>conf. ${escapeHtml(p.confidence)}</span>` : ""}
+    </div>`;
+  }
+  if (p.status === "no_estimate")
+    return `<div class="psawait">PSA : pas d'estimation</div>`;
+  if (p.status === "pending" || p.cert)
+    return `<div class="psawait">fiche PSA en attente</div>`;
+  return `<div class="psawait">cert. non lu</div>`;
+}
+
+function smartKey(it) {
+  const p = it.psa || {};
+  if (p.deal) return [0, p.ratio ?? 9];
+  if (p.status === "priced") return [1, p.ratio ?? 9];
+  return [2, -Number(it.id)];
+}
+
 function render() {
   const q = $("#q").value.trim().toLowerCase();
   let items = DATA.items.filter((it) => {
+    if (dealOnly && !(it.psa && it.psa.deal)) return false;
     if (!matchesGrade(it)) return false;
     if (q) {
-      const hay = (it.title + " " + (it.number || "")).toLowerCase();
+      const hay = (it.title + " " + (it.number || "") + " " +
+        ((it.psa && it.psa.subject) || "")).toLowerCase();
       if (!q.split(/\s+/).every((w) => hay.includes(w))) return false;
     }
     return true;
@@ -159,7 +223,15 @@ function render() {
   const sort = $("#sort").value;
   if (sort === "price-asc") items.sort((a, b) => a.price - b.price);
   else if (sort === "price-desc") items.sort((a, b) => b.price - a.price);
-  else items.sort((a, b) => Number(b.id) - Number(a.id));
+  else if (sort === "recent") items.sort((a, b) => Number(b.id) - Number(a.id));
+  else if (sort === "ratio") items.sort((a, b) =>
+    ((a.psa && a.psa.ratio) ?? 9) - ((b.psa && b.psa.ratio) ?? 9));
+  else { // smart
+    items.sort((a, b) => {
+      const ka = smartKey(a), kb = smartKey(b);
+      return ka[0] - kb[0] || ka[1] - kb[1];
+    });
+  }
 
   $("#count").textContent = items.length + " / " + DATA.items.length;
 
@@ -171,22 +243,28 @@ function render() {
   list.innerHTML = items.map((it) => {
     const badge = it.grade ? "PSA " + it.grade : "grade ?";
     const img = it.image ? `style="background-image:url('${it.image}')"` : "";
-    return `<a class="card" href="${it.url}" target="_blank" rel="noopener">
-      <div class="thumb" ${img}><span class="badge ${gradeClass(it.grade)}">${badge}</span></div>
+    const deal = it.psa && it.psa.deal;
+    const cert = it.psa && it.psa.cert;
+    return `<a class="card ${deal ? "deal" : ""}" href="${it.url}" target="_blank" rel="noopener">
+      <div class="thumb" ${img}>
+        <span class="badge ${gradeClass(it.grade)}">${badge}</span>
+        ${deal ? '<span class="dealtag">affaire</span>' : ""}
+      </div>
       <div class="body">
         <div class="title">${escapeHtml(it.title)}</div>
-        <div class="cond">${escapeHtml(it.condition || "")}</div>
+        ${psaLine(it)}
         <div class="meta">
           <span class="price">${it.price.toFixed(0)} €</span>
-          <span class="total">${it.total_price.toFixed(2)} € port inclus</span>
+          <span class="total">${it.total_price.toFixed(2)} € port inc.</span>
         </div>
+        ${cert ? `<span class="certlink" onclick="event.preventDefault();event.stopPropagation();window.open('https://www.psacard.com/cert/${cert}/psa','_blank')">fiche PSA ${cert} ↗</span>` : ""}
       </div>
     </a>`;
   }).join("");
 }
 
 function escapeHtml(s) {
-  return String(s).replace(/[&<>"']/g, (c) => ({
+  return String(s == null ? "" : s).replace(/[&<>"']/g, (c) => ({
     "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;",
   }[c]));
 }
@@ -208,6 +286,11 @@ async function boot() {
   buildGradeChips();
   $("#q").addEventListener("input", render);
   $("#sort").addEventListener("change", render);
+  $("#dealOnly").addEventListener("click", () => {
+    dealOnly = !dealOnly;
+    $("#dealOnly").classList.toggle("on", dealOnly);
+    render();
+  });
   try {
     const r = await fetch("vinted-psa.json?t=" + Date.now());
     if (!r.ok) throw new Error("HTTP " + r.status);
@@ -216,10 +299,15 @@ async function boot() {
     $("#sub").textContent = "Impossible de charger les données (" + e.message + ").";
     return;
   }
+  const ps = DATA.psa_stats || {};
   $("#sub").innerHTML =
-    `${DATA.count} annonces · recherche Vinted « ${escapeHtml(DATA.query)} » · ` +
-    `mise à jour ${fmtAge(DATA.generated_at)} · ` +
-    `grade lu sur ${DATA.with_grade}, numéro sur ${DATA.with_number}`;
+    `${DATA.count} annonces · Vinted ${fmtAge(DATA.generated_at)}` +
+    (DATA.enriched_at ? ` · PSA ${fmtAge(DATA.enriched_at)}` : "") +
+    (ps.priced != null
+      ? ` · cert lu ${ps.cert_read}, estimé ${ps.priced}, ` +
+        `<b>${ps.deals} bonne(s) affaire(s)</b>`
+      : "") +
+    (DATA.fx_usd_eur ? ` · 1 $ = ${DATA.fx_usd_eur} €` : "");
   render();
 }
 boot();

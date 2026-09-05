@@ -39,8 +39,16 @@ public/                 ← ce qui est déployé (le site)
                            directement à la collection (Firebase inclus, cf. section dédiée)
   test-scan.html        ← banc d'essai de la reconnaissance par photo (autonome, gardé pour
                            les campagnes de test — pas de lien depuis l'appli)
+  vinted.html           ← PAGE PUBLIQUE « bonnes affaires PSA » (2026-09-05), autonome, pas
+                           encore liée depuis l'appli ; lit vinted-psa.json (cf. section dédiée)
+  vinted-psa.json       ← annonces Vinted de cartes PSA + enrichissement PSA (versionné,
+                           produit par les scripts ci-dessous via GitHub Actions)
+  psa-cache.json        ← cache des fiches PSA par n° de cert (versionné, se construit dans le temps)
 tools/
   build_hashes.py       ← génère les empreintes visuelles (à lancer en local, Python 3)
+  scrape_vinted_psa.py  ← récupère les annonces Vinted « psa pokemon » → vinted-psa.json (stdlib)
+  enrich_psa.py         ← OCR du n° de cert sur les photos + fiche PSA (Playwright) → enrichit
+                           vinted-psa.json et psa-cache.json
 archive/                ← obsolète, conservé volontairement (voir plus bas)
 roadmap.md              ← feuille de route détaillée + notes
 ```
@@ -219,6 +227,65 @@ wishlist[idCarte] = true
    (`round`, pas de troncature). Toute modification d'un côté doit être répercutée et
    revérifiée de l'autre.
 
+## Vinted / PSA — système « bonnes affaires » (2026-09-05, Option B)
+
+But : repérer sur Vinted les cartes Pokémon gradées **PSA** vendues sous leur valeur.
+Demandé par Ariel. PSA choisi (pas PCA) car marché plus liquide. Chaîne en 3 temps,
+tournant dans **`.github/workflows/scrape-vinted-psa.yml`** (cron toutes les 6 h, +
+`workflow_dispatch`), qui déploie Firebase lui-même (un commit via `GITHUB_TOKEN` ne
+redéclenche pas `deploy.yml`).
+
+1. **`tools/scrape_vinted_psa.py`** (stdlib seule) → `public/vinted-psa.json`.
+   Lit la **page catalogue HTML** de Vinted (rendue serveur) : `/api/v2/` est bloquée
+   par DataDome, la page HTML non. Motifs regex sur les tuiles `product-item-id-…`.
+   Garde les annonces dont le titre contient « PSA ». Extrait id, lien, titre, marque,
+   état, prix, prix total, photo, grade (1-10), n° de carte si présent.
+2. **`tools/enrich_psa.py`** (requests, pillow, numpy, rapidocr-onnxruntime, playwright,
+   **playwright-stealth**) :
+   - **OCR du n° de cert** (8-9 chiffres) sur les photos `f800` de chaque annonce
+     (RapidOCR, recadrages `top`/`upband` × échelles 2 et 3, **vote** entre lectures).
+     ~80 % de réussite sur les annonces qui montrent le label. Bien meilleur que l'OCR
+     des numéros de carte (le cert PSA est noir sur blanc, police fixe).
+   - **Fiche PSA** : `psacard.com/cert/{n}/psa` ouvert en **Chromium headless +
+     playwright-stealth** (SEUL moyen fiable de passer Cloudflare — sans stealth, blocage
+     dès le 1er/2e ; NE PAS faire de visite d'accueil « de chauffe », ça durcit le
+     challenge ; chargement direct par cert). Parse le flux RSC (`_unescape` cible juste
+     `\"`) : Subject, Item Grade, Year, Card Number, Category, et l'**estimation PSA**
+     (`$` valeur + fourchette + « Estimate Confidence: High/Moderate/Low »).
+   - **Calcul bonne affaire** : `ratio = prix_€ / (est_$ × taux_USD→EUR)`. Marquée
+     `deal` si `ratio ≤ 0.80` ET confiance `High` ou `Moderate`. Taux via
+     frankfurter.app (repli open.er-api.com), caché ~20 h.
+   - **Cache `public/psa-cache.json`** : `{_meta:{fx…}, items:{<idVinted>:{cert,…}},
+     certs:{<cert>:{Subject,…,est_usd,confidence,checked_at}}}`. Carte/grade d'un cert =
+     permanents ; estimation re-vérifiée après `CERT_TTL_DAYS=30`. Une annonce sans cert
+     lisible n'est pas re-tentée avant `OCR_RETRY_DAYS=10`. **Versionné** → le cache
+     survit aux runs et se construit dans le temps.
+   - Brides par passage : `--max-ocr` (défaut 40 ; 30 dans le workflow) et
+     `--max-lookups` (défaut 20). Le retard initial (~150 annonces) se résorbe en ~1 j.
+   - `--no-psa` = OCR seul (pas besoin de Playwright). `--limit N` pour tester.
+3. **`public/vinted.html`** lit `vinted-psa.json` : grille avec badge grade, ligne PSA
+   (estimation €, pastille ratio verte/ambre/grise, confiance), surlignage vert des
+   `deal`, bascule « Bonnes affaires », tris (dont « Affaires d'abord » et « Ratio »),
+   lien vers la fiche PSA. Style/thème repris de l'appli. **Pas encore de lien depuis
+   l'en-tête d'`index.html`** (comme `test-scan.html`) — à ajouter quand validé par Ariel.
+
+⚠️ **Deux fichiers dupliquent la logique de reconnaissance** au total dans le projet
+(`scan.html`/`test-scan.html` pour les cartes ; `enrich_psa.py` est indépendant mais
+son OCR de chiffres suit les mêmes leçons). Toute leçon OCR se répercute.
+
+⚠️ **Scraper PSA = contraire aux CGU de PSA** (et Vinted). Usage perso, faible volume,
+cache 30 j. Assumé. Si Cloudflare finit par bloquer même avec stealth depuis les IP
+GitHub Actions (pas encore observé) : repli = déclenchement manuel, autre runner, ou
+proxy résidentiel (payant).
+
+⚠️ **Bruit connu** : des annonces de bourrage de mots-clés (« psa pca tcg ») montrent
+parfois un slab PSA d'une autre carte (vu : un cert de carte de foot). L'OCR lit ce
+cert ; la fiche PSA récupérée ne correspond pas à l'annonce. Sans conséquence (pas de
+`deal` Pokémon faussé) mais à garder en tête si on resserre plus tard.
+
+**Non encore fait / à décider** : lien depuis l'en-tête de l'appli ; filtrage du bruit ;
+ajouter au précache du service worker ; ajout direct à la wishlist depuis la page.
+
 ## Déploiement
 
 **Automatique depuis fin juillet 2026** : chaque `git push origin main` déclenche un
@@ -250,7 +317,9 @@ collection (cache 24 h), compte + synchro Firebase temps réel, **PWA** complèt
 hors-ligne, bouton d'installation, mise à jour), **mode sombre**, bouton retour en haut,
 **statistiques** (progression par bloc, répartition par rareté — les ajouts récents restent
 à faire), **liste d'échange** (doubles regroupés par version), **déploiement continu**
-(GitHub Actions).
+(GitHub Actions), **système « bonnes affaires PSA »** (`public/vinted.html` + scripts
+`tools/*_psa.py` + workflow dédié — voir section « Vinted / PSA » plus haut ; page pas
+encore liée depuis l'appli).
 
 **Scan de carte par photo — intégré dans l'appli mais pas encore testé en conditions réelles**
 (voir tout en bas de cette section pour l'état actuel : `public/scan.html`) :

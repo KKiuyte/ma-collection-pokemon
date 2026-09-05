@@ -1,0 +1,606 @@
+{
+ "_meta": {
+  "fx_usd_eur": 0.8604,
+  "fx_at": "2026-09-05T21:39:00Z"
+ },
+ "items": {
+  "9901340300": {
+   "cert": "114380842",
+   "conf": 0.9,
+   "votes": 6,
+   "at": "2026-09-05T21:39:00Z",
+   "status": "ok"
+  },
+  "9901334035": {
+   "cert": null,
+   "conf": 0.0,
+   "votes": 0,
+   "at": "2026-09-05T21:39:00Z",
+   "status": "no_cert"
+  },
+  "9901332638": {
+   "cert": "169500873",
+   "conf": 0.87,
+   "votes": 6,
+   "at": "2026-09-05T21:39:00Z",
+   "status": "ok"
+  },
+  "9901320306": {
+   "cert": "163652093",
+   "conf": 0.89,
+   "votes": 12,
+   "at": "2026-09-05T21:39:00Z",
+   "status": "ok"
+  },
+  "9901318016": {
+   "cert": "169500874",
+   "conf": 0.9,
+   "votes": 6,
+   "at": "2026-09-05T21:39:00Z",
+   "status": "ok"
+  },
+  "9901316077": {
+   "cert": "76721483",
+   "conf": 0.81,
+   "votes": 6,
+   "at": "2026-09-05T21:39:00Z",
+   "status": "ok"
+  },
+  "9901305652": {
+   "cert": "111554023",
+   "conf": 0.89,
+   "votes": 18,
+   "at": "2026-09-05T21:39:00Z",
+   "status": "ok"
+  },
+  "9901276806": {
+   "cert": "45340413",
+   "conf": 0.89,
+   "votes": 8,
+   "at": "2026-09-05T21:39:00Z",
+   "status": "ok"
+  },
+  "9901263694": {
+   "cert": "165380065",
+   "conf": 0.88,
+   "votes": 14,
+   "at": "2026-09-05T21:39:00Z",
+   "status": "ok"
+  },
+  "9901256869": {
+   "cert": null,
+   "conf": 0.0,
+   "votes": 0,
+   "at": "2026-09-05T21:39:00Z",
+   "status": "no_cert"
+  },
+  "9901245425": {
+   "cert": "94670490",
+   "conf": 0.89,
+   "votes": 10,
+   "at": "2026-09-05T21:39:00Z",
+   "status": "ok"
+  },
+  "9901240283": {
+   "cert": "43733617",
+   "conf": 0.86,
+   "votes": 12,
+   "at": "2026-09-05T21:39:00Z",
+   "status": "ok"
+  },
+  "9901166343": {
+   "cert": "134716615",
+   "conf": 0.9,
+   "votes": 14,
+   "at": "2026-09-05T21:39:00Z",
+   "status": "ok"
+  },
+  "9901142002": {
+   "cert": null,
+   "conf": 0.0,
+   "votes": 0,
+   "at": "2026-09-05T21:39:00Z",
+   "status": "no_cert"
+  },
+  "9901128799": {
+   "cert": "135345941",
+   "conf": 0.9,
+   "votes": 6,
+   "at": "2026-09-05T21:39:00Z",
+   "status": "ok"
+  },
+  "9901095783": {
+   "cert": null,
+   "conf": 0.0,
+   "votes": 0,
+   "at": "2026-09-05T21:39:00Z",
+   "status": "no_cert"
+  },
+  "9901063302": {
+   "cert": "154433103",
+   "conf": 0.9,
+   "votes": 30,
+   "at": "2026-09-05T21:39:00Z",
+   "status": "ok"
+  },
+  "9901050663": {
+   "cert": "72135931",
+   "conf": 0.88,
+   "votes": 12,
+   "at": "2026-09-05T21:39:00Z",
+   "status": "ok"
+  },
+  "9901030642": {
+   "cert": "80284781",
+   "conf": 0.88,
+   "votes": 12,
+   "at": "2026-09-05T21:39:00Z",
+   "status": "ok"
+  },
+  "9901020474": {
+   "cert": null,
+   "conf": 0.0,
+   "votes": 0,
+   "at": "2026-09-05T21:39:00Z",
+   "status": "no_cert"
+  },
+  "9900888103": {
+   "cert": "150226880",
+   "conf": 0.89,
+   "votes": 16,
+   "at": "2026-09-05T21:39:00Z",
+   "status": "ok"
+  },
+  "9900809284": {
+   "cert": "92816450",
+   "conf": 0.88,
+   "votes": 6,
+   "at": "2026-09-05T21:39:00Z",
+   "status": "ok"
+  },
+  "9900739141": {
+   "cert": "146124400",
+   "conf": 0.86,
+   "votes": 12,
+   "at": "2026-09-05T21:39:00Z",
+   "status": "ok"
+  },
+  "9900696652": {
+   "cert": "68124127",
+   "conf": 0.84,
+   "votes": 12,
+   "at": "2026-09-05T21:39:00Z",
+   "status": "ok"
+  },
+  "9900674152": {
+   "cert": null,
+   "conf": 0.0,
+   "votes": 0,
+   "at": "2026-09-05T21:39:00Z",
+   "status": "no_cert"
+  },
+  "9900618620": {
+   "cert": "149881493",
+   "conf": 0.88,
+   "votes": 12,
+   "at": "2026-09-05T21:39:00Z",
+   "status": "ok"
+  },
+  "9900548731": {
+   "cert": "67558386",
+   "conf": 0.88,
+   "votes": 6,
+   "at": "2026-09-05T21:39:00Z",
+   "status": "ok"
+  },
+  "9900547534": {
+   "cert": null,
+   "conf": 0.0,
+   "votes": 0,
+   "at": "2026-09-05T21:39:00Z",
+   "status": "no_cert"
+  },
+  "9900529249": {
+   "cert": "118429653",
+   "conf": 0.87,
+   "votes": 18,
+   "at": "2026-09-05T21:39:00Z",
+   "status": "ok"
+  },
+  "9900519484": {
+   "cert": "151598928",
+   "conf": 0.87,
+   "votes": 12,
+   "at": "2026-09-05T21:39:00Z",
+   "status": "ok"
+  },
+  "9900490899": {
+   "cert": "157015144",
+   "conf": 0.9,
+   "votes": 12,
+   "at": "2026-09-05T21:39:00Z",
+   "status": "ok"
+  },
+  "9900477782": {
+   "cert": "136833022",
+   "conf": 0.9,
+   "votes": 10,
+   "at": "2026-09-05T21:39:00Z",
+   "status": "ok"
+  },
+  "9900466065": {
+   "cert": "103123412",
+   "conf": 0.85,
+   "votes": 6,
+   "at": "2026-09-05T21:39:00Z",
+   "status": "ok"
+  },
+  "9900458369": {
+   "cert": "136833023",
+   "conf": 0.86,
+   "votes": 12,
+   "at": "2026-09-05T21:39:00Z",
+   "status": "ok"
+  },
+  "9900447048": {
+   "cert": "100226552",
+   "conf": 0.9,
+   "votes": 8,
+   "at": "2026-09-05T21:39:00Z",
+   "status": "ok"
+  },
+  "9900413605": {
+   "cert": "67859546",
+   "conf": 0.88,
+   "votes": 12,
+   "at": "2026-09-05T21:39:00Z",
+   "status": "ok"
+  },
+  "9900411955": {
+   "cert": "99905951",
+   "conf": 0.84,
+   "votes": 6,
+   "at": "2026-09-05T21:39:00Z",
+   "status": "ok"
+  },
+  "9900409717": {
+   "cert": "149508072",
+   "conf": 0.87,
+   "votes": 8,
+   "at": "2026-09-05T21:39:00Z",
+   "status": "ok"
+  },
+  "9900398919": {
+   "cert": "68850376",
+   "conf": 0.86,
+   "votes": 12,
+   "at": "2026-09-05T21:39:00Z",
+   "status": "ok"
+  },
+  "9900392643": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-05T21:39:00Z",
+   "note": "page: HTTP Error 404: Not Found"
+  }
+ },
+ "certs": {
+  "114380842": {
+   "Cert Number": "114380842",
+   "Item Grade": "NM-MT 8",
+   "Year": "2024",
+   "Subject": "MEW ex",
+   "Card Number": "232",
+   "Category": "TCG Cards",
+   "est_usd": 362.0,
+   "est_low": 257.0,
+   "est_high": 563.0,
+   "confidence": "Moderate",
+   "checked_at": "2026-09-05T21:39:00Z"
+  },
+  "169500873": {
+   "Cert Number": "169500873",
+   "Item Grade": "GEM MT 10",
+   "Year": "2026",
+   "Subject": "MEGA ZYGARDE ex",
+   "Card Number": "120",
+   "Category": "TCG Cards",
+   "est_usd": 163.0,
+   "est_low": 154.0,
+   "est_high": 177.0,
+   "confidence": "High",
+   "checked_at": "2026-09-05T21:39:00Z"
+  },
+  "163652093": {
+   "Cert Number": "163652093",
+   "Item Grade": "NM-MT 8",
+   "Year": "2017",
+   "Subject": "MEWTWO GX",
+   "Card Number": "78",
+   "Category": "TCG Cards",
+   "checked_at": "2026-09-05T21:39:00Z"
+  },
+  "169500874": {
+   "Cert Number": "169500874",
+   "Item Grade": "GEM MT 10",
+   "Year": "2026",
+   "Subject": "PROBOPASS",
+   "Card Number": "096",
+   "Category": "TCG Cards",
+   "est_usd": 36.0,
+   "est_low": 30.0,
+   "est_high": 46.0,
+   "confidence": "High",
+   "checked_at": "2026-09-05T21:39:00Z"
+  },
+  "76721483": {
+   "Cert Number": "76721483",
+   "Item Grade": "GEM MT 10",
+   "Year": "2022",
+   "Subject": "RADIANT CHARIZARD",
+   "Card Number": "015",
+   "Category": "TCG Cards",
+   "est_usd": 66.0,
+   "est_low": 59.0,
+   "est_high": 76.0,
+   "confidence": "High",
+   "checked_at": "2026-09-05T21:39:00Z"
+  },
+  "111554023": {
+   "Cert Number": "111554023",
+   "Item Grade": "GEM MT 10",
+   "Year": "2024",
+   "Subject": "PIKACHU ex",
+   "Card Number": "132",
+   "Category": "TCG Cards",
+   "est_usd": 515.0,
+   "est_low": 476.0,
+   "est_high": 563.0,
+   "confidence": "High",
+   "checked_at": "2026-09-05T21:39:00Z"
+  },
+  "45340413": {
+   "Cert Number": "45340413",
+   "Item Grade": "GEM MT 10",
+   "Year": "2000",
+   "Subject": "WOBBUFFET-HOLO",
+   "Card Number": "202",
+   "Category": "TCG Cards",
+   "est_usd": 679.0,
+   "est_low": 526.0,
+   "est_high": 887.0,
+   "confidence": "Moderate",
+   "checked_at": "2026-09-05T21:39:00Z"
+  },
+  "165380065": {
+   "Cert Number": "165380065",
+   "Item Grade": "EX-MT 6",
+   "Year": "2005",
+   "Subject": "RAYQUAZA-HOLO",
+   "Card Number": "107",
+   "Category": "TCG Cards",
+   "est_usd": 34809.0,
+   "est_low": 25362.0,
+   "est_high": 41638.0,
+   "confidence": "Moderate",
+   "checked_at": "2026-09-05T21:39:00Z"
+  },
+  "94670490": {
+   "Cert Number": "94670490",
+   "Item Grade": "MINT 9",
+   "Year": "2021",
+   "Subject": "FA/GLACEON V",
+   "Card Number": "175",
+   "Category": "TCG Cards",
+   "est_usd": 131.0,
+   "est_low": 107.0,
+   "est_high": 151.0,
+   "confidence": "High",
+   "checked_at": "2026-09-05T21:39:00Z"
+  },
+  "43733617": {
+   "Cert Number": "43733617",
+   "Item Grade": "MINT 9",
+   "Year": "1999",
+   "Subject": "CHARIZARD",
+   "Card Number": "6",
+   "Category": "NON-SPORT CARDS",
+   "est_usd": 662.0,
+   "est_low": 424.0,
+   "est_high": 1111.0,
+   "confidence": "Moderate",
+   "checked_at": "2026-09-05T21:39:00Z"
+  },
+  "134716615": {
+   "Cert Number": "134716615",
+   "Item Grade": "GEM MT 10",
+   "Year": "2022",
+   "Subject": "FA/HISUIAN VOLTORB",
+   "Card Number": "173",
+   "Category": "TCG Cards",
+   "est_usd": 40.0,
+   "est_low": 30.0,
+   "est_high": 53.0,
+   "confidence": "High",
+   "checked_at": "2026-09-05T21:39:00Z"
+  },
+  "135345941": {
+   "Cert Number": "135345941",
+   "Item Grade": "GEM MT 10",
+   "Year": "2002",
+   "Subject": "PIKACHU",
+   "Card Number": "124",
+   "Category": "TCG Cards",
+   "est_usd": 148.0,
+   "est_low": 73.0,
+   "est_high": 272.0,
+   "confidence": "Low",
+   "checked_at": "2026-09-05T21:39:00Z"
+  },
+  "154433103": {
+   "Cert Number": "154433103",
+   "Item Grade": "GEM MT 10",
+   "Year": "2025",
+   "Subject": "MEGA CHARIZARD X ex",
+   "Card Number": "023",
+   "Category": "TCG Cards",
+   "est_usd": 380.0,
+   "est_low": 236.0,
+   "est_high": 566.0,
+   "confidence": "Moderate",
+   "checked_at": "2026-09-05T21:39:00Z"
+  },
+  "72135931": {
+   "Cert Number": "72135931",
+   "Item Grade": "NM 7",
+   "Year": "1999",
+   "Subject": "HYPNO-HOLO",
+   "Card Number": "8",
+   "Category": "TCG Cards",
+   "est_usd": 41.0,
+   "est_low": 32.0,
+   "est_high": 50.0,
+   "confidence": "High",
+   "checked_at": "2026-09-05T21:39:00Z"
+  },
+  "80284781": {
+   "Cert Number": "80284781",
+   "Item Grade": "NM 7",
+   "Year": "1999",
+   "Subject": "NIDOQUEEN-HOLO",
+   "Card Number": "7",
+   "Category": "TCG Cards",
+   "est_usd": 48.0,
+   "est_low": 37.0,
+   "est_high": 64.0,
+   "confidence": "Moderate",
+   "checked_at": "2026-09-05T21:39:00Z"
+  },
+  "150226880": {
+   "Cert Number": "150226880",
+   "Item Grade": "GEM MT 10",
+   "Year": "2022",
+   "Subject": "FA/MEW",
+   "Card Number": "183",
+   "Category": "TCG Cards",
+   "est_usd": 140.0,
+   "est_low": 134.0,
+   "est_high": 154.0,
+   "confidence": "High",
+   "checked_at": "2026-09-05T21:39:00Z"
+  },
+  "92816450": {
+   "Cert Number": "92816450",
+   "Item Grade": "NM 7",
+   "Year": "2000",
+   "Subject": "DARK FLAREON",
+   "Card Number": "35",
+   "Category": "TCG Cards",
+   "est_usd": 21.0,
+   "est_low": 13.0,
+   "est_high": 31.0,
+   "confidence": "Moderate",
+   "checked_at": "2026-09-05T21:39:00Z"
+  },
+  "146124400": {
+   "Cert Number": "146124400",
+   "Item Grade": "GEM MT 10",
+   "Year": "2025",
+   "Subject": "UMBREON ex",
+   "Card Number": "176",
+   "Category": "TCG Cards",
+   "est_usd": 151.0,
+   "est_low": 146.0,
+   "est_high": 162.0,
+   "confidence": "High",
+   "checked_at": "2026-09-05T21:39:00Z"
+  },
+  "68124127": {
+   "Cert Number": "68124127",
+   "Item Grade": "MINT 9",
+   "Year": "2002",
+   "Subject": "PICHU-REV.FOIL",
+   "Card Number": "58",
+   "Category": "TCG Cards",
+   "est_usd": 605.0,
+   "est_low": 449.0,
+   "est_high": 892.0,
+   "confidence": "Moderate",
+   "checked_at": "2026-09-05T21:39:00Z"
+  },
+  "149881493": {
+   "Cert Number": "149881493",
+   "Item Grade": "GEM MT 10",
+   "Year": "2025",
+   "Subject": "PIKACHU",
+   "Card Number": "004",
+   "Category": "TCG Cards",
+   "est_usd": 72.0,
+   "est_low": 55.0,
+   "est_high": 89.0,
+   "confidence": "High",
+   "checked_at": "2026-09-05T21:39:00Z"
+  },
+  "67558386": {
+   "Cert Number": "67558386",
+   "Item Grade": "MINT 9",
+   "Year": "2021",
+   "Subject": "PATRICK MAHOMES II",
+   "Card Number": "190",
+   "Category": "FOOTBALL CARDS",
+   "est_usd": 44.0,
+   "est_low": 28.0,
+   "est_high": 70.0,
+   "confidence": "Low",
+   "checked_at": "2026-09-05T21:39:00Z"
+  },
+  "118429653": {
+   "Cert Number": "118429653",
+   "Item Grade": "GEM MT 10",
+   "Year": "2023",
+   "Subject": "ROARING MOON ex",
+   "Card Number": "251",
+   "Category": "TCG Cards",
+   "est_usd": 232.0,
+   "est_low": 136.0,
+   "est_high": 387.0,
+   "confidence": "Low",
+   "checked_at": "2026-09-05T21:39:00Z"
+  },
+  "151598928": {
+   "Cert Number": "151598928",
+   "Item Grade": "GEM MT 10",
+   "Year": "2025",
+   "Subject": "HYDREIGON ex",
+   "Card Number": "169",
+   "Category": "TCG Cards",
+   "est_usd": 317.0,
+   "est_low": 191.0,
+   "est_high": 472.0,
+   "confidence": "Moderate",
+   "checked_at": "2026-09-05T21:39:00Z"
+  },
+  "157015144": {
+   "Cert Number": "157015144",
+   "Item Grade": "EX-MT 6",
+   "Year": "2003",
+   "Subject": "ELECTABUZZ-REV.FOIL",
+   "Card Number": "1",
+   "Category": "TCG Cards",
+   "est_usd": 49.0,
+   "est_low": 35.0,
+   "est_high": 76.0,
+   "confidence": "Moderate",
+   "checked_at": "2026-09-05T21:39:00Z"
+  },
+  "136833022": {
+   "Cert Number": "136833022",
+   "Item Grade": "MINT 9",
+   "Year": "2025",
+   "Subject": "SALAMENCE ex",
+   "Card Number": "187",
+   "Category": "TCG Cards",
+   "checked_at": "2026-09-05T21:39:00Z"
+  }
+ }
+}

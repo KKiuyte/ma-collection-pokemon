@@ -1,17 +1,20 @@
-name: Scraper Vinted PSA
-# Étape 1 du système « bonnes affaires » : récupère périodiquement les annonces
-# Vinted de cartes Pokémon gradées PSA et committe public/vinted-psa.json quand il change.
+name: Scraper + enrichissement Vinted PSA
+# Système « bonnes affaires » :
+#   1. scrape_vinted_psa.py  → public/vinted-psa.json   (annonces Vinted brutes)
+#   2. enrich_psa.py         → ajoute à chaque annonce le cert PSA lu sur les photos
+#                              (OCR) puis la fiche PSA (carte, grade, estimation prix),
+#                              met à jour public/psa-cache.json, calcule les bonnes affaires
+#   3. commit des JSON qui ont changé, puis déploiement Firebase Hosting
 #
-# ⚠️ Le commit fait ici avec GITHUB_TOKEN NE déclenche PAS le workflow de déploiement
-# (deploy.yml) : GitHub bloque l'enchaînement de workflows via le jeton automatique.
-# On déploie donc Firebase Hosting directement dans ce workflow, avec le même compte
-# de service que deploy.yml, et seulement si le fichier a changé.
+# ⚠️ Le commit via GITHUB_TOKEN ne déclenche PAS deploy.yml (GitHub bloque
+# l'enchaînement de workflows par le jeton automatique) → on déploie ici même.
+#
+# ⚠️ L'étape 2 ouvre des pages psacard.com dans un Chromium headless (seul moyen de
+# passer Cloudflare, avec playwright-stealth). Usage personnel, faible volume, cache
+# de 30 j pour limiter les requêtes. Contraire aux CGU de PSA — à assumer.
 
 on:
   schedule:
-    # toutes les 6 h (minute 17 pour éviter la congestion en début d'heure).
-    # Fréquence volontairement basse : les IP GitHub Actions sont des plages
-    # datacenter connues, on ne veut pas attirer l'anti-bot de Vinted.
     - cron: "17 */6 * * *"
   workflow_dispatch: {}
 
@@ -25,7 +28,7 @@ concurrency:
 jobs:
   scrape:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 35
     steps:
       - uses: actions/checkout@v4
 
@@ -36,18 +39,31 @@ jobs:
       - name: Récupérer les annonces PSA
         run: python tools/scrape_vinted_psa.py --pages 6
 
-      - name: Committer si le fichier a changé
+      - name: Installer les dépendances d'enrichissement
+        run: |
+          pip install --quiet requests pillow numpy \
+            rapidocr-onnxruntime onnxruntime playwright playwright-stealth
+          python -m playwright install --with-deps chromium
+
+      - name: Enrichir avec PSA (OCR du cert + fiche + estimation)
+        continue-on-error: true    # un échec PSA laisse quand même déployer le scrape
+        # --max-ocr : l'OCR coûte ~20 s/annonce ; on en fait un lot par passage et
+        # le cache (public/psa-cache.json) évite de refaire les annonces déjà vues,
+        # donc le retard initial (~150 annonces) se résorbe en ~1 j (4 passages/j).
+        run: python tools/enrich_psa.py --max-ocr 30 --max-lookups 20
+
+      - name: Committer si un fichier a changé
         id: commit
         run: |
-          if git diff --quiet -- public/vinted-psa.json; then
+          if git diff --quiet -- public/vinted-psa.json public/psa-cache.json; then
             echo "Aucun changement — rien à committer."
             echo "changed=false" >> "$GITHUB_OUTPUT"
             exit 0
           fi
           git config user.name "vinted-psa-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add public/vinted-psa.json
-          git commit -m "MàJ auto des annonces Vinted PSA ($(date -u +%FT%TZ))"
+          git add public/vinted-psa.json public/psa-cache.json
+          git commit -m "MàJ auto annonces + fiches PSA ($(date -u +%FT%TZ))"
           git push
           echo "changed=true" >> "$GITHUB_OUTPUT"
 
