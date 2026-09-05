@@ -14,7 +14,7 @@
     } catch (e) {}
   })();
 </script>
-<title>Cartes PCA sur Vinted</title>
+<title>Cartes PSA sur Vinted</title>
 <link rel="icon" href="icon-192.png" />
 <style>
 * { box-sizing: border-box; }
@@ -90,16 +90,16 @@ h1 { font-size:1.25rem; margin:0; }
 <body>
 <div class="wrap">
   <div class="head">
-    <h1>Cartes PCA sur Vinted</h1>
+    <h1>Cartes PSA sur Vinted</h1>
     <a class="back" href="./index.html">&larr; retour à la collection</a>
   </div>
   <p class="sub" id="sub">Chargement…</p>
 
   <div class="warn">
     Page de test (étape 1). C'est la liste <strong>brute</strong> des annonces Vinted dont le
-    titre mentionne « PCA » — aucune vérification de la carte, aucune détection de bonne
+    titre mentionne « PSA » — aucune vérification de la carte, aucune détection de bonne
     affaire pour l'instant. Les données sont rafraîchies périodiquement, elles peuvent avoir
-    quelques heures de retard. Certaines annonces sont du bourrage de mots-clés (« pca psa tcg »)
+    quelques heures de retard. Certaines annonces sont du bourrage de mots-clés (« psa pca tcg »)
     sur des cartes non gradées : c'est normal à ce stade.
   </div>
 
@@ -118,7 +118,7 @@ h1 { font-size:1.25rem; margin:0; }
 </div>
 
 <script>
-const GRADES = ["Tous", "10", "9.5", "9", "Autres"];
+const GRADES = ["Tous", "10", "9", "8", "Autres"];
 let DATA = null;
 let fGrade = "Tous";
 
@@ -141,7 +141,7 @@ function gradeClass(g) {
 
 function matchesGrade(item) {
   if (fGrade === "Tous") return true;
-  if (fGrade === "Autres") return !["10", "9.5", "9"].includes(item.grade);
+  if (fGrade === "Autres") return !["10", "9", "8"].includes(item.grade);
   return item.grade === fGrade;
 }
 
@@ -169,7 +169,7 @@ function render() {
     return;
   }
   list.innerHTML = items.map((it) => {
-    const badge = it.grade ? "PCA " + it.grade : "grade ?";
+    const badge = it.grade ? "PSA " + it.grade : "grade ?";
     const img = it.image ? `style="background-image:url('${it.image}')"` : "";
     return `<a class="card" href="${it.url}" target="_blank" rel="noopener">
       <div class="thumb" ${img}><span class="badge ${gradeClass(it.grade)}">${badge}</span></div>
@@ -209,7 +209,7 @@ async function boot() {
   $("#q").addEventListener("input", render);
   $("#sort").addEventListener("change", render);
   try {
-    const r = await fetch("vinted-pca.json?t=" + Date.now());
+    const r = await fetch("vinted-psa.json?t=" + Date.now());
     if (!r.ok) throw new Error("HTTP " + r.status);
     DATA = await r.json();
   } catch (e) {
