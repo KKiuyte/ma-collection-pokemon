@@ -1,0 +1,45 @@
+name: Scraper Vinted PSA
+# Étape 1 du système « bonnes affaires » : récupère périodiquement les annonces
+# Vinted de cartes Pokémon gradées PSA et committe public/vinted-psa.json quand il change.
+# Le push sur main déclenche ensuite le workflow de déploiement Firebase habituel.
+
+on:
+  schedule:
+    # toutes les 6 h (minute 17 pour éviter la congestion en début d'heure).
+    # Fréquence volontairement basse : les IP GitHub Actions sont des plages
+    # datacenter connues, on ne veut pas attirer l'anti-bot de Vinted.
+    - cron: "17 */6 * * *"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: scrape-vinted-psa
+  cancel-in-progress: false
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Récupérer les annonces PSA
+        run: python tools/scrape_vinted_psa.py --pages 6
+
+      - name: Committer si le fichier a changé
+        run: |
+          if git diff --quiet -- public/vinted-psa.json; then
+            echo "Aucun changement — rien à committer."
+            exit 0
+          fi
+          git config user.name "vinted-psa-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public/vinted-psa.json
+          git commit -m "MàJ auto des annonces Vinted PSA ($(date -u +%FT%TZ))"
+          git push
