@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<script>
+  // même logique de thème que l'appli : on respecte le choix déjà enregistré
+  (function () {
+    try {
+      var t = localStorage.getItem("collection_pokemon_theme");
+      if (t !== "light" && t !== "dark")
+        t = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+      document.documentElement.setAttribute("data-theme", t);
+    } catch (e) {}
+  })();
+</script>
+<title>Cartes PCA sur Vinted</title>
+<link rel="icon" href="icon-192.png" />
+<style>
+* { box-sizing: border-box; }
+:root {
+  --gold:#ffcb3d; --gold-deep:#e6a700; --accent:#ff8a00; --accent-deep:#e67a00;
+  --ink-solid:#1a1d29;
+  --ink:#1a1d29; --muted:#8a8f9c; --bg:#f0eee9; --surface:#fff;
+  --line:rgba(0,0,0,.08); --field:#f6f7fa; --surface-2:#f1f2f6;
+  --track:#e6e4de; --chip-fg:#5b6170;
+}
+:root[data-theme="dark"] {
+  --ink:#eef0f4; --muted:#9aa3b5; --bg:#14161d; --surface:#1f2230;
+  --line:rgba(255,255,255,.1); --field:#242735; --surface-2:#2a2e3d;
+  --track:#333748; --chip-fg:#aab0c2;
+}
+body {
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  color:var(--ink); background:var(--bg); margin:0; padding:18px 14px 60px;
+}
+.wrap { max-width:1100px; margin:0 auto; }
+a { color:inherit; }
+
+.head { display:flex; align-items:baseline; gap:10px; flex-wrap:wrap; margin-bottom:6px; }
+h1 { font-size:1.25rem; margin:0; }
+.back { font-size:.85rem; color:var(--accent-deep); text-decoration:none; font-weight:600; }
+.sub { color:var(--muted); font-size:.82rem; margin:2px 0 16px; line-height:1.5; }
+.warn {
+  background:var(--surface); border:1px solid var(--line); border-left:3px solid var(--gold-deep);
+  border-radius:8px; padding:9px 12px; font-size:.8rem; color:var(--muted); margin-bottom:16px;
+}
+
+.controls { display:flex; gap:8px; flex-wrap:wrap; align-items:center; margin-bottom:16px; }
+.controls input[type="search"], .controls select {
+  font:inherit; color:var(--ink); background:var(--field);
+  border:1px solid var(--line); border-radius:8px; padding:8px 10px;
+}
+.controls input[type="search"] { flex:1 1 200px; min-width:0; }
+.chips { display:flex; gap:6px; flex-wrap:wrap; }
+.chip {
+  font:inherit; font-size:.82rem; cursor:pointer; padding:6px 12px; border-radius:999px;
+  border:1px solid var(--line); background:var(--surface); color:var(--chip-fg);
+}
+.chip.on { background:var(--accent); border-color:var(--accent); color:var(--ink-solid); font-weight:600; }
+.count { color:var(--muted); font-size:.8rem; margin-left:auto; }
+
+.grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(150px,1fr)); gap:12px; }
+.card {
+  display:flex; flex-direction:column; background:var(--surface);
+  border:1px solid var(--line); border-radius:12px; overflow:hidden; text-decoration:none;
+}
+.card:active { transform:scale(.99); }
+.thumb {
+  aspect-ratio:310/430; background:var(--surface-2) center/cover no-repeat;
+  position:relative;
+}
+.badge {
+  position:absolute; top:6px; left:6px; font-size:.72rem; font-weight:700;
+  padding:2px 7px; border-radius:999px; background:var(--gold); color:var(--ink-solid);
+}
+.badge.g10 { background:#37c978; color:#03210f; }
+.badge.none { background:var(--track); color:var(--chip-fg); }
+.body { padding:8px 9px 10px; display:flex; flex-direction:column; gap:4px; flex:1; }
+.title { font-size:.8rem; line-height:1.3; overflow:hidden; display:-webkit-box;
+  -webkit-line-clamp:3; -webkit-box-orient:vertical; }
+.meta { margin-top:auto; display:flex; align-items:baseline; gap:6px; }
+.price { font-weight:800; font-size:.95rem; }
+.total { font-size:.72rem; color:var(--muted); }
+.cond { font-size:.7rem; color:var(--muted); }
+
+.empty { text-align:center; color:var(--muted); padding:40px 10px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="head">
+    <h1>Cartes PCA sur Vinted</h1>
+    <a class="back" href="./index.html">&larr; retour à la collection</a>
+  </div>
+  <p class="sub" id="sub">Chargement…</p>
+
+  <div class="warn">
+    Page de test (étape 1). C'est la liste <strong>brute</strong> des annonces Vinted dont le
+    titre mentionne « PCA » — aucune vérification de la carte, aucune détection de bonne
+    affaire pour l'instant. Les données sont rafraîchies périodiquement, elles peuvent avoir
+    quelques heures de retard. Certaines annonces sont du bourrage de mots-clés (« pca psa tcg »)
+    sur des cartes non gradées : c'est normal à ce stade.
+  </div>
+
+  <div class="controls">
+    <input type="search" id="q" placeholder="Filtrer par nom, numéro…" autocomplete="off" />
+    <div class="chips" id="grades"></div>
+    <select id="sort">
+      <option value="recent">Plus récentes</option>
+      <option value="price-asc">Prix croissant</option>
+      <option value="price-desc">Prix décroissant</option>
+    </select>
+    <span class="count" id="count"></span>
+  </div>
+
+  <div id="list" class="grid"></div>
+</div>
+
+<script>
+const GRADES = ["Tous", "10", "9.5", "9", "Autres"];
+let DATA = null;
+let fGrade = "Tous";
+
+const $ = (s) => document.querySelector(s);
+
+function fmtAge(iso) {
+  const d = new Date(iso), now = new Date();
+  const min = Math.round((now - d) / 60000);
+  if (min < 60) return "il y a " + min + " min";
+  const h = Math.round(min / 60);
+  if (h < 48) return "il y a " + h + " h";
+  return "il y a " + Math.round(h / 24) + " j";
+}
+
+function gradeClass(g) {
+  if (!g) return "none";
+  if (g === "10") return "g10";
+  return "";
+}
+
+function matchesGrade(item) {
+  if (fGrade === "Tous") return true;
+  if (fGrade === "Autres") return !["10", "9.5", "9"].includes(item.grade);
+  return item.grade === fGrade;
+}
+
+function render() {
+  const q = $("#q").value.trim().toLowerCase();
+  let items = DATA.items.filter((it) => {
+    if (!matchesGrade(it)) return false;
+    if (q) {
+      const hay = (it.title + " " + (it.number || "")).toLowerCase();
+      if (!q.split(/\s+/).every((w) => hay.includes(w))) return false;
+    }
+    return true;
+  });
+
+  const sort = $("#sort").value;
+  if (sort === "price-asc") items.sort((a, b) => a.price - b.price);
+  else if (sort === "price-desc") items.sort((a, b) => b.price - a.price);
+  else items.sort((a, b) => Number(b.id) - Number(a.id));
+
+  $("#count").textContent = items.length + " / " + DATA.items.length;
+
+  const list = $("#list");
+  if (!items.length) {
+    list.innerHTML = '<p class="empty">Aucune annonce ne correspond.</p>';
+    return;
+  }
+  list.innerHTML = items.map((it) => {
+    const badge = it.grade ? "PCA " + it.grade : "grade ?";
+    const img = it.image ? `style="background-image:url('${it.image}')"` : "";
+    return `<a class="card" href="${it.url}" target="_blank" rel="noopener">
+      <div class="thumb" ${img}><span class="badge ${gradeClass(it.grade)}">${badge}</span></div>
+      <div class="body">
+        <div class="title">${escapeHtml(it.title)}</div>
+        <div class="cond">${escapeHtml(it.condition || "")}</div>
+        <div class="meta">
+          <span class="price">${it.price.toFixed(0)} €</span>
+          <span class="total">${it.total_price.toFixed(2)} € port inclus</span>
+        </div>
+      </div>
+    </a>`;
+  }).join("");
+}
+
+function escapeHtml(s) {
+  return String(s).replace(/[&<>"']/g, (c) => ({
+    "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;",
+  }[c]));
+}
+
+function buildGradeChips() {
+  $("#grades").innerHTML = GRADES.map((g) =>
+    `<button class="chip ${g === fGrade ? "on" : ""}" data-g="${g}">${g}</button>`
+  ).join("");
+  $("#grades").onclick = (e) => {
+    const b = e.target.closest(".chip");
+    if (!b) return;
+    fGrade = b.dataset.g;
+    buildGradeChips();
+    render();
+  };
+}
+
+async function boot() {
+  buildGradeChips();
+  $("#q").addEventListener("input", render);
+  $("#sort").addEventListener("change", render);
+  try {
+    const r = await fetch("vinted-pca.json?t=" + Date.now());
+    if (!r.ok) throw new Error("HTTP " + r.status);
+    DATA = await r.json();
+  } catch (e) {
+    $("#sub").textContent = "Impossible de charger les données (" + e.message + ").";
+    return;
+  }
+  $("#sub").innerHTML =
+    `${DATA.count} annonces · recherche Vinted « ${escapeHtml(DATA.query)} » · ` +
+    `mise à jour ${fmtAge(DATA.generated_at)} · ` +
+    `grade lu sur ${DATA.with_grade}, numéro sur ${DATA.with_number}`;
+  render();
+}
+boot();
+</script>
+</body>
+</html>
