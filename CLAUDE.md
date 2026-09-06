@@ -251,7 +251,10 @@ redéclenche pas `deploy.yml`).
      dès le 1er/2e ; NE PAS faire de visite d'accueil « de chauffe », ça durcit le
      challenge ; chargement direct par cert). Parse le flux RSC (`_unescape` cible juste
      `\"`) : Subject, Item Grade, Year, Card Number, Category, et l'**estimation PSA**
-     (`$` valeur + fourchette + « Estimate Confidence: High/Moderate/Low »).
+     (`$` valeur + fourchette + « Estimate Confidence: High/Moderate/Low ») et la
+     **population** (« PSA Population » = nb gradé à ce grade, « PSA Pop Higher » = nb
+     gradé au-dessus, + lien pop report). Fiches en cache d'avant l'ajout de `pop` →
+     re-vérifiées automatiquement (quelques-unes par run).
    - **Calcul bonne affaire** : `ratio = prix_€ / (est_$ × taux_USD→EUR)`. Marquée
      `deal` si `ratio ≤ 0.80` ET confiance `High` ou `Moderate`. Taux via
      frankfurter.app (repli open.er-api.com), caché ~20 h.

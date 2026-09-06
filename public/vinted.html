@@ -183,6 +183,19 @@ function ratioPill(psa) {
   return `<span class="ratio ${cls}">${label}</span>`;
 }
 
+function fmtInt(n) {
+  return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+}
+
+function popText(p) {
+  if (p.pop == null) return "";
+  let s = "pop. " + fmtInt(p.pop);
+  if (p.pop_higher != null)
+    s += p.pop_higher === 0 ? " · aucune mieux notée"
+       : " · " + fmtInt(p.pop_higher) + " mieux notée" + (p.pop_higher > 1 ? "s" : "");
+  return `<span>${s}</span>`;
+}
+
 function psaLine(it) {
   const p = it.psa;
   if (!p) return "";
@@ -191,10 +204,11 @@ function psaLine(it) {
       <span class="psaest">est. ${Math.round(p.est_eur)} €</span>
       ${ratioPill(p)}
       ${p.confidence ? `<span>conf. ${escapeHtml(p.confidence)}</span>` : ""}
+      ${popText(p)}
     </div>`;
   }
   if (p.status === "no_estimate")
-    return `<div class="psawait">PSA : pas d'estimation</div>`;
+    return `<div class="psaline"><span>PSA : pas d'estimation</span>${popText(p)}</div>`;
   if (p.status === "pending" || p.cert)
     return `<div class="psawait">fiche PSA en attente</div>`;
   return `<div class="psawait">cert. non lu</div>`;

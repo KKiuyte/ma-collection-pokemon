@@ -214,6 +214,17 @@ def parse_psa(html):
             if len(vals) >= 3:
                 out["est_low"], out["est_high"] = vals[1], vals[2]
             out["confidence"] = conf.group(1) if conf else None
+
+    # --- population : « PSA Population » (nombre gradé à ce grade) et
+    #     « PSA Pop Higher » (nombre gradé au-dessus). Les deux sont juste après
+    #     leur libellé, dans une balise dont on prend le premier "children" numérique.
+    for label, key in (("PSA Population", "pop"), ("PSA Pop Higher", "pop_higher")):
+        m = re.search(re.escape(label) + r'".{0,220}?"children":"([\d,]+)"', u)
+        if m:
+            out[key] = int(m.group(1).replace(",", ""))
+    mp = re.search(r'"(https://www\.psacard\.com/pop/[^"]+)"', u)
+    if mp:
+        out["pop_url"] = mp.group(1)
     return out
 
 
@@ -316,6 +327,9 @@ def build_psa_field(item, cache, fx):
         "card_number": fiche.get("Card Number"),
         "category": fiche.get("Category"),
         "confidence": fiche.get("confidence"),
+        "pop": fiche.get("pop"),                 # gradés à ce grade
+        "pop_higher": fiche.get("pop_higher"),   # gradés au-dessus
+        "pop_url": fiche.get("pop_url"),
     }
     if est:
         est_eur = round(est * fx, 2)
@@ -419,7 +433,8 @@ def main():
                 continue
             seen.add(cert)
             f = cache["certs"].get(cert)
-            if f and "error" not in f and age_days(f.get("checked_at", "")) < CERT_TTL_DAYS:
+            if f and "error" not in f and age_days(f.get("checked_at", "")) < CERT_TTL_DAYS \
+               and "pop" in f:   # (re)prise si la fiche est d'avant l'ajout de la population
                 continue
             if f and f.get("error") and age_days(f.get("checked_at", "")) < 1:
                 continue  # échec récent : on laisse reposer
