@@ -2984,6 +2984,187 @@
    "status": "no_photo",
    "at": "2026-09-09T11:29:15Z",
    "note": null
+  },
+  "9944745001": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-09T16:42:44Z",
+   "note": null
+  },
+  "9944743142": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-09T16:42:44Z",
+   "note": null
+  },
+  "9944726417": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-09T16:42:44Z",
+   "note": null
+  },
+  "9944725783": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-09T16:42:44Z",
+   "note": null
+  },
+  "9944720047": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-09T16:42:44Z",
+   "note": null
+  },
+  "9944714925": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-09T16:42:44Z",
+   "note": null
+  },
+  "9944678408": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-09T16:42:44Z",
+   "note": null
+  },
+  "9944678146": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-09T16:42:44Z",
+   "note": null
+  },
+  "9944605152": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-09T16:42:44Z",
+   "note": null
+  },
+  "9944582305": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-09T16:42:44Z",
+   "note": null
+  },
+  "9944566855": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-09T16:42:44Z",
+   "note": null
+  },
+  "9944551291": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-09T16:42:44Z",
+   "note": null
+  },
+  "9944545042": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-09T16:42:44Z",
+   "note": null
+  },
+  "9944530374": {
+   "cert": "61471322",
+   "conf": 1.0,
+   "votes": 4,
+   "at": "2026-09-09T16:42:44Z",
+   "status": "ok"
+  },
+  "9944526290": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-09T16:42:44Z",
+   "note": null
+  },
+  "9944525884": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-09T16:42:44Z",
+   "note": null
+  },
+  "9944506884": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-09T16:42:44Z",
+   "note": null
+  },
+  "9944503811": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-09T16:42:44Z",
+   "note": null
+  },
+  "9944502983": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-09T16:42:44Z",
+   "note": null
+  },
+  "9944482663": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-09T16:42:44Z",
+   "note": null
+  },
+  "9944476818": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-09T16:42:44Z",
+   "note": null
+  },
+  "9944466537": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-09T16:42:44Z",
+   "note": null
+  },
+  "9944451225": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-09T16:42:44Z",
+   "note": null
+  },
+  "9944450328": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-09T16:42:44Z",
+   "note": null
+  },
+  "9944450058": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-09T16:42:44Z",
+   "note": null
+  },
+  "9944442867": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-09T16:42:44Z",
+   "note": null
+  },
+  "9944439255": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-09T16:42:44Z",
+   "note": null
+  },
+  "9944434552": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-09T16:42:44Z",
+   "note": null
+  },
+  "9944428753": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-09T16:42:44Z",
+   "note": null
+  },
+  "9944425752": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-09T16:42:44Z",
+   "note": null
   }
  },
  "certs": {
@@ -6898,6 +7079,22 @@
    "pop_higher": 19,
    "pop_url": "https://www.psacard.com/pop/tcg-cards/2010/pokemon-heartgold-soulsilver/96083",
    "checked_at": "2026-09-09T11:29:15Z"
+  },
+  "61471322": {
+   "Cert Number": "61471322",
+   "Item Grade": "MINT 9",
+   "Year": "2019",
+   "Subject": "ALOLAN NINETALES GX",
+   "Card Number": "SV53",
+   "Category": "TCG Cards",
+   "est_usd": 45.0,
+   "est_low": 32.0,
+   "est_high": 59.0,
+   "confidence": "High",
+   "pop": 1529,
+   "pop_higher": 4150,
+   "pop_url": "https://www.psacard.com/pop/tcg-cards/2019/pokemon-sun-moon-hidden-fates/169494",
+   "checked_at": "2026-09-09T16:42:44Z"
   }
  }
 }
