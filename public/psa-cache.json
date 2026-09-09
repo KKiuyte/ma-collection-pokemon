@@ -2592,6 +2592,216 @@
    "votes": 12,
    "at": "2026-09-08T21:13:31Z",
    "status": "ok"
+  },
+  "9937763522": {
+   "cert": "88906127",
+   "conf": 1.0,
+   "votes": 12,
+   "at": "2026-09-09T04:48:00Z",
+   "status": "ok"
+  },
+  "9937760668": {
+   "cert": null,
+   "conf": 0.0,
+   "votes": 0,
+   "at": "2026-09-09T04:48:00Z",
+   "status": "no_cert"
+  },
+  "9937752284": {
+   "cert": "122208911",
+   "conf": 1.0,
+   "votes": 7,
+   "at": "2026-09-09T04:48:00Z",
+   "status": "ok"
+  },
+  "9937659888": {
+   "cert": null,
+   "conf": 0.0,
+   "votes": 0,
+   "at": "2026-09-09T04:48:00Z",
+   "status": "no_cert"
+  },
+  "9937621667": {
+   "cert": "103150808",
+   "conf": 1.0,
+   "votes": 8,
+   "at": "2026-09-09T04:48:00Z",
+   "status": "ok"
+  },
+  "9937609010": {
+   "cert": "111198305",
+   "conf": 1.0,
+   "votes": 8,
+   "at": "2026-09-09T04:48:00Z",
+   "status": "ok"
+  },
+  "9937604038": {
+   "cert": "111198304",
+   "conf": 1.0,
+   "votes": 8,
+   "at": "2026-09-09T04:48:00Z",
+   "status": "ok"
+  },
+  "9937599133": {
+   "cert": "111198307",
+   "conf": 1.0,
+   "votes": 8,
+   "at": "2026-09-09T04:48:00Z",
+   "status": "ok"
+  },
+  "9937594338": {
+   "cert": "111198300",
+   "conf": 1.0,
+   "votes": 8,
+   "at": "2026-09-09T04:48:00Z",
+   "status": "ok"
+  },
+  "9937590370": {
+   "cert": "111198306",
+   "conf": 1.0,
+   "votes": 8,
+   "at": "2026-09-09T04:48:00Z",
+   "status": "ok"
+  },
+  "9937585422": {
+   "cert": "111198308",
+   "conf": 1.0,
+   "votes": 8,
+   "at": "2026-09-09T04:48:00Z",
+   "status": "ok"
+  },
+  "9937540963": {
+   "cert": "101109827",
+   "conf": 1.0,
+   "votes": 4,
+   "at": "2026-09-09T04:48:00Z",
+   "status": "ok"
+  },
+  "9937484125": {
+   "cert": "134900924",
+   "conf": 1.0,
+   "votes": 4,
+   "at": "2026-09-09T04:48:00Z",
+   "status": "ok"
+  },
+  "9937483974": {
+   "cert": "142597699",
+   "conf": 1.0,
+   "votes": 2,
+   "at": "2026-09-09T04:48:00Z",
+   "status": "ok"
+  },
+  "9937478934": {
+   "cert": "91920333",
+   "conf": 1.0,
+   "votes": 2,
+   "at": "2026-09-09T04:48:00Z",
+   "status": "ok"
+  },
+  "9937475915": {
+   "cert": null,
+   "conf": 0.0,
+   "votes": 0,
+   "at": "2026-09-09T04:48:00Z",
+   "status": "no_cert"
+  },
+  "9937475511": {
+   "cert": null,
+   "conf": 0.0,
+   "votes": 0,
+   "at": "2026-09-09T04:48:00Z",
+   "status": "no_cert"
+  },
+  "9937462639": {
+   "cert": null,
+   "conf": 0.0,
+   "votes": 0,
+   "at": "2026-09-09T04:48:00Z",
+   "status": "no_cert"
+  },
+  "9937461240": {
+   "cert": "142597701",
+   "conf": 1.0,
+   "votes": 4,
+   "at": "2026-09-09T04:48:00Z",
+   "status": "ok"
+  },
+  "9937459714": {
+   "cert": null,
+   "conf": 0.0,
+   "votes": 0,
+   "at": "2026-09-09T04:48:00Z",
+   "status": "no_cert"
+  },
+  "9937453265": {
+   "cert": "136492181",
+   "conf": 1.0,
+   "votes": 4,
+   "at": "2026-09-09T04:48:00Z",
+   "status": "ok"
+  },
+  "9937446641": {
+   "cert": "120502520",
+   "conf": 1.0,
+   "votes": 12,
+   "at": "2026-09-09T04:48:00Z",
+   "status": "ok"
+  },
+  "9937442071": {
+   "cert": "139288270",
+   "conf": 1.0,
+   "votes": 12,
+   "at": "2026-09-09T04:48:00Z",
+   "status": "ok"
+  },
+  "9937411326": {
+   "cert": "145025388",
+   "conf": 1.0,
+   "votes": 8,
+   "at": "2026-09-09T04:48:00Z",
+   "status": "ok"
+  },
+  "9937305874": {
+   "cert": "57428335",
+   "conf": 1.0,
+   "votes": 8,
+   "at": "2026-09-09T04:48:00Z",
+   "status": "ok"
+  },
+  "9937299565": {
+   "cert": "95421302",
+   "conf": 1.0,
+   "votes": 8,
+   "at": "2026-09-09T04:48:00Z",
+   "status": "ok"
+  },
+  "9937282155": {
+   "cert": "101790180",
+   "conf": 1.0,
+   "votes": 8,
+   "at": "2026-09-09T04:48:00Z",
+   "status": "ok"
+  },
+  "9937247804": {
+   "cert": "146098976",
+   "conf": 1.0,
+   "votes": 6,
+   "at": "2026-09-09T04:48:00Z",
+   "status": "ok"
+  },
+  "9937236601": {
+   "cert": "111198548",
+   "conf": 1.0,
+   "votes": 12,
+   "at": "2026-09-09T04:48:00Z",
+   "status": "ok"
+  },
+  "9937225365": {
+   "cert": "142948083",
+   "conf": 1.0,
+   "votes": 12,
+   "at": "2026-09-09T04:48:00Z",
+   "status": "ok"
   }
  },
  "certs": {
@@ -6165,6 +6375,315 @@
    "pop_higher": 0,
    "pop_url": "https://www.psacard.com/pop/tcg-cards/2025/pokemon-japanese-m2a-mega-dream-ex/323965",
    "checked_at": "2026-09-08T21:13:31Z"
+  },
+  "88906127": {
+   "Cert Number": "88906127",
+   "Item Grade": "MINT 9",
+   "Year": "2021",
+   "Subject": "NOCTALI-GOLD STAR",
+   "Card Number": "17",
+   "Category": "TCG Cards",
+   "est_usd": 231.0,
+   "est_low": 141.0,
+   "est_high": 348.0,
+   "confidence": "Moderate",
+   "pop": 221,
+   "pop_higher": 315,
+   "pop_url": "https://www.psacard.com/pop/tcg-cards/2021/pokemon-celebrations-classic-collection/200655",
+   "checked_at": "2026-09-09T04:48:00Z"
+  },
+  "122208911": {
+   "Cert Number": "122208911",
+   "Item Grade": "NM-MT 8",
+   "Year": "2023",
+   "Subject": "MEW ex",
+   "Card Number": "205",
+   "Category": "TCG Cards",
+   "est_usd": 69.0,
+   "est_low": 41.0,
+   "est_high": 126.0,
+   "confidence": "Low",
+   "pop": 54,
+   "pop_higher": 201,
+   "pop_url": "https://www.psacard.com/pop/tcg-cards/2023/pokemon-french-mew-fr-151/249039",
+   "checked_at": "2026-09-09T04:48:00Z"
+  },
+  "103150808": {
+   "Cert Number": "103150808",
+   "Item Grade": "GEM MT 10",
+   "Year": "2024",
+   "Subject": "UMBREON ex",
+   "Card Number": "217",
+   "Category": "TCG Cards",
+   "est_usd": 581.0,
+   "est_low": 565.0,
+   "est_high": 618.0,
+   "confidence": "High",
+   "pop": 80670,
+   "pop_higher": 0,
+   "pop_url": "https://www.psacard.com/pop/tcg-cards/2024/pokemon-japanese-sv8a-terastal-fest-ex/288603",
+   "checked_at": "2026-09-09T04:48:00Z"
+  },
+  "111198305": {
+   "Cert Number": "111198305",
+   "Item Grade": "GEM MT 10",
+   "Year": "2024",
+   "Subject": "EEVEE ex",
+   "Card Number": "224",
+   "Category": "TCG Cards",
+   "est_usd": 80.0,
+   "est_low": 75.0,
+   "est_high": 86.0,
+   "confidence": "High",
+   "pop": 40972,
+   "pop_higher": 0,
+   "pop_url": "https://www.psacard.com/pop/tcg-cards/2024/pokemon-japanese-sv8a-terastal-fest-ex/288603",
+   "checked_at": "2026-09-09T04:48:00Z"
+  },
+  "111198304": {
+   "Cert Number": "111198304",
+   "Item Grade": "GEM MT 10",
+   "Year": "2024",
+   "Subject": "EEVEE ex",
+   "Card Number": "223",
+   "Category": "TCG Cards",
+   "est_usd": 93.0,
+   "est_low": 88.0,
+   "est_high": 101.0,
+   "confidence": "High",
+   "pop": 35042,
+   "pop_higher": 0,
+   "pop_url": "https://www.psacard.com/pop/tcg-cards/2024/pokemon-japanese-sv8a-terastal-fest-ex/288603",
+   "checked_at": "2026-09-09T04:48:00Z"
+  },
+  "111198307": {
+   "Cert Number": "111198307",
+   "Item Grade": "GEM MT 10",
+   "Year": "2024",
+   "Subject": "VAPOREON ex",
+   "Card Number": "205",
+   "Category": "TCG Cards",
+   "est_usd": 112.0,
+   "est_low": 105.0,
+   "est_high": 122.0,
+   "confidence": "High",
+   "pop": 40469,
+   "pop_higher": 0,
+   "pop_url": "https://www.psacard.com/pop/tcg-cards/2024/pokemon-japanese-sv8a-terastal-fest-ex/288603",
+   "checked_at": "2026-09-09T04:48:00Z"
+  },
+  "111198300": {
+   "Cert Number": "111198300",
+   "Item Grade": "GEM MT 10",
+   "Year": "2024",
+   "Subject": "LEAFEON ex",
+   "Card Number": "200",
+   "Category": "TCG Cards",
+   "est_usd": 121.0,
+   "est_low": 115.0,
+   "est_high": 129.0,
+   "confidence": "High",
+   "pop": 40063,
+   "pop_higher": 0,
+   "pop_url": "https://www.psacard.com/pop/tcg-cards/2024/pokemon-japanese-sv8a-terastal-fest-ex/288603",
+   "checked_at": "2026-09-09T04:48:00Z"
+  },
+  "111198306": {
+   "Cert Number": "111198306",
+   "Item Grade": "GEM MT 10",
+   "Year": "2024",
+   "Subject": "FLAREON ex",
+   "Card Number": "202",
+   "Category": "TCG Cards",
+   "est_usd": 102.0,
+   "est_low": 96.0,
+   "est_high": 112.0,
+   "confidence": "High",
+   "pop": 38153,
+   "pop_higher": 0,
+   "pop_url": "https://www.psacard.com/pop/tcg-cards/2024/pokemon-japanese-sv8a-terastal-fest-ex/288603",
+   "checked_at": "2026-09-09T04:48:00Z"
+  },
+  "111198308": {
+   "Cert Number": "111198308",
+   "Item Grade": "GEM MT 10",
+   "Year": "2024",
+   "Subject": "GLACEON ex",
+   "Card Number": "206",
+   "Category": "TCG Cards",
+   "est_usd": 114.0,
+   "est_low": 108.0,
+   "est_high": 123.0,
+   "confidence": "High",
+   "pop": 38675,
+   "pop_higher": 0,
+   "pop_url": "https://www.psacard.com/pop/tcg-cards/2024/pokemon-japanese-sv8a-terastal-fest-ex/288603",
+   "checked_at": "2026-09-09T04:48:00Z"
+  },
+  "101109827": {
+   "Cert Number": "101109827",
+   "Item Grade": "MINT 9",
+   "Year": "2023",
+   "Subject": "CHARIZARD ex",
+   "Card Number": "223",
+   "Category": "TCG Cards",
+   "est_usd": 131.0,
+   "est_low": 84.0,
+   "est_high": 197.0,
+   "confidence": "Moderate",
+   "pop": 468,
+   "pop_higher": 103,
+   "pop_url": "https://www.psacard.com/pop/tcg-cards/2023/pokemon-italian-obf-obsidian-flames/245445",
+   "checked_at": "2026-09-09T04:48:00Z"
+  },
+  "134900924": {
+   "Cert Number": "134900924",
+   "Item Grade": "MINT 9",
+   "Year": "2020",
+   "Subject": "UMBREON E DARKRAI GX",
+   "Card Number": "SM241",
+   "Category": "TCG Cards",
+   "est_usd": 228.0,
+   "est_low": 129.0,
+   "est_high": 405.0,
+   "confidence": "Low",
+   "pop": 81,
+   "pop_higher": 7,
+   "pop_url": "https://www.psacard.com/pop/tcg-cards/2020/pokemon-sm-black-star-promo/176382",
+   "checked_at": "2026-09-09T04:48:00Z"
+  },
+  "142597699": {
+   "Cert Number": "142597699",
+   "Item Grade": "GEM MT 10",
+   "Year": "2025",
+   "Subject": "HELIOPTILE",
+   "Card Number": "070",
+   "Category": "TCG Cards",
+   "est_usd": 27.0,
+   "est_low": 19.0,
+   "est_high": 37.0,
+   "confidence": "High",
+   "pop": 7253,
+   "pop_higher": 0,
+   "pop_url": "https://www.psacard.com/pop/tcg-cards/2025/pokemon-japanese-m1s-mega-symphonia/312125",
+   "checked_at": "2026-09-09T04:48:00Z"
+  },
+  "91920333": {
+   "Cert Number": "91920333",
+   "Item Grade": "UNAVAILABLE",
+   "Year": "1999",
+   "Subject": "TCG Cards",
+   "Card Number": "20",
+   "Category": "TCG Cards",
+   "checked_at": "2026-09-09T04:48:00Z"
+  },
+  "142597701": {
+   "Cert Number": "142597701",
+   "Item Grade": "GEM MT 10",
+   "Year": "2025",
+   "Subject": "RIOLU",
+   "Card Number": "068",
+   "Category": "TCG Cards",
+   "est_usd": 42.0,
+   "est_low": 37.0,
+   "est_high": 52.0,
+   "confidence": "High",
+   "pop": 8937,
+   "pop_higher": 0,
+   "pop_url": "https://www.psacard.com/pop/tcg-cards/2025/pokemon-japanese-m1l-mega-brave/312124",
+   "checked_at": "2026-09-09T04:48:00Z"
+  },
+  "136492181": {
+   "Cert Number": "136492181",
+   "Item Grade": "MINT 9",
+   "Year": "2018",
+   "Subject": "PIKACHU",
+   "Card Number": "288",
+   "Category": "TCG Cards",
+   "est_usd": 6962.0,
+   "est_low": 5652.0,
+   "est_high": 7706.0,
+   "confidence": "Moderate",
+   "pop": 1235,
+   "pop_higher": 3972,
+   "pop_url": "https://www.psacard.com/pop/tcg-cards/2018/pokemon-japanese-sm-promo/155528",
+   "checked_at": "2026-09-09T04:48:00Z"
+  },
+  "120502520": {
+   "Cert Number": "120502520",
+   "Item Grade": "MINT 9",
+   "Year": "2025",
+   "Subject": "N'S ZOROARK ex",
+   "Card Number": "185",
+   "Category": "TCG Cards",
+   "est_usd": 77.0,
+   "est_low": 50.0,
+   "est_high": 118.0,
+   "confidence": "Moderate",
+   "pop": 50,
+   "pop_higher": 9,
+   "pop_url": "https://www.psacard.com/pop/tcg-cards/2025/pokemon-italian-jtg-journey-together/298966",
+   "checked_at": "2026-09-09T04:48:00Z"
+  },
+  "139288270": {
+   "Cert Number": "139288270",
+   "Item Grade": "MINT 9",
+   "Year": "2025",
+   "Subject": "ZEKROM ex",
+   "Card Number": "166",
+   "Category": "TCG Cards",
+   "pop": 31,
+   "pop_higher": 182,
+   "pop_url": "https://www.psacard.com/pop/tcg-cards/2025/pokemon-italian-blk-black-bolt/310578",
+   "checked_at": "2026-09-09T04:48:00Z"
+  },
+  "145025388": {
+   "Cert Number": "145025388",
+   "Item Grade": "GEM MT 10",
+   "Year": "2023",
+   "Subject": "PIKACHU",
+   "Card Number": "027",
+   "Category": "TCG Cards",
+   "est_usd": 223.0,
+   "est_low": 209.0,
+   "est_high": 234.0,
+   "confidence": "High",
+   "pop": 8422,
+   "pop_higher": 0,
+   "pop_url": "https://www.psacard.com/pop/tcg-cards/2023/pokemon-svp-en-sv-black-star-promo/230299",
+   "checked_at": "2026-09-09T04:48:00Z"
+  },
+  "57428335": {
+   "Cert Number": "57428335",
+   "Item Grade": "NM-MT 8",
+   "Year": "1996",
+   "Subject": "BLASTOISE-HOLO",
+   "Card Number": "9",
+   "Category": "TCG Cards",
+   "est_usd": 285.0,
+   "est_low": 241.0,
+   "est_high": 326.0,
+   "confidence": "High",
+   "pop": 1873,
+   "pop_higher": 3210,
+   "pop_url": "https://www.psacard.com/pop/tcg-cards/1996/pokemon-japanese-basic/55428",
+   "checked_at": "2026-09-09T04:48:00Z"
+  },
+  "95421302": {
+   "Cert Number": "95421302",
+   "Item Grade": "NM-MT 8",
+   "Year": "1996",
+   "Subject": "VENUSAUR-HOLO",
+   "Card Number": "3",
+   "Category": "TCG Cards",
+   "est_usd": 221.0,
+   "est_low": 185.0,
+   "est_high": 263.0,
+   "confidence": "High",
+   "pop": 1622,
+   "pop_higher": 3162,
+   "pop_url": "https://www.psacard.com/pop/tcg-cards/1996/pokemon-japanese-basic/55428",
+   "checked_at": "2026-09-09T04:48:00Z"
   }
  }
 }
