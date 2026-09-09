@@ -2802,6 +2802,188 @@
    "votes": 12,
    "at": "2026-09-09T04:48:00Z",
    "status": "ok"
+  },
+  "9940692451": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-09T11:29:15Z",
+   "note": null
+  },
+  "9940688710": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-09T11:29:15Z",
+   "note": null
+  },
+  "9940687550": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-09T11:29:15Z",
+   "note": null
+  },
+  "9940678268": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-09T11:29:15Z",
+   "note": null
+  },
+  "9940658671": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-09T11:29:15Z",
+   "note": null
+  },
+  "9940655736": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-09T11:29:15Z",
+   "note": null
+  },
+  "9940642684": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-09T11:29:15Z",
+   "note": null
+  },
+  "9940638624": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-09T11:29:15Z",
+   "note": null
+  },
+  "9940638177": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-09T11:29:15Z",
+   "note": null
+  },
+  "9940634571": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-09T11:29:15Z",
+   "note": null
+  },
+  "9940612084": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-09T11:29:15Z",
+   "note": null
+  },
+  "9940609038": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-09T11:29:15Z",
+   "note": null
+  },
+  "9940601533": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-09T11:29:15Z",
+   "note": null
+  },
+  "9940580918": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-09T11:29:15Z",
+   "note": null
+  },
+  "9940550454": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-09T11:29:15Z",
+   "note": null
+  },
+  "9940546501": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-09T11:29:15Z",
+   "note": null
+  },
+  "9940531950": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-09T11:29:15Z",
+   "note": null
+  },
+  "9940476410": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-09T11:29:15Z",
+   "note": null
+  },
+  "9940454974": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-09T11:29:15Z",
+   "note": null
+  },
+  "9940392485": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-09T11:29:15Z",
+   "note": null
+  },
+  "9940363529": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-09T11:29:15Z",
+   "note": null
+  },
+  "9940343245": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-09T11:29:15Z",
+   "note": null
+  },
+  "9940294559": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-09T11:29:15Z",
+   "note": null
+  },
+  "9940231086": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-09T11:29:15Z",
+   "note": null
+  },
+  "9940227759": {
+   "cert": "123838616",
+   "conf": 1.0,
+   "votes": 4,
+   "at": "2026-09-09T11:29:15Z",
+   "status": "ok"
+  },
+  "9940212428": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-09T11:29:15Z",
+   "note": null
+  },
+  "9940188315": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-09T11:29:15Z",
+   "note": null
+  },
+  "9940171678": {
+   "cert": "80396967",
+   "conf": 1.0,
+   "votes": 2,
+   "at": "2026-09-09T11:29:15Z",
+   "status": "ok"
+  },
+  "9940140061": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-09T11:29:15Z",
+   "note": null
+  },
+  "9940137000": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-09T11:29:15Z",
+   "note": null
   }
  },
  "certs": {
@@ -6684,6 +6866,38 @@
    "pop_higher": 3162,
    "pop_url": "https://www.psacard.com/pop/tcg-cards/1996/pokemon-japanese-basic/55428",
    "checked_at": "2026-09-09T04:48:00Z"
+  },
+  "123838616": {
+   "Cert Number": "123838616",
+   "Item Grade": "MINT 9",
+   "Year": "2022",
+   "Subject": "FA/RAYQUAZA VMAX",
+   "Card Number": "TG20",
+   "Category": "TCG Cards",
+   "est_usd": 173.0,
+   "est_low": 116.0,
+   "est_high": 252.0,
+   "confidence": "Moderate",
+   "pop": 152,
+   "pop_higher": 107,
+   "pop_url": "https://www.psacard.com/pop/tcg-cards/2022/pokemon-sword-shield-silver-tempest/222927",
+   "checked_at": "2026-09-09T11:29:15Z"
+  },
+  "80396967": {
+   "Cert Number": "80396967",
+   "Item Grade": "MINT 9",
+   "Year": "2010",
+   "Subject": "PIKACHU",
+   "Card Number": "78",
+   "Category": "TCG Cards",
+   "est_usd": 473.0,
+   "est_low": 344.0,
+   "est_high": 747.0,
+   "confidence": "Moderate",
+   "pop": 165,
+   "pop_higher": 19,
+   "pop_url": "https://www.psacard.com/pop/tcg-cards/2010/pokemon-heartgold-soulsilver/96083",
+   "checked_at": "2026-09-09T11:29:15Z"
   }
  }
 }
