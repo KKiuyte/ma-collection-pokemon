@@ -3348,6 +3348,189 @@
    "status": "no_photo",
    "at": "2026-09-09T20:59:19Z",
    "note": null
+  },
+  "9948944125": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-10T04:48:35Z",
+   "note": null
+  },
+  "9948926461": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-10T04:48:35Z",
+   "note": null
+  },
+  "9948802276": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-10T04:48:35Z",
+   "note": null
+  },
+  "9948742748": {
+   "cert": "166980734",
+   "conf": 1.0,
+   "votes": 4,
+   "at": "2026-09-10T04:48:35Z",
+   "status": "ok"
+  },
+  "9948491244": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-10T04:48:35Z",
+   "note": null
+  },
+  "9948427979": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-10T04:48:35Z",
+   "note": null
+  },
+  "9948413768": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-10T04:48:35Z",
+   "note": null
+  },
+  "9948402367": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-10T04:48:35Z",
+   "note": null
+  },
+  "9948387695": {
+   "cert": null,
+   "conf": 0.0,
+   "votes": 0,
+   "at": "2026-09-10T04:48:35Z",
+   "status": "no_cert"
+  },
+  "9948372799": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-10T04:48:35Z",
+   "note": null
+  },
+  "9948336009": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-10T04:48:35Z",
+   "note": null
+  },
+  "9948274408": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-10T04:48:35Z",
+   "note": null
+  },
+  "9948265829": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-10T04:48:35Z",
+   "note": null
+  },
+  "9948242368": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-10T04:48:35Z",
+   "note": null
+  },
+  "9948225607": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-10T04:48:35Z",
+   "note": null
+  },
+  "9948218207": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-10T04:48:35Z",
+   "note": null
+  },
+  "9948209300": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-10T04:48:35Z",
+   "note": null
+  },
+  "9948197038": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-10T04:48:35Z",
+   "note": null
+  },
+  "9948185966": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-10T04:48:35Z",
+   "note": null
+  },
+  "9948181454": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-10T04:48:35Z",
+   "note": null
+  },
+  "9948153539": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-10T04:48:35Z",
+   "note": null
+  },
+  "9948137711": {
+   "cert": null,
+   "conf": 0.0,
+   "votes": 0,
+   "at": "2026-09-10T04:48:35Z",
+   "status": "no_cert"
+  },
+  "9948083781": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-10T04:48:35Z",
+   "note": null
+  },
+  "9948078771": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-10T04:48:35Z",
+   "note": null
+  },
+  "9948071409": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-10T04:48:35Z",
+   "note": null
+  },
+  "9948057653": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-10T04:48:35Z",
+   "note": null
+  },
+  "9948017864": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-10T04:48:35Z",
+   "note": null
+  },
+  "9948016549": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-10T04:48:35Z",
+   "note": null
+  },
+  "9948010348": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-10T04:48:35Z",
+   "note": null
+  },
+  "9948001081": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-10T04:48:35Z",
+   "note": null
   }
  },
  "certs": {
@@ -7326,6 +7509,22 @@
    "pop_higher": 0,
    "pop_url": "https://www.psacard.com/pop/tcg-cards/2022/pokemon-sword-shield-lost-origin/219830",
    "checked_at": "2026-09-09T20:59:19Z"
+  },
+  "166980734": {
+   "Cert Number": "166980734",
+   "Item Grade": "EX 5",
+   "Year": "2016",
+   "Subject": "FA/CHARIZARD EX",
+   "Card Number": "276",
+   "Category": "TCG Cards",
+   "est_usd": 1904.0,
+   "est_low": 911.0,
+   "est_high": 3534.0,
+   "confidence": "Low",
+   "pop": 51,
+   "pop_higher": 4237,
+   "pop_url": "https://www.psacard.com/pop/tcg-cards/2016/pokemon-japanese-xy-promo/133615",
+   "checked_at": "2026-09-10T04:48:35Z"
   }
  }
 }
