@@ -3713,6 +3713,187 @@
    "status": "no_photo",
    "at": "2026-09-10T11:25:36Z",
    "note": null
+  },
+  "9955243197": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-10T16:28:23Z",
+   "note": null
+  },
+  "9955231827": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-10T16:28:23Z",
+   "note": null
+  },
+  "9955206511": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-10T16:28:23Z",
+   "note": null
+  },
+  "9955201508": {
+   "cert": "66147455",
+   "conf": 1.0,
+   "votes": 4,
+   "at": "2026-09-10T16:28:23Z",
+   "status": "ok"
+  },
+  "9955200906": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-10T16:28:23Z",
+   "note": null
+  },
+  "9955191767": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-10T16:28:23Z",
+   "note": null
+  },
+  "9955178232": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-10T16:28:23Z",
+   "note": null
+  },
+  "9955163391": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-10T16:28:23Z",
+   "note": null
+  },
+  "9955157972": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-10T16:28:23Z",
+   "note": null
+  },
+  "9955144767": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-10T16:28:23Z",
+   "note": null
+  },
+  "9955127644": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-10T16:28:23Z",
+   "note": null
+  },
+  "9955126797": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-10T16:28:23Z",
+   "note": null
+  },
+  "9955117581": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-10T16:28:23Z",
+   "note": null
+  },
+  "9955090416": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-10T16:28:23Z",
+   "note": null
+  },
+  "9955075197": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-10T16:28:23Z",
+   "note": null
+  },
+  "9955062817": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-10T16:28:23Z",
+   "note": null
+  },
+  "9955059028": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-10T16:28:23Z",
+   "note": null
+  },
+  "9955056253": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-10T16:28:23Z",
+   "note": null
+  },
+  "9955049122": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-10T16:28:23Z",
+   "note": null
+  },
+  "9955038399": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-10T16:28:23Z",
+   "note": null
+  },
+  "9955032422": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-10T16:28:23Z",
+   "note": null
+  },
+  "9955031364": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-10T16:28:23Z",
+   "note": null
+  },
+  "9955019704": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-10T16:28:23Z",
+   "note": null
+  },
+  "9955006158": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-10T16:28:23Z",
+   "note": null
+  },
+  "9954998971": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-10T16:28:23Z",
+   "note": null
+  },
+  "9954993879": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-10T16:28:23Z",
+   "note": null
+  },
+  "9954991667": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-10T16:28:23Z",
+   "note": null
+  },
+  "9954986900": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-10T16:28:23Z",
+   "note": null
+  },
+  "9954973795": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-10T16:28:23Z",
+   "note": null
+  },
+  "9954972108": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-10T16:28:23Z",
+   "note": null
   }
  },
  "certs": {
@@ -7719,6 +7900,22 @@
    "pop_higher": 3,
    "pop_url": "https://www.psacard.com/pop/tcg-cards/2026/pokemon-italian-tef-temporal-forces/339007",
    "checked_at": "2026-09-10T11:25:36Z"
+  },
+  "66147455": {
+   "Cert Number": "66147455",
+   "Item Grade": "MINT 9",
+   "Year": "2019",
+   "Subject": "CHARIZARD-HOLO",
+   "Card Number": "5",
+   "Category": "TCG Cards",
+   "est_usd": 34.0,
+   "est_low": 28.0,
+   "est_high": 55.0,
+   "confidence": "High",
+   "pop": 2511,
+   "pop_higher": 997,
+   "pop_url": "https://www.psacard.com/pop/tcg-cards/2019/pokemon-sun-moon-detective-pikachu/165816",
+   "checked_at": "2026-09-10T16:28:23Z"
   }
  }
 }
