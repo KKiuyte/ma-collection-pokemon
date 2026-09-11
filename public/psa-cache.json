@@ -4075,6 +4075,188 @@
    "status": "no_photo",
    "at": "2026-09-10T20:55:42Z",
    "note": null
+  },
+  "9959487532": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-11T04:46:35Z",
+   "note": null
+  },
+  "9959481439": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-11T04:46:35Z",
+   "note": null
+  },
+  "9959449026": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-11T04:46:35Z",
+   "note": null
+  },
+  "9959428402": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-11T04:46:35Z",
+   "note": null
+  },
+  "9959410470": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-11T04:46:35Z",
+   "note": null
+  },
+  "9959325107": {
+   "cert": "84101326",
+   "conf": 1.0,
+   "votes": 4,
+   "at": "2026-09-11T04:46:35Z",
+   "status": "ok"
+  },
+  "9959191824": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-11T04:46:35Z",
+   "note": null
+  },
+  "9959186678": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-11T04:46:35Z",
+   "note": null
+  },
+  "9958958260": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-11T04:46:35Z",
+   "note": null
+  },
+  "9958917647": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-11T04:46:35Z",
+   "note": null
+  },
+  "9958904064": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-11T04:46:35Z",
+   "note": null
+  },
+  "9958899974": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-11T04:46:35Z",
+   "note": null
+  },
+  "9958897353": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-11T04:46:35Z",
+   "note": null
+  },
+  "9958895814": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-11T04:46:35Z",
+   "note": null
+  },
+  "9958893954": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-11T04:46:35Z",
+   "note": null
+  },
+  "9958892647": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-11T04:46:35Z",
+   "note": null
+  },
+  "9958891403": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-11T04:46:35Z",
+   "note": null
+  },
+  "9958889841": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-11T04:46:35Z",
+   "note": null
+  },
+  "9958888071": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-11T04:46:35Z",
+   "note": null
+  },
+  "9958886301": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-11T04:46:35Z",
+   "note": null
+  },
+  "9958884475": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-11T04:46:35Z",
+   "note": null
+  },
+  "9958884057": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-11T04:46:35Z",
+   "note": null
+  },
+  "9958882703": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-11T04:46:35Z",
+   "note": null
+  },
+  "9958882224": {
+   "cert": null,
+   "conf": 0.0,
+   "votes": 0,
+   "at": "2026-09-11T04:46:35Z",
+   "status": "no_cert"
+  },
+  "9958880866": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-11T04:46:35Z",
+   "note": null
+  },
+  "9958879829": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-11T04:46:35Z",
+   "note": null
+  },
+  "9958879452": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-11T04:46:35Z",
+   "note": null
+  },
+  "9958878063": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-11T04:46:35Z",
+   "note": null
+  },
+  "9958876492": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-11T04:46:35Z",
+   "note": null
+  },
+  "9958872408": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-11T04:46:35Z",
+   "note": null
   }
  },
  "certs": {
@@ -8113,6 +8295,21 @@
    "pop_higher": 0,
    "pop_url": "https://www.psacard.com/pop/tcg-cards/2019/pokemon-japanese-sun-moon-tag-team-gx-all-stars/171183",
    "checked_at": "2026-09-10T20:55:42Z"
+  },
+  "84101326": {
+   "Cert Number": "84101326",
+   "Item Grade": "GEM MT 10",
+   "Year": "2023",
+   "Subject": "VOLTORB",
+   "Card Number": "010",
+   "Category": "TCG Cards",
+   "est_usd": 89.0,
+   "est_low": 56.0,
+   "est_high": 146.0,
+   "confidence": "Moderate",
+   "pop_higher": 0,
+   "pop_url": "https://www.psacard.com/pop/tcg-cards/2023/pokemon-clc-trading-card-game-classic-charizard-ho-oh-ex-deck/254030",
+   "checked_at": "2026-09-11T04:46:35Z"
   }
  }
 }
