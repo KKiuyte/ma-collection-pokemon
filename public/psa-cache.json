@@ -4439,6 +4439,192 @@
    "status": "no_photo",
    "at": "2026-09-11T11:27:22Z",
    "note": null
+  },
+  "9965845900": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-11T16:33:15Z",
+   "note": null
+  },
+  "9965834436": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-11T16:33:15Z",
+   "note": null
+  },
+  "9965809301": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-11T16:33:15Z",
+   "note": null
+  },
+  "9965780068": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-11T16:33:15Z",
+   "note": null
+  },
+  "9965771807": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-11T16:33:15Z",
+   "note": null
+  },
+  "9965768122": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-11T16:33:15Z",
+   "note": null
+  },
+  "9965758321": {
+   "cert": null,
+   "conf": 0.0,
+   "votes": 0,
+   "at": "2026-09-11T16:33:15Z",
+   "status": "no_cert"
+  },
+  "9965747831": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-11T16:33:15Z",
+   "note": null
+  },
+  "9965712926": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-11T16:33:15Z",
+   "note": null
+  },
+  "9965671608": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-11T16:33:15Z",
+   "note": null
+  },
+  "9965655327": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-11T16:33:15Z",
+   "note": null
+  },
+  "9965649684": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-11T16:33:15Z",
+   "note": null
+  },
+  "9965638535": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-11T16:33:15Z",
+   "note": null
+  },
+  "9965636058": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-11T16:33:15Z",
+   "note": null
+  },
+  "9965623704": {
+   "cert": null,
+   "conf": 0.0,
+   "votes": 0,
+   "at": "2026-09-11T16:33:15Z",
+   "status": "no_cert"
+  },
+  "9965594678": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-11T16:33:15Z",
+   "note": null
+  },
+  "9965588518": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-11T16:33:15Z",
+   "note": null
+  },
+  "9965585941": {
+   "cert": null,
+   "conf": 0.0,
+   "votes": 0,
+   "at": "2026-09-11T16:33:15Z",
+   "status": "no_cert"
+  },
+  "9965583555": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-11T16:33:15Z",
+   "note": null
+  },
+  "9965570553": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-11T16:33:15Z",
+   "note": null
+  },
+  "9965566674": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-11T16:33:15Z",
+   "note": null
+  },
+  "9965510286": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-11T16:33:15Z",
+   "note": null
+  },
+  "9965467320": {
+   "cert": "61967947",
+   "conf": 1.0,
+   "votes": 4,
+   "at": "2026-09-11T16:33:15Z",
+   "status": "ok"
+  },
+  "9965465010": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-11T16:33:15Z",
+   "note": null
+  },
+  "9965459548": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-11T16:33:15Z",
+   "note": null
+  },
+  "9965449256": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-11T16:33:15Z",
+   "note": null
+  },
+  "9965445615": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-11T16:33:15Z",
+   "note": null
+  },
+  "9965443757": {
+   "cert": "92145874",
+   "conf": 1.0,
+   "votes": 4,
+   "at": "2026-09-11T16:33:15Z",
+   "status": "ok"
+  },
+  "9965439959": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-11T16:33:15Z",
+   "note": null
+  },
+  "9965429606": {
+   "cert": null,
+   "conf": 0.0,
+   "votes": 0,
+   "at": "2026-09-11T16:33:15Z",
+   "status": "no_cert"
   }
  },
  "certs": {
@@ -8492,6 +8678,38 @@
    "pop_higher": 0,
    "pop_url": "https://www.psacard.com/pop/tcg-cards/2023/pokemon-clc-trading-card-game-classic-charizard-ho-oh-ex-deck/254030",
    "checked_at": "2026-09-11T04:46:35Z"
+  },
+  "61967947": {
+   "Cert Number": "61967947",
+   "Item Grade": "NM-MT 8",
+   "Year": "2002",
+   "Subject": "DARK TYPHLOSION",
+   "Card Number": "10",
+   "Category": "TCG Cards",
+   "est_usd": 146.0,
+   "est_low": 114.0,
+   "est_high": 181.0,
+   "confidence": "High",
+   "pop": 819,
+   "pop_higher": 644,
+   "pop_url": "https://www.psacard.com/pop/tcg-cards/2002/pokemon-neo-destiny/87131",
+   "checked_at": "2026-09-11T16:33:15Z"
+  },
+  "92145874": {
+   "Cert Number": "92145874",
+   "Item Grade": "GEM MT 10",
+   "Year": "1999",
+   "Subject": "PSYCHIC ENERGY",
+   "Card Number": "101",
+   "Category": "TCG Cards",
+   "est_usd": 92.0,
+   "est_low": 54.0,
+   "est_high": 157.0,
+   "confidence": "Low",
+   "pop": 50,
+   "pop_higher": 0,
+   "pop_url": "https://www.psacard.com/pop/tcg-cards/1999/pokemon-game/57801",
+   "checked_at": "2026-09-11T16:33:15Z"
   }
  }
 }
