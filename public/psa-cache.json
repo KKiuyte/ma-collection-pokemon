@@ -1,7 +1,7 @@
 {
  "_meta": {
-  "fx_usd_eur": 0.8609,
-  "fx_at": "2026-09-10T20:55:42Z"
+  "fx_usd_eur": 0.8627,
+  "fx_at": "2026-09-11T21:01:38Z"
  },
  "items": {
   "9901340300": {
@@ -4625,6 +4625,189 @@
    "votes": 0,
    "at": "2026-09-11T16:33:15Z",
    "status": "no_cert"
+  },
+  "9968412881": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-11T21:01:38Z",
+   "note": null
+  },
+  "9968396687": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-11T21:01:38Z",
+   "note": null
+  },
+  "9968395016": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-11T21:01:38Z",
+   "note": null
+  },
+  "9968384902": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-11T21:01:38Z",
+   "note": null
+  },
+  "9968378060": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-11T21:01:38Z",
+   "note": null
+  },
+  "9968365470": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-11T21:01:38Z",
+   "note": null
+  },
+  "9968352938": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-11T21:01:38Z",
+   "note": null
+  },
+  "9968334818": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-11T21:01:38Z",
+   "note": null
+  },
+  "9968328336": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-11T21:01:38Z",
+   "note": null
+  },
+  "9968328064": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-11T21:01:38Z",
+   "note": null
+  },
+  "9968320569": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-11T21:01:38Z",
+   "note": null
+  },
+  "9968318885": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-11T21:01:38Z",
+   "note": null
+  },
+  "9968312134": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-11T21:01:38Z",
+   "note": null
+  },
+  "9968304689": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-11T21:01:38Z",
+   "note": null
+  },
+  "9968290671": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-11T21:01:38Z",
+   "note": null
+  },
+  "9968279736": {
+   "cert": "94875710",
+   "conf": 1.0,
+   "votes": 2,
+   "at": "2026-09-11T21:01:38Z",
+   "status": "ok"
+  },
+  "9968270964": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-11T21:01:38Z",
+   "note": null
+  },
+  "9968270531": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-11T21:01:38Z",
+   "note": null
+  },
+  "9968264072": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-11T21:01:38Z",
+   "note": null
+  },
+  "9968254557": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-11T21:01:38Z",
+   "note": null
+  },
+  "9968248959": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-11T21:01:38Z",
+   "note": null
+  },
+  "9968246563": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-11T21:01:38Z",
+   "note": null
+  },
+  "9968237901": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-11T21:01:38Z",
+   "note": null
+  },
+  "9968210226": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-11T21:01:38Z",
+   "note": null
+  },
+  "9968200551": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-11T21:01:38Z",
+   "note": null
+  },
+  "9968158075": {
+   "cert": "157088657",
+   "conf": 1.0,
+   "votes": 4,
+   "at": "2026-09-11T21:01:38Z",
+   "status": "ok"
+  },
+  "9968151780": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-11T21:01:38Z",
+   "note": null
+  },
+  "9968143354": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-11T21:01:38Z",
+   "note": null
+  },
+  "9968141840": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-11T21:01:38Z",
+   "note": null
+  },
+  "9968119024": {
+   "cert": "89798874",
+   "conf": 1.0,
+   "votes": 2,
+   "at": "2026-09-11T21:01:38Z",
+   "status": "ok"
   }
  },
  "certs": {
@@ -8710,6 +8893,54 @@
    "pop_higher": 0,
    "pop_url": "https://www.psacard.com/pop/tcg-cards/1999/pokemon-game/57801",
    "checked_at": "2026-09-11T16:33:15Z"
+  },
+  "94875710": {
+   "Cert Number": "94875710",
+   "Item Grade": "GEM MT 10",
+   "Year": "2021",
+   "Subject": "FA/KINGDRA",
+   "Card Number": "190",
+   "Category": "TCG Cards",
+   "est_usd": 57.0,
+   "est_low": 45.0,
+   "est_high": 77.0,
+   "confidence": "High",
+   "pop": 3183,
+   "pop_higher": 0,
+   "pop_url": "https://www.psacard.com/pop/tcg-cards/2021/pokemon-japanese-sword-shield-vmax-climax/204428",
+   "checked_at": "2026-09-11T21:01:38Z"
+  },
+  "157088657": {
+   "Cert Number": "157088657",
+   "Item Grade": "MINT 9",
+   "Year": "1999",
+   "Subject": "GENGAR",
+   "Card Number": "20",
+   "Category": "TCG Cards",
+   "est_usd": 183.0,
+   "est_low": 143.0,
+   "est_high": 237.0,
+   "confidence": "Moderate",
+   "pop": 637,
+   "pop_higher": 196,
+   "pop_url": "https://www.psacard.com/pop/tcg-cards/1999/pokemon-fossil/57617",
+   "checked_at": "2026-09-11T21:01:38Z"
+  },
+  "89798874": {
+   "Cert Number": "89798874",
+   "Item Grade": "GEM MT 10",
+   "Year": "2023",
+   "Subject": "EUSTASS \\\\",
+   "Card Number": "051",
+   "Category": "TCG Cards",
+   "est_usd": 83.0,
+   "est_low": 50.0,
+   "est_high": 129.0,
+   "confidence": "High",
+   "pop": 768,
+   "pop_higher": 0,
+   "pop_url": "https://www.psacard.com/pop/tcg-cards/2023/one-piece-japanese-op03-pillars-strength/231210",
+   "checked_at": "2026-09-11T21:01:38Z"
   }
  }
 }
