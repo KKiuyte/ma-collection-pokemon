@@ -1,7 +1,7 @@
 {
  "_meta": {
   "fx_usd_eur": 0.8627,
-  "fx_at": "2026-09-12T20:36:51Z"
+  "fx_at": "2026-09-13T20:54:01Z"
  },
  "items": {
   "9901340300": {
@@ -6074,6 +6074,188 @@
    "status": "no_photo",
    "at": "2026-09-13T16:22:58Z",
    "note": null
+  },
+  "9994317775": {
+   "cert": "54947489",
+   "conf": 1.0,
+   "votes": 4,
+   "at": "2026-09-13T20:54:01Z",
+   "status": "ok"
+  },
+  "9994288719": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-13T20:54:01Z",
+   "note": null
+  },
+  "9994272943": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-13T20:54:01Z",
+   "note": null
+  },
+  "9994260430": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-13T20:54:01Z",
+   "note": null
+  },
+  "9994242131": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-13T20:54:01Z",
+   "note": null
+  },
+  "9994208649": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-13T20:54:01Z",
+   "note": null
+  },
+  "9994191501": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-13T20:54:01Z",
+   "note": null
+  },
+  "9994144797": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-13T20:54:01Z",
+   "note": null
+  },
+  "9994067901": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-13T20:54:01Z",
+   "note": null
+  },
+  "9994051620": {
+   "cert": null,
+   "conf": 0.0,
+   "votes": 0,
+   "at": "2026-09-13T20:54:01Z",
+   "status": "no_cert"
+  },
+  "9994002724": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-13T20:54:01Z",
+   "note": null
+  },
+  "9993991434": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-13T20:54:01Z",
+   "note": null
+  },
+  "9993977472": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-13T20:54:01Z",
+   "note": null
+  },
+  "9993961376": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-13T20:54:01Z",
+   "note": null
+  },
+  "9993941369": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-13T20:54:01Z",
+   "note": null
+  },
+  "9993895668": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-13T20:54:01Z",
+   "note": null
+  },
+  "9993878084": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-13T20:54:01Z",
+   "note": null
+  },
+  "9993836697": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-13T20:54:01Z",
+   "note": null
+  },
+  "9993830215": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-13T20:54:01Z",
+   "note": null
+  },
+  "9993761912": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-13T20:54:01Z",
+   "note": null
+  },
+  "9993726135": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-13T20:54:01Z",
+   "note": null
+  },
+  "9993704282": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-13T20:54:01Z",
+   "note": null
+  },
+  "9993680492": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-13T20:54:01Z",
+   "note": null
+  },
+  "9993663283": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-13T20:54:01Z",
+   "note": null
+  },
+  "9993633414": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-13T20:54:01Z",
+   "note": null
+  },
+  "9993620828": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-13T20:54:01Z",
+   "note": null
+  },
+  "9993620742": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-13T20:54:01Z",
+   "note": null
+  },
+  "9993618893": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-13T20:54:01Z",
+   "note": null
+  },
+  "9993616677": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-13T20:54:01Z",
+   "note": null
+  },
+  "9993611133": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-13T20:54:01Z",
+   "note": null
   }
  },
  "certs": {
@@ -10235,6 +10417,22 @@
    "pop_higher": 0,
    "pop_url": "https://www.psacard.com/pop/tcg-cards/2019/pokemon-sun-moon-cosmic-eclipse/171151",
    "checked_at": "2026-09-13T16:22:58Z"
+  },
+  "54947489": {
+   "Cert Number": "54947489",
+   "Item Grade": "MINT 9",
+   "Year": "2000",
+   "Subject": "DARK WEEZING-HOLO",
+   "Card Number": "14",
+   "Category": "TCG Cards",
+   "est_usd": 72.0,
+   "est_low": 55.0,
+   "est_high": 86.0,
+   "confidence": "High",
+   "pop": 1053,
+   "pop_higher": 172,
+   "pop_url": "https://www.psacard.com/pop/tcg-cards/2000/pokemon-rocket/61534",
+   "checked_at": "2026-09-13T20:54:01Z"
   }
  }
 }
