@@ -5893,6 +5893,187 @@
    "status": "no_photo",
    "at": "2026-09-13T11:58:08Z",
    "note": null
+  },
+  "9990559542": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-13T16:22:58Z",
+   "note": null
+  },
+  "9990559139": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-13T16:22:58Z",
+   "note": null
+  },
+  "9990540659": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-13T16:22:58Z",
+   "note": null
+  },
+  "9990528575": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-13T16:22:58Z",
+   "note": null
+  },
+  "9990510267": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-13T16:22:58Z",
+   "note": null
+  },
+  "9990488947": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-13T16:22:58Z",
+   "note": null
+  },
+  "9990479141": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-13T16:22:58Z",
+   "note": null
+  },
+  "9990474634": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-13T16:22:58Z",
+   "note": null
+  },
+  "9990459709": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-13T16:22:58Z",
+   "note": null
+  },
+  "9990445616": {
+   "cert": "89451552",
+   "conf": 1.0,
+   "votes": 4,
+   "at": "2026-09-13T16:22:58Z",
+   "status": "ok"
+  },
+  "9990426951": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-13T16:22:58Z",
+   "note": null
+  },
+  "9990408558": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-13T16:22:58Z",
+   "note": null
+  },
+  "9990391101": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-13T16:22:58Z",
+   "note": null
+  },
+  "9990369099": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-13T16:22:58Z",
+   "note": null
+  },
+  "9990357312": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-13T16:22:58Z",
+   "note": null
+  },
+  "9990350356": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-13T16:22:58Z",
+   "note": null
+  },
+  "9990338606": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-13T16:22:58Z",
+   "note": null
+  },
+  "9990322979": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-13T16:22:58Z",
+   "note": null
+  },
+  "9990315104": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-13T16:22:58Z",
+   "note": null
+  },
+  "9990308724": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-13T16:22:58Z",
+   "note": null
+  },
+  "9990306401": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-13T16:22:58Z",
+   "note": null
+  },
+  "9990294934": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-13T16:22:58Z",
+   "note": null
+  },
+  "9990268534": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-13T16:22:58Z",
+   "note": null
+  },
+  "9990240661": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-13T16:22:58Z",
+   "note": null
+  },
+  "9990214492": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-13T16:22:58Z",
+   "note": null
+  },
+  "9990184022": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-13T16:22:58Z",
+   "note": null
+  },
+  "9990162014": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-13T16:22:58Z",
+   "note": null
+  },
+  "9990151966": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-13T16:22:58Z",
+   "note": null
+  },
+  "9990140109": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-13T16:22:58Z",
+   "note": null
+  },
+  "9990124898": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-13T16:22:58Z",
+   "note": null
   }
  },
  "certs": {
@@ -10038,6 +10219,22 @@
    "pop_higher": 130,
    "pop_url": "https://www.psacard.com/pop/tcg-cards/2021/pokemon-sword-shield-fusion-strike/202811",
    "checked_at": "2026-09-13T11:58:08Z"
+  },
+  "89451552": {
+   "Cert Number": "89451552",
+   "Item Grade": "GEM MT 10",
+   "Year": "2019",
+   "Subject": "FA/VILEPLUME GX",
+   "Card Number": "211",
+   "Category": "TCG Cards",
+   "est_usd": 622.0,
+   "est_low": 520.0,
+   "est_high": 764.0,
+   "confidence": "Moderate",
+   "pop": 713,
+   "pop_higher": 0,
+   "pop_url": "https://www.psacard.com/pop/tcg-cards/2019/pokemon-sun-moon-cosmic-eclipse/171151",
+   "checked_at": "2026-09-13T16:22:58Z"
   }
  }
 }
