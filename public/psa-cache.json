@@ -6438,6 +6438,188 @@
    "status": "no_photo",
    "at": "2026-09-14T05:01:55Z",
    "note": null
+  },
+  "9999650434": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-14T12:55:13Z",
+   "note": null
+  },
+  "9999647538": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-14T12:55:13Z",
+   "note": null
+  },
+  "9999642313": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-14T12:55:13Z",
+   "note": null
+  },
+  "9999630188": {
+   "cert": "69040819",
+   "conf": 0.99,
+   "votes": 4,
+   "at": "2026-09-14T12:55:13Z",
+   "status": "ok"
+  },
+  "9999616365": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-14T12:55:13Z",
+   "note": null
+  },
+  "9999610443": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-14T12:55:13Z",
+   "note": null
+  },
+  "9999605495": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-14T12:55:13Z",
+   "note": null
+  },
+  "9999603751": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-14T12:55:13Z",
+   "note": null
+  },
+  "9999581092": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-14T12:55:13Z",
+   "note": null
+  },
+  "9999577586": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-14T12:55:13Z",
+   "note": null
+  },
+  "9999571183": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-14T12:55:13Z",
+   "note": null
+  },
+  "9999560642": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-14T12:55:13Z",
+   "note": null
+  },
+  "9999551680": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-14T12:55:13Z",
+   "note": null
+  },
+  "9999550924": {
+   "cert": "157509393",
+   "conf": 1.0,
+   "votes": 4,
+   "at": "2026-09-14T12:55:13Z",
+   "status": "ok"
+  },
+  "9999542294": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-14T12:55:13Z",
+   "note": null
+  },
+  "9999542230": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-14T12:55:13Z",
+   "note": null
+  },
+  "9999529031": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-14T12:55:13Z",
+   "note": null
+  },
+  "9999496529": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-14T12:55:13Z",
+   "note": null
+  },
+  "9999478459": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-14T12:55:13Z",
+   "note": null
+  },
+  "9999471568": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-14T12:55:13Z",
+   "note": null
+  },
+  "9999466706": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-14T12:55:13Z",
+   "note": null
+  },
+  "9999461396": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-14T12:55:13Z",
+   "note": null
+  },
+  "9999454221": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-14T12:55:13Z",
+   "note": null
+  },
+  "9999447331": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-14T12:55:13Z",
+   "note": null
+  },
+  "9999445333": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-14T12:55:13Z",
+   "note": null
+  },
+  "9999423603": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-14T12:55:13Z",
+   "note": null
+  },
+  "9999407519": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-14T12:55:13Z",
+   "note": null
+  },
+  "9999385424": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-14T12:55:13Z",
+   "note": null
+  },
+  "9999376970": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-14T12:55:13Z",
+   "note": null
+  },
+  "9999362635": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-14T12:55:13Z",
+   "note": null
   }
  },
  "certs": {
@@ -10615,6 +10797,37 @@
    "pop_higher": 172,
    "pop_url": "https://www.psacard.com/pop/tcg-cards/2000/pokemon-rocket/61534",
    "checked_at": "2026-09-13T20:54:01Z"
+  },
+  "69040819": {
+   "Cert Number": "69040819",
+   "Item Grade": "MINT 9",
+   "Year": "2005",
+   "Subject": "BLAZIKEN-HOLO",
+   "Card Number": "1",
+   "Category": "TCG Cards",
+   "est_usd": 233.0,
+   "est_low": 167.0,
+   "est_high": 324.0,
+   "confidence": "Moderate",
+   "pop": 158,
+   "pop_higher": 34,
+   "pop_url": "https://www.psacard.com/pop/tcg-cards/2005/pokemon-ex-emerald/64136",
+   "checked_at": "2026-09-14T12:55:13Z"
+  },
+  "157509393": {
+   "Cert Number": "157509393",
+   "Item Grade": "MINT 9",
+   "Year": "2021",
+   "Subject": "MEWTWO EX",
+   "Card Number": "022",
+   "Category": "TCG Cards",
+   "est_usd": 34.0,
+   "est_low": 24.0,
+   "est_high": 55.0,
+   "confidence": "Moderate",
+   "pop_higher": 11467,
+   "pop_url": "https://www.psacard.com/pop/tcg-cards/2021/pokemon-japanese-promo-card-pack-25th-anniversary-edition/201768",
+   "checked_at": "2026-09-14T12:55:13Z"
   }
  }
 }
