@@ -7168,6 +7168,188 @@
    "status": "no_photo",
    "at": "2026-09-15T11:49:42Z",
    "note": null
+  },
+  "10013873017": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-15T17:03:50Z",
+   "note": null
+  },
+  "10013865447": {
+   "cert": "148395228",
+   "conf": 1.0,
+   "votes": 2,
+   "at": "2026-09-15T17:03:50Z",
+   "status": "ok"
+  },
+  "10013805132": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-15T17:03:50Z",
+   "note": null
+  },
+  "10013801670": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-15T17:03:50Z",
+   "note": null
+  },
+  "10013790838": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-15T17:03:50Z",
+   "note": null
+  },
+  "10013769410": {
+   "cert": null,
+   "conf": 0.0,
+   "votes": 0,
+   "at": "2026-09-15T17:03:50Z",
+   "status": "no_cert"
+  },
+  "10013768960": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-15T17:03:50Z",
+   "note": null
+  },
+  "10013763591": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-15T17:03:50Z",
+   "note": null
+  },
+  "10013661065": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-15T17:03:50Z",
+   "note": null
+  },
+  "10013609684": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-15T17:03:50Z",
+   "note": null
+  },
+  "10013592813": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-15T17:03:50Z",
+   "note": null
+  },
+  "10013575324": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-15T17:03:50Z",
+   "note": null
+  },
+  "10013572684": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-15T17:03:50Z",
+   "note": null
+  },
+  "10013532757": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-15T17:03:50Z",
+   "note": null
+  },
+  "10013526638": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-15T17:03:50Z",
+   "note": null
+  },
+  "10013524114": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-15T17:03:50Z",
+   "note": null
+  },
+  "10013507911": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-15T17:03:50Z",
+   "note": null
+  },
+  "10013507470": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-15T17:03:50Z",
+   "note": null
+  },
+  "10013491840": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-15T17:03:50Z",
+   "note": null
+  },
+  "10013483390": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-15T17:03:50Z",
+   "note": null
+  },
+  "10013483101": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-15T17:03:50Z",
+   "note": null
+  },
+  "10013471868": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-15T17:03:50Z",
+   "note": null
+  },
+  "10013471682": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-15T17:03:50Z",
+   "note": null
+  },
+  "10013439419": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-15T17:03:50Z",
+   "note": null
+  },
+  "10013436443": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-15T17:03:50Z",
+   "note": null
+  },
+  "10013435425": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-15T17:03:50Z",
+   "note": null
+  },
+  "10013428336": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-15T17:03:50Z",
+   "note": null
+  },
+  "10013385290": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-15T17:03:50Z",
+   "note": null
+  },
+  "10013379418": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-15T17:03:50Z",
+   "note": null
+  },
+  "10013360063": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-15T17:03:50Z",
+   "note": null
   }
  },
  "certs": {
@@ -11464,6 +11646,22 @@
    "pop_higher": 58,
    "pop_url": "https://www.psacard.com/pop/baseball-cards/1975/topps/49739",
    "checked_at": "2026-09-15T11:49:42Z"
+  },
+  "148395228": {
+   "Cert Number": "148395228",
+   "Item Grade": "GEM MT 10",
+   "Year": "2024",
+   "Subject": "MILOTIC ex",
+   "Card Number": "131",
+   "Category": "TCG Cards",
+   "est_usd": 113.0,
+   "est_low": 91.0,
+   "est_high": 134.0,
+   "confidence": "High",
+   "pop": 6878,
+   "pop_higher": 0,
+   "pop_url": "https://www.psacard.com/pop/tcg-cards/2024/pokemon-japanese-sv8-super-electric-breaker/284389",
+   "checked_at": "2026-09-15T17:03:50Z"
   }
  }
 }
