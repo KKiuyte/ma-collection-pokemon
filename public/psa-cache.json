@@ -6800,6 +6800,190 @@
    "status": "no_photo",
    "at": "2026-09-14T21:52:59Z",
    "note": null
+  },
+  "10006924896": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-15T04:59:33Z",
+   "note": null
+  },
+  "10006901606": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-15T04:59:33Z",
+   "note": null
+  },
+  "10006819428": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-15T04:59:33Z",
+   "note": null
+  },
+  "10006818094": {
+   "cert": "68845315",
+   "conf": 1.0,
+   "votes": 4,
+   "at": "2026-09-15T04:59:33Z",
+   "status": "ok"
+  },
+  "10006816974": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-15T04:59:33Z",
+   "note": null
+  },
+  "10006815178": {
+   "cert": "68846167",
+   "conf": 1.0,
+   "votes": 4,
+   "at": "2026-09-15T04:59:33Z",
+   "status": "ok"
+  },
+  "10006813694": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-15T04:59:33Z",
+   "note": null
+  },
+  "10006812103": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-15T04:59:33Z",
+   "note": null
+  },
+  "10006810779": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-15T04:59:33Z",
+   "note": null
+  },
+  "10006809152": {
+   "cert": "68846170",
+   "conf": 1.0,
+   "votes": 4,
+   "at": "2026-09-15T04:59:33Z",
+   "status": "ok"
+  },
+  "10006722382": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-15T04:59:33Z",
+   "note": null
+  },
+  "10006661879": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-15T04:59:33Z",
+   "note": null
+  },
+  "10006633375": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-15T04:59:33Z",
+   "note": null
+  },
+  "10006612473": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-15T04:59:33Z",
+   "note": null
+  },
+  "10006550244": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-15T04:59:33Z",
+   "note": null
+  },
+  "10006507808": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-15T04:59:33Z",
+   "note": null
+  },
+  "10006501875": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-15T04:59:33Z",
+   "note": null
+  },
+  "10006494954": {
+   "cert": "118131289",
+   "conf": 1.0,
+   "votes": 4,
+   "at": "2026-09-15T04:59:33Z",
+   "status": "ok"
+  },
+  "10006484992": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-15T04:59:33Z",
+   "note": null
+  },
+  "10006478574": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-15T04:59:33Z",
+   "note": null
+  },
+  "10006469371": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-15T04:59:33Z",
+   "note": null
+  },
+  "10006462265": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-15T04:59:33Z",
+   "note": null
+  },
+  "10006461134": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-15T04:59:33Z",
+   "note": null
+  },
+  "10006458986": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-15T04:59:33Z",
+   "note": null
+  },
+  "10006457837": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-15T04:59:33Z",
+   "note": null
+  },
+  "10006452992": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-15T04:59:33Z",
+   "note": null
+  },
+  "10006435494": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-15T04:59:33Z",
+   "note": null
+  },
+  "10006425733": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-15T04:59:33Z",
+   "note": null
+  },
+  "10006411314": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-15T04:59:33Z",
+   "note": null
+  },
+  "10006391303": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-15T04:59:33Z",
+   "note": null
   }
  },
  "certs": {
@@ -11001,13 +11185,69 @@
    "Subject": "MEWTWO EX",
    "Card Number": "022",
    "Category": "TCG Cards",
-   "est_usd": 34.0,
-   "est_low": 24.0,
+   "est_usd": 36.0,
+   "est_low": 25.0,
    "est_high": 55.0,
    "confidence": "Moderate",
    "pop_higher": 11467,
    "pop_url": "https://www.psacard.com/pop/tcg-cards/2021/pokemon-japanese-promo-card-pack-25th-anniversary-edition/201768",
-   "checked_at": "2026-09-14T12:55:13Z"
+   "checked_at": "2026-09-15T04:59:33Z"
+  },
+  "68845315": {
+   "Cert Number": "68845315",
+   "Item Grade": "MINT 9",
+   "Year": "2002",
+   "Subject": "PORYGON2-HOLO",
+   "Card Number": "12",
+   "Category": "TCG Cards",
+   "pop": 6,
+   "pop_higher": 0,
+   "pop_url": "https://www.psacard.com/pop/tcg-cards/2002/pokemon-french-neo-revelation/189799",
+   "checked_at": "2026-09-15T04:59:33Z"
+  },
+  "68846167": {
+   "Cert Number": "68846167",
+   "Item Grade": "NM-MT 8",
+   "Year": "2001",
+   "Subject": "TRIOPIKEUR OBSCUR",
+   "Card Number": "6",
+   "Category": "TCG Cards",
+   "est_usd": 511.0,
+   "est_low": 309.0,
+   "est_high": 823.0,
+   "confidence": "Low",
+   "pop": 9,
+   "pop_higher": 1,
+   "pop_url": "https://www.psacard.com/pop/tcg-cards/2001/pokemon-french-rocket/189756",
+   "checked_at": "2026-09-15T04:59:33Z"
+  },
+  "68846170": {
+   "Cert Number": "68846170",
+   "Item Grade": "NM-MT 8",
+   "Year": "2001",
+   "Subject": "LEVIATOR OBSCUR-HOLO",
+   "Card Number": "8",
+   "Category": "TCG Cards",
+   "pop": 7,
+   "pop_higher": 8,
+   "pop_url": "https://www.psacard.com/pop/tcg-cards/2001/pokemon-french-rocket/189756",
+   "checked_at": "2026-09-15T04:59:33Z"
+  },
+  "118131289": {
+   "Cert Number": "118131289",
+   "Item Grade": "GEM MT 10",
+   "Year": "2021",
+   "Subject": "ELEC.DE ROCKET-HOLO",
+   "Card Number": "15",
+   "Category": "TCG Cards",
+   "est_usd": 107.0,
+   "est_low": 63.0,
+   "est_high": 172.0,
+   "confidence": "Low",
+   "pop": 69,
+   "pop_higher": 0,
+   "pop_url": "https://www.psacard.com/pop/tcg-cards/2021/pokemon-celebrations-classic-collection/200655",
+   "checked_at": "2026-09-15T04:59:33Z"
   }
  }
 }
