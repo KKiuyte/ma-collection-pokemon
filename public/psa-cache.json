@@ -6984,6 +6984,190 @@
    "status": "no_photo",
    "at": "2026-09-15T04:59:33Z",
    "note": null
+  },
+  "10010033492": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-15T11:49:42Z",
+   "note": null
+  },
+  "10010019333": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-15T11:49:42Z",
+   "note": null
+  },
+  "10010009822": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-15T11:49:42Z",
+   "note": null
+  },
+  "10010004702": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-15T11:49:42Z",
+   "note": null
+  },
+  "10009982759": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-15T11:49:42Z",
+   "note": null
+  },
+  "10009973714": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-15T11:49:42Z",
+   "note": null
+  },
+  "10009967508": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-15T11:49:42Z",
+   "note": null
+  },
+  "10009955812": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-15T11:49:42Z",
+   "note": null
+  },
+  "10009895316": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-15T11:49:42Z",
+   "note": null
+  },
+  "10009872016": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-15T11:49:42Z",
+   "note": null
+  },
+  "10009871908": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-15T11:49:42Z",
+   "note": null
+  },
+  "10009803011": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-15T11:49:42Z",
+   "note": null
+  },
+  "10009710783": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-15T11:49:42Z",
+   "note": null
+  },
+  "10009698206": {
+   "cert": null,
+   "conf": 0.0,
+   "votes": 0,
+   "at": "2026-09-15T11:49:42Z",
+   "status": "no_cert"
+  },
+  "10009639369": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-15T11:49:42Z",
+   "note": null
+  },
+  "10009614803": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-15T11:49:42Z",
+   "note": null
+  },
+  "10009612540": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-15T11:49:42Z",
+   "note": null
+  },
+  "10009610229": {
+   "cert": "140663823",
+   "conf": 1.0,
+   "votes": 2,
+   "at": "2026-09-15T11:49:42Z",
+   "status": "ok"
+  },
+  "10009575953": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-15T11:49:42Z",
+   "note": null
+  },
+  "10009571736": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-15T11:49:42Z",
+   "note": null
+  },
+  "10009466207": {
+   "cert": null,
+   "conf": 0.0,
+   "votes": 0,
+   "at": "2026-09-15T11:49:42Z",
+   "status": "no_cert"
+  },
+  "10009449033": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-15T11:49:42Z",
+   "note": null
+  },
+  "10009437380": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-15T11:49:42Z",
+   "note": null
+  },
+  "10009401106": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-15T11:49:42Z",
+   "note": null
+  },
+  "10009397226": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-15T11:49:42Z",
+   "note": null
+  },
+  "10009389612": {
+   "cert": "10830429",
+   "conf": 1.0,
+   "votes": 4,
+   "at": "2026-09-15T11:49:42Z",
+   "status": "ok"
+  },
+  "10009380241": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-15T11:49:42Z",
+   "note": null
+  },
+  "10009356934": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-15T11:49:42Z",
+   "note": null
+  },
+  "10009343899": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-15T11:49:42Z",
+   "note": null
+  },
+  "10009303544": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-15T11:49:42Z",
+   "note": null
   }
  },
  "certs": {
@@ -11248,6 +11432,38 @@
    "pop_higher": 0,
    "pop_url": "https://www.psacard.com/pop/tcg-cards/2021/pokemon-celebrations-classic-collection/200655",
    "checked_at": "2026-09-15T04:59:33Z"
+  },
+  "140663823": {
+   "Cert Number": "140663823",
+   "Item Grade": "NM-MT 8",
+   "Year": "2025",
+   "Subject": "IVYSAUR",
+   "Card Number": "065",
+   "Category": "TCG Cards",
+   "est_usd": 17.0,
+   "est_low": 11.0,
+   "est_high": 25.0,
+   "confidence": "Moderate",
+   "pop": 630,
+   "pop_higher": 17540,
+   "pop_url": "https://www.psacard.com/pop/tcg-cards/2025/pokemon-japanese-m1l-mega-brave/312124",
+   "checked_at": "2026-09-15T11:49:42Z"
+  },
+  "10830429": {
+   "Cert Number": "10830429",
+   "Item Grade": "NM-MT 8",
+   "Year": "1975",
+   "Subject": "GENE CLINES",
+   "Card Number": "575",
+   "Category": "BASEBALL CARDS",
+   "est_usd": 43.0,
+   "est_low": 32.0,
+   "est_high": 59.0,
+   "confidence": "Moderate",
+   "pop": 149,
+   "pop_higher": 58,
+   "pop_url": "https://www.psacard.com/pop/baseball-cards/1975/topps/49739",
+   "checked_at": "2026-09-15T11:49:42Z"
   }
  }
 }
