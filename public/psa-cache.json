@@ -7896,6 +7896,187 @@
    "status": "no_photo",
    "at": "2026-09-16T11:42:02Z",
    "note": null
+  },
+  "10025232382": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-16T17:02:42Z",
+   "note": null
+  },
+  "10025225439": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-16T17:02:42Z",
+   "note": null
+  },
+  "10025217069": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-16T17:02:42Z",
+   "note": null
+  },
+  "10025216763": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-16T17:02:42Z",
+   "note": null
+  },
+  "10025207436": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-16T17:02:42Z",
+   "note": null
+  },
+  "10025204312": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-16T17:02:42Z",
+   "note": null
+  },
+  "10025200264": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-16T17:02:42Z",
+   "note": null
+  },
+  "10025193219": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-16T17:02:42Z",
+   "note": null
+  },
+  "10025186651": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-16T17:02:42Z",
+   "note": null
+  },
+  "10025179702": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-16T17:02:42Z",
+   "note": null
+  },
+  "10025172740": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-16T17:02:42Z",
+   "note": null
+  },
+  "10025166932": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-16T17:02:42Z",
+   "note": null
+  },
+  "10025166078": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-16T17:02:42Z",
+   "note": null
+  },
+  "10025160170": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-16T17:02:42Z",
+   "note": null
+  },
+  "10025158956": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-16T17:02:42Z",
+   "note": null
+  },
+  "10025152353": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-16T17:02:42Z",
+   "note": null
+  },
+  "10025144857": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-16T17:02:42Z",
+   "note": null
+  },
+  "10025140090": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-16T17:02:42Z",
+   "note": null
+  },
+  "10025132718": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-16T17:02:42Z",
+   "note": null
+  },
+  "10025131316": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-16T17:02:42Z",
+   "note": null
+  },
+  "10025128153": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-16T17:02:42Z",
+   "note": null
+  },
+  "10025121390": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-16T17:02:42Z",
+   "note": null
+  },
+  "10025117104": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-16T17:02:42Z",
+   "note": null
+  },
+  "10025115043": {
+   "cert": "160995298",
+   "conf": 1.0,
+   "votes": 4,
+   "at": "2026-09-16T17:02:42Z",
+   "status": "ok"
+  },
+  "10025114561": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-16T17:02:42Z",
+   "note": null
+  },
+  "10025113216": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-16T17:02:42Z",
+   "note": null
+  },
+  "10025113014": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-16T17:02:42Z",
+   "note": null
+  },
+  "10025104097": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-16T17:02:42Z",
+   "note": null
+  },
+  "10025095724": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-16T17:02:42Z",
+   "note": null
+  },
+  "10025087928": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-16T17:02:42Z",
+   "note": null
   }
  },
  "certs": {
@@ -12224,6 +12405,22 @@
    "pop_higher": 15690,
    "pop_url": "https://www.psacard.com/pop/tcg-cards/2025/pokemon-simplified-chinese-cbb3-c-gem-pack-vol-3/318683",
    "checked_at": "2026-09-16T04:54:21Z"
+  },
+  "160995298": {
+   "Cert Number": "160995298",
+   "Item Grade": "GEM MT 10",
+   "Year": "2026",
+   "Subject": "MEGA GRENINJA ex",
+   "Card Number": "114",
+   "Category": "TCG Cards",
+   "est_usd": 210.0,
+   "est_low": 187.0,
+   "est_high": 229.0,
+   "confidence": "High",
+   "pop": 17958,
+   "pop_higher": 0,
+   "pop_url": "https://www.psacard.com/pop/tcg-cards/2026/pokemon-japanese-m4-ninja-spinner/333874",
+   "checked_at": "2026-09-16T17:02:42Z"
   }
  }
 }
