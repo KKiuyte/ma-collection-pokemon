@@ -7530,6 +7530,188 @@
    "status": "no_photo",
    "at": "2026-09-15T21:25:35Z",
    "note": null
+  },
+  "10017906646": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-16T04:54:21Z",
+   "note": null
+  },
+  "10017902364": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-16T04:54:21Z",
+   "note": null
+  },
+  "10017851337": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-16T04:54:21Z",
+   "note": null
+  },
+  "10017813276": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-16T04:54:21Z",
+   "note": null
+  },
+  "10017810157": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-16T04:54:21Z",
+   "note": null
+  },
+  "10017477971": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-16T04:54:21Z",
+   "note": null
+  },
+  "10017421244": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-16T04:54:21Z",
+   "note": null
+  },
+  "10017415951": {
+   "cert": null,
+   "conf": 0.0,
+   "votes": 0,
+   "at": "2026-09-16T04:54:21Z",
+   "status": "no_cert"
+  },
+  "10017379331": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-16T04:54:21Z",
+   "note": null
+  },
+  "10017367482": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-16T04:54:21Z",
+   "note": null
+  },
+  "10017352856": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-16T04:54:21Z",
+   "note": null
+  },
+  "10017348885": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-16T04:54:21Z",
+   "note": null
+  },
+  "10017340365": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-16T04:54:21Z",
+   "note": null
+  },
+  "10017337847": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-16T04:54:21Z",
+   "note": null
+  },
+  "10017323362": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-16T04:54:21Z",
+   "note": null
+  },
+  "10017320708": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-16T04:54:21Z",
+   "note": null
+  },
+  "10017316378": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-16T04:54:21Z",
+   "note": null
+  },
+  "10017315510": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-16T04:54:21Z",
+   "note": null
+  },
+  "10017307758": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-16T04:54:21Z",
+   "note": null
+  },
+  "10017297627": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-16T04:54:21Z",
+   "note": null
+  },
+  "10017274369": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-16T04:54:21Z",
+   "note": null
+  },
+  "10017270404": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-16T04:54:21Z",
+   "note": null
+  },
+  "10017265610": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-16T04:54:21Z",
+   "note": null
+  },
+  "10017261980": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-16T04:54:21Z",
+   "note": null
+  },
+  "10017173379": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-16T04:54:21Z",
+   "note": null
+  },
+  "10017156261": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-16T04:54:21Z",
+   "note": null
+  },
+  "10017150949": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-16T04:54:21Z",
+   "note": null
+  },
+  "10017149689": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-16T04:54:21Z",
+   "note": null
+  },
+  "10017144926": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-16T04:54:21Z",
+   "note": null
+  },
+  "10017140368": {
+   "cert": "156949389",
+   "conf": 1.0,
+   "votes": 4,
+   "at": "2026-09-16T04:54:21Z",
+   "status": "ok"
   }
  },
  "certs": {
@@ -11842,6 +12024,22 @@
    "pop_higher": 0,
    "pop_url": "https://www.psacard.com/pop/tcg-cards/2024/pokemon-japanese-sv8-super-electric-breaker/284389",
    "checked_at": "2026-09-15T17:03:50Z"
+  },
+  "156949389": {
+   "Cert Number": "156949389",
+   "Item Grade": "MINT 9",
+   "Year": "2025",
+   "Subject": "GENGAR",
+   "Card Number": "07",
+   "Category": "TCG Cards",
+   "est_usd": 140.0,
+   "est_low": 132.0,
+   "est_high": 155.0,
+   "confidence": "High",
+   "pop": 4892,
+   "pop_higher": 15690,
+   "pop_url": "https://www.psacard.com/pop/tcg-cards/2025/pokemon-simplified-chinese-cbb3-c-gem-pack-vol-3/318683",
+   "checked_at": "2026-09-16T04:54:21Z"
   }
  }
 }
