@@ -8625,6 +8625,190 @@
    "status": "no_photo",
    "at": "2026-09-17T11:47:26Z",
    "note": null
+  },
+  "10036374535": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-17T17:04:02Z",
+   "note": null
+  },
+  "10036364103": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-17T17:04:02Z",
+   "note": null
+  },
+  "10036354736": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-17T17:04:02Z",
+   "note": null
+  },
+  "10036349577": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-17T17:04:02Z",
+   "note": null
+  },
+  "10036341006": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-17T17:04:02Z",
+   "note": null
+  },
+  "10036337997": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-17T17:04:02Z",
+   "note": null
+  },
+  "10036326698": {
+   "cert": null,
+   "conf": 0.0,
+   "votes": 0,
+   "at": "2026-09-17T17:04:02Z",
+   "status": "no_cert"
+  },
+  "10036325868": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-17T17:04:02Z",
+   "note": null
+  },
+  "10036324043": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-17T17:04:02Z",
+   "note": null
+  },
+  "10036308366": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-17T17:04:02Z",
+   "note": null
+  },
+  "10036300975": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-17T17:04:02Z",
+   "note": null
+  },
+  "10036300931": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-17T17:04:02Z",
+   "note": null
+  },
+  "10036285617": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-17T17:04:02Z",
+   "note": null
+  },
+  "10036284541": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-17T17:04:02Z",
+   "note": null
+  },
+  "10036280251": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-17T17:04:02Z",
+   "note": null
+  },
+  "10036277790": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-17T17:04:02Z",
+   "note": null
+  },
+  "10036277658": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-17T17:04:02Z",
+   "note": null
+  },
+  "10036272424": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-17T17:04:02Z",
+   "note": null
+  },
+  "10036255535": {
+   "cert": "166698439",
+   "conf": 1.0,
+   "votes": 4,
+   "at": "2026-09-17T17:04:02Z",
+   "status": "ok"
+  },
+  "10036245551": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-17T17:04:02Z",
+   "note": null
+  },
+  "10036221346": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-17T17:04:02Z",
+   "note": null
+  },
+  "10036216230": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-17T17:04:02Z",
+   "note": null
+  },
+  "10036209354": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-17T17:04:02Z",
+   "note": null
+  },
+  "10036192723": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-17T17:04:02Z",
+   "note": null
+  },
+  "10036186933": {
+   "cert": "157591528",
+   "conf": 1.0,
+   "votes": 4,
+   "at": "2026-09-17T17:04:02Z",
+   "status": "ok"
+  },
+  "10036179360": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-17T17:04:02Z",
+   "note": null
+  },
+  "10036155025": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-17T17:04:02Z",
+   "note": null
+  },
+  "10036154064": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-17T17:04:02Z",
+   "note": null
+  },
+  "10036135823": {
+   "cert": null,
+   "conf": 0.0,
+   "votes": 0,
+   "at": "2026-09-17T17:04:02Z",
+   "status": "no_cert"
+  },
+  "10036126473": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-17T17:04:02Z",
+   "note": null
   }
  },
  "certs": {
@@ -13029,6 +13213,38 @@
    "pop_higher": 15,
    "pop_url": "https://www.psacard.com/pop/tcg-cards/2005/pokemon-french-ex-team-magma-vs-aqua/191249",
    "checked_at": "2026-09-17T11:47:26Z"
+  },
+  "166698439": {
+   "Cert Number": "166698439",
+   "Item Grade": "NM-MT 8",
+   "Year": "1999",
+   "Subject": "SABRINA'S GENGAR",
+   "Card Number": "94",
+   "Category": "TCG Cards",
+   "est_usd": 979.0,
+   "est_low": 887.0,
+   "est_high": 1058.0,
+   "confidence": "High",
+   "pop": 3180,
+   "pop_higher": 6398,
+   "pop_url": "https://www.psacard.com/pop/tcg-cards/1999/pokemon-japanese-gym-2/58313",
+   "checked_at": "2026-09-17T17:04:02Z"
+  },
+  "157591528": {
+   "Cert Number": "157591528",
+   "Item Grade": "MINT 9",
+   "Year": "2024",
+   "Subject": "EXEGGCUTE",
+   "Card Number": "192",
+   "Category": "TCG Cards",
+   "est_usd": 21.0,
+   "est_low": 15.0,
+   "est_high": 30.0,
+   "confidence": "High",
+   "pop": 2485,
+   "pop_higher": 1434,
+   "pop_url": "https://www.psacard.com/pop/tcg-cards/2024/pokemon-ssp-en-surging-sparks/285178",
+   "checked_at": "2026-09-17T17:04:02Z"
   }
  }
 }
