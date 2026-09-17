@@ -8442,6 +8442,189 @@
    "status": "no_photo",
    "at": "2026-09-17T04:57:41Z",
    "note": null
+  },
+  "10032429542": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-17T11:47:26Z",
+   "note": null
+  },
+  "10032424944": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-17T11:47:26Z",
+   "note": null
+  },
+  "10032281021": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-17T11:47:26Z",
+   "note": null
+  },
+  "10032248733": {
+   "cert": "75117438",
+   "conf": 1.0,
+   "votes": 4,
+   "at": "2026-09-17T11:47:26Z",
+   "status": "ok"
+  },
+  "10032215402": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-17T11:47:26Z",
+   "note": null
+  },
+  "10032204105": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-17T11:47:26Z",
+   "note": null
+  },
+  "10032171961": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-17T11:47:26Z",
+   "note": null
+  },
+  "10032096911": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-17T11:47:26Z",
+   "note": null
+  },
+  "10032076331": {
+   "cert": null,
+   "conf": 0.0,
+   "votes": 0,
+   "at": "2026-09-17T11:47:26Z",
+   "status": "no_cert"
+  },
+  "10032070868": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-17T11:47:26Z",
+   "note": null
+  },
+  "10032058312": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-17T11:47:26Z",
+   "note": null
+  },
+  "10032048141": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-17T11:47:26Z",
+   "note": null
+  },
+  "10032047016": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-17T11:47:26Z",
+   "note": null
+  },
+  "10032045050": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-17T11:47:26Z",
+   "note": null
+  },
+  "10032015437": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-17T11:47:26Z",
+   "note": null
+  },
+  "10031961896": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-17T11:47:26Z",
+   "note": null
+  },
+  "10031939583": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-17T11:47:26Z",
+   "note": null
+  },
+  "10031893916": {
+   "cert": null,
+   "conf": 0.0,
+   "votes": 0,
+   "at": "2026-09-17T11:47:26Z",
+   "status": "no_cert"
+  },
+  "10031892177": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-17T11:47:26Z",
+   "note": null
+  },
+  "10031888736": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-17T11:47:26Z",
+   "note": null
+  },
+  "10031882318": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-17T11:47:26Z",
+   "note": null
+  },
+  "10031875139": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-17T11:47:26Z",
+   "note": null
+  },
+  "10031867454": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-17T11:47:26Z",
+   "note": null
+  },
+  "10031845217": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-17T11:47:26Z",
+   "note": null
+  },
+  "10031822219": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-17T11:47:26Z",
+   "note": null
+  },
+  "10031820530": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-17T11:47:26Z",
+   "note": null
+  },
+  "10031818081": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-17T11:47:26Z",
+   "note": null
+  },
+  "10031817243": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-17T11:47:26Z",
+   "note": null
+  },
+  "10031803451": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-17T11:47:26Z",
+   "note": null
+  },
+  "10031784977": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-17T11:47:26Z",
+   "note": null
   }
  },
  "certs": {
@@ -12834,6 +13017,18 @@
    "pop_higher": 3499,
    "pop_url": "https://www.psacard.com/pop/tcg-cards/2021/pokemon-sword-shield-shining-fates/189160",
    "checked_at": "2026-09-16T21:21:59Z"
+  },
+  "75117438": {
+   "Cert Number": "75117438",
+   "Item Grade": "NM-MT 8",
+   "Year": "2005",
+   "Subject": "BRASEGALI EX-HOLO",
+   "Card Number": "89",
+   "Category": "TCG Cards",
+   "pop": 7,
+   "pop_higher": 15,
+   "pop_url": "https://www.psacard.com/pop/tcg-cards/2005/pokemon-french-ex-team-magma-vs-aqua/191249",
+   "checked_at": "2026-09-17T11:47:26Z"
   }
  }
 }
