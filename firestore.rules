@@ -58,6 +58,14 @@ service cloud.firestore {
     // périmètre) — redemander après un refus écrase simplement l'ancien document.
     // Seul le demandeur écrit sa propre demande ; propriétaire et demandeur peuvent la lire ou
     // la supprimer (accepter/refuser côté propriétaire, annuler côté demandeur).
+    // Rapport « et si elle était gradée ? » (2026-09) : écrit UNIQUEMENT par le script
+    // tools/psa_collection_value.py via le SDK Admin (compte de service, qui ignore ces
+    // règles). Lisible par son seul propriétaire ; aucune écriture possible depuis l'appli.
+    match /graded_reports/{uid} {
+      allow read:  if request.auth != null && request.auth.uid == uid;
+      allow write: if false;
+    }
+
     match /share_requests/{id} {
       allow read: if request.auth != null
                      && (request.auth.uid == resource.data.owner || request.auth.uid == resource.data.requester);

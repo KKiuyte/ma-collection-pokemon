@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<script>
+  // même logique de thème que l'appli : on respecte le choix déjà enregistré
+  (function () {
+    try {
+      var t = localStorage.getItem("collection_pokemon_theme");
+      if (t !== "light" && t !== "dark")
+        t = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+      document.documentElement.setAttribute("data-theme", t);
+    } catch (e) {}
+  })();
+</script>
+<title>Et si elle était gradée ?</title>
+<link rel="icon" href="icon-192.png" />
+<style>
+* { box-sizing: border-box; }
+:root {
+  --gold:#ffcb3d; --gold-deep:#e6a700; --accent:#ff8a00; --accent-deep:#e67a00;
+  --ink-solid:#1a1d29;
+  --ink:#1a1d29; --muted:#8a8f9c; --bg:#f0eee9; --surface:#fff;
+  --line:rgba(0,0,0,.08); --field:#f6f7fa; --surface-2:#f1f2f6;
+  --track:#e6e4de; --chip-fg:#5b6170;
+  --gain-bg:#e7f8ee; --gain-fg:#12864a; --gain-line:#7fd3a5;
+  --loss-bg:#f3f0ea; --loss-fg:#9a8f78;
+}
+:root[data-theme="dark"] {
+  --ink:#eef0f4; --muted:#9aa3b5; --bg:#14161d; --surface:#1f2230;
+  --line:rgba(255,255,255,.1); --field:#242735; --surface-2:#2a2e3d;
+  --track:#333748; --chip-fg:#aab0c2;
+  --gain-bg:#12331f; --gain-fg:#5fd08c; --gain-line:#2f6b45;
+  --loss-bg:#2a2b30; --loss-fg:#8b8f9c;
+}
+body { font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; color:var(--ink);
+  background:var(--bg); margin:0; padding:18px 14px 60px; }
+.wrap { max-width:1000px; margin:0 auto; }
+a { color:inherit; }
+.head { display:flex; align-items:baseline; gap:10px; flex-wrap:wrap; margin-bottom:6px; }
+h1 { font-size:1.25rem; margin:0; }
+.back { font-size:.85rem; color:var(--accent-deep); text-decoration:none; font-weight:600; }
+.sub { color:var(--muted); font-size:.82rem; margin:2px 0 14px; line-height:1.5; }
+.note { background:var(--surface); border:1px solid var(--line); border-left:3px solid var(--gold-deep);
+  border-radius:8px; padding:9px 12px; font-size:.8rem; color:var(--muted); margin-bottom:16px; line-height:1.5; }
+.msg { text-align:center; color:var(--muted); padding:40px 10px; line-height:1.6; }
+
+.totals { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:10px; margin-bottom:16px; }
+.tot { background:var(--surface); border:1px solid var(--line); border-radius:12px; padding:10px 12px; }
+.tot .l { font-size:.7rem; text-transform:uppercase; letter-spacing:.05em; color:var(--muted); font-weight:800; }
+.tot .v { font-size:1.15rem; font-weight:900; margin-top:3px; }
+.tot .v.gain { color:var(--gain-fg); }
+
+.controls { display:flex; gap:8px; flex-wrap:wrap; align-items:center; margin-bottom:14px; }
+.controls input[type="search"], .controls select { font:inherit; color:var(--ink); background:var(--field);
+  border:1px solid var(--line); border-radius:8px; padding:8px 10px; }
+.controls input[type="search"] { flex:1 1 180px; min-width:0; }
+.chip { font:inherit; font-size:.82rem; cursor:pointer; padding:6px 12px; border-radius:999px;
+  border:1px solid var(--line); background:var(--surface); color:var(--chip-fg); }
+.chip.on { background:var(--accent); border-color:var(--accent); color:var(--ink-solid); font-weight:600; }
+.count { color:var(--muted); font-size:.8rem; margin-left:auto; }
+
+.list { display:flex; flex-direction:column; gap:8px; }
+.row { display:flex; gap:12px; align-items:center; padding:9px 11px; border-radius:12px;
+  border:1px solid var(--line); background:var(--surface); }
+.row img, .row .noimg { width:44px; height:61px; border-radius:6px; flex:none; object-fit:cover; background:var(--surface-2); }
+.info { flex:1; min-width:0; }
+.name { font-weight:800; font-size:.92rem; }
+.meta { font-size:.75rem; color:var(--muted); margin-top:2px; line-height:1.45; }
+.prices { font-size:.82rem; margin-top:4px; }
+.prices b { font-weight:900; }
+.arrow { color:var(--muted); margin:0 5px; }
+.tag { display:inline-block; font-size:.66rem; font-weight:800; padding:1px 6px; border-radius:999px;
+  background:var(--surface-2); color:var(--chip-fg); margin-left:4px; vertical-align:middle; }
+.badge { font-weight:900; font-size:.8rem; padding:5px 10px; border-radius:999px; flex:none; white-space:nowrap; }
+.badge.gain { background:var(--gain-bg); color:var(--gain-fg); }
+.badge.loss { background:var(--loss-bg); color:var(--loss-fg); }
+.psalink { font-size:.68rem; color:var(--accent-deep); text-decoration:none; }
+details { margin-top:16px; }
+summary { cursor:pointer; font-weight:800; font-size:.9rem; padding:8px 0; }
+.small { font-size:.78rem; color:var(--muted); line-height:1.5; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="head">
+    <h1>Et si elle était gradée ?</h1>
+    <a class="back" href="./index.html">&larr; retour à la collection</a>
+  </div>
+  <p class="sub" id="sub">Connexion…</p>
+  <div id="content"><p class="msg">Chargement…</p></div>
+</div>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyCiGgrj28Jrqn8jEGM9pWFsVhnfs-VKyiU",
+  authDomain: "ma-collection-pokemon.firebaseapp.com",
+  projectId: "ma-collection-pokemon",
+  storageBucket: "ma-collection-pokemon.firebasestorage.app",
+  messagingSenderId: "1058168439830",
+  appId: "1:1058168439830:web:9b3c787f9286e888112137",
+};
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
+
+const $ = (s) => document.querySelector(s);
+const esc = (s) => String(s == null ? "" : s).replace(/[&<>"']/g, (c) => ({
+  "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const eur = (v) => (v == null ? "—" : Number(v).toLocaleString("fr-FR", { style: "currency", currency: "EUR", maximumFractionDigits: 0 }));
+const usd = (v) => (v == null ? "—" : Number(v).toLocaleString("fr-FR", { style: "currency", currency: "USD", maximumFractionDigits: 0 }));
+const int = (n) => Number(n || 0).toLocaleString("fr-FR");
+function age(iso) {
+  if (!iso) return "?";
+  const h = Math.round((Date.now() - new Date(iso)) / 3600000);
+  return h < 1 ? "à l'instant" : h < 48 ? `il y a ${h} h` : `il y a ${Math.round(h / 24)} j`;
+}
+
+let REPORT = null, fGrade = "Tous", q = "", sort = "gain";
+
+onAuthStateChanged(auth, async (user) => {
+  if (!user) {
+    $("#sub").textContent = "Pas connecté.";
+    $("#content").innerHTML = `<p class="msg">Cette page lit un rapport privé lié à ton compte.<br>
+      Connecte-toi dans l'appli (onglet <b>Mon compte</b>), puis reviens ici.<br><br>
+      <a href="./index.html">Ouvrir l'appli</a></p>`;
+    return;
+  }
+  try {
+    const snap = await getDoc(doc(db, "graded_reports", user.uid));
+    if (!snap.exists()) {
+      $("#sub").textContent = "Aucun rapport pour l'instant.";
+      $("#content").innerHTML = `<p class="msg">Le rapport est calculé <b>une fois par jour</b> (GitHub Actions →
+        « Estimation gradée (PSA) de la collection »).<br>Reviens plus tard, ou lance le workflow à la main.</p>`;
+      return;
+    }
+    REPORT = snap.data();
+  } catch (e) {
+    $("#sub").textContent = "Erreur de lecture (" + esc(e.message) + ").";
+    $("#content").innerHTML = "";
+    return;
+  }
+  renderAll();
+});
+
+function renderAll() {
+  const r = REPORT, s = r.stats || {}, t = r.totals || {};
+  $("#sub").innerHTML =
+    `Calculé ${age(r.generated_at)} · seuil ${eur(r.threshold)} · ventes PSA sur ${r.months} mois · ` +
+    `décote France ${Math.round((r.discount || 0) * 100)} % · 1 $ = ${r.fx_usd_eur} €`;
+  let html = `
+    <div class="note">Pour chaque carte possédée au-dessus du seuil, en état <b>Neuve</b> (vise PSA 10) ou
+    <b>Excellent</b> (vise PSA 9) : prix brut Cardmarket comparé à la <b>moyenne des ventes PSA réelles</b>
+    à cette note, convertie en €, avec une décote pour un grading en France. Une carte française moderne
+    est évaluée via sa <b>version anglaise</b> (badge « via EN ») : PSA n'a presque pas de séries FR récentes.
+    Ce n'est pas une garantie de note ni de prix — un point de départ.</div>
+    <div class="totals">
+      <div class="tot"><div class="l">Cartes chiffrées</div><div class="v">${s.priced_rows || 0} / ${s.eligible_rows || 0}</div></div>
+      <div class="tot"><div class="l">Valeur brute</div><div class="v">${eur(t.raw_eur)}</div></div>
+      <div class="tot"><div class="l">Gradée (France)</div><div class="v">${eur(t.est_france_eur)}</div></div>
+      <div class="tot"><div class="l">Gain estimé</div><div class="v ${(t.gain_eur || 0) >= 0 ? "gain" : ""}">${(t.gain_eur || 0) >= 0 ? "+" : ""}${eur(t.gain_eur)}</div></div>
+    </div>
+    <div class="controls">
+      <input type="search" id="q" placeholder="Filtrer par nom, série…" autocomplete="off" />
+      <span id="chips"></span>
+      <select id="sort">
+        <option value="gain">Gain total</option>
+        <option value="ratio">Meilleur ratio</option>
+        <option value="raw">Prix brut</option>
+      </select>
+      <span class="count" id="count"></span>
+    </div>
+    <div class="list" id="list"></div>
+    <div id="others"></div>`;
+  $("#content").innerHTML = html;
+  $("#q").addEventListener("input", (e) => { q = e.target.value.trim().toLowerCase(); renderList(); });
+  $("#sort").addEventListener("change", (e) => { sort = e.target.value; renderList(); });
+  renderChips();
+  renderList();
+  renderOthers();
+}
+
+function renderChips() {
+  $("#chips").innerHTML = ["Tous", "10", "9"].map((g) =>
+    `<button class="chip ${g === fGrade ? "on" : ""}" data-g="${g}">${g === "Tous" ? "Tous" : "PSA " + g}</button>`).join(" ");
+  $("#chips").onclick = (e) => {
+    const b = e.target.closest(".chip"); if (!b) return;
+    fGrade = b.dataset.g; renderChips(); renderList();
+  };
+}
+
+function renderList() {
+  let rows = (REPORT.rows || []).filter((r) => r.status === "priced");
+  if (fGrade !== "Tous") rows = rows.filter((r) => String(r.target_grade) === fGrade);
+  if (q) rows = rows.filter((r) => (r.name_fr + " " + r.name_en + " " + (r.set_name_fr || "")).toLowerCase().includes(q));
+  if (sort === "ratio") rows.sort((a, b) => (b.psa.est_eur_france / b.raw_eur) - (a.psa.est_eur_france / a.raw_eur));
+  else if (sort === "raw") rows.sort((a, b) => b.raw_eur - a.raw_eur);
+  else rows.sort((a, b) => (b.gain_total || 0) - (a.gain_total || 0));
+  $("#count").textContent = rows.length + " carte" + (rows.length > 1 ? "s" : "");
+  if (!rows.length) { $("#list").innerHTML = `<p class="msg">Aucune carte chiffrée ne correspond.</p>`; return; }
+  $("#list").innerHTML = rows.map((r) => {
+    const p = r.psa, g = r.gain_total || 0;
+    return `<div class="row">
+      ${r.image ? `<img src="${esc(r.image)}/low.webp" alt="" loading="lazy" />` : `<div class="noimg"></div>`}
+      <div class="info">
+        <div class="name">${esc(r.name_fr)} <span class="tag">#${esc(r.number)}</span>
+          ${p.proxy_lang ? `<span class="tag">via ${esc(p.proxy_lang)}</span>` : ""}</div>
+        <div class="meta">${esc(r.set_name_fr || r.set_id)} · ${esc(r.version)} · ${esc(r.cond)} · ${esc(r.lang)} · ×${r.qty}</div>
+        <div class="prices"><b>${eur(r.raw_eur)}</b><span class="arrow">→</span><b>${eur(p.est_eur_france)}</b>
+          <span class="tag">PSA ${r.target_grade}</span>
+          <span class="small"> (moy. ${usd(p.avg_usd)} = ${eur(p.est_eur)} avant décote)</span></div>
+        <div class="meta">pop. ${int(p.pop_at_grade)} à cette note · ${int(p.pop_higher)} au-dessus ·
+          ${int(p.sales_qty)} vente${p.sales_qty > 1 ? "s" : ""} sur ${p.window_months === 0 ? "toutes époques" : p.window_months + " mois"}${p.thin ? ' <span class="tag">peu de ventes</span>' : ""} ·
+          dernière ${usd(p.latest_usd)} ·
+          <a class="psalink" href="https://www.psacard.com/spec/psa/${esc(p.spec_id)}" target="_blank" rel="noopener">fiche PSA ↗</a></div>
+      </div>
+      <span class="badge ${g >= 0 ? "gain" : "loss"}">${g >= 0 ? "+" : ""}${eur(g)}</span>
+    </div>`;
+  }).join("");
+}
+
+function renderOthers() {
+  const rows = REPORT.rows || [], s = REPORT.stats || {};
+  const groups = [
+    ["no_sales", "Aucune vente PSA récente à la note visée"],
+    ["card_not_found", "Carte introuvable dans le rapport de population PSA"],
+    ["set_not_found", "Série non reconnue chez PSA"],
+  ];
+  let html = "";
+  for (const [st, label] of groups) {
+    const list = rows.filter((r) => r.status === st);
+    if (!list.length) continue;
+    html += `<details><summary>${label} — ${list.length}</summary><div class="small">` +
+      list.map((r) => `${esc(r.name_fr)} #${esc(r.number)} (${esc(r.set_name_fr || r.set_id)}, ${esc(r.version)}, ${esc(r.cond)}) — ${eur(r.raw_eur)}` +
+        (r.psa && r.psa.set_name ? ` · série PSA : ${esc(r.psa.set_name)}` : "")).join("<br>") +
+      `</div></details>`;
+  }
+  const us = s.unmatched_sets || {};
+  if (Object.keys(us).length)
+    html += `<p class="small" style="margin-top:12px">Séries sans correspondance PSA : ${Object.values(us).map(esc).join(", ")}.
+      Une correspondance manuelle peut être ajoutée dans <code>tools/psa-sets-map.json</code>.</p>`;
+  $("#others").innerHTML = html;
+}
+</script>
+</body>
+</html>

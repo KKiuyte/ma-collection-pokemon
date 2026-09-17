@@ -1,0 +1,37 @@
+{
+ "swsh12|French": {
+  "none": true,
+  "why": "aucune série PSA trouvée",
+  "candidates": []
+ },
+ "swsh12|EN": {
+  "psa_id": "222927",
+  "psa_name": "Pokemon Sword & Shield Silver Tempest",
+  "psa_year": "2022",
+  "auto": true
+ },
+ "sv03.5|French": {
+  "psa_id": "297147",
+  "psa_name": "Pokemon Mew FR-151",
+  "psa_year": "2024",
+  "auto": true
+ },
+ "base1|French": {
+  "psa_id": "57668",
+  "psa_name": "Pokemon French",
+  "psa_year": "1999",
+  "auto": true
+ },
+ "sv03.5|EN": {
+  "psa_id": "249030",
+  "psa_name": "Pokemon Mew EN-151",
+  "psa_year": "2023",
+  "auto": true
+ },
+ "base1|EN": {
+  "psa_id": "57801",
+  "psa_name": "Pokemon Game",
+  "psa_year": "1999",
+  "auto": true
+ }
+}

@@ -1,0 +1,56 @@
+name: Estimation gradée (PSA) de la collection
+# « Et si elle était gradée ? » : une fois par jour, lit la collection dans Firestore,
+# interroge PSA (compte connecté) pour la population et les ventes par note, et écrit le
+# rapport dans Firestore `graded_reports/{uid}` (privé, lu par public/graded-value.html).
+#
+# Secrets nécessaires : FIREBASE_SERVICE_ACCOUNT (déjà utilisé pour le déploiement ; le compte
+# de service doit avoir le rôle Cloud Datastore User), PSA_EMAIL, PSA_PASSWORD.
+# Le seul fichier du dépôt modifié est tools/psa-sets-map.json (correspondances de séries).
+
+on:
+  schedule:
+    - cron: "41 5 * * *"      # tous les jours à 05:41 UTC
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: graded-value
+  cancel-in-progress: false
+
+jobs:
+  estimate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Installer les dépendances
+        run: |
+          pip install --quiet requests firebase-admin playwright playwright-stealth
+          python -m playwright install --with-deps chromium
+
+      - name: Calculer l'estimation et écrire le rapport
+        env:
+          FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+          PSA_EMAIL: ${{ secrets.PSA_EMAIL }}
+          PSA_PASSWORD: ${{ secrets.PSA_PASSWORD }}
+          PSA_COOKIE_FILE: ${{ runner.temp }}/psa-cookies.json
+        run: python tools/psa_collection_value.py --threshold 10 --months 6 --discount 0.15
+
+      - name: Committer la table de correspondance des séries si elle a changé
+        run: |
+          if git diff --quiet -- tools/psa-sets-map.json && [ -z "$(git status --porcelain tools/psa-sets-map.json)" ]; then
+            echo "Aucun changement."
+            exit 0
+          fi
+          git config user.name "graded-value-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add tools/psa-sets-map.json
+          git commit -m "MàJ auto des correspondances de séries PSA ($(date -u +%FT%TZ))"
+          git push

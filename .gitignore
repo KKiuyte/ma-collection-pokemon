@@ -11,3 +11,9 @@ __pycache__/
 # publierait un site sans catalogue (il ne pousse que ce qui est dans Git).
 public/hashes-*.json
 firebase-debug.log
+
+# réglages Claude Code propres à cette machine (chemins absolus, permissions locales)
+.claude/settings.local.json
+
+# caches de travail des scripts PSA (population par série, cartes TCGdex) — régénérables
+tools/cache/

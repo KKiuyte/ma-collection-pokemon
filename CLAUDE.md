@@ -44,11 +44,18 @@ public/                 ← ce qui est déployé (le site)
   vinted-psa.json       ← annonces Vinted de cartes PSA + enrichissement PSA (versionné,
                            produit par les scripts ci-dessous via GitHub Actions)
   psa-cache.json        ← cache des fiches PSA par n° de cert (versionné, se construit dans le temps)
+  graded-value.html     ← PAGE PUBLIQUE « Et si elle était gradée ? » (2026-09-17) : lit le rapport
+                           PRIVÉ Firestore graded_reports/{uid} (cf. section dédiée) ; pas de lien
+                           depuis l'appli pour l'instant
 tools/
   build_hashes.py       ← génère les empreintes visuelles (à lancer en local, Python 3)
   scrape_vinted_psa.py  ← récupère les annonces Vinted « psa pokemon » → vinted-psa.json (stdlib)
   enrich_psa.py         ← OCR du n° de cert sur les photos + fiche PSA (Playwright) → enrichit
                            vinted-psa.json et psa-cache.json
+  psa_client.py         ← client psacard.com COMPTE CONNECTÉ : séries, population, ventes par note
+  psa_collection_value.py ← estimation « gradée » de la collection → Firestore graded_reports/{uid}
+  psa-sets-map.json     ← correspondances série TCGdex → série PSA (versionné ; overrides manuels)
+  cache/                ← caches de travail (git-ignoré)
 archive/                ← obsolète, conservé volontairement (voir plus bas)
 roadmap.md              ← feuille de route détaillée + notes
 ```
@@ -288,6 +295,67 @@ cert ; la fiche PSA récupérée ne correspond pas à l'annonce. Sans conséquen
 
 **Non encore fait / à décider** : lien depuis l'en-tête de l'appli ; filtrage du bruit ;
 ajouter au précache du service worker ; ajout direct à la wishlist depuis la page.
+
+⚠️ **Bug vécu (2026-09-09 → 17)** : Vinted a changé le nom de fichier des photos (numérique →
+hexadécimal) ; `RE_F800` ne matchait plus rien et l'OCR échouait silencieusement 8 jours
+(953 entrées `no_photo` à note vide). Si `cert lu` s'effondre, vérifier d'abord ce motif.
+
+## « Et si elle était gradée ? » — estimation de la collection via PSA (2026-09-17)
+
+But (demande d'Ariel) : pour ses cartes au-dessus d'un seuil (10 €), estimer ce qu'elles
+vaudraient gradées, d'après les **vraies ventes PSA**, avec une décote « gradée en France ».
+Page dédiée, séparée de l'appli (choix d'Ariel).
+
+**Accès PSA — ce qui a été vérifié le 2026-09-17** : la recherche par nom, les prix et le
+rapport de population sont derrière une **connexion** (compte PSA gratuit d'Ariel,
+identifiants dans `~/.psa.env` en local — jamais dans le dépôt — et secrets GitHub
+`PSA_EMAIL`/`PSA_PASSWORD`). Une fois connecté, TOUT passe par `requests` + cookies (Cloudflare
+accepte le cookie `cf_clearance`) ; seule la connexion elle-même demande Chromium + stealth.
+- Index : `/pop/tcg-cards/156940` (années) → `/pop/tcg-cards/{année}/{id}` (séries, rendu serveur).
+  Nommage : « Pokemon Sword & Shield Silver Tempest », « Pokemon Jtg EN-Journey Together »,
+  « Pokemon Mew FR-151 » (code de langue avant le tiret), « Pokemon French » = Set de Base FR
+  1999, « Pokemon Game » = Set de Base EN. Séries FR modernes : rares (151 en 2024…).
+- Population : `POST /Pop/GetSetItems` {headingID, categoryID:156940, length:500} → toutes les
+  cartes d'une série, `SpecID` + `Grade1..Grade10`. Les **Reverse sont des lignes à part**
+  (« Venonat-Reverse Foil », même `CardNumber`).
+- Ventes : `GET /api/psa/trpc/researchJourney.getPriceSummary?batch=1&input={"0":"<base64 de
+  {"json":{specId,department:"psa",salesSummaryType:"GRADES",gradingType:"ALL",
+  qualifiers:"NON_QUALIFIERS",timeRange:N}}>"}` → par note : quantity, averagePrice,
+  latestPrice. **`timeRange` = nombre de mois** (0 = toutes époques ; ≥ 30 ≈ tout).
+- La page de cert publique affiche une « PSA Estimate » ≈ moyenne 6 mois.
+- **Pièges Cloudflare appris en testant (6 essais)** : (1) la connexion n'est réussie que quand
+  le cookie `accessToken` ET le `cf_clearance` de **psacard.com** sont posés — l'URL reste un
+  moment sur `/signin` et les cookies `collectors.com` seuls donnent des 403 ; (2) sur
+  `/Pop/GetSetItems`, envoyer des en-têtes « complets » (Origin, Content-Type, Accept)
+  DÉCLENCHE le challenge — garder `X-Requested-With` + `Referer` seulement ; (3) un 403
+  « Just a moment » isolé arrive même avec une session valide → attendre et réessayer
+  avant de se reconnecter ; détecter le challenge sur `<title>Just a moment`, pas ailleurs.
+
+**Pipeline `tools/psa_collection_value.py`** (workflow `graded-value.yml`, 1×/jour 05:41 UTC) :
+collection Firestore (SDK Admin, compte de service `github-deploy@…` avec rôle Cloud Datastore
+User ; uid retrouvé par `users.email == PSA_EMAIL`) → TCGdex FR+EN par carte (nom, numéro,
+set, prix Cardmarket par version — **port Python de `priceForVariant()`**, à garder aligné avec
+index.html) → éligibles = prix € ≥ seuil ET état Neuve→PSA 10 / Excellent→PSA 9 → série PSA
+(`match_set`, mémorisé dans `tools/psa-sets-map.json`, entrée manuelle `{"psa_id","psa_name"}`
+prioritaire) dans la langue de la carte puis anglaise (**repli EN aussi si la carte manque dans
+la série FR** ; `proxy_lang:"EN"`) → ligne de population (`find_row` : numéro + Reverse/non +
+nom EN) → ventes sur `--months` (6), repli 12 puis 0, **première fenêtre avec ≥ MIN_SALES=3
+ventes** (sinon `thin:true`) → `est_eur = moyenne × fx`, `est_eur_france = × (1 − décote 0.15)`.
+Rapport écrit dans `graded_reports/{uid}` (règle Firestore : lecture propriétaire, écriture
+interdite côté client — **à publier à la main dans la console**). `--owned-json` + `--dry-run
+--out` pour tester sans Firestore. Testé le 2026-09-17 sur un échantillon (Lugia V ST 361 € →
+PSA 10 ≈ 992 €, 911 ventes/6 mois).
+
+**Page `public/graded-value.html`** : Firebase (config publique, session partagée avec l'appli),
+lit le rapport, totaux, filtres note/texte, tri gain/ratio/prix, badges « via EN » et « peu de
+ventes », listes repliées des non chiffrées (sans vente / carte absente / série absente).
+
+⚠️ Limites assumées : PSA = surtout cartes anglaises (une carte FR moderne est estimée via sa
+version EN) ; la décote 15 % est une hypothèse ; contraire aux CGU PSA (usage perso, ~1 run/jour,
+caches 7 j). Le classificateur de Claude Code bloque les scripts qui se connectent à PSA :
+règle locale `Bash(/home/kiuyte/ma-collection-pokemon/.venv/bin/python3:*)` dans
+`.claude/settings.local.json` (git-ignoré) ; la commande doit COMMENCER par ce chemin (pas de
+`cd` devant) et ne pas écrire de cookies hors espace de travail.
 
 ## Déploiement
 
