@@ -78,7 +78,7 @@ def get(opener, url, timeout=25):
 
 
 RE_F800 = re.compile(
-    r'https://images\d+\.vinted\.net/t/[A-Za-z0-9_]+/f800/[0-9]+\.webp\?s=[a-f0-9]+')
+    r'https://images\d+\.vinted\.net/t/[A-Za-z0-9_]+/f800/[0-9a-f]+\.webp\?s=[a-f0-9]+')
 
 
 def listing_photos(opener, url, cap=3):
