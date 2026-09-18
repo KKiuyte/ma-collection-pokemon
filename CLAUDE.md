@@ -293,7 +293,12 @@ parfois un slab PSA d'une autre carte (vu : un cert de carte de foot). L'OCR lit
 cert ; la fiche PSA récupérée ne correspond pas à l'annonce. Sans conséquence (pas de
 `deal` Pokémon faussé) mais à garder en tête si on resserre plus tard.
 
-**Non encore fait / à décider** : lien depuis l'en-tête de l'appli ; filtrage du bruit ;
+**Accès depuis l'appli (2026-09-18)** : **easter egg** — appui long (1,2 s) sur la Pokéball de
+l'en-tête d'`index.html` ouvre un petit menu (`#eggMenu`) vers `vinted.html` et
+`graded-value.html`. Volontairement non découvrable (Ariel veut garder ces pages pour lui
+tant qu'elles ne sont pas « officielles »). Pas de lien visible ailleurs.
+
+**Non encore fait / à décider** : lien visible dans l'en-tête ; filtrage du bruit ;
 ajouter au précache du service worker ; ajout direct à la wishlist depuis la page.
 
 ⚠️ **Bug vécu (2026-09-09 → 17)** : Vinted a changé le nom de fichier des photos (numérique →

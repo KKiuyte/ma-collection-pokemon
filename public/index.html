@@ -75,6 +75,15 @@ body {
   place-items:center; color:var(--ink); flex:none; }
 .syncbtn.on { background:var(--gold); color:var(--ink-solid); }
 .syncbtn:active { transform:scale(.92); }
+/* easter egg : appui long sur la Pokéball (pas de sélection ni de menu contextuel sur mobile) */
+.egg-wrap { position:relative; flex:none; -webkit-user-select:none; user-select:none; -webkit-touch-callout:none; }
+.egg-menu { position:absolute; top:38px; left:0; z-index:30; min-width:220px; background:var(--surface);
+  border:1px solid var(--line); border-radius:12px; box-shadow:0 8px 24px rgba(0,0,0,.14); overflow:hidden; }
+.egg-menu[hidden] { display:none; }
+.egg-menu a { display:block; padding:11px 14px; font-weight:800; font-size:14px; color:var(--ink);
+  text-decoration:none; border-bottom:1px solid var(--line); }
+.egg-menu a:last-child { border-bottom:none; }
+.egg-menu a:active { background:var(--surface-2); }
 .installbtn { width:38px; height:38px; border:none; border-radius:50%; background:var(--gold);
   box-shadow:0 1px 3px rgba(0,0,0,.12); cursor:pointer; display:grid; place-items:center;
   line-height:1; color:var(--ink-solid); flex:none; }
@@ -408,7 +417,14 @@ body {
 <body>
 <div class="wrap">
   <div class="head">
-    <span class="ball"></span>
+    <span class="egg-wrap">
+      <span class="ball"></span>
+      <!-- easter egg : appui long sur la Pokéball → accès discret aux pages expérimentales -->
+      <div id="eggMenu" class="egg-menu" hidden>
+        <a href="vinted.html">Cartes PSA sur Vinted</a>
+        <a href="graded-value.html">Et si elle était gradée ?</a>
+      </div>
+    </span>
     <div class="head-text">
       <div class="title">Ma Collection</div>
       <div class="sub" id="sub">0 carte dans ta collection</div>
@@ -2559,6 +2575,21 @@ $("syncClose").addEventListener("click", () => { $("syncOverlay").hidden = true;
 $("syncOverlay").addEventListener("click", (e) => { if (e.target === $("syncOverlay")) $("syncOverlay").hidden = true; });
 
 // --- thème clair / sombre ---
+// --- easter egg : appui long (1,2 s) sur la Pokéball → menu des pages expérimentales ---
+// Volontairement invisible pour qui ne connaît pas le geste (pages Vinted / estimation gradée
+// pas encore « officielles »). Un tap ailleurs referme le menu.
+(function () {
+  const wrap = document.querySelector(".egg-wrap"), menu = document.getElementById("eggMenu");
+  if (!wrap || !menu) return;
+  let timer = null;
+  const arm = () => { clearTimeout(timer); timer = setTimeout(() => { menu.hidden = false; }, 1200); };
+  const disarm = () => clearTimeout(timer);
+  wrap.addEventListener("pointerdown", (e) => { if (!menu.contains(e.target)) arm(); });
+  ["pointerup", "pointercancel", "pointerleave"].forEach((ev) => wrap.addEventListener(ev, disarm));
+  wrap.addEventListener("contextmenu", (e) => e.preventDefault());
+  document.addEventListener("pointerdown", (e) => { if (!menu.hidden && !wrap.contains(e.target)) menu.hidden = true; });
+})();
+
 const THEME_KEY = "collection_pokemon_theme";
 function applyTheme(theme){
   document.documentElement.setAttribute("data-theme", theme);
