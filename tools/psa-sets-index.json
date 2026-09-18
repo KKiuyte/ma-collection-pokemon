@@ -1,0 +1,5557 @@
+{
+ "2023": {
+  "at": "2026-09-18T16:51:53Z",
+  "sets": [
+   {
+    "id": "250194",
+    "slug": "pokemon-151-ultra-premium-collection",
+    "name": "Pokemon 151 Ultra-Premium Collection",
+    "lang": null,
+    "year": "2023"
+   },
+   {
+    "id": "235228",
+    "slug": "pokemon-2022-world-championships-deck-adp",
+    "name": "Pokemon 2022 World Championships Deck: Adp",
+    "lang": null,
+    "year": "2023"
+   },
+   {
+    "id": "235317",
+    "slug": "pokemon-2022-world-championships-deck-cheryl-again",
+    "name": "Pokemon 2022 World Championships Deck: Cheryl Again",
+    "lang": null,
+    "year": "2023"
+   },
+   {
+    "id": "235315",
+    "slug": "pokemon-2022-world-championships-deck-ice-rider-palkia",
+    "name": "Pokemon 2022 World Championships Deck: Ice Rider Palkia",
+    "lang": null,
+    "year": "2023"
+   },
+   {
+    "id": "235318",
+    "slug": "pokemon-2022-world-championships-deck-shape-mew",
+    "name": "Pokemon 2022 World Championships Deck: the Shape of Mew",
+    "lang": null,
+    "year": "2023"
+   },
+   {
+    "id": "271512",
+    "slug": "pokemon-2024-latin-america-international-championships",
+    "name": "Pokemon 2024 Latin America International Championships",
+    "lang": null,
+    "year": "2023"
+   },
+   {
+    "id": "229900",
+    "slug": "pokemon-chinese-s-promo",
+    "name": "Pokemon Chinese S Promo",
+    "lang": "Chinese",
+    "year": "2023"
+   },
+   {
+    "id": "254031",
+    "slug": "pokemon-clb-trading-card-game-classic-blastoise-suicune-ex-deck",
+    "name": "Pokemon Clb-Trading Card Game Classic Blastoise & Suicune EX Deck",
+    "lang": null,
+    "year": "2023"
+   },
+   {
+    "id": "254030",
+    "slug": "pokemon-clc-trading-card-game-classic-charizard-ho-oh-ex-deck",
+    "name": "Pokemon Clc-Trading Card Game Classic Charizard & HO-Oh EX Deck",
+    "lang": null,
+    "year": "2023"
+   },
+   {
+    "id": "254029",
+    "slug": "pokemon-clv-trading-card-game-classic-venusaur-lugia-ex-deck",
+    "name": "Pokemon CLV-Trading Card Game Classic Venusaur & Lugia EX Deck",
+    "lang": null,
+    "year": "2023"
+   },
+   {
+    "id": "249039",
+    "slug": "pokemon-french-mew-fr-151",
+    "name": "Pokemon French Mew FR-151",
+    "lang": "French",
+    "year": "2023"
+   },
+   {
+    "id": "260220",
+    "slug": "pokemon-french-my-first-battle-bulbasaur-deck",
+    "name": "Pokemon French My First Battle-Bulbasaur Deck",
+    "lang": "French",
+    "year": "2023"
+   },
+   {
+    "id": "263481",
+    "slug": "pokemon-french-my-first-battle-pikachu-deck",
+    "name": "Pokemon French My First Battle-Pikachu Deck",
+    "lang": "French",
+    "year": "2023"
+   },
+   {
+    "id": "304782",
+    "slug": "pokemon-french-my-first-battle-squirtle-deck",
+    "name": "Pokemon French My First Battle-Squirtle Deck",
+    "lang": "French",
+    "year": "2023"
+   },
+   {
+    "id": "245439",
+    "slug": "pokemon-french-obf-fr-obsidian-flames",
+    "name": "Pokemon French Obf FR-Obsidian Flames",
+    "lang": "French",
+    "year": "2023"
+   },
+   {
+    "id": "243960",
+    "slug": "pokemon-french-pal-fr-paldea-evolved",
+    "name": "Pokemon French Pal FR-Paldea Evolved",
+    "lang": "French",
+    "year": "2023"
+   },
+   {
+    "id": "256163",
+    "slug": "pokemon-french-par-fr-paradox-rift",
+    "name": "Pokemon French Par FR-Paradox Rift",
+    "lang": "French",
+    "year": "2023"
+   },
+   {
+    "id": "254572",
+    "slug": "pokemon-french-sve-fr-basic-energies",
+    "name": "Pokemon French Sve FR-Basic Energies",
+    "lang": "French",
+    "year": "2023"
+   },
+   {
+    "id": "230391",
+    "slug": "pokemon-french-svi-fr-scarlet-violet",
+    "name": "Pokemon French Svi FR-Scarlet & Violet",
+    "lang": "French",
+    "year": "2023"
+   },
+   {
+    "id": "240434",
+    "slug": "pokemon-french-svp-fr-sv-black-star-promo",
+    "name": "Pokemon French Svp FR-SV Black Star Promo",
+    "lang": "French",
+    "year": "2023"
+   },
+   {
+    "id": "249038",
+    "slug": "pokemon-german-mew-de-151",
+    "name": "Pokemon German Mew de-151",
+    "lang": "German",
+    "year": "2023"
+   },
+   {
+    "id": "260221",
+    "slug": "pokemon-german-my-first-battle-bulbasaur-deck",
+    "name": "Pokemon German My First Battle-Bulbasaur Deck",
+    "lang": "German",
+    "year": "2023"
+   },
+   {
+    "id": "304784",
+    "slug": "pokemon-german-my-first-battle-squirtle-deck",
+    "name": "Pokemon German My First Battle-Squirtle Deck",
+    "lang": "German",
+    "year": "2023"
+   },
+   {
+    "id": "245277",
+    "slug": "pokemon-german-obf-de-obsidian-flames",
+    "name": "Pokemon German Obf de-Obsidian Flames",
+    "lang": "German",
+    "year": "2023"
+   },
+   {
+    "id": "243290",
+    "slug": "pokemon-german-pal-de-paldea-evolved",
+    "name": "Pokemon German Pal de-Paldea Evolved",
+    "lang": "German",
+    "year": "2023"
+   },
+   {
+    "id": "256367",
+    "slug": "pokemon-german-par-de-paradox-rift",
+    "name": "Pokemon German Par de-Paradox Rift",
+    "lang": "German",
+    "year": "2023"
+   },
+   {
+    "id": "230291",
+    "slug": "pokemon-german-svi-de-scarlet-violet",
+    "name": "Pokemon German Svi de-Scarlet & Violet",
+    "lang": "German",
+    "year": "2023"
+   },
+   {
+    "id": "230307",
+    "slug": "pokemon-german-svp-de-sv-black-star-promo",
+    "name": "Pokemon German Svp de-SV Black Star Promo",
+    "lang": "German",
+    "year": "2023"
+   },
+   {
+    "id": "250219",
+    "slug": "pokemon-holiday-calendar",
+    "name": "Pokemon Holiday Calendar",
+    "lang": null,
+    "year": "2023"
+   },
+   {
+    "id": "251276",
+    "slug": "pokemon-indonesian-insert-cards",
+    "name": "Pokemon Indonesian Insert Cards",
+    "lang": "Indonesian",
+    "year": "2023"
+   },
+   {
+    "id": "241408",
+    "slug": "pokemon-indonesian-sv-promo",
+    "name": "Pokemon Indonesian SV Promo",
+    "lang": "Indonesian",
+    "year": "2023"
+   },
+   {
+    "id": "238345",
+    "slug": "pokemon-indonesian-sv1a-triplet-beat",
+    "name": "Pokemon Indonesian Sv1a I-Triplet Beat",
+    "lang": "Indonesian",
+    "year": "2023"
+   },
+   {
+    "id": "236315",
+    "slug": "pokemon-indonesian-sv1s-scarlet-ex",
+    "name": "Pokemon Indonesian Sv1s I-Scarlet EX",
+    "lang": "Indonesian",
+    "year": "2023"
+   },
+   {
+    "id": "236162",
+    "slug": "pokemon-indonesian-sv1v-violet-ex",
+    "name": "Pokemon Indonesian Sv1v I-Violet EX",
+    "lang": "Indonesian",
+    "year": "2023"
+   },
+   {
+    "id": "248271",
+    "slug": "pokemon-indonesian-sv2a-card-151",
+    "name": "Pokemon Indonesian Sv2a I-Pokemon Card 151",
+    "lang": "Indonesian",
+    "year": "2023"
+   },
+   {
+    "id": "244133",
+    "slug": "pokemon-indonesian-sv2d-clay-burst",
+    "name": "Pokemon Indonesian Sv2d I-Clay Burst",
+    "lang": "Indonesian",
+    "year": "2023"
+   },
+   {
+    "id": "245990",
+    "slug": "pokemon-indonesian-sv2p-snow-hazard",
+    "name": "Pokemon Indonesian Sv2p I-Snow Hazard",
+    "lang": "Indonesian",
+    "year": "2023"
+   },
+   {
+    "id": "253252",
+    "slug": "pokemon-indonesian-sv3s-black-shine",
+    "name": "Pokemon Indonesian Sv3s I-Black Shine",
+    "lang": "Indonesian",
+    "year": "2023"
+   },
+   {
+    "id": "259835",
+    "slug": "pokemon-indonesian-sv4s-paradox-encounters",
+    "name": "Pokemon Indonesian Sv4s I-Pokemon Paradox Encounters",
+    "lang": "Indonesian",
+    "year": "2023"
+   },
+   {
+    "id": "346984",
+    "slug": "pokemon-indonesian-svds-ex-compact-deck",
+    "name": "Pokemon Indonesian Svds I-EX Compact Deck",
+    "lang": "Indonesian",
+    "year": "2023"
+   },
+   {
+    "id": "244461",
+    "slug": "pokemon-insert-cards",
+    "name": "Pokemon Insert Cards",
+    "lang": null,
+    "year": "2023"
+   },
+   {
+    "id": "249042",
+    "slug": "pokemon-italian-mew-151",
+    "name": "Pokemon Italian Mew It-151",
+    "lang": "Italian",
+    "year": "2023"
+   },
+   {
+    "id": "260222",
+    "slug": "pokemon-italian-my-first-battle-bulbasaur-deck",
+    "name": "Pokemon Italian My First Battle-Bulbasaur Deck",
+    "lang": "Italian",
+    "year": "2023"
+   },
+   {
+    "id": "245445",
+    "slug": "pokemon-italian-obf-obsidian-flames",
+    "name": "Pokemon Italian Obf It-Obsidian Flames",
+    "lang": "Italian",
+    "year": "2023"
+   },
+   {
+    "id": "247383",
+    "slug": "pokemon-italian-pal-paldea-evolved",
+    "name": "Pokemon Italian Pal It-Paldea Evolved",
+    "lang": "Italian",
+    "year": "2023"
+   },
+   {
+    "id": "255827",
+    "slug": "pokemon-italian-par-paradox-rift",
+    "name": "Pokemon Italian Par It-Paradox Rift",
+    "lang": "Italian",
+    "year": "2023"
+   },
+   {
+    "id": "303890",
+    "slug": "pokemon-italian-sve-basic-energies",
+    "name": "Pokemon Italian Sve It-Basic Energies",
+    "lang": "Italian",
+    "year": "2023"
+   },
+   {
+    "id": "239613",
+    "slug": "pokemon-italian-svi-scarlet-violet",
+    "name": "Pokemon Italian Svi It-Scarlet & Violet",
+    "lang": "Italian",
+    "year": "2023"
+   },
+   {
+    "id": "246461",
+    "slug": "pokemon-italian-svp-sv-black-star-promo",
+    "name": "Pokemon Italian Svp It-SV Black Star Promo",
+    "lang": "Italian",
+    "year": "2023"
+   },
+   {
+    "id": "252123",
+    "slug": "pokemon-japanese-clf-trading-card-game-classic-venusaur-lugia-ex-deck",
+    "name": "Pokemon Japanese Clf-Trading Card Game Classic Venusaur & Lugia EX Deck",
+    "lang": "Japanese",
+    "year": "2023"
+   },
+   {
+    "id": "252127",
+    "slug": "pokemon-japanese-clk-trading-card-game-classic-blastoise-suicune-ex-deck",
+    "name": "Pokemon Japanese Clk-Trading Card Game Classic Blastoise & Suicune EX Deck",
+    "lang": "Japanese",
+    "year": "2023"
+   },
+   {
+    "id": "252126",
+    "slug": "pokemon-japanese-cll-trading-card-game-classic-charizard-ho-oh-ex-deck",
+    "name": "Pokemon Japanese Cll-Trading Card Game Classic Charizard & HO-Oh EX Deck",
+    "lang": "Japanese",
+    "year": "2023"
+   },
+   {
+    "id": "246157",
+    "slug": "pokemon-japanese-insert-cards",
+    "name": "Pokemon Japanese Insert Cards",
+    "lang": "Japanese",
+    "year": "2023"
+   },
+   {
+    "id": "233886",
+    "slug": "pokemon-japanese-sv1a-triplet-beat",
+    "name": "Pokemon Japanese Sv1a-Triplet Beat",
+    "lang": "Japanese",
+    "year": "2023"
+   },
+   {
+    "id": "230290",
+    "slug": "pokemon-japanese-sv1s-scarlet-ex",
+    "name": "Pokemon Japanese Sv1s-Scarlet EX",
+    "lang": "Japanese",
+    "year": "2023"
+   },
+   {
+    "id": "230288",
+    "slug": "pokemon-japanese-sv1v-violet-ex",
+    "name": "Pokemon Japanese Sv1v-Violet EX",
+    "lang": "Japanese",
+    "year": "2023"
+   },
+   {
+    "id": "241480",
+    "slug": "pokemon-japanese-sv2a-card-151",
+    "name": "Pokemon Japanese Sv2a-Pokemon Card 151",
+    "lang": "Japanese",
+    "year": "2023"
+   },
+   {
+    "id": "236817",
+    "slug": "pokemon-japanese-sv2d-clay-burst",
+    "name": "Pokemon Japanese Sv2d-Clay Burst",
+    "lang": "Japanese",
+    "year": "2023"
+   },
+   {
+    "id": "236821",
+    "slug": "pokemon-japanese-sv2p-snow-hazard",
+    "name": "Pokemon Japanese Sv2p-Snow Hazard",
+    "lang": "Japanese",
+    "year": "2023"
+   },
+   {
+    "id": "249029",
+    "slug": "pokemon-japanese-sv3a-raging-surf",
+    "name": "Pokemon Japanese Sv3a-Raging Surf",
+    "lang": "Japanese",
+    "year": "2023"
+   },
+   {
+    "id": "244384",
+    "slug": "pokemon-japanese-sv3-ruler-black-flame",
+    "name": "Pokemon Japanese SV3-Ruler of the Black Flame",
+    "lang": "Japanese",
+    "year": "2023"
+   },
+   {
+    "id": "255404",
+    "slug": "pokemon-japanese-sv4a-shiny-treasure-ex",
+    "name": "Pokemon Japanese Sv4a-Shiny Treasure EX",
+    "lang": "Japanese",
+    "year": "2023"
+   },
+   {
+    "id": "252104",
+    "slug": "pokemon-japanese-sv4k-ancient-roar",
+    "name": "Pokemon Japanese Sv4k-Ancient Roar",
+    "lang": "Japanese",
+    "year": "2023"
+   },
+   {
+    "id": "252105",
+    "slug": "pokemon-japanese-sv4m-future-flash",
+    "name": "Pokemon Japanese Sv4m-Future Flash",
+    "lang": "Japanese",
+    "year": "2023"
+   },
+   {
+    "id": "230526",
+    "slug": "pokemon-japanese-sval-ex-starter-set-fuecoco-ampharos",
+    "name": "Pokemon Japanese Sval-EX Starter Set: Fuecoco & Ampharos EX",
+    "lang": "Japanese",
+    "year": "2023"
+   },
+   {
+    "id": "230351",
+    "slug": "pokemon-japanese-svam-ex-starter-set-sprigatito-lucario",
+    "name": "Pokemon Japanese Svam-EX Starter Set: Sprigatito & Lucario EX",
+    "lang": "Japanese",
+    "year": "2023"
+   },
+   {
+    "id": "231161",
+    "slug": "pokemon-japanese-svaw-ex-starter-set-quaxly-mimikyu",
+    "name": "Pokemon Japanese Svaw-EX Starter Set: Quaxly & Mimikyu EX",
+    "lang": "Japanese",
+    "year": "2023"
+   },
+   {
+    "id": "230355",
+    "slug": "pokemon-japanese-svb-premium-trainer-box-ex",
+    "name": "Pokemon Japanese Svb-Premium Trainer Box EX",
+    "lang": "Japanese",
+    "year": "2023"
+   },
+   {
+    "id": "235890",
+    "slug": "pokemon-japanese-svc-ex-starter-set-pikachu-pawmot",
+    "name": "Pokemon Japanese Svc-EX Starter Set: Pikachu & Pawmot",
+    "lang": "Japanese",
+    "year": "2023"
+   },
+   {
+    "id": "245165",
+    "slug": "pokemon-japanese-svd-ex-start-deck",
+    "name": "Pokemon Japanese Svd-EX Start Deck",
+    "lang": "Japanese",
+    "year": "2023"
+   },
+   {
+    "id": "250167",
+    "slug": "pokemon-japanese-svel-terastal-starter-set-skeledirge-ex",
+    "name": "Pokemon Japanese Svel-Terastal Starter Set Skeledirge EX",
+    "lang": "Japanese",
+    "year": "2023"
+   },
+   {
+    "id": "250165",
+    "slug": "pokemon-japanese-svem-terastal-starter-set-mewtwo-ex",
+    "name": "Pokemon Japanese Svem-Terastal Starter Set Mewtwo EX",
+    "lang": "Japanese",
+    "year": "2023"
+   },
+   {
+    "id": "248643",
+    "slug": "pokemon-japanese-svf-ruler-black-flame-deck-build-box",
+    "name": "Pokemon Japanese Svf-Ruler of the Black Flame Deck Build Box",
+    "lang": "Japanese",
+    "year": "2023"
+   },
+   {
+    "id": "253653",
+    "slug": "pokemon-japanese-svg-venusaur-charizard-blastoise-special-deck-set-ex",
+    "name": "Pokemon Japanese Svg-Venusaur & Charizard & Blastoise Special Deck Set EX",
+    "lang": "Japanese",
+    "year": "2023"
+   },
+   {
+    "id": "230302",
+    "slug": "pokemon-japanese-sv-p-promo",
+    "name": "Pokemon Japanese SV-P Promo",
+    "lang": "Japanese",
+    "year": "2023"
+   },
+   {
+    "id": "242131",
+    "slug": "pokemon-japanese-svp1-ex-starter-set",
+    "name": "Pokemon Japanese SVP1-EX Starter Set",
+    "lang": "Japanese",
+    "year": "2023"
+   },
+   {
+    "id": "244835",
+    "slug": "pokemon-japanese-wcs23-world-championships-yokohama-deck-pikachu",
+    "name": "Pokemon Japanese WCS23-World Championships Yokohama Deck: Pikachu",
+    "lang": "Japanese",
+    "year": "2023"
+   },
+   {
+    "id": "239125",
+    "slug": "pokemon-klara-premium-tournament-collection",
+    "name": "Pokemon Klara Premium Tournament Collection",
+    "lang": null,
+    "year": "2023"
+   },
+   {
+    "id": "266790",
+    "slug": "pokemon-korean-clf-trading-card-game-classic-venusaur-lugia-ex-deck",
+    "name": "Pokemon Korean Clf-Trading Card Game Classic Venusaur & Lugia EX Deck",
+    "lang": "Korean",
+    "year": "2023"
+   },
+   {
+    "id": "273520",
+    "slug": "pokemon-korean-clk-trading-card-game-classic-blastoise-suicune-ex-deck",
+    "name": "Pokemon Korean Clk-Trading Card Game Classic Blastoise & Suicune EX Deck",
+    "lang": "Korean",
+    "year": "2023"
+   },
+   {
+    "id": "272064",
+    "slug": "pokemon-korean-cll-trading-card-game-classic-charizard-ho-oh-ex-deck",
+    "name": "Pokemon Korean Cll-Trading Card Game Classic Charizard & HO-Oh EX Deck",
+    "lang": "Korean",
+    "year": "2023"
+   },
+   {
+    "id": "239815",
+    "slug": "pokemon-korean-s-promo",
+    "name": "Pokemon Korean S Promo",
+    "lang": "Korean",
+    "year": "2023"
+   },
+   {
+    "id": "239403",
+    "slug": "pokemon-korean-sv1a-triplet-beat",
+    "name": "Pokemon Korean Sv1a-Triplet Beat",
+    "lang": "Korean",
+    "year": "2023"
+   },
+   {
+    "id": "237238",
+    "slug": "pokemon-korean-sv1s-scarlet-ex",
+    "name": "Pokemon Korean Sv1s-Scarlet EX",
+    "lang": "Korean",
+    "year": "2023"
+   },
+   {
+    "id": "236840",
+    "slug": "pokemon-korean-sv1v-violet-ex",
+    "name": "Pokemon Korean Sv1v-Violet EX",
+    "lang": "Korean",
+    "year": "2023"
+   },
+   {
+    "id": "246401",
+    "slug": "pokemon-korean-sv2a-card-151",
+    "name": "Pokemon Korean Sv2a-Pokemon Card 151",
+    "lang": "Korean",
+    "year": "2023"
+   },
+   {
+    "id": "243486",
+    "slug": "pokemon-korean-sv2d-clay-burst",
+    "name": "Pokemon Korean Sv2d-Clay Burst",
+    "lang": "Korean",
+    "year": "2023"
+   },
+   {
+    "id": "243514",
+    "slug": "pokemon-korean-sv2p-snow-hazard",
+    "name": "Pokemon Korean Sv2p-Snow Hazard",
+    "lang": "Korean",
+    "year": "2023"
+   },
+   {
+    "id": "255441",
+    "slug": "pokemon-korean-sv3a-raging-surf",
+    "name": "Pokemon Korean Sv3a-Raging Surf",
+    "lang": "Korean",
+    "year": "2023"
+   },
+   {
+    "id": "251570",
+    "slug": "pokemon-korean-sv3-ruler-black-flame",
+    "name": "Pokemon Korean SV3-Ruler of the Black Flame",
+    "lang": "Korean",
+    "year": "2023"
+   },
+   {
+    "id": "258475",
+    "slug": "pokemon-korean-sv4k-ancient-roar",
+    "name": "Pokemon Korean Sv4k-Ancient Roar",
+    "lang": "Korean",
+    "year": "2023"
+   },
+   {
+    "id": "259731",
+    "slug": "pokemon-korean-sv4m-future-flash",
+    "name": "Pokemon Korean Sv4m-Future Flash",
+    "lang": "Korean",
+    "year": "2023"
+   },
+   {
+    "id": "304467",
+    "slug": "pokemon-korean-svam-ex-starter-set-sprigatito-lucario",
+    "name": "Pokemon Korean Svam-EX Starter Set: Sprigatito & Lucario EX",
+    "lang": "Korean",
+    "year": "2023"
+   },
+   {
+    "id": "279172",
+    "slug": "pokemon-korean-svc-ex-starter-set-pikachu-pawmot",
+    "name": "Pokemon Korean Svc-EX Starter Set: Pikachu & Pawmot",
+    "lang": "Korean",
+    "year": "2023"
+   },
+   {
+    "id": "261742",
+    "slug": "pokemon-korean-svg-venusaur-charizard-blastoise-special-deck-set-ex",
+    "name": "Pokemon Korean Svg-Venusaur & Charizard & Blastoise Special Deck Set EX",
+    "lang": "Korean",
+    "year": "2023"
+   },
+   {
+    "id": "238716",
+    "slug": "pokemon-korean-sv-p-promo",
+    "name": "Pokemon Korean SV-P Promo",
+    "lang": "Korean",
+    "year": "2023"
+   },
+   {
+    "id": "230682",
+    "slug": "pokemon-korean-sword-shield-vstar-universe",
+    "name": "Pokemon Korean Sword & Shield Vstar Universe",
+    "lang": "Korean",
+    "year": "2023"
+   },
+   {
+    "id": "251094",
+    "slug": "pokemon-m23-de-mcdonalds-collection",
+    "name": "Pokemon M23 de-Mcdonald's Collection",
+    "lang": "German",
+    "year": "2023"
+   },
+   {
+    "id": "247891",
+    "slug": "pokemon-m23-en-mcdonalds-collection",
+    "name": "Pokemon M23 EN-Mcdonald's Collection",
+    "lang": null,
+    "year": "2023"
+   },
+   {
+    "id": "283370",
+    "slug": "pokemon-m23-es-mcdonalds-collection",
+    "name": "Pokemon M23 ES-Mcdonald's Collection",
+    "lang": "Spanish",
+    "year": "2023"
+   },
+   {
+    "id": "257177",
+    "slug": "pokemon-m23-fr-mcdonalds-collection",
+    "name": "Pokemon M23 FR-Mcdonald's Collection",
+    "lang": "French",
+    "year": "2023"
+   },
+   {
+    "id": "253430",
+    "slug": "pokemon-m23-mcdonalds-collection",
+    "name": "Pokemon M23 It-Mcdonald's Collection",
+    "lang": "Italian",
+    "year": "2023"
+   },
+   {
+    "id": "249030",
+    "slug": "pokemon-mew-en-151",
+    "name": "Pokemon Mew EN-151",
+    "lang": null,
+    "year": "2023"
+   },
+   {
+    "id": "252850",
+    "slug": "pokemon-my-first-battle-bulbasaur-deck",
+    "name": "Pokemon My First Battle-Bulbasaur Deck",
+    "lang": null,
+    "year": "2023"
+   },
+   {
+    "id": "252851",
+    "slug": "pokemon-my-first-battle-charmander-deck",
+    "name": "Pokemon My First Battle-Charmander Deck",
+    "lang": null,
+    "year": "2023"
+   },
+   {
+    "id": "252844",
+    "slug": "pokemon-my-first-battle-pikachu-deck",
+    "name": "Pokemon My First Battle-Pikachu Deck",
+    "lang": null,
+    "year": "2023"
+   },
+   {
+    "id": "252852",
+    "slug": "pokemon-my-first-battle-squirtle-deck",
+    "name": "Pokemon My First Battle-Squirtle Deck",
+    "lang": null,
+    "year": "2023"
+   },
+   {
+    "id": "244690",
+    "slug": "pokemon-obf-en-obsidian-flames",
+    "name": "Pokemon Obf EN-Obsidian Flames",
+    "lang": null,
+    "year": "2023"
+   },
+   {
+    "id": "240090",
+    "slug": "pokemon-pal-en-paldea-evolved",
+    "name": "Pokemon Pal EN-Paldea Evolved",
+    "lang": null,
+    "year": "2023"
+   },
+   {
+    "id": "240848",
+    "slug": "pokemon-paldea-friends-mini-tins",
+    "name": "Pokemon Paldea Friends Mini Tins",
+    "lang": null,
+    "year": "2023"
+   },
+   {
+    "id": "252284",
+    "slug": "pokemon-par-en-paradox-rift",
+    "name": "Pokemon Par EN-Paradox Rift",
+    "lang": null,
+    "year": "2023"
+   },
+   {
+    "id": "253181",
+    "slug": "pokemon-play-prize-pack",
+    "name": "Pokemon Play! Pokemon Prize Pack",
+    "lang": null,
+    "year": "2023"
+   },
+   {
+    "id": "235165",
+    "slug": "pokemon-play-prize-pack-series-2",
+    "name": "Pokemon Play! Pokemon Prize Pack: Series 2",
+    "lang": null,
+    "year": "2023"
+   },
+   {
+    "id": "247674",
+    "slug": "pokemon-play-prize-pack-series-3",
+    "name": "Pokemon Play! Pokemon Prize Pack: Series 3",
+    "lang": null,
+    "year": "2023"
+   },
+   {
+    "id": "260184",
+    "slug": "pokemon-portuguese-mew-pt-151",
+    "name": "Pokemon Portuguese Mew PT-151",
+    "lang": "Portuguese",
+    "year": "2023"
+   },
+   {
+    "id": "261227",
+    "slug": "pokemon-portuguese-obf-pt-obsidian-flames",
+    "name": "Pokemon Portuguese Obf PT-Obsidian Flames",
+    "lang": "Portuguese",
+    "year": "2023"
+   },
+   {
+    "id": "251235",
+    "slug": "pokemon-portuguese-pal-pt-paldea-evolved",
+    "name": "Pokemon Portuguese Pal PT-Paldea Evolved",
+    "lang": "Portuguese",
+    "year": "2023"
+   },
+   {
+    "id": "261405",
+    "slug": "pokemon-portuguese-par-pt-paradox-rift",
+    "name": "Pokemon Portuguese Par PT-Paradox Rift",
+    "lang": "Portuguese",
+    "year": "2023"
+   },
+   {
+    "id": "245912",
+    "slug": "pokemon-portuguese-svi-pt-scarlet-violet",
+    "name": "Pokemon Portuguese Svi PT-Scarlet & Violet",
+    "lang": "Portuguese",
+    "year": "2023"
+   },
+   {
+    "id": "246612",
+    "slug": "pokemon-portuguese-svp-pt-sv-black-star-promo",
+    "name": "Pokemon Portuguese Svp PT-SV Black Star Promo",
+    "lang": "Portuguese",
+    "year": "2023"
+   },
+   {
+    "id": "274955",
+    "slug": "pokemon-professor-program-promos",
+    "name": "Pokemon Professor Program Promos",
+    "lang": null,
+    "year": "2023"
+   },
+   {
+    "id": "261440",
+    "slug": "pokemon-promo",
+    "name": "Pokemon Promo",
+    "lang": null,
+    "year": "2023"
+   },
+   {
+    "id": "254519",
+    "slug": "pokemon-scarlet-violet-151-mini-tin",
+    "name": "Pokemon Scarlet & Violet 151 Mini Tin",
+    "lang": null,
+    "year": "2023"
+   },
+   {
+    "id": "243962",
+    "slug": "pokemon-simplified-chinese-cs1-5-c-dynamax-tactics",
+    "name": "Pokemon Simplified Chinese CS1.5 C-Dynamax Tactics",
+    "lang": "Chinese",
+    "year": "2023"
+   },
+   {
+    "id": "240466",
+    "slug": "pokemon-simplified-chinese-cs1a-c-dynamax-clash-thunder",
+    "name": "Pokemon Simplified Chinese Cs1a C-Dynamax Clash: Thunder",
+    "lang": "Chinese",
+    "year": "2023"
+   },
+   {
+    "id": "240470",
+    "slug": "pokemon-simplified-chinese-cs1b-c-dynamax-clash-flame",
+    "name": "Pokemon Simplified Chinese Cs1b C-Dynamax Clash: Flame",
+    "lang": "Chinese",
+    "year": "2023"
+   },
+   {
+    "id": "240542",
+    "slug": "pokemon-simplified-chinese-cs1d-c-dynamax-clash-v-starter-deck",
+    "name": "Pokemon Simplified Chinese Cs1d C-Dynamax Clash: V Starter Deck",
+    "lang": "Chinese",
+    "year": "2023"
+   },
+   {
+    "id": "258553",
+    "slug": "pokemon-simplified-chinese-cs2-1-c-meow-little-tips",
+    "name": "Pokemon Simplified Chinese CS2.1 C-Meow Meow Little Tips",
+    "lang": "Chinese",
+    "year": "2023"
+   },
+   {
+    "id": "251822",
+    "slug": "pokemon-simplified-chinese-cs2-5-c-brilliant-counterattack",
+    "name": "Pokemon Simplified Chinese CS2.5 C-Brilliant Counterattack",
+    "lang": "Chinese",
+    "year": "2023"
+   },
+   {
+    "id": "247270",
+    "slug": "pokemon-simplified-chinese-cs2a-c-vivid-portrayals-obsidian",
+    "name": "Pokemon Simplified Chinese Cs2a C-Vivid Portrayals: Obsidian",
+    "lang": "Chinese",
+    "year": "2023"
+   },
+   {
+    "id": "248627",
+    "slug": "pokemon-simplified-chinese-cs2b-c-vivid-portrayals-indigo",
+    "name": "Pokemon Simplified Chinese Cs2b C-Vivid Portrayals: Indigo",
+    "lang": "Chinese",
+    "year": "2023"
+   },
+   {
+    "id": "255603",
+    "slug": "pokemon-simplified-chinese-cs3a-c-primordial-arts-overgrow",
+    "name": "Pokemon Simplified Chinese Cs3a C-Primordial Arts: Overgrow",
+    "lang": "Chinese",
+    "year": "2023"
+   },
+   {
+    "id": "255671",
+    "slug": "pokemon-simplified-chinese-cs3b-c-primordial-arts-torrent",
+    "name": "Pokemon Simplified Chinese Cs3b C-Primordial Arts: Torrent",
+    "lang": "Chinese",
+    "year": "2023"
+   },
+   {
+    "id": "259716",
+    "slug": "pokemon-simplified-chinese-cs3d-c-primordial-arts-v-starter-set",
+    "name": "Pokemon Simplified Chinese Cs3d C-Primordial Arts V Starter Set",
+    "lang": "Chinese",
+    "year": "2023"
+   },
+   {
+    "id": "257811",
+    "slug": "pokemon-simplified-chinese-csd-c-poke-ball-great-gift-box-pikachu-legendary-celebration",
+    "name": "Pokemon Simplified Chinese Csd C-Poke Ball/Great Ball Gift Box: Pikachu Legendary Celebration",
+    "lang": "Chinese",
+    "year": "2023"
+   },
+   {
+    "id": "249975",
+    "slug": "pokemon-simplified-chinese-csm2-1-c-golden-energy",
+    "name": "Pokemon Simplified Chinese CSM2.1 C-Golden Energy",
+    "lang": "Chinese",
+    "year": "2023"
+   },
+   {
+    "id": "235557",
+    "slug": "pokemon-simplified-chinese-csm2-5-c-striking-competition",
+    "name": "Pokemon Simplified Chinese CSM2.5 C-Striking Competition",
+    "lang": "Chinese",
+    "year": "2023"
+   },
+   {
+    "id": "232191",
+    "slug": "pokemon-simplified-chinese-csm2a-c-shining-synergy-shower",
+    "name": "Pokemon Simplified Chinese Csm2a C-Shining Synergy: Shower",
+    "lang": "Chinese",
+    "year": "2023"
+   },
+   {
+    "id": "232376",
+    "slug": "pokemon-simplified-chinese-csm2b-c-shining-synergy-supreme",
+    "name": "Pokemon Simplified Chinese Csm2b C-Shining Synergy: Supreme",
+    "lang": "Chinese",
+    "year": "2023"
+   },
+   {
+    "id": "232292",
+    "slug": "pokemon-simplified-chinese-csm2c-c-shining-synergy-summon",
+    "name": "Pokemon Simplified Chinese Csm2c C-Shining Synergy: Summon",
+    "lang": "Chinese",
+    "year": "2023"
+   },
+   {
+    "id": "232393",
+    "slug": "pokemon-simplified-chinese-csm2d-c-shining-synergy-gx-starter-deck",
+    "name": "Pokemon Simplified Chinese Csm2d C-Shining Synergy GX Starter Deck",
+    "lang": "Chinese",
+    "year": "2023"
+   },
+   {
+    "id": "236838",
+    "slug": "pokemon-simplified-chinese-csma-c-arceus-dialga-palkia-gx-gift-box",
+    "name": "Pokemon Simplified Chinese Csma C-Arceus & Dialga & Palkia GX Gift Box",
+    "lang": "Chinese",
+    "year": "2023"
+   },
+   {
+    "id": "236531",
+    "slug": "pokemon-simplified-chinese-csmj-c-shining-gift-box",
+    "name": "Pokemon Simplified Chinese Csmj C-Shining Pokemon Gift Box",
+    "lang": "Chinese",
+    "year": "2023"
+   },
+   {
+    "id": "248131",
+    "slug": "pokemon-simplified-chinese-csmpa-c-battle-party-grass-deck",
+    "name": "Pokemon Simplified Chinese Csmpa C-Battle Party Grass Deck",
+    "lang": "Chinese",
+    "year": "2023"
+   },
+   {
+    "id": "242390",
+    "slug": "pokemon-simplified-chinese-csmpb-c-battle-party-fire-deck",
+    "name": "Pokemon Simplified Chinese Csmpb C-Battle Party Fire Deck",
+    "lang": "Chinese",
+    "year": "2023"
+   },
+   {
+    "id": "242388",
+    "slug": "pokemon-simplified-chinese-csmpc-c-battle-party-water-deck",
+    "name": "Pokemon Simplified Chinese Csmpc C-Battle Party Water Deck",
+    "lang": "Chinese",
+    "year": "2023"
+   },
+   {
+    "id": "242408",
+    "slug": "pokemon-simplified-chinese-csmpd-c-battle-party-lightning-deck",
+    "name": "Pokemon Simplified Chinese Csmpd C-Battle Party Lightning Deck",
+    "lang": "Chinese",
+    "year": "2023"
+   },
+   {
+    "id": "248832",
+    "slug": "pokemon-simplified-chinese-csmpe-c-battle-party-psychic-deck",
+    "name": "Pokemon Simplified Chinese Csmpe C-Battle Party Psychic Deck",
+    "lang": "Chinese",
+    "year": "2023"
+   },
+   {
+    "id": "242414",
+    "slug": "pokemon-simplified-chinese-csmpf-c-battle-party-fighting-deck",
+    "name": "Pokemon Simplified Chinese Csmpf C-Battle Party Fighting Deck",
+    "lang": "Chinese",
+    "year": "2023"
+   },
+   {
+    "id": "244290",
+    "slug": "pokemon-simplified-chinese-csmpg-c-battle-party-darkness-deck",
+    "name": "Pokemon Simplified Chinese Csmpg C-Battle Party Darkness Deck",
+    "lang": "Chinese",
+    "year": "2023"
+   },
+   {
+    "id": "242413",
+    "slug": "pokemon-simplified-chinese-csmph-c-battle-party-metal-deck",
+    "name": "Pokemon Simplified Chinese Csmph C-Battle Party Metal Deck",
+    "lang": "Chinese",
+    "year": "2023"
+   },
+   {
+    "id": "237651",
+    "slug": "pokemon-simplified-chinese-csmpi-c-battle-party-set-reward-pack",
+    "name": "Pokemon Simplified Chinese Csmpi C-Battle Party Set Reward Pack",
+    "lang": "Chinese",
+    "year": "2023"
+   },
+   {
+    "id": "229646",
+    "slug": "pokemon-simplified-chinese-csmy-c-eevee-gx-set-gift-box",
+    "name": "Pokemon Simplified Chinese Csmy C-Eevee GX Set Gift Box",
+    "lang": "Chinese",
+    "year": "2023"
+   },
+   {
+    "id": "242124",
+    "slug": "pokemon-simplified-chinese-s-promo",
+    "name": "Pokemon Simplified Chinese S Promo",
+    "lang": "Chinese",
+    "year": "2023"
+   },
+   {
+    "id": "235435",
+    "slug": "pokemon-simplified-chinese-sm-promo",
+    "name": "Pokemon Simplified Chinese SM Promo",
+    "lang": "Chinese",
+    "year": "2023"
+   },
+   {
+    "id": "249041",
+    "slug": "pokemon-spanish-mew-es-151",
+    "name": "Pokemon Spanish Mew ES-151",
+    "lang": "Spanish",
+    "year": "2023"
+   },
+   {
+    "id": "260223",
+    "slug": "pokemon-spanish-my-first-battle-bulbasaur-deck",
+    "name": "Pokemon Spanish My First Battle-Bulbasaur Deck",
+    "lang": "Spanish",
+    "year": "2023"
+   },
+   {
+    "id": "245442",
+    "slug": "pokemon-spanish-obf-es-obsidian-flames",
+    "name": "Pokemon Spanish Obf ES-Obsidian Flames",
+    "lang": "Spanish",
+    "year": "2023"
+   },
+   {
+    "id": "248834",
+    "slug": "pokemon-spanish-pal-es-paldea-evolved",
+    "name": "Pokemon Spanish Pal ES-Paldea Evolved",
+    "lang": "Spanish",
+    "year": "2023"
+   },
+   {
+    "id": "256161",
+    "slug": "pokemon-spanish-par-es-paradox-rift",
+    "name": "Pokemon Spanish Par ES-Paradox Rift",
+    "lang": "Spanish",
+    "year": "2023"
+   },
+   {
+    "id": "243642",
+    "slug": "pokemon-spanish-svi-es-scarlet-violet",
+    "name": "Pokemon Spanish Svi ES-Scarlet & Violet",
+    "lang": "Spanish",
+    "year": "2023"
+   },
+   {
+    "id": "246611",
+    "slug": "pokemon-spanish-svp-es-sv-black-star-promo",
+    "name": "Pokemon Spanish Svp ES-SV Black Star Promo",
+    "lang": "Spanish",
+    "year": "2023"
+   },
+   {
+    "id": "263193",
+    "slug": "pokemon-sun-moon-strong-bond-tins-promo",
+    "name": "Pokemon Sun & Moon Strong Bond Tins Promo",
+    "lang": null,
+    "year": "2023"
+   },
+   {
+    "id": "246456",
+    "slug": "pokemon-sve-en-basic-energies",
+    "name": "Pokemon Sve EN-Basic Energies",
+    "lang": null,
+    "year": "2023"
+   },
+   {
+    "id": "230284",
+    "slug": "pokemon-svi-en-scarlet-violet",
+    "name": "Pokemon Svi EN-Scarlet & Violet",
+    "lang": null,
+    "year": "2023"
+   },
+   {
+    "id": "230299",
+    "slug": "pokemon-svp-en-sv-black-star-promo",
+    "name": "Pokemon Svp EN-SV Black Star Promo",
+    "lang": null,
+    "year": "2023"
+   },
+   {
+    "id": "235146",
+    "slug": "pokemon-sword-shield-evolving-skies",
+    "name": "Pokemon Sword & Shield Evolving Skies",
+    "lang": null,
+    "year": "2023"
+   },
+   {
+    "id": "256592",
+    "slug": "pokemon-sword-shield-lucario-v-tyranitar-heavy-hitters-premium-collection",
+    "name": "Pokemon Sword & Shield Lucario V & Tyranitar V Heavy Hitters Premium Collection",
+    "lang": null,
+    "year": "2023"
+   },
+   {
+    "id": "229016",
+    "slug": "pokemon-sword-shield-crown-zenith",
+    "name": "Pokemon Sword and Shield Crown Zenith",
+    "lang": null,
+    "year": "2023"
+   },
+   {
+    "id": "233731",
+    "slug": "pokemon-sword-shield-crown-zenith-mini-tin",
+    "name": "Pokemon Sword and Shield Crown Zenith Mini Tin",
+    "lang": null,
+    "year": "2023"
+   },
+   {
+    "id": "233849",
+    "slug": "pokemon-sword-shield-silver-tempest-two-pack-blister",
+    "name": "Pokemon Sword and Shield Silver Tempest Two Pack Blister",
+    "lang": null,
+    "year": "2023"
+   },
+   {
+    "id": "229417",
+    "slug": "pokemon-swsh-black-star-promo",
+    "name": "Pokemon Swsh Black Star Promo",
+    "lang": null,
+    "year": "2023"
+   },
+   {
+    "id": "250692",
+    "slug": "pokemon-tcg-live-insert-code-cards",
+    "name": "Pokemon TCG Live Insert Code Cards",
+    "lang": null,
+    "year": "2023"
+   },
+   {
+    "id": "266679",
+    "slug": "pokemon-thai-insert-cards",
+    "name": "Pokemon Thai Insert Cards",
+    "lang": "Thai",
+    "year": "2023"
+   },
+   {
+    "id": "240510",
+    "slug": "pokemon-thai-sv1a-t-triplet-beat",
+    "name": "Pokemon Thai Sv1a T-Triplet Beat",
+    "lang": "Thai",
+    "year": "2023"
+   },
+   {
+    "id": "237866",
+    "slug": "pokemon-thai-sv1s-t-scarlet-ex",
+    "name": "Pokemon Thai Sv1s T-Scarlet EX",
+    "lang": "Thai",
+    "year": "2023"
+   },
+   {
+    "id": "233252",
+    "slug": "pokemon-thai-sv1v-t-violet-ex",
+    "name": "Pokemon Thai Sv1v T-Violet EX",
+    "lang": "Thai",
+    "year": "2023"
+   },
+   {
+    "id": "246010",
+    "slug": "pokemon-thai-sv2a-t-card-151",
+    "name": "Pokemon Thai Sv2a T-Pokemon Card 151",
+    "lang": "Thai",
+    "year": "2023"
+   },
+   {
+    "id": "245559",
+    "slug": "pokemon-thai-sv2d-t-clay-burst",
+    "name": "Pokemon Thai Sv2d T-Clay Burst",
+    "lang": "Thai",
+    "year": "2023"
+   },
+   {
+    "id": "253886",
+    "slug": "pokemon-thai-sv2p-t-snow-hazard",
+    "name": "Pokemon Thai Sv2p T-Snow Hazard",
+    "lang": "Thai",
+    "year": "2023"
+   },
+   {
+    "id": "254207",
+    "slug": "pokemon-thai-sv3-t-ruler-black-flame",
+    "name": "Pokemon Thai SV3 T-Ruler of the Black Flame",
+    "lang": "Thai",
+    "year": "2023"
+   },
+   {
+    "id": "278087",
+    "slug": "pokemon-thai-sv3a-t-raging-surf",
+    "name": "Pokemon Thai Sv3a T-Raging Surf",
+    "lang": "Thai",
+    "year": "2023"
+   },
+   {
+    "id": "275633",
+    "slug": "pokemon-thai-sv4k-t-ancient-roar",
+    "name": "Pokemon Thai Sv4k T-Ancient Roar",
+    "lang": "Thai",
+    "year": "2023"
+   },
+   {
+    "id": "259973",
+    "slug": "pokemon-thai-sv4m-t-future-flash",
+    "name": "Pokemon Thai Sv4m T-Future Flash",
+    "lang": "Thai",
+    "year": "2023"
+   },
+   {
+    "id": "235227",
+    "slug": "pokemon-thai-sv-p-promo",
+    "name": "Pokemon Thai SV-P Promo",
+    "lang": "Thai",
+    "year": "2023"
+   },
+   {
+    "id": "255168",
+    "slug": "pokemon-traditional-chinese-clf-f-trading-card-game-classic-venusaur-lugia-ex-deck",
+    "name": "Pokemon Traditional Chinese Clf F-Trading Card Game Classic Venusaur & Lugia EX Deck",
+    "lang": "Chinese",
+    "year": "2023"
+   },
+   {
+    "id": "255171",
+    "slug": "pokemon-traditional-chinese-clk-f-trading-card-game-classic-blastoise-suicune-ex-deck",
+    "name": "Pokemon Traditional Chinese Clk F-Trading Card Game Classic Blastoise & Suicune EX Deck",
+    "lang": "Chinese",
+    "year": "2023"
+   },
+   {
+    "id": "253891",
+    "slug": "pokemon-traditional-chinese-cll-f-trading-card-game-classic-charizard-ho-oh-ex-deck",
+    "name": "Pokemon Traditional Chinese Cll F-Trading Card Game Classic Charizard & HO-Oh EX Deck",
+    "lang": "Chinese",
+    "year": "2023"
+   },
+   {
+    "id": "338070",
+    "slug": "pokemon-traditional-chinese-so-f-charizard-vstar-vs-rayquaza-vmax-special-deck-set",
+    "name": "Pokemon Traditional Chinese So F-Charizard Vstar VS Rayquaza Vmax Special Deck Set",
+    "lang": "Chinese",
+    "year": "2023"
+   },
+   {
+    "id": "236401",
+    "slug": "pokemon-traditional-chinese-sv1a-f-triplet-beat",
+    "name": "Pokemon Traditional Chinese Sv1a F-Triplet Beat",
+    "lang": "Chinese",
+    "year": "2023"
+   },
+   {
+    "id": "230293",
+    "slug": "pokemon-traditional-chinese-sv1s-f-scarlet-ex",
+    "name": "Pokemon Traditional Chinese Sv1s F-Scarlet EX",
+    "lang": "Chinese",
+    "year": "2023"
+   },
+   {
+    "id": "230298",
+    "slug": "pokemon-traditional-chinese-sv1v-f-violet-ex",
+    "name": "Pokemon Traditional Chinese Sv1v F-Violet EX",
+    "lang": "Chinese",
+    "year": "2023"
+   },
+   {
+    "id": "242941",
+    "slug": "pokemon-traditional-chinese-sv2a-f-card-151",
+    "name": "Pokemon Traditional Chinese Sv2a F-Pokemon Card 151",
+    "lang": "Chinese",
+    "year": "2023"
+   },
+   {
+    "id": "238406",
+    "slug": "pokemon-traditional-chinese-sv2d-f-clay-burst",
+    "name": "Pokemon Traditional Chinese Sv2d F-Clay Burst",
+    "lang": "Chinese",
+    "year": "2023"
+   },
+   {
+    "id": "239207",
+    "slug": "pokemon-traditional-chinese-sv2p-f-snow-hazard",
+    "name": "Pokemon Traditional Chinese Sv2p F-Snow Hazard",
+    "lang": "Chinese",
+    "year": "2023"
+   },
+   {
+    "id": "247652",
+    "slug": "pokemon-traditional-chinese-sv3-f-ruler-black-flame",
+    "name": "Pokemon Traditional Chinese SV3 F-Ruler of the Black Flame",
+    "lang": "Chinese",
+    "year": "2023"
+   },
+   {
+    "id": "250299",
+    "slug": "pokemon-traditional-chinese-sv3a-f-raging-surf",
+    "name": "Pokemon Traditional Chinese Sv3a F-Raging Surf",
+    "lang": "Chinese",
+    "year": "2023"
+   },
+   {
+    "id": "258225",
+    "slug": "pokemon-traditional-chinese-sv4a-f-shiny-treasure-ex",
+    "name": "Pokemon Traditional Chinese Sv4a F-Shiny Treasure EX",
+    "lang": "Chinese",
+    "year": "2023"
+   },
+   {
+    "id": "257221",
+    "slug": "pokemon-traditional-chinese-sv4k-f-ancient-roar",
+    "name": "Pokemon Traditional Chinese Sv4k F-Ancient Roar",
+    "lang": "Chinese",
+    "year": "2023"
+   },
+   {
+    "id": "258000",
+    "slug": "pokemon-traditional-chinese-sv4m-f-future-flash",
+    "name": "Pokemon Traditional Chinese Sv4m F-Future Flash",
+    "lang": "Chinese",
+    "year": "2023"
+   },
+   {
+    "id": "338966",
+    "slug": "pokemon-traditional-chinese-sval-ex-starter-set-fuecoco-ampharos",
+    "name": "Pokemon Traditional Chinese Sval-EX Starter Set: Fuecoco & Ampharos EX",
+    "lang": "Chinese",
+    "year": "2023"
+   },
+   {
+    "id": "300524",
+    "slug": "pokemon-traditional-chinese-svaw-ex-starter-set-quaxly-mimikyu",
+    "name": "Pokemon Traditional Chinese Svaw-EX Starter Set: Quaxly & Mimikyu EX",
+    "lang": "Chinese",
+    "year": "2023"
+   },
+   {
+    "id": "252270",
+    "slug": "pokemon-traditional-chinese-svc-f-ex-starter-set-pikachu-pawmot",
+    "name": "Pokemon Traditional Chinese Svc F-EX Starter Set: Pikachu & Pawmot",
+    "lang": "Chinese",
+    "year": "2023"
+   },
+   {
+    "id": "258980",
+    "slug": "pokemon-traditional-chinese-svd-ex-start-deck",
+    "name": "Pokemon Traditional Chinese Svd-EX Start Deck",
+    "lang": "Chinese",
+    "year": "2023"
+   },
+   {
+    "id": "256235",
+    "slug": "pokemon-traditional-chinese-svem-f-terastal-starter-set-mewtwo-ex",
+    "name": "Pokemon Traditional Chinese Svem F-Terastal Starter Set Mewtwo EX",
+    "lang": "Chinese",
+    "year": "2023"
+   },
+   {
+    "id": "264263",
+    "slug": "pokemon-traditional-chinese-svf-ruler-black-flame-deck-build-box",
+    "name": "Pokemon Traditional Chinese Svf-Ruler of the Black Flame Deck Build Box",
+    "lang": "Chinese",
+    "year": "2023"
+   },
+   {
+    "id": "230303",
+    "slug": "pokemon-traditional-chinese-sv-p-promo",
+    "name": "Pokemon Traditional Chinese SV-P Promo",
+    "lang": "Chinese",
+    "year": "2023"
+   },
+   {
+    "id": "247268",
+    "slug": "pokemon-trick-or-trade",
+    "name": "Pokemon Trick or Trade",
+    "lang": null,
+    "year": "2023"
+   },
+   {
+    "id": "247922",
+    "slug": "pokemon-world-championships-promo",
+    "name": "Pokemon World Championships Promo",
+    "lang": null,
+    "year": "2023"
+   }
+  ]
+ },
+ "2024": {
+  "at": "2026-09-18T16:52:00Z",
+  "sets": [
+   {
+    "id": "266843",
+    "slug": "pokemon-2023-world-championship-deck-colorless-lugia",
+    "name": "Pokemon 2023 World Championship Deck: Colorless Lugia",
+    "lang": null,
+    "year": "2024"
+   },
+   {
+    "id": "267285",
+    "slug": "pokemon-2023-world-championship-deck-lost-box-kyogre",
+    "name": "Pokemon 2023 World Championship Deck: Lost Box Kyogre",
+    "lang": null,
+    "year": "2024"
+   },
+   {
+    "id": "267284",
+    "slug": "pokemon-2023-world-championship-deck-psychic-elegance",
+    "name": "Pokemon 2023 World Championship Deck: Psychic Elegance",
+    "lang": null,
+    "year": "2024"
+   },
+   {
+    "id": "265870",
+    "slug": "pokemon-2023-world-championships-deck-mews-revenge",
+    "name": "Pokemon 2023 World Championships Deck: Mew's Revenge",
+    "lang": null,
+    "year": "2024"
+   },
+   {
+    "id": "271511",
+    "slug": "pokemon-2024-europe-international-championships",
+    "name": "Pokemon 2024 Europe International Championships",
+    "lang": null,
+    "year": "2024"
+   },
+   {
+    "id": "274642",
+    "slug": "pokemon-2024-north-america-international-championships",
+    "name": "Pokemon 2024 North America International Championships",
+    "lang": null,
+    "year": "2024"
+   },
+   {
+    "id": "302138",
+    "slug": "pokemon-2025-europe-international-championships",
+    "name": "Pokemon 2025 Europe International Championships",
+    "lang": null,
+    "year": "2024"
+   },
+   {
+    "id": "291023",
+    "slug": "pokemon-2025-latin-america-international-championships",
+    "name": "Pokemon 2025 Latin America International Championships",
+    "lang": null,
+    "year": "2024"
+   },
+   {
+    "id": "283784",
+    "slug": "pokemon-battle-academy",
+    "name": "Pokemon Battle Academy",
+    "lang": null,
+    "year": "2024"
+   },
+   {
+    "id": "265377",
+    "slug": "pokemon-combined-powers-premium-collection",
+    "name": "Pokemon Combined Powers Premium Collection",
+    "lang": null,
+    "year": "2024"
+   },
+   {
+    "id": "279830",
+    "slug": "pokemon-english-insert-cards",
+    "name": "Pokemon English Insert Cards",
+    "lang": null,
+    "year": "2024"
+   },
+   {
+    "id": "281348",
+    "slug": "pokemon-french-2023-world-championship-deck-lost-box-kyogre",
+    "name": "Pokemon French 2023 World Championship Deck: Lost Box Kyogre",
+    "lang": "French",
+    "year": "2024"
+   },
+   {
+    "id": "303811",
+    "slug": "pokemon-french-holiday-calendar",
+    "name": "Pokemon French Holiday Calendar",
+    "lang": "French",
+    "year": "2024"
+   },
+   {
+    "id": "260123",
+    "slug": "pokemon-french-paf-fr-paldean-fates",
+    "name": "Pokemon French Paf FR-Paldean Fates",
+    "lang": "French",
+    "year": "2024"
+   },
+   {
+    "id": "325567",
+    "slug": "pokemon-french-pal-fr-paldea-evolved",
+    "name": "Pokemon French Pal FR-Paldea Evolved",
+    "lang": "French",
+    "year": "2024"
+   },
+   {
+    "id": "266083",
+    "slug": "pokemon-french-play-prize-pack-series-4",
+    "name": "Pokemon French Play! Pokemon Prize Pack: Series 4",
+    "lang": "French",
+    "year": "2024"
+   },
+   {
+    "id": "286897",
+    "slug": "pokemon-french-play-prize-pack-series-5",
+    "name": "Pokemon French Play! Pokemon Prize Pack: Series 5",
+    "lang": "French",
+    "year": "2024"
+   },
+   {
+    "id": "280302",
+    "slug": "pokemon-french-scr-fr-stellar-crown",
+    "name": "Pokemon French Scr FR-Stellar Crown",
+    "lang": "French",
+    "year": "2024"
+   },
+   {
+    "id": "277110",
+    "slug": "pokemon-french-sfa-fr-shrouded-fable",
+    "name": "Pokemon French Sfa FR-Shrouded Fable",
+    "lang": "French",
+    "year": "2024"
+   },
+   {
+    "id": "285276",
+    "slug": "pokemon-french-ssp-fr-surging-sparks",
+    "name": "Pokemon French Ssp FR-Surging Sparks",
+    "lang": "French",
+    "year": "2024"
+   },
+   {
+    "id": "262993",
+    "slug": "pokemon-french-svp-fr-sv-black-star-promo",
+    "name": "Pokemon French Svp FR-SV Black Star Promo",
+    "lang": "French",
+    "year": "2024"
+   },
+   {
+    "id": "264056",
+    "slug": "pokemon-french-tef-fr-temporal-forces",
+    "name": "Pokemon French Tef FR-Temporal Forces",
+    "lang": "French",
+    "year": "2024"
+   },
+   {
+    "id": "271480",
+    "slug": "pokemon-french-twm-fr-twilight-masquerade",
+    "name": "Pokemon French Twm FR-Twilight Masquerade",
+    "lang": "French",
+    "year": "2024"
+   },
+   {
+    "id": "299373",
+    "slug": "pokemon-german-2023-world-championship-deck-lost-box-kyogre",
+    "name": "Pokemon German 2023 World Championship Deck: Lost Box Kyogre",
+    "lang": "German",
+    "year": "2024"
+   },
+   {
+    "id": "302432",
+    "slug": "pokemon-german-mew-de-151",
+    "name": "Pokemon German Mew de-151",
+    "lang": "German",
+    "year": "2024"
+   },
+   {
+    "id": "302866",
+    "slug": "pokemon-german-obf-de-obsidian-flames",
+    "name": "Pokemon German Obf de-Obsidian Flames",
+    "lang": "German",
+    "year": "2024"
+   },
+   {
+    "id": "260122",
+    "slug": "pokemon-german-paf-de-paldean-fates",
+    "name": "Pokemon German Paf de-Paldean Fates",
+    "lang": "German",
+    "year": "2024"
+   },
+   {
+    "id": "302857",
+    "slug": "pokemon-german-pal-de-paldea-evolved",
+    "name": "Pokemon German Pal de-Paldea Evolved",
+    "lang": "German",
+    "year": "2024"
+   },
+   {
+    "id": "272492",
+    "slug": "pokemon-german-play-prize-pack-series-4",
+    "name": "Pokemon German Play! Pokemon Prize Pack: Series 4",
+    "lang": "German",
+    "year": "2024"
+   },
+   {
+    "id": "284317",
+    "slug": "pokemon-german-play-prize-pack-series-5",
+    "name": "Pokemon German Play! Pokemon Prize Pack: Series 5",
+    "lang": "German",
+    "year": "2024"
+   },
+   {
+    "id": "280301",
+    "slug": "pokemon-german-scr-de-stellar-crown",
+    "name": "Pokemon German Scr de-Stellar Crown",
+    "lang": "German",
+    "year": "2024"
+   },
+   {
+    "id": "277109",
+    "slug": "pokemon-german-sfa-de-shrouded-fable",
+    "name": "Pokemon German Sfa de-Shrouded Fable",
+    "lang": "German",
+    "year": "2024"
+   },
+   {
+    "id": "285275",
+    "slug": "pokemon-german-ssp-de-surging-sparks",
+    "name": "Pokemon German Ssp de-Surging Sparks",
+    "lang": "German",
+    "year": "2024"
+   },
+   {
+    "id": "263650",
+    "slug": "pokemon-german-svp-de-sv-black-star-promo",
+    "name": "Pokemon German Svp de-SV Black Star Promo",
+    "lang": "German",
+    "year": "2024"
+   },
+   {
+    "id": "264055",
+    "slug": "pokemon-german-tef-de-temporal-forces",
+    "name": "Pokemon German Tef de-Temporal Forces",
+    "lang": "German",
+    "year": "2024"
+   },
+   {
+    "id": "271479",
+    "slug": "pokemon-german-twm-de-twilight-masquerade",
+    "name": "Pokemon German Twm de-Twilight Masquerade",
+    "lang": "German",
+    "year": "2024"
+   },
+   {
+    "id": "286695",
+    "slug": "pokemon-greninja-ex-ultra-premium-collection",
+    "name": "Pokemon Greninja EX Ultra-Premium Collection",
+    "lang": null,
+    "year": "2024"
+   },
+   {
+    "id": "283013",
+    "slug": "pokemon-holiday-calendar",
+    "name": "Pokemon Holiday Calendar",
+    "lang": null,
+    "year": "2024"
+   },
+   {
+    "id": "261380",
+    "slug": "pokemon-indonesian-sv4a-shiny-treasure-ex",
+    "name": "Pokemon Indonesian Sv4a I-Shiny Treasure EX",
+    "lang": "Indonesian",
+    "year": "2024"
+   },
+   {
+    "id": "268701",
+    "slug": "pokemon-indonesian-sv5s-ace-paradox",
+    "name": "Pokemon Indonesian Sv5s I-Ace Paradox",
+    "lang": "Indonesian",
+    "year": "2024"
+   },
+   {
+    "id": "274852",
+    "slug": "pokemon-indonesian-sv6s-transfiguration-mask",
+    "name": "Pokemon Indonesian Sv6s I-Transfiguration Mask",
+    "lang": "Indonesian",
+    "year": "2024"
+   },
+   {
+    "id": "283912",
+    "slug": "pokemon-indonesian-sv7s-stellar-guidance",
+    "name": "Pokemon Indonesian Sv7s I-Stellar Guidance",
+    "lang": "Indonesian",
+    "year": "2024"
+   },
+   {
+    "id": "290483",
+    "slug": "pokemon-indonesian-sv8s-stellar-lightning",
+    "name": "Pokemon Indonesian Sv8s I-Stellar Lightning",
+    "lang": "Indonesian",
+    "year": "2024"
+   },
+   {
+    "id": "312548",
+    "slug": "pokemon-indonesian-svk-stellar-miracle-deck-build-box",
+    "name": "Pokemon Indonesian Svk-Stellar Miracle Deck Build Box",
+    "lang": "Indonesian",
+    "year": "2024"
+   },
+   {
+    "id": "261484",
+    "slug": "pokemon-indonesian-sv-p-promo",
+    "name": "Pokemon Indonesian SV-P Promo",
+    "lang": "Indonesian",
+    "year": "2024"
+   },
+   {
+    "id": "346982",
+    "slug": "pokemon-indonesian-svtg-tactics-deck-terastal-garchomp-ex",
+    "name": "Pokemon Indonesian Svtg I-Tactics Deck Terastal Garchomp EX Deck",
+    "lang": "Indonesian",
+    "year": "2024"
+   },
+   {
+    "id": "307586",
+    "slug": "pokemon-indonesian-svtl-tactics-deck-terastal-charizard-ex",
+    "name": "Pokemon Indonesian Svtl I-Tactics Deck Terastal Charizard EX Deck",
+    "lang": "Indonesian",
+    "year": "2024"
+   },
+   {
+    "id": "299736",
+    "slug": "pokemon-italian-holiday-calendar",
+    "name": "Pokemon Italian Holiday Calendar",
+    "lang": "Italian",
+    "year": "2024"
+   },
+   {
+    "id": "260125",
+    "slug": "pokemon-italian-paf-paldean-fates",
+    "name": "Pokemon Italian Paf It-Paldean Fates",
+    "lang": "Italian",
+    "year": "2024"
+   },
+   {
+    "id": "280304",
+    "slug": "pokemon-italian-scr-stellar-crown",
+    "name": "Pokemon Italian Scr It-Stellar Crown",
+    "lang": "Italian",
+    "year": "2024"
+   },
+   {
+    "id": "277112",
+    "slug": "pokemon-italian-sfa-shrouded-fable",
+    "name": "Pokemon Italian Sfa It-Shrouded Fable",
+    "lang": "Italian",
+    "year": "2024"
+   },
+   {
+    "id": "285279",
+    "slug": "pokemon-italian-ssp-surging-sparks",
+    "name": "Pokemon Italian Ssp It-Surging Sparks",
+    "lang": "Italian",
+    "year": "2024"
+   },
+   {
+    "id": "345216",
+    "slug": "pokemon-italian-sve-basic-energies",
+    "name": "Pokemon Italian Sve It-Basic Energies",
+    "lang": "Italian",
+    "year": "2024"
+   },
+   {
+    "id": "264415",
+    "slug": "pokemon-italian-svp-sv-black-star-promo",
+    "name": "Pokemon Italian Svp It-SV Black Star Promo",
+    "lang": "Italian",
+    "year": "2024"
+   },
+   {
+    "id": "264057",
+    "slug": "pokemon-italian-tef-temporal-forces",
+    "name": "Pokemon Italian Tef It-Temporal Forces",
+    "lang": "Italian",
+    "year": "2024"
+   },
+   {
+    "id": "271874",
+    "slug": "pokemon-italian-twm-twilight-masquerade",
+    "name": "Pokemon Italian Twm It-Twilight Masquerade",
+    "lang": "Italian",
+    "year": "2024"
+   },
+   {
+    "id": "341542",
+    "slug": "pokemon-japanese-scarlet-violet-energies",
+    "name": "Pokemon Japanese Scarlet & Violet Energies",
+    "lang": "Japanese",
+    "year": "2024"
+   },
+   {
+    "id": "264649",
+    "slug": "pokemon-japanese-sv5a-crimson-haze",
+    "name": "Pokemon Japanese Sv5a-Crimson Haze",
+    "lang": "Japanese",
+    "year": "2024"
+   },
+   {
+    "id": "260324",
+    "slug": "pokemon-japanese-sv5k-wild-force",
+    "name": "Pokemon Japanese Sv5k-Wild Force",
+    "lang": "Japanese",
+    "year": "2024"
+   },
+   {
+    "id": "260322",
+    "slug": "pokemon-japanese-sv5m-cyber-judge",
+    "name": "Pokemon Japanese Sv5m-Cyber Judge",
+    "lang": "Japanese",
+    "year": "2024"
+   },
+   {
+    "id": "272603",
+    "slug": "pokemon-japanese-sv6a-night-wanderer",
+    "name": "Pokemon Japanese Sv6a-Night Wanderer",
+    "lang": "Japanese",
+    "year": "2024"
+   },
+   {
+    "id": "268491",
+    "slug": "pokemon-japanese-sv6-transformation-mask",
+    "name": "Pokemon Japanese SV6-Transformation Mask",
+    "lang": "Japanese",
+    "year": "2024"
+   },
+   {
+    "id": "281224",
+    "slug": "pokemon-japanese-sv7a-paradise-dragona",
+    "name": "Pokemon Japanese Sv7a-Paradise Dragona",
+    "lang": "Japanese",
+    "year": "2024"
+   },
+   {
+    "id": "275669",
+    "slug": "pokemon-japanese-sv7-stellar-miracle",
+    "name": "Pokemon Japanese SV7-Stellar Miracle",
+    "lang": "Japanese",
+    "year": "2024"
+   },
+   {
+    "id": "288603",
+    "slug": "pokemon-japanese-sv8a-terastal-fest-ex",
+    "name": "Pokemon Japanese Sv8a-Terastal Fest EX",
+    "lang": "Japanese",
+    "year": "2024"
+   },
+   {
+    "id": "284389",
+    "slug": "pokemon-japanese-sv8-super-electric-breaker",
+    "name": "Pokemon Japanese SV8-Super Electric Breaker",
+    "lang": "Japanese",
+    "year": "2024"
+   },
+   {
+    "id": "262397",
+    "slug": "pokemon-japanese-svhk-ancient-koraidon-starter-deck",
+    "name": "Pokemon Japanese Svhk-Ancient Koraidon Starter Deck",
+    "lang": "Japanese",
+    "year": "2024"
+   },
+   {
+    "id": "262862",
+    "slug": "pokemon-japanese-svhm-future-miraidon-starter-deck",
+    "name": "Pokemon Japanese Svhm-Future Miraidon Starter Deck",
+    "lang": "Japanese",
+    "year": "2024"
+   },
+   {
+    "id": "267292",
+    "slug": "pokemon-japanese-svi-battle-academy",
+    "name": "Pokemon Japanese Svi-Battle Academy",
+    "lang": "Japanese",
+    "year": "2024"
+   },
+   {
+    "id": "270833",
+    "slug": "pokemon-japanese-svjl-battle-master-deck-terastal-charizard-ex",
+    "name": "Pokemon Japanese Svjl-Battle Master Deck Terastal Charizard EX",
+    "lang": "Japanese",
+    "year": "2024"
+   },
+   {
+    "id": "270836",
+    "slug": "pokemon-japanese-svjp-battle-master-deck-terastal-chien-pao-ex",
+    "name": "Pokemon Japanese Svjp-Battle Master Deck Terastal Chien-Pao EX",
+    "lang": "Japanese",
+    "year": "2024"
+   },
+   {
+    "id": "278738",
+    "slug": "pokemon-japanese-svk-stellar-miracle-deck-build-box",
+    "name": "Pokemon Japanese Svk-Stellar Miracle Deck Build Box",
+    "lang": "Japanese",
+    "year": "2024"
+   },
+   {
+    "id": "279693",
+    "slug": "pokemon-japanese-svln-starter-deck-terastal-type-stellar-sylveon-ex",
+    "name": "Pokemon Japanese Svln-Starter Deck Terastal Type: Stellar Sylveon EX",
+    "lang": "Japanese",
+    "year": "2024"
+   },
+   {
+    "id": "282800",
+    "slug": "pokemon-japanese-svls-starter-deck-terastal-type-stellar-ceruledge-ex",
+    "name": "Pokemon Japanese Svls-Starter Deck Terastal Type: Stellar Ceruledge EX",
+    "lang": "Japanese",
+    "year": "2024"
+   },
+   {
+    "id": "288134",
+    "slug": "pokemon-japanese-svm-start-deck-generations",
+    "name": "Pokemon Japanese Svm-Start Deck Generations",
+    "lang": "Japanese",
+    "year": "2024"
+   },
+   {
+    "id": "261413",
+    "slug": "pokemon-japanese-sv-p-promo",
+    "name": "Pokemon Japanese SV-P Promo",
+    "lang": "Japanese",
+    "year": "2024"
+   },
+   {
+    "id": "298346",
+    "slug": "pokemon-japanese-basic-energies",
+    "name": "Pokemon Japanese-Basic Energies",
+    "lang": "Japanese",
+    "year": "2024"
+   },
+   {
+    "id": "308742",
+    "slug": "pokemon-korean-slvn-starter-deck-terastal-type-stellar-sylveon-ex",
+    "name": "Pokemon Korean Slvn-Starter Deck Terastal Type: Stellar Sylveon EX",
+    "lang": "Korean",
+    "year": "2024"
+   },
+   {
+    "id": "261757",
+    "slug": "pokemon-korean-sv4a-shiny-treasure-ex",
+    "name": "Pokemon Korean Sv4a-Shiny Treasure EX",
+    "lang": "Korean",
+    "year": "2024"
+   },
+   {
+    "id": "275718",
+    "slug": "pokemon-korean-sv5a-crimson-haze",
+    "name": "Pokemon Korean Sv5a-Crimson Haze",
+    "lang": "Korean",
+    "year": "2024"
+   },
+   {
+    "id": "267615",
+    "slug": "pokemon-korean-sv5k-wild-force",
+    "name": "Pokemon Korean Sv5k-Wild Force",
+    "lang": "Korean",
+    "year": "2024"
+   },
+   {
+    "id": "267264",
+    "slug": "pokemon-korean-sv5m-cyber-judge",
+    "name": "Pokemon Korean Sv5m-Cyber Judge",
+    "lang": "Korean",
+    "year": "2024"
+   },
+   {
+    "id": "282926",
+    "slug": "pokemon-korean-sv6a-night-wanderer",
+    "name": "Pokemon Korean Sv6a-Night Wanderer",
+    "lang": "Korean",
+    "year": "2024"
+   },
+   {
+    "id": "277753",
+    "slug": "pokemon-korean-sv6-transformation-mask",
+    "name": "Pokemon Korean SV6-Transformation Mask",
+    "lang": "Korean",
+    "year": "2024"
+   },
+   {
+    "id": "290144",
+    "slug": "pokemon-korean-sv7a-paradise-dragona",
+    "name": "Pokemon Korean Sv7a-Paradise Dragona",
+    "lang": "Korean",
+    "year": "2024"
+   },
+   {
+    "id": "283414",
+    "slug": "pokemon-korean-sv7-stellar-miracle",
+    "name": "Pokemon Korean SV7-Stellar Miracle",
+    "lang": "Korean",
+    "year": "2024"
+   },
+   {
+    "id": "291436",
+    "slug": "pokemon-korean-sv8-super-electric-breaker",
+    "name": "Pokemon Korean SV8-Super Electric Breaker",
+    "lang": "Korean",
+    "year": "2024"
+   },
+   {
+    "id": "299726",
+    "slug": "pokemon-korean-svm-start-deck-generations",
+    "name": "Pokemon Korean Svm-Start Deck Generations",
+    "lang": "Korean",
+    "year": "2024"
+   },
+   {
+    "id": "273491",
+    "slug": "pokemon-korean-sv-p-promo",
+    "name": "Pokemon Korean SV-P Promo",
+    "lang": "Korean",
+    "year": "2024"
+   },
+   {
+    "id": "294925",
+    "slug": "pokemon-korean-svp2-ex-special-set-ver-2",
+    "name": "Pokemon Korean SVP2 EX Special Set Ver.2",
+    "lang": "Korean",
+    "year": "2024"
+   },
+   {
+    "id": "304931",
+    "slug": "pokemon-m24-es-mcdonalds-collection",
+    "name": "Pokemon M24 ES-Mcdonald's Collection",
+    "lang": "Spanish",
+    "year": "2024"
+   },
+   {
+    "id": "292632",
+    "slug": "pokemon-m24-fr-mcdonalds-collection",
+    "name": "Pokemon M24 FR-Mcdonald's Collection",
+    "lang": "French",
+    "year": "2024"
+   },
+   {
+    "id": "286226",
+    "slug": "pokemon-mew-en-151",
+    "name": "Pokemon Mew EN-151",
+    "lang": null,
+    "year": "2024"
+   },
+   {
+    "id": "297147",
+    "slug": "pokemon-mew-fr-151",
+    "name": "Pokemon Mew FR-151",
+    "lang": "French",
+    "year": "2024"
+   },
+   {
+    "id": "302391",
+    "slug": "pokemon-mew-151",
+    "name": "Pokemon Mew It-151",
+    "lang": "Italian",
+    "year": "2024"
+   },
+   {
+    "id": "280568",
+    "slug": "pokemon-obf-en-obsidian-flames",
+    "name": "Pokemon Obf EN-Obsidian Flames",
+    "lang": null,
+    "year": "2024"
+   },
+   {
+    "id": "259864",
+    "slug": "pokemon-paf-en-paldean-fates",
+    "name": "Pokemon Paf EN-Paldean Fates",
+    "lang": null,
+    "year": "2024"
+   },
+   {
+    "id": "287167",
+    "slug": "pokemon-pal-en-paldea-evolved",
+    "name": "Pokemon Pal EN-Paldea Evolved",
+    "lang": null,
+    "year": "2024"
+   },
+   {
+    "id": "285940",
+    "slug": "pokemon-paldean-fates-mini-tins",
+    "name": "Pokemon Paldean Fates Mini Tins",
+    "lang": null,
+    "year": "2024"
+   },
+   {
+    "id": "303995",
+    "slug": "pokemon-par-en-paradox-rift",
+    "name": "Pokemon Par EN-Paradox Rift",
+    "lang": null,
+    "year": "2024"
+   },
+   {
+    "id": "280593",
+    "slug": "pokemon-play-prize-pack",
+    "name": "Pokemon Play! Pokemon Prize Pack",
+    "lang": null,
+    "year": "2024"
+   },
+   {
+    "id": "261082",
+    "slug": "pokemon-play-prize-pack-series-4",
+    "name": "Pokemon Play! Pokemon Prize Pack: Series 4",
+    "lang": null,
+    "year": "2024"
+   },
+   {
+    "id": "280385",
+    "slug": "pokemon-play-prize-pack-series-5",
+    "name": "Pokemon Play! Pokemon Prize Pack: Series 5",
+    "lang": null,
+    "year": "2024"
+   },
+   {
+    "id": "269081",
+    "slug": "pokemon-portuguese-paf-pt-paldean-fates",
+    "name": "Pokemon Portuguese Paf PT-Paldean Fates",
+    "lang": "Portuguese",
+    "year": "2024"
+   },
+   {
+    "id": "291160",
+    "slug": "pokemon-portuguese-scr-pt-stellar-crown",
+    "name": "Pokemon Portuguese Scr PT-Stellar Crown",
+    "lang": "Portuguese",
+    "year": "2024"
+   },
+   {
+    "id": "289097",
+    "slug": "pokemon-portuguese-sfa-pt-shrouded-fable",
+    "name": "Pokemon Portuguese Sfa PT-Shrouded Fable",
+    "lang": "Portuguese",
+    "year": "2024"
+   },
+   {
+    "id": "297011",
+    "slug": "pokemon-portuguese-ssp-pt-surging-sparks",
+    "name": "Pokemon Portuguese Ssp PT-Surging Sparks",
+    "lang": "Portuguese",
+    "year": "2024"
+   },
+   {
+    "id": "279543",
+    "slug": "pokemon-portuguese-svp-pt-sv-black-star-promo",
+    "name": "Pokemon Portuguese Svp PT-SV Black Star Promo",
+    "lang": "Portuguese",
+    "year": "2024"
+   },
+   {
+    "id": "281349",
+    "slug": "pokemon-portuguese-tef-pt-temporal-forces",
+    "name": "Pokemon Portuguese Tef PT-Temporal Forces",
+    "lang": "Portuguese",
+    "year": "2024"
+   },
+   {
+    "id": "280356",
+    "slug": "pokemon-portuguese-twm-pt-twilight-masquerade",
+    "name": "Pokemon Portuguese Twm PT-Twilight Masquerade",
+    "lang": "Portuguese",
+    "year": "2024"
+   },
+   {
+    "id": "274949",
+    "slug": "pokemon-professor-program-promos",
+    "name": "Pokemon Professor Program Promos",
+    "lang": null,
+    "year": "2024"
+   },
+   {
+    "id": "267940",
+    "slug": "pokemon-promo",
+    "name": "Pokemon Promo",
+    "lang": null,
+    "year": "2024"
+   },
+   {
+    "id": "278005",
+    "slug": "pokemon-scarlet-violet-paldean-fates-mini-tin",
+    "name": "Pokemon Scarlet & Violet Paldean Fates Mini Tin",
+    "lang": null,
+    "year": "2024"
+   },
+   {
+    "id": "280242",
+    "slug": "pokemon-scr-en-stellar-crown",
+    "name": "Pokemon Scr EN-Stellar Crown",
+    "lang": null,
+    "year": "2024"
+   },
+   {
+    "id": "277007",
+    "slug": "pokemon-sfa-en-shrouded-fable",
+    "name": "Pokemon Sfa EN-Shrouded Fable",
+    "lang": null,
+    "year": "2024"
+   },
+   {
+    "id": "299175",
+    "slug": "pokemon-simplified-chinese-cs0l-c-pikachu-eevee-display-pendant-gift-box",
+    "name": "Pokemon Simplified Chinese Cs0l C-Pikachu and Eevee Display Pendant Gift Box",
+    "lang": "Chinese",
+    "year": "2024"
+   },
+   {
+    "id": "260317",
+    "slug": "pokemon-simplified-chinese-cs3-5-c-scorching-skies",
+    "name": "Pokemon Simplified Chinese CS3.5 C-Scorching Skies",
+    "lang": "Chinese",
+    "year": "2024"
+   },
+   {
+    "id": "268995",
+    "slug": "pokemon-simplified-chinese-cs4-1-c-brilliant-energy-art-card-set-gift-box",
+    "name": "Pokemon Simplified Chinese CS4.1 C-Brilliant Energy Pokemon Art Card Set Gift Box",
+    "lang": "Chinese",
+    "year": "2024"
+   },
+   {
+    "id": "270456",
+    "slug": "pokemon-simplified-chinese-cs4-5-c-flame-dance-end",
+    "name": "Pokemon Simplified Chinese CS4.5 C-Flame Dance of the End",
+    "lang": "Chinese",
+    "year": "2024"
+   },
+   {
+    "id": "264247",
+    "slug": "pokemon-simplified-chinese-cs4a-c-polychromatic-gathering-friend",
+    "name": "Pokemon Simplified Chinese Cs4a C-Polychromatic Gathering: Friend",
+    "lang": "Chinese",
+    "year": "2024"
+   },
+   {
+    "id": "264248",
+    "slug": "pokemon-simplified-chinese-cs4b-c-polychromatic-gathering-origin",
+    "name": "Pokemon Simplified Chinese Cs4b C-Polychromatic Gathering: Origin",
+    "lang": "Chinese",
+    "year": "2024"
+   },
+   {
+    "id": "272861",
+    "slug": "pokemon-simplified-chinese-cs4da-c-beginner-deck-100",
+    "name": "Pokemon Simplified Chinese Cs4da C-Beginner Deck 100",
+    "lang": "Chinese",
+    "year": "2024"
+   },
+   {
+    "id": "278012",
+    "slug": "pokemon-simplified-chinese-cs5-1-c-brilliant-energy-art-card-set-gift-box-part-2",
+    "name": "Pokemon Simplified Chinese CS5.1 C-Brilliant Energy Pokemon Art Card Set Gift Box Part 2",
+    "lang": "Chinese",
+    "year": "2024"
+   },
+   {
+    "id": "280534",
+    "slug": "pokemon-simplified-chinese-cs5-5-c-shadow-glory",
+    "name": "Pokemon Simplified Chinese CS5.5 C-Shadow of Glory",
+    "lang": "Chinese",
+    "year": "2024"
+   },
+   {
+    "id": "275713",
+    "slug": "pokemon-simplified-chinese-cs5a-c-gallant-galaxy-charm",
+    "name": "Pokemon Simplified Chinese Cs5a C-Gallant Galaxy: Charm",
+    "lang": "Chinese",
+    "year": "2024"
+   },
+   {
+    "id": "275649",
+    "slug": "pokemon-simplified-chinese-cs5b-c-gallant-galaxy-brave",
+    "name": "Pokemon Simplified Chinese Cs5b C-Gallant Galaxy: Brave",
+    "lang": "Chinese",
+    "year": "2024"
+   },
+   {
+    "id": "279358",
+    "slug": "pokemon-simplified-chinese-cs5d-c-gallant-galaxy-v-starter-deck",
+    "name": "Pokemon Simplified Chinese Cs5d C-Gallant Galaxy: V Starter Deck",
+    "lang": "Chinese",
+    "year": "2024"
+   },
+   {
+    "id": "283407",
+    "slug": "pokemon-simplified-chinese-cs6-1-c-brilliant-energy-art-card-set-gift-box-part-3",
+    "name": "Pokemon Simplified Chinese CS6.1 C-Brilliant Energy Pokemon Art Card Set Gift Box Part 3",
+    "lang": "Chinese",
+    "year": "2024"
+   },
+   {
+    "id": "291931",
+    "slug": "pokemon-simplified-chinese-cs6-5-c-victory-lodestar",
+    "name": "Pokemon Simplified Chinese CS6.5 C-Victory Lodestar",
+    "lang": "Chinese",
+    "year": "2024"
+   },
+   {
+    "id": "283399",
+    "slug": "pokemon-simplified-chinese-cs6a-c-marine-shadow-roar",
+    "name": "Pokemon Simplified Chinese Cs6a C-Marine Shadow: Roar",
+    "lang": "Chinese",
+    "year": "2024"
+   },
+   {
+    "id": "283398",
+    "slug": "pokemon-simplified-chinese-cs6b-c-marine-shadow-banish",
+    "name": "Pokemon Simplified Chinese Cs6b C-Marine Shadow: Banish",
+    "lang": "Chinese",
+    "year": "2024"
+   },
+   {
+    "id": "267330",
+    "slug": "pokemon-simplified-chinese-csf-c-dragons-return-series-gift-box",
+    "name": "Pokemon Simplified Chinese Csf C-Dragon's Return Series Gift Box",
+    "lang": "Chinese",
+    "year": "2024"
+   },
+   {
+    "id": "267052",
+    "slug": "pokemon-simplified-chinese-csg-c-card-display-gift-box",
+    "name": "Pokemon Simplified Chinese Csg C-Card Display Gift Box",
+    "lang": "Chinese",
+    "year": "2024"
+   },
+   {
+    "id": "269365",
+    "slug": "pokemon-simplified-chinese-csh-c-eevee-advanced-gift-box",
+    "name": "Pokemon Simplified Chinese Csh C-Eevee Advanced Gift Box",
+    "lang": "Chinese",
+    "year": "2024"
+   },
+   {
+    "id": "272862",
+    "slug": "pokemon-simplified-chinese-csi-c-trainers-collection-gift-box",
+    "name": "Pokemon Simplified Chinese Csi C-Trainer's Collection Gift Box",
+    "lang": "Chinese",
+    "year": "2024"
+   },
+   {
+    "id": "277846",
+    "slug": "pokemon-simplified-chinese-csj-c-ball-gift-box",
+    "name": "Pokemon Simplified Chinese Csj C-Pokemon Ball Gift Box",
+    "lang": "Chinese",
+    "year": "2024"
+   },
+   {
+    "id": "280476",
+    "slug": "pokemon-simplified-chinese-csm-c-charizard-display-set-gift-box",
+    "name": "Pokemon Simplified Chinese Csm C-Charizard Display Set Gift Box",
+    "lang": "Chinese",
+    "year": "2024"
+   },
+   {
+    "id": "323980",
+    "slug": "pokemon-simplified-chinese-csm-c-charizard-display-set-gift-box-pack",
+    "name": "Pokemon Simplified Chinese Csm C-Charizard Display Set Gift Box Pack",
+    "lang": "Chinese",
+    "year": "2024"
+   },
+   {
+    "id": "286676",
+    "slug": "pokemon-simplified-chinese-csn-c-brave-stars-deck-building-gift-box",
+    "name": "Pokemon Simplified Chinese Csn C-Brave Stars Deck Building Gift Box",
+    "lang": "Chinese",
+    "year": "2024"
+   },
+   {
+    "id": "302549",
+    "slug": "pokemon-simplified-chinese-cso-c-confluence-deck-building-advanced-gift-box",
+    "name": "Pokemon Simplified Chinese Cso C-Confluence Deck Building Advanced Gift Box",
+    "lang": "Chinese",
+    "year": "2024"
+   },
+   {
+    "id": "290440",
+    "slug": "pokemon-simplified-chinese-csu-c-gengar-display-set-gift-box",
+    "name": "Pokemon Simplified Chinese Csu C-Gengar Display Set Gift Box",
+    "lang": "Chinese",
+    "year": "2024"
+   },
+   {
+    "id": "298431",
+    "slug": "pokemon-simplified-chinese-csx-c-giratina-vstar-advanced-gift-box",
+    "name": "Pokemon Simplified Chinese Csx C-Giratina Vstar Advanced Gift Box",
+    "lang": "Chinese",
+    "year": "2024"
+   },
+   {
+    "id": "291121",
+    "slug": "pokemon-simplified-chinese-csy-c-poke-ball-level-gift-box",
+    "name": "Pokemon Simplified Chinese Csy C-Poke Ball/Level Ball Gift Box",
+    "lang": "Chinese",
+    "year": "2024"
+   },
+   {
+    "id": "297109",
+    "slug": "pokemon-simplified-chinese-csz-c-collection-peripheral-gift-boxes-variety-treasure-box",
+    "name": "Pokemon Simplified Chinese Csz C-Collection of Peripheral Gift Boxes Variety Treasure Box",
+    "lang": "Chinese",
+    "year": "2024"
+   },
+   {
+    "id": "261622",
+    "slug": "pokemon-simplified-chinese-s-promo",
+    "name": "Pokemon Simplified Chinese S Promo",
+    "lang": "Chinese",
+    "year": "2024"
+   },
+   {
+    "id": "279400",
+    "slug": "pokemon-simplified-chinese-sv-p-promo",
+    "name": "Pokemon Simplified Chinese SV-P Promo",
+    "lang": "Chinese",
+    "year": "2024"
+   },
+   {
+    "id": "260124",
+    "slug": "pokemon-spanish-paf-es-paldean-fates",
+    "name": "Pokemon Spanish Paf ES-Paldean Fates",
+    "lang": "Spanish",
+    "year": "2024"
+   },
+   {
+    "id": "304750",
+    "slug": "pokemon-spanish-play-prize-pack",
+    "name": "Pokemon Spanish Play! Pokemon Prize Pack",
+    "lang": "Spanish",
+    "year": "2024"
+   },
+   {
+    "id": "304749",
+    "slug": "pokemon-spanish-play-prize-pack-series-4",
+    "name": "Pokemon Spanish Play! Pokemon Prize Pack: Series 4",
+    "lang": "Spanish",
+    "year": "2024"
+   },
+   {
+    "id": "280303",
+    "slug": "pokemon-spanish-scr-es-stellar-crown",
+    "name": "Pokemon Spanish Scr ES-Stellar Crown",
+    "lang": "Spanish",
+    "year": "2024"
+   },
+   {
+    "id": "277111",
+    "slug": "pokemon-spanish-sfa-es-shrouded-fable",
+    "name": "Pokemon Spanish Sfa ES-Shrouded Fable",
+    "lang": "Spanish",
+    "year": "2024"
+   },
+   {
+    "id": "285277",
+    "slug": "pokemon-spanish-ssp-es-surging-sparks",
+    "name": "Pokemon Spanish Ssp ES-Surging Sparks",
+    "lang": "Spanish",
+    "year": "2024"
+   },
+   {
+    "id": "264474",
+    "slug": "pokemon-spanish-svp-es-sv-black-star-promo",
+    "name": "Pokemon Spanish Svp ES-SV Black Star Promo",
+    "lang": "Spanish",
+    "year": "2024"
+   },
+   {
+    "id": "264058",
+    "slug": "pokemon-spanish-tef-es-temporal-forces",
+    "name": "Pokemon Spanish Tef ES-Temporal Forces",
+    "lang": "Spanish",
+    "year": "2024"
+   },
+   {
+    "id": "271481",
+    "slug": "pokemon-spanish-twm-es-twilight-masquerade",
+    "name": "Pokemon Spanish Twm ES-Twilight Masquerade",
+    "lang": "Spanish",
+    "year": "2024"
+   },
+   {
+    "id": "285178",
+    "slug": "pokemon-ssp-en-surging-sparks",
+    "name": "Pokemon Ssp EN-Surging Sparks",
+    "lang": null,
+    "year": "2024"
+   },
+   {
+    "id": "278777",
+    "slug": "pokemon-sve-en-basic-energies",
+    "name": "Pokemon Sve EN-Basic Energies",
+    "lang": null,
+    "year": "2024"
+   },
+   {
+    "id": "314857",
+    "slug": "pokemon-sve-es-basic-energies",
+    "name": "Pokemon Sve ES-Basic Energies",
+    "lang": "Spanish",
+    "year": "2024"
+   },
+   {
+    "id": "299061",
+    "slug": "pokemon-svi-en-scarlet-violet",
+    "name": "Pokemon Svi EN-Scarlet & Violet",
+    "lang": null,
+    "year": "2024"
+   },
+   {
+    "id": "260411",
+    "slug": "pokemon-svp-en-sv-black-star-promo",
+    "name": "Pokemon Svp EN-SV Black Star Promo",
+    "lang": null,
+    "year": "2024"
+   },
+   {
+    "id": "340767",
+    "slug": "pokemon-sword-shield-evolving-skies",
+    "name": "Pokemon Sword & Shield Evolving Skies",
+    "lang": null,
+    "year": "2024"
+   },
+   {
+    "id": "336177",
+    "slug": "pokemon-sword-shield-lost-origin",
+    "name": "Pokemon Sword & Shield Lost Origin",
+    "lang": null,
+    "year": "2024"
+   },
+   {
+    "id": "286455",
+    "slug": "pokemon-swsh-black-star-promo",
+    "name": "Pokemon Swsh Black Star Promo",
+    "lang": null,
+    "year": "2024"
+   },
+   {
+    "id": "282786",
+    "slug": "pokemon-tcg-live-insert-code-cards",
+    "name": "Pokemon TCG Live Insert Code Cards",
+    "lang": null,
+    "year": "2024"
+   },
+   {
+    "id": "263948",
+    "slug": "pokemon-tef-en-temporal-forces",
+    "name": "Pokemon Tef EN-Temporal Forces",
+    "lang": null,
+    "year": "2024"
+   },
+   {
+    "id": "264099",
+    "slug": "pokemon-thai-sv4a-t-shiny-treasure-ex",
+    "name": "Pokemon Thai Sv4a T-Shiny Treasure EX",
+    "lang": "Thai",
+    "year": "2024"
+   },
+   {
+    "id": "278842",
+    "slug": "pokemon-thai-sv5a-t-crimson-haze",
+    "name": "Pokemon Thai Sv5a T-Crimson Haze",
+    "lang": "Thai",
+    "year": "2024"
+   },
+   {
+    "id": "277079",
+    "slug": "pokemon-thai-sv5k-t-wild-force",
+    "name": "Pokemon Thai Sv5k T-Wild Force",
+    "lang": "Thai",
+    "year": "2024"
+   },
+   {
+    "id": "264102",
+    "slug": "pokemon-thai-sv5m-t-cyber-judge",
+    "name": "Pokemon Thai Sv5m T-Cyber Judge",
+    "lang": "Thai",
+    "year": "2024"
+   },
+   {
+    "id": "277141",
+    "slug": "pokemon-thai-sv6-t-transformation-mask",
+    "name": "Pokemon Thai SV6 T-Transformation Mask",
+    "lang": "Thai",
+    "year": "2024"
+   },
+   {
+    "id": "287179",
+    "slug": "pokemon-thai-sv7s-t-stellar-miracle",
+    "name": "Pokemon Thai Sv7s T-Stellar Miracle",
+    "lang": "Thai",
+    "year": "2024"
+   },
+   {
+    "id": "292300",
+    "slug": "pokemon-thai-sv8s-t-stellar-lightning",
+    "name": "Pokemon Thai Sv8s T-Stellar Lightning",
+    "lang": "Thai",
+    "year": "2024"
+   },
+   {
+    "id": "333629",
+    "slug": "pokemon-thai-svk-t-stellar-miracle-deck-build-box",
+    "name": "Pokemon Thai Svk T-Stellar Miracle Deck Build Box",
+    "lang": "Thai",
+    "year": "2024"
+   },
+   {
+    "id": "263703",
+    "slug": "pokemon-thai-sv-p-promo",
+    "name": "Pokemon Thai SV-P Promo",
+    "lang": "Thai",
+    "year": "2024"
+   },
+   {
+    "id": "268353",
+    "slug": "pokemon-traditional-chinese-sv5a-f-crimson-haze",
+    "name": "Pokemon Traditional Chinese Sv5a F-Crimson Haze",
+    "lang": "Chinese",
+    "year": "2024"
+   },
+   {
+    "id": "263898",
+    "slug": "pokemon-traditional-chinese-sv5k-f-wild-force",
+    "name": "Pokemon Traditional Chinese Sv5k F-Wild Force",
+    "lang": "Chinese",
+    "year": "2024"
+   },
+   {
+    "id": "263553",
+    "slug": "pokemon-traditional-chinese-sv5m-f-cyber-judge",
+    "name": "Pokemon Traditional Chinese Sv5m F-Cyber Judge",
+    "lang": "Chinese",
+    "year": "2024"
+   },
+   {
+    "id": "272652",
+    "slug": "pokemon-traditional-chinese-sv6-f-transformation-mask",
+    "name": "Pokemon Traditional Chinese SV6 F-Transformation Mask",
+    "lang": "Chinese",
+    "year": "2024"
+   },
+   {
+    "id": "277778",
+    "slug": "pokemon-traditional-chinese-sv6a-f-night-wanderer",
+    "name": "Pokemon Traditional Chinese Sv6a F-Night Wanderer",
+    "lang": "Chinese",
+    "year": "2024"
+   },
+   {
+    "id": "280451",
+    "slug": "pokemon-traditional-chinese-sv7-f-stellar-miracle",
+    "name": "Pokemon Traditional Chinese SV7 F-Stellar Miracle",
+    "lang": "Chinese",
+    "year": "2024"
+   },
+   {
+    "id": "284659",
+    "slug": "pokemon-traditional-chinese-sv7a-f-paradise-dragona",
+    "name": "Pokemon Traditional Chinese Sv7a F-Paradise Dragona",
+    "lang": "Chinese",
+    "year": "2024"
+   },
+   {
+    "id": "287645",
+    "slug": "pokemon-traditional-chinese-sv8-f-super-electric-breaker",
+    "name": "Pokemon Traditional Chinese SV8 F-Super Electric Breaker",
+    "lang": "Chinese",
+    "year": "2024"
+   },
+   {
+    "id": "291229",
+    "slug": "pokemon-traditional-chinese-sv8a-f-terastal-fest-ex",
+    "name": "Pokemon Traditional Chinese Sv8a F-Terastal Fest EX",
+    "lang": "Chinese",
+    "year": "2024"
+   },
+   {
+    "id": "264265",
+    "slug": "pokemon-traditional-chinese-svhm-f-future-miraidon-starter-deck",
+    "name": "Pokemon Traditional Chinese Svhm F-Future Miraidon Starter Deck",
+    "lang": "Chinese",
+    "year": "2024"
+   },
+   {
+    "id": "308865",
+    "slug": "pokemon-traditional-chinese-svi-f-trainers-camp",
+    "name": "Pokemon Traditional Chinese Svi F-Trainer's Camp",
+    "lang": "Chinese",
+    "year": "2024"
+   },
+   {
+    "id": "298050",
+    "slug": "pokemon-traditional-chinese-svk-f-paradise-dragona-deck-build-box",
+    "name": "Pokemon Traditional Chinese Svk F-Paradise Dragona Deck Build Box",
+    "lang": "Chinese",
+    "year": "2024"
+   },
+   {
+    "id": "296660",
+    "slug": "pokemon-traditional-chinese-svm-f-start-deck-generations",
+    "name": "Pokemon Traditional Chinese Svm F-Start Deck Generations",
+    "lang": "Chinese",
+    "year": "2024"
+   },
+   {
+    "id": "262778",
+    "slug": "pokemon-traditional-chinese-sv-p-promo",
+    "name": "Pokemon Traditional Chinese SV-P Promo",
+    "lang": "Chinese",
+    "year": "2024"
+   },
+   {
+    "id": "295889",
+    "slug": "pokemon-traditional-chinese-svpn-starter-deck-terastal-type-stellar-sylveon-ex",
+    "name": "Pokemon Traditional Chinese Svpn-Starter Deck Terastal Type: Stellar Sylveon EX",
+    "lang": "Chinese",
+    "year": "2024"
+   },
+   {
+    "id": "329954",
+    "slug": "pokemon-traditional-chinese-svtl-f-tactics-deck-gardevoir-ex",
+    "name": "Pokemon Traditional Chinese Svtl F-Tactics Deck Gardevoir EX Deck",
+    "lang": "Chinese",
+    "year": "2024"
+   },
+   {
+    "id": "303323",
+    "slug": "pokemon-traditional-chinese-svtl-f-tactics-deck-terastal-charizard-ex",
+    "name": "Pokemon Traditional Chinese Svtl F-Tactics Deck Terastal Charizard EX Deck",
+    "lang": "Chinese",
+    "year": "2024"
+   },
+   {
+    "id": "285296",
+    "slug": "pokemon-traditional-chinese-svtm-f-tactics-deck-meowscarada-ex",
+    "name": "Pokemon Traditional Chinese Svtm F-Tactics Deck Meowscarada EX Deck",
+    "lang": "Chinese",
+    "year": "2024"
+   },
+   {
+    "id": "278953",
+    "slug": "pokemon-trick-or-trade",
+    "name": "Pokemon Trick or Trade",
+    "lang": null,
+    "year": "2024"
+   },
+   {
+    "id": "270739",
+    "slug": "pokemon-twm-en-twilight-masquerade",
+    "name": "Pokemon Twm EN-Twilight Masquerade",
+    "lang": null,
+    "year": "2024"
+   },
+   {
+    "id": "289565",
+    "slug": "pokemon-vibrant-paldea-mini-tins",
+    "name": "Pokemon Vibrant Paldea Mini Tins",
+    "lang": null,
+    "year": "2024"
+   },
+   {
+    "id": "278789",
+    "slug": "pokemon-world-championships-promo",
+    "name": "Pokemon World Championships Promo",
+    "lang": null,
+    "year": "2024"
+   }
+  ]
+ },
+ "2022": {
+  "at": "2026-09-18T16:52:03Z",
+  "sets": [
+   {
+    "id": "225542",
+    "slug": "pokemon-arceus-vstar-ultra-premium-collection",
+    "name": "Pokemon Arceus Vstar Ultra-Premium Collection",
+    "lang": null,
+    "year": "2022"
+   },
+   {
+    "id": "222696",
+    "slug": "pokemon-battle-academy",
+    "name": "Pokemon Battle Academy",
+    "lang": null,
+    "year": "2022"
+   },
+   {
+    "id": "226511",
+    "slug": "pokemon-center-scarlet-violet-pre-order-bonus",
+    "name": "Pokemon Center Scarlet & Violet Pre-Order Bonus",
+    "lang": null,
+    "year": "2022"
+   },
+   {
+    "id": "209051",
+    "slug": "pokemon-chinese-s-promo",
+    "name": "Pokemon Chinese S Promo",
+    "lang": "Chinese",
+    "year": "2022"
+   },
+   {
+    "id": "225475",
+    "slug": "pokemon-chinese-start-deck-100-special-edition",
+    "name": "Pokemon Chinese Start Deck 100 Special Edition",
+    "lang": "Chinese",
+    "year": "2022"
+   },
+   {
+    "id": "226019",
+    "slug": "pokemon-chinese-sv-promo",
+    "name": "Pokemon Chinese SV Promo",
+    "lang": "Chinese",
+    "year": "2022"
+   },
+   {
+    "id": "216742",
+    "slug": "pokemon-chinese-sword-shield-battle-region",
+    "name": "Pokemon Chinese Sword & Shield Battle Region",
+    "lang": "Chinese",
+    "year": "2022"
+   },
+   {
+    "id": "220575",
+    "slug": "pokemon-chinese-sword-shield-dark-phantasma",
+    "name": "Pokemon Chinese Sword & Shield Dark Phantasma",
+    "lang": "Chinese",
+    "year": "2022"
+   },
+   {
+    "id": "337243",
+    "slug": "pokemon-chinese-sword-shield-darkrai-vstar-starter-set",
+    "name": "Pokemon Chinese Sword & Shield Darkrai Vstar Starter Set",
+    "lang": "Chinese",
+    "year": "2022"
+   },
+   {
+    "id": "222253",
+    "slug": "pokemon-chinese-sword-shield-incandescent-arcana",
+    "name": "Pokemon Chinese Sword & Shield Incandescent Arcana",
+    "lang": "Chinese",
+    "year": "2022"
+   },
+   {
+    "id": "222077",
+    "slug": "pokemon-chinese-sword-shield-lost-abyss",
+    "name": "Pokemon Chinese Sword & Shield Lost Abyss",
+    "lang": "Chinese",
+    "year": "2022"
+   },
+   {
+    "id": "300021",
+    "slug": "pokemon-chinese-sword-shield-lucario-vstar-starter-set",
+    "name": "Pokemon Chinese Sword & Shield Lucario Vstar Starter Set",
+    "lang": "Chinese",
+    "year": "2022"
+   },
+   {
+    "id": "224342",
+    "slug": "pokemon-chinese-sword-shield-paradigm-trigger",
+    "name": "Pokemon Chinese Sword & Shield Paradigm Trigger",
+    "lang": "Chinese",
+    "year": "2022"
+   },
+   {
+    "id": "218477",
+    "slug": "pokemon-chinese-sword-shield-space-juggler",
+    "name": "Pokemon Chinese Sword & Shield Space Juggler",
+    "lang": "Chinese",
+    "year": "2022"
+   },
+   {
+    "id": "210932",
+    "slug": "pokemon-chinese-sword-shield-star-birth",
+    "name": "Pokemon Chinese Sword & Shield Star Birth",
+    "lang": "Chinese",
+    "year": "2022"
+   },
+   {
+    "id": "209052",
+    "slug": "pokemon-chinese-sword-shield-start-deck-100",
+    "name": "Pokemon Chinese Sword & Shield Start Deck 100",
+    "lang": "Chinese",
+    "year": "2022"
+   },
+   {
+    "id": "216740",
+    "slug": "pokemon-chinese-sword-shield-time-gazer",
+    "name": "Pokemon Chinese Sword & Shield Time Gazer",
+    "lang": "Chinese",
+    "year": "2022"
+   },
+   {
+    "id": "226988",
+    "slug": "pokemon-chinese-sword-shield-vstar-universe",
+    "name": "Pokemon Chinese Sword & Shield Vstar Universe",
+    "lang": "Chinese",
+    "year": "2022"
+   },
+   {
+    "id": "276402",
+    "slug": "pokemon-chinese-zacian-zamazenta-vs-eternatus-special-deck-set",
+    "name": "Pokemon Chinese Zacian & Zamazenta VS Eternatus Special Deck Set",
+    "lang": "Chinese",
+    "year": "2022"
+   },
+   {
+    "id": "215716",
+    "slug": "pokemon-go",
+    "name": "Pokemon Go",
+    "lang": null,
+    "year": "2022"
+   },
+   {
+    "id": "215711",
+    "slug": "pokemon-go-chinese",
+    "name": "Pokemon Go Chinese",
+    "lang": "Chinese",
+    "year": "2022"
+   },
+   {
+    "id": "220467",
+    "slug": "pokemon-go-indonesian",
+    "name": "Pokemon Go Indonesian",
+    "lang": "Indonesian",
+    "year": "2022"
+   },
+   {
+    "id": "215688",
+    "slug": "pokemon-go-japanese",
+    "name": "Pokemon Go Japanese",
+    "lang": "Japanese",
+    "year": "2022"
+   },
+   {
+    "id": "218728",
+    "slug": "pokemon-go-korean",
+    "name": "Pokemon Go Korean",
+    "lang": "Korean",
+    "year": "2022"
+   },
+   {
+    "id": "217079",
+    "slug": "pokemon-go-thai",
+    "name": "Pokemon Go Thai",
+    "lang": "Thai",
+    "year": "2022"
+   },
+   {
+    "id": "260470",
+    "slug": "pokemon-indonesian-awakening-v-starter-deck",
+    "name": "Pokemon Indonesian Awakening V Starter Deck",
+    "lang": "Indonesian",
+    "year": "2022"
+   },
+   {
+    "id": "211573",
+    "slug": "pokemon-indonesian-s-promo",
+    "name": "Pokemon Indonesian S Promo",
+    "lang": "Indonesian",
+    "year": "2022"
+   },
+   {
+    "id": "264060",
+    "slug": "pokemon-indonesian-strength-v-starter-deck",
+    "name": "Pokemon Indonesian Strength V Starter Deck",
+    "lang": "Indonesian",
+    "year": "2022"
+   },
+   {
+    "id": "221401",
+    "slug": "pokemon-indonesian-sword-shield-battle-region",
+    "name": "Pokemon Indonesian Sword & Shield Battle Region",
+    "lang": "Indonesian",
+    "year": "2022"
+   },
+   {
+    "id": "223211",
+    "slug": "pokemon-indonesian-sword-shield-dark-phantasma",
+    "name": "Pokemon Indonesian Sword & Shield Dark Phantasma",
+    "lang": "Indonesian",
+    "year": "2022"
+   },
+   {
+    "id": "225098",
+    "slug": "pokemon-indonesian-sword-shield-incandescent-arcana",
+    "name": "Pokemon Indonesian Sword & Shield Incandescent Arcana",
+    "lang": "Indonesian",
+    "year": "2022"
+   },
+   {
+    "id": "223255",
+    "slug": "pokemon-indonesian-sword-shield-lost-abyss",
+    "name": "Pokemon Indonesian Sword & Shield Lost Abyss",
+    "lang": "Indonesian",
+    "year": "2022"
+   },
+   {
+    "id": "228325",
+    "slug": "pokemon-indonesian-sword-shield-paradigm-trigger",
+    "name": "Pokemon Indonesian Sword & Shield Paradigm Trigger",
+    "lang": "Indonesian",
+    "year": "2022"
+   },
+   {
+    "id": "223202",
+    "slug": "pokemon-indonesian-sword-shield-space-juggler",
+    "name": "Pokemon Indonesian Sword & Shield Space Juggler",
+    "lang": "Indonesian",
+    "year": "2022"
+   },
+   {
+    "id": "220523",
+    "slug": "pokemon-indonesian-sword-shield-star-birth",
+    "name": "Pokemon Indonesian Sword & Shield Star Birth",
+    "lang": "Indonesian",
+    "year": "2022"
+   },
+   {
+    "id": "223206",
+    "slug": "pokemon-indonesian-sword-shield-time-gazer",
+    "name": "Pokemon Indonesian Sword & Shield Time Gazer",
+    "lang": "Indonesian",
+    "year": "2022"
+   },
+   {
+    "id": "218361",
+    "slug": "pokemon-indonesian-sword-shield-vmax-climax",
+    "name": "Pokemon Indonesian Sword & Shield Vmax Climax",
+    "lang": "Indonesian",
+    "year": "2022"
+   },
+   {
+    "id": "229610",
+    "slug": "pokemon-indonesian-sword-shield-vstar-universe",
+    "name": "Pokemon Indonesian Sword & Shield Vstar Universe",
+    "lang": "Indonesian",
+    "year": "2022"
+   },
+   {
+    "id": "224334",
+    "slug": "pokemon-insert-cards",
+    "name": "Pokemon Insert Cards",
+    "lang": null,
+    "year": "2022"
+   },
+   {
+    "id": "225593",
+    "slug": "pokemon-japanese-charizard-vstar-vs-rayquaza-vmax-special-deck-set",
+    "name": "Pokemon Japanese Charizard Vstar VS Rayquaza Vmax Special Deck Set",
+    "lang": "Japanese",
+    "year": "2022"
+   },
+   {
+    "id": "206522",
+    "slug": "pokemon-japanese-s-promo",
+    "name": "Pokemon Japanese S Promo",
+    "lang": "Japanese",
+    "year": "2022"
+   },
+   {
+    "id": "225438",
+    "slug": "pokemon-japanese-sv-promo",
+    "name": "Pokemon Japanese SV Promo",
+    "lang": "Japanese",
+    "year": "2022"
+   },
+   {
+    "id": "208916",
+    "slug": "pokemon-japanese-sword-shield-battle-region",
+    "name": "Pokemon Japanese Sword & Shield Battle Region",
+    "lang": "Japanese",
+    "year": "2022"
+   },
+   {
+    "id": "213459",
+    "slug": "pokemon-japanese-sword-shield-dark-phantasma",
+    "name": "Pokemon Japanese Sword & Shield Dark Phantasma",
+    "lang": "Japanese",
+    "year": "2022"
+   },
+   {
+    "id": "210150",
+    "slug": "pokemon-japanese-sword-shield-darkrai-vstar-starter-set",
+    "name": "Pokemon Japanese Sword & Shield Darkrai Vstar Starter Set",
+    "lang": "Japanese",
+    "year": "2022"
+   },
+   {
+    "id": "218470",
+    "slug": "pokemon-japanese-sword-shield-deoxys-vstar-vmax-high-class-deck",
+    "name": "Pokemon Japanese Sword & Shield Deoxys Vstar & Vmax High-Class Deck",
+    "lang": "Japanese",
+    "year": "2022"
+   },
+   {
+    "id": "220055",
+    "slug": "pokemon-japanese-sword-shield-incandescent-arcana",
+    "name": "Pokemon Japanese Sword & Shield Incandescent Arcana",
+    "lang": "Japanese",
+    "year": "2022"
+   },
+   {
+    "id": "217500",
+    "slug": "pokemon-japanese-sword-shield-lost-abyss",
+    "name": "Pokemon Japanese Sword & Shield Lost Abyss",
+    "lang": "Japanese",
+    "year": "2022"
+   },
+   {
+    "id": "210107",
+    "slug": "pokemon-japanese-sword-shield-lucario-vstar-starter-set",
+    "name": "Pokemon Japanese Sword & Shield Lucario Vstar Starter Set",
+    "lang": "Japanese",
+    "year": "2022"
+   },
+   {
+    "id": "222657",
+    "slug": "pokemon-japanese-sword-shield-paradigm-trigger",
+    "name": "Pokemon Japanese Sword & Shield Paradigm Trigger",
+    "lang": "Japanese",
+    "year": "2022"
+   },
+   {
+    "id": "210750",
+    "slug": "pokemon-japanese-sword-shield-space-juggler",
+    "name": "Pokemon Japanese Sword & Shield Space Juggler",
+    "lang": "Japanese",
+    "year": "2022"
+   },
+   {
+    "id": "205870",
+    "slug": "pokemon-japanese-sword-shield-star-birth",
+    "name": "Pokemon Japanese Sword & Shield Star Birth",
+    "lang": "Japanese",
+    "year": "2022"
+   },
+   {
+    "id": "210945",
+    "slug": "pokemon-japanese-sword-shield-start-deck-100-corocoro-comic-version",
+    "name": "Pokemon Japanese Sword & Shield Start Deck 100 Corocoro Comic Version",
+    "lang": "Japanese",
+    "year": "2022"
+   },
+   {
+    "id": "210751",
+    "slug": "pokemon-japanese-sword-shield-time-gazer",
+    "name": "Pokemon Japanese Sword & Shield Time Gazer",
+    "lang": "Japanese",
+    "year": "2022"
+   },
+   {
+    "id": "224111",
+    "slug": "pokemon-japanese-sword-shield-vstar-premium-trainer-box",
+    "name": "Pokemon Japanese Sword & Shield Vstar Premium Trainer Box",
+    "lang": "Japanese",
+    "year": "2022"
+   },
+   {
+    "id": "221263",
+    "slug": "pokemon-japanese-sword-shield-vstar-special-set",
+    "name": "Pokemon Japanese Sword & Shield Vstar Special Set",
+    "lang": "Japanese",
+    "year": "2022"
+   },
+   {
+    "id": "225772",
+    "slug": "pokemon-japanese-sword-shield-vstar-universe",
+    "name": "Pokemon Japanese Sword & Shield Vstar Universe",
+    "lang": "Japanese",
+    "year": "2022"
+   },
+   {
+    "id": "221393",
+    "slug": "pokemon-japanese-sword-shield-zeraora-vstar-vmax-high-class-deck",
+    "name": "Pokemon Japanese Sword & Shield Zeraora Vstar & Vmax High-Class Deck",
+    "lang": "Japanese",
+    "year": "2022"
+   },
+   {
+    "id": "237787",
+    "slug": "pokemon-korean-charizard-vstar-vs-rayquaza-vmax-special-deck-set",
+    "name": "Pokemon Korean Charizard Vstar VS Rayquaza Vmax Special Deck Set",
+    "lang": "Korean",
+    "year": "2022"
+   },
+   {
+    "id": "214732",
+    "slug": "pokemon-korean-s-promo",
+    "name": "Pokemon Korean S Promo",
+    "lang": "Korean",
+    "year": "2022"
+   },
+   {
+    "id": "225474",
+    "slug": "pokemon-korean-start-deck-100-pikachu-v-eevee",
+    "name": "Pokemon Korean Start Deck 100 Pikachu V and Eevee",
+    "lang": "Korean",
+    "year": "2022"
+   },
+   {
+    "id": "222775",
+    "slug": "pokemon-korean-sword-shield-battle-region",
+    "name": "Pokemon Korean Sword & Shield Battle Region",
+    "lang": "Korean",
+    "year": "2022"
+   },
+   {
+    "id": "222286",
+    "slug": "pokemon-korean-sword-shield-dark-phantasma",
+    "name": "Pokemon Korean Sword & Shield Dark Phantasma",
+    "lang": "Korean",
+    "year": "2022"
+   },
+   {
+    "id": "238066",
+    "slug": "pokemon-korean-sword-shield-deoxys-vstar-vmax-high-class-deck",
+    "name": "Pokemon Korean Sword & Shield Deoxys Vstar & Vmax High-Class Deck",
+    "lang": "Korean",
+    "year": "2022"
+   },
+   {
+    "id": "224530",
+    "slug": "pokemon-korean-sword-shield-incandescent-arcana",
+    "name": "Pokemon Korean Sword & Shield Incandescent Arcana",
+    "lang": "Korean",
+    "year": "2022"
+   },
+   {
+    "id": "222497",
+    "slug": "pokemon-korean-sword-shield-lost-abyss",
+    "name": "Pokemon Korean Sword & Shield Lost Abyss",
+    "lang": "Korean",
+    "year": "2022"
+   },
+   {
+    "id": "304415",
+    "slug": "pokemon-korean-sword-shield-lucario-vstar-starter-set",
+    "name": "Pokemon Korean Sword & Shield Lucario Vstar Starter Set",
+    "lang": "Korean",
+    "year": "2022"
+   },
+   {
+    "id": "226922",
+    "slug": "pokemon-korean-sword-shield-paradigm-trigger",
+    "name": "Pokemon Korean Sword & Shield Paradigm Trigger",
+    "lang": "Korean",
+    "year": "2022"
+   },
+   {
+    "id": "220039",
+    "slug": "pokemon-korean-sword-shield-space-juggler",
+    "name": "Pokemon Korean Sword & Shield Space Juggler",
+    "lang": "Korean",
+    "year": "2022"
+   },
+   {
+    "id": "214734",
+    "slug": "pokemon-korean-sword-shield-star-birth",
+    "name": "Pokemon Korean Sword & Shield Star Birth",
+    "lang": "Korean",
+    "year": "2022"
+   },
+   {
+    "id": "224672",
+    "slug": "pokemon-korean-sword-shield-start-deck-100",
+    "name": "Pokemon Korean Sword & Shield Start Deck 100",
+    "lang": "Korean",
+    "year": "2022"
+   },
+   {
+    "id": "224677",
+    "slug": "pokemon-korean-sword-shield-time-gazer",
+    "name": "Pokemon Korean Sword & Shield Time Gazer",
+    "lang": "Korean",
+    "year": "2022"
+   },
+   {
+    "id": "216275",
+    "slug": "pokemon-korean-sword-shield-vmax-climax",
+    "name": "Pokemon Korean Sword & Shield Vmax Climax",
+    "lang": "Korean",
+    "year": "2022"
+   },
+   {
+    "id": "238219",
+    "slug": "pokemon-korean-sword-shield-zeraora-vstar-vmax-high-class-deck",
+    "name": "Pokemon Korean Sword & Shield Zeraora Vstar & Vmax High-Class Deck",
+    "lang": "Korean",
+    "year": "2022"
+   },
+   {
+    "id": "219248",
+    "slug": "pokemon-mcdonalds-collection",
+    "name": "Pokemon Mcdonald's Collection",
+    "lang": null,
+    "year": "2022"
+   },
+   {
+    "id": "227310",
+    "slug": "pokemon-play-prize-pack-series-1",
+    "name": "Pokemon Play! Pokemon Prize Pack: Series 1",
+    "lang": null,
+    "year": "2022"
+   },
+   {
+    "id": "227941",
+    "slug": "pokemon-simplified-chinese-csm1-5-c-battle-elite",
+    "name": "Pokemon Simplified Chinese CSM1.5 C-Battle Elite",
+    "lang": "Chinese",
+    "year": "2022"
+   },
+   {
+    "id": "225436",
+    "slug": "pokemon-simplified-chinese-csm1a-c-storming-emergence-radiant",
+    "name": "Pokemon Simplified Chinese Csm1a C-Storming Emergence: Radiant",
+    "lang": "Chinese",
+    "year": "2022"
+   },
+   {
+    "id": "225215",
+    "slug": "pokemon-simplified-chinese-csm1b-c-storming-emergence-verdant",
+    "name": "Pokemon Simplified Chinese Csm1b C-Storming Emergence: Verdant",
+    "lang": "Chinese",
+    "year": "2022"
+   },
+   {
+    "id": "225216",
+    "slug": "pokemon-simplified-chinese-csm1c-c-storming-emergence-abundant",
+    "name": "Pokemon Simplified Chinese Csm1c C-Storming Emergence: Abundant",
+    "lang": "Chinese",
+    "year": "2022"
+   },
+   {
+    "id": "225514",
+    "slug": "pokemon-simplified-chinese-csm1d-c-storming-emergence-gx-starter-deck",
+    "name": "Pokemon Simplified Chinese Csm1d C-Storming Emergence GX Starter Deck",
+    "lang": "Chinese",
+    "year": "2022"
+   },
+   {
+    "id": "225361",
+    "slug": "pokemon-simplified-chinese-csml-c-lillie-gift-box",
+    "name": "Pokemon Simplified Chinese Csml C-Lillie Gift Box",
+    "lang": "Chinese",
+    "year": "2022"
+   },
+   {
+    "id": "233739",
+    "slug": "pokemon-simplified-chinese-sm-promo",
+    "name": "Pokemon Simplified Chinese SM Promo",
+    "lang": "Chinese",
+    "year": "2022"
+   },
+   {
+    "id": "249131",
+    "slug": "pokemon-sinnoh-stars-mini-tins",
+    "name": "Pokemon Sinnoh Stars Mini Tins",
+    "lang": null,
+    "year": "2022"
+   },
+   {
+    "id": "213500",
+    "slug": "pokemon-sword-shield-astral-radiance",
+    "name": "Pokemon Sword & Shield Astral Radiance",
+    "lang": null,
+    "year": "2022"
+   },
+   {
+    "id": "207756",
+    "slug": "pokemon-sword-shield-brilliant-stars",
+    "name": "Pokemon Sword & Shield Brilliant Stars",
+    "lang": null,
+    "year": "2022"
+   },
+   {
+    "id": "224446",
+    "slug": "pokemon-sword-shield-intro-deck",
+    "name": "Pokemon Sword & Shield Intro Deck",
+    "lang": null,
+    "year": "2022"
+   },
+   {
+    "id": "219830",
+    "slug": "pokemon-sword-shield-lost-origin",
+    "name": "Pokemon Sword & Shield Lost Origin",
+    "lang": null,
+    "year": "2022"
+   },
+   {
+    "id": "256590",
+    "slug": "pokemon-sword-shield-lucario-v-tyranitar-heavy-hitters-premium-collection",
+    "name": "Pokemon Sword & Shield Lucario V & Tyranitar V Heavy Hitters Premium Collection",
+    "lang": null,
+    "year": "2022"
+   },
+   {
+    "id": "224428",
+    "slug": "pokemon-sword-shield-mew-v-box",
+    "name": "Pokemon Sword & Shield Mew V Box",
+    "lang": null,
+    "year": "2022"
+   },
+   {
+    "id": "222927",
+    "slug": "pokemon-sword-shield-silver-tempest",
+    "name": "Pokemon Sword & Shield Silver Tempest",
+    "lang": null,
+    "year": "2022"
+   },
+   {
+    "id": "208600",
+    "slug": "pokemon-swsh-black-star-promo",
+    "name": "Pokemon Swsh Black Star Promo",
+    "lang": null,
+    "year": "2022"
+   },
+   {
+    "id": "238435",
+    "slug": "pokemon-tcg-live-insert-code-cards",
+    "name": "Pokemon TCG Live Insert Code Cards",
+    "lang": null,
+    "year": "2022"
+   },
+   {
+    "id": "213797",
+    "slug": "pokemon-thai-s-promo",
+    "name": "Pokemon Thai S Promo",
+    "lang": "Thai",
+    "year": "2022"
+   },
+   {
+    "id": "218308",
+    "slug": "pokemon-thai-sword-shield-battle-region",
+    "name": "Pokemon Thai Sword & Shield Battle Region",
+    "lang": "Thai",
+    "year": "2022"
+   },
+   {
+    "id": "225540",
+    "slug": "pokemon-thai-sword-shield-dark-phantasma",
+    "name": "Pokemon Thai Sword & Shield Dark Phantasma",
+    "lang": "Thai",
+    "year": "2022"
+   },
+   {
+    "id": "225834",
+    "slug": "pokemon-thai-sword-shield-incandescent-arcana",
+    "name": "Pokemon Thai Sword & Shield Incandescent Arcana",
+    "lang": "Thai",
+    "year": "2022"
+   },
+   {
+    "id": "222760",
+    "slug": "pokemon-thai-sword-shield-lost-abyss",
+    "name": "Pokemon Thai Sword & Shield Lost Abyss",
+    "lang": "Thai",
+    "year": "2022"
+   },
+   {
+    "id": "228350",
+    "slug": "pokemon-thai-sword-shield-paradigm-trigger",
+    "name": "Pokemon Thai Sword & Shield Paradigm Trigger",
+    "lang": "Thai",
+    "year": "2022"
+   },
+   {
+    "id": "226598",
+    "slug": "pokemon-thai-sword-shield-space-juggler",
+    "name": "Pokemon Thai Sword & Shield Space Juggler",
+    "lang": "Thai",
+    "year": "2022"
+   },
+   {
+    "id": "210640",
+    "slug": "pokemon-thai-sword-shield-star-birth",
+    "name": "Pokemon Thai Sword & Shield Star Birth",
+    "lang": "Thai",
+    "year": "2022"
+   },
+   {
+    "id": "233393",
+    "slug": "pokemon-thai-sword-shield-time-gazer",
+    "name": "Pokemon Thai Sword & Shield Time Gazer",
+    "lang": "Thai",
+    "year": "2022"
+   },
+   {
+    "id": "228681",
+    "slug": "pokemon-thai-sword-shield-vstar-universe",
+    "name": "Pokemon Thai Sword & Shield Vstar Universe",
+    "lang": "Thai",
+    "year": "2022"
+   },
+   {
+    "id": "225395",
+    "slug": "pokemon-world-championships-promo",
+    "name": "Pokemon World Championships Promo",
+    "lang": null,
+    "year": "2022"
+   }
+  ]
+ },
+ "2025": {
+  "at": "2026-09-18T16:52:24Z",
+  "sets": [
+   {
+    "id": "305128",
+    "slug": "pokemon-2024-world-championship-deck-ancient-toolbox",
+    "name": "Pokemon 2024 World Championship Deck: Ancient Toolbox",
+    "lang": null,
+    "year": "2025"
+   },
+   {
+    "id": "308148",
+    "slug": "pokemon-2024-world-championship-deck-crushing-thorn",
+    "name": "Pokemon 2024 World Championship Deck: Crushing Thorn",
+    "lang": null,
+    "year": "2025"
+   },
+   {
+    "id": "305622",
+    "slug": "pokemon-2024-world-championship-deck-regidrago-vstar",
+    "name": "Pokemon 2024 World Championship Deck: Regidrago Vstar",
+    "lang": null,
+    "year": "2025"
+   },
+   {
+    "id": "305134",
+    "slug": "pokemon-2024-world-championship-deck-don",
+    "name": "Pokemon 2024 World Championship Deck: the 'Don",
+    "lang": null,
+    "year": "2025"
+   },
+   {
+    "id": "310445",
+    "slug": "pokemon-2025-north-america-international-championships",
+    "name": "Pokemon 2025 North America International Championships",
+    "lang": null,
+    "year": "2025"
+   },
+   {
+    "id": "310181",
+    "slug": "pokemon-blk-en-black-bolt",
+    "name": "Pokemon Blk EN-Black Bolt",
+    "lang": null,
+    "year": "2025"
+   },
+   {
+    "id": "303820",
+    "slug": "pokemon-dri-en-destined-rivals",
+    "name": "Pokemon Dri EN-Destined Rivals",
+    "lang": null,
+    "year": "2025"
+   },
+   {
+    "id": "319757",
+    "slug": "pokemon-english-insert-cards",
+    "name": "Pokemon English Insert Cards",
+    "lang": null,
+    "year": "2025"
+   },
+   {
+    "id": "310576",
+    "slug": "pokemon-french-blk-fr-black-bolt",
+    "name": "Pokemon French Blk FR-Black Bolt",
+    "lang": "French",
+    "year": "2025"
+   },
+   {
+    "id": "303823",
+    "slug": "pokemon-french-dri-fr-destined-rivals",
+    "name": "Pokemon French Dri FR-Destined Rivals",
+    "lang": "French",
+    "year": "2025"
+   },
+   {
+    "id": "324839",
+    "slug": "pokemon-french-holiday-calendar",
+    "name": "Pokemon French Holiday Calendar",
+    "lang": "French",
+    "year": "2025"
+   },
+   {
+    "id": "298960",
+    "slug": "pokemon-french-jtg-fr-journey-together",
+    "name": "Pokemon French Jtg FR-Journey Together",
+    "lang": "French",
+    "year": "2025"
+   },
+   {
+    "id": "316793",
+    "slug": "pokemon-french-meg-fr-mega-evolution",
+    "name": "Pokemon French Meg FR-Mega Evolution",
+    "lang": "French",
+    "year": "2025"
+   },
+   {
+    "id": "325792",
+    "slug": "pokemon-french-mep-fr-me-black-star-promo",
+    "name": "Pokemon French Mep FR-Me Black Star Promo",
+    "lang": "French",
+    "year": "2025"
+   },
+   {
+    "id": "322168",
+    "slug": "pokemon-french-pfl-fr-phantasmal-flames",
+    "name": "Pokemon French Pfl FR-Phantasmal Flames",
+    "lang": "French",
+    "year": "2025"
+   },
+   {
+    "id": "323148",
+    "slug": "pokemon-french-play-prize-pack-series-7",
+    "name": "Pokemon French Play! Pokemon Prize Pack: Series 7",
+    "lang": "French",
+    "year": "2025"
+   },
+   {
+    "id": "292609",
+    "slug": "pokemon-french-pre-fr-prismatic-evolutions",
+    "name": "Pokemon French Pre FR-Prismatic Evolutions",
+    "lang": "French",
+    "year": "2025"
+   },
+   {
+    "id": "343037",
+    "slug": "pokemon-french-scr-fr-stellar-crown",
+    "name": "Pokemon French Scr FR-Stellar Crown",
+    "lang": "French",
+    "year": "2025"
+   },
+   {
+    "id": "298968",
+    "slug": "pokemon-french-svp-fr-sv-black-star-promo",
+    "name": "Pokemon French Svp FR-SV Black Star Promo",
+    "lang": "French",
+    "year": "2025"
+   },
+   {
+    "id": "310581",
+    "slug": "pokemon-french-wht-fr-white-flare",
+    "name": "Pokemon French Wht FR-White Flare",
+    "lang": "French",
+    "year": "2025"
+   },
+   {
+    "id": "310575",
+    "slug": "pokemon-german-blk-de-black-bolt",
+    "name": "Pokemon German Blk de-Black Bolt",
+    "lang": "German",
+    "year": "2025"
+   },
+   {
+    "id": "303822",
+    "slug": "pokemon-german-dri-de-destined-rivals",
+    "name": "Pokemon German Dri de-Destined Rivals",
+    "lang": "German",
+    "year": "2025"
+   },
+   {
+    "id": "321626",
+    "slug": "pokemon-german-holiday-calendar",
+    "name": "Pokemon German Holiday Calendar",
+    "lang": "German",
+    "year": "2025"
+   },
+   {
+    "id": "298958",
+    "slug": "pokemon-german-jtg-de-journey-together",
+    "name": "Pokemon German Jtg de-Journey Together",
+    "lang": "German",
+    "year": "2025"
+   },
+   {
+    "id": "316792",
+    "slug": "pokemon-german-meg-de-mega-evolution",
+    "name": "Pokemon German Meg de-Mega Evolution",
+    "lang": "German",
+    "year": "2025"
+   },
+   {
+    "id": "323129",
+    "slug": "pokemon-german-mep-de-me-black-star-promo",
+    "name": "Pokemon German Mep de-Me Black Star Promo",
+    "lang": "German",
+    "year": "2025"
+   },
+   {
+    "id": "323918",
+    "slug": "pokemon-german-par-de-paradox-rift",
+    "name": "Pokemon German Par de-Paradox Rift",
+    "lang": "German",
+    "year": "2025"
+   },
+   {
+    "id": "322167",
+    "slug": "pokemon-german-pfl-de-phantasmal-flames",
+    "name": "Pokemon German Pfl de-Phantasmal Flames",
+    "lang": "German",
+    "year": "2025"
+   },
+   {
+    "id": "322193",
+    "slug": "pokemon-german-play-prize-pack",
+    "name": "Pokemon German Play! Pokemon Prize Pack",
+    "lang": "German",
+    "year": "2025"
+   },
+   {
+    "id": "314508",
+    "slug": "pokemon-german-play-prize-pack-series-6",
+    "name": "Pokemon German Play! Pokemon Prize Pack: Series 6",
+    "lang": "German",
+    "year": "2025"
+   },
+   {
+    "id": "321101",
+    "slug": "pokemon-german-play-prize-pack-series-7",
+    "name": "Pokemon German Play! Pokemon Prize Pack: Series 7",
+    "lang": "German",
+    "year": "2025"
+   },
+   {
+    "id": "292606",
+    "slug": "pokemon-german-pre-de-prismatic-evolutions",
+    "name": "Pokemon German Pre de-Prismatic Evolutions",
+    "lang": "German",
+    "year": "2025"
+   },
+   {
+    "id": "297666",
+    "slug": "pokemon-german-svp-de-sv-black-star-promo",
+    "name": "Pokemon German Svp de-SV Black Star Promo",
+    "lang": "German",
+    "year": "2025"
+   },
+   {
+    "id": "315158",
+    "slug": "pokemon-german-twm-de-twilight-masquerade",
+    "name": "Pokemon German Twm de-Twilight Masquerade",
+    "lang": "German",
+    "year": "2025"
+   },
+   {
+    "id": "310580",
+    "slug": "pokemon-german-wht-de-white-flare",
+    "name": "Pokemon German Wht de-White Flare",
+    "lang": "German",
+    "year": "2025"
+   },
+   {
+    "id": "315458",
+    "slug": "pokemon-holiday-calendar",
+    "name": "Pokemon Holiday Calendar",
+    "lang": null,
+    "year": "2025"
+   },
+   {
+    "id": "320852",
+    "slug": "pokemon-indonesian-ma1-mega-evolution",
+    "name": "Pokemon Indonesian MA1 I-Mega Evolution",
+    "lang": "Indonesian",
+    "year": "2025"
+   },
+   {
+    "id": "327553",
+    "slug": "pokemon-indonesian-ma2-blue-blaze",
+    "name": "Pokemon Indonesian MA2 I-Blue Blaze",
+    "lang": "Indonesian",
+    "year": "2025"
+   },
+   {
+    "id": "324336",
+    "slug": "pokemon-indonesian-m-p-promo",
+    "name": "Pokemon Indonesian M-P Promo",
+    "lang": "Indonesian",
+    "year": "2025"
+   },
+   {
+    "id": "308210",
+    "slug": "pokemon-indonesian-sv10s-presence-champions",
+    "name": "Pokemon Indonesian Sv10s I-Presence of Champions",
+    "lang": "Indonesian",
+    "year": "2025"
+   },
+   {
+    "id": "314859",
+    "slug": "pokemon-indonesian-sv11s-black-white",
+    "name": "Pokemon Indonesian Sv11s I-Black & White",
+    "lang": "Indonesian",
+    "year": "2025"
+   },
+   {
+    "id": "295582",
+    "slug": "pokemon-indonesian-sv8a-terastal-fest-ex",
+    "name": "Pokemon Indonesian Sv8a I-Terastal Fest EX",
+    "lang": "Indonesian",
+    "year": "2025"
+   },
+   {
+    "id": "304326",
+    "slug": "pokemon-indonesian-sv9s-bonds-destiny",
+    "name": "Pokemon Indonesian Sv9s I-Bonds of Destiny",
+    "lang": "Indonesian",
+    "year": "2025"
+   },
+   {
+    "id": "295581",
+    "slug": "pokemon-indonesian-sv-p-promo",
+    "name": "Pokemon Indonesian SV-P Promo",
+    "lang": "Indonesian",
+    "year": "2025"
+   },
+   {
+    "id": "310578",
+    "slug": "pokemon-italian-blk-black-bolt",
+    "name": "Pokemon Italian Blk It-Black Bolt",
+    "lang": "Italian",
+    "year": "2025"
+   },
+   {
+    "id": "303825",
+    "slug": "pokemon-italian-dri-destined-rivals",
+    "name": "Pokemon Italian Dri It-Destined Rivals",
+    "lang": "Italian",
+    "year": "2025"
+   },
+   {
+    "id": "324308",
+    "slug": "pokemon-italian-holiday-calendar",
+    "name": "Pokemon Italian Holiday Calendar",
+    "lang": "Italian",
+    "year": "2025"
+   },
+   {
+    "id": "298966",
+    "slug": "pokemon-italian-jtg-journey-together",
+    "name": "Pokemon Italian Jtg It-Journey Together",
+    "lang": "Italian",
+    "year": "2025"
+   },
+   {
+    "id": "316795",
+    "slug": "pokemon-italian-meg-mega-evolution",
+    "name": "Pokemon Italian Meg It-Mega Evolution",
+    "lang": "Italian",
+    "year": "2025"
+   },
+   {
+    "id": "322082",
+    "slug": "pokemon-italian-mep-me-black-star-promo",
+    "name": "Pokemon Italian Mep It-Me Black Star Promo",
+    "lang": "Italian",
+    "year": "2025"
+   },
+   {
+    "id": "322181",
+    "slug": "pokemon-italian-paf-paldean-fates",
+    "name": "Pokemon Italian Paf It-Paldean Fates",
+    "lang": "Italian",
+    "year": "2025"
+   },
+   {
+    "id": "322170",
+    "slug": "pokemon-italian-pfl-phantasmal-flames",
+    "name": "Pokemon Italian Pfl It-Phantasmal Flames",
+    "lang": "Italian",
+    "year": "2025"
+   },
+   {
+    "id": "315731",
+    "slug": "pokemon-italian-play-prize-pack-series-6",
+    "name": "Pokemon Italian Play! Pokemon Prize Pack: Series 6",
+    "lang": "Italian",
+    "year": "2025"
+   },
+   {
+    "id": "339719",
+    "slug": "pokemon-italian-play-prize-pack-series-7",
+    "name": "Pokemon Italian Play! Pokemon Prize Pack: Series 7",
+    "lang": "Italian",
+    "year": "2025"
+   },
+   {
+    "id": "292611",
+    "slug": "pokemon-italian-pre-prismatic-evolutions",
+    "name": "Pokemon Italian Pre It-Prismatic Evolutions",
+    "lang": "Italian",
+    "year": "2025"
+   },
+   {
+    "id": "298021",
+    "slug": "pokemon-italian-svp-sv-black-star-promo",
+    "name": "Pokemon Italian Svp It-SV Black Star Promo",
+    "lang": "Italian",
+    "year": "2025"
+   },
+   {
+    "id": "310583",
+    "slug": "pokemon-italian-wht-white-flare",
+    "name": "Pokemon Italian Wht It-White Flare",
+    "lang": "Italian",
+    "year": "2025"
+   },
+   {
+    "id": "312124",
+    "slug": "pokemon-japanese-m1l-mega-brave",
+    "name": "Pokemon Japanese M1l-Mega Brave",
+    "lang": "Japanese",
+    "year": "2025"
+   },
+   {
+    "id": "312125",
+    "slug": "pokemon-japanese-m1s-mega-symphonia",
+    "name": "Pokemon Japanese M1s-Mega Symphonia",
+    "lang": "Japanese",
+    "year": "2025"
+   },
+   {
+    "id": "323965",
+    "slug": "pokemon-japanese-m2a-mega-dream-ex",
+    "name": "Pokemon Japanese M2a-Mega Dream EX",
+    "lang": "Japanese",
+    "year": "2025"
+   },
+   {
+    "id": "318095",
+    "slug": "pokemon-japanese-m2-inferno-x",
+    "name": "Pokemon Japanese M2-Inferno X",
+    "lang": "Japanese",
+    "year": "2025"
+   },
+   {
+    "id": "314066",
+    "slug": "pokemon-japanese-ma-premium-trainer-box-mega",
+    "name": "Pokemon Japanese MA-Premium Trainer Box Mega",
+    "lang": "Japanese",
+    "year": "2025"
+   },
+   {
+    "id": "316159",
+    "slug": "pokemon-japanese-mbd-mega-starter-set-diancie-ex",
+    "name": "Pokemon Japanese Mbd-Mega Starter Set Mega Diancie EX",
+    "lang": "Japanese",
+    "year": "2025"
+   },
+   {
+    "id": "316158",
+    "slug": "pokemon-japanese-mbg-mega-starter-set-gengar-ex",
+    "name": "Pokemon Japanese Mbg-Mega Starter Set Mega Gengar EX",
+    "lang": "Japanese",
+    "year": "2025"
+   },
+   {
+    "id": "326110",
+    "slug": "pokemon-japanese-mc-start-deck-100-battle-collection",
+    "name": "Pokemon Japanese MC-Start Deck 100 Battle Collection",
+    "lang": "Japanese",
+    "year": "2025"
+   },
+   {
+    "id": "312898",
+    "slug": "pokemon-japanese-m-p-promo",
+    "name": "Pokemon Japanese M-P Promo",
+    "lang": "Japanese",
+    "year": "2025"
+   },
+   {
+    "id": "326116",
+    "slug": "pokemon-japanese-mp1-start-deck-100-battle-collection-corociao-version",
+    "name": "Pokemon Japanese MP1-Start Deck 100 Battle Collection Corociao Version",
+    "lang": "Japanese",
+    "year": "2025"
+   },
+   {
+    "id": "296040",
+    "slug": "pokemon-japanese-sv0d-ex-starter-set-stevens-beldum-metagross",
+    "name": "Pokemon Japanese Sv0d-EX Starter Set Steven's Beldum & Metagross EX",
+    "lang": "Japanese",
+    "year": "2025"
+   },
+   {
+    "id": "296041",
+    "slug": "pokemon-japanese-sv0m-ex-starter-set-marnies-morpeko-grimmsnarl",
+    "name": "Pokemon Japanese Sv0m-EX Starter Set Marnie's Morpeko & Grimmsnarl EX",
+    "lang": "Japanese",
+    "year": "2025"
+   },
+   {
+    "id": "301192",
+    "slug": "pokemon-japanese-sv10-glory-team-rocket",
+    "name": "Pokemon Japanese SV10-Glory of Team Rocket",
+    "lang": "Japanese",
+    "year": "2025"
+   },
+   {
+    "id": "305725",
+    "slug": "pokemon-japanese-sv11b-black-bolt",
+    "name": "Pokemon Japanese Sv11b-Black Bolt",
+    "lang": "Japanese",
+    "year": "2025"
+   },
+   {
+    "id": "305728",
+    "slug": "pokemon-japanese-sv11w-white-flare",
+    "name": "Pokemon Japanese Sv11w-White Flare",
+    "lang": "Japanese",
+    "year": "2025"
+   },
+   {
+    "id": "297935",
+    "slug": "pokemon-japanese-sv9a-heat-wave-arena",
+    "name": "Pokemon Japanese Sv9a-Heat Wave Arena",
+    "lang": "Japanese",
+    "year": "2025"
+   },
+   {
+    "id": "292980",
+    "slug": "pokemon-japanese-sv9-battle-partners",
+    "name": "Pokemon Japanese SV9-Battle Partners",
+    "lang": "Japanese",
+    "year": "2025"
+   },
+   {
+    "id": "297732",
+    "slug": "pokemon-japanese-svn-battle-partners-deck-build-box",
+    "name": "Pokemon Japanese Svn-Battle Partners Deck Build Box",
+    "lang": "Japanese",
+    "year": "2025"
+   },
+   {
+    "id": "292983",
+    "slug": "pokemon-japanese-sv-p-promo",
+    "name": "Pokemon Japanese SV-P Promo",
+    "lang": "Japanese",
+    "year": "2025"
+   },
+   {
+    "id": "298491",
+    "slug": "pokemon-jtg-en-journey-together",
+    "name": "Pokemon Jtg EN-Journey Together",
+    "lang": null,
+    "year": "2025"
+   },
+   {
+    "id": "319576",
+    "slug": "pokemon-korean-insert-cards",
+    "name": "Pokemon Korean Insert Cards",
+    "lang": "Korean",
+    "year": "2025"
+   },
+   {
+    "id": "321120",
+    "slug": "pokemon-korean-m1l-mega-brave",
+    "name": "Pokemon Korean M1l-Mega Brave",
+    "lang": "Korean",
+    "year": "2025"
+   },
+   {
+    "id": "321118",
+    "slug": "pokemon-korean-m1s-mega-symphonia",
+    "name": "Pokemon Korean M1s-Mega Symphonia",
+    "lang": "Korean",
+    "year": "2025"
+   },
+   {
+    "id": "326250",
+    "slug": "pokemon-korean-m2-inferno-x",
+    "name": "Pokemon Korean M2-Inferno X",
+    "lang": "Korean",
+    "year": "2025"
+   },
+   {
+    "id": "329858",
+    "slug": "pokemon-korean-mbd-mega-starter-set-diancie-ex",
+    "name": "Pokemon Korean Mbd-Mega Starter Set Mega Diancie EX",
+    "lang": "Korean",
+    "year": "2025"
+   },
+   {
+    "id": "327778",
+    "slug": "pokemon-korean-mbg-mega-starter-set-gengar-ex",
+    "name": "Pokemon Korean Mbg-Mega Starter Set Mega Gengar EX",
+    "lang": "Korean",
+    "year": "2025"
+   },
+   {
+    "id": "324071",
+    "slug": "pokemon-korean-m-p-promo",
+    "name": "Pokemon Korean M-P Promo",
+    "lang": "Korean",
+    "year": "2025"
+   },
+   {
+    "id": "339943",
+    "slug": "pokemon-korean-sv0d-ex-starter-set-stevens-beldum-metagross",
+    "name": "Pokemon Korean Sv0d-EX Starter Set Steven's Beldum & Metagross EX",
+    "lang": "Korean",
+    "year": "2025"
+   },
+   {
+    "id": "307571",
+    "slug": "pokemon-korean-sv0m-ex-starter-set-marnies-morpeko-grimmsnarl",
+    "name": "Pokemon Korean Sv0m-EX Starter Set Marnie's Morpeko & Grimmsnarl EX",
+    "lang": "Korean",
+    "year": "2025"
+   },
+   {
+    "id": "309781",
+    "slug": "pokemon-korean-sv10-glory-team-rocket",
+    "name": "Pokemon Korean SV10-Glory of Team Rocket",
+    "lang": "Korean",
+    "year": "2025"
+   },
+   {
+    "id": "313584",
+    "slug": "pokemon-korean-sv11b-black-bolt",
+    "name": "Pokemon Korean Sv11b-Black Bolt",
+    "lang": "Korean",
+    "year": "2025"
+   },
+   {
+    "id": "313585",
+    "slug": "pokemon-korean-sv11w-white-flare",
+    "name": "Pokemon Korean Sv11w-White Flare",
+    "lang": "Korean",
+    "year": "2025"
+   },
+   {
+    "id": "295550",
+    "slug": "pokemon-korean-sv8a-terastal-fest-ex",
+    "name": "Pokemon Korean Sv8a-Terastal Fest EX",
+    "lang": "Korean",
+    "year": "2025"
+   },
+   {
+    "id": "305741",
+    "slug": "pokemon-korean-sv9a-heat-wave-arena",
+    "name": "Pokemon Korean Sv9a-Heat Wave Arena",
+    "lang": "Korean",
+    "year": "2025"
+   },
+   {
+    "id": "300800",
+    "slug": "pokemon-korean-sv9-battle-partners",
+    "name": "Pokemon Korean SV9-Battle Partners",
+    "lang": "Korean",
+    "year": "2025"
+   },
+   {
+    "id": "296583",
+    "slug": "pokemon-korean-sv-p-promo",
+    "name": "Pokemon Korean SV-P Promo",
+    "lang": "Korean",
+    "year": "2025"
+   },
+   {
+    "id": "310579",
+    "slug": "pokemon-latin-american-blk-la-black-bolt",
+    "name": "Pokemon Latin American Blk La-Black Bolt",
+    "lang": "Latin American",
+    "year": "2025"
+   },
+   {
+    "id": "303826",
+    "slug": "pokemon-latin-american-dri-la-destined-rivals",
+    "name": "Pokemon Latin American Dri La-Destined Rivals",
+    "lang": "Latin American",
+    "year": "2025"
+   },
+   {
+    "id": "298967",
+    "slug": "pokemon-latin-american-jtg-la-journey-together",
+    "name": "Pokemon Latin American Jtg La-Journey Together",
+    "lang": "Latin American",
+    "year": "2025"
+   },
+   {
+    "id": "316796",
+    "slug": "pokemon-latin-american-meg-la-mega-evolution",
+    "name": "Pokemon Latin American Meg La-Mega Evolution",
+    "lang": "Latin American",
+    "year": "2025"
+   },
+   {
+    "id": "318799",
+    "slug": "pokemon-latin-american-mep-la-me-black-star-promo",
+    "name": "Pokemon Latin American Mep La-Me Black Star Promo",
+    "lang": "Latin American",
+    "year": "2025"
+   },
+   {
+    "id": "322171",
+    "slug": "pokemon-latin-american-pfl-la-phantasmal-flames",
+    "name": "Pokemon Latin American Pfl La-Phantasmal Flames",
+    "lang": "Latin American",
+    "year": "2025"
+   },
+   {
+    "id": "310507",
+    "slug": "pokemon-latin-american-svp-la-sv-black-star-promo",
+    "name": "Pokemon Latin American Svp La-SV Black Star Promo",
+    "lang": "Latin American",
+    "year": "2025"
+   },
+   {
+    "id": "310584",
+    "slug": "pokemon-latin-american-wht-la-white-flare",
+    "name": "Pokemon Latin American Wht La-White Flare",
+    "lang": "Latin American",
+    "year": "2025"
+   },
+   {
+    "id": "298642",
+    "slug": "pokemon-m24-de-mcdonalds-collection",
+    "name": "Pokemon M24 de-Mcdonald's Collection",
+    "lang": "German",
+    "year": "2025"
+   },
+   {
+    "id": "292686",
+    "slug": "pokemon-m24-en-mcdonalds-collection",
+    "name": "Pokemon M24 EN-Mcdonald's Collection",
+    "lang": null,
+    "year": "2025"
+   },
+   {
+    "id": "309471",
+    "slug": "pokemon-m24-mcdonalds-collection",
+    "name": "Pokemon M24 It-Mcdonald's Collection",
+    "lang": "Italian",
+    "year": "2025"
+   },
+   {
+    "id": "325838",
+    "slug": "pokemon-mee-en-basic-energies",
+    "name": "Pokemon Mee EN-Basic Energies",
+    "lang": null,
+    "year": "2025"
+   },
+   {
+    "id": "316651",
+    "slug": "pokemon-meg-en-mega-evolution",
+    "name": "Pokemon Meg EN-Mega Evolution",
+    "lang": null,
+    "year": "2025"
+   },
+   {
+    "id": "324309",
+    "slug": "pokemon-mega-heroes-mini-tins",
+    "name": "Pokemon Mega Heroes Mini Tins",
+    "lang": null,
+    "year": "2025"
+   },
+   {
+    "id": "317438",
+    "slug": "pokemon-mep-en-me-black-star-promo",
+    "name": "Pokemon Mep EN-Me Black Star Promo",
+    "lang": null,
+    "year": "2025"
+   },
+   {
+    "id": "295504",
+    "slug": "pokemon-mew-en-151",
+    "name": "Pokemon Mew EN-151",
+    "lang": null,
+    "year": "2025"
+   },
+   {
+    "id": "314966",
+    "slug": "pokemon-obf-en-obsidian-flames",
+    "name": "Pokemon Obf EN-Obsidian Flames",
+    "lang": null,
+    "year": "2025"
+   },
+   {
+    "id": "311416",
+    "slug": "pokemon-paf-en-paldean-fates",
+    "name": "Pokemon Paf EN-Paldean Fates",
+    "lang": null,
+    "year": "2025"
+   },
+   {
+    "id": "314961",
+    "slug": "pokemon-pal-en-paldea-evolved",
+    "name": "Pokemon Pal EN-Paldea Evolved",
+    "lang": null,
+    "year": "2025"
+   },
+   {
+    "id": "301722",
+    "slug": "pokemon-par-en-paradox-rift",
+    "name": "Pokemon Par EN-Paradox Rift",
+    "lang": null,
+    "year": "2025"
+   },
+   {
+    "id": "321034",
+    "slug": "pokemon-pfl-en-phantasmal-flames",
+    "name": "Pokemon Pfl EN-Phantasmal Flames",
+    "lang": null,
+    "year": "2025"
+   },
+   {
+    "id": "314883",
+    "slug": "pokemon-play-prize-pack",
+    "name": "Pokemon Play! Pokemon Prize Pack",
+    "lang": null,
+    "year": "2025"
+   },
+   {
+    "id": "295057",
+    "slug": "pokemon-play-prize-pack-series-6",
+    "name": "Pokemon Play! Pokemon Prize Pack: Series 6",
+    "lang": null,
+    "year": "2025"
+   },
+   {
+    "id": "313659",
+    "slug": "pokemon-play-prize-pack-series-7",
+    "name": "Pokemon Play! Pokemon Prize Pack: Series 7",
+    "lang": null,
+    "year": "2025"
+   },
+   {
+    "id": "317705",
+    "slug": "pokemon-portuguese-blk-pt-black-bolt",
+    "name": "Pokemon Portuguese Blk PT-Black Bolt",
+    "lang": "Portuguese",
+    "year": "2025"
+   },
+   {
+    "id": "310510",
+    "slug": "pokemon-portuguese-dri-pt-destined-rivals",
+    "name": "Pokemon Portuguese Dri PT-Destined Rivals",
+    "lang": "Portuguese",
+    "year": "2025"
+   },
+   {
+    "id": "311623",
+    "slug": "pokemon-portuguese-jtg-pt-journey-together",
+    "name": "Pokemon Portuguese Jtg PT-Journey Together",
+    "lang": "Portuguese",
+    "year": "2025"
+   },
+   {
+    "id": "322830",
+    "slug": "pokemon-portuguese-meg-pt-mega-evolution",
+    "name": "Pokemon Portuguese Meg PT-Mega Evolution",
+    "lang": "Portuguese",
+    "year": "2025"
+   },
+   {
+    "id": "325044",
+    "slug": "pokemon-portuguese-mep-pt-me-black-star-promo",
+    "name": "Pokemon Portuguese Mep PT-Me Black Star Promo",
+    "lang": "Portuguese",
+    "year": "2025"
+   },
+   {
+    "id": "309926",
+    "slug": "pokemon-portuguese-mew-pt-151",
+    "name": "Pokemon Portuguese Mew PT-151",
+    "lang": "Portuguese",
+    "year": "2025"
+   },
+   {
+    "id": "326803",
+    "slug": "pokemon-portuguese-pfl-pt-phantasmal-flames",
+    "name": "Pokemon Portuguese Pfl PT-Phantasmal Flames",
+    "lang": "Portuguese",
+    "year": "2025"
+   },
+   {
+    "id": "300320",
+    "slug": "pokemon-portuguese-pre-pt-prismatic-evolutions",
+    "name": "Pokemon Portuguese Pre PT-Prismatic Evolutions",
+    "lang": "Portuguese",
+    "year": "2025"
+   },
+   {
+    "id": "305486",
+    "slug": "pokemon-portuguese-svp-pt-sv-black-star-promo",
+    "name": "Pokemon Portuguese Svp PT-SV Black Star Promo",
+    "lang": "Portuguese",
+    "year": "2025"
+   },
+   {
+    "id": "319404",
+    "slug": "pokemon-portuguese-wht-pt-white-flare",
+    "name": "Pokemon Portuguese Wht PT-White Flare",
+    "lang": "Portuguese",
+    "year": "2025"
+   },
+   {
+    "id": "292058",
+    "slug": "pokemon-pre-en-prismatic-evolutions",
+    "name": "Pokemon Pre EN-Prismatic Evolutions",
+    "lang": null,
+    "year": "2025"
+   },
+   {
+    "id": "304010",
+    "slug": "pokemon-scr-en-stellar-crown",
+    "name": "Pokemon Scr EN-Stellar Crown",
+    "lang": null,
+    "year": "2025"
+   },
+   {
+    "id": "294021",
+    "slug": "pokemon-simplified-chinese-151-c-collection",
+    "name": "Pokemon Simplified Chinese 151 C-Collection 151",
+    "lang": "Chinese",
+    "year": "2025"
+   },
+   {
+    "id": "294144",
+    "slug": "pokemon-simplified-chinese-cbb1-c-gem-pack-vol-1",
+    "name": "Pokemon Simplified Chinese CBB1 C-Gem Pack Vol 1",
+    "lang": "Chinese",
+    "year": "2025"
+   },
+   {
+    "id": "304667",
+    "slug": "pokemon-simplified-chinese-cbb2-c-gem-pack-vol-2",
+    "name": "Pokemon Simplified Chinese CBB2 C-Gem Pack Vol 2",
+    "lang": "Chinese",
+    "year": "2025"
+   },
+   {
+    "id": "318683",
+    "slug": "pokemon-simplified-chinese-cbb3-c-gem-pack-vol-3",
+    "name": "Pokemon Simplified Chinese CBB3 C-Gem Pack Vol 3",
+    "lang": "Chinese",
+    "year": "2025"
+   },
+   {
+    "id": "298591",
+    "slug": "pokemon-simplified-chinese-csv1-c-ancient-times-future-progress",
+    "name": "Pokemon Simplified Chinese CSV1 C-Ancient Times, Future Progress",
+    "lang": "Chinese",
+    "year": "2025"
+   },
+   {
+    "id": "298649",
+    "slug": "pokemon-simplified-chinese-csv2-c-miracle-journey",
+    "name": "Pokemon Simplified Chinese CSV2 C-Miracle Journey",
+    "lang": "Chinese",
+    "year": "2025"
+   },
+   {
+    "id": "304786",
+    "slug": "pokemon-simplified-chinese-csv3-c-fearless-terastal",
+    "name": "Pokemon Simplified Chinese CSV3 C-Fearless Terastal",
+    "lang": "Chinese",
+    "year": "2025"
+   },
+   {
+    "id": "311592",
+    "slug": "pokemon-simplified-chinese-csv4-c-bonus-round",
+    "name": "Pokemon Simplified Chinese CSV4 C-Bonus Round",
+    "lang": "Chinese",
+    "year": "2025"
+   },
+   {
+    "id": "318934",
+    "slug": "pokemon-simplified-chinese-csv5-c-dark-crystal-blaze",
+    "name": "Pokemon Simplified Chinese CSV5 C-Dark Crystal Blaze",
+    "lang": "Chinese",
+    "year": "2025"
+   },
+   {
+    "id": "324943",
+    "slug": "pokemon-simplified-chinese-csv6-c-arcane-truth",
+    "name": "Pokemon Simplified Chinese CSV6 C-Arcane Truth",
+    "lang": "Chinese",
+    "year": "2025"
+   },
+   {
+    "id": "330716",
+    "slug": "pokemon-simplified-chinese-csv7-c-blade-awakening",
+    "name": "Pokemon Simplified Chinese CSV7 C-Blade Awakening",
+    "lang": "Chinese",
+    "year": "2025"
+   },
+   {
+    "id": "316296",
+    "slug": "pokemon-simplified-chinese-csve1-c-battle-party-dream",
+    "name": "Pokemon Simplified Chinese CSVE1 C-Battle Party Dream",
+    "lang": "Chinese",
+    "year": "2025"
+   },
+   {
+    "id": "313732",
+    "slug": "pokemon-simplified-chinese-csve1p-c-battle-party-dream-reward-pack",
+    "name": "Pokemon Simplified Chinese Csve1p C-Battle Party Dream Reward Pack",
+    "lang": "Chinese",
+    "year": "2025"
+   },
+   {
+    "id": "316428",
+    "slug": "pokemon-simplified-chinese-csve2-c-battle-party-dream",
+    "name": "Pokemon Simplified Chinese CSVE2 C-Battle Party Dream",
+    "lang": "Chinese",
+    "year": "2025"
+   },
+   {
+    "id": "323198",
+    "slug": "pokemon-simplified-chinese-csve2p-c-battle-party-dream-reward-pack",
+    "name": "Pokemon Simplified Chinese Csve2p C-Battle Party Dream Reward Pack",
+    "lang": "Chinese",
+    "year": "2025"
+   },
+   {
+    "id": "303269",
+    "slug": "pokemon-simplified-chinese-csvh1-c-happy-pack-pikachu-clefairy-turtwig-gimmighoul",
+    "name": "Pokemon Simplified Chinese CSVH1 C-Happy Pack Pikachu & Clefairy & Turtwig & Gimmighoul",
+    "lang": "Chinese",
+    "year": "2025"
+   },
+   {
+    "id": "325905",
+    "slug": "pokemon-simplified-chinese-csvh3-c-happy-pack-altaria-latios-infernape-maushold",
+    "name": "Pokemon Simplified Chinese CSVH3 C-Happy Pack Altaria & Latios & Infernape & Maushold",
+    "lang": "Chinese",
+    "year": "2025"
+   },
+   {
+    "id": "307428",
+    "slug": "pokemon-simplified-chinese-csvl1-c-departure-special-pack",
+    "name": "Pokemon Simplified Chinese CSVL1 C-Departure Special Pack",
+    "lang": "Chinese",
+    "year": "2025"
+   },
+   {
+    "id": "323346",
+    "slug": "pokemon-simplified-chinese-csvl2-c-travel-theme-pack",
+    "name": "Pokemon Simplified Chinese CSVL2 C-Travel Theme Pack",
+    "lang": "Chinese",
+    "year": "2025"
+   },
+   {
+    "id": "295881",
+    "slug": "pokemon-simplified-chinese-sv-p-promo",
+    "name": "Pokemon Simplified Chinese SV-P Promo",
+    "lang": "Chinese",
+    "year": "2025"
+   },
+   {
+    "id": "323920",
+    "slug": "pokemon-simplified-chinese-basic-energies",
+    "name": "Pokemon Simplified Chinese-Basic Energies",
+    "lang": "Chinese",
+    "year": "2025"
+   },
+   {
+    "id": "310582",
+    "slug": "pokemon-spanish-blk-es-black-bolt",
+    "name": "Pokemon Spanish Blk ES-Black Bolt",
+    "lang": "Spanish",
+    "year": "2025"
+   },
+   {
+    "id": "303824",
+    "slug": "pokemon-spanish-dri-es-destined-rivals",
+    "name": "Pokemon Spanish Dri ES-Destined Rivals",
+    "lang": "Spanish",
+    "year": "2025"
+   },
+   {
+    "id": "298965",
+    "slug": "pokemon-spanish-jtg-es-journey-together",
+    "name": "Pokemon Spanish Jtg ES-Journey Together",
+    "lang": "Spanish",
+    "year": "2025"
+   },
+   {
+    "id": "316794",
+    "slug": "pokemon-spanish-meg-es-mega-evolution",
+    "name": "Pokemon Spanish Meg ES-Mega Evolution",
+    "lang": "Spanish",
+    "year": "2025"
+   },
+   {
+    "id": "322220",
+    "slug": "pokemon-spanish-mep-es-me-black-star-promo",
+    "name": "Pokemon Spanish Mep ES-Me Black Star Promo",
+    "lang": "Spanish",
+    "year": "2025"
+   },
+   {
+    "id": "303116",
+    "slug": "pokemon-spanish-mew-es-151",
+    "name": "Pokemon Spanish Mew ES-151",
+    "lang": "Spanish",
+    "year": "2025"
+   },
+   {
+    "id": "322169",
+    "slug": "pokemon-spanish-pfl-es-phantasmal-flames",
+    "name": "Pokemon Spanish Pfl ES-Phantasmal Flames",
+    "lang": "Spanish",
+    "year": "2025"
+   },
+   {
+    "id": "321763",
+    "slug": "pokemon-spanish-play-prize-pack-series-6",
+    "name": "Pokemon Spanish Play! Pokemon Prize Pack: Series 6",
+    "lang": "Spanish",
+    "year": "2025"
+   },
+   {
+    "id": "324103",
+    "slug": "pokemon-spanish-play-prize-pack-series-7",
+    "name": "Pokemon Spanish Play! Pokemon Prize Pack: Series 7",
+    "lang": "Spanish",
+    "year": "2025"
+   },
+   {
+    "id": "292610",
+    "slug": "pokemon-spanish-pre-es-prismatic-evolutions",
+    "name": "Pokemon Spanish Pre ES-Prismatic Evolutions",
+    "lang": "Spanish",
+    "year": "2025"
+   },
+   {
+    "id": "300094",
+    "slug": "pokemon-spanish-svp-es-sv-black-star-promo",
+    "name": "Pokemon Spanish Svp ES-SV Black Star Promo",
+    "lang": "Spanish",
+    "year": "2025"
+   },
+   {
+    "id": "303400",
+    "slug": "pokemon-spanish-swsh-black-star-promo",
+    "name": "Pokemon Spanish Swsh Black Star Promo",
+    "lang": "Spanish",
+    "year": "2025"
+   },
+   {
+    "id": "310577",
+    "slug": "pokemon-spanish-wht-es-white-flare",
+    "name": "Pokemon Spanish Wht ES-White Flare",
+    "lang": "Spanish",
+    "year": "2025"
+   },
+   {
+    "id": "304006",
+    "slug": "pokemon-ssp-en-surging-sparks",
+    "name": "Pokemon Ssp EN-Surging Sparks",
+    "lang": null,
+    "year": "2025"
+   },
+   {
+    "id": "292639",
+    "slug": "pokemon-sve-en-basic-energies",
+    "name": "Pokemon Sve EN-Basic Energies",
+    "lang": null,
+    "year": "2025"
+   },
+   {
+    "id": "314960",
+    "slug": "pokemon-svi-en-scarlet-violet",
+    "name": "Pokemon Svi EN-Scarlet & Violet",
+    "lang": null,
+    "year": "2025"
+   },
+   {
+    "id": "292698",
+    "slug": "pokemon-svp-en-sv-black-star-promo",
+    "name": "Pokemon Svp EN-SV Black Star Promo",
+    "lang": null,
+    "year": "2025"
+   },
+   {
+    "id": "304004",
+    "slug": "pokemon-tef-en-temporal-forces",
+    "name": "Pokemon Tef EN-Temporal Forces",
+    "lang": null,
+    "year": "2025"
+   },
+   {
+    "id": "322780",
+    "slug": "pokemon-thai-ma1-t-mega-evolution",
+    "name": "Pokemon Thai MA1 T-Mega Evolution",
+    "lang": "Thai",
+    "year": "2025"
+   },
+   {
+    "id": "324679",
+    "slug": "pokemon-thai-ma2-t-blue-blaze",
+    "name": "Pokemon Thai MA2 T-Blue Blaze",
+    "lang": "Thai",
+    "year": "2025"
+   },
+   {
+    "id": "325533",
+    "slug": "pokemon-thai-m-p-promo",
+    "name": "Pokemon Thai M-P Promo",
+    "lang": "Thai",
+    "year": "2025"
+   },
+   {
+    "id": "308907",
+    "slug": "pokemon-thai-sv10s-t-presence-champions",
+    "name": "Pokemon Thai Sv10s T-Presence of Champions",
+    "lang": "Thai",
+    "year": "2025"
+   },
+   {
+    "id": "315288",
+    "slug": "pokemon-thai-sv11s-t-black-white",
+    "name": "Pokemon Thai Sv11s T-Black & White",
+    "lang": "Thai",
+    "year": "2025"
+   },
+   {
+    "id": "296988",
+    "slug": "pokemon-thai-sv8a-t-terastal-fest-ex",
+    "name": "Pokemon Thai Sv8a T-Terastal Fest EX",
+    "lang": "Thai",
+    "year": "2025"
+   },
+   {
+    "id": "307568",
+    "slug": "pokemon-thai-sv9s-t-bonds-destiny",
+    "name": "Pokemon Thai Sv9s T-Bonds of Destiny",
+    "lang": "Thai",
+    "year": "2025"
+   },
+   {
+    "id": "298168",
+    "slug": "pokemon-thai-sv-p-promo",
+    "name": "Pokemon Thai SV-P Promo",
+    "lang": "Thai",
+    "year": "2025"
+   },
+   {
+    "id": "314234",
+    "slug": "pokemon-traditional-chinese-m1l-f-mega-brave",
+    "name": "Pokemon Traditional Chinese M1l F-Mega Brave",
+    "lang": "Chinese",
+    "year": "2025"
+   },
+   {
+    "id": "314250",
+    "slug": "pokemon-traditional-chinese-m1s-f-mega-symphonia",
+    "name": "Pokemon Traditional Chinese M1s F-Mega Symphonia",
+    "lang": "Chinese",
+    "year": "2025"
+   },
+   {
+    "id": "321302",
+    "slug": "pokemon-traditional-chinese-m2-f-inferno-x",
+    "name": "Pokemon Traditional Chinese M2 F-Inferno X",
+    "lang": "Chinese",
+    "year": "2025"
+   },
+   {
+    "id": "327206",
+    "slug": "pokemon-traditional-chinese-m2a-f-mega-dream-ex",
+    "name": "Pokemon Traditional Chinese M2a F-Mega Dream EX",
+    "lang": "Chinese",
+    "year": "2025"
+   },
+   {
+    "id": "321692",
+    "slug": "pokemon-traditional-chinese-mbd-challenge-deck-mega-diancie-ex",
+    "name": "Pokemon Traditional Chinese Mbd Challenge Deck: Mega Diancie EX",
+    "lang": "Chinese",
+    "year": "2025"
+   },
+   {
+    "id": "321790",
+    "slug": "pokemon-traditional-chinese-mbg-challenge-deck-mega-gengar-ex",
+    "name": "Pokemon Traditional Chinese Mbg Challenge Deck: Mega Gengar EX",
+    "lang": "Chinese",
+    "year": "2025"
+   },
+   {
+    "id": "318190",
+    "slug": "pokemon-traditional-chinese-m-p-promo",
+    "name": "Pokemon Traditional Chinese M-P Promo",
+    "lang": "Chinese",
+    "year": "2025"
+   },
+   {
+    "id": "330035",
+    "slug": "pokemon-traditional-chinese-scarlet-violet-ex-start-deck-pikachu",
+    "name": "Pokemon Traditional Chinese Scarlet & Violet EX Start Deck Pikachu",
+    "lang": "Chinese",
+    "year": "2025"
+   },
+   {
+    "id": "304520",
+    "slug": "pokemon-traditional-chinese-sv0d-f-ex-starter-set-stevens-beldum-metagross",
+    "name": "Pokemon Traditional Chinese Sv0d F-EX Starter Set Steven's Beldum & Metagross EX",
+    "lang": "Chinese",
+    "year": "2025"
+   },
+   {
+    "id": "302268",
+    "slug": "pokemon-traditional-chinese-sv0m-f-ex-starter-set-marnies-morpeko-grimmsnarl",
+    "name": "Pokemon Traditional Chinese Sv0m F-EX Starter Set Marnie's Morpeko & Grimmsnarl EX",
+    "lang": "Chinese",
+    "year": "2025"
+   },
+   {
+    "id": "304321",
+    "slug": "pokemon-traditional-chinese-sv10-f-glory-team-rocket",
+    "name": "Pokemon Traditional Chinese SV10 F-Glory of Team Rocket",
+    "lang": "Chinese",
+    "year": "2025"
+   },
+   {
+    "id": "308484",
+    "slug": "pokemon-traditional-chinese-sv11b-f-black-bolt",
+    "name": "Pokemon Traditional Chinese Sv11b F-Black Bolt",
+    "lang": "Chinese",
+    "year": "2025"
+   },
+   {
+    "id": "308481",
+    "slug": "pokemon-traditional-chinese-sv11w-f-white-flare",
+    "name": "Pokemon Traditional Chinese Sv11w F-White Flare",
+    "lang": "Chinese",
+    "year": "2025"
+   },
+   {
+    "id": "295373",
+    "slug": "pokemon-traditional-chinese-sv9-f-battle-partners",
+    "name": "Pokemon Traditional Chinese SV9 F-Battle Partners",
+    "lang": "Chinese",
+    "year": "2025"
+   },
+   {
+    "id": "301610",
+    "slug": "pokemon-traditional-chinese-sv9a-f-heat-wave-arena",
+    "name": "Pokemon Traditional Chinese Sv9a F-Heat Wave Arena",
+    "lang": "Chinese",
+    "year": "2025"
+   },
+   {
+    "id": "295553",
+    "slug": "pokemon-traditional-chinese-sv-p-promo",
+    "name": "Pokemon Traditional Chinese SV-P Promo",
+    "lang": "Chinese",
+    "year": "2025"
+   },
+   {
+    "id": "301723",
+    "slug": "pokemon-twm-en-twilight-masquerade",
+    "name": "Pokemon Twm EN-Twilight Masquerade",
+    "lang": null,
+    "year": "2025"
+   },
+   {
+    "id": "310182",
+    "slug": "pokemon-wht-en-white-flare",
+    "name": "Pokemon Wht EN-White Flare",
+    "lang": null,
+    "year": "2025"
+   },
+   {
+    "id": "313970",
+    "slug": "pokemon-world-championships-promo",
+    "name": "Pokemon World Championships Promo",
+    "lang": null,
+    "year": "2025"
+   }
+  ]
+ },
+ "2026": {
+  "at": "2026-09-18T16:52:29Z",
+  "sets": [
+   {
+    "id": "347258",
+    "slug": "pokemon-2025-world-championship-deck-jp-raging-bolt",
+    "name": "Pokemon 2025 World Championship Deck: JP Raging Bolt",
+    "lang": null,
+    "year": "2026"
+   },
+   {
+    "id": "350105",
+    "slug": "pokemon-30c-en-30th-celebration",
+    "name": "Pokemon 30C EN-30th Celebration",
+    "lang": null,
+    "year": "2026"
+   },
+   {
+    "id": "329259",
+    "slug": "pokemon-asc-en-ascended-heroes",
+    "name": "Pokemon Asc EN-Ascended Heroes",
+    "lang": null,
+    "year": "2026"
+   },
+   {
+    "id": "340668",
+    "slug": "pokemon-blk-en-black-bolt",
+    "name": "Pokemon Blk EN-Black Bolt",
+    "lang": null,
+    "year": "2026"
+   },
+   {
+    "id": "339974",
+    "slug": "pokemon-cri-en-chaos-rising",
+    "name": "Pokemon Cri EN-Chaos Rising",
+    "lang": null,
+    "year": "2026"
+   },
+   {
+    "id": "331010",
+    "slug": "pokemon-french-asc-fr-ascended-heroes",
+    "name": "Pokemon French Asc FR-Ascended Heroes",
+    "lang": "French",
+    "year": "2026"
+   },
+   {
+    "id": "340263",
+    "slug": "pokemon-french-cri-fr-chaos-rising",
+    "name": "Pokemon French Cri FR-Chaos Rising",
+    "lang": "French",
+    "year": "2026"
+   },
+   {
+    "id": "335891",
+    "slug": "pokemon-french-mep-fr-me-black-star-promo",
+    "name": "Pokemon French Mep FR-Me Black Star Promo",
+    "lang": "French",
+    "year": "2026"
+   },
+   {
+    "id": "345594",
+    "slug": "pokemon-french-pbl-fr-pitch-black",
+    "name": "Pokemon French Pbl FR-Pitch Black",
+    "lang": "French",
+    "year": "2026"
+   },
+   {
+    "id": "344971",
+    "slug": "pokemon-french-play-prize-pack-series-8",
+    "name": "Pokemon French Play! Pokemon Prize Pack: Series 8",
+    "lang": "French",
+    "year": "2026"
+   },
+   {
+    "id": "334602",
+    "slug": "pokemon-french-por-fr-perfect-order",
+    "name": "Pokemon French Por FR-Perfect Order",
+    "lang": "French",
+    "year": "2026"
+   },
+   {
+    "id": "339451",
+    "slug": "pokemon-french-tef-fr-temporal-forces",
+    "name": "Pokemon French Tef FR-Temporal Forces",
+    "lang": "French",
+    "year": "2026"
+   },
+   {
+    "id": "331765",
+    "slug": "pokemon-german-asc-de-ascended-heroes",
+    "name": "Pokemon German Asc de-Ascended Heroes",
+    "lang": "German",
+    "year": "2026"
+   },
+   {
+    "id": "340256",
+    "slug": "pokemon-german-cri-de-chaos-rising",
+    "name": "Pokemon German Cri de-Chaos Rising",
+    "lang": "German",
+    "year": "2026"
+   },
+   {
+    "id": "339116",
+    "slug": "pokemon-german-meg-de-mega-evolution",
+    "name": "Pokemon German Meg de-Mega Evolution",
+    "lang": "German",
+    "year": "2026"
+   },
+   {
+    "id": "339606",
+    "slug": "pokemon-german-mep-de-me-black-star-promo",
+    "name": "Pokemon German Mep de-Me Black Star Promo",
+    "lang": "German",
+    "year": "2026"
+   },
+   {
+    "id": "345591",
+    "slug": "pokemon-german-pbl-de-pitch-black",
+    "name": "Pokemon German Pbl de-Pitch Black",
+    "lang": "German",
+    "year": "2026"
+   },
+   {
+    "id": "334601",
+    "slug": "pokemon-german-por-de-perfect-order",
+    "name": "Pokemon German Por de-Perfect Order",
+    "lang": "German",
+    "year": "2026"
+   },
+   {
+    "id": "340427",
+    "slug": "pokemon-german-tef-de-temporal-forces",
+    "name": "Pokemon German Tef de-Temporal Forces",
+    "lang": "German",
+    "year": "2026"
+   },
+   {
+    "id": "332759",
+    "slug": "pokemon-indonesian-ma3-mega-dream-ex",
+    "name": "Pokemon Indonesian MA3 I-Mega Dream EX",
+    "lang": "Indonesian",
+    "year": "2026"
+   },
+   {
+    "id": "338951",
+    "slug": "pokemon-indonesian-ma4-void-blast",
+    "name": "Pokemon Indonesian MA4 I-Void Blast",
+    "lang": "Indonesian",
+    "year": "2026"
+   },
+   {
+    "id": "340490",
+    "slug": "pokemon-indonesian-m-p-promo",
+    "name": "Pokemon Indonesian M-P Promo",
+    "lang": "Indonesian",
+    "year": "2026"
+   },
+   {
+    "id": "331775",
+    "slug": "pokemon-italian-asc-ascended-heroes",
+    "name": "Pokemon Italian Asc It-Ascended Heroes",
+    "lang": "Italian",
+    "year": "2026"
+   },
+   {
+    "id": "340274",
+    "slug": "pokemon-italian-cri-chaos-rising",
+    "name": "Pokemon Italian Cri It-Chaos Rising",
+    "lang": "Italian",
+    "year": "2026"
+   },
+   {
+    "id": "342058",
+    "slug": "pokemon-italian-meg-mega-evolution",
+    "name": "Pokemon Italian Meg It-Mega Evolution",
+    "lang": "Italian",
+    "year": "2026"
+   },
+   {
+    "id": "339870",
+    "slug": "pokemon-italian-mep-me-black-star-promo",
+    "name": "Pokemon Italian Mep It-Me Black Star Promo",
+    "lang": "Italian",
+    "year": "2026"
+   },
+   {
+    "id": "334604",
+    "slug": "pokemon-italian-por-perfect-order",
+    "name": "Pokemon Italian Por It-Perfect Order",
+    "lang": "Italian",
+    "year": "2026"
+   },
+   {
+    "id": "339007",
+    "slug": "pokemon-italian-tef-temporal-forces",
+    "name": "Pokemon Italian Tef It-Temporal Forces",
+    "lang": "Italian",
+    "year": "2026"
+   },
+   {
+    "id": "329234",
+    "slug": "pokemon-japanese-m3-nullifying-zero",
+    "name": "Pokemon Japanese M3-Nullifying Zero",
+    "lang": "Japanese",
+    "year": "2026"
+   },
+   {
+    "id": "333874",
+    "slug": "pokemon-japanese-m4-ninja-spinner",
+    "name": "Pokemon Japanese M4-Ninja Spinner",
+    "lang": "Japanese",
+    "year": "2026"
+   },
+   {
+    "id": "341263",
+    "slug": "pokemon-japanese-m5-abyss-eye",
+    "name": "Pokemon Japanese M5-Abyss Eye",
+    "lang": "Japanese",
+    "year": "2026"
+   },
+   {
+    "id": "348263",
+    "slug": "pokemon-japanese-m6-storm-emeralda",
+    "name": "Pokemon Japanese M6-Storm Emeralda",
+    "lang": "Japanese",
+    "year": "2026"
+   },
+   {
+    "id": "348330",
+    "slug": "pokemon-japanese-mee-starter-set-ex-eevee",
+    "name": "Pokemon Japanese Mee-Starter Set EX Eevee EX",
+    "lang": "Japanese",
+    "year": "2026"
+   },
+   {
+    "id": "348333",
+    "slug": "pokemon-japanese-mem-starter-set-ex-sprigatito-meowscarada",
+    "name": "Pokemon Japanese Mem-Starter Set EX Sprigatito & Meowscarada EX",
+    "lang": "Japanese",
+    "year": "2026"
+   },
+   {
+    "id": "348331",
+    "slug": "pokemon-japanese-mez-starter-set-ex-zorua-zoroark",
+    "name": "Pokemon Japanese Mez-Starter Set EX Zorua & Zoroark EX",
+    "lang": "Japanese",
+    "year": "2026"
+   },
+   {
+    "id": "329237",
+    "slug": "pokemon-japanese-m-p-promo",
+    "name": "Pokemon Japanese M-P Promo",
+    "lang": "Japanese",
+    "year": "2026"
+   },
+   {
+    "id": "331326",
+    "slug": "pokemon-korean-m2a-mega-dream-ex",
+    "name": "Pokemon Korean M2a-Mega Dream EX",
+    "lang": "Korean",
+    "year": "2026"
+   },
+   {
+    "id": "339616",
+    "slug": "pokemon-korean-m3-nullifying-zero",
+    "name": "Pokemon Korean M3-Nullifying Zero",
+    "lang": "Korean",
+    "year": "2026"
+   },
+   {
+    "id": "340913",
+    "slug": "pokemon-korean-m4-ninja-spinner",
+    "name": "Pokemon Korean M4-Ninja Spinner",
+    "lang": "Korean",
+    "year": "2026"
+   },
+   {
+    "id": "346817",
+    "slug": "pokemon-korean-m5-f-abyss-eye",
+    "name": "Pokemon Korean M5 F-Abyss Eye",
+    "lang": "Korean",
+    "year": "2026"
+   },
+   {
+    "id": "335322",
+    "slug": "pokemon-korean-mc-start-deck-100-battle-collection",
+    "name": "Pokemon Korean MC-Start Deck 100 Battle Collection",
+    "lang": "Korean",
+    "year": "2026"
+   },
+   {
+    "id": "338019",
+    "slug": "pokemon-korean-m-p-promo",
+    "name": "Pokemon Korean M-P Promo",
+    "lang": "Korean",
+    "year": "2026"
+   },
+   {
+    "id": "331776",
+    "slug": "pokemon-latin-american-asc-la-ascended-heroes",
+    "name": "Pokemon Latin American Asc La-Ascended Heroes",
+    "lang": "Latin American",
+    "year": "2026"
+   },
+   {
+    "id": "340277",
+    "slug": "pokemon-latin-american-cri-la-chaos-rising",
+    "name": "Pokemon Latin American Cri La-Chaos Rising",
+    "lang": "Latin American",
+    "year": "2026"
+   },
+   {
+    "id": "344531",
+    "slug": "pokemon-latin-american-mep-la-me-black-star-promo",
+    "name": "Pokemon Latin American Mep La-Me Black Star Promo",
+    "lang": "Latin American",
+    "year": "2026"
+   },
+   {
+    "id": "334605",
+    "slug": "pokemon-latin-american-por-la-perfect-order",
+    "name": "Pokemon Latin American Por La-Perfect Order",
+    "lang": "Latin American",
+    "year": "2026"
+   },
+   {
+    "id": "328962",
+    "slug": "pokemon-meg-en-mega-evolution",
+    "name": "Pokemon Meg EN-Mega Evolution",
+    "lang": null,
+    "year": "2026"
+   },
+   {
+    "id": "331462",
+    "slug": "pokemon-mep-en-me-black-star-promo",
+    "name": "Pokemon Mep EN-Me Black Star Promo",
+    "lang": null,
+    "year": "2026"
+   },
+   {
+    "id": "345210",
+    "slug": "pokemon-pbl-en-pitch-black",
+    "name": "Pokemon Pbl EN-Pitch Black",
+    "lang": null,
+    "year": "2026"
+   },
+   {
+    "id": "332745",
+    "slug": "pokemon-pfl-en-phantasmal-flames",
+    "name": "Pokemon Pfl EN-Phantasmal Flames",
+    "lang": null,
+    "year": "2026"
+   },
+   {
+    "id": "350421",
+    "slug": "pokemon-play-prize-pack",
+    "name": "Pokemon Play! Pokemon Prize Pack",
+    "lang": null,
+    "year": "2026"
+   },
+   {
+    "id": "328800",
+    "slug": "pokemon-play-prize-pack-series-8",
+    "name": "Pokemon Play! Pokemon Prize Pack: Series 8",
+    "lang": null,
+    "year": "2026"
+   },
+   {
+    "id": "345337",
+    "slug": "pokemon-play-prize-pack-series-9",
+    "name": "Pokemon Play! Pokemon Prize Pack: Series 9",
+    "lang": null,
+    "year": "2026"
+   },
+   {
+    "id": "334491",
+    "slug": "pokemon-por-en-perfect-order",
+    "name": "Pokemon Por EN-Perfect Order",
+    "lang": null,
+    "year": "2026"
+   },
+   {
+    "id": "334475",
+    "slug": "pokemon-portuguese-asc-pt-ascended-heroes",
+    "name": "Pokemon Portuguese Asc PT-Ascended Heroes",
+    "lang": "Portuguese",
+    "year": "2026"
+   },
+   {
+    "id": "346315",
+    "slug": "pokemon-portuguese-cri-pt-chaos-rising",
+    "name": "Pokemon Portuguese Cri PT-Chaos Rising",
+    "lang": "Portuguese",
+    "year": "2026"
+   },
+   {
+    "id": "342057",
+    "slug": "pokemon-portuguese-meg-pt-mega-evolution",
+    "name": "Pokemon Portuguese Meg PT-Mega Evolution",
+    "lang": "Portuguese",
+    "year": "2026"
+   },
+   {
+    "id": "342084",
+    "slug": "pokemon-portuguese-mep-pt-me-black-star-promo",
+    "name": "Pokemon Portuguese Mep PT-Me Black Star Promo",
+    "lang": "Portuguese",
+    "year": "2026"
+   },
+   {
+    "id": "339042",
+    "slug": "pokemon-portuguese-por-pt-perfect-order",
+    "name": "Pokemon Portuguese Por PT-Perfect Order",
+    "lang": "Portuguese",
+    "year": "2026"
+   },
+   {
+    "id": "341772",
+    "slug": "pokemon-portuguese-tef-pt-temporal-forces",
+    "name": "Pokemon Portuguese Tef PT-Temporal Forces",
+    "lang": "Portuguese",
+    "year": "2026"
+   },
+   {
+    "id": "337933",
+    "slug": "pokemon-simplified-chinese-30th-p-promo",
+    "name": "Pokemon Simplified Chinese 30th-P Promo",
+    "lang": "Chinese",
+    "year": "2026"
+   },
+   {
+    "id": "331605",
+    "slug": "pokemon-simplified-chinese-cbb4-c-gem-pack-vol-4",
+    "name": "Pokemon Simplified Chinese CBB4 C-Gem Pack Vol 4",
+    "lang": "Chinese",
+    "year": "2026"
+   },
+   {
+    "id": "339744",
+    "slug": "pokemon-simplified-chinese-cbb5-c-gem-pack-vol-5",
+    "name": "Pokemon Simplified Chinese CBB5 C-Gem Pack Vol 5",
+    "lang": "Chinese",
+    "year": "2026"
+   },
+   {
+    "id": "334265",
+    "slug": "pokemon-simplified-chinese-csv8-c-brilliant-illusions",
+    "name": "Pokemon Simplified Chinese CSV8 C-Brilliant Illusions",
+    "lang": "Chinese",
+    "year": "2026"
+   },
+   {
+    "id": "342044",
+    "slug": "pokemon-simplified-chinese-csv9-c-starry-crystal",
+    "name": "Pokemon Simplified Chinese CSV9 C-Starry Crystal",
+    "lang": "Chinese",
+    "year": "2026"
+   },
+   {
+    "id": "344201",
+    "slug": "pokemon-simplified-chinese-csv9-5-c-terastal-gathering",
+    "name": "Pokemon Simplified Chinese CSV9.5 C-Terastal Gathering",
+    "lang": "Chinese",
+    "year": "2026"
+   },
+   {
+    "id": "343507",
+    "slug": "pokemon-simplified-chinese-csvm1a-c-master-strategy-deck-building-set-charizard-ex",
+    "name": "Pokemon Simplified Chinese Csvm1a C-Master Strategy Deck Building Set: Charizard EX",
+    "lang": "Chinese",
+    "year": "2026"
+   },
+   {
+    "id": "342677",
+    "slug": "pokemon-simplified-chinese-csvn-ogerpon-mask-series-gift-box",
+    "name": "Pokemon Simplified Chinese Csvn-Ogerpon Mask Series Gift Box",
+    "lang": "Chinese",
+    "year": "2026"
+   },
+   {
+    "id": "342712",
+    "slug": "pokemon-simplified-chinese-csvs-c-battle-academy",
+    "name": "Pokemon Simplified Chinese Csvs C-Battle Academy",
+    "lang": "Chinese",
+    "year": "2026"
+   },
+   {
+    "id": "333542",
+    "slug": "pokemon-simplified-chinese-sv-p-promo",
+    "name": "Pokemon Simplified Chinese SV-P Promo",
+    "lang": "Chinese",
+    "year": "2026"
+   },
+   {
+    "id": "331771",
+    "slug": "pokemon-spanish-asc-es-ascended-heroes",
+    "name": "Pokemon Spanish Asc ES-Ascended Heroes",
+    "lang": "Spanish",
+    "year": "2026"
+   },
+   {
+    "id": "340273",
+    "slug": "pokemon-spanish-cri-es-chaos-rising",
+    "name": "Pokemon Spanish Cri ES-Chaos Rising",
+    "lang": "Spanish",
+    "year": "2026"
+   },
+   {
+    "id": "340975",
+    "slug": "pokemon-spanish-mep-es-me-black-star-promo",
+    "name": "Pokemon Spanish Mep ES-Me Black Star Promo",
+    "lang": "Spanish",
+    "year": "2026"
+   },
+   {
+    "id": "334603",
+    "slug": "pokemon-spanish-por-es-perfect-order",
+    "name": "Pokemon Spanish Por ES-Perfect Order",
+    "lang": "Spanish",
+    "year": "2026"
+   },
+   {
+    "id": "342007",
+    "slug": "pokemon-spanish-tef-es-temporal-forces",
+    "name": "Pokemon Spanish Tef ES-Temporal Forces",
+    "lang": "Spanish",
+    "year": "2026"
+   },
+   {
+    "id": "340667",
+    "slug": "pokemon-svp-en-sv-black-star-promo",
+    "name": "Pokemon Svp EN-SV Black Star Promo",
+    "lang": null,
+    "year": "2026"
+   },
+   {
+    "id": "330202",
+    "slug": "pokemon-tef-en-temporal-forces",
+    "name": "Pokemon Tef EN-Temporal Forces",
+    "lang": null,
+    "year": "2026"
+   },
+   {
+    "id": "331526",
+    "slug": "pokemon-thai-ma3-t-mega-dream-ex",
+    "name": "Pokemon Thai MA3 T-Mega Dream EX",
+    "lang": "Thai",
+    "year": "2026"
+   },
+   {
+    "id": "337028",
+    "slug": "pokemon-thai-ma4-t-void-blast",
+    "name": "Pokemon Thai MA4 T-Void Blast",
+    "lang": "Thai",
+    "year": "2026"
+   },
+   {
+    "id": "333818",
+    "slug": "pokemon-thai-m-p-promo",
+    "name": "Pokemon Thai M-P Promo",
+    "lang": "Thai",
+    "year": "2026"
+   },
+   {
+    "id": "333180",
+    "slug": "pokemon-traditional-chinese-m3-f-nullifying-zero",
+    "name": "Pokemon Traditional Chinese M3 F-Nullifying Zero",
+    "lang": "Chinese",
+    "year": "2026"
+   },
+   {
+    "id": "336487",
+    "slug": "pokemon-traditional-chinese-m4-f-ninja-spinner",
+    "name": "Pokemon Traditional Chinese M4 F-Ninja Spinner",
+    "lang": "Chinese",
+    "year": "2026"
+   },
+   {
+    "id": "330464",
+    "slug": "pokemon-traditional-chinese-mc-f-start-deck-100-battle-collection",
+    "name": "Pokemon Traditional Chinese MC F-Start Deck 100 Battle Collection",
+    "lang": "Chinese",
+    "year": "2026"
+   },
+   {
+    "id": "329456",
+    "slug": "pokemon-traditional-chinese-m-p-promo",
+    "name": "Pokemon Traditional Chinese M-P Promo",
+    "lang": "Chinese",
+    "year": "2026"
+   },
+   {
+    "id": "342720",
+    "slug": "pokemon-wht-en-white-flare",
+    "name": "Pokemon Wht EN-White Flare",
+    "lang": null,
+    "year": "2026"
+   },
+   {
+    "id": "352195",
+    "slug": "pokemon-world-championships-promo",
+    "name": "Pokemon World Championships Promo",
+    "lang": null,
+    "year": "2026"
+   }
+  ]
+ }
+}

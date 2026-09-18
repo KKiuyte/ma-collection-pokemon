@@ -80,5 +80,28 @@
   "psa_name": "Pokemon Dri EN-Destined Rivals",
   "psa_year": "2025",
   "auto": true
+ },
+ "sv04|Chinese": {
+  "none": true,
+  "why": "aucune série PSA trouvée",
+  "candidates": []
+ },
+ "sv04|EN": {
+  "psa_id": "252284",
+  "psa_name": "Pokemon Par EN-Paradox Rift",
+  "psa_year": "2023",
+  "auto": true
+ },
+ "sv10.5b|French": {
+  "psa_id": "310576",
+  "psa_name": "Pokemon French Blk FR-Black Bolt",
+  "psa_year": "2025",
+  "auto": true
+ },
+ "sv10.5b|EN": {
+  "psa_id": "310181",
+  "psa_name": "Pokemon Blk EN-Black Bolt",
+  "psa_year": "2025",
+  "auto": true
  }
 }
