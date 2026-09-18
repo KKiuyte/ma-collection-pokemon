@@ -49,6 +49,7 @@ TCGDEX = "https://api.tcgdex.net/v2"
 UA = "ma-collection-pokemon/graded-value (script perso)"
 
 GRADE_TARGET_BY_COND = {"Neuve": 10, "Excellent": 9}
+GRADES_SHOWN = (10, 9, 8)   # notes chiffrées pour chaque carte (l'API les renvoie toutes d'un coup)
 POP_TTL_DAYS = 30
 MIN_SALES = 3        # en dessous, la moyenne d'une fenêtre n'est pas fiable : on élargit
 NOW = dt.datetime.now(dt.timezone.utc)
@@ -443,29 +444,33 @@ def _price_row(r, ps, sets_map, fx, pop_cache, price_cache, unmatched_sets, args
             r["status"] = "set_not_found"
             unmatched_sets[r["set_id"]] = sinfo.get("name_en")
             return
-        grade = float(r["target_grade"])
+        target = int(r["target_grade"])
 
-        def sales_for(spec):
-            """Ventes à la note visée : fenêtre demandée, puis 12 mois, puis toutes époques ;
-            on retient la première avec au moins MIN_SALES ventes, sinon la plus large qui en a."""
-            key = (spec, grade)
-            if key not in price_cache:
-                picked, fallback = None, None
+        def grade_sales(spec):
+            """Ventes par note (GRADES_SHOWN) : pour chaque note, fenêtre demandée, puis 12 mois,
+            puis toutes époques ; on retient la première avec au moins MIN_SALES ventes, sinon la
+            plus large qui en a. Les fenêtres plus larges ne sont demandées que si nécessaire."""
+            if spec not in price_cache:
+                windows = {}
+                out = {}
                 for months in (args.months, 12, 0):
-                    m = ps.price_summary(spec, months).get(grade)
-                    if m and m["quantity"] >= MIN_SALES:
-                        picked = (m, months)
+                    windows[months] = ps.price_summary(spec, months)
+                    for g in GRADES_SHOWN:
+                        if g in out and out[g][0]["quantity"] >= MIN_SALES:
+                            continue
+                        m = windows[months].get(float(g))
+                        if m and (g not in out or m["quantity"] >= MIN_SALES):
+                            out[g] = (m, months)
+                    if all(g in out and out[g][0]["quantity"] >= MIN_SALES for g in GRADES_SHOWN):
                         break
-                    if m:
-                        fallback = (m, months)
-                price_cache[key] = picked or fallback
-            return price_cache[key]
+                price_cache[spec] = out
+            return price_cache[spec]
 
         # on parcourt les séries candidates (langue de la carte, puis anglaise) : la première
-        # où la carte existe ET a des ventes à la note visée l'emporte. Une série FR sans
+        # où la carte existe ET a des ventes à une note ≤ visée l'emporte. Une série FR sans
         # aucune vente ne doit pas bloquer le repli sur la version anglaise.
         found = []          # (série, proxy, ligne) où la carte existe
-        chosen = None       # (série, proxy, ligne, ventes)
+        chosen = None       # (série, proxy, ligne, ventes par note, note retenue)
         for e, px in candidates:
             if e["psa_id"] not in pop_cache:
                 pop_cache[e["psa_id"]] = pop_rows(ps, e["psa_id"], verbose=args.verbose)
@@ -473,26 +478,46 @@ def _price_row(r, ps, sets_map, fx, pop_cache, price_cache, unmatched_sets, args
             if not row:
                 continue
             found.append((e, px, row))
-            sales = sales_for(row["SpecID"])
-            if sales:
-                chosen = (e, px, row, sales)
+            gs = grade_sales(row["SpecID"])
+            usable = [g for g in GRADES_SHOWN if g <= target and g in gs]
+            if usable:
+                chosen = (e, px, row, gs, max(usable))
                 break
         if not found:
             r["status"] = "card_not_found"
             r["psa"] = {"set_name": " / ".join(c[0]["psa_name"] for c in candidates), "proxy_lang": None}
             return
+        def grades_block(row, gs):
+            """Détail par note (10 / 9 / 8) : ventes, moyenne, estimation, population."""
+            out = {}
+            for g in GRADES_SHOWN:
+                pop_at, pop_higher = grade_pop(row, g)
+                ent_g = {"pop_at_grade": pop_at, "pop_higher": pop_higher}
+                if g in gs:
+                    m, window = gs[g]
+                    est_eur = round(m["averagePrice"] * fx, 2)
+                    ent_g.update({"sales_qty": m["quantity"], "avg_usd": m["averagePrice"],
+                                  "latest_usd": m.get("latestPrice"), "window_months": window,
+                                  "thin": m["quantity"] < MIN_SALES, "est_eur": est_eur,
+                                  "est_eur_france": round(est_eur * (1 - args.discount), 2)})
+                out[str(g)] = ent_g
+            return out
+
         if not chosen:
             e, px, row = found[0]
             pop_at, pop_higher = grade_pop(row, r["target_grade"])
             r["status"] = "no_sales"
             r["psa"] = {"set_name": e["psa_name"], "spec_id": row["SpecID"], "subject": row.get("SubjectName"),
-                        "proxy_lang": px, "pop_at_grade": pop_at, "pop_higher": pop_higher}
+                        "proxy_lang": px, "pop_at_grade": pop_at, "pop_higher": pop_higher,
+                        "grades": grades_block(row, grade_sales(row["SpecID"]))}
             return
-        ent, proxy, row, (m, window) = chosen
+        ent, proxy, row, gs, grade_used = chosen
         spec = row["SpecID"]
-        pop_at, pop_higher = grade_pop(row, r["target_grade"])
+        m, window = gs[grade_used]
+        pop_at, pop_higher = grade_pop(row, grade_used)
         psa = {"set_name": ent["psa_name"], "spec_id": spec, "subject": row.get("SubjectName"),
-               "proxy_lang": proxy, "pop_at_grade": pop_at, "pop_higher": pop_higher}
+               "proxy_lang": proxy, "grade_used": grade_used,
+               "pop_at_grade": pop_at, "pop_higher": pop_higher, "grades": grades_block(row, gs)}
         est_eur = round(m["averagePrice"] * fx, 2)
         est_fr = round(est_eur * (1 - args.discount), 2)
         psa.update({"sales_qty": m["quantity"], "avg_usd": m["averagePrice"], "latest_usd": m.get("latestPrice"),

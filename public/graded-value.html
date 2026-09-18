@@ -194,6 +194,19 @@ function renderChips() {
   };
 }
 
+// détail par note : « PSA 10 : 120 € (45 ventes), pop 1 200 · PSA 9 : … »
+function gradesLine(p) {
+  const g = p.grades || {};
+  const parts = ["10", "9", "8"].map((k) => {
+    const e = g[k]; if (!e) return "";
+    const price = e.est_eur_france != null
+      ? `${eur(e.est_eur_france)} (${int(e.sales_qty)} vente${e.sales_qty > 1 ? "s" : ""}${e.thin ? ", peu" : ""})`
+      : "pas de vente";
+    return `PSA ${k} : ${price}, pop ${int(e.pop_at_grade)}`;
+  }).filter(Boolean);
+  return parts.length ? `<div class="meta">${parts.join(" · ")}</div>` : "";
+}
+
 function renderList() {
   let rows = (REPORT.rows || []).filter((r) => r.status === "priced");
   if (fGrade !== "Tous") rows = rows.filter((r) => String(r.target_grade) === fGrade);
@@ -212,8 +225,10 @@ function renderList() {
           ${p.proxy_lang ? `<span class="tag">via ${esc(p.proxy_lang)}</span>` : ""}</div>
         <div class="meta">${esc(r.set_name_fr || r.set_id)} · ${esc(r.version)} · ${esc(r.cond)} · ${esc(r.lang)} · ×${r.qty}</div>
         <div class="prices"><b>${eur(r.raw_eur)}</b><span class="arrow">→</span><b>${eur(p.est_eur_france)}</b>
-          <span class="tag">PSA ${r.target_grade}</span>
+          <span class="tag">PSA ${p.grade_used ?? r.target_grade}</span>
+          ${p.grade_used && p.grade_used !== r.target_grade ? `<span class="tag">visé PSA ${r.target_grade}, pas de vente</span>` : ""}
           <span class="small"> (moy. ${usd(p.avg_usd)} = ${eur(p.est_eur)} avant décote)</span></div>
+        ${gradesLine(p)}
         <div class="meta">pop. ${int(p.pop_at_grade)} à cette note · ${int(p.pop_higher)} au-dessus ·
           ${int(p.sales_qty)} vente${p.sales_qty > 1 ? "s" : ""} sur ${p.window_months === 0 ? "toutes époques" : p.window_months + " mois"}${p.thin ? ' <span class="tag">peu de ventes</span>' : ""} ·
           dernière ${usd(p.latest_usd)} ·
@@ -238,7 +253,8 @@ function renderOthers() {
     if (!list.length) continue;
     html += `<details><summary>${label} — ${list.length}</summary><div class="small">` +
       list.map((r) => `${esc(r.name_fr)} #${esc(r.number)} (${esc(r.set_name_fr || r.set_id)}, ${esc(r.version)}, ${esc(r.cond)}) — ${eur(r.raw_eur)}` +
-        (r.psa && r.psa.set_name ? ` · série PSA : ${esc(r.psa.set_name)}` : "")).join("<br>") +
+        (r.psa && r.psa.set_name ? ` · série PSA : ${esc(r.psa.set_name)}` : "") +
+        (r.psa && r.psa.grades ? gradesLine(r.psa) : "")).join("<br>") +
       `</div></details>`;
   }
   const us = s.unmatched_sets || {};
