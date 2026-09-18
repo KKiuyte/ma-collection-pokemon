@@ -302,7 +302,21 @@ class PsaSession:
             print("  session PSA : connexion par navigateur…")
         self.close()
         email, pwd = load_credentials()
-        cookies, self.handles = login_with_browser(email, pwd, verbose=self.verbose, keep=True)
+        # la page de connexion peut elle aussi recevoir un challenge selon l'IP : on retente
+        # avec un navigateur neuf, en laissant passer un peu de temps entre les essais
+        last = None
+        for attempt in range(1, 4):
+            try:
+                cookies, self.handles = login_with_browser(email, pwd, verbose=self.verbose, keep=True)
+                break
+            except RuntimeError as e:
+                last = e
+                if self.verbose:
+                    print(f"  connexion PSA refusée (essai {attempt}/3) : {e}")
+                if attempt < 3:
+                    time.sleep(20 * attempt)
+        else:
+            raise last
         self._settle(self.handles["page"])
         cookies = self.handles["ctx"].cookies()
         self._apply_cookies(cookies)

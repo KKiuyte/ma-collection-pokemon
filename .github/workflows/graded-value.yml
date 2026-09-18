@@ -41,12 +41,23 @@ jobs:
           PSA_EMAIL: ${{ secrets.PSA_EMAIL }}
           PSA_PASSWORD: ${{ secrets.PSA_PASSWORD }}
           PSA_COOKIE_FILE: ${{ runner.temp }}/psa-cookies.json
+          PSA_DEBUG_DIR: ${{ runner.temp }}/psa-debug
         run: python tools/psa_collection_value.py --threshold 10 --months 6 --discount 0.15
+
+      - name: Captures d'écran de diagnostic (si la connexion PSA a échoué)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: psa-debug
+          path: ${{ runner.temp }}/psa-debug
+          if-no-files-found: ignore
+          retention-days: 7
 
       - name: Committer les caches PSA (séries, population) s'ils ont changé
         if: always()
         run: |
-          git add tools/psa-sets-map.json tools/psa-sets-index.json tools/psa-pop
+          git add tools/psa-sets-map.json tools/psa-pop
+          [ -f tools/psa-sets-index.json ] && git add tools/psa-sets-index.json
           if git diff --cached --quiet; then
             echo "Aucun changement."
             exit 0
