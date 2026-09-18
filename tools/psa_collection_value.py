@@ -38,13 +38,18 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from psa_client import PsaSession, match_set, LANG_BY_TCGDEX, _norm  # noqa: E402
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-CACHE_DIR = os.path.join(ROOT, "tools", "cache")
+# population par série : VERSIONNÉE dans le dépôt (allégée aux champs utiles). Les pages « pop »
+# de PSA sont derrière un challenge Cloudflare interactif selon l'IP : on ne les redemande que
+# rarement et on garde la version périmée si PSA refuse. Les prix, eux, viennent de l'API.
+POP_DIR = os.path.join(ROOT, "tools", "psa-pop")
 SETS_MAP = os.path.join(ROOT, "tools", "psa-sets-map.json")   # versionné : correspondances + overrides
+POP_FIELDS = ("SpecID", "SubjectName", "CardNumber", "Variety", "Grade7", "Grade8", "Grade8_5",
+              "Grade9", "Grade9_5", "Grade10", "GradeTotal")
 TCGDEX = "https://api.tcgdex.net/v2"
 UA = "ma-collection-pokemon/graded-value (script perso)"
 
 GRADE_TARGET_BY_COND = {"Neuve": 10, "Excellent": 9}
-POP_TTL_DAYS = 7
+POP_TTL_DAYS = 30
 MIN_SALES = 3        # en dessous, la moyenne d'une fenêtre n'est pas fiable : on élargit
 NOW = dt.datetime.now(dt.timezone.utc)
 
@@ -245,12 +250,27 @@ def psa_set_for(ps, sets_map, sinfo, lang_marker):
     return ent
 
 
-def pop_rows(ps, psa_id):
-    path = os.path.join(CACHE_DIR, f"psa-pop-{psa_id}.json")
+def pop_rows(ps, psa_id, verbose=False):
+    """Population d'une série : cache versionné (30 j) ; si PSA refuse la page, on garde le
+    cache même périmé ; sans aucun cache, on lève l'erreur (la carte sera « psa_error »)."""
+    path = os.path.join(POP_DIR, f"{psa_id}.json")
     c = load_json(path, None)
-    if c and (NOW - dt.datetime.strptime(c["at"], "%Y-%m-%dT%H:%M:%SZ").replace(tzinfo=dt.timezone.utc)).days < POP_TTL_DAYS:
+    fresh = False
+    if c:
+        try:
+            fresh = (NOW - dt.datetime.strptime(c["at"], "%Y-%m-%dT%H:%M:%SZ").replace(tzinfo=dt.timezone.utc)).days < POP_TTL_DAYS
+        except Exception:
+            fresh = False
+    if c and fresh:
         return c["rows"]
-    rows = ps.pop_set(psa_id)
+    try:
+        rows = [{k: r.get(k) for k in POP_FIELDS} for r in ps.pop_set(psa_id)]
+    except Exception as e:
+        if c:
+            if verbose:
+                log(f"  population {psa_id} : PSA refuse ({e.__class__.__name__}), cache périmé conservé")
+            return c["rows"]
+        raise
     save_json(path, {"at": iso(), "rows": rows})
     return rows
 
@@ -361,6 +381,52 @@ def main():
     pop_cache, price_cache = {}, {}
     unmatched_sets = {}
     for r in rows:
+        try:
+            _price_row(r, ps, sets_map, fx, pop_cache, price_cache, unmatched_sets, args)
+        except Exception as e:
+            # une carte en échec (challenge Cloudflare, réseau…) ne doit pas faire tomber le run
+            r["status"] = "psa_error"
+            r["error"] = f"{e.__class__.__name__}: {str(e)[:120]}"
+            if args.verbose:
+                log(f"  {r['name_fr']} #{r['number']} : erreur PSA — {r['error']}")
+    save_json(SETS_MAP, sets_map)
+    ps.close()
+
+    priced = [r for r in rows if r.get("status") == "priced"]
+    priced.sort(key=lambda r: -r.get("gain_total", 0))
+    others = [r for r in rows if r.get("status") != "priced"]
+    report = {
+        "generated_at": iso(), "threshold": args.threshold, "months": args.months,
+        "discount": args.discount, "fx_usd_eur": fx,
+        "stats": {"cards_owned": len(ids), "eligible_rows": len(rows), "priced_rows": len(priced),
+                  "no_sales": sum(1 for r in others if r.get("status") == "no_sales"),
+                  "card_not_found": sum(1 for r in others if r.get("status") == "card_not_found"),
+                  "set_not_found": sum(1 for r in others if r.get("status") == "set_not_found"),
+                  "psa_error": sum(1 for r in others if r.get("status") == "psa_error"),
+                  "unmatched_sets": unmatched_sets},
+        "totals": {"raw_eur": round(sum(r["raw_eur"] * r["qty"] for r in priced), 2),
+                   "est_france_eur": round(sum(r["psa"]["est_eur_france"] * r["qty"] for r in priced), 2)},
+        "rows": priced + others,
+    }
+    report["totals"]["gain_eur"] = round(report["totals"]["est_france_eur"] - report["totals"]["raw_eur"], 2)
+
+    if args.out:
+        save_json(args.out, report)
+        log(f"rapport écrit : {args.out}")
+    if not args.dry_run and not args.owned_json:
+        db = firestore_client()
+        db.collection("graded_reports").document(uid).set(report)
+        log(f"rapport écrit dans Firestore graded_reports/{uid}")
+    s = report["stats"]
+    log(f"→ {s['priced_rows']} chiffrée(s) / {s['eligible_rows']} éligible(s) · sans vente {s['no_sales']} · "
+        f"carte absente {s['card_not_found']} · série absente {s['set_not_found']} · erreur PSA {s['psa_error']} · "
+        f"brut {report['totals']['raw_eur']} € → gradé FR {report['totals']['est_france_eur']} € "
+        f"({report['totals']['gain_eur']:+} €)")
+
+
+def _price_row(r, ps, sets_map, fx, pop_cache, price_cache, unmatched_sets, args):
+    """Chiffre UNE ligne éligible (renseigne r['status'], r['psa'], r['gain_*'])."""
+    if True:
         sinfo = set_info(r["set_id"])
         marker = LANG_BY_TCGDEX.get(r["lang"])
         # séries candidates, dans l'ordre : celle de la langue de la carte, puis l'anglaise
@@ -376,7 +442,7 @@ def main():
         if not candidates:
             r["status"] = "set_not_found"
             unmatched_sets[r["set_id"]] = sinfo.get("name_en")
-            continue
+            return
         grade = float(r["target_grade"])
 
         def sales_for(spec):
@@ -402,7 +468,7 @@ def main():
         chosen = None       # (série, proxy, ligne, ventes)
         for e, px in candidates:
             if e["psa_id"] not in pop_cache:
-                pop_cache[e["psa_id"]] = pop_rows(ps, e["psa_id"])
+                pop_cache[e["psa_id"]] = pop_rows(ps, e["psa_id"], verbose=args.verbose)
             row = find_row(pop_cache[e["psa_id"]], r["number"], r["name_en"], r["version"])
             if not row:
                 continue
@@ -414,14 +480,14 @@ def main():
         if not found:
             r["status"] = "card_not_found"
             r["psa"] = {"set_name": " / ".join(c[0]["psa_name"] for c in candidates), "proxy_lang": None}
-            continue
+            return
         if not chosen:
             e, px, row = found[0]
             pop_at, pop_higher = grade_pop(row, r["target_grade"])
             r["status"] = "no_sales"
             r["psa"] = {"set_name": e["psa_name"], "spec_id": row["SpecID"], "subject": row.get("SubjectName"),
                         "proxy_lang": px, "pop_at_grade": pop_at, "pop_higher": pop_higher}
-            continue
+            return
         ent, proxy, row, (m, window) = chosen
         spec = row["SpecID"]
         pop_at, pop_higher = grade_pop(row, r["target_grade"])
@@ -439,37 +505,6 @@ def main():
         if args.verbose:
             log(f"  {r['name_fr']} #{r['number']} {r['version']} ×{r['qty']} : {r['raw_eur']}€ → "
                 f"PSA {r['target_grade']} {est_fr}€ (pop {pop_at}, {m['quantity']} ventes/{window}m)")
-    save_json(SETS_MAP, sets_map)
-
-    priced = [r for r in rows if r.get("status") == "priced"]
-    priced.sort(key=lambda r: -r.get("gain_total", 0))
-    others = [r for r in rows if r.get("status") != "priced"]
-    report = {
-        "generated_at": iso(), "threshold": args.threshold, "months": args.months,
-        "discount": args.discount, "fx_usd_eur": fx,
-        "stats": {"cards_owned": len(ids), "eligible_rows": len(rows), "priced_rows": len(priced),
-                  "no_sales": sum(1 for r in others if r.get("status") == "no_sales"),
-                  "card_not_found": sum(1 for r in others if r.get("status") == "card_not_found"),
-                  "set_not_found": sum(1 for r in others if r.get("status") == "set_not_found"),
-                  "unmatched_sets": unmatched_sets},
-        "totals": {"raw_eur": round(sum(r["raw_eur"] * r["qty"] for r in priced), 2),
-                   "est_france_eur": round(sum(r["psa"]["est_eur_france"] * r["qty"] for r in priced), 2)},
-        "rows": priced + others,
-    }
-    report["totals"]["gain_eur"] = round(report["totals"]["est_france_eur"] - report["totals"]["raw_eur"], 2)
-
-    if args.out:
-        save_json(args.out, report)
-        log(f"rapport écrit : {args.out}")
-    if not args.dry_run and not args.owned_json:
-        db = firestore_client()
-        db.collection("graded_reports").document(uid).set(report)
-        log(f"rapport écrit dans Firestore graded_reports/{uid}")
-    s = report["stats"]
-    log(f"→ {s['priced_rows']} chiffrée(s) / {s['eligible_rows']} éligible(s) · sans vente {s['no_sales']} · "
-        f"carte absente {s['card_not_found']} · série absente {s['set_not_found']} · "
-        f"brut {report['totals']['raw_eur']} € → gradé FR {report['totals']['est_france_eur']} € "
-        f"({report['totals']['gain_eur']:+} €)")
 
 
 if __name__ == "__main__":

@@ -43,14 +43,15 @@ jobs:
           PSA_COOKIE_FILE: ${{ runner.temp }}/psa-cookies.json
         run: python tools/psa_collection_value.py --threshold 10 --months 6 --discount 0.15
 
-      - name: Committer la table de correspondance des séries si elle a changé
+      - name: Committer les caches PSA (séries, population) s'ils ont changé
+        if: always()
         run: |
-          if git diff --quiet -- tools/psa-sets-map.json && [ -z "$(git status --porcelain tools/psa-sets-map.json)" ]; then
+          git add tools/psa-sets-map.json tools/psa-sets-index.json tools/psa-pop
+          if git diff --cached --quiet; then
             echo "Aucun changement."
             exit 0
           fi
           git config user.name "graded-value-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add tools/psa-sets-map.json
-          git commit -m "MàJ auto des correspondances de séries PSA ($(date -u +%FT%TZ))"
-          git push
+          git commit -m "MàJ auto des caches PSA — séries et population ($(date -u +%FT%TZ))"
+          git pull --rebase -q origin main && git push

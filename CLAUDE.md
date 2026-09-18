@@ -328,6 +328,16 @@ accepte le cookie `cf_clearance`) ; seule la connexion elle-même demande Chromi
   qualifiers:"NON_QUALIFIERS",timeRange:N}}>"}` → par note : quantity, averagePrice,
   latestPrice. **`timeRange` = nombre de mois** (0 = toutes époques ; ≥ 30 ≈ tout).
 - La page de cert publique affiche une « PSA Estimate » ≈ moyenne 6 mois.
+- **Turnstile interactif (2026-09-18)** : selon l'IP (et après beaucoup d'activité), les pages
+  « pop » (`/pop/...`, `/Pop/GetSetItems`) reçoivent un challenge **à case à cocher**,
+  infranchissable en headless — alors que l'**API des prix répond toujours**. D'où :
+  index des séries versionné (`tools/psa-sets-index.json`, 60 j) et population par série
+  versionnée (`tools/psa-pop/{id}.json`, champs allégés, 30 j), tous deux **conservés même
+  périmés** si PSA refuse ; `alive()` teste l'API des prix, pas les pages pop ; si `requests`
+  est refusé après connexion, les requêtes passent par le navigateur resté ouvert
+  (`use_browser`, fetch dans la page) ; une carte en échec = statut `psa_error`, le run continue.
+  Le workflow committe ces caches. Un run sans cache pour une nouvelle série peut donc
+  échouer sur cette série jusqu'à ce qu'une IP « propre » passe (le lendemain, en général).
 - **Pièges Cloudflare appris en testant (6 essais)** : (1) la connexion n'est réussie que quand
   le cookie `accessToken` ET le `cf_clearance` de **psacard.com** sont posés — l'URL reste un
   moment sur `/signin` et les cookies `collectors.com` seuls donnent des 403 ; (2) sur

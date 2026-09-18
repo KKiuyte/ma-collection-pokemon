@@ -36,6 +36,12 @@ UA = ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
       "(KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36")
 COOKIE_FILE = os.environ.get("PSA_COOKIE_FILE", os.path.expanduser("~/.psa-cookies.json"))
 PAUSE = 1.2                      # entre deux requêtes : usage perso, on reste discret
+# index année → séries Pokémon, versionné dans le dépôt : les pages « pop » sont derrière un
+# challenge Cloudflare interactif (case « je suis humain ») qui apparaît selon l'IP ; on ne les
+# redemande donc que rarement, et on garde l'index même périmé si PSA refuse.
+SETS_INDEX_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "psa-sets-index.json")
+SETS_INDEX_TTL_DAYS = 60
+PROBE_SPEC = "7922033"           # Radiant Charizard : sert à tester l'API des prix (session vivante ?)
 
 # marqueurs de langue dans les noms de séries PSA (absence = anglais)
 LANG_MARKERS = ["Japanese", "Chinese", "Simplified Chinese", "Korean", "Thai", "Indonesian",
@@ -80,16 +86,61 @@ def _debug_shot(page, name):
         pass
 
 
-def login_with_browser(email, password, verbose=False):
-    """Ouvre la page de connexion Collectors/PSA dans Chromium furtif, renvoie les cookies.
+class _Resp:
+    """Réponse minimale (même surface que requests.Response) pour les requêtes faites
+    depuis le navigateur."""
+
+    def __init__(self, status, text, url):
+        self.status_code, self.text, self.url = status, text, url
+
+    def json(self):
+        return json.loads(self.text)
+
+    def raise_for_status(self):
+        if self.status_code >= 400:
+            raise requests.HTTPError(f"{self.status_code} pour {self.url}", response=None)
+
+
+def login_with_browser(email, password, verbose=False, keep=False):
+    """Ouvre la page de connexion Collectors/PSA dans Chromium furtif, renvoie (cookies, handles).
+    handles = navigateur laissé OUVERT si keep=True (pour faire les requêtes depuis le
+    navigateur quand Cloudflare refuse `requests`), sinon None.
     Flux observé : champ e-mail → « Continue » → champ mot de passe (Vaadin) → Entrée."""
     from playwright.sync_api import sync_playwright
     from playwright_stealth import Stealth
 
-    with Stealth().use_sync(sync_playwright()) as p:
-        br = p.chromium.launch(headless=True, args=["--no-sandbox"])
-        ctx = br.new_context(user_agent=UA, locale="fr-CA", viewport={"width": 1366, "height": 900})
-        page = ctx.new_page()
+    pw = sync_playwright().start()
+    br = p_ctx = page = None
+    try:
+        br = pw.chromium.launch(headless=True, args=["--no-sandbox"])
+        p_ctx = br.new_context(user_agent=UA, locale="fr-CA", viewport={"width": 1366, "height": 900})
+        page = p_ctx.new_page()
+        Stealth().apply_stealth_sync(page)
+        cookies, ok = _login_flow(page, p_ctx, email, password)
+    except Exception:
+        for h in (br,):
+            try:
+                h.close()
+            except Exception:
+                pass
+        pw.stop()
+        raise
+    if not ok:
+        br.close()
+        pw.stop()
+        raise RuntimeError("PSA : connexion refusée (mot de passe ? vérification ? captcha ?)")
+    if verbose:
+        print(f"  connexion PSA OK ({len(cookies)} cookies)")
+    if keep:
+        return cookies, {"pw": pw, "browser": br, "ctx": p_ctx, "page": page}
+    br.close()
+    pw.stop()
+    return cookies, None
+
+
+def _login_flow(page, ctx, email, password):
+    """Renvoie (cookies, ok). Voir login_with_browser."""
+    if True:
         page.goto(SIGNIN, wait_until="domcontentloaded", timeout=45000)
         time.sleep(3)
         # bannière cookies (Osano) : on la ferme pour qu'elle n'intercepte rien
@@ -105,7 +156,6 @@ def login_with_browser(email, password, verbose=False):
         box = page.query_selector('input[type="email"], input[name*="mail" i], input[autocomplete="username"]')
         if not box:
             _debug_shot(page, "signin-no-email")
-            br.close()
             raise RuntimeError("PSA : champ e-mail introuvable sur la page de connexion")
         box.click()
         box.fill(email)
@@ -120,7 +170,6 @@ def login_with_browser(email, password, verbose=False):
                     break
         if not pwd:
             _debug_shot(page, "signin-no-password")
-            br.close()
             raise RuntimeError("PSA : champ mot de passe introuvable")
         pwd.click()
         pwd.fill(password)
@@ -156,12 +205,7 @@ def login_with_browser(email, password, verbose=False):
                 time.sleep(2)
         time.sleep(2)
         cookies = ctx.cookies()
-        br.close()
-    if not ok:
-        raise RuntimeError("PSA : connexion refusée (mot de passe ? vérification ? captcha ?)")
-    if verbose:
-        print(f"  connexion PSA OK ({len(cookies)} cookies)")
-    return cookies
+        return cookies, ok
 
 
 class PsaSession:
@@ -174,6 +218,21 @@ class PsaSession:
         self._years = None
         self._sets_by_year = {}
         self._cookies_loaded = False
+        self.handles = None            # navigateur gardé ouvert après connexion
+        self.use_browser = os.environ.get("PSA_FORCE_BROWSER") == "1"   # requêtes via le navigateur
+
+    def close(self):
+        h, self.handles = self.handles, None
+        if h:
+            for k in ("browser",):
+                try:
+                    h[k].close()
+                except Exception:
+                    pass
+            try:
+                h["pw"].stop()
+            except Exception:
+                pass
 
     # --- cookies -------------------------------------------------------
     def _apply_cookies(self, cookies):
@@ -198,53 +257,132 @@ class PsaSession:
         except Exception:
             pass
 
-    def alive(self):
-        """Vrai si la session est acceptée (l'index catégorie ne renvoie pas vers la connexion).
-        Un refus isolé de Cloudflare ne doit pas passer pour une session morte : deux essais."""
-        for attempt in (1, 2):
+    def _price_url(self, spec_id, months):
+        inp = {"json": {"specId": str(spec_id), "department": "psa", "salesSummaryType": "GRADES",
+                        "gradingType": "ALL", "qualifiers": "NON_QUALIFIERS", "timeRange": int(months)}}
+        q = up.quote(json.dumps({"0": base64.b64encode(json.dumps(inp).encode()).decode()}))
+        return f"{BASE}/api/psa/trpc/researchJourney.getPriceSummary?batch=1&input={q}"
+
+    def alive(self, attempts=2, wait=6):
+        """Vrai si la session est acceptée. On teste l'API des prix (pas les pages « pop », qui
+        peuvent être derrière un challenge interactif même avec une session valide).
+        Un refus isolé ne doit pas passer pour une session morte : plusieurs essais."""
+        url = self._price_url(PROBE_SPEC, 6)
+        hdrs = {"Accept": "*/*", "Referer": f"{BASE}/spec/psa/{PROBE_SPEC}"}
+        for attempt in range(1, attempts + 1):
             try:
-                r = self.s.get(f"{BASE}/pop/tcg-cards/{CATEGORY_TCG}", timeout=40, allow_redirects=True)
-                if r.status_code == 200 and "signin" not in r.url and "<title>Just a moment" not in r.text:
+                if self.use_browser:
+                    r = self._browser_request("GET", url, headers=hdrs)
+                else:
+                    r = self.s.get(url, timeout=40, headers=hdrs, allow_redirects=True)
+                if r.status_code == 200 and "salesSummary" in r.text:
                     return True
-                if "signin" in r.url:
+                if "signin" in r.url or r.status_code == 401:
                     return False          # vraiment déconnecté
             except Exception:
                 pass
-            if attempt == 1:
-                time.sleep(6)
+            if attempt < attempts:
+                time.sleep(wait)
         return False
 
     def ensure(self):
         if not self._cookies_loaded:
             self._load_cookie_file()
-        if self._cookies_loaded and self.alive():
+        if self._cookies_loaded and not self.use_browser and self.alive():
             if self.verbose:
                 print("  session PSA : cookies en cache valides")
             return self
-        email, pwd = load_credentials()
-        cookies = login_with_browser(email, pwd, verbose=self.verbose)
-        self._apply_cookies(cookies)
-        self._save_cookie_file(cookies)
-        if not self.alive():
-            raise RuntimeError("PSA : connecté mais la session n'est pas acceptée")
+        self._relogin()
         return self
 
-    # --- helpers HTTP ----------------------------------------------------
     def _relogin(self):
-        """Cookies périmés ou refusés (403 / renvoi vers la connexion) : on se reconnecte une fois."""
+        """Reconnexion par navigateur. Si, même connecté, Cloudflare refuse `requests` (fréquent
+        depuis une IP de datacenter), on garde le navigateur ouvert et on passe par lui."""
         if self.verbose:
-            print("  session PSA refusée : reconnexion…")
+            print("  session PSA : connexion par navigateur…")
+        self.close()
         email, pwd = load_credentials()
-        cookies = login_with_browser(email, pwd, verbose=self.verbose)
+        cookies, self.handles = login_with_browser(email, pwd, verbose=self.verbose, keep=True)
+        self._settle(self.handles["page"])
+        cookies = self.handles["ctx"].cookies()
         self._apply_cookies(cookies)
         self._save_cookie_file(cookies)
+        if not self.use_browser and self.alive(attempts=3, wait=8):
+            self.close()               # `requests` passe : pas besoin de garder le navigateur
+            return
+        self.use_browser = True
+        if self.verbose:
+            print("  Cloudflare refuse `requests` : les requêtes passeront par le navigateur")
+        if not self.alive(attempts=3, wait=8):
+            raise RuntimeError("PSA : connecté mais la session n'est pas acceptée, même via le navigateur")
 
+    @staticmethod
+    def _challenged(page):
+        t = (page.title() or "")
+        return "Just a moment" in t or "Un instant" in t or "__cf_chl" in page.url
+
+    def _settle(self, page, timeout=45):
+        """Cloudflare interpose parfois un challenge automatique (« Un instant… ») à chaque
+        navigation : on attend qu'il se résolve avant de faire quoi que ce soit."""
+        end = time.time() + timeout
+        reloaded = False
+        while time.time() < end:
+            if not self._challenged(page):
+                return True
+            time.sleep(2)
+            if not reloaded and time.time() > end - 15:
+                reloaded = True
+                try:
+                    page.reload(wait_until="domcontentloaded", timeout=30000)
+                except Exception:
+                    pass
+        return not self._challenged(page)
+
+    def _browser_goto(self, url):
+        page = self.handles["page"]
+        page.goto(url, wait_until="domcontentloaded", timeout=45000)
+        self._settle(page)
+        return _Resp(200 if not self._challenged(page) else 403, page.content(), page.url)
+
+    def _browser_request(self, method, url, data=None, headers=None):
+        """Requête exécutée DANS la page (fetch same-origin sur psacard.com), donc avec
+        l'empreinte du vrai navigateur validée par Cloudflare. Une page HTML en GET passe par
+        une vraie navigation (le challenge peut s'y résoudre) ; les appels JSON par fetch,
+        après s'être assuré que la page courante n'est pas un challenge."""
+        page = self.handles["page"]
+        is_api = "/api/" in url or "/Pop/" in url
+        if method == "GET" and not is_api:
+            return self._browser_goto(url)
+        if not page.url.startswith(BASE) or self._challenged(page):
+            self._browser_goto(f"{BASE}/pop/tcg-cards/{CATEGORY_TCG}")
+        body = up.urlencode(data) if data else None
+        hdrs = dict(headers or {})
+        if body is not None:
+            hdrs.setdefault("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8")
+        for attempt in (1, 2):
+            res = page.evaluate(
+                """async ({url, method, body, headers}) => {
+                     const r = await fetch(url, {method, headers, body, credentials: 'include', redirect: 'follow'});
+                     return {status: r.status, url: r.url, text: await r.text()};
+                   }""",
+                {"url": url, "method": method, "body": body, "headers": hdrs})
+            if res["status"] != 403 or attempt == 2:
+                break
+            # challenge servi au fetch : une navigation le résout, puis on réessaie
+            self._browser_goto(f"{BASE}/pop/tcg-cards/{CATEGORY_TCG}")
+        return _Resp(res["status"], res["text"], res["url"])
+
+    # --- helpers HTTP ----------------------------------------------------
     def _request(self, method, url, **kw):
         """Cloudflare refuse parfois UNE requête (403 « Just a moment ») alors que la session est
-        bonne : on attend et on réessaie deux fois avant d'envisager une reconnexion."""
+        bonne : on attend et on réessaie deux fois, puis on se reconnecte (et on bascule sur le
+        navigateur si `requests` reste refusé)."""
         time.sleep(PAUSE)
         for attempt in range(4):
-            r = self.s.request(method, url, timeout=60, **kw)
+            if self.use_browser:
+                r = self._browser_request(method, url, data=kw.get("data"), headers=kw.get("headers"))
+            else:
+                r = self.s.request(method, url, timeout=60, **kw)
             refused = r.status_code in (401, 403) or "signin" in r.url or "<title>Just a moment" in r.text[:2000]
             if not refused:
                 return r
@@ -270,26 +408,69 @@ class PsaSession:
             self._years = {y: h for h, y in sorted(set(re.findall(r'href="(/pop/tcg-cards/(\d{4})/\d+)"', t)))}
         return self._years
 
+    def _sets_index(self):
+        if not hasattr(self, "_index"):
+            try:
+                with open(SETS_INDEX_FILE, encoding="utf-8") as f:
+                    self._index = json.load(f)
+            except Exception:
+                self._index = {}
+        return self._index
+
+    def _save_sets_index(self):
+        try:
+            with open(SETS_INDEX_FILE, "w", encoding="utf-8") as f:
+                json.dump(self._index, f, ensure_ascii=False, indent=1)
+                f.write("\n")
+        except Exception:
+            pass
+
     def pokemon_sets(self, year):
-        """Séries Pokémon d'une année : [{id, slug, name, lang}] (lang = None pour l'anglais)."""
+        """Séries Pokémon d'une année : [{id, slug, name, lang}] (lang = None pour l'anglais).
+        Cache versionné (psa-sets-index.json) : re-téléchargé après SETS_INDEX_TTL_DAYS, gardé
+        tel quel si PSA refuse la page (challenge interactif)."""
         year = str(year)
         if year in self._sets_by_year:
             return self._sets_by_year[year]
-        path = self.years().get(year)
-        out = []
-        if path:
-            t = self._get(BASE + path).text
-            for _, slug, sid, name in re.findall(
-                    r'href="(/pop/tcg-cards/%s/([^"/]+)/(\d+))"[^>]*>(.*?)</a>' % year, t, re.S):
-                if not slug.lower().startswith("pokemon"):
-                    continue
-                clean = re.sub(r'\s+', ' ', H.unescape(re.sub(r'<[^>]+>', '', name))).strip()
-                lang = next((m for m in LANG_MARKERS if re.search(r'\b' + re.escape(m) + r'\b', clean)), None)
-                if lang is None:
-                    mc = re.match(r'^Pokemon\s+\S+\s+([A-Za-z]{2})-', clean)
-                    if mc and mc.group(1).lower() in CODE_LANG:
-                        lang = CODE_LANG[mc.group(1).lower()]
-                out.append({"id": sid, "slug": slug, "name": clean, "lang": lang, "year": year})
+        idx = self._sets_index()
+        ent = idx.get(year)
+        fresh = False
+        if ent:
+            try:
+                age = time.time() - time.mktime(time.strptime(ent["at"], "%Y-%m-%dT%H:%M:%SZ"))
+                fresh = age < SETS_INDEX_TTL_DAYS * 86400
+            except Exception:
+                fresh = False
+        if ent and fresh:
+            self._sets_by_year[year] = ent["sets"]
+            return ent["sets"]
+        out = None
+        try:
+            path = self.years().get(year)
+            if path:
+                t = self._get(BASE + path).text
+                out = []
+                for _, slug, sid, name in re.findall(
+                        r'href="(/pop/tcg-cards/%s/([^"/]+)/(\d+))"[^>]*>(.*?)</a>' % year, t, re.S):
+                    if not slug.lower().startswith("pokemon"):
+                        continue
+                    clean = re.sub(r'\s+', ' ', H.unescape(re.sub(r'<[^>]+>', '', name))).strip()
+                    lang = next((m for m in LANG_MARKERS if re.search(r'\b' + re.escape(m) + r'\b', clean)), None)
+                    if lang is None:
+                        mc = re.match(r'^Pokemon\s+\S+\s+([A-Za-z]{2})-', clean)
+                        if mc and mc.group(1).lower() in CODE_LANG:
+                            lang = CODE_LANG[mc.group(1).lower()]
+                    out.append({"id": sid, "slug": slug, "name": clean, "lang": lang, "year": year})
+            else:
+                out = []
+        except Exception as e:
+            if self.verbose:
+                print(f"  index PSA {year} indisponible ({e.__class__.__name__}) : "
+                      f"{'cache périmé conservé' if ent else 'aucun cache'}")
+            out = ent["sets"] if ent else []
+        else:
+            idx[year] = {"at": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()), "sets": out}
+            self._save_sets_index()
         self._sets_by_year[year] = out
         return out
 
@@ -319,10 +500,7 @@ class PsaSession:
     def price_summary(self, spec_id, months=6):
         """Ventes par note : {grade: {quantity, averagePrice, latestPrice, minimumPrice, maximumPrice}}.
         months=0 → toutes époques."""
-        inp = {"json": {"specId": str(spec_id), "department": "psa", "salesSummaryType": "GRADES",
-                        "gradingType": "ALL", "qualifiers": "NON_QUALIFIERS", "timeRange": int(months)}}
-        q = up.quote(json.dumps({"0": base64.b64encode(json.dumps(inp).encode()).decode()}))
-        r = self._get(f"{BASE}/api/psa/trpc/researchJourney.getPriceSummary?batch=1&input={q}",
+        r = self._get(self._price_url(spec_id, months),
                       headers={"Accept": "*/*", "Referer": f"{BASE}/spec/psa/{spec_id}"})
         try:
             summary = r.json()[0]["result"]["data"]["json"]["salesSummary"]
