@@ -76,7 +76,8 @@ body {
 .syncbtn.on { background:var(--gold); color:var(--ink-solid); }
 .syncbtn:active { transform:scale(.92); }
 /* easter egg : appui long sur la Pokéball (pas de sélection ni de menu contextuel sur mobile) */
-.egg-wrap { position:relative; flex:none; -webkit-user-select:none; user-select:none; -webkit-touch-callout:none; }
+.egg-wrap { position:relative; flex:none; display:block; -webkit-user-select:none; user-select:none; -webkit-touch-callout:none; }
+.egg-wrap .ball { display:block; } /* hors du flex, un span redevient inline et perd ses 30 px */
 .egg-menu { position:absolute; top:38px; left:0; z-index:30; min-width:220px; background:var(--surface);
   border:1px solid var(--line); border-radius:12px; box-shadow:0 8px 24px rgba(0,0,0,.14); overflow:hidden; }
 .egg-menu[hidden] { display:none; }
