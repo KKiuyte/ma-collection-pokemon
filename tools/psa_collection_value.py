@@ -377,41 +377,56 @@ def main():
             r["status"] = "set_not_found"
             unmatched_sets[r["set_id"]] = sinfo.get("name_en")
             continue
-        row, ent, proxy = None, None, None
+        grade = float(r["target_grade"])
+
+        def sales_for(spec):
+            """Ventes à la note visée : fenêtre demandée, puis 12 mois, puis toutes époques ;
+            on retient la première avec au moins MIN_SALES ventes, sinon la plus large qui en a."""
+            key = (spec, grade)
+            if key not in price_cache:
+                picked, fallback = None, None
+                for months in (args.months, 12, 0):
+                    m = ps.price_summary(spec, months).get(grade)
+                    if m and m["quantity"] >= MIN_SALES:
+                        picked = (m, months)
+                        break
+                    if m:
+                        fallback = (m, months)
+                price_cache[key] = picked or fallback
+            return price_cache[key]
+
+        # on parcourt les séries candidates (langue de la carte, puis anglaise) : la première
+        # où la carte existe ET a des ventes à la note visée l'emporte. Une série FR sans
+        # aucune vente ne doit pas bloquer le repli sur la version anglaise.
+        found = []          # (série, proxy, ligne) où la carte existe
+        chosen = None       # (série, proxy, ligne, ventes)
         for e, px in candidates:
             if e["psa_id"] not in pop_cache:
                 pop_cache[e["psa_id"]] = pop_rows(ps, e["psa_id"])
             row = find_row(pop_cache[e["psa_id"]], r["number"], r["name_en"], r["version"])
-            if row:
-                ent, proxy = e, px
+            if not row:
+                continue
+            found.append((e, px, row))
+            sales = sales_for(row["SpecID"])
+            if sales:
+                chosen = (e, px, row, sales)
                 break
-        if not row:
+        if not found:
             r["status"] = "card_not_found"
             r["psa"] = {"set_name": " / ".join(c[0]["psa_name"] for c in candidates), "proxy_lang": None}
             continue
+        if not chosen:
+            e, px, row = found[0]
+            pop_at, pop_higher = grade_pop(row, r["target_grade"])
+            r["status"] = "no_sales"
+            r["psa"] = {"set_name": e["psa_name"], "spec_id": row["SpecID"], "subject": row.get("SubjectName"),
+                        "proxy_lang": px, "pop_at_grade": pop_at, "pop_higher": pop_higher}
+            continue
+        ent, proxy, row, (m, window) = chosen
         spec = row["SpecID"]
-        grade = float(r["target_grade"])
-        key = (spec, grade)
-        if key not in price_cache:
-            # fenêtre demandée, puis 12 mois, puis toutes époques : on retient la première
-            # avec au moins MIN_SALES ventes à la note visée ; sinon la plus large qui en a
-            picked, fallback = None, None
-            for months in (args.months, 12, 0):
-                m = ps.price_summary(spec, months).get(grade)
-                if m and m["quantity"] >= MIN_SALES:
-                    picked = (m, months)
-                    break
-                if m:
-                    fallback = (m, months)
-            price_cache[key] = picked or fallback
         pop_at, pop_higher = grade_pop(row, r["target_grade"])
         psa = {"set_name": ent["psa_name"], "spec_id": spec, "subject": row.get("SubjectName"),
                "proxy_lang": proxy, "pop_at_grade": pop_at, "pop_higher": pop_higher}
-        if not price_cache[key]:
-            r["status"] = "no_sales"
-            r["psa"] = psa
-            continue
-        m, window = price_cache[key]
         est_eur = round(m["averagePrice"] * fx, 2)
         est_fr = round(est_eur * (1 - args.discount), 2)
         psa.update({"sales_qty": m["quantity"], "avg_usd": m["averagePrice"], "latest_usd": m.get("latestPrice"),
