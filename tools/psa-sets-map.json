@@ -33,5 +33,52 @@
   "psa_name": "Pokemon Game",
   "psa_year": "1999",
   "auto": true
+ },
+ "me03|French": {
+  "psa_id": "334602",
+  "psa_name": "Pokemon French Por FR-Perfect Order",
+  "psa_year": "2026",
+  "auto": true
+ },
+ "me03|EN": {
+  "psa_id": "334491",
+  "psa_name": "Pokemon Por EN-Perfect Order",
+  "psa_year": "2026",
+  "auto": true
+ },
+ "me01|French": {
+  "psa_id": "316793",
+  "psa_name": "Pokemon French Meg FR-Mega Evolution",
+  "psa_year": "2025",
+  "auto": true
+ },
+ "me01|EN": {
+  "psa_id": "316651",
+  "psa_name": "Pokemon Meg EN-Mega Evolution",
+  "psa_year": "2025",
+  "auto": true
+ },
+ "swsh12.5|French": {
+  "none": true,
+  "why": "aucune série PSA trouvée",
+  "candidates": []
+ },
+ "swsh12.5|EN": {
+  "psa_id": "229016",
+  "psa_name": "Pokemon Sword and Shield Crown Zenith",
+  "psa_year": "2023",
+  "auto": true
+ },
+ "sv10|French": {
+  "psa_id": "303823",
+  "psa_name": "Pokemon French Dri FR-Destined Rivals",
+  "psa_year": "2025",
+  "auto": true
+ },
+ "sv10|EN": {
+  "psa_id": "303820",
+  "psa_name": "Pokemon Dri EN-Destined Rivals",
+  "psa_year": "2025",
+  "auto": true
  }
 }
