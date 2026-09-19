@@ -356,6 +356,10 @@ prioritaire) dans la langue de la carte puis anglaise (**repli EN aussi si la ca
 la série FR** ; `proxy_lang:"EN"`) → ligne de population (`find_row` : numéro + Reverse/non +
 nom EN) → ventes sur `--months` (6), repli 12 puis 0, **première fenêtre avec ≥ MIN_SALES=3
 ventes** (sinon `thin:true`) → `est_eur = moyenne × fx`, `est_eur_france = × (1 − décote 0.15)`.
+**Notes 10, 9 et 8 conservées pour chaque carte** (`psa.grades`, l'API les renvoie d'un coup) ;
+si la note visée n'a aucune vente, l'estimation principale prend la note inférieure la plus
+haute qui en a (`psa.grade_used` ≠ `target_grade`, signalé sur la page). Seuil gardé à 10 €
+(choix d'Ariel, 2026-09-18) : avec sa collection (410 cartes) ≈ 6 lignes éligibles.
 Rapport écrit dans `graded_reports/{uid}` (règle Firestore : lecture propriétaire, écriture
 interdite côté client — **à publier à la main dans la console**). `--owned-json` + `--dry-run
 --out` pour tester sans Firestore. Testé le 2026-09-17 sur un échantillon (Lugia V ST 361 € →
