@@ -378,6 +378,65 @@ def psa_lookup_api(certs, session, verbose=False):
     return res
 
 
+def _pop_from_summary(summary, grade):
+    """(pop à cette note, pop au-dessus) d'après getPopulationSummary."""
+    if not summary or grade is None:
+        return None, None
+    counts = {}
+    for k, v in summary.items():
+        m = re.fullmatch(r'grade(\d{1,2})(_5)?', k)
+        if m and isinstance(v, dict):
+            counts[float(m.group(1)) + (0.5 if m.group(2) else 0)] = int(v.get("totalCount") or 0)
+    if not counts:
+        return None, None
+    return counts.get(float(grade), 0), sum(c for g, c in counts.items() if g > float(grade))
+
+
+def psa_lookup_session(certs, session, verbose=False):
+    """Chemin normal depuis le 2026-09-23 : tout via le compte connecté (tRPC
+    researchJourney.*), aucun quota, pas de page /cert. Renvoie {cert: fiche}."""
+    res = {}
+    for k, cert in enumerate(certs):
+        try:
+            d = session.cert_details(cert)
+        except Exception as e:
+            res[cert] = {"error": f"session: {e.__class__.__name__}"}
+            continue
+        if not d:
+            res[cert] = {"error": "no data"}
+            continue
+        a = d.get("attributes") or {}
+        item_grade = d.get("grade") or ""
+        grade = _grade_value(d.get("gradeValue") or item_grade)
+        fiche = {
+            "Cert Number": str(d["certNumber"]),
+            "Subject": a.get("subject"),
+            "Item Grade": item_grade,
+            "Year": str(d.get("year") or ""),
+            "Card Number": str(a.get("cardNumber") or ""),
+            "Category": d.get("category"),
+            "Brand": a.get("brand"),
+            "Variety": a.get("variety"),
+            "spec_id": d.get("specId"),
+            "source": "session",
+        }
+        if fiche["spec_id"]:
+            try:
+                fiche["pop"], fiche["pop_higher"] = _pop_from_summary(
+                    session.population_summary(fiche["spec_id"]), grade)
+                sd = session.spec_details(fiche["spec_id"]) or {}
+                fiche["pop_url"] = (sd.get("set") or {}).get("populationUrl")
+            except Exception as e:
+                if verbose:
+                    print(f"    population {cert}: {e.__class__.__name__}")
+            fiche.update(psa_price_for(session, fiche["spec_id"], grade, verbose))
+        res[cert] = fiche
+        if verbose:
+            extra = f" ${fiche['est_usd']} ({fiche['sales']} ventes)" if fiche.get("est_usd") else ""
+            print(f"    PSA {cert}: {fiche.get('Subject')} {item_grade} pop {fiche.get('pop')}{extra}")
+    return res
+
+
 def open_psa_session(verbose=False):
     """Session PSA connectée (tools/psa_client.py) pour les ventes ; None si pas
     d'identifiants ou connexion impossible — la fiche reste alors sans estimation."""
@@ -437,17 +496,19 @@ def psa_phase(items, cache, args, V):
     if not wanted and not price_only:
         return
 
-    if not PSA_API_TOKEN:
-        if V:
-            print("  pas de jeton PSA_API_TOKEN : repli navigateur (souvent bloqué par Cloudflare)")
-        for cert, fiche in psa_lookup_batch(wanted, verbose=V).items():
-            fiche["checked_at"] = iso()
-            cache["certs"][cert] = fiche
-        return
-
     session = open_psa_session(verbose=V)
     try:
-        for cert, fiche in psa_lookup_api(wanted, session, verbose=V).items():
+        if session:
+            got = psa_lookup_session(wanted, session, verbose=V)
+        elif PSA_API_TOKEN:
+            if V:
+                print("  pas de session PSA : fiche par l'API publique (jeton), sans estimation")
+            got = psa_lookup_api(wanted, None, verbose=V)
+        else:
+            if V:
+                print("  ni session ni jeton PSA : repli navigateur (souvent bloqué par Cloudflare)")
+            got = psa_lookup_batch(wanted, verbose=V)
+        for cert, fiche in got.items():
             fiche["checked_at"] = iso()
             if session:
                 fiche["priced_at"] = iso()

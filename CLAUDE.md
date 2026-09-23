@@ -253,20 +253,29 @@ redéclenche pas `deploy.yml`).
      (RapidOCR, recadrages `top`/`upband` × échelles 2 et 3, **vote** entre lectures).
      ~80 % de réussite sur les annonces qui montrent le label. Bien meilleur que l'OCR
      des numéros de carte (le cert PSA est noir sur blanc, police fixe).
-   - **Fiche PSA (depuis le 2026-09-23) : API publique officielle**
-     `https://api.psacard.com/publicapi/cert/GetByCertNumber/{n}` (en-tête
-     `authorization: bearer <jeton>`, jeton gratuit généré sur psacard.com/publicapi une
-     fois connecté, **100 appels/jour** — secret GitHub `PSA_API_TOKEN`, jamais dans le
-     dépôt). Renvoie `PSACert{SpecID, Subject, Year, CardNumber, Category, Brand, Variety,
-     GradeDescription, CardGrade, TotalPopulation, PopulationHigher}` (swagger :
-     `/publicapi/swagger.json`). Pas de prix dans l'API → **estimation = ventes PSA**
-     via le compte connecté (`psa_client.PsaSession.price_summary(spec_id)`, même
-     mécanisme que l'estimation gradée) : moyenne des ventes à la note du cert sur 6 mois
-     (sinon 12), ≥ 3 ventes ; « confiance » recalculée d'après le nb de ventes (≥ 20 High,
-     ≥ 8 Moderate, sinon Low) pour garder la règle `deal`. Champs ajoutés : `spec_id`,
-     `sales`, `sales_months`, `priced_at` (fiche sans estimation reprise le lendemain
-     sans reconsommer le quota). Un 429 (quota) arrête le lot, repris au passage suivant.
-     **Ancien chemin (repli sans jeton)** : page `psacard.com/cert/{n}/psa` en Chromium
+   - **Fiche PSA (depuis le 2026-09-23) : compte connecté, tRPC `researchJourney.*`**
+     (`psa_client.PsaSession`, même session que l'estimation gradée ; `_trpc()` encode
+     l'entrée en base64 comme l'API des prix). Trois appels par cert, aucun quota, aucune
+     page /cert : `getCertDetails {certNumber, department:"PSA", funkoLookup:false}` →
+     subject, brand, cardNumber, variety, year, grade « MINT 9 », gradeValue, **specId** ;
+     `getPopulationSummary {specId, department:"psa"}` → `grade10…grade1_5{totalCount}`
+     (pop = note du cert, pop_higher = somme au-dessus) ; `getSpecDetails` → set +
+     `populationUrl`. Puis **estimation = ventes PSA** (`price_summary(spec_id)`) : moyenne
+     à la note du cert sur 6 mois (sinon 12), ≥ 3 ventes ; « confiance » recalculée d'après
+     le nb de ventes (≥ 20 High, ≥ 8 Moderate, sinon Low) pour garder la règle `deal`.
+     Vérifié contre l'ancienne page : pop 31 918 vs 31 616 (a grossi), 126,7 $ vs
+     121 $ « PSA Estimate ». Champs ajoutés : `spec_id`, `source`, `sales`, `sales_months`,
+     `priced_at` (fiche sans estimation reprise le lendemain). 💡 Astuce de découverte :
+     un nom de procédure inconnu → NOT_FOUND ; une entrée incomplète → le **schéma
+     attendu** en clair (c'est comme ça que `funkoLookup` a été trouvé).
+     **2e chemin (jeton, sans session)** : API publique officielle
+     `api.psacard.com/publicapi/cert/GetByCertNumber/{n}` (`authorization: bearer`,
+     100 appels/jour, swagger `/publicapi/swagger.json`, pas de prix). Jeton généré par
+     Ariel et posé en secret `PSA_API_TOKEN`, MAIS le compte répond 403 « Access to this
+     API is limited to approved customers » : PSA n'approuve pas les comptes grand public
+     automatiquement (demande à `collectors-apis@collectors.com` si un jour utile). Le code
+     est prêt si l'accès s'ouvre.
+     **3e chemin (repli)** : page `psacard.com/cert/{n}/psa` en Chromium
      headless + playwright-stealth, parse du flux RSC (Subject, Item Grade, « PSA
      Estimate » + confiance, « PSA Population »/« PSA Pop Higher »). **Bloqué depuis le
      2026-09-22** : challenge Cloudflare **à case à cocher**, même connecté, depuis les IP
@@ -282,7 +291,7 @@ redéclenche pas `deploy.yml`).
      lisible n'est pas re-tentée avant `OCR_RETRY_DAYS=10`. **Versionné** → le cache
      survit aux runs et se construit dans le temps.
    - Brides par passage : `--max-ocr` (défaut 40 ; **100** dans le workflow) et
-     `--max-lookups` (défaut 20 ; **12** dans le workflow, quota API oblige).
+     `--max-lookups` (défaut 20 ; **40** dans le workflow, ~6 s par fiche via la session).
      ⚠️ **Volume constaté (2026-09-23)** : Vinted reçoit ~1 000 annonces PSA/jour et la
      page ne montre que les ~230 plus récentes ; entre deux passages de 6 h il ne restait
      que 0-26 annonces en commun → avec 30 OCR × 4 passages/jour, 200/233 annonces

@@ -510,6 +510,38 @@ class PsaSession:
                 break
         return rows
 
+    # --- tRPC « researchJourney » (découvert le 2026-09-23 : le nom d'une procédure
+    #     inconnue renvoie NOT_FOUND, une entrée incomplète renvoie le schéma attendu) ---
+    def _trpc(self, proc, inp, referer=None):
+        q = up.quote(json.dumps({"0": base64.b64encode(json.dumps({"json": inp}).encode()).decode()}))
+        r = self._get(f"{BASE}/api/psa/trpc/{proc}?batch=1&input={q}",
+                      headers={"Accept": "*/*", "Referer": referer or f"{BASE}/pop/tcg-cards/{CATEGORY_TCG}"})
+        try:
+            return r.json()[0]["result"]["data"]["json"]
+        except Exception:
+            return None
+
+    def cert_details(self, cert):
+        """Fiche d'un cert SANS passer par la page /cert (bloquée par un challenge interactif) :
+        {certNumber, specId, grade:'MINT 9', gradeValue:'9', year, category, description,
+         attributes:{subject, brand, cardNumber, variety,…}, isValid, voided}. None si inconnu."""
+        d = self._trpc("researchJourney.getCertDetails",
+                       {"certNumber": str(cert), "department": "PSA", "funkoLookup": False},
+                       referer=f"{BASE}/cert/{cert}/psa")
+        return d if d and d.get("certNumber") else None
+
+    def population_summary(self, spec_id):
+        """{grade10:{itemCount,…}, grade9:…, grade8_5:…, total:{…}, gemRate} pour une carte."""
+        return self._trpc("researchJourney.getPopulationSummary",
+                          {"specId": str(spec_id), "department": "psa"},
+                          referer=f"{BASE}/spec/psa/{spec_id}")
+
+    def spec_details(self, spec_id):
+        """{specId, headingId, set:{setId, name, populationUrl,…}, longDescription,…}"""
+        return self._trpc("researchJourney.getSpecDetails",
+                          {"specId": str(spec_id), "department": "psa"},
+                          referer=f"{BASE}/spec/psa/{spec_id}")
+
     # --- ventes d'une carte -----------------------------------------------
     def price_summary(self, spec_id, months=6):
         """Ventes par note : {grade: {quantity, averagePrice, latestPrice, minimumPrice, maximumPrice}}.
