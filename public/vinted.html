@@ -204,6 +204,7 @@ function psaLine(it) {
       <span class="psaest">est. ${Math.round(p.est_eur)} €</span>
       ${ratioPill(p)}
       ${p.confidence ? `<span>conf. ${escapeHtml(p.confidence)}</span>` : ""}
+      ${p.sales ? `<span>${p.sales} vente${p.sales > 1 ? "s" : ""}/${p.sales_months} mois</span>` : ""}
       ${popText(p)}
     </div>`;
   }

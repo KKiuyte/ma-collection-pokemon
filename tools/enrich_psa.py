@@ -7,10 +7,12 @@ correspondante (carte exacte, grade, estimation de prix).
 Chaîne :
   1. pour chaque annonce pas encore traitée : télécharge ses photos (f800) et lit
      le **numéro de cert** par OCR (RapidOCR) avec un vote sur plusieurs recadrages ;
-  2. pour chaque cert inconnu du cache : ouvre psacard.com/cert/{n} dans un
-     navigateur headless (Chromium/Playwright, seul moyen de passer Cloudflare) et
-     récupère sujet, année, n° de carte, grade et **estimation PSA** ($, fourchette,
-     confiance) ;
+  2. pour chaque cert inconnu du cache : **API publique PSA** (jeton PSA_API_TOKEN,
+     100 appels/jour) → sujet, année, n° de carte, grade, SpecID, population ; puis
+     **ventes PSA** par note via le compte connecté (tools/psa_client.py, PSA_EMAIL/
+     PSA_PASSWORD) → estimation = moyenne des ventes 6 mois (sinon 12). Sans jeton :
+     repli sur la page psacard.com/cert/{n} en navigateur headless (bloquée par un
+     challenge interactif depuis le 2026-09-22, gardée au cas où) ;
   3. compare le prix Vinted (converti en $/€) à l'estimation PSA et marque les
      bonnes affaires.
 
@@ -49,6 +51,15 @@ CERT_TTL_DAYS = 30          # au-delà, on re-vérifie l'estimation d'un cert
 OCR_RETRY_DAYS = 10         # une annonce sans cert lisible n'est pas re-tentée avant
 DEAL_RATIO = 0.80           # prix <= 80 % de l'estimation € => bonne affaire
 FX_TTL_HOURS = 20
+
+# API publique officielle de PSA (jeton gratuit, 100 appels/jour) : fiche par n° de cert.
+# Depuis le 2026-09-22 la page /cert/{n} est derrière un challenge Cloudflare à case à
+# cocher (infranchissable en headless), l'API est donc le chemin normal ; le navigateur
+# ne sert plus que de repli quand aucun jeton n'est fourni.
+PSA_API = "https://api.psacard.com/publicapi"
+PSA_API_TOKEN = os.environ.get("PSA_API_TOKEN", "").strip()
+PRICE_MONTHS = (6, 12)      # fenêtres de ventes essayées pour l'estimation (≈ « PSA Estimate »)
+MIN_SALES = 3               # en dessous, on n'ose pas d'estimation
 
 NOW = dt.datetime.now(dt.timezone.utc)
 
@@ -181,6 +192,7 @@ def read_cert_from_images(blobs, verbose=False):
 RE_LABELS = ("Cert Number", "Item Grade", "Year", "Subject", "Card Number",
              "Category", "Brand", "Variety", "Pedigree")
 GRADE_NUM = re.compile(r'(\d{1,2})')
+GRADE_VAL = re.compile(r'(\d{1,2}(?:\.5)?)')   # « MINT 9 », « NM-MT+ 8.5 », « 10 »
 
 
 def _unescape(s):
@@ -230,11 +242,11 @@ def parse_psa(html):
 
 def _load_cert_page(page, cert):
     """Charge une page de cert et attend que le vrai contenu soit rendu.
-    Avec playwright-stealth le challenge Cloudflare se résout en 1-2 s ; on
-    laisse quand même jusqu'à 40 s au cas où."""
+    Avec playwright-stealth le challenge automatique se résout en 1-2 s ; un challenge
+    à case à cocher, lui, ne se résoudra jamais : on n'attend pas plus de 20 s."""
     page.goto(f"https://www.psacard.com/cert/{cert}/psa",
-              wait_until="domcontentloaded", timeout=45000)
-    deadline = time.time() + 40
+              wait_until="domcontentloaded", timeout=30000)
+    deadline = time.time() + 20
     while time.time() < deadline:
         html = page.content()
         if "Cert Number" in html:
@@ -244,39 +256,140 @@ def _load_cert_page(page, cert):
 
 
 def psa_lookup_batch(certs, verbose=False):
-    """certs: liste de str. Renvoie {cert: fiche|{'error':...}}.
+    """REPLI sans jeton d'API : page de cert dans un navigateur headless.
+    certs: liste de str. Renvoie {cert: fiche|{'error':...}} — les certs non tentés
+    (arrêt après 2 blocages Cloudflare consécutifs) n'y figurent pas.
 
     ⚠️ Chargement DIRECT par cert (pas de visite d'accueil « de chauffe » : elle
-    déclenche un challenge Cloudflare plus strict) + playwright-stealth. Testé :
-    5/5 certs passés d'affilée. Sans stealth, Cloudflare bloque dès le 1er ou 2e.
+    déclenche un challenge Cloudflare plus strict) + playwright-stealth. Depuis le
+    2026-09-22 la page reçoit un challenge interactif : ce chemin échoue en général,
+    on le garde au cas où PSA relâche le blocage.
     """
     from playwright.sync_api import sync_playwright
     from playwright_stealth import Stealth
 
-    res = {}
+    res, blocked = {}, 0
     with Stealth().use_sync(sync_playwright()) as p:
         br = p.chromium.launch(headless=True, args=["--no-sandbox"])
         ctx = br.new_context(user_agent=UA, locale="fr-CA",
                              viewport={"width": 1366, "height": 900})
         page = ctx.new_page()
         for k, cert in enumerate(certs):
-            fiche, attempts = {"error": "cloudflare"}, 0
-            while attempts < 2 and fiche.get("error") == "cloudflare":
-                attempts += 1
-                try:
-                    fiche = parse_psa(_load_cert_page(page, cert))
-                except Exception as e:
-                    fiche = {"error": f"nav: {e.__class__.__name__}"}
-                if fiche.get("error") == "cloudflare" and attempts < 2:
-                    time.sleep(8.0)
+            try:
+                fiche = parse_psa(_load_cert_page(page, cert))
+            except Exception as e:
+                fiche = {"error": f"nav: {e.__class__.__name__}"}
             res[cert] = fiche
             if verbose:
                 extra = f" ${fiche['est_usd']}" if fiche.get("est_usd") else ""
                 print(f"    PSA {cert}: {fiche.get('Subject') or fiche.get('error')}{extra}")
+            blocked = blocked + 1 if fiche.get("error") == "cloudflare" else 0
+            if blocked >= 2:
+                if verbose:
+                    print("    Cloudflare bloque la page de cert : on arrête pour ce passage")
+                break
             if k < len(certs) - 1:
                 time.sleep(6.0)
         br.close()
     return res
+
+
+def _grade_value(g):
+    m = GRADE_VAL.search(g or "")
+    return float(m.group(1)) if m else None
+
+
+def psa_price_for(session, spec_id, grade, verbose=False):
+    """Estimation à partir des ventes PSA (compte connecté) pour une note donnée :
+    moyenne sur 6 mois, sinon 12. Renvoie {} si trop peu de ventes ou si la session
+    est refusée. La « confiance » imite l'échelle de la page de cert d'après le nombre
+    de ventes (≥ 20 High, ≥ 8 Moderate, sinon Low)."""
+    if not session or not spec_id or grade is None:
+        return {}
+    for months in PRICE_MONTHS:
+        try:
+            summary = session.price_summary(spec_id, months)
+        except Exception as e:
+            if verbose:
+                print(f"    ventes {spec_id}: {e.__class__.__name__}")
+            return {}
+        row = summary.get(float(grade)) or {}
+        q = row.get("quantity") or 0
+        if q >= MIN_SALES and row.get("averagePrice"):
+            return {"est_usd": round(float(row["averagePrice"]), 2),
+                    "est_low": row.get("minimumPrice"), "est_high": row.get("maximumPrice"),
+                    "sales": q, "sales_months": months,
+                    "confidence": "High" if q >= 20 else "Moderate" if q >= 8 else "Low"}
+    return {}
+
+
+def psa_lookup_api(certs, session, verbose=False):
+    """Chemin normal : API publique PSA (jeton) pour la fiche, puis ventes via le compte.
+    Renvoie {cert: fiche}. Un dépassement de quota (429) arrête le lot : les certs
+    restants ne sont pas dans le résultat et seront repris au passage suivant."""
+    import requests
+    res = {}
+    hdrs = {"authorization": f"bearer {PSA_API_TOKEN}", "Accept": "application/json"}
+    for k, cert in enumerate(certs):
+        try:
+            r = requests.get(f"{PSA_API}/cert/GetByCertNumber/{cert}", headers=hdrs, timeout=30)
+        except Exception as e:
+            res[cert] = {"error": f"api: {e.__class__.__name__}"}
+            continue
+        if r.status_code == 429:
+            if verbose:
+                print("    API PSA : quota journalier atteint, on reprendra demain")
+            break
+        if r.status_code in (401, 403):
+            if verbose:
+                print(f"    API PSA : jeton refusé (HTTP {r.status_code})")
+            break
+        try:
+            c = (r.json() or {}).get("PSACert") or {}
+        except Exception:
+            c = {}
+        if not c.get("CertNumber"):
+            res[cert] = {"error": "no data"}
+            continue
+        grade = str(c.get("CardGrade") or "").strip()
+        desc = str(c.get("GradeDescription") or "").strip()
+        item_grade = f"{desc} {grade}".strip() if grade and not GRADE_VAL.search(desc) else (desc or grade)
+        fiche = {
+            "Cert Number": str(c["CertNumber"]),
+            "Subject": c.get("Subject"),
+            "Item Grade": item_grade,
+            "Year": str(c.get("Year") or ""),
+            "Card Number": str(c.get("CardNumber") or ""),
+            "Category": c.get("Category"),
+            "Brand": c.get("Brand"),
+            "Variety": c.get("Variety"),
+            "spec_id": c.get("SpecID"),
+            "pop": c.get("TotalPopulation"),
+            "pop_higher": c.get("PopulationHigher"),
+            "source": "api",
+        }
+        fiche.update(psa_price_for(session, fiche["spec_id"], _grade_value(item_grade), verbose))
+        res[cert] = fiche
+        if verbose:
+            extra = f" ${fiche['est_usd']} ({fiche['sales']} ventes)" if fiche.get("est_usd") else ""
+            print(f"    PSA {cert}: {fiche.get('Subject')} {item_grade}{extra}")
+        if k < len(certs) - 1:
+            time.sleep(1.0)
+    return res
+
+
+def open_psa_session(verbose=False):
+    """Session PSA connectée (tools/psa_client.py) pour les ventes ; None si pas
+    d'identifiants ou connexion impossible — la fiche reste alors sans estimation."""
+    try:
+        sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+        import psa_client
+        psa_client.load_credentials()
+        return psa_client.PsaSession(verbose=verbose).ensure()
+    except (Exception, SystemExit) as e:    # load_credentials() lève SystemExit
+        if verbose:
+            print(f"  session PSA indisponible ({e.__class__.__name__}: {e}) : pas d'estimation")
+        return None
 
 
 # -------------------------------------------------------------------------- FX
@@ -298,6 +411,55 @@ def refresh_fx(cache, opener, verbose=False):
         except Exception:
             continue
     return meta.get("fx_usd_eur") or 0.92
+
+
+def psa_phase(items, cache, args, V):
+    """Fiches PSA : API (jeton) + ventes (compte), ou navigateur en repli sans jeton.
+    Une fiche venue de l'API mais restée sans estimation (session refusée ce jour-là)
+    est reprise au passage suivant sans reconsommer le quota de l'API."""
+    wanted, price_only, seen = [], [], set()
+    for it in items:
+        cert = (cache["items"].get(it["id"]) or {}).get("cert")
+        if not cert or cert in seen:
+            continue
+        seen.add(cert)
+        f = cache["certs"].get(cert)
+        if f and f.get("error") and age_days(f.get("checked_at", "")) < 1:
+            continue  # échec récent : on laisse reposer
+        if f and "error" not in f and "pop" in f and age_days(f.get("checked_at", "")) < CERT_TTL_DAYS:
+            if f.get("spec_id") and not f.get("est_usd") and age_days(f.get("priced_at", "")) >= 1:
+                price_only.append(cert)
+            continue
+        wanted.append(cert)
+    wanted = wanted[:args.max_lookups]
+    if V:
+        print(f"PSA : {len(wanted)} fiche(s) à ouvrir, {len(price_only)} estimation(s) à reprendre")
+    if not wanted and not price_only:
+        return
+
+    if not PSA_API_TOKEN:
+        if V:
+            print("  pas de jeton PSA_API_TOKEN : repli navigateur (souvent bloqué par Cloudflare)")
+        for cert, fiche in psa_lookup_batch(wanted, verbose=V).items():
+            fiche["checked_at"] = iso()
+            cache["certs"][cert] = fiche
+        return
+
+    session = open_psa_session(verbose=V)
+    try:
+        for cert, fiche in psa_lookup_api(wanted, session, verbose=V).items():
+            fiche["checked_at"] = iso()
+            if session:
+                fiche["priced_at"] = iso()
+            cache["certs"][cert] = fiche
+        if session:
+            for cert in price_only[:args.max_lookups]:
+                f = cache["certs"][cert]
+                f.update(psa_price_for(session, f["spec_id"], _grade_value(f.get("Item Grade")), V))
+                f["priced_at"] = iso()
+    finally:
+        if session:
+            session.close()
 
 
 # ------------------------------------------------------------------------- main
@@ -330,6 +492,8 @@ def build_psa_field(item, cache, fx):
         "pop": fiche.get("pop"),                 # gradés à ce grade
         "pop_higher": fiche.get("pop_higher"),   # gradés au-dessus
         "pop_url": fiche.get("pop_url"),
+        "sales": fiche.get("sales"),             # nb de ventes derrière l'estimation (API)
+        "sales_months": fiche.get("sales_months"),
     }
     if est:
         est_eur = round(est * fx, 2)
@@ -398,6 +562,9 @@ def main():
         if c and c.get("status") in ("no_cert",) and age_days(c.get("at", "")) < OCR_RETRY_DAYS:
             continue
         todo.append(it)
+    # les annonces chères d'abord : c'est là que se jouent les vraies affaires, et le
+    # flux Vinted (~1 000 annonces PSA/jour) dépasse ce qu'un passage peut lire
+    todo.sort(key=lambda it: -(it.get("price") or 0))
     todo = todo[:args.max_ocr]
     if V:
         print(f"OCR : {len(todo)} annonce(s) à lire (sur {len(items)})")
@@ -424,29 +591,13 @@ def main():
         time.sleep(1.2)
 
     # --- phase 2 : fiches PSA pour les certs inconnus / périmés ---
+    # Tout est protégé : quoi qu'il arrive côté PSA, les certs lus en phase 1 sont écrits.
     if not args.no_psa:
-        wanted = []
-        seen = set()
-        for it in items:
-            cert = (cache["items"].get(it["id"]) or {}).get("cert")
-            if not cert or cert in seen:
-                continue
-            seen.add(cert)
-            f = cache["certs"].get(cert)
-            if f and "error" not in f and age_days(f.get("checked_at", "")) < CERT_TTL_DAYS \
-               and "pop" in f:   # (re)prise si la fiche est d'avant l'ajout de la population
-                continue
-            if f and f.get("error") and age_days(f.get("checked_at", "")) < 1:
-                continue  # échec récent : on laisse reposer
-            wanted.append(cert)
-        wanted = wanted[:args.max_lookups]
-        if V:
-            print(f"PSA : {len(wanted)} fiche(s) à ouvrir")
-        if wanted:
-            got = psa_lookup_batch(wanted, verbose=V)
-            for cert, fiche in got.items():
-                fiche["checked_at"] = iso()
-                cache["certs"][cert] = fiche
+        try:
+            psa_phase(items, cache, args, V)
+        except Exception as e:
+            print(f"  phase PSA interrompue ({e.__class__.__name__}: {e}) — on garde l'OCR",
+                  file=sys.stderr)
 
     # --- phase 3 : fusion + calcul bonne affaire ---
     for it in data["items"]:

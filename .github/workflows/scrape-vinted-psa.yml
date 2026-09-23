@@ -2,20 +2,21 @@ name: Scraper + enrichissement Vinted PSA
 # Système « bonnes affaires » :
 #   1. scrape_vinted_psa.py  → public/vinted-psa.json   (annonces Vinted brutes)
 #   2. enrich_psa.py         → ajoute à chaque annonce le cert PSA lu sur les photos
-#                              (OCR) puis la fiche PSA (carte, grade, estimation prix),
+#                              (OCR), la fiche PSA (API publique, jeton PSA_API_TOKEN)
+#                              et l'estimation (ventes PSA, compte PSA_EMAIL/PSA_PASSWORD),
 #                              met à jour public/psa-cache.json, calcule les bonnes affaires
 #   3. commit des JSON qui ont changé, puis déploiement Firebase Hosting
 #
 # ⚠️ Le commit via GITHUB_TOKEN ne déclenche PAS deploy.yml (GitHub bloque
 # l'enchaînement de workflows par le jeton automatique) → on déploie ici même.
 #
-# ⚠️ L'étape 2 ouvre des pages psacard.com dans un Chromium headless (seul moyen de
-# passer Cloudflare, avec playwright-stealth). Usage personnel, faible volume, cache
-# de 30 j pour limiter les requêtes. Contraire aux CGU de PSA — à assumer.
+# Rythme : Vinted reçoit ~1 000 annonces PSA/jour et la page n'affiche que les ~230 plus
+# récentes ; à ~10 s d'OCR par annonce, il faut ~100 annonces toutes les 3 h pour suivre.
+# L'API PSA est limitée à 100 appels/jour → 12 fiches par passage (8 passages/jour).
 
 on:
   schedule:
-    - cron: "17 */6 * * *"
+    - cron: "17 */3 * * *"
   workflow_dispatch: {}
 
 permissions:
@@ -28,7 +29,7 @@ concurrency:
 jobs:
   scrape:
     runs-on: ubuntu-latest
-    timeout-minutes: 35
+    timeout-minutes: 55
     steps:
       - uses: actions/checkout@v4
 
@@ -47,10 +48,13 @@ jobs:
 
       - name: Enrichir avec PSA (OCR du cert + fiche + estimation)
         continue-on-error: true    # un échec PSA laisse quand même déployer le scrape
-        # --max-ocr : l'OCR coûte ~20 s/annonce ; on en fait un lot par passage et
-        # le cache (public/psa-cache.json) évite de refaire les annonces déjà vues,
-        # donc le retard initial (~150 annonces) se résorbe en ~1 j (4 passages/j).
-        run: python tools/enrich_psa.py --max-ocr 30 --max-lookups 20
+        env:
+          PSA_API_TOKEN: ${{ secrets.PSA_API_TOKEN }}
+          PSA_EMAIL: ${{ secrets.PSA_EMAIL }}
+          PSA_PASSWORD: ${{ secrets.PSA_PASSWORD }}
+          PSA_COOKIE_FILE: ${{ runner.temp }}/psa-cookies.json
+          PSA_DEBUG_DIR: ${{ runner.temp }}/psa-debug
+        run: python tools/enrich_psa.py --max-ocr 100 --max-lookups 12 --verbose
 
       - name: Committer si un fichier a changé
         id: commit
@@ -64,6 +68,7 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add public/vinted-psa.json public/psa-cache.json
           git commit -m "MàJ auto annonces + fiches PSA ($(date -u +%FT%TZ))"
+          git pull --rebase
           git push
           echo "changed=true" >> "$GITHUB_OUTPUT"
 

@@ -253,15 +253,26 @@ redéclenche pas `deploy.yml`).
      (RapidOCR, recadrages `top`/`upband` × échelles 2 et 3, **vote** entre lectures).
      ~80 % de réussite sur les annonces qui montrent le label. Bien meilleur que l'OCR
      des numéros de carte (le cert PSA est noir sur blanc, police fixe).
-   - **Fiche PSA** : `psacard.com/cert/{n}/psa` ouvert en **Chromium headless +
-     playwright-stealth** (SEUL moyen fiable de passer Cloudflare — sans stealth, blocage
-     dès le 1er/2e ; NE PAS faire de visite d'accueil « de chauffe », ça durcit le
-     challenge ; chargement direct par cert). Parse le flux RSC (`_unescape` cible juste
-     `\"`) : Subject, Item Grade, Year, Card Number, Category, et l'**estimation PSA**
-     (`$` valeur + fourchette + « Estimate Confidence: High/Moderate/Low ») et la
-     **population** (« PSA Population » = nb gradé à ce grade, « PSA Pop Higher » = nb
-     gradé au-dessus, + lien pop report). Fiches en cache d'avant l'ajout de `pop` →
-     re-vérifiées automatiquement (quelques-unes par run).
+   - **Fiche PSA (depuis le 2026-09-23) : API publique officielle**
+     `https://api.psacard.com/publicapi/cert/GetByCertNumber/{n}` (en-tête
+     `authorization: bearer <jeton>`, jeton gratuit généré sur psacard.com/publicapi une
+     fois connecté, **100 appels/jour** — secret GitHub `PSA_API_TOKEN`, jamais dans le
+     dépôt). Renvoie `PSACert{SpecID, Subject, Year, CardNumber, Category, Brand, Variety,
+     GradeDescription, CardGrade, TotalPopulation, PopulationHigher}` (swagger :
+     `/publicapi/swagger.json`). Pas de prix dans l'API → **estimation = ventes PSA**
+     via le compte connecté (`psa_client.PsaSession.price_summary(spec_id)`, même
+     mécanisme que l'estimation gradée) : moyenne des ventes à la note du cert sur 6 mois
+     (sinon 12), ≥ 3 ventes ; « confiance » recalculée d'après le nb de ventes (≥ 20 High,
+     ≥ 8 Moderate, sinon Low) pour garder la règle `deal`. Champs ajoutés : `spec_id`,
+     `sales`, `sales_months`, `priced_at` (fiche sans estimation reprise le lendemain
+     sans reconsommer le quota). Un 429 (quota) arrête le lot, repris au passage suivant.
+     **Ancien chemin (repli sans jeton)** : page `psacard.com/cert/{n}/psa` en Chromium
+     headless + playwright-stealth, parse du flux RSC (Subject, Item Grade, « PSA
+     Estimate » + confiance, « PSA Population »/« PSA Pop Higher »). **Bloqué depuis le
+     2026-09-22** : challenge Cloudflare **à case à cocher**, même connecté, depuis les IP
+     GitHub ET depuis chez Ariel (3 runs annulés à 35 min, vérifié par capture d'écran) —
+     alors que l'API des prix répond toujours. Gardé au cas où PSA relâche ; s'arrête
+     après 2 blocages consécutifs (20 s max par page).
    - **Calcul bonne affaire** : `ratio = prix_€ / (est_$ × taux_USD→EUR)`. Marquée
      `deal` si `ratio ≤ 0.80` ET confiance `High` ou `Moderate`. Taux via
      frankfurter.app (repli open.er-api.com), caché ~20 h.
@@ -270,8 +281,16 @@ redéclenche pas `deploy.yml`).
      permanents ; estimation re-vérifiée après `CERT_TTL_DAYS=30`. Une annonce sans cert
      lisible n'est pas re-tentée avant `OCR_RETRY_DAYS=10`. **Versionné** → le cache
      survit aux runs et se construit dans le temps.
-   - Brides par passage : `--max-ocr` (défaut 40 ; 30 dans le workflow) et
-     `--max-lookups` (défaut 20). Le retard initial (~150 annonces) se résorbe en ~1 j.
+   - Brides par passage : `--max-ocr` (défaut 40 ; **100** dans le workflow) et
+     `--max-lookups` (défaut 20 ; **12** dans le workflow, quota API oblige).
+     ⚠️ **Volume constaté (2026-09-23)** : Vinted reçoit ~1 000 annonces PSA/jour et la
+     page ne montre que les ~230 plus récentes ; entre deux passages de 6 h il ne restait
+     que 0-26 annonces en commun → avec 30 OCR × 4 passages/jour, 200/233 annonces
+     affichées n'avaient jamais été lues (« cert. non lu » = jamais tenté, pas un échec
+     d'OCR, qui réussit ~77 %). D'où : OCR ~10 s/annonce, 100 par passage **toutes les
+     3 h** (`timeout-minutes: 55`), et les annonces **les plus chères d'abord**.
+   - La phase PSA est enveloppée d'un `try` : quoi qu'il arrive côté PSA, les certs lus
+     par l'OCR sont écrits et committés (avant, un run tué par le timeout perdait tout).
    - `--no-psa` = OCR seul (pas besoin de Playwright). `--limit N` pour tester.
 3. **`public/vinted.html`** lit `vinted-psa.json` : grille avec badge grade, ligne PSA
    (estimation €, pastille ratio verte/ambre/grise, confiance), surlignage vert des
@@ -283,10 +302,10 @@ redéclenche pas `deploy.yml`).
 (`scan.html`/`test-scan.html` pour les cartes ; `enrich_psa.py` est indépendant mais
 son OCR de chiffres suit les mêmes leçons). Toute leçon OCR se répercute.
 
-⚠️ **Scraper PSA = contraire aux CGU de PSA** (et Vinted). Usage perso, faible volume,
-cache 30 j. Assumé. Si Cloudflare finit par bloquer même avec stealth depuis les IP
-GitHub Actions (pas encore observé) : repli = déclenchement manuel, autre runner, ou
-proxy résidentiel (payant).
+⚠️ **Scraper Vinted + ventes PSA par compte = contraire aux CGU** (la fiche par cert passe
+désormais par l'API officielle, elle, autorisée). Usage perso, faible volume, cache 30 j.
+Assumé. Le blocage Cloudflare « même avec stealth » redouté ici est arrivé le 2026-09-22
+(voir « Fiche PSA » ci-dessus) ; la réponse a été l'API officielle, pas un proxy.
 
 ⚠️ **Bruit connu** : des annonces de bourrage de mots-clés (« psa pca tcg ») montrent
 parfois un slab PSA d'une autre carte (vu : un cert de carte de foot). L'OCR lit ce
