@@ -268,6 +268,14 @@ redéclenche pas `deploy.yml`).
      `priced_at` (fiche sans estimation reprise le lendemain). 💡 Astuce de découverte :
      un nom de procédure inconnu → NOT_FOUND ; une entrée incomplète → le **schéma
      attendu** en clair (c'est comme ça que `funkoLookup` a été trouvé).
+     ⚠️ **Depuis GitHub Actions, la session PSA passe un jour sur deux** (constaté
+     2026-09-19 → 23 sur `graded-value.yml` : échec/succès en alternance ; 1er run du
+     scraper avec ce chemin : « connecté mais la session n'est pas acceptée, même via le
+     navigateur » = Cloudflare met un challenge interactif partout pour cette IP de
+     runner). Rien à faire en headless ; c'est pour ça que les certs en attente sont
+     repris à chaque passage (8/jour) et que ce chemin échoue vite (≈ 1 min) sans casser
+     l'OCR. Depuis chez Ariel, la session passe (« Cloudflare refuse `requests` » →
+     navigateur, puis OK). Captures de diagnostic dans l'artefact `psa-debug` (3 j).
      **2e chemin (jeton, sans session)** : API publique officielle
      `api.psacard.com/publicapi/cert/GetByCertNumber/{n}` (`authorization: bearer`,
      100 appels/jour, swagger `/publicapi/swagger.json`, pas de prix). Jeton généré par
