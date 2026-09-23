@@ -1,7 +1,7 @@
 {
  "_meta": {
-  "fx_usd_eur": 0.8703,
-  "fx_at": "2026-09-21T22:01:11Z"
+  "fx_usd_eur": 0.8732,
+  "fx_at": "2026-09-23T16:36:36Z"
  },
  "items": {
   "9901340300": {
@@ -7472,6 +7472,638 @@
    "votes": 8,
    "at": "2026-09-22T17:01:01Z",
    "status": "ok"
+  },
+  "10108905090": {
+   "cert": "65158400",
+   "conf": 1.0,
+   "votes": 12,
+   "at": "2026-09-23T16:36:36Z",
+   "status": "ok"
+  },
+  "10108766740": {
+   "cert": "137230585",
+   "conf": 1.0,
+   "votes": 4,
+   "at": "2026-09-23T16:36:36Z",
+   "status": "ok"
+  },
+  "10108068032": {
+   "cert": "87650103",
+   "conf": 1.0,
+   "votes": 4,
+   "at": "2026-09-23T16:36:36Z",
+   "status": "ok"
+  },
+  "10107193562": {
+   "cert": null,
+   "conf": 0.0,
+   "votes": 0,
+   "at": "2026-09-23T16:36:36Z",
+   "status": "no_cert"
+  },
+  "10108635510": {
+   "cert": null,
+   "conf": 0.0,
+   "votes": 0,
+   "at": "2026-09-23T16:36:36Z",
+   "status": "no_cert"
+  },
+  "10109559219": {
+   "cert": "119133364",
+   "conf": 1.0,
+   "votes": 10,
+   "at": "2026-09-23T16:36:36Z",
+   "status": "ok"
+  },
+  "10108069006": {
+   "cert": "69237143",
+   "conf": 1.0,
+   "votes": 8,
+   "at": "2026-09-23T16:36:36Z",
+   "status": "ok"
+  },
+  "10109187066": {
+   "cert": "149807678",
+   "conf": 1.0,
+   "votes": 10,
+   "at": "2026-09-23T16:36:36Z",
+   "status": "ok"
+  },
+  "10108565443": {
+   "cert": "99361463",
+   "conf": 1.0,
+   "votes": 8,
+   "at": "2026-09-23T16:36:36Z",
+   "status": "ok"
+  },
+  "10107879831": {
+   "cert": null,
+   "conf": 0.0,
+   "votes": 0,
+   "at": "2026-09-23T16:36:36Z",
+   "status": "no_cert"
+  },
+  "10107725818": {
+   "cert": "129500585",
+   "conf": 1.0,
+   "votes": 8,
+   "at": "2026-09-23T16:36:36Z",
+   "status": "ok"
+  },
+  "10107307307": {
+   "cert": "152876217",
+   "conf": 1.0,
+   "votes": 8,
+   "at": "2026-09-23T16:36:36Z",
+   "status": "ok"
+  },
+  "10109340934": {
+   "cert": null,
+   "conf": 0.0,
+   "votes": 0,
+   "at": "2026-09-23T16:36:36Z",
+   "status": "no_cert"
+  },
+  "10107332420": {
+   "cert": "161333665",
+   "conf": 1.0,
+   "votes": 8,
+   "at": "2026-09-23T16:36:36Z",
+   "status": "ok"
+  },
+  "10109650118": {
+   "cert": "119133363",
+   "conf": 1.0,
+   "votes": 12,
+   "at": "2026-09-23T16:36:36Z",
+   "status": "ok"
+  },
+  "10109809772": {
+   "cert": null,
+   "conf": 0.0,
+   "votes": 0,
+   "at": "2026-09-23T16:36:36Z",
+   "status": "no_cert"
+  },
+  "10107734943": {
+   "cert": "104547496",
+   "conf": 1.0,
+   "votes": 8,
+   "at": "2026-09-23T16:36:36Z",
+   "status": "ok"
+  },
+  "10108918114": {
+   "cert": null,
+   "conf": 0.0,
+   "votes": 0,
+   "at": "2026-09-23T16:36:36Z",
+   "status": "no_cert"
+  },
+  "10107792781": {
+   "cert": "115232098",
+   "conf": 1.0,
+   "votes": 8,
+   "at": "2026-09-23T16:36:36Z",
+   "status": "ok"
+  },
+  "10109149564": {
+   "cert": "46526958",
+   "conf": 1.0,
+   "votes": 4,
+   "at": "2026-09-23T16:36:36Z",
+   "status": "ok"
+  },
+  "10099524131": {
+   "cert": "101740245",
+   "conf": 1.0,
+   "votes": 8,
+   "at": "2026-09-23T16:36:36Z",
+   "status": "ok"
+  },
+  "10107172917": {
+   "cert": null,
+   "conf": 0.0,
+   "votes": 0,
+   "at": "2026-09-23T16:36:36Z",
+   "status": "no_cert"
+  },
+  "10107577969": {
+   "cert": "24707805",
+   "conf": 1.0,
+   "votes": 2,
+   "at": "2026-09-23T16:36:36Z",
+   "status": "ok"
+  },
+  "10108071686": {
+   "cert": "162519204",
+   "conf": 1.0,
+   "votes": 8,
+   "at": "2026-09-23T16:36:36Z",
+   "status": "ok"
+  },
+  "10107848863": {
+   "cert": "85767729",
+   "conf": 1.0,
+   "votes": 8,
+   "at": "2026-09-23T16:36:36Z",
+   "status": "ok"
+  },
+  "10107486523": {
+   "cert": "97237194",
+   "conf": 1.0,
+   "votes": 8,
+   "at": "2026-09-23T16:36:36Z",
+   "status": "ok"
+  },
+  "10109754414": {
+   "cert": null,
+   "conf": 0.0,
+   "votes": 0,
+   "at": "2026-09-23T16:36:36Z",
+   "status": "no_cert"
+  },
+  "10109010216": {
+   "cert": "156686347",
+   "conf": 1.0,
+   "votes": 12,
+   "at": "2026-09-23T16:36:36Z",
+   "status": "ok"
+  },
+  "10107718145": {
+   "cert": "129500728",
+   "conf": 1.0,
+   "votes": 8,
+   "at": "2026-09-23T16:36:36Z",
+   "status": "ok"
+  },
+  "10107437192": {
+   "cert": "117380597",
+   "conf": 1.0,
+   "votes": 8,
+   "at": "2026-09-23T16:36:36Z",
+   "status": "ok"
+  },
+  "10109020725": {
+   "cert": "120449204",
+   "conf": 1.0,
+   "votes": 8,
+   "at": "2026-09-23T16:36:36Z",
+   "status": "ok"
+  },
+  "10109534744": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-23T16:36:36Z",
+   "note": "page: HTTP Error 403: Forbidden"
+  },
+  "10108932230": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-23T16:36:36Z",
+   "note": "page: HTTP Error 403: Forbidden"
+  },
+  "10108572768": {
+   "cert": "152833304",
+   "conf": 1.0,
+   "votes": 8,
+   "at": "2026-09-23T16:36:36Z",
+   "status": "ok"
+  },
+  "10107657203": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-23T16:36:36Z",
+   "note": "page: HTTP Error 403: Forbidden"
+  },
+  "10107606547": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-23T16:36:36Z",
+   "note": "page: HTTP Error 403: Forbidden"
+  },
+  "10108607712": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-23T16:36:36Z",
+   "note": "page: HTTP Error 403: Forbidden"
+  },
+  "10107867511": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-23T16:36:36Z",
+   "note": "page: HTTP Error 403: Forbidden"
+  },
+  "10108802133": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-23T16:36:36Z",
+   "note": "page: HTTP Error 403: Forbidden"
+  },
+  "10108703252": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-23T16:36:36Z",
+   "note": "page: HTTP Error 403: Forbidden"
+  },
+  "10107878897": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-23T16:36:36Z",
+   "note": "page: HTTP Error 403: Forbidden"
+  },
+  "10107406303": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-23T16:36:36Z",
+   "note": "page: HTTP Error 403: Forbidden"
+  },
+  "10109688817": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-23T16:36:36Z",
+   "note": "page: HTTP Error 403: Forbidden"
+  },
+  "10109686430": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-23T16:36:36Z",
+   "note": "page: HTTP Error 403: Forbidden"
+  },
+  "10106879709": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-23T16:36:36Z",
+   "note": "page: HTTP Error 403: Forbidden"
+  },
+  "10107498466": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-23T16:36:36Z",
+   "note": "page: HTTP Error 403: Forbidden"
+  },
+  "10109752410": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-23T16:36:36Z",
+   "note": "page: HTTP Error 403: Forbidden"
+  },
+  "10107887358": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-23T16:36:36Z",
+   "note": "page: HTTP Error 403: Forbidden"
+  },
+  "10109713674": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-23T16:36:36Z",
+   "note": "page: HTTP Error 403: Forbidden"
+  },
+  "10109573968": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-23T16:36:36Z",
+   "note": "page: HTTP Error 403: Forbidden"
+  },
+  "10109298100": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-23T16:36:36Z",
+   "note": "page: HTTP Error 403: Forbidden"
+  },
+  "10109734933": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-23T16:36:36Z",
+   "note": "page: HTTP Error 403: Forbidden"
+  },
+  "10108959165": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-23T16:36:36Z",
+   "note": "page: HTTP Error 403: Forbidden"
+  },
+  "10109622981": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-23T16:36:36Z",
+   "note": "page: HTTP Error 403: Forbidden"
+  },
+  "10108774855": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-23T16:36:36Z",
+   "note": "page: HTTP Error 403: Forbidden"
+  },
+  "10107697572": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-23T16:36:36Z",
+   "note": "page: HTTP Error 403: Forbidden"
+  },
+  "10107687671": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-23T16:36:36Z",
+   "note": "page: HTTP Error 403: Forbidden"
+  },
+  "10107534638": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-23T16:36:36Z",
+   "note": "page: HTTP Error 403: Forbidden"
+  },
+  "10107522886": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-23T16:36:36Z",
+   "note": "page: HTTP Error 403: Forbidden"
+  },
+  "10109639971": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-23T16:36:36Z",
+   "note": "page: HTTP Error 403: Forbidden"
+  },
+  "10109596712": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-23T16:36:36Z",
+   "note": "page: HTTP Error 403: Forbidden"
+  },
+  "10108794341": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-23T16:36:36Z",
+   "note": "page: HTTP Error 403: Forbidden"
+  },
+  "10108716382": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-23T16:36:36Z",
+   "note": "page: HTTP Error 403: Forbidden"
+  },
+  "10107820830": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-23T16:36:36Z",
+   "note": "page: HTTP Error 403: Forbidden"
+  },
+  "10107547758": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-23T16:36:36Z",
+   "note": "page: HTTP Error 403: Forbidden"
+  },
+  "10108623175": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-23T16:36:36Z",
+   "note": "page: HTTP Error 403: Forbidden"
+  },
+  "10106574961": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-23T16:36:36Z",
+   "note": "page: HTTP Error 403: Forbidden"
+  },
+  "10109539083": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-23T16:36:36Z",
+   "note": "page: HTTP Error 403: Forbidden"
+  },
+  "10107781086": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-23T16:36:36Z",
+   "note": "page: HTTP Error 403: Forbidden"
+  },
+  "10109107141": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-23T16:36:36Z",
+   "note": "page: HTTP Error 403: Forbidden"
+  },
+  "10107808545": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-23T16:36:36Z",
+   "note": "page: HTTP Error 403: Forbidden"
+  },
+  "10107790042": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-23T16:36:36Z",
+   "note": "page: HTTP Error 403: Forbidden"
+  },
+  "10109164749": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-23T16:36:36Z",
+   "note": "page: HTTP Error 403: Forbidden"
+  },
+  "10109057943": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-23T16:36:36Z",
+   "note": "page: HTTP Error 403: Forbidden"
+  },
+  "10108637455": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-23T16:36:36Z",
+   "note": "page: HTTP Error 403: Forbidden"
+  },
+  "10108200478": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-23T16:36:36Z",
+   "note": "page: HTTP Error 403: Forbidden"
+  },
+  "10108147730": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-23T16:36:36Z",
+   "note": "page: HTTP Error 403: Forbidden"
+  },
+  "10109009558": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-23T16:36:36Z",
+   "note": "page: HTTP Error 403: Forbidden"
+  },
+  "10108623052": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-23T16:36:36Z",
+   "note": "page: HTTP Error 403: Forbidden"
+  },
+  "10107974304": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-23T16:36:36Z",
+   "note": "page: HTTP Error 403: Forbidden"
+  },
+  "10107447270": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-23T16:36:36Z",
+   "note": "page: HTTP Error 403: Forbidden"
+  },
+  "10107886295": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-23T16:36:36Z",
+   "note": "page: HTTP Error 403: Forbidden"
+  },
+  "10107752302": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-23T16:36:36Z",
+   "note": "page: HTTP Error 403: Forbidden"
+  },
+  "10107546761": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-23T16:36:36Z",
+   "note": "page: HTTP Error 403: Forbidden"
+  },
+  "10108669230": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-23T16:36:36Z",
+   "note": "page: HTTP Error 403: Forbidden"
+  },
+  "10108013374": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-23T16:36:36Z",
+   "note": "page: HTTP Error 403: Forbidden"
+  },
+  "10107427369": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-23T16:36:36Z",
+   "note": "page: HTTP Error 403: Forbidden"
+  },
+  "10106702529": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-23T16:36:36Z",
+   "note": "page: HTTP Error 403: Forbidden"
+  },
+  "10106991801": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-23T16:36:36Z",
+   "note": "page: HTTP Error 403: Forbidden"
+  },
+  "10106760918": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-23T16:36:36Z",
+   "note": "page: HTTP Error 403: Forbidden"
+  },
+  "10103953480": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-23T16:36:36Z",
+   "note": "page: HTTP Error 403: Forbidden"
+  },
+  "10107492830": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-23T16:36:36Z",
+   "note": "page: HTTP Error 403: Forbidden"
+  },
+  "10108988401": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-23T16:36:36Z",
+   "note": "page: HTTP Error 403: Forbidden"
+  },
+  "10108789218": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-23T16:36:36Z",
+   "note": "page: HTTP Error 403: Forbidden"
+  },
+  "10108216278": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-23T16:36:36Z",
+   "note": "page: HTTP Error 403: Forbidden"
+  },
+  "10107897711": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-23T16:36:36Z",
+   "note": "page: HTTP Error 403: Forbidden"
+  },
+  "10109120751": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-23T16:36:36Z",
+   "note": "page: HTTP Error 403: Forbidden"
+  },
+  "10107916786": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-23T16:36:36Z",
+   "note": "page: HTTP Error 403: Forbidden"
+  },
+  "10107823653": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-23T16:36:36Z",
+   "note": "page: HTTP Error 403: Forbidden"
+  },
+  "10107504736": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-09-23T16:36:36Z",
+   "note": "page: HTTP Error 403: Forbidden"
   }
  },
  "certs": {
@@ -17848,6 +18480,14 @@
    "pop_higher": 0,
    "pop_url": "https://www.psacard.com/pop/tcg-cards/2025/pokemon-japanese-m-p-promo/312898",
    "checked_at": "2026-09-22T17:01:01Z"
+  },
+  "119133363": {
+   "error": "cloudflare",
+   "checked_at": "2026-09-23T16:36:36Z"
+  },
+  "119133364": {
+   "error": "cloudflare",
+   "checked_at": "2026-09-23T16:36:36Z"
   }
  }
 }
