@@ -291,6 +291,10 @@ redéclenche pas `deploy.yml`).
      3 h** (`timeout-minutes: 55`), et les annonces **les plus chères d'abord**.
    - La phase PSA est enveloppée d'un `try` : quoi qu'il arrive côté PSA, les certs lus
      par l'OCR sont écrits et committés (avant, un run tué par le timeout perdait tout).
+   - ⚠️ **DataDome côté Vinted** : à 100 pages d'annonce par passage, les 403 arrivent
+     après ~30 pages en 5 min (1er run à 100 : 68 refus). Réponse : 3 s entre annonces,
+     pause 60 s puis 120 s au refus, arrêt de la phase au 3e refus consécutif **sans rien
+     écrire dans le cache** (les annonces non lues sont reprises au passage suivant).
    - `--no-psa` = OCR seul (pas besoin de Playwright). `--limit N` pour tester.
 3. **`public/vinted.html`** lit `vinted-psa.json` : grille avec badge grade, ligne PSA
    (estimation €, pastille ratio verte/ambre/grise, confiance), surlignage vert des

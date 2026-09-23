@@ -568,8 +568,28 @@ def main():
     todo = todo[:args.max_ocr]
     if V:
         print(f"OCR : {len(todo)} annonce(s) à lire (sur {len(items)})")
+    # DataDome (Vinted) renvoie des 403 au bout de ~30 pages d'annonce en 5 min depuis une
+    # même IP (vu le 2026-09-23 sur GitHub Actions) : on souffle 60 s puis 120 s, et au
+    # 3e refus consécutif on arrête la phase pour ce passage — sans rien écrire dans le
+    # cache pour les annonces non lues, elles seront reprises au passage suivant.
+    refused = 0
     for n, it in enumerate(todo, 1):
-        photos, err = listing_photos(opener, it["url"])
+        photos, err = None, None
+        while True:
+            photos, err = listing_photos(opener, it["url"])
+            blocked = err and ("403" in err or "challenge" in err)
+            if not blocked:
+                refused = 0
+                break
+            refused += 1
+            if refused >= 3:
+                break
+            if V:
+                print(f"  [{n}/{len(todo)}] Vinted refuse ({err}) : pause {60 * refused} s")
+            time.sleep(60 * refused)
+        if refused >= 3:
+            print(f"  Vinted bloque les pages d'annonce : OCR arrêté à {n - 1}/{len(todo)} pour ce passage")
+            break
         if err or not photos:
             cache["items"][it["id"]] = {"cert": None, "status": "no_photo" if not photos else "no_cert",
                                         "at": iso(), "note": err}
@@ -588,7 +608,7 @@ def main():
             "status": "ok" if cert else "no_cert"}
         if V:
             print(f"  [{n}/{len(todo)}] {it['id']} : {cert or '—'} (conf {conf}, {k} lectures)")
-        time.sleep(1.2)
+        time.sleep(3.0)
 
     # --- phase 2 : fiches PSA pour les certs inconnus / périmés ---
     # Tout est protégé : quoi qu'il arrive côté PSA, les certs lus en phase 1 sont écrits.
