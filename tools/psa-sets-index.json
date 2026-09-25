@@ -5557,5 +5557,1840 @@
  "2027": {
   "at": "2026-09-20T14:40:54Z",
   "sets": []
+ },
+ "2020": {
+  "at": "2026-09-25T10:38:51Z",
+  "sets": [
+   {
+    "id": "180955",
+    "slug": "pokemon-battle-academy",
+    "name": "Pokemon Battle Academy",
+    "lang": null,
+    "year": "2020"
+   },
+   {
+    "id": "189552",
+    "slug": "pokemon-chinese-s-promo",
+    "name": "Pokemon Chinese S Promo",
+    "lang": "Chinese",
+    "year": "2020"
+   },
+   {
+    "id": "198560",
+    "slug": "pokemon-chinese-sm-promo",
+    "name": "Pokemon Chinese SM Promo",
+    "lang": "Chinese",
+    "year": "2020"
+   },
+   {
+    "id": "189447",
+    "slug": "pokemon-chinese-sun-moon-double-burst",
+    "name": "Pokemon Chinese Sun & Moon Double Burst",
+    "lang": "Chinese",
+    "year": "2020"
+   },
+   {
+    "id": "202546",
+    "slug": "pokemon-chinese-sun-moon-double-burst-gx-starter-deck",
+    "name": "Pokemon Chinese Sun & Moon Double Burst GX Starter Deck",
+    "lang": "Chinese",
+    "year": "2020"
+   },
+   {
+    "id": "272972",
+    "slug": "pokemon-chinese-sun-moon-double-critical-hit",
+    "name": "Pokemon Chinese Sun & Moon Double Critical Hit",
+    "lang": "Chinese",
+    "year": "2020"
+   },
+   {
+    "id": "192812",
+    "slug": "pokemon-chinese-sun-moon-legendary-clash",
+    "name": "Pokemon Chinese Sun & Moon Legendary Clash",
+    "lang": "Chinese",
+    "year": "2020"
+   },
+   {
+    "id": "190682",
+    "slug": "pokemon-chinese-sword-shield",
+    "name": "Pokemon Chinese Sword & Shield",
+    "lang": "Chinese",
+    "year": "2020"
+   },
+   {
+    "id": "189893",
+    "slug": "pokemon-chinese-sword-shield-amazing-volt-tackle",
+    "name": "Pokemon Chinese Sword & Shield Amazing Volt Tackle",
+    "lang": "Chinese",
+    "year": "2020"
+   },
+   {
+    "id": "190825",
+    "slug": "pokemon-chinese-sword-shield-infinite-power",
+    "name": "Pokemon Chinese Sword & Shield Infinite Power",
+    "lang": "Chinese",
+    "year": "2020"
+   },
+   {
+    "id": "188491",
+    "slug": "pokemon-chinese-sword-shield-shiny-star-v",
+    "name": "Pokemon Chinese Sword & Shield Shiny Star V",
+    "lang": "Chinese",
+    "year": "2020"
+   },
+   {
+    "id": "182005",
+    "slug": "pokemon-futsal",
+    "name": "Pokemon Futsal",
+    "lang": null,
+    "year": "2020"
+   },
+   {
+    "id": "220918",
+    "slug": "pokemon-galar-pals-mini-tins",
+    "name": "Pokemon Galar Pals Mini Tins",
+    "lang": null,
+    "year": "2020"
+   },
+   {
+    "id": "285939",
+    "slug": "pokemon-galar-power-mini-tins",
+    "name": "Pokemon Galar Power Mini Tins",
+    "lang": null,
+    "year": "2020"
+   },
+   {
+    "id": "191003",
+    "slug": "pokemon-indonesian-s-promo",
+    "name": "Pokemon Indonesian S Promo",
+    "lang": "Indonesian",
+    "year": "2020"
+   },
+   {
+    "id": "190987",
+    "slug": "pokemon-indonesian-sm-promo",
+    "name": "Pokemon Indonesian SM Promo",
+    "lang": "Indonesian",
+    "year": "2020"
+   },
+   {
+    "id": "193943",
+    "slug": "pokemon-indonesian-sun-moon-sky-ruler",
+    "name": "Pokemon Indonesian Sun & Moon Sky Ruler",
+    "lang": "Indonesian",
+    "year": "2020"
+   },
+   {
+    "id": "191001",
+    "slug": "pokemon-indonesian-sun-moon-tag-team-collection",
+    "name": "Pokemon Indonesian Sun & Moon Tag Team Collection",
+    "lang": "Indonesian",
+    "year": "2020"
+   },
+   {
+    "id": "238822",
+    "slug": "pokemon-indonesian-sun-moon-tag-team-collection-starter-deck-gx",
+    "name": "Pokemon Indonesian Sun & Moon Tag Team Collection Starter Deck GX",
+    "lang": "Indonesian",
+    "year": "2020"
+   },
+   {
+    "id": "194058",
+    "slug": "pokemon-indonesian-sword-shield",
+    "name": "Pokemon Indonesian Sword & Shield",
+    "lang": "Indonesian",
+    "year": "2020"
+   },
+   {
+    "id": "239987",
+    "slug": "pokemon-insert-cards",
+    "name": "Pokemon Insert Cards",
+    "lang": null,
+    "year": "2020"
+   },
+   {
+    "id": "175853",
+    "slug": "pokemon-japanese-s-promo",
+    "name": "Pokemon Japanese S Promo",
+    "lang": "Japanese",
+    "year": "2020"
+   },
+   {
+    "id": "244156",
+    "slug": "pokemon-japanese-sm-promo",
+    "name": "Pokemon Japanese SM Promo",
+    "lang": "Japanese",
+    "year": "2020"
+   },
+   {
+    "id": "182057",
+    "slug": "pokemon-japanese-sword-shield-amazing-volt-tackle",
+    "name": "Pokemon Japanese Sword & Shield Amazing Volt Tackle",
+    "lang": "Japanese",
+    "year": "2020"
+   },
+   {
+    "id": "187043",
+    "slug": "pokemon-japanese-sword-shield-blastoise-vmax-starter-set",
+    "name": "Pokemon Japanese Sword & Shield Blastoise Vmax Starter Set",
+    "lang": "Japanese",
+    "year": "2020"
+   },
+   {
+    "id": "175882",
+    "slug": "pokemon-japanese-sword-shield-charizard-vmax-starter-set",
+    "name": "Pokemon Japanese Sword & Shield Charizard Vmax Starter Set",
+    "lang": "Japanese",
+    "year": "2020"
+   },
+   {
+    "id": "188212",
+    "slug": "pokemon-japanese-sword-shield-charizard-vmax-starter-set-2",
+    "name": "Pokemon Japanese Sword & Shield Charizard Vmax Starter Set 2",
+    "lang": "Japanese",
+    "year": "2020"
+   },
+   {
+    "id": "175756",
+    "slug": "pokemon-japanese-sword-shield-explosive-walker",
+    "name": "Pokemon Japanese Sword & Shield Explosive Walker",
+    "lang": "Japanese",
+    "year": "2020"
+   },
+   {
+    "id": "181122",
+    "slug": "pokemon-japanese-sword-shield-grimmsnarl-vmax-starter-set",
+    "name": "Pokemon Japanese Sword & Shield Grimmsnarl Vmax Starter Set",
+    "lang": "Japanese",
+    "year": "2020"
+   },
+   {
+    "id": "179099",
+    "slug": "pokemon-japanese-sword-shield-infinity-zone",
+    "name": "Pokemon Japanese Sword & Shield Infinity Zone",
+    "lang": "Japanese",
+    "year": "2020"
+   },
+   {
+    "id": "178313",
+    "slug": "pokemon-japanese-sword-shield-legendary-heartbeat",
+    "name": "Pokemon Japanese Sword & Shield Legendary Heartbeat",
+    "lang": "Japanese",
+    "year": "2020"
+   },
+   {
+    "id": "175661",
+    "slug": "pokemon-japanese-sword-shield-rebellion-crash",
+    "name": "Pokemon Japanese Sword & Shield Rebellion Crash",
+    "lang": "Japanese",
+    "year": "2020"
+   },
+   {
+    "id": "186040",
+    "slug": "pokemon-japanese-sword-shield-shiny-star-v",
+    "name": "Pokemon Japanese Sword & Shield Shiny Star V",
+    "lang": "Japanese",
+    "year": "2020"
+   },
+   {
+    "id": "188191",
+    "slug": "pokemon-japanese-sword-shield-v-starter-decks",
+    "name": "Pokemon Japanese Sword & Shield V Starter Decks",
+    "lang": "Japanese",
+    "year": "2020"
+   },
+   {
+    "id": "187044",
+    "slug": "pokemon-japanese-sword-shield-venusaur-vmax-starter-set",
+    "name": "Pokemon Japanese Sword & Shield Venusaur Vmax Starter Set",
+    "lang": "Japanese",
+    "year": "2020"
+   },
+   {
+    "id": "175376",
+    "slug": "pokemon-japanese-sword-shield-vmax-rising",
+    "name": "Pokemon Japanese Sword & Shield Vmax Rising",
+    "lang": "Japanese",
+    "year": "2020"
+   },
+   {
+    "id": "187538",
+    "slug": "pokemon-japanese-sword-shield-vmax-special-set",
+    "name": "Pokemon Japanese Sword & Shield Vmax Special Set",
+    "lang": "Japanese",
+    "year": "2020"
+   },
+   {
+    "id": "188304",
+    "slug": "pokemon-korean-promo",
+    "name": "Pokemon Korean Promo",
+    "lang": "Korean",
+    "year": "2020"
+   },
+   {
+    "id": "194862",
+    "slug": "pokemon-korean-s-promo",
+    "name": "Pokemon Korean S Promo",
+    "lang": "Korean",
+    "year": "2020"
+   },
+   {
+    "id": "193454",
+    "slug": "pokemon-korean-sm-promo",
+    "name": "Pokemon Korean SM Promo",
+    "lang": "Korean",
+    "year": "2020"
+   },
+   {
+    "id": "189985",
+    "slug": "pokemon-korean-sword-shield-amazing-volt-tackle",
+    "name": "Pokemon Korean Sword & Shield Amazing Volt Tackle",
+    "lang": "Korean",
+    "year": "2020"
+   },
+   {
+    "id": "193867",
+    "slug": "pokemon-korean-sword-shield-charizard-vmax-starter-set",
+    "name": "Pokemon Korean Sword & Shield Charizard Vmax Starter Set",
+    "lang": "Korean",
+    "year": "2020"
+   },
+   {
+    "id": "274360",
+    "slug": "pokemon-korean-sword-shield-expansion-pack-set-v",
+    "name": "Pokemon Korean Sword & Shield Expansion Pack Set V",
+    "lang": "Korean",
+    "year": "2020"
+   },
+   {
+    "id": "193420",
+    "slug": "pokemon-korean-sword-shield-explosive-walker",
+    "name": "Pokemon Korean Sword & Shield Explosive Walker",
+    "lang": "Korean",
+    "year": "2020"
+   },
+   {
+    "id": "193414",
+    "slug": "pokemon-korean-sword-shield-infinity-zone",
+    "name": "Pokemon Korean Sword & Shield Infinity Zone",
+    "lang": "Korean",
+    "year": "2020"
+   },
+   {
+    "id": "192488",
+    "slug": "pokemon-korean-sword-shield-legendary-heartbeat",
+    "name": "Pokemon Korean Sword & Shield Legendary Heartbeat",
+    "lang": "Korean",
+    "year": "2020"
+   },
+   {
+    "id": "193411",
+    "slug": "pokemon-korean-sword-shield-rebellion-crash",
+    "name": "Pokemon Korean Sword & Shield Rebellion Crash",
+    "lang": "Korean",
+    "year": "2020"
+   },
+   {
+    "id": "194858",
+    "slug": "pokemon-korean-sword-shield",
+    "name": "Pokemon Korean Sword & Shield Shield",
+    "lang": "Korean",
+    "year": "2020"
+   },
+   {
+    "id": "188492",
+    "slug": "pokemon-korean-sword-shield-shiny-star-v",
+    "name": "Pokemon Korean Sword & Shield Shiny Star V",
+    "lang": "Korean",
+    "year": "2020"
+   },
+   {
+    "id": "213311",
+    "slug": "pokemon-korean-sword-shield",
+    "name": "Pokemon Korean Sword & Shield Sword",
+    "lang": "Korean",
+    "year": "2020"
+   },
+   {
+    "id": "193422",
+    "slug": "pokemon-korean-sword-shield-vmax-rising",
+    "name": "Pokemon Korean Sword & Shield Vmax Rising",
+    "lang": "Korean",
+    "year": "2020"
+   },
+   {
+    "id": "299711",
+    "slug": "pokemon-korean-sword-shield-vmax-special-set",
+    "name": "Pokemon Korean Sword & Shield Vmax Special Set",
+    "lang": "Korean",
+    "year": "2020"
+   },
+   {
+    "id": "280563",
+    "slug": "pokemon-raid-battle",
+    "name": "Pokemon Raid Battle",
+    "lang": null,
+    "year": "2020"
+   },
+   {
+    "id": "176382",
+    "slug": "pokemon-sm-black-star-promo",
+    "name": "Pokemon SM Black Star Promo",
+    "lang": null,
+    "year": "2020"
+   },
+   {
+    "id": "172689",
+    "slug": "pokemon-sword-shield",
+    "name": "Pokemon Sword & Shield",
+    "lang": null,
+    "year": "2020"
+   },
+   {
+    "id": "181110",
+    "slug": "pokemon-sword-shield-champions-path",
+    "name": "Pokemon Sword & Shield Champion's Path",
+    "lang": null,
+    "year": "2020"
+   },
+   {
+    "id": "178554",
+    "slug": "pokemon-sword-shield-darkness-ablaze",
+    "name": "Pokemon Sword & Shield Darkness Ablaze",
+    "lang": null,
+    "year": "2020"
+   },
+   {
+    "id": "175662",
+    "slug": "pokemon-sword-shield-rebel-clash",
+    "name": "Pokemon Sword & Shield Rebel Clash",
+    "lang": null,
+    "year": "2020"
+   },
+   {
+    "id": "185226",
+    "slug": "pokemon-sword-shield-vivid-voltage",
+    "name": "Pokemon Sword & Shield Vivid Voltage",
+    "lang": null,
+    "year": "2020"
+   },
+   {
+    "id": "177191",
+    "slug": "pokemon-swsh-black-star-promo",
+    "name": "Pokemon Swsh Black Star Promo",
+    "lang": null,
+    "year": "2020"
+   },
+   {
+    "id": "245850",
+    "slug": "pokemon-tcg-online-insert-code-cards",
+    "name": "Pokemon TCG Online Insert Code Cards",
+    "lang": null,
+    "year": "2020"
+   },
+   {
+    "id": "242367",
+    "slug": "pokemon-thai-s-promo",
+    "name": "Pokemon Thai S Promo",
+    "lang": "Thai",
+    "year": "2020"
+   },
+   {
+    "id": "229044",
+    "slug": "pokemon-thai-sm-promo",
+    "name": "Pokemon Thai SM Promo",
+    "lang": "Thai",
+    "year": "2020"
+   },
+   {
+    "id": "193066",
+    "slug": "pokemon-thai-sun-moon-double-burst",
+    "name": "Pokemon Thai Sun & Moon Double Burst",
+    "lang": "Thai",
+    "year": "2020"
+   },
+   {
+    "id": "194137",
+    "slug": "pokemon-thai-sun-moon-legendary-clash",
+    "name": "Pokemon Thai Sun & Moon Legendary Clash",
+    "lang": "Thai",
+    "year": "2020"
+   },
+   {
+    "id": "190744",
+    "slug": "pokemon-thai-sword-shield",
+    "name": "Pokemon Thai Sword & Shield",
+    "lang": "Thai",
+    "year": "2020"
+   }
+  ]
+ },
+ "2021": {
+  "at": "2026-09-25T10:38:54Z",
+  "sets": [
+   {
+    "id": "202700",
+    "slug": "pokemon-asia-25th-anniversary-promo",
+    "name": "Pokemon Asia 25th Anniversary Promo",
+    "lang": null,
+    "year": "2021"
+   },
+   {
+    "id": "206589",
+    "slug": "pokemon-card-game-25th-anniversary-creatures-deck-corporate-history-1995-2021",
+    "name": "Pokemon Card Game 25th Anniversary Creatures Deck: Corporate History (1995-2021)",
+    "lang": null,
+    "year": "2021"
+   },
+   {
+    "id": "200625",
+    "slug": "pokemon-celebrations",
+    "name": "Pokemon Celebrations",
+    "lang": null,
+    "year": "2021"
+   },
+   {
+    "id": "200655",
+    "slug": "pokemon-celebrations-classic-collection",
+    "name": "Pokemon Celebrations Classic Collection",
+    "lang": null,
+    "year": "2021"
+   },
+   {
+    "id": "202021",
+    "slug": "pokemon-celebrations-ultra-premium-collection",
+    "name": "Pokemon Celebrations Ultra-Premium Collection",
+    "lang": null,
+    "year": "2021"
+   },
+   {
+    "id": "202726",
+    "slug": "pokemon-chinese-25th-anniversary-classic-collection",
+    "name": "Pokemon Chinese 25th Anniversary Classic Collection",
+    "lang": "Chinese",
+    "year": "2021"
+   },
+   {
+    "id": "208375",
+    "slug": "pokemon-chinese-25th-anniversary-collection",
+    "name": "Pokemon Chinese 25th Anniversary Collection",
+    "lang": "Chinese",
+    "year": "2021"
+   },
+   {
+    "id": "236515",
+    "slug": "pokemon-chinese-challenge-v-starter-deck",
+    "name": "Pokemon Chinese Challenge V Starter Deck",
+    "lang": "Chinese",
+    "year": "2021"
+   },
+   {
+    "id": "190690",
+    "slug": "pokemon-chinese-s-promo",
+    "name": "Pokemon Chinese S Promo",
+    "lang": "Chinese",
+    "year": "2021"
+   },
+   {
+    "id": "271162",
+    "slug": "pokemon-chinese-strength-v-starter-deck",
+    "name": "Pokemon Chinese Strength V Starter Deck",
+    "lang": "Chinese",
+    "year": "2021"
+   },
+   {
+    "id": "205578",
+    "slug": "pokemon-chinese-sword-shield-blue-sky-stream",
+    "name": "Pokemon Chinese Sword & Shield Blue Sky Stream",
+    "lang": "Chinese",
+    "year": "2021"
+   },
+   {
+    "id": "195404",
+    "slug": "pokemon-chinese-sword-shield-eevee-heroes",
+    "name": "Pokemon Chinese Sword & Shield Eevee Heroes",
+    "lang": "Chinese",
+    "year": "2021"
+   },
+   {
+    "id": "247954",
+    "slug": "pokemon-chinese-sword-shield-family-card-game",
+    "name": "Pokemon Chinese Sword & Shield Family Pokemon Card Game",
+    "lang": "Chinese",
+    "year": "2021"
+   },
+   {
+    "id": "211538",
+    "slug": "pokemon-chinese-sword-shield-fusion-arts",
+    "name": "Pokemon Chinese Sword & Shield Fusion Arts",
+    "lang": "Chinese",
+    "year": "2021"
+   },
+   {
+    "id": "198557",
+    "slug": "pokemon-chinese-sword-shield-jet-black-spirit",
+    "name": "Pokemon Chinese Sword & Shield Jet-Black Spirit",
+    "lang": "Chinese",
+    "year": "2021"
+   },
+   {
+    "id": "198470",
+    "slug": "pokemon-chinese-sword-shield-peerless-fighters",
+    "name": "Pokemon Chinese Sword & Shield Peerless Fighters",
+    "lang": "Chinese",
+    "year": "2021"
+   },
+   {
+    "id": "191066",
+    "slug": "pokemon-chinese-sword-shield-rapid-strike-master",
+    "name": "Pokemon Chinese Sword & Shield Rapid Strike Master",
+    "lang": "Chinese",
+    "year": "2021"
+   },
+   {
+    "id": "205582",
+    "slug": "pokemon-chinese-sword-shield-silver-lance",
+    "name": "Pokemon Chinese Sword & Shield Silver Lance",
+    "lang": "Chinese",
+    "year": "2021"
+   },
+   {
+    "id": "194267",
+    "slug": "pokemon-chinese-sword-shield-single-strike-master",
+    "name": "Pokemon Chinese Sword & Shield Single Strike Master",
+    "lang": "Chinese",
+    "year": "2021"
+   },
+   {
+    "id": "207425",
+    "slug": "pokemon-chinese-sword-shield-skyscraping-perfection",
+    "name": "Pokemon Chinese Sword & Shield Skyscraping Perfection",
+    "lang": "Chinese",
+    "year": "2021"
+   },
+   {
+    "id": "206273",
+    "slug": "pokemon-chinese-sword-shield-vmax-climax",
+    "name": "Pokemon Chinese Sword & Shield Vmax Climax",
+    "lang": "Chinese",
+    "year": "2021"
+   },
+   {
+    "id": "292831",
+    "slug": "pokemon-chinese-v-union-special-card-set",
+    "name": "Pokemon Chinese V-Union Special Card Set",
+    "lang": "Chinese",
+    "year": "2021"
+   },
+   {
+    "id": "191201",
+    "slug": "pokemon-first-partner-jumbos",
+    "name": "Pokemon First Partner Jumbos",
+    "lang": null,
+    "year": "2021"
+   },
+   {
+    "id": "224391",
+    "slug": "pokemon-indonesian-25th-anniversary-collection",
+    "name": "Pokemon Indonesian 25th Anniversary Collection",
+    "lang": "Indonesian",
+    "year": "2021"
+   },
+   {
+    "id": "234096",
+    "slug": "pokemon-indonesian-challenge-v-starter-deck",
+    "name": "Pokemon Indonesian Challenge V Starter Deck",
+    "lang": "Indonesian",
+    "year": "2021"
+   },
+   {
+    "id": "206452",
+    "slug": "pokemon-indonesian-promo-card-pack-25th-anniversary",
+    "name": "Pokemon Indonesian Promo Card Pack 25th Anniversary",
+    "lang": "Indonesian",
+    "year": "2021"
+   },
+   {
+    "id": "191019",
+    "slug": "pokemon-indonesian-s-promo",
+    "name": "Pokemon Indonesian S Promo",
+    "lang": "Indonesian",
+    "year": "2021"
+   },
+   {
+    "id": "191327",
+    "slug": "pokemon-indonesian-sm-promo",
+    "name": "Pokemon Indonesian SM Promo",
+    "lang": "Indonesian",
+    "year": "2021"
+   },
+   {
+    "id": "220457",
+    "slug": "pokemon-indonesian-sword-shield-blue-sky-stream",
+    "name": "Pokemon Indonesian Sword & Shield Blue Sky Stream",
+    "lang": "Indonesian",
+    "year": "2021"
+   },
+   {
+    "id": "217527",
+    "slug": "pokemon-indonesian-sword-shield-eevee-heroes",
+    "name": "Pokemon Indonesian Sword & Shield Eevee Heroes",
+    "lang": "Indonesian",
+    "year": "2021"
+   },
+   {
+    "id": "319076",
+    "slug": "pokemon-indonesian-sword-shield-evolution-v-starter-deck",
+    "name": "Pokemon Indonesian Sword & Shield Evolution V Starter Deck",
+    "lang": "Indonesian",
+    "year": "2021"
+   },
+   {
+    "id": "241988",
+    "slug": "pokemon-indonesian-sword-shield-fusion-arts",
+    "name": "Pokemon Indonesian Sword & Shield Fusion Arts",
+    "lang": "Indonesian",
+    "year": "2021"
+   },
+   {
+    "id": "227308",
+    "slug": "pokemon-indonesian-sword-shield-jet-black-spirit",
+    "name": "Pokemon Indonesian Sword & Shield Jet-Black Spirit",
+    "lang": "Indonesian",
+    "year": "2021"
+   },
+   {
+    "id": "221150",
+    "slug": "pokemon-indonesian-sword-shield-peerless-fighters",
+    "name": "Pokemon Indonesian Sword & Shield Peerless Fighters",
+    "lang": "Indonesian",
+    "year": "2021"
+   },
+   {
+    "id": "194284",
+    "slug": "pokemon-indonesian-sword-shield-rapid-strike-master",
+    "name": "Pokemon Indonesian Sword & Shield Rapid Strike Master",
+    "lang": "Indonesian",
+    "year": "2021"
+   },
+   {
+    "id": "190896",
+    "slug": "pokemon-indonesian-sword-shield-shiny-vmax",
+    "name": "Pokemon Indonesian Sword & Shield Shiny Vmax",
+    "lang": "Indonesian",
+    "year": "2021"
+   },
+   {
+    "id": "225954",
+    "slug": "pokemon-indonesian-sword-shield-silver-lance",
+    "name": "Pokemon Indonesian Sword & Shield Silver Lance",
+    "lang": "Indonesian",
+    "year": "2021"
+   },
+   {
+    "id": "194273",
+    "slug": "pokemon-indonesian-sword-shield-single-strike-master",
+    "name": "Pokemon Indonesian Sword & Shield Single Strike Master",
+    "lang": "Indonesian",
+    "year": "2021"
+   },
+   {
+    "id": "227309",
+    "slug": "pokemon-indonesian-sword-shield-skyscraping-perfection",
+    "name": "Pokemon Indonesian Sword & Shield Skyscraping Perfection",
+    "lang": "Indonesian",
+    "year": "2021"
+   },
+   {
+    "id": "239988",
+    "slug": "pokemon-insert-cards",
+    "name": "Pokemon Insert Cards",
+    "lang": null,
+    "year": "2021"
+   },
+   {
+    "id": "199357",
+    "slug": "pokemon-japanese-25th-anniversary-collection",
+    "name": "Pokemon Japanese 25th Anniversary Collection",
+    "lang": "Japanese",
+    "year": "2021"
+   },
+   {
+    "id": "236785",
+    "slug": "pokemon-japanese-insert-cards",
+    "name": "Pokemon Japanese Insert Cards",
+    "lang": "Japanese",
+    "year": "2021"
+   },
+   {
+    "id": "201768",
+    "slug": "pokemon-japanese-promo-card-pack-25th-anniversary-edition",
+    "name": "Pokemon Japanese Promo Card Pack 25th Anniversary Edition",
+    "lang": "Japanese",
+    "year": "2021"
+   },
+   {
+    "id": "189313",
+    "slug": "pokemon-japanese-s-promo",
+    "name": "Pokemon Japanese S Promo",
+    "lang": "Japanese",
+    "year": "2021"
+   },
+   {
+    "id": "196709",
+    "slug": "pokemon-japanese-sword-shield-blue-sky-stream",
+    "name": "Pokemon Japanese Sword & Shield Blue Sky Stream",
+    "lang": "Japanese",
+    "year": "2021"
+   },
+   {
+    "id": "193866",
+    "slug": "pokemon-japanese-sword-shield-eevee-heroes",
+    "name": "Pokemon Japanese Sword & Shield Eevee Heroes",
+    "lang": "Japanese",
+    "year": "2021"
+   },
+   {
+    "id": "193868",
+    "slug": "pokemon-japanese-sword-shield-eevee-heroes-vmax-special-set",
+    "name": "Pokemon Japanese Sword & Shield Eevee Heroes Vmax Special Set",
+    "lang": "Japanese",
+    "year": "2021"
+   },
+   {
+    "id": "193596",
+    "slug": "pokemon-japanese-sword-shield-family-card-game",
+    "name": "Pokemon Japanese Sword & Shield Family Pokemon Card Game",
+    "lang": "Japanese",
+    "year": "2021"
+   },
+   {
+    "id": "200269",
+    "slug": "pokemon-japanese-sword-shield-fusion-arts",
+    "name": "Pokemon Japanese Sword & Shield Fusion Arts",
+    "lang": "Japanese",
+    "year": "2021"
+   },
+   {
+    "id": "193597",
+    "slug": "pokemon-japanese-sword-shield-gengar-vmax-high-class-deck",
+    "name": "Pokemon Japanese Sword & Shield Gengar Vmax High-Class Deck",
+    "lang": "Japanese",
+    "year": "2021"
+   },
+   {
+    "id": "193598",
+    "slug": "pokemon-japanese-sword-shield-inteleon-vmax-high-class-deck",
+    "name": "Pokemon Japanese Sword & Shield Inteleon Vmax High-Class Deck",
+    "lang": "Japanese",
+    "year": "2021"
+   },
+   {
+    "id": "191964",
+    "slug": "pokemon-japanese-sword-shield-jet-black-spirit",
+    "name": "Pokemon Japanese Sword & Shield Jet-Black Spirit",
+    "lang": "Japanese",
+    "year": "2021"
+   },
+   {
+    "id": "190716",
+    "slug": "pokemon-japanese-sword-shield-peerless-fighters",
+    "name": "Pokemon Japanese Sword & Shield Peerless Fighters",
+    "lang": "Japanese",
+    "year": "2021"
+   },
+   {
+    "id": "188406",
+    "slug": "pokemon-japanese-sword-shield-rapid-strike-master",
+    "name": "Pokemon Japanese Sword & Shield Rapid Strike Master",
+    "lang": "Japanese",
+    "year": "2021"
+   },
+   {
+    "id": "191959",
+    "slug": "pokemon-japanese-sword-shield-silver-lance",
+    "name": "Pokemon Japanese Sword & Shield Silver Lance",
+    "lang": "Japanese",
+    "year": "2021"
+   },
+   {
+    "id": "191967",
+    "slug": "pokemon-japanese-sword-shield-silver-lance-jet-black-spirit-jumbo-pack",
+    "name": "Pokemon Japanese Sword & Shield Silver Lance & Jet-Black Spirit Jumbo Pack",
+    "lang": "Japanese",
+    "year": "2021"
+   },
+   {
+    "id": "191940",
+    "slug": "pokemon-japanese-sword-shield-single-strike-rapid-premium-trainer-boxes",
+    "name": "Pokemon Japanese Sword & Shield Single Strike & Rapid Strike Premium Trainer Boxes",
+    "lang": "Japanese",
+    "year": "2021"
+   },
+   {
+    "id": "188404",
+    "slug": "pokemon-japanese-sword-shield-single-strike-master",
+    "name": "Pokemon Japanese Sword & Shield Single Strike Master",
+    "lang": "Japanese",
+    "year": "2021"
+   },
+   {
+    "id": "196861",
+    "slug": "pokemon-japanese-sword-shield-skyscraping-perfection",
+    "name": "Pokemon Japanese Sword & Shield Skyscraping Perfection",
+    "lang": "Japanese",
+    "year": "2021"
+   },
+   {
+    "id": "204941",
+    "slug": "pokemon-japanese-sword-shield-start-deck-100",
+    "name": "Pokemon Japanese Sword & Shield Start Deck 100",
+    "lang": "Japanese",
+    "year": "2021"
+   },
+   {
+    "id": "204428",
+    "slug": "pokemon-japanese-sword-shield-vmax-climax",
+    "name": "Pokemon Japanese Sword & Shield Vmax Climax",
+    "lang": "Japanese",
+    "year": "2021"
+   },
+   {
+    "id": "206124",
+    "slug": "pokemon-japanese-v-union-special-card-set",
+    "name": "Pokemon Japanese V-Union Special Card Set",
+    "lang": "Japanese",
+    "year": "2021"
+   },
+   {
+    "id": "206371",
+    "slug": "pokemon-japanese-zacian-zamazenta-vs-eternatus-special-deck-set",
+    "name": "Pokemon Japanese Zacian & Zamazenta VS Eternatus Special Deck Set",
+    "lang": "Japanese",
+    "year": "2021"
+   },
+   {
+    "id": "213308",
+    "slug": "pokemon-korean-25th-anniversary-collection",
+    "name": "Pokemon Korean 25th Anniversary Collection",
+    "lang": "Korean",
+    "year": "2021"
+   },
+   {
+    "id": "202686",
+    "slug": "pokemon-korean-promo-card-pack-25th-anniversary",
+    "name": "Pokemon Korean Promo Card Pack 25th Anniversary",
+    "lang": "Korean",
+    "year": "2021"
+   },
+   {
+    "id": "194971",
+    "slug": "pokemon-korean-s-promo",
+    "name": "Pokemon Korean S Promo",
+    "lang": "Korean",
+    "year": "2021"
+   },
+   {
+    "id": "223980",
+    "slug": "pokemon-korean-sword-shield-blastoise-vmax-starter-set",
+    "name": "Pokemon Korean Sword & Shield Blastoise Vmax Starter Set",
+    "lang": "Korean",
+    "year": "2021"
+   },
+   {
+    "id": "213527",
+    "slug": "pokemon-korean-sword-shield-blue-sky-stream",
+    "name": "Pokemon Korean Sword & Shield Blue Sky Stream",
+    "lang": "Korean",
+    "year": "2021"
+   },
+   {
+    "id": "202814",
+    "slug": "pokemon-korean-sword-shield-eevee-heroes",
+    "name": "Pokemon Korean Sword & Shield Eevee Heroes",
+    "lang": "Korean",
+    "year": "2021"
+   },
+   {
+    "id": "237022",
+    "slug": "pokemon-korean-sword-shield-eevee-heroes-vmax-special-set",
+    "name": "Pokemon Korean Sword & Shield Eevee Heroes Vmax Special Set",
+    "lang": "Korean",
+    "year": "2021"
+   },
+   {
+    "id": "305638",
+    "slug": "pokemon-korean-sword-shield-family-card-game",
+    "name": "Pokemon Korean Sword & Shield Family Pokemon Card Game",
+    "lang": "Korean",
+    "year": "2021"
+   },
+   {
+    "id": "208174",
+    "slug": "pokemon-korean-sword-shield-fusion-arts",
+    "name": "Pokemon Korean Sword & Shield Fusion Arts",
+    "lang": "Korean",
+    "year": "2021"
+   },
+   {
+    "id": "213309",
+    "slug": "pokemon-korean-sword-shield-gengar-vmax-high-class-deck",
+    "name": "Pokemon Korean Sword & Shield Gengar Vmax High-Class Deck",
+    "lang": "Korean",
+    "year": "2021"
+   },
+   {
+    "id": "222498",
+    "slug": "pokemon-korean-sword-shield-inteleon-vmax-high-class-deck",
+    "name": "Pokemon Korean Sword & Shield Inteleon Vmax High-Class Deck",
+    "lang": "Korean",
+    "year": "2021"
+   },
+   {
+    "id": "224169",
+    "slug": "pokemon-korean-sword-shield-jet-black-spirit",
+    "name": "Pokemon Korean Sword & Shield Jet-Black Spirit",
+    "lang": "Korean",
+    "year": "2021"
+   },
+   {
+    "id": "219523",
+    "slug": "pokemon-korean-sword-shield-peerless-fighters",
+    "name": "Pokemon Korean Sword & Shield Peerless Fighters",
+    "lang": "Korean",
+    "year": "2021"
+   },
+   {
+    "id": "191808",
+    "slug": "pokemon-korean-sword-shield-rapid-strike-master",
+    "name": "Pokemon Korean Sword & Shield Rapid Strike Master",
+    "lang": "Korean",
+    "year": "2021"
+   },
+   {
+    "id": "196270",
+    "slug": "pokemon-korean-sword-shield-silver-lance",
+    "name": "Pokemon Korean Sword & Shield Silver Lance",
+    "lang": "Korean",
+    "year": "2021"
+   },
+   {
+    "id": "194327",
+    "slug": "pokemon-korean-sword-shield-single-strike-master",
+    "name": "Pokemon Korean Sword & Shield Single Strike Master",
+    "lang": "Korean",
+    "year": "2021"
+   },
+   {
+    "id": "227952",
+    "slug": "pokemon-korean-sword-shield-skyscraping-perfection",
+    "name": "Pokemon Korean Sword & Shield Skyscraping Perfection",
+    "lang": "Korean",
+    "year": "2021"
+   },
+   {
+    "id": "244559",
+    "slug": "pokemon-korean-sword-shield-venusaur-vmax-starter-set",
+    "name": "Pokemon Korean Sword & Shield Venusaur Vmax Starter Set",
+    "lang": "Korean",
+    "year": "2021"
+   },
+   {
+    "id": "238515",
+    "slug": "pokemon-korean-v-union-special-card-set",
+    "name": "Pokemon Korean V-Union Special Card Set",
+    "lang": "Korean",
+    "year": "2021"
+   },
+   {
+    "id": "217884",
+    "slug": "pokemon-korean-zacian-zamazenta-vs-eternatus-special-deck-set",
+    "name": "Pokemon Korean Zacian & Zamazenta VS Eternatus Special Deck Set",
+    "lang": "Korean",
+    "year": "2021"
+   },
+   {
+    "id": "188977",
+    "slug": "pokemon-mcdonalds-collection",
+    "name": "Pokemon Mcdonald's Collection",
+    "lang": null,
+    "year": "2021"
+   },
+   {
+    "id": "202192",
+    "slug": "pokemon-sm-black-star-promo",
+    "name": "Pokemon SM Black Star Promo",
+    "lang": null,
+    "year": "2021"
+   },
+   {
+    "id": "189690",
+    "slug": "pokemon-sword-shield-battle-styles",
+    "name": "Pokemon Sword & Shield Battle Styles",
+    "lang": null,
+    "year": "2021"
+   },
+   {
+    "id": "194169",
+    "slug": "pokemon-sword-shield-chilling-reign",
+    "name": "Pokemon Sword & Shield Chilling Reign",
+    "lang": null,
+    "year": "2021"
+   },
+   {
+    "id": "198449",
+    "slug": "pokemon-sword-shield-evolving-skies",
+    "name": "Pokemon Sword & Shield Evolving Skies",
+    "lang": null,
+    "year": "2021"
+   },
+   {
+    "id": "202811",
+    "slug": "pokemon-sword-shield-fusion-strike",
+    "name": "Pokemon Sword & Shield Fusion Strike",
+    "lang": null,
+    "year": "2021"
+   },
+   {
+    "id": "189160",
+    "slug": "pokemon-sword-shield-shining-fates",
+    "name": "Pokemon Sword & Shield Shining Fates",
+    "lang": null,
+    "year": "2021"
+   },
+   {
+    "id": "241697",
+    "slug": "pokemon-sword-shield-celebrations-mini-tins",
+    "name": "Pokemon Sword and Shield Celebrations Mini Tins",
+    "lang": null,
+    "year": "2021"
+   },
+   {
+    "id": "188712",
+    "slug": "pokemon-swsh-black-star-promo",
+    "name": "Pokemon Swsh Black Star Promo",
+    "lang": null,
+    "year": "2021"
+   },
+   {
+    "id": "245818",
+    "slug": "pokemon-tcg-online-insert-code-cards",
+    "name": "Pokemon TCG Online Insert Code Cards",
+    "lang": null,
+    "year": "2021"
+   },
+   {
+    "id": "215418",
+    "slug": "pokemon-thai-25th-anniversary-collection",
+    "name": "Pokemon Thai 25th Anniversary Collection",
+    "lang": "Thai",
+    "year": "2021"
+   },
+   {
+    "id": "205806",
+    "slug": "pokemon-thai-promo-card-pack-25th-anniversary",
+    "name": "Pokemon Thai Promo Card Pack 25th Anniversary",
+    "lang": "Thai",
+    "year": "2021"
+   },
+   {
+    "id": "202813",
+    "slug": "pokemon-thai-s-promo",
+    "name": "Pokemon Thai S Promo",
+    "lang": "Thai",
+    "year": "2021"
+   },
+   {
+    "id": "217616",
+    "slug": "pokemon-thai-sword-shield-blue-sky-stream",
+    "name": "Pokemon Thai Sword & Shield Blue Sky Stream",
+    "lang": "Thai",
+    "year": "2021"
+   },
+   {
+    "id": "217455",
+    "slug": "pokemon-thai-sword-shield-eevee-heroes",
+    "name": "Pokemon Thai Sword & Shield Eevee Heroes",
+    "lang": "Thai",
+    "year": "2021"
+   },
+   {
+    "id": "336511",
+    "slug": "pokemon-thai-sword-shield-family-card-game",
+    "name": "Pokemon Thai Sword & Shield Family Pokemon Card Game",
+    "lang": "Thai",
+    "year": "2021"
+   },
+   {
+    "id": "211844",
+    "slug": "pokemon-thai-sword-shield-fusion-arts",
+    "name": "Pokemon Thai Sword & Shield Fusion Arts",
+    "lang": "Thai",
+    "year": "2021"
+   },
+   {
+    "id": "226778",
+    "slug": "pokemon-thai-sword-shield-jet-black-spirit",
+    "name": "Pokemon Thai Sword & Shield Jet-Black Spirit",
+    "lang": "Thai",
+    "year": "2021"
+   },
+   {
+    "id": "215385",
+    "slug": "pokemon-thai-sword-shield-peerless-fighters",
+    "name": "Pokemon Thai Sword & Shield Peerless Fighters",
+    "lang": "Thai",
+    "year": "2021"
+   },
+   {
+    "id": "191067",
+    "slug": "pokemon-thai-sword-shield-rapid-strike-master",
+    "name": "Pokemon Thai Sword & Shield Rapid Strike Master",
+    "lang": "Thai",
+    "year": "2021"
+   },
+   {
+    "id": "191546",
+    "slug": "pokemon-thai-sword-shield-shiny-vmax",
+    "name": "Pokemon Thai Sword & Shield Shiny Vmax",
+    "lang": "Thai",
+    "year": "2021"
+   },
+   {
+    "id": "226779",
+    "slug": "pokemon-thai-sword-shield-silver-lance",
+    "name": "Pokemon Thai Sword & Shield Silver Lance",
+    "lang": "Thai",
+    "year": "2021"
+   },
+   {
+    "id": "194328",
+    "slug": "pokemon-thai-sword-shield-single-strike-master",
+    "name": "Pokemon Thai Sword & Shield Single Strike Master",
+    "lang": "Thai",
+    "year": "2021"
+   },
+   {
+    "id": "226602",
+    "slug": "pokemon-thai-sword-shield-skyscraping-perfection",
+    "name": "Pokemon Thai Sword & Shield Skyscraping Perfection",
+    "lang": "Thai",
+    "year": "2021"
+   },
+   {
+    "id": "209553",
+    "slug": "pokemon-thai-sword-shield-vmax-climax",
+    "name": "Pokemon Thai Sword & Shield Vmax Climax",
+    "lang": "Thai",
+    "year": "2021"
+   }
+  ]
+ },
+ "2019": {
+  "at": "2026-09-25T10:38:57Z",
+  "sets": [
+   {
+    "id": "313607",
+    "slug": "pokemon-2019-world-championships-deck-fire-box",
+    "name": "Pokemon 2019 World Championships Deck: Fire Box",
+    "lang": null,
+    "year": "2019"
+   },
+   {
+    "id": "313608",
+    "slug": "pokemon-2019-world-championships-deck-mind-blown",
+    "name": "Pokemon 2019 World Championships Deck: Mind Blown",
+    "lang": null,
+    "year": "2019"
+   },
+   {
+    "id": "313609",
+    "slug": "pokemon-2019-world-championships-deck-perfection",
+    "name": "Pokemon 2019 World Championships Deck: Perfection",
+    "lang": null,
+    "year": "2019"
+   },
+   {
+    "id": "313610",
+    "slug": "pokemon-2019-world-championships-deck-pikarom-judge",
+    "name": "Pokemon 2019 World Championships Deck: Pikarom Judge",
+    "lang": null,
+    "year": "2019"
+   },
+   {
+    "id": "206597",
+    "slug": "pokemon-chinese-sm-promo",
+    "name": "Pokemon Chinese SM Promo",
+    "lang": "Chinese",
+    "year": "2019"
+   },
+   {
+    "id": "190678",
+    "slug": "pokemon-chinese-sun-moon-all-stars-collection",
+    "name": "Pokemon Chinese Sun & Moon All Stars Collection",
+    "lang": "Chinese",
+    "year": "2019"
+   },
+   {
+    "id": "199678",
+    "slug": "pokemon-chinese-sun-moon-all-stars-collection-gx-starter-deck",
+    "name": "Pokemon Chinese Sun & Moon All Stars Collection GX Starter Deck",
+    "lang": "Chinese",
+    "year": "2019"
+   },
+   {
+    "id": "189409",
+    "slug": "pokemon-chinese-sun-moon-dreams-come-true-collection",
+    "name": "Pokemon Chinese Sun & Moon Dreams Come True Collection",
+    "lang": "Chinese",
+    "year": "2019"
+   },
+   {
+    "id": "308627",
+    "slug": "pokemon-chinese-sun-moon-dreams-come-true-collection-gx-starter-deck",
+    "name": "Pokemon Chinese Sun & Moon Dreams Come True Collection GX Starter Deck",
+    "lang": "Chinese",
+    "year": "2019"
+   },
+   {
+    "id": "201392",
+    "slug": "pokemon-french-mcdonalds-collection",
+    "name": "Pokemon French Mcdonald's Collection",
+    "lang": "French",
+    "year": "2019"
+   },
+   {
+    "id": "318204",
+    "slug": "pokemon-indonesian-first-impact-random-gx-starter-deck",
+    "name": "Pokemon Indonesian First Impact Random GX Starter Deck",
+    "lang": "Indonesian",
+    "year": "2019"
+   },
+   {
+    "id": "230528",
+    "slug": "pokemon-indonesian-legends-awakened-random-gx-starter-deck",
+    "name": "Pokemon Indonesian Legends Awakened Random GX Starter Deck",
+    "lang": "Indonesian",
+    "year": "2019"
+   },
+   {
+    "id": "190747",
+    "slug": "pokemon-indonesian-sm-promo",
+    "name": "Pokemon Indonesian SM Promo",
+    "lang": "Indonesian",
+    "year": "2019"
+   },
+   {
+    "id": "190694",
+    "slug": "pokemon-indonesian-sun-moon-first-impact",
+    "name": "Pokemon Indonesian Sun & Moon First Impact",
+    "lang": "Indonesian",
+    "year": "2019"
+   },
+   {
+    "id": "193502",
+    "slug": "pokemon-indonesian-sun-moon-hidden-shadow",
+    "name": "Pokemon Indonesian Sun & Moon Hidden Shadow",
+    "lang": "Indonesian",
+    "year": "2019"
+   },
+   {
+    "id": "193858",
+    "slug": "pokemon-indonesian-sun-moon-legends-awakened",
+    "name": "Pokemon Indonesian Sun & Moon Legends Awakened",
+    "lang": "Indonesian",
+    "year": "2019"
+   },
+   {
+    "id": "237746",
+    "slug": "pokemon-insert-cards",
+    "name": "Pokemon Insert Cards",
+    "lang": null,
+    "year": "2019"
+   },
+   {
+    "id": "177469",
+    "slug": "pokemon-japanese-extra-regulation-box",
+    "name": "Pokemon Japanese Extra Regulation Box",
+    "lang": "Japanese",
+    "year": "2019"
+   },
+   {
+    "id": "165682",
+    "slug": "pokemon-japanese-family-card-game",
+    "name": "Pokemon Japanese Family Pokemon Card Game",
+    "lang": "Japanese",
+    "year": "2019"
+   },
+   {
+    "id": "168677",
+    "slug": "pokemon-japanese-promo",
+    "name": "Pokemon Japanese Promo",
+    "lang": "Japanese",
+    "year": "2019"
+   },
+   {
+    "id": "172661",
+    "slug": "pokemon-japanese-s-promo",
+    "name": "Pokemon Japanese S Promo",
+    "lang": "Japanese",
+    "year": "2019"
+   },
+   {
+    "id": "163897",
+    "slug": "pokemon-japanese-sm-promo",
+    "name": "Pokemon Japanese SM Promo",
+    "lang": "Japanese",
+    "year": "2019"
+   },
+   {
+    "id": "170665",
+    "slug": "pokemon-japanese-sun-moon-alter-genesis",
+    "name": "Pokemon Japanese Sun & Moon Alter Genesis",
+    "lang": "Japanese",
+    "year": "2019"
+   },
+   {
+    "id": "166643",
+    "slug": "pokemon-japanese-sun-moon-detective-pikachu",
+    "name": "Pokemon Japanese Sun & Moon Detective Pikachu",
+    "lang": "Japanese",
+    "year": "2019"
+   },
+   {
+    "id": "165073",
+    "slug": "pokemon-japanese-sun-moon-double-blaze",
+    "name": "Pokemon Japanese Sun & Moon Double Blaze",
+    "lang": "Japanese",
+    "year": "2019"
+   },
+   {
+    "id": "169301",
+    "slug": "pokemon-japanese-sun-moon-dream-league",
+    "name": "Pokemon Japanese Sun & Moon Dream League",
+    "lang": "Japanese",
+    "year": "2019"
+   },
+   {
+    "id": "164526",
+    "slug": "pokemon-japanese-sun-moon-full-metal-wall",
+    "name": "Pokemon Japanese Sun & Moon Full Metal Wall",
+    "lang": "Japanese",
+    "year": "2019"
+   },
+   {
+    "id": "165966",
+    "slug": "pokemon-japanese-sun-moon-gg-end",
+    "name": "Pokemon Japanese Sun & Moon GG End",
+    "lang": "Japanese",
+    "year": "2019"
+   },
+   {
+    "id": "167601",
+    "slug": "pokemon-japanese-sun-moon-miracle-twins",
+    "name": "Pokemon Japanese Sun & Moon Miracle Twins",
+    "lang": "Japanese",
+    "year": "2019"
+   },
+   {
+    "id": "168309",
+    "slug": "pokemon-japanese-sun-moon-remix-bout",
+    "name": "Pokemon Japanese Sun & Moon Remix Bout",
+    "lang": "Japanese",
+    "year": "2019"
+   },
+   {
+    "id": "166859",
+    "slug": "pokemon-japanese-sun-moon-sky-legend",
+    "name": "Pokemon Japanese Sun & Moon Sky Legend",
+    "lang": "Japanese",
+    "year": "2019"
+   },
+   {
+    "id": "163663",
+    "slug": "pokemon-japanese-sun-moon-strength-expansion-pack-night-unison",
+    "name": "Pokemon Japanese Sun & Moon Strength Expansion Pack Night Unison",
+    "lang": "Japanese",
+    "year": "2019"
+   },
+   {
+    "id": "171183",
+    "slug": "pokemon-japanese-sun-moon-tag-team-gx-all-stars",
+    "name": "Pokemon Japanese Sun & Moon Tag Team GX All Stars",
+    "lang": "Japanese",
+    "year": "2019"
+   },
+   {
+    "id": "250845",
+    "slug": "pokemon-japanese-sword-shield-premium-trainer-box",
+    "name": "Pokemon Japanese Sword & Shield Premium Trainer Box",
+    "lang": "Japanese",
+    "year": "2019"
+   },
+   {
+    "id": "172685",
+    "slug": "pokemon-japanese-sword-shield",
+    "name": "Pokemon Japanese Sword & Shield Shield",
+    "lang": "Japanese",
+    "year": "2019"
+   },
+   {
+    "id": "172684",
+    "slug": "pokemon-japanese-sword-shield",
+    "name": "Pokemon Japanese Sword & Shield Sword",
+    "lang": "Japanese",
+    "year": "2019"
+   },
+   {
+    "id": "174000",
+    "slug": "pokemon-japanese-sword-shield-v-starter-set-fighting",
+    "name": "Pokemon Japanese Sword & Shield V Starter Set Fighting",
+    "lang": "Japanese",
+    "year": "2019"
+   },
+   {
+    "id": "173995",
+    "slug": "pokemon-japanese-sword-shield-v-starter-set-fire",
+    "name": "Pokemon Japanese Sword & Shield V Starter Set Fire",
+    "lang": "Japanese",
+    "year": "2019"
+   },
+   {
+    "id": "173990",
+    "slug": "pokemon-japanese-sword-shield-v-starter-set-grass",
+    "name": "Pokemon Japanese Sword & Shield V Starter Set Grass",
+    "lang": "Japanese",
+    "year": "2019"
+   },
+   {
+    "id": "173526",
+    "slug": "pokemon-japanese-sword-shield-v-starter-set-lightning",
+    "name": "Pokemon Japanese Sword & Shield V Starter Set Lightning",
+    "lang": "Japanese",
+    "year": "2019"
+   },
+   {
+    "id": "173999",
+    "slug": "pokemon-japanese-sword-shield-v-starter-set-water",
+    "name": "Pokemon Japanese Sword & Shield V Starter Set Water",
+    "lang": "Japanese",
+    "year": "2019"
+   },
+   {
+    "id": "174001",
+    "slug": "pokemon-japanese-sword-shield-zacian-zamazenta-box",
+    "name": "Pokemon Japanese Sword & Shield Zacian + Zamazenta Box",
+    "lang": "Japanese",
+    "year": "2019"
+   },
+   {
+    "id": "237409",
+    "slug": "pokemon-japanese-tag-team-gx-deck-build-box",
+    "name": "Pokemon Japanese Tag Team GX Deck Build Box",
+    "lang": "Japanese",
+    "year": "2019"
+   },
+   {
+    "id": "167715",
+    "slug": "pokemon-japanese-tag-team-starter-set",
+    "name": "Pokemon Japanese Tag Team Starter Set",
+    "lang": "Japanese",
+    "year": "2019"
+   },
+   {
+    "id": "164802",
+    "slug": "pokemon-japanese-trainer-battle-decks",
+    "name": "Pokemon Japanese Trainer Battle Decks",
+    "lang": "Japanese",
+    "year": "2019"
+   },
+   {
+    "id": "169844",
+    "slug": "pokemon-kanto-friends-mini-tins",
+    "name": "Pokemon Kanto Friends Mini Tins",
+    "lang": null,
+    "year": "2019"
+   },
+   {
+    "id": "173124",
+    "slug": "pokemon-kanto-power-mini-tins",
+    "name": "Pokemon Kanto Power Mini Tins",
+    "lang": null,
+    "year": "2019"
+   },
+   {
+    "id": "280825",
+    "slug": "pokemon-korean-family-card-game",
+    "name": "Pokemon Korean Family Pokemon Card Game",
+    "lang": "Korean",
+    "year": "2019"
+   },
+   {
+    "id": "193881",
+    "slug": "pokemon-korean-family-game",
+    "name": "Pokemon Korean Family Pokemon Game",
+    "lang": "Korean",
+    "year": "2019"
+   },
+   {
+    "id": "189465",
+    "slug": "pokemon-korean-sm-promo",
+    "name": "Pokemon Korean SM Promo",
+    "lang": "Korean",
+    "year": "2019"
+   },
+   {
+    "id": "202818",
+    "slug": "pokemon-korean-sun-moon-alter-genesis",
+    "name": "Pokemon Korean Sun & Moon Alter Genesis",
+    "lang": "Korean",
+    "year": "2019"
+   },
+   {
+    "id": "200675",
+    "slug": "pokemon-korean-sun-moon-detective-pikachu",
+    "name": "Pokemon Korean Sun & Moon Detective Pikachu",
+    "lang": "Korean",
+    "year": "2019"
+   },
+   {
+    "id": "192892",
+    "slug": "pokemon-korean-sun-moon-double-blaze",
+    "name": "Pokemon Korean Sun & Moon Double Blaze",
+    "lang": "Korean",
+    "year": "2019"
+   },
+   {
+    "id": "194861",
+    "slug": "pokemon-korean-sun-moon-dream-league",
+    "name": "Pokemon Korean Sun & Moon Dream League",
+    "lang": "Korean",
+    "year": "2019"
+   },
+   {
+    "id": "193275",
+    "slug": "pokemon-korean-sun-moon-full-metal-wall",
+    "name": "Pokemon Korean Sun & Moon Full Metal Wall",
+    "lang": "Korean",
+    "year": "2019"
+   },
+   {
+    "id": "193280",
+    "slug": "pokemon-korean-sun-moon-gg-end",
+    "name": "Pokemon Korean Sun & Moon GG End",
+    "lang": "Korean",
+    "year": "2019"
+   },
+   {
+    "id": "192998",
+    "slug": "pokemon-korean-sun-moon-miracle-twins",
+    "name": "Pokemon Korean Sun & Moon Miracle Twins",
+    "lang": "Korean",
+    "year": "2019"
+   },
+   {
+    "id": "208718",
+    "slug": "pokemon-korean-sun-moon-remix-bout",
+    "name": "Pokemon Korean Sun & Moon Remix Bout",
+    "lang": "Korean",
+    "year": "2019"
+   },
+   {
+    "id": "194948",
+    "slug": "pokemon-korean-sun-moon-sky-legend",
+    "name": "Pokemon Korean Sun & Moon Sky Legend",
+    "lang": "Korean",
+    "year": "2019"
+   },
+   {
+    "id": "250855",
+    "slug": "pokemon-korean-sun-moon-starter-set-fighting-water",
+    "name": "Pokemon Korean Sun & Moon Starter Set Fighting/Water",
+    "lang": "Korean",
+    "year": "2019"
+   },
+   {
+    "id": "193226",
+    "slug": "pokemon-korean-sun-moon-strength-expansion-pack-night-unison",
+    "name": "Pokemon Korean Sun & Moon Strength Expansion Pack Night Unison",
+    "lang": "Korean",
+    "year": "2019"
+   },
+   {
+    "id": "195875",
+    "slug": "pokemon-korean-sun-moon-tag-bolt",
+    "name": "Pokemon Korean Sun & Moon Tag Bolt",
+    "lang": "Korean",
+    "year": "2019"
+   },
+   {
+    "id": "193832",
+    "slug": "pokemon-korean-sun-moon-tag-team-gx-power-up-box",
+    "name": "Pokemon Korean Sun & Moon Tag Team GX Power Up Box",
+    "lang": "Korean",
+    "year": "2019"
+   },
+   {
+    "id": "194969",
+    "slug": "pokemon-korean-sun-moon-tag-team-gx-all-stars",
+    "name": "Pokemon Korean Sun & Moon Tag Team GX Tag All Stars",
+    "lang": "Korean",
+    "year": "2019"
+   },
+   {
+    "id": "188450",
+    "slug": "pokemon-korean-sun-moon-ultra-shiny-gx",
+    "name": "Pokemon Korean Sun & Moon Ultra Shiny GX",
+    "lang": "Korean",
+    "year": "2019"
+   },
+   {
+    "id": "227902",
+    "slug": "pokemon-korean-sword-shield-v-starter-set-lightning",
+    "name": "Pokemon Korean Sword & Shield V Starter Set Lightning",
+    "lang": "Korean",
+    "year": "2019"
+   },
+   {
+    "id": "228707",
+    "slug": "pokemon-korean-tag-team-starter-set",
+    "name": "Pokemon Korean Tag Team Starter Set",
+    "lang": "Korean",
+    "year": "2019"
+   },
+   {
+    "id": "172983",
+    "slug": "pokemon-mcdonalds-collection",
+    "name": "Pokemon McDonald's Collection",
+    "lang": null,
+    "year": "2019"
+   },
+   {
+    "id": "163809",
+    "slug": "pokemon-sm-black-star-promo",
+    "name": "Pokemon SM Black Star Promo",
+    "lang": null,
+    "year": "2019"
+   },
+   {
+    "id": "171151",
+    "slug": "pokemon-sun-moon-cosmic-eclipse",
+    "name": "Pokemon Sun & Moon Cosmic Eclipse",
+    "lang": null,
+    "year": "2019"
+   },
+   {
+    "id": "165816",
+    "slug": "pokemon-sun-moon-detective-pikachu",
+    "name": "Pokemon Sun & Moon Detective Pikachu",
+    "lang": null,
+    "year": "2019"
+   },
+   {
+    "id": "169494",
+    "slug": "pokemon-sun-moon-hidden-fates",
+    "name": "Pokemon Sun & Moon Hidden Fates",
+    "lang": null,
+    "year": "2019"
+   },
+   {
+    "id": "163951",
+    "slug": "pokemon-sun-moon-team-up",
+    "name": "Pokemon Sun & Moon Team Up",
+    "lang": null,
+    "year": "2019"
+   },
+   {
+    "id": "166187",
+    "slug": "pokemon-sun-moon-unbroken-bonds",
+    "name": "Pokemon Sun & Moon Unbroken Bonds",
+    "lang": null,
+    "year": "2019"
+   },
+   {
+    "id": "168480",
+    "slug": "pokemon-sun-moon-unified-minds",
+    "name": "Pokemon Sun & Moon Unified Minds",
+    "lang": null,
+    "year": "2019"
+   },
+   {
+    "id": "172681",
+    "slug": "pokemon-swsh-black-star-promo",
+    "name": "Pokemon Swsh Black Star Promo",
+    "lang": null,
+    "year": "2019"
+   },
+   {
+    "id": "238487",
+    "slug": "pokemon-tcg-online-insert-code-cards",
+    "name": "Pokemon TCG Online Insert Code Cards",
+    "lang": null,
+    "year": "2019"
+   },
+   {
+    "id": "255795",
+    "slug": "pokemon-thai-first-impact-gx-starter-deck",
+    "name": "Pokemon Thai First Impact GX Starter Deck",
+    "lang": "Thai",
+    "year": "2019"
+   },
+   {
+    "id": "190746",
+    "slug": "pokemon-thai-sm-promo",
+    "name": "Pokemon Thai SM Promo",
+    "lang": "Thai",
+    "year": "2019"
+   },
+   {
+    "id": "193862",
+    "slug": "pokemon-thai-sun-moon-first-impact",
+    "name": "Pokemon Thai Sun & Moon First Impact",
+    "lang": "Thai",
+    "year": "2019"
+   },
+   {
+    "id": "193930",
+    "slug": "pokemon-thai-sun-moon-hidden-shadow",
+    "name": "Pokemon Thai Sun & Moon Hidden Shadow",
+    "lang": "Thai",
+    "year": "2019"
+   },
+   {
+    "id": "230117",
+    "slug": "pokemon-thai-sun-moon-hidden-shadow-gx-starter-deck-set",
+    "name": "Pokemon Thai Sun & Moon Hidden Shadow GX Starter Deck Set A",
+    "lang": "Thai",
+    "year": "2019"
+   },
+   {
+    "id": "193831",
+    "slug": "pokemon-thai-sun-moon-legends-awakened",
+    "name": "Pokemon Thai Sun & Moon Legends Awakened",
+    "lang": "Thai",
+    "year": "2019"
+   },
+   {
+    "id": "316193",
+    "slug": "pokemon-thai-sun-moon-legends-awakened-gx-starter-deck-set-b",
+    "name": "Pokemon Thai Sun & Moon Legends Awakened GX Starter Deck Set B",
+    "lang": "Thai",
+    "year": "2019"
+   },
+   {
+    "id": "193937",
+    "slug": "pokemon-thai-sun-moon-sky-ruler",
+    "name": "Pokemon Thai Sun & Moon Sky Ruler",
+    "lang": "Thai",
+    "year": "2019"
+   },
+   {
+    "id": "170281",
+    "slug": "pokemon-world-championships-promo",
+    "name": "Pokemon World Championships Promo",
+    "lang": null,
+    "year": "2019"
+   }
+  ]
  }
 }

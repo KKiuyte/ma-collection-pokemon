@@ -115,5 +115,16 @@
   "psa_name": "Pokemon Pbl EN-Pitch Black",
   "psa_year": "2026",
   "auto": true
+ },
+ "swsh3.5|French": {
+  "none": true,
+  "why": "aucune série PSA trouvée",
+  "candidates": []
+ },
+ "swsh3.5|EN": {
+  "psa_id": "181110",
+  "psa_name": "Pokemon Sword & Shield Champion's Path",
+  "psa_year": "2020",
+  "auto": true
  }
 }
