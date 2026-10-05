@@ -30,7 +30,13 @@ import urllib.parse as up
 import requests
 
 BASE = "https://www.psacard.com"
-SIGNIN = "https://app.collectors.com/signin?b=psa&r=https%3A%2F%2Fwww.psacard.com%2Fpop"
+# ⚠️ Entrée de connexion (diagnostic du 2026-10-05, tools/psa_diag.py sur les runners GitHub) :
+# partir de psacard.com/myaccount (qui pose ses cookies puis redirige vers Collectors) et NON
+# directement de app.collectors.com/signin. Avec l'entrée directe, l'étape de retour
+# psacard.com/login/collectorsid renvoyait vers /unauthredirect → formulaire vide (refus
+# silencieux) sur la plupart des IP de runner ; avec /myaccount elle passe (→ /finalize).
+SIGNIN = BASE + "/myaccount"
+SIGNIN_DIRECT = "https://app.collectors.com/signin?b=psa&r=https%3A%2F%2Fwww.psacard.com%2Fpop"
 CATEGORY_TCG = "156940"          # « TCG Cards » dans le rapport de population
 UA = ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
       "(KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36")
@@ -101,7 +107,7 @@ class _Resp:
             raise requests.HTTPError(f"{self.status_code} pour {self.url}", response=None)
 
 
-def login_with_browser(email, password, verbose=False, keep=False):
+def login_with_browser(email, password, verbose=False, keep=False, entry=None):
     """Ouvre la page de connexion Collectors/PSA dans Chromium furtif, renvoie (cookies, handles).
     handles = navigateur laissé OUVERT si keep=True (pour faire les requêtes depuis le
     navigateur quand Cloudflare refuse `requests`), sinon None.
@@ -127,7 +133,7 @@ def login_with_browser(email, password, verbose=False, keep=False):
                 except Exception:
                     pass
             page.on("response", _resp)
-        cookies, ok = _login_flow(page, p_ctx, email, password)
+        cookies, ok = _login_flow(page, p_ctx, email, password, entry)
     except Exception:
         for h in (br,):
             try:
@@ -149,10 +155,10 @@ def login_with_browser(email, password, verbose=False, keep=False):
     return cookies, None
 
 
-def _login_flow(page, ctx, email, password):
+def _login_flow(page, ctx, email, password, entry=None):
     """Renvoie (cookies, ok). Voir login_with_browser."""
     if True:
-        page.goto(os.environ.get("PSA_SIGNIN_URL") or SIGNIN, wait_until="domcontentloaded", timeout=45000)
+        page.goto(entry or os.environ.get("PSA_SIGNIN_URL") or SIGNIN, wait_until="domcontentloaded", timeout=45000)
         time.sleep(3)
         # bannière cookies (Osano) : on la ferme pour qu'elle n'intercepte rien
         for label in ("Tout rejeter", "Reject All", "Accepter tout", "Accept All"):
@@ -342,7 +348,10 @@ class PsaSession:
         last = None
         for attempt in range(1, 4):
             try:
-                cookies, self.handles = login_with_browser(email, pwd, verbose=self.verbose, keep=True)
+                # essais 1 et 3 par psacard.com/myaccount, essai 2 par l'entrée directe (au cas où)
+                cookies, self.handles = login_with_browser(
+                    email, pwd, verbose=self.verbose, keep=True,
+                    entry=SIGNIN_DIRECT if attempt == 2 else SIGNIN)
                 break
             except RuntimeError as e:
                 last = e

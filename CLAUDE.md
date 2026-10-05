@@ -268,14 +268,24 @@ redéclenche pas `deploy.yml`).
      `priced_at` (fiche sans estimation reprise le lendemain). 💡 Astuce de découverte :
      un nom de procédure inconnu → NOT_FOUND ; une entrée incomplète → le **schéma
      attendu** en clair (c'est comme ça que `funkoLookup` a été trouvé).
-     ⚠️ **Depuis GitHub Actions, la session PSA passe un jour sur deux** (constaté
-     2026-09-19 → 23 sur `graded-value.yml` : échec/succès en alternance ; 1er run du
-     scraper avec ce chemin : « connecté mais la session n'est pas acceptée, même via le
-     navigateur » = Cloudflare met un challenge interactif partout pour cette IP de
-     runner). Rien à faire en headless ; c'est pour ça que les certs en attente sont
-     repris à chaque passage (8/jour) et que ce chemin échoue vite (≈ 1 min) sans casser
-     l'OCR. Depuis chez Ariel, la session passe (« Cloudflare refuse `requests` » →
-     navigateur, puis OK). Captures de diagnostic dans l'artefact `psa-debug` (3 j).
+     ⚠️ **Connexion PSA depuis GitHub Actions — vraie cause trouvée le 2026-10-05**
+     (`tools/psa_diag.py` + workflow manuel `psa-diag.yml`, 3 runners). Ce n'était PAS
+     « Cloudflare un jour sur deux » : (1) le critère de succès de `_login_flow` avait un
+     second test (« le titre n'est plus Sign In ») qui se déclenchait sur une page de
+     redirection transitoire → faux « connexion PSA OK » sans cookie `accessToken`, d'où
+     les « connecté mais la session n'est pas acceptée » (11 passages sur 16, 2 jours de
+     suite pour `graded-value`) ; seul `accessToken` fait foi désormais. (2) En partant
+     directement de `app.collectors.com/signin?b=psa&r=…`, l'étape de retour
+     `psacard.com/login/collectorsid` répond 307 → `handlebrandtokenredirect` →
+     `/unauthredirect` → formulaire e-mail vide (refus silencieux) sur les IP de runner ;
+     en partant de **`psacard.com/myaccount`** (qui pose ses cookies puis redirige vers
+     Collectors), la même étape répond → `/login/collectorsid/finalize` et la session
+     est bonne, `requests` compris : 3 runners sur 3, là où l'entrée directe échouait 3
+     sur 3. `SIGNIN` = /myaccount, `SIGNIN_DIRECT` = l'ancienne (2e essai seulement).
+     `PSA_TRACE=1` affiche la chaîne de redirections (URL sans paramètres : le dépôt et
+     ses logs sont publics, ne jamais tracer de jeton). Autre constat du diagnostic : une
+     fois connecté, **toute navigation** vers une page psacard.com reçoit le challenge à
+     case à cocher (même depuis chez Ariel), mais l'API tRPC répond à `requests`.
      **2e chemin (jeton, sans session)** : API publique officielle
      `api.psacard.com/publicapi/cert/GetByCertNumber/{n}` (`authorization: bearer`,
      100 appels/jour, swagger `/publicapi/swagger.json`, pas de prix). Jeton généré par
