@@ -12,7 +12,7 @@ name: Scraper + enrichissement Vinted PSA
 #
 # Rythme : Vinted reçoit ~1 000 annonces PSA/jour et la page n'affiche que les ~230 plus
 # récentes ; à ~10 s d'OCR par annonce, il faut ~100 annonces toutes les 3 h pour suivre.
-# Fiches PSA via le compte connecté (tRPC, pas de quota) : 40 par passage (~6 s chacune).
+# Fiches PSA via le compte connecté (tRPC, pas de quota) : 100 par passage (~6 s chacune).
 
 on:
   schedule:
@@ -54,7 +54,7 @@ jobs:
           PSA_PASSWORD: ${{ secrets.PSA_PASSWORD }}
           PSA_COOKIE_FILE: ${{ runner.temp }}/psa-cookies.json
           PSA_DEBUG_DIR: ${{ runner.temp }}/psa-debug
-        run: python tools/enrich_psa.py --max-ocr 100 --max-lookups 40 --verbose
+        run: python tools/enrich_psa.py --max-ocr 100 --max-lookups 100 --verbose
 
       - name: Captures d'écran de diagnostic (si la connexion PSA a échoué)
         if: always()

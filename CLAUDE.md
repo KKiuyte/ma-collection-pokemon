@@ -309,7 +309,7 @@ redéclenche pas `deploy.yml`).
      lisible n'est pas re-tentée avant `OCR_RETRY_DAYS=10`. **Versionné** → le cache
      survit aux runs et se construit dans le temps.
    - Brides par passage : `--max-ocr` (défaut 40 ; **100** dans le workflow) et
-     `--max-lookups` (défaut 20 ; **40** dans le workflow, ~6 s par fiche via la session).
+     `--max-lookups` (défaut 20 ; **100** dans le workflow, ~6 s par fiche via la session ; GitHub ne lance en pratique que ~4 passages/jour sur les 8 planifiés).
      ⚠️ **Volume constaté (2026-09-23)** : Vinted reçoit ~1 000 annonces PSA/jour et la
      page ne montre que les ~230 plus récentes ; entre deux passages de 6 h il ne restait
      que 0-26 annonces en commun → avec 30 OCR × 4 passages/jour, 200/233 annonces
