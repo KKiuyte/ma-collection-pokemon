@@ -1,0 +1,28 @@
+name: Diagnostic PSA (Cloudflare depuis les runners)
+# Manuel uniquement. Lance tools/psa_diag.py sur 3 runners (3 IP) pour voir quelles pages
+# psacard.com passent Cloudflare une fois connecté. Ne modifie rien.
+on:
+  workflow_dispatch: {}
+jobs:
+  diag:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      max-parallel: 1
+      matrix:
+        n: [1, 2, 3]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: |
+          pip install --quiet requests playwright playwright-stealth
+          python -m playwright install --with-deps chromium
+      - name: Diagnostic
+        env:
+          PSA_EMAIL: ${{ secrets.PSA_EMAIL }}
+          PSA_PASSWORD: ${{ secrets.PSA_PASSWORD }}
+          PSA_DEBUG_DIR: ${{ runner.temp }}/psa-debug
+        run: python tools/psa_diag.py
