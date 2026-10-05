@@ -25,10 +25,16 @@ def main():
         pass
     email, pwd = P.load_credentials()
     os.environ["PSA_TRACE"] = "1"
-    try:
-        cookies, h = P.login_with_browser(email, pwd, verbose=True, keep=True)
-    except RuntimeError as e:
-        print("CONNEXION ÉCHOUÉE :", e)
+    cookies = h = None
+    for attempt in (1, 2, 3):
+        try:
+            print(f"--- essai de connexion {attempt} (navigateur neuf)")
+            cookies, h = P.login_with_browser(email, pwd, verbose=True, keep=True)
+            break
+        except RuntimeError as e:
+            print("CONNEXION ÉCHOUÉE :", e)
+            time.sleep(15 * attempt)
+    if not h:
         return
     page, ctx = h["page"], h["ctx"]
     names = sorted({c["name"] for c in cookies if c["domain"].endswith("psacard.com")})

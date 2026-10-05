@@ -116,6 +116,17 @@ def login_with_browser(email, password, verbose=False, keep=False):
         p_ctx = br.new_context(user_agent=UA, locale="fr-CA", viewport={"width": 1366, "height": 900})
         page = p_ctx.new_page()
         Stealth().apply_stealth_sync(page)
+        if os.environ.get("PSA_TRACE") == "1":
+            # trace réseau SANS paramètres d'URL (jetons) : redirections et refus pendant la connexion
+            def _resp(r):
+                try:
+                    if r.status >= 300 and r.request.resource_type in ("document", "xhr", "fetch"):
+                        loc = (r.headers.get("location") or "").split("?")[0][:70]
+                        print(f"      {r.status} {r.request.method} {r.url.split('?')[0][:80]}"
+                              + (f" → {loc}" if loc else ""))
+                except Exception:
+                    pass
+            page.on("response", _resp)
         cookies, ok = _login_flow(page, p_ctx, email, password)
     except Exception:
         for h in (br,):
@@ -190,6 +201,13 @@ def _login_flow(page, ctx, email, password):
             if any(c["name"] == "accessToken" and "psacard.com" in c["domain"] for c in cookies):
                 ok = True
                 break
+            try:
+                if i >= 6 and "signin" in page.url and "brandsignin" not in page.url \
+                        and not page.query_selector('input[type="password"]') \
+                        and page.query_selector('input[type="email"], input[autocomplete="username"]'):
+                    break                  # refus silencieux : retour au formulaire e-mail vide
+            except Exception:
+                pass
             if trace:
                 try:
                     state = (page.title() or "")[:40], page.url.split("?")[0][:70]
