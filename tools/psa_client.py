@@ -177,16 +177,33 @@ def _login_flow(page, ctx, email, password):
         pwd.press("Enter")
         # ⚠️ après connexion l'URL peut rester un moment sur /signin alors que la page cible est
         # déjà affichée : le vrai signal de succès est le cookie accessToken posé sur psacard.com
+        # ⚠️ (2026-10-05) SEUL ce cookie fait foi. L'ancien second critère « le titre n'est plus
+        # Sign In » se déclenchait sur un état transitoire (page blanche entre deux redirections)
+        # et annonçait « connexion OK » sans session : 2 runners sur 3 au diagnostic, d'où les
+        # « connecté mais la session n'est pas acceptée » à répétition.
         ok = False
-        for _ in range(25):
+        trace = os.environ.get("PSA_TRACE") == "1"
+        last = None
+        for i in range(45):
             time.sleep(2)
             cookies = ctx.cookies()
             if any(c["name"] == "accessToken" and "psacard.com" in c["domain"] for c in cookies):
                 ok = True
                 break
-            if "Sign In" not in (page.title() or "") and "signin" not in page.url:
-                ok = True
-                break
+            if trace:
+                try:
+                    state = (page.title() or "")[:40], page.url.split("?")[0][:70]
+                except Exception:
+                    state = ("(navigation en cours)", "")
+                if state != last:
+                    last = state
+                    err = ""
+                    try:
+                        err = " | ".join(t.strip()[:80] for t in page.locator(
+                            '[role="alert"], [class*="error" i], [slot="error-message"]').all_inner_texts() if t.strip())
+                    except Exception:
+                        pass
+                    print(f"    [{2 * (i + 1):3d} s] {state[0]!r} {state[1]} {('— ' + err) if err else ''}")
         if not ok:
             _debug_shot(page, "signin-refused")
         else:

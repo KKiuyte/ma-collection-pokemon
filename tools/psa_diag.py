@@ -24,7 +24,12 @@ def main():
     except Exception:
         pass
     email, pwd = P.load_credentials()
-    cookies, h = P.login_with_browser(email, pwd, verbose=True, keep=True)
+    os.environ["PSA_TRACE"] = "1"
+    try:
+        cookies, h = P.login_with_browser(email, pwd, verbose=True, keep=True)
+    except RuntimeError as e:
+        print("CONNEXION ÉCHOUÉE :", e)
+        return
     page, ctx = h["page"], h["ctx"]
     names = sorted({c["name"] for c in cookies if c["domain"].endswith("psacard.com")})
     print("cookies psacard.com :", ", ".join(n for n in names if n in ("accessToken", "cf_clearance", "__cf_bm")))
