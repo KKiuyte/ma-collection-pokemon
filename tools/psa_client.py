@@ -152,7 +152,7 @@ def login_with_browser(email, password, verbose=False, keep=False):
 def _login_flow(page, ctx, email, password):
     """Renvoie (cookies, ok). Voir login_with_browser."""
     if True:
-        page.goto(SIGNIN, wait_until="domcontentloaded", timeout=45000)
+        page.goto(os.environ.get("PSA_SIGNIN_URL") or SIGNIN, wait_until="domcontentloaded", timeout=45000)
         time.sleep(3)
         # bannière cookies (Osano) : on la ferme pour qu'elle n'intercepte rien
         for label in ("Tout rejeter", "Reject All", "Accepter tout", "Accept All"):

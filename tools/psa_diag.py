@@ -28,7 +28,9 @@ def main():
     cookies = h = None
     for attempt in (1, 2, 3):
         try:
-            print(f"--- essai de connexion {attempt} (navigateur neuf)")
+            entry = [P.SIGNIN, P.BASE + "/myaccount", P.BASE + "/myaccount"][attempt - 1]
+            os.environ["PSA_SIGNIN_URL"] = entry
+            print(f"--- essai de connexion {attempt} (navigateur neuf) — entrée {entry.split('?')[0]}")
             cookies, h = P.login_with_browser(email, pwd, verbose=True, keep=True)
             break
         except RuntimeError as e:
