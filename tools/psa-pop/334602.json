@@ -1,18 +1,70 @@
 {
- "at": "2026-09-18T14:19:29Z",
+ "at": "2026-10-19T11:15:55Z",
  "rows": [
+  {
+   "SpecID": 15626298,
+   "SubjectName": "Lapras EX",
+   "CardNumber": "022",
+   "Variety": "",
+   "Grade7": 0,
+   "Grade8": 1,
+   "Grade8_5": 0,
+   "Grade9": 0,
+   "Grade9_5": null,
+   "Grade10": 2,
+   "GradeTotal": 3
+  },
+  {
+   "SpecID": 15626307,
+   "SubjectName": "Mega Clefable EX",
+   "CardNumber": "031",
+   "Variety": "",
+   "Grade7": 0,
+   "Grade8": 0,
+   "Grade8_5": 0,
+   "Grade9": 0,
+   "Grade9_5": null,
+   "Grade10": 1,
+   "GradeTotal": 1
+  },
   {
    "SpecID": 16519878,
    "SubjectName": "Gengar",
    "CardNumber": "050",
    "Variety": "EB Games Exclusive",
    "Grade7": 0,
+   "Grade8": 2,
+   "Grade8_5": 0,
+   "Grade9": 7,
+   "Grade9_5": null,
+   "Grade10": 3,
+   "GradeTotal": 12
+  },
+  {
+   "SpecID": 15626329,
+   "SubjectName": "Yveltal EX",
+   "CardNumber": "053",
+   "Variety": "",
+   "Grade7": 0,
    "Grade8": 0,
    "Grade8_5": 0,
-   "Grade9": 6,
+   "Grade9": 0,
    "Grade9_5": null,
-   "Grade10": 0,
-   "GradeTotal": 6
+   "Grade10": 1,
+   "GradeTotal": 1
+  },
+  {
+   "SpecID": 15626338,
+   "SubjectName": "Meowth EX",
+   "CardNumber": "062",
+   "Variety": "",
+   "Grade7": 0,
+   "Grade8": 0,
+   "Grade8_5": 0,
+   "Grade9": 0,
+   "Grade9_5": null,
+   "Grade10": 2,
+   "GradeTotal": 2
   },
   {
    "SpecID": 15626374,
@@ -24,8 +76,8 @@
    "Grade8_5": 0,
    "Grade9": 0,
    "Grade9_5": null,
-   "Grade10": 3,
-   "GradeTotal": 3
+   "Grade10": 5,
+   "GradeTotal": 5
   },
   {
    "SpecID": 15626375,
@@ -50,8 +102,8 @@
    "Grade8_5": 0,
    "Grade9": 0,
    "Grade9_5": null,
-   "Grade10": 2,
-   "GradeTotal": 2
+   "Grade10": 5,
+   "GradeTotal": 5
   },
   {
    "SpecID": 15626377,
@@ -63,8 +115,8 @@
    "Grade8_5": 0,
    "Grade9": 0,
    "Grade9_5": null,
-   "Grade10": 6,
-   "GradeTotal": 6
+   "Grade10": 8,
+   "GradeTotal": 8
   },
   {
    "SpecID": 15626378,
@@ -76,8 +128,8 @@
    "Grade8_5": 0,
    "Grade9": 1,
    "Grade9_5": null,
-   "Grade10": 2,
-   "GradeTotal": 3
+   "Grade10": 5,
+   "GradeTotal": 6
   },
   {
    "SpecID": 15626379,
@@ -89,8 +141,8 @@
    "Grade8_5": 0,
    "Grade9": 0,
    "Grade9_5": null,
-   "Grade10": 15,
-   "GradeTotal": 15
+   "Grade10": 23,
+   "GradeTotal": 23
   },
   {
    "SpecID": 15626380,
@@ -115,8 +167,8 @@
    "Grade8_5": 0,
    "Grade9": 0,
    "Grade9_5": null,
-   "Grade10": 2,
-   "GradeTotal": 2
+   "Grade10": 3,
+   "GradeTotal": 3
   },
   {
    "SpecID": 15626382,
@@ -128,8 +180,21 @@
    "Grade8_5": 0,
    "Grade9": 1,
    "Grade9_5": null,
-   "Grade10": 5,
-   "GradeTotal": 6
+   "Grade10": 8,
+   "GradeTotal": 9
+  },
+  {
+   "SpecID": 15626383,
+   "SubjectName": "Doublade",
+   "CardNumber": "098",
+   "Variety": "Illustration Rare",
+   "Grade7": 0,
+   "Grade8": 0,
+   "Grade8_5": 0,
+   "Grade9": 0,
+   "Grade9_5": null,
+   "Grade10": 3,
+   "GradeTotal": 3
   },
   {
    "SpecID": 15626384,
@@ -145,6 +210,32 @@
    "GradeTotal": 2
   },
   {
+   "SpecID": 15626390,
+   "SubjectName": "Mega Starmie EX",
+   "CardNumber": "102",
+   "Variety": "Ultra Rare",
+   "Grade7": 0,
+   "Grade8": 0,
+   "Grade8_5": 0,
+   "Grade9": 0,
+   "Grade9_5": null,
+   "Grade10": 1,
+   "GradeTotal": 1
+  },
+  {
+   "SpecID": 15626391,
+   "SubjectName": "Mega Clefable EX",
+   "CardNumber": "103",
+   "Variety": "Ultra Rare",
+   "Grade7": 0,
+   "Grade8": 0,
+   "Grade8_5": 0,
+   "Grade9": 0,
+   "Grade9_5": null,
+   "Grade10": 1,
+   "GradeTotal": 1
+  },
+  {
    "SpecID": 15626392,
    "SubjectName": "Mega Zygarde EX",
    "CardNumber": "104",
@@ -154,8 +245,8 @@
    "Grade8_5": 0,
    "Grade9": 0,
    "Grade9_5": null,
-   "Grade10": 0,
-   "GradeTotal": 1
+   "Grade10": 1,
+   "GradeTotal": 2
   },
   {
    "SpecID": 15626394,
@@ -193,8 +284,8 @@
    "Grade8_5": 0,
    "Grade9": 0,
    "Grade9_5": null,
-   "Grade10": 8,
-   "GradeTotal": 8
+   "Grade10": 10,
+   "GradeTotal": 10
   },
   {
    "SpecID": 15626412,
@@ -206,8 +297,8 @@
    "Grade8_5": 0,
    "Grade9": 0,
    "Grade9_5": null,
-   "Grade10": 1,
-   "GradeTotal": 1
+   "Grade10": 2,
+   "GradeTotal": 2
   },
   {
    "SpecID": 15626413,
@@ -219,8 +310,8 @@
    "Grade8_5": 0,
    "Grade9": 0,
    "Grade9_5": null,
-   "Grade10": 3,
-   "GradeTotal": 3
+   "Grade10": 7,
+   "GradeTotal": 7
   },
   {
    "SpecID": 15626414,
@@ -232,8 +323,21 @@
    "Grade8_5": 0,
    "Grade9": 1,
    "Grade9_5": null,
-   "Grade10": 14,
-   "GradeTotal": 15
+   "Grade10": 27,
+   "GradeTotal": 28
+  },
+  {
+   "SpecID": 15626415,
+   "SubjectName": "Jacinthe",
+   "CardNumber": "122",
+   "Variety": "Special Illustration Rare",
+   "Grade7": 0,
+   "Grade8": 0,
+   "Grade8_5": 0,
+   "Grade9": 0,
+   "Grade9_5": null,
+   "Grade10": 1,
+   "GradeTotal": 1
   },
   {
    "SpecID": 15626416,
@@ -245,8 +349,8 @@
    "Grade8_5": 0,
    "Grade9": 1,
    "Grade9_5": null,
-   "Grade10": 0,
-   "GradeTotal": 1
+   "Grade10": 1,
+   "GradeTotal": 2
   },
   {
    "SpecID": 15626417,
@@ -254,12 +358,12 @@
    "CardNumber": "124",
    "Variety": "Mega Hyper Rare",
    "Grade7": 0,
-   "Grade8": 1,
+   "Grade8": 3,
    "Grade8_5": 0,
    "Grade9": 2,
    "Grade9_5": null,
-   "Grade10": 1,
-   "GradeTotal": 4
+   "Grade10": 2,
+   "GradeTotal": 7
   }
  ]
 }

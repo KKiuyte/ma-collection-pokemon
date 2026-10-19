@@ -1,5 +1,5 @@
 {
- "at": "2026-09-18T14:19:29Z",
+ "at": "2026-10-19T11:15:55Z",
  "rows": [
   {
    "SpecID": 13536982,
@@ -20,12 +20,12 @@
    "CardNumber": "034",
    "Variety": "Prerelease",
    "Grade7": 0,
-   "Grade8": 2,
+   "Grade8": 3,
    "Grade8_5": 0,
    "Grade9": 1,
    "Grade9_5": null,
    "Grade10": 0,
-   "GradeTotal": 3
+   "GradeTotal": 4
   },
   {
    "SpecID": 13689383,
@@ -282,10 +282,10 @@
    "Grade7": 0,
    "Grade8": 6,
    "Grade8_5": 0,
-   "Grade9": 9,
+   "Grade9": 10,
    "Grade9_5": null,
    "Grade10": 2,
-   "GradeTotal": 17
+   "GradeTotal": 18
   },
   {
    "SpecID": 13537141,
@@ -295,23 +295,23 @@
    "Grade7": 4,
    "Grade8": 8,
    "Grade8_5": 0,
-   "Grade9": 54,
+   "Grade9": 55,
    "Grade9_5": null,
-   "Grade10": 11,
-   "GradeTotal": 77
+   "Grade10": 12,
+   "GradeTotal": 79
   },
   {
    "SpecID": 13537142,
    "SubjectName": "Team Rocket's Houndoom",
    "CardNumber": "191",
    "Variety": "Illustration Rare",
-   "Grade7": 3,
-   "Grade8": 13,
+   "Grade7": 4,
+   "Grade8": 14,
    "Grade8_5": 0,
    "Grade9": 32,
    "Grade9_5": null,
-   "Grade10": 8,
-   "GradeTotal": 56
+   "Grade10": 9,
+   "GradeTotal": 59
   },
   {
    "SpecID": 13537143,
@@ -321,10 +321,10 @@
    "Grade7": 1,
    "Grade8": 7,
    "Grade8_5": 0,
-   "Grade9": 24,
+   "Grade9": 25,
    "Grade9_5": null,
    "Grade10": 4,
-   "GradeTotal": 36
+   "GradeTotal": 37
   },
   {
    "SpecID": 13537144,
@@ -334,10 +334,10 @@
    "Grade7": 3,
    "Grade8": 17,
    "Grade8_5": 0,
-   "Grade9": 59,
+   "Grade9": 65,
    "Grade9_5": null,
-   "Grade10": 22,
-   "GradeTotal": 101
+   "Grade10": 24,
+   "GradeTotal": 109
   },
   {
    "SpecID": 13537145,
@@ -464,10 +464,10 @@
    "Grade7": 2,
    "Grade8": 10,
    "Grade8_5": 0,
-   "Grade9": 44,
+   "Grade9": 46,
    "Grade9_5": null,
    "Grade10": 8,
-   "GradeTotal": 64
+   "GradeTotal": 66
   },
   {
    "SpecID": 13537155,
@@ -505,8 +505,8 @@
    "Grade8_5": 0,
    "Grade9": 3,
    "Grade9_5": null,
-   "Grade10": 5,
-   "GradeTotal": 8
+   "Grade10": 6,
+   "GradeTotal": 9
   },
   {
    "SpecID": 13537159,
@@ -557,8 +557,8 @@
    "Grade8_5": 0,
    "Grade9": 13,
    "Grade9_5": null,
-   "Grade10": 33,
-   "GradeTotal": 54
+   "Grade10": 39,
+   "GradeTotal": 60
   },
   {
    "SpecID": 13537165,
@@ -659,10 +659,10 @@
    "Grade7": 0,
    "Grade8": 0,
    "Grade8_5": 0,
-   "Grade9": 0,
+   "Grade9": 1,
    "Grade9_5": null,
    "Grade10": 5,
-   "GradeTotal": 5
+   "GradeTotal": 6
   },
   {
    "SpecID": 13537175,
@@ -708,13 +708,13 @@
    "SubjectName": "Team Rocket's Moltres EX",
    "CardNumber": "229",
    "Variety": "Special Illustration Rare",
-   "Grade7": 4,
-   "Grade8": 12,
+   "Grade7": 5,
+   "Grade8": 13,
    "Grade8_5": 0,
-   "Grade9": 28,
+   "Grade9": 29,
    "Grade9_5": null,
-   "Grade10": 83,
-   "GradeTotal": 127
+   "Grade10": 92,
+   "GradeTotal": 139
   },
   {
    "SpecID": 15224536,
@@ -722,38 +722,38 @@
    "CardNumber": "229",
    "Variety": "Team Rocket's Moltres EX Ultra-Premium Collection",
    "Grade7": 0,
-   "Grade8": 0,
+   "Grade8": 1,
    "Grade8_5": 0,
-   "Grade9": 22,
+   "Grade9": 27,
    "Grade9_5": null,
-   "Grade10": 22,
-   "GradeTotal": 45
+   "Grade10": 28,
+   "GradeTotal": 57
   },
   {
    "SpecID": 13537181,
    "SubjectName": "Ethan's HO-Oh EX",
    "CardNumber": "230",
    "Variety": "Special Illustration Rare",
-   "Grade7": 5,
+   "Grade7": 7,
    "Grade8": 18,
    "Grade8_5": 0,
-   "Grade9": 33,
+   "Grade9": 35,
    "Grade9_5": null,
-   "Grade10": 97,
-   "GradeTotal": 153
+   "Grade10": 113,
+   "GradeTotal": 173
   },
   {
    "SpecID": 13537182,
    "SubjectName": "Team Rocket's Mewtwo EX",
    "CardNumber": "231",
    "Variety": "Special Illustration Rare",
-   "Grade7": 9,
-   "Grade8": 24,
+   "Grade7": 12,
+   "Grade8": 26,
    "Grade8_5": 0,
-   "Grade9": 22,
+   "Grade9": 31,
    "Grade9_5": null,
-   "Grade10": 181,
-   "GradeTotal": 237
+   "Grade10": 211,
+   "GradeTotal": 281
   },
   {
    "SpecID": 13537183,
@@ -761,12 +761,12 @@
    "CardNumber": "232",
    "Variety": "Special Illustration Rare",
    "Grade7": 4,
-   "Grade8": 9,
+   "Grade8": 11,
    "Grade8_5": 0,
-   "Grade9": 36,
+   "Grade9": 39,
    "Grade9_5": null,
-   "Grade10": 72,
-   "GradeTotal": 126
+   "Grade10": 80,
+   "GradeTotal": 139
   },
   {
    "SpecID": 13537184,
@@ -774,12 +774,12 @@
    "CardNumber": "233",
    "Variety": "Special Illustration Rare",
    "Grade7": 1,
-   "Grade8": 11,
+   "Grade8": 14,
    "Grade8_5": 0,
-   "Grade9": 17,
+   "Grade9": 18,
    "Grade9_5": null,
-   "Grade10": 46,
-   "GradeTotal": 75
+   "Grade10": 50,
+   "GradeTotal": 83
   },
   {
    "SpecID": 13537185,
@@ -791,8 +791,8 @@
    "Grade8_5": 0,
    "Grade9": 9,
    "Grade9_5": null,
-   "Grade10": 40,
-   "GradeTotal": 54
+   "Grade10": 44,
+   "GradeTotal": 58
   },
   {
    "SpecID": 13537186,
@@ -804,8 +804,8 @@
    "Grade8_5": 0,
    "Grade9": 3,
    "Grade9_5": null,
-   "Grade10": 17,
-   "GradeTotal": 21
+   "Grade10": 18,
+   "GradeTotal": 22
   },
   {
    "SpecID": 13537187,
@@ -813,12 +813,12 @@
    "CardNumber": "236",
    "Variety": "Special Illustration Rare",
    "Grade7": 2,
-   "Grade8": 8,
+   "Grade8": 9,
    "Grade8_5": 0,
    "Grade9": 7,
    "Grade9_5": null,
    "Grade10": 24,
-   "GradeTotal": 42
+   "GradeTotal": 43
   },
   {
    "SpecID": 13537188,
@@ -854,10 +854,10 @@
    "Grade7": 0,
    "Grade8": 2,
    "Grade8_5": 0,
-   "Grade9": 10,
+   "Grade9": 11,
    "Grade9_5": null,
    "Grade10": 21,
-   "GradeTotal": 33
+   "GradeTotal": 34
   },
   {
    "SpecID": 13537191,
@@ -867,10 +867,10 @@
    "Grade7": 0,
    "Grade8": 2,
    "Grade8_5": 0,
-   "Grade9": 19,
+   "Grade9": 21,
    "Grade9_5": null,
-   "Grade10": 36,
-   "GradeTotal": 58
+   "Grade10": 38,
+   "GradeTotal": 62
   },
   {
    "SpecID": 13537192,
@@ -882,8 +882,8 @@
    "Grade8_5": 0,
    "Grade9": 7,
    "Grade9_5": null,
-   "Grade10": 23,
-   "GradeTotal": 33
+   "Grade10": 24,
+   "GradeTotal": 34
   },
   {
    "SpecID": 13537193,

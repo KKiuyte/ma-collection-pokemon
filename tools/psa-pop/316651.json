@@ -1,5 +1,5 @@
 {
- "at": "2026-09-18T14:19:29Z",
+ "at": "2026-10-19T11:15:55Z",
  "rows": [
   {
    "SpecID": 14488895,
@@ -20,12 +20,12 @@
    "CardNumber": "001",
    "Variety": "Reverse Holo",
    "Grade7": 2,
-   "Grade8": 8,
+   "Grade8": 10,
    "Grade8_5": 0,
-   "Grade9": 35,
+   "Grade9": 37,
    "Grade9_5": null,
    "Grade10": 19,
-   "GradeTotal": 65
+   "GradeTotal": 69
   },
   {
    "SpecID": 14488896,
@@ -48,23 +48,23 @@
    "Grade7": 0,
    "Grade8": 4,
    "Grade8_5": 0,
-   "Grade9": 27,
+   "Grade9": 30,
    "Grade9_5": null,
    "Grade10": 11,
-   "GradeTotal": 42
+   "GradeTotal": 45
   },
   {
    "SpecID": 14488897,
    "SubjectName": "Mega Venusaur EX",
    "CardNumber": "003",
    "Variety": "",
-   "Grade7": 17,
-   "Grade8": 98,
+   "Grade7": 18,
+   "Grade8": 108,
    "Grade8_5": 0,
-   "Grade9": 647,
+   "Grade9": 729,
    "Grade9_5": null,
-   "Grade10": 1275,
-   "GradeTotal": 2056
+   "Grade10": 1376,
+   "GradeTotal": 2252
   },
   {
    "SpecID": 14488898,
@@ -126,10 +126,10 @@
    "Grade7": 0,
    "Grade8": 1,
    "Grade8_5": 0,
-   "Grade9": 2,
+   "Grade9": 3,
    "Grade9_5": null,
    "Grade10": 3,
-   "GradeTotal": 6
+   "GradeTotal": 7
   },
   {
    "SpecID": 14810237,
@@ -228,12 +228,12 @@
    "CardNumber": "010",
    "Variety": "",
    "Grade7": 2,
-   "Grade8": 16,
+   "Grade8": 19,
    "Grade8_5": 0,
-   "Grade9": 36,
+   "Grade9": 39,
    "Grade9_5": null,
    "Grade10": 7,
-   "GradeTotal": 61
+   "GradeTotal": 68
   },
   {
    "SpecID": 14772740,
@@ -241,12 +241,12 @@
    "CardNumber": "010",
    "Variety": "Reverse Holo",
    "Grade7": 0,
-   "Grade8": 2,
+   "Grade8": 3,
    "Grade8_5": 0,
-   "Grade9": 13,
+   "Grade9": 14,
    "Grade9_5": null,
    "Grade10": 3,
-   "GradeTotal": 18
+   "GradeTotal": 20
   },
   {
    "SpecID": 14488905,
@@ -295,10 +295,10 @@
    "Grade7": 0,
    "Grade8": 3,
    "Grade8_5": 0,
-   "Grade9": 12,
+   "Grade9": 13,
    "Grade9_5": null,
-   "Grade10": 8,
-   "GradeTotal": 23
+   "Grade10": 9,
+   "GradeTotal": 25
   },
   {
    "SpecID": 15036822,
@@ -383,13 +383,13 @@
    "SubjectName": "Ninetales",
    "CardNumber": "020",
    "Variety": "",
-   "Grade7": 0,
-   "Grade8": 4,
+   "Grade7": 1,
+   "Grade8": 5,
    "Grade8_5": 0,
    "Grade9": 9,
    "Grade9_5": null,
    "Grade10": 1,
-   "GradeTotal": 14
+   "GradeTotal": 16
   },
   {
    "SpecID": 14814562,
@@ -399,10 +399,10 @@
    "Grade7": 0,
    "Grade8": 2,
    "Grade8_5": 0,
-   "Grade9": 13,
+   "Grade9": 14,
    "Grade9_5": null,
-   "Grade10": 6,
-   "GradeTotal": 22
+   "Grade10": 7,
+   "GradeTotal": 24
   },
   {
    "SpecID": 14954506,
@@ -422,13 +422,13 @@
    "SubjectName": "Mega Camerupt EX",
    "CardNumber": "022",
    "Variety": "",
-   "Grade7": 9,
-   "Grade8": 45,
+   "Grade7": 14,
+   "Grade8": 73,
    "Grade8_5": 0,
-   "Grade9": 197,
+   "Grade9": 344,
    "Grade9_5": null,
-   "Grade10": 328,
-   "GradeTotal": 586
+   "Grade10": 458,
+   "GradeTotal": 900
   },
   {
    "SpecID": 14488917,
@@ -553,12 +553,12 @@
    "CardNumber": "028",
    "Variety": "Reverse Holo",
    "Grade7": 0,
-   "Grade8": 1,
+   "Grade8": 2,
    "Grade8_5": 0,
    "Grade9": 6,
    "Grade9_5": null,
    "Grade10": 0,
-   "GradeTotal": 7
+   "GradeTotal": 8
   },
   {
    "SpecID": 15484265,
@@ -657,12 +657,12 @@
    "CardNumber": "034",
    "Variety": "",
    "Grade7": 1,
-   "Grade8": 20,
+   "Grade8": 26,
    "Grade8_5": 0,
-   "Grade9": 35,
+   "Grade9": 37,
    "Grade9_5": null,
-   "Grade10": 9,
-   "GradeTotal": 66
+   "Grade10": 10,
+   "GradeTotal": 75
   },
   {
    "SpecID": 15277415,
@@ -670,12 +670,12 @@
    "CardNumber": "034",
    "Variety": "Knock Out Collection",
    "Grade7": 7,
-   "Grade8": 13,
+   "Grade8": 17,
    "Grade8_5": 0,
-   "Grade9": 28,
+   "Grade9": 35,
    "Grade9_5": null,
-   "Grade10": 6,
-   "GradeTotal": 55
+   "Grade10": 7,
+   "GradeTotal": 67
   },
   {
    "SpecID": 14796432,
@@ -683,12 +683,12 @@
    "CardNumber": "034",
    "Variety": "Reverse Holo",
    "Grade7": 1,
-   "Grade8": 3,
+   "Grade8": 4,
    "Grade8_5": 0,
-   "Grade9": 5,
+   "Grade9": 6,
    "Grade9_5": null,
    "Grade10": 2,
-   "GradeTotal": 12
+   "GradeTotal": 14
   },
   {
    "SpecID": 16495417,
@@ -708,13 +708,13 @@
    "SubjectName": "Mega Abomasnow EX",
    "CardNumber": "036",
    "Variety": "",
-   "Grade7": 7,
-   "Grade8": 46,
+   "Grade7": 16,
+   "Grade8": 113,
    "Grade8_5": 0,
-   "Grade9": 208,
+   "Grade9": 434,
    "Grade9_5": null,
-   "Grade10": 318,
-   "GradeTotal": 584
+   "Grade10": 526,
+   "GradeTotal": 1096
   },
   {
    "SpecID": 14488931,
@@ -750,10 +750,10 @@
    "Grade7": 0,
    "Grade8": 5,
    "Grade8_5": 0,
-   "Grade9": 8,
+   "Grade9": 9,
    "Grade9_5": null,
-   "Grade10": 2,
-   "GradeTotal": 15
+   "Grade10": 3,
+   "GradeTotal": 17
   },
   {
    "SpecID": 14929608,
@@ -763,10 +763,10 @@
    "Grade7": 0,
    "Grade8": 0,
    "Grade8_5": 0,
-   "Grade9": 3,
+   "Grade9": 4,
    "Grade9_5": null,
    "Grade10": 1,
-   "GradeTotal": 4
+   "GradeTotal": 5
   },
   {
    "SpecID": 14488933,
@@ -932,10 +932,10 @@
    "Grade7": 2,
    "Grade8": 12,
    "Grade8_5": 0,
-   "Grade9": 31,
+   "Grade9": 33,
    "Grade9_5": null,
-   "Grade10": 3,
-   "GradeTotal": 51
+   "Grade10": 4,
+   "GradeTotal": 54
   },
   {
    "SpecID": 14810662,
@@ -945,10 +945,10 @@
    "Grade7": 1,
    "Grade8": 5,
    "Grade8_5": 0,
-   "Grade9": 12,
+   "Grade9": 14,
    "Grade9_5": null,
-   "Grade10": 2,
-   "GradeTotal": 20
+   "Grade10": 3,
+   "GradeTotal": 23
   },
   {
    "SpecID": 14488943,
@@ -981,13 +981,13 @@
    "SubjectName": "Mega Manectric EX",
    "CardNumber": "050",
    "Variety": "",
-   "Grade7": 6,
-   "Grade8": 36,
+   "Grade7": 12,
+   "Grade8": 66,
    "Grade8_5": 0,
-   "Grade9": 247,
+   "Grade9": 427,
    "Grade9_5": null,
-   "Grade10": 414,
-   "GradeTotal": 710
+   "Grade10": 554,
+   "GradeTotal": 1067
   },
   {
    "SpecID": 14488945,
@@ -1075,10 +1075,10 @@
    "Grade7": 0,
    "Grade8": 0,
    "Grade8_5": 0,
-   "Grade9": 2,
+   "Grade9": 4,
    "Grade9_5": null,
    "Grade10": 1,
-   "GradeTotal": 3
+   "GradeTotal": 5
   },
   {
    "SpecID": 15036819,
@@ -1086,12 +1086,12 @@
    "CardNumber": "054",
    "Variety": "Reverse Holo",
    "Grade7": 0,
-   "Grade8": 2,
+   "Grade8": 3,
    "Grade8_5": 0,
-   "Grade9": 10,
+   "Grade9": 11,
    "Grade9_5": null,
    "Grade10": 5,
-   "GradeTotal": 17
+   "GradeTotal": 19
   },
   {
    "SpecID": 14488949,
@@ -1099,12 +1099,12 @@
    "CardNumber": "055",
    "Variety": "",
    "Grade7": 0,
-   "Grade8": 1,
+   "Grade8": 2,
    "Grade8_5": 0,
-   "Grade9": 3,
+   "Grade9": 5,
    "Grade9_5": null,
    "Grade10": 0,
-   "GradeTotal": 5
+   "GradeTotal": 8
   },
   {
    "SpecID": 14739398,
@@ -1125,12 +1125,12 @@
    "CardNumber": "056",
    "Variety": "",
    "Grade7": 4,
-   "Grade8": 24,
+   "Grade8": 30,
    "Grade8_5": 0,
-   "Grade9": 77,
+   "Grade9": 99,
    "Grade9_5": null,
    "Grade10": 22,
-   "GradeTotal": 128
+   "GradeTotal": 156
   },
   {
    "SpecID": 14810097,
@@ -1138,12 +1138,12 @@
    "CardNumber": "056",
    "Variety": "Reverse Holo",
    "Grade7": 0,
-   "Grade8": 8,
+   "Grade8": 10,
    "Grade8_5": 0,
-   "Grade9": 25,
+   "Grade9": 28,
    "Grade9_5": null,
-   "Grade10": 12,
-   "GradeTotal": 45
+   "Grade10": 13,
+   "GradeTotal": 51
   },
   {
    "SpecID": 14488951,
@@ -1166,10 +1166,10 @@
    "Grade7": 0,
    "Grade8": 1,
    "Grade8_5": 0,
-   "Grade9": 0,
+   "Grade9": 2,
    "Grade9_5": null,
-   "Grade10": 2,
-   "GradeTotal": 4
+   "Grade10": 3,
+   "GradeTotal": 7
   },
   {
    "SpecID": 14488952,
@@ -1179,23 +1179,23 @@
    "Grade7": 0,
    "Grade8": 1,
    "Grade8_5": 0,
-   "Grade9": 1,
+   "Grade9": 2,
    "Grade9_5": null,
    "Grade10": 0,
-   "GradeTotal": 2
+   "GradeTotal": 3
   },
   {
    "SpecID": 15291639,
    "SubjectName": "Ralts",
    "CardNumber": "058",
    "Variety": "Fall Collector Chest",
-   "Grade7": 5,
-   "Grade8": 25,
+   "Grade7": 6,
+   "Grade8": 27,
    "Grade8_5": 0,
-   "Grade9": 33,
+   "Grade9": 40,
    "Grade9_5": null,
    "Grade10": 0,
-   "GradeTotal": 63
+   "GradeTotal": 73
   },
   {
    "SpecID": 14810118,
@@ -1228,13 +1228,13 @@
    "SubjectName": "Kirlia",
    "CardNumber": "059",
    "Variety": "Fall Collector Chest",
-   "Grade7": 1,
-   "Grade8": 22,
+   "Grade7": 2,
+   "Grade8": 24,
    "Grade8_5": 0,
-   "Grade9": 40,
+   "Grade9": 43,
    "Grade9_5": null,
    "Grade10": 5,
-   "GradeTotal": 70
+   "GradeTotal": 76
   },
   {
    "SpecID": 15070280,
@@ -1246,21 +1246,21 @@
    "Grade8_5": 0,
    "Grade9": 2,
    "Grade9_5": null,
-   "Grade10": 1,
-   "GradeTotal": 5
+   "Grade10": 3,
+   "GradeTotal": 7
   },
   {
    "SpecID": 14488954,
    "SubjectName": "Mega Gardevoir EX",
    "CardNumber": "060",
    "Variety": "",
-   "Grade7": 8,
-   "Grade8": 72,
+   "Grade7": 15,
+   "Grade8": 98,
    "Grade8_5": 0,
-   "Grade9": 411,
+   "Grade9": 509,
    "Grade9_5": null,
-   "Grade10": 663,
-   "GradeTotal": 1167
+   "Grade10": 737,
+   "GradeTotal": 1373
   },
   {
    "SpecID": 14488955,
@@ -1333,12 +1333,12 @@
    "CardNumber": "064",
    "Variety": "",
    "Grade7": 2,
-   "Grade8": 21,
+   "Grade8": 24,
    "Grade8_5": 0,
-   "Grade9": 30,
+   "Grade9": 32,
    "Grade9_5": null,
    "Grade10": 8,
-   "GradeTotal": 61
+   "GradeTotal": 66
   },
   {
    "SpecID": 14726395,
@@ -1348,10 +1348,10 @@
    "Grade7": 1,
    "Grade8": 24,
    "Grade8_5": 2,
-   "Grade9": 96,
+   "Grade9": 105,
    "Grade9_5": null,
-   "Grade10": 63,
-   "GradeTotal": 185
+   "Grade10": 64,
+   "GradeTotal": 195
   },
   {
    "SpecID": 14645481,
@@ -1359,12 +1359,12 @@
    "CardNumber": "064",
    "Variety": "Best Buy Exclusive",
    "Grade7": 8,
-   "Grade8": 49,
+   "Grade8": 50,
    "Grade8_5": 0,
-   "Grade9": 127,
+   "Grade9": 130,
    "Grade9_5": null,
-   "Grade10": 30,
-   "GradeTotal": 219
+   "Grade10": 31,
+   "GradeTotal": 224
   },
   {
    "SpecID": 14885834,
@@ -1372,12 +1372,12 @@
    "CardNumber": "064",
    "Variety": "Reverse Holo",
    "Grade7": 0,
-   "Grade8": 3,
+   "Grade8": 4,
    "Grade8_5": 0,
    "Grade9": 7,
    "Grade9_5": null,
-   "Grade10": 4,
-   "GradeTotal": 14
+   "Grade10": 5,
+   "GradeTotal": 16
   },
   {
    "SpecID": 14488959,
@@ -1439,10 +1439,10 @@
    "Grade7": 0,
    "Grade8": 6,
    "Grade8_5": 0,
-   "Grade9": 24,
+   "Grade9": 29,
    "Grade9_5": null,
-   "Grade10": 13,
-   "GradeTotal": 43
+   "Grade10": 16,
+   "GradeTotal": 51
   },
   {
    "SpecID": 14488963,
@@ -1491,10 +1491,10 @@
    "Grade7": 0,
    "Grade8": 2,
    "Grade8_5": 0,
-   "Grade9": 2,
+   "Grade9": 3,
    "Grade9_5": null,
-   "Grade10": 0,
-   "GradeTotal": 4
+   "Grade10": 1,
+   "GradeTotal": 6
   },
   {
    "SpecID": 14488965,
@@ -1647,10 +1647,10 @@
    "Grade7": 1,
    "Grade8": 25,
    "Grade8_5": 0,
-   "Grade9": 40,
+   "Grade9": 48,
    "Grade9_5": null,
    "Grade10": 4,
-   "GradeTotal": 70
+   "GradeTotal": 79
   },
   {
    "SpecID": 14928398,
@@ -1670,13 +1670,13 @@
    "SubjectName": "Mega Lucario EX",
    "CardNumber": "077",
    "Variety": "",
-   "Grade7": 18,
-   "Grade8": 96,
+   "Grade7": 20,
+   "Grade8": 101,
    "Grade8_5": 0,
-   "Grade9": 543,
+   "Grade9": 579,
    "Grade9_5": null,
-   "Grade10": 1106,
-   "GradeTotal": 1773
+   "Grade10": 1153,
+   "GradeTotal": 1863
   },
   {
    "SpecID": 14928938,
@@ -1787,13 +1787,13 @@
    "SubjectName": "Mega Absol EX",
    "CardNumber": "086",
    "Variety": "",
-   "Grade7": 9,
-   "Grade8": 58,
+   "Grade7": 10,
+   "Grade8": 71,
    "Grade8_5": 1,
-   "Grade9": 285,
+   "Grade9": 352,
    "Grade9_5": null,
-   "Grade10": 491,
-   "GradeTotal": 850
+   "Grade10": 563,
+   "GradeTotal": 1005
   },
   {
    "SpecID": 14488981,
@@ -1816,10 +1816,10 @@
    "Grade7": 0,
    "Grade8": 5,
    "Grade8_5": 0,
-   "Grade9": 21,
+   "Grade9": 24,
    "Grade9_5": null,
    "Grade10": 7,
-   "GradeTotal": 34
+   "GradeTotal": 37
   },
   {
    "SpecID": 15022891,
@@ -1840,12 +1840,12 @@
    "CardNumber": "088",
    "Variety": "",
    "Grade7": 4,
-   "Grade8": 17,
+   "Grade8": 19,
    "Grade8_5": 0,
-   "Grade9": 32,
+   "Grade9": 33,
    "Grade9_5": null,
    "Grade10": 6,
-   "GradeTotal": 59
+   "GradeTotal": 62
   },
   {
    "SpecID": 14767297,
@@ -1855,10 +1855,10 @@
    "Grade7": 11,
    "Grade8": 21,
    "Grade8_5": 0,
-   "Grade9": 24,
+   "Grade9": 28,
    "Grade9_5": null,
    "Grade10": 2,
-   "GradeTotal": 58
+   "GradeTotal": 62
   },
   {
    "SpecID": 14974752,
@@ -1866,12 +1866,12 @@
    "CardNumber": "088",
    "Variety": "Europe Exclusive",
    "Grade7": 17,
-   "Grade8": 36,
+   "Grade8": 37,
    "Grade8_5": 0,
-   "Grade9": 29,
+   "Grade9": 30,
    "Grade9_5": null,
-   "Grade10": 1,
-   "GradeTotal": 84
+   "Grade10": 2,
+   "GradeTotal": 87
   },
   {
    "SpecID": 14645484,
@@ -1879,12 +1879,12 @@
    "CardNumber": "088",
    "Variety": "Gamestop Exclusive",
    "Grade7": 48,
-   "Grade8": 193,
+   "Grade8": 204,
    "Grade8_5": 1,
-   "Grade9": 161,
+   "Grade9": 165,
    "Grade9_5": null,
-   "Grade10": 27,
-   "GradeTotal": 438
+   "Grade10": 29,
+   "GradeTotal": 456
   },
   {
    "SpecID": 14929594,
@@ -1985,10 +1985,10 @@
    "Grade7": 1,
    "Grade8": 4,
    "Grade8_5": 0,
-   "Grade9": 21,
+   "Grade9": 23,
    "Grade9_5": null,
    "Grade10": 5,
-   "GradeTotal": 31
+   "GradeTotal": 33
   },
   {
    "SpecID": 15865848,
@@ -1998,10 +1998,10 @@
    "Grade7": 0,
    "Grade8": 6,
    "Grade8_5": 0,
-   "Grade9": 9,
+   "Grade9": 16,
    "Grade9_5": null,
-   "Grade10": 4,
-   "GradeTotal": 19
+   "Grade10": 9,
+   "GradeTotal": 31
   },
   {
    "SpecID": 14810161,
@@ -2021,13 +2021,13 @@
    "SubjectName": "Mega Mawile EX",
    "CardNumber": "094",
    "Variety": "",
-   "Grade7": 3,
-   "Grade8": 46,
+   "Grade7": 6,
+   "Grade8": 71,
    "Grade8_5": 0,
-   "Grade9": 268,
+   "Grade9": 388,
    "Grade9_5": null,
-   "Grade10": 346,
-   "GradeTotal": 675
+   "Grade10": 466,
+   "GradeTotal": 948
   },
   {
    "SpecID": 14488989,
@@ -2050,10 +2050,10 @@
    "Grade7": 0,
    "Grade8": 2,
    "Grade8_5": 0,
-   "Grade9": 6,
+   "Grade9": 7,
    "Grade9_5": null,
    "Grade10": 2,
-   "GradeTotal": 10
+   "GradeTotal": 11
   },
   {
    "SpecID": 14488990,
@@ -2076,10 +2076,10 @@
    "Grade7": 0,
    "Grade8": 0,
    "Grade8_5": 0,
-   "Grade9": 2,
+   "Grade9": 3,
    "Grade9_5": null,
    "Grade10": 0,
-   "GradeTotal": 2
+   "GradeTotal": 3
   },
   {
    "SpecID": 14488991,
@@ -2138,13 +2138,13 @@
    "SubjectName": "Mega Latias EX",
    "CardNumber": "100",
    "Variety": "",
-   "Grade7": 12,
-   "Grade8": 78,
+   "Grade7": 19,
+   "Grade8": 103,
    "Grade8_5": 0,
-   "Grade9": 472,
+   "Grade9": 595,
    "Grade9_5": null,
-   "Grade10": 855,
-   "GradeTotal": 1428
+   "Grade10": 990,
+   "GradeTotal": 1719
   },
   {
    "SpecID": 14488995,
@@ -2156,8 +2156,8 @@
    "Grade8_5": 1,
    "Grade9": 15,
    "Grade9_5": null,
-   "Grade10": 3,
-   "GradeTotal": 19
+   "Grade10": 4,
+   "GradeTotal": 20
   },
   {
    "SpecID": 14739199,
@@ -2167,10 +2167,10 @@
    "Grade7": 0,
    "Grade8": 5,
    "Grade8_5": 0,
-   "Grade9": 16,
+   "Grade9": 20,
    "Grade9_5": null,
-   "Grade10": 15,
-   "GradeTotal": 37
+   "Grade10": 17,
+   "GradeTotal": 43
   },
   {
    "SpecID": 14488996,
@@ -2217,25 +2217,25 @@
    "CardNumber": "103",
    "Variety": "Reverse Holo",
    "Grade7": 1,
-   "Grade8": 1,
+   "Grade8": 2,
    "Grade8_5": 0,
    "Grade9": 5,
    "Grade9_5": null,
    "Grade10": 2,
-   "GradeTotal": 9
+   "GradeTotal": 10
   },
   {
    "SpecID": 14488998,
    "SubjectName": "Mega Kangaskhan EX",
    "CardNumber": "104",
    "Variety": "",
-   "Grade7": 7,
-   "Grade8": 81,
+   "Grade7": 9,
+   "Grade8": 94,
    "Grade8_5": 0,
-   "Grade9": 337,
+   "Grade9": 394,
    "Grade9_5": null,
-   "Grade10": 675,
-   "GradeTotal": 1109
+   "Grade10": 745,
+   "GradeTotal": 1251
   },
   {
    "SpecID": 14957567,
@@ -2284,10 +2284,10 @@
    "Grade7": 0,
    "Grade8": 1,
    "Grade8_5": 0,
-   "Grade9": 0,
+   "Grade9": 1,
    "Grade9_5": null,
    "Grade10": 0,
-   "GradeTotal": 1
+   "GradeTotal": 2
   },
   {
    "SpecID": 14810170,
@@ -2297,10 +2297,10 @@
    "Grade7": 0,
    "Grade8": 0,
    "Grade8_5": 0,
-   "Grade9": 5,
+   "Grade9": 6,
    "Grade9_5": null,
    "Grade10": 1,
-   "GradeTotal": 6
+   "GradeTotal": 7
   },
   {
    "SpecID": 14489002,
@@ -2375,10 +2375,10 @@
    "Grade7": 1,
    "Grade8": 0,
    "Grade8_5": 0,
-   "Grade9": 4,
+   "Grade9": 5,
    "Grade9_5": null,
    "Grade10": 3,
-   "GradeTotal": 8
+   "GradeTotal": 9
   },
   {
    "SpecID": 14489005,
@@ -2528,13 +2528,13 @@
    "SubjectName": "Lillie's Determination",
    "CardNumber": "119",
    "Variety": "Regional Championships",
-   "Grade7": 1,
-   "Grade8": 6,
+   "Grade7": 2,
+   "Grade8": 8,
    "Grade8_5": 0,
    "Grade9": 12,
    "Grade9_5": null,
    "Grade10": 0,
-   "GradeTotal": 21
+   "GradeTotal": 24
   },
   {
    "SpecID": 15063132,
@@ -2544,10 +2544,10 @@
    "Grade7": 3,
    "Grade8": 1,
    "Grade8_5": 0,
-   "Grade9": 2,
+   "Grade9": 4,
    "Grade9_5": null,
    "Grade10": 1,
-   "GradeTotal": 7
+   "GradeTotal": 9
   },
   {
    "SpecID": 14631448,
@@ -2555,12 +2555,12 @@
    "CardNumber": "119",
    "Variety": "Reverse Holo",
    "Grade7": 0,
-   "Grade8": 8,
+   "Grade8": 9,
    "Grade8_5": 0,
-   "Grade9": 16,
+   "Grade9": 17,
    "Grade9_5": null,
    "Grade10": 4,
-   "GradeTotal": 28
+   "GradeTotal": 30
   },
   {
    "SpecID": 14489014,
@@ -2581,12 +2581,12 @@
    "CardNumber": "120",
    "Variety": "Reverse Holo",
    "Grade7": 0,
-   "Grade8": 0,
+   "Grade8": 1,
    "Grade8_5": 0,
    "Grade9": 2,
    "Grade9_5": null,
    "Grade10": 0,
-   "GradeTotal": 2
+   "GradeTotal": 3
   },
   {
    "SpecID": 15520956,
@@ -2598,8 +2598,8 @@
    "Grade8_5": 0,
    "Grade9": 1,
    "Grade9_5": null,
-   "Grade10": 0,
-   "GradeTotal": 1
+   "Grade10": 1,
+   "GradeTotal": 2
   },
   {
    "SpecID": 14810187,
@@ -2711,12 +2711,12 @@
    "CardNumber": "126",
    "Variety": "Reverse Holo",
    "Grade7": 0,
-   "Grade8": 1,
+   "Grade8": 2,
    "Grade8_5": 0,
    "Grade9": 1,
    "Grade9_5": null,
    "Grade10": 0,
-   "GradeTotal": 2
+   "GradeTotal": 3
   },
   {
    "SpecID": 14810197,
@@ -2776,12 +2776,12 @@
    "CardNumber": "129",
    "Variety": "Reverse Holo",
    "Grade7": 0,
-   "Grade8": 1,
+   "Grade8": 2,
    "Grade8_5": 0,
    "Grade9": 2,
    "Grade9_5": null,
    "Grade10": 0,
-   "GradeTotal": 3
+   "GradeTotal": 4
   },
   {
    "SpecID": 15246246,
@@ -2840,65 +2840,65 @@
    "SubjectName": "Wally's Compassion",
    "CardNumber": "132",
    "Variety": "Ultra Ball League-Season 4-Participation",
-   "Grade7": 0,
+   "Grade7": 1,
    "Grade8": 1,
    "Grade8_5": 0,
    "Grade9": 5,
    "Grade9_5": null,
    "Grade10": 1,
-   "GradeTotal": 7
+   "GradeTotal": 8
   },
   {
    "SpecID": 14584529,
    "SubjectName": "Bulbasaur",
    "CardNumber": "133",
    "Variety": "Enhanced Booster Box Topper",
-   "Grade7": 1353,
-   "Grade8": 8222,
-   "Grade8_5": 97,
-   "Grade9": 12792,
+   "Grade7": 1458,
+   "Grade8": 8811,
+   "Grade8_5": 99,
+   "Grade9": 13573,
    "Grade9_5": null,
-   "Grade10": 1769,
-   "GradeTotal": 24482
+   "Grade10": 1841,
+   "GradeTotal": 26051
   },
   {
    "SpecID": 14489032,
    "SubjectName": "Bulbasaur",
    "CardNumber": "133",
    "Variety": "Illustration Rare",
-   "Grade7": 130,
-   "Grade8": 796,
+   "Grade7": 136,
+   "Grade8": 835,
    "Grade8_5": 1,
-   "Grade9": 7414,
+   "Grade9": 7778,
    "Grade9_5": null,
-   "Grade10": 13008,
-   "GradeTotal": 21484
+   "Grade10": 13790,
+   "GradeTotal": 22686
   },
   {
    "SpecID": 14489033,
    "SubjectName": "Ivysaur",
    "CardNumber": "134",
    "Variety": "Illustration Rare",
-   "Grade7": 153,
-   "Grade8": 741,
+   "Grade7": 158,
+   "Grade8": 758,
    "Grade8_5": 0,
-   "Grade9": 6246,
+   "Grade9": 6508,
    "Grade9_5": null,
-   "Grade10": 11493,
-   "GradeTotal": 18739
+   "Grade10": 12055,
+   "GradeTotal": 19589
   },
   {
    "SpecID": 14489034,
    "SubjectName": "Exeggutor",
    "CardNumber": "135",
    "Variety": "Illustration Rare",
-   "Grade7": 30,
-   "Grade8": 135,
+   "Grade7": 31,
+   "Grade8": 140,
    "Grade8_5": 0,
-   "Grade9": 1351,
+   "Grade9": 1384,
    "Grade9_5": null,
-   "Grade10": 3146,
-   "GradeTotal": 4681
+   "Grade10": 3267,
+   "GradeTotal": 4843
   },
   {
    "SpecID": 14489035,
@@ -2906,38 +2906,38 @@
    "CardNumber": "136",
    "Variety": "Illustration Rare",
    "Grade7": 22,
-   "Grade8": 220,
+   "Grade8": 224,
    "Grade8_5": 0,
-   "Grade9": 2125,
+   "Grade9": 2179,
    "Grade9_5": null,
-   "Grade10": 4696,
-   "GradeTotal": 7087
+   "Grade10": 4826,
+   "GradeTotal": 7277
   },
   {
    "SpecID": 14489036,
    "SubjectName": "Ninjask",
    "CardNumber": "137",
    "Variety": "Illustration Rare",
-   "Grade7": 14,
-   "Grade8": 93,
+   "Grade7": 15,
+   "Grade8": 95,
    "Grade8_5": 0,
-   "Grade9": 650,
+   "Grade9": 663,
    "Grade9_5": null,
-   "Grade10": 1704,
-   "GradeTotal": 2475
+   "Grade10": 1741,
+   "GradeTotal": 2530
   },
   {
    "SpecID": 14489037,
    "SubjectName": "Vulpix",
    "CardNumber": "138",
    "Variety": "Illustration Rare",
-   "Grade7": 76,
-   "Grade8": 408,
+   "Grade7": 79,
+   "Grade8": 421,
    "Grade8_5": 0,
-   "Grade9": 3983,
+   "Grade9": 4119,
    "Grade9_5": null,
-   "Grade10": 8504,
-   "GradeTotal": 13086
+   "Grade10": 8860,
+   "GradeTotal": 13601
   },
   {
    "SpecID": 14489038,
@@ -2945,12 +2945,12 @@
    "CardNumber": "139",
    "Variety": "Illustration Rare",
    "Grade7": 21,
-   "Grade8": 113,
+   "Grade8": 117,
    "Grade8_5": 0,
-   "Grade9": 1262,
+   "Grade9": 1288,
    "Grade9_5": null,
-   "Grade10": 2359,
-   "GradeTotal": 3770
+   "Grade10": 2438,
+   "GradeTotal": 3880
   },
   {
    "SpecID": 14489039,
@@ -2958,12 +2958,12 @@
    "CardNumber": "140",
    "Variety": "Illustration Rare",
    "Grade7": 17,
-   "Grade8": 69,
+   "Grade8": 71,
    "Grade8_5": 0,
-   "Grade9": 603,
+   "Grade9": 614,
    "Grade9_5": null,
-   "Grade10": 1366,
-   "GradeTotal": 2072
+   "Grade10": 1400,
+   "GradeTotal": 2119
   },
   {
    "SpecID": 14489040,
@@ -2971,12 +2971,12 @@
    "CardNumber": "141",
    "Variety": "Illustration Rare",
    "Grade7": 22,
-   "Grade8": 80,
+   "Grade8": 84,
    "Grade8_5": 0,
-   "Grade9": 700,
+   "Grade9": 719,
    "Grade9_5": null,
-   "Grade10": 1557,
-   "GradeTotal": 2370
+   "Grade10": 1597,
+   "GradeTotal": 2435
   },
   {
    "SpecID": 14489041,
@@ -2984,25 +2984,25 @@
    "CardNumber": "142",
    "Variety": "Illustration Rare",
    "Grade7": 10,
-   "Grade8": 80,
+   "Grade8": 81,
    "Grade8_5": 0,
-   "Grade9": 812,
+   "Grade9": 827,
    "Grade9_5": null,
-   "Grade10": 1819,
-   "GradeTotal": 2736
+   "Grade10": 1872,
+   "GradeTotal": 2806
   },
   {
    "SpecID": 14489042,
    "SubjectName": "Helioptile",
    "CardNumber": "143",
    "Variety": "Illustration Rare",
-   "Grade7": 18,
-   "Grade8": 126,
+   "Grade7": 20,
+   "Grade8": 129,
    "Grade8_5": 0,
-   "Grade9": 1280,
+   "Grade9": 1309,
    "Grade9_5": null,
-   "Grade10": 2262,
-   "GradeTotal": 3711
+   "Grade10": 2316,
+   "GradeTotal": 3802
   },
   {
    "SpecID": 14489043,
@@ -3010,38 +3010,38 @@
    "CardNumber": "144",
    "Variety": "Illustration Rare",
    "Grade7": 15,
-   "Grade8": 78,
+   "Grade8": 81,
    "Grade8_5": 0,
-   "Grade9": 859,
+   "Grade9": 881,
    "Grade9_5": null,
-   "Grade10": 1935,
-   "GradeTotal": 2895
+   "Grade10": 1988,
+   "GradeTotal": 2973
   },
   {
    "SpecID": 14489044,
    "SubjectName": "Houndstone",
    "CardNumber": "145",
    "Variety": "Illustration Rare",
-   "Grade7": 17,
-   "Grade8": 103,
+   "Grade7": 19,
+   "Grade8": 106,
    "Grade8_5": 0,
-   "Grade9": 663,
+   "Grade9": 676,
    "Grade9_5": null,
-   "Grade10": 1530,
-   "GradeTotal": 2326
+   "Grade10": 1573,
+   "GradeTotal": 2387
   },
   {
    "SpecID": 14489045,
    "SubjectName": "Marshadow",
    "CardNumber": "146",
    "Variety": "Illustration Rare",
-   "Grade7": 213,
-   "Grade8": 743,
+   "Grade7": 225,
+   "Grade8": 766,
    "Grade8_5": 0,
-   "Grade9": 7077,
+   "Grade9": 7309,
    "Grade9_5": null,
-   "Grade10": 13856,
-   "GradeTotal": 22061
+   "Grade10": 14400,
+   "GradeTotal": 22881
   },
   {
    "SpecID": 14489046,
@@ -3049,12 +3049,12 @@
    "CardNumber": "147",
    "Variety": "Illustration Rare",
    "Grade7": 16,
-   "Grade8": 72,
+   "Grade8": 73,
    "Grade8_5": 0,
-   "Grade9": 438,
+   "Grade9": 449,
    "Grade9_5": null,
-   "Grade10": 1000,
-   "GradeTotal": 1537
+   "Grade10": 1021,
+   "GradeTotal": 1570
   },
   {
    "SpecID": 14489047,
@@ -3064,10 +3064,10 @@
    "Grade7": 14,
    "Grade8": 65,
    "Grade8_5": 0,
-   "Grade9": 588,
+   "Grade9": 605,
    "Grade9_5": null,
-   "Grade10": 1667,
-   "GradeTotal": 2353
+   "Grade10": 1723,
+   "GradeTotal": 2427
   },
   {
    "SpecID": 14489048,
@@ -3075,25 +3075,25 @@
    "CardNumber": "149",
    "Variety": "Illustration Rare",
    "Grade7": 8,
-   "Grade8": 74,
+   "Grade8": 75,
    "Grade8_5": 0,
-   "Grade9": 630,
+   "Grade9": 652,
    "Grade9_5": null,
-   "Grade10": 1524,
-   "GradeTotal": 2245
+   "Grade10": 1563,
+   "GradeTotal": 2307
   },
   {
    "SpecID": 14489049,
    "SubjectName": "Steelix",
    "CardNumber": "150",
    "Variety": "Illustration Rare",
-   "Grade7": 92,
-   "Grade8": 463,
+   "Grade7": 95,
+   "Grade8": 472,
    "Grade8_5": 1,
-   "Grade9": 3610,
+   "Grade9": 3687,
    "Grade9_5": null,
-   "Grade10": 7409,
-   "GradeTotal": 11649
+   "Grade10": 7599,
+   "GradeTotal": 11932
   },
   {
    "SpecID": 14489050,
@@ -3101,12 +3101,12 @@
    "CardNumber": "151",
    "Variety": "Illustration Rare",
    "Grade7": 31,
-   "Grade8": 157,
+   "Grade8": 159,
    "Grade8_5": 0,
-   "Grade9": 1092,
+   "Grade9": 1120,
    "Grade9_5": null,
-   "Grade10": 2538,
-   "GradeTotal": 3849
+   "Grade10": 2618,
+   "GradeTotal": 3960
   },
   {
    "SpecID": 14489051,
@@ -3114,25 +3114,25 @@
    "CardNumber": "152",
    "Variety": "Illustration Rare",
    "Grade7": 14,
-   "Grade8": 90,
+   "Grade8": 93,
    "Grade8_5": 0,
-   "Grade9": 988,
+   "Grade9": 1017,
    "Grade9_5": null,
-   "Grade10": 2153,
-   "GradeTotal": 3261
+   "Grade10": 2207,
+   "GradeTotal": 3347
   },
   {
    "SpecID": 14489052,
    "SubjectName": "Gumshoos",
    "CardNumber": "153",
    "Variety": "Illustration Rare",
-   "Grade7": 50,
-   "Grade8": 236,
+   "Grade7": 53,
+   "Grade8": 241,
    "Grade8_5": 0,
-   "Grade9": 2272,
+   "Grade9": 2319,
    "Grade9_5": null,
-   "Grade10": 4662,
-   "GradeTotal": 7251
+   "Grade10": 4778,
+   "GradeTotal": 7422
   },
   {
    "SpecID": 14489053,
@@ -3140,25 +3140,25 @@
    "CardNumber": "154",
    "Variety": "Illustration Rare",
    "Grade7": 28,
-   "Grade8": 123,
+   "Grade8": 125,
    "Grade8_5": 0,
-   "Grade9": 1363,
+   "Grade9": 1398,
    "Grade9_5": null,
-   "Grade10": 3225,
-   "GradeTotal": 4764
+   "Grade10": 3308,
+   "GradeTotal": 4884
   },
   {
    "SpecID": 14489059,
    "SubjectName": "Mega Venusaur EX",
    "CardNumber": "155",
    "Variety": "Ultra Rare",
-   "Grade7": 45,
-   "Grade8": 492,
+   "Grade7": 48,
+   "Grade8": 508,
    "Grade8_5": 0,
-   "Grade9": 3719,
+   "Grade9": 3845,
    "Grade9_5": null,
-   "Grade10": 6375,
-   "GradeTotal": 10679
+   "Grade10": 6604,
+   "GradeTotal": 11053
   },
   {
    "SpecID": 14489060,
@@ -3166,12 +3166,12 @@
    "CardNumber": "156",
    "Variety": "Ultra Rare",
    "Grade7": 6,
-   "Grade8": 65,
+   "Grade8": 66,
    "Grade8_5": 0,
-   "Grade9": 476,
+   "Grade9": 491,
    "Grade9_5": null,
-   "Grade10": 869,
-   "GradeTotal": 1419
+   "Grade10": 889,
+   "GradeTotal": 1455
   },
   {
    "SpecID": 14489061,
@@ -3179,12 +3179,12 @@
    "CardNumber": "157",
    "Variety": "Ultra Rare",
    "Grade7": 7,
-   "Grade8": 49,
+   "Grade8": 51,
    "Grade8_5": 0,
-   "Grade9": 447,
+   "Grade9": 452,
    "Grade9_5": null,
-   "Grade10": 807,
-   "GradeTotal": 1313
+   "Grade10": 817,
+   "GradeTotal": 1330
   },
   {
    "SpecID": 14489062,
@@ -3192,12 +3192,12 @@
    "CardNumber": "158",
    "Variety": "Ultra Rare",
    "Grade7": 13,
-   "Grade8": 89,
+   "Grade8": 90,
    "Grade8_5": 0,
-   "Grade9": 591,
+   "Grade9": 601,
    "Grade9_5": null,
-   "Grade10": 1026,
-   "GradeTotal": 1720
+   "Grade10": 1047,
+   "GradeTotal": 1752
   },
   {
    "SpecID": 14489063,
@@ -3205,12 +3205,12 @@
    "CardNumber": "159",
    "Variety": "Ultra Rare",
    "Grade7": 32,
-   "Grade8": 273,
+   "Grade8": 274,
    "Grade8_5": 0,
-   "Grade9": 1883,
+   "Grade9": 1923,
    "Grade9_5": null,
-   "Grade10": 3174,
-   "GradeTotal": 5388
+   "Grade10": 3232,
+   "GradeTotal": 5487
   },
   {
    "SpecID": 14489064,
@@ -3218,25 +3218,25 @@
    "CardNumber": "160",
    "Variety": "Ultra Rare",
    "Grade7": 88,
-   "Grade8": 653,
+   "Grade8": 667,
    "Grade8_5": 0,
-   "Grade9": 4417,
+   "Grade9": 4551,
    "Grade9_5": null,
-   "Grade10": 6452,
-   "GradeTotal": 11692
+   "Grade10": 6677,
+   "GradeTotal": 12071
   },
   {
    "SpecID": 14489065,
    "SubjectName": "Mega Absol EX",
    "CardNumber": "161",
    "Variety": "Ultra Rare",
-   "Grade7": 29,
-   "Grade8": 216,
+   "Grade7": 30,
+   "Grade8": 219,
    "Grade8_5": 0,
-   "Grade9": 1485,
+   "Grade9": 1509,
    "Grade9_5": null,
-   "Grade10": 2266,
-   "GradeTotal": 4015
+   "Grade10": 2305,
+   "GradeTotal": 4082
   },
   {
    "SpecID": 14489066,
@@ -3244,25 +3244,25 @@
    "CardNumber": "162",
    "Variety": "Ultra Rare",
    "Grade7": 10,
-   "Grade8": 121,
+   "Grade8": 123,
    "Grade8_5": 1,
-   "Grade9": 770,
+   "Grade9": 793,
    "Grade9_5": null,
-   "Grade10": 1245,
-   "GradeTotal": 2152
+   "Grade10": 1269,
+   "GradeTotal": 2202
   },
   {
    "SpecID": 14489067,
    "SubjectName": "Mega Latias EX",
    "CardNumber": "163",
    "Variety": "Ultra Rare",
-   "Grade7": 32,
-   "Grade8": 248,
+   "Grade7": 33,
+   "Grade8": 254,
    "Grade8_5": 1,
-   "Grade9": 2057,
+   "Grade9": 2102,
    "Grade9_5": null,
-   "Grade10": 3303,
-   "GradeTotal": 5670
+   "Grade10": 3376,
+   "GradeTotal": 5795
   },
   {
    "SpecID": 14489068,
@@ -3270,12 +3270,12 @@
    "CardNumber": "164",
    "Variety": "Ultra Rare",
    "Grade7": 15,
-   "Grade8": 143,
+   "Grade8": 147,
    "Grade8_5": 0,
-   "Grade9": 1194,
+   "Grade9": 1217,
    "Grade9_5": null,
-   "Grade10": 2086,
-   "GradeTotal": 3456
+   "Grade10": 2132,
+   "GradeTotal": 3529
   },
   {
    "SpecID": 14489069,
@@ -3285,10 +3285,10 @@
    "Grade7": 17,
    "Grade8": 126,
    "Grade8_5": 0,
-   "Grade9": 514,
+   "Grade9": 521,
    "Grade9_5": null,
-   "Grade10": 812,
-   "GradeTotal": 1484
+   "Grade10": 831,
+   "GradeTotal": 1512
   },
   {
    "SpecID": 14489070,
@@ -3300,8 +3300,8 @@
    "Grade8_5": 0,
    "Grade9": 136,
    "Grade9_5": null,
-   "Grade10": 160,
-   "GradeTotal": 339
+   "Grade10": 165,
+   "GradeTotal": 344
   },
   {
    "SpecID": 14489071,
@@ -3309,12 +3309,12 @@
    "CardNumber": "167",
    "Variety": "Ultra Rare",
    "Grade7": 3,
-   "Grade8": 18,
+   "Grade8": 20,
    "Grade8_5": 0,
    "Grade9": 132,
    "Grade9_5": null,
-   "Grade10": 145,
-   "GradeTotal": 299
+   "Grade10": 147,
+   "GradeTotal": 303
   },
   {
    "SpecID": 14489072,
@@ -3324,23 +3324,23 @@
    "Grade7": 5,
    "Grade8": 27,
    "Grade8_5": 0,
-   "Grade9": 134,
+   "Grade9": 138,
    "Grade9_5": null,
    "Grade10": 185,
-   "GradeTotal": 353
+   "GradeTotal": 357
   },
   {
    "SpecID": 14489073,
    "SubjectName": "Lillie's Determination",
    "CardNumber": "169",
    "Variety": "Ultra Rare",
-   "Grade7": 142,
-   "Grade8": 715,
+   "Grade7": 147,
+   "Grade8": 730,
    "Grade8_5": 0,
-   "Grade9": 3049,
+   "Grade9": 3125,
    "Grade9_5": null,
-   "Grade10": 3838,
-   "GradeTotal": 7838
+   "Grade10": 3944,
+   "GradeTotal": 8043
   },
   {
    "SpecID": 14489074,
@@ -3348,12 +3348,12 @@
    "CardNumber": "170",
    "Variety": "Ultra Rare",
    "Grade7": 3,
-   "Grade8": 52,
+   "Grade8": 53,
    "Grade8_5": 0,
-   "Grade9": 183,
+   "Grade9": 187,
    "Grade9_5": null,
-   "Grade10": 331,
-   "GradeTotal": 576
+   "Grade10": 342,
+   "GradeTotal": 593
   },
   {
    "SpecID": 14489075,
@@ -3363,10 +3363,10 @@
    "Grade7": 2,
    "Grade8": 26,
    "Grade8_5": 0,
-   "Grade9": 95,
+   "Grade9": 96,
    "Grade9_5": null,
    "Grade10": 124,
-   "GradeTotal": 249
+   "GradeTotal": 250
   },
   {
    "SpecID": 14489076,
@@ -3374,12 +3374,12 @@
    "CardNumber": "172",
    "Variety": "Ultra Rare",
    "Grade7": 5,
-   "Grade8": 28,
+   "Grade8": 29,
    "Grade8_5": 0,
-   "Grade9": 141,
+   "Grade9": 144,
    "Grade9_5": null,
-   "Grade10": 227,
-   "GradeTotal": 403
+   "Grade10": 228,
+   "GradeTotal": 408
   },
   {
    "SpecID": 14489077,
@@ -3387,12 +3387,12 @@
    "CardNumber": "173",
    "Variety": "Ultra Rare",
    "Grade7": 11,
-   "Grade8": 39,
+   "Grade8": 40,
    "Grade8_5": 0,
    "Grade9": 133,
    "Grade9_5": null,
-   "Grade10": 211,
-   "GradeTotal": 397
+   "Grade10": 213,
+   "GradeTotal": 400
   },
   {
    "SpecID": 14489078,
@@ -3404,8 +3404,8 @@
    "Grade8_5": 0,
    "Grade9": 100,
    "Grade9_5": null,
-   "Grade10": 128,
-   "GradeTotal": 251
+   "Grade10": 131,
+   "GradeTotal": 254
   },
   {
    "SpecID": 14489079,
@@ -3417,8 +3417,8 @@
    "Grade8_5": 0,
    "Grade9": 115,
    "Grade9_5": null,
-   "Grade10": 202,
-   "GradeTotal": 370
+   "Grade10": 209,
+   "GradeTotal": 377
   },
   {
    "SpecID": 14489080,
@@ -3428,127 +3428,127 @@
    "Grade7": 8,
    "Grade8": 42,
    "Grade8_5": 0,
-   "Grade9": 214,
+   "Grade9": 218,
    "Grade9_5": null,
-   "Grade10": 302,
-   "GradeTotal": 569
+   "Grade10": 306,
+   "GradeTotal": 577
   },
   {
    "SpecID": 14489085,
    "SubjectName": "Mega Venusaur EX",
    "CardNumber": "177",
    "Variety": "Special Illustration Rare",
-   "Grade7": 56,
-   "Grade8": 565,
+   "Grade7": 60,
+   "Grade8": 594,
    "Grade8_5": 0,
-   "Grade9": 4592,
+   "Grade9": 4796,
    "Grade9_5": null,
-   "Grade10": 9925,
-   "GradeTotal": 15218
+   "Grade10": 10486,
+   "GradeTotal": 16020
   },
   {
    "SpecID": 14489086,
    "SubjectName": "Mega Gardevoir EX",
    "CardNumber": "178",
    "Variety": "Special Illustration Rare",
-   "Grade7": 98,
-   "Grade8": 778,
+   "Grade7": 101,
+   "Grade8": 833,
    "Grade8_5": 0,
-   "Grade9": 6070,
+   "Grade9": 6397,
    "Grade9_5": null,
-   "Grade10": 11818,
-   "GradeTotal": 18850
+   "Grade10": 12547,
+   "GradeTotal": 19970
   },
   {
    "SpecID": 14489087,
    "SubjectName": "Mega Lucario EX",
    "CardNumber": "179",
    "Variety": "Special Illustration Rare",
-   "Grade7": 107,
-   "Grade8": 822,
+   "Grade7": 110,
+   "Grade8": 866,
    "Grade8_5": 0,
-   "Grade9": 6385,
+   "Grade9": 6754,
    "Grade9_5": null,
-   "Grade10": 13387,
-   "GradeTotal": 20821
+   "Grade10": 14215,
+   "GradeTotal": 22073
   },
   {
    "SpecID": 14489088,
    "SubjectName": "Mega Absol EX",
    "CardNumber": "180",
    "Variety": "Special Illustration Rare",
-   "Grade7": 52,
-   "Grade8": 433,
+   "Grade7": 53,
+   "Grade8": 452,
    "Grade8_5": 0,
-   "Grade9": 3267,
+   "Grade9": 3423,
    "Grade9_5": null,
-   "Grade10": 7728,
-   "GradeTotal": 11518
+   "Grade10": 8088,
+   "GradeTotal": 12056
   },
   {
    "SpecID": 14489089,
    "SubjectName": "Mega Latias EX",
    "CardNumber": "181",
    "Variety": "Special Illustration Rare",
-   "Grade7": 91,
-   "Grade8": 538,
+   "Grade7": 96,
+   "Grade8": 561,
    "Grade8_5": 0,
-   "Grade9": 4616,
+   "Grade9": 4854,
    "Grade9_5": null,
-   "Grade10": 10166,
-   "GradeTotal": 15505
+   "Grade10": 10734,
+   "GradeTotal": 16343
   },
   {
    "SpecID": 14489090,
    "SubjectName": "Mega Kangaskhan EX",
    "CardNumber": "182",
    "Variety": "Special Illustration Rare",
-   "Grade7": 44,
-   "Grade8": 427,
+   "Grade7": 47,
+   "Grade8": 445,
    "Grade8_5": 0,
-   "Grade9": 3476,
+   "Grade9": 3644,
    "Grade9_5": null,
-   "Grade10": 8076,
-   "GradeTotal": 12087
+   "Grade10": 8440,
+   "GradeTotal": 12643
   },
   {
    "SpecID": 14489091,
    "SubjectName": "Acerola's Mischief",
    "CardNumber": "183",
    "Variety": "Special Illustration Rare",
-   "Grade7": 81,
-   "Grade8": 425,
+   "Grade7": 83,
+   "Grade8": 439,
    "Grade8_5": 0,
-   "Grade9": 1908,
+   "Grade9": 1969,
    "Grade9_5": null,
-   "Grade10": 2891,
-   "GradeTotal": 5341
+   "Grade10": 2990,
+   "GradeTotal": 5518
   },
   {
    "SpecID": 14489092,
    "SubjectName": "Lillie's Determination",
    "CardNumber": "184",
    "Variety": "Special Illustration Rare",
-   "Grade7": 117,
-   "Grade8": 1005,
+   "Grade7": 120,
+   "Grade8": 1041,
    "Grade8_5": 0,
-   "Grade9": 4681,
+   "Grade9": 4844,
    "Grade9_5": null,
-   "Grade10": 5796,
-   "GradeTotal": 11644
+   "Grade10": 6067,
+   "GradeTotal": 12119
   },
   {
    "SpecID": 14489093,
    "SubjectName": "LT. Surge's Bargain",
    "CardNumber": "185",
    "Variety": "Special Illustration Rare",
-   "Grade7": 54,
-   "Grade8": 342,
+   "Grade7": 56,
+   "Grade8": 349,
    "Grade8_5": 1,
-   "Grade9": 1500,
+   "Grade9": 1540,
    "Grade9_5": null,
-   "Grade10": 1841,
-   "GradeTotal": 3759
+   "Grade10": 1894,
+   "GradeTotal": 3861
   },
   {
    "SpecID": 14489094,
@@ -3556,38 +3556,38 @@
    "CardNumber": "186",
    "Variety": "Special Illustration Rare",
    "Grade7": 24,
-   "Grade8": 193,
+   "Grade8": 195,
    "Grade8_5": 0,
-   "Grade9": 902,
+   "Grade9": 918,
    "Grade9_5": null,
-   "Grade10": 1245,
-   "GradeTotal": 2409
+   "Grade10": 1272,
+   "GradeTotal": 2454
   },
   {
    "SpecID": 14489096,
    "SubjectName": "Mega Gardevoir EX",
    "CardNumber": "187",
    "Variety": "Mega Hyper Rare",
-   "Grade7": 232,
-   "Grade8": 1957,
-   "Grade8_5": 5,
-   "Grade9": 4435,
+   "Grade7": 269,
+   "Grade8": 2094,
+   "Grade8_5": 6,
+   "Grade9": 4637,
    "Grade9_5": null,
-   "Grade10": 1900,
-   "GradeTotal": 8620
+   "Grade10": 1968,
+   "GradeTotal": 9066
   },
   {
    "SpecID": 14489097,
    "SubjectName": "Mega Lucario EX",
    "CardNumber": "188",
    "Variety": "Mega Hyper Rare",
-   "Grade7": 291,
-   "Grade8": 2087,
-   "Grade8_5": 5,
-   "Grade9": 5192,
+   "Grade7": 328,
+   "Grade8": 2244,
+   "Grade8_5": 6,
+   "Grade9": 5397,
    "Grade9_5": null,
-   "Grade10": 2758,
-   "GradeTotal": 10449
+   "Grade10": 2824,
+   "GradeTotal": 10918
   }
  ]
 }

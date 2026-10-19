@@ -1,5 +1,5 @@
 {
- "at": "2026-09-18T14:19:29Z",
+ "at": "2026-10-19T11:15:55Z",
  "rows": [
   {
    "SpecID": 14489320,
@@ -24,8 +24,8 @@
    "Grade8_5": 0,
    "Grade9": 2,
    "Grade9_5": null,
-   "Grade10": 3,
-   "GradeTotal": 5
+   "Grade10": 4,
+   "GradeTotal": 6
   },
   {
    "SpecID": 14489353,
@@ -76,8 +76,8 @@
    "Grade8_5": 0,
    "Grade9": 3,
    "Grade9_5": null,
-   "Grade10": 13,
-   "GradeTotal": 16
+   "Grade10": 14,
+   "GradeTotal": 17
   },
   {
    "SpecID": 14489394,
@@ -89,8 +89,8 @@
    "Grade8_5": 0,
    "Grade9": 1,
    "Grade9_5": null,
-   "Grade10": 13,
-   "GradeTotal": 14
+   "Grade10": 14,
+   "GradeTotal": 15
   },
   {
    "SpecID": 15578066,
@@ -111,12 +111,12 @@
    "CardNumber": "088",
    "Variety": "French Exclusive",
    "Grade7": 1,
-   "Grade8": 5,
+   "Grade8": 6,
    "Grade8_5": 0,
    "Grade9": 0,
    "Grade9_5": null,
    "Grade10": 1,
-   "GradeTotal": 7
+   "GradeTotal": 8
   },
   {
    "SpecID": 14489411,
@@ -165,10 +165,10 @@
    "Grade7": 2,
    "Grade8": 10,
    "Grade8_5": 0,
-   "Grade9": 46,
+   "Grade9": 47,
    "Grade9_5": null,
-   "Grade10": 7,
-   "GradeTotal": 65
+   "Grade10": 8,
+   "GradeTotal": 67
   },
   {
    "SpecID": 14489452,
@@ -180,21 +180,21 @@
    "Grade8_5": 0,
    "Grade9": 34,
    "Grade9_5": null,
-   "Grade10": 99,
-   "GradeTotal": 141
+   "Grade10": 111,
+   "GradeTotal": 153
   },
   {
    "SpecID": 14489453,
    "SubjectName": "Ivysaur",
    "CardNumber": "134",
    "Variety": "Illustration Rare",
-   "Grade7": 1,
+   "Grade7": 2,
    "Grade8": 1,
    "Grade8_5": 0,
-   "Grade9": 21,
+   "Grade9": 22,
    "Grade9_5": null,
-   "Grade10": 80,
-   "GradeTotal": 104
+   "Grade10": 87,
+   "GradeTotal": 113
   },
   {
    "SpecID": 14489454,
@@ -243,10 +243,10 @@
    "Grade7": 0,
    "Grade8": 2,
    "Grade8_5": 0,
-   "Grade9": 18,
+   "Grade9": 19,
    "Grade9_5": null,
-   "Grade10": 51,
-   "GradeTotal": 71
+   "Grade10": 55,
+   "GradeTotal": 76
   },
   {
    "SpecID": 14489458,
@@ -284,8 +284,8 @@
    "Grade8_5": 0,
    "Grade9": 1,
    "Grade9_5": null,
-   "Grade10": 8,
-   "GradeTotal": 9
+   "Grade10": 9,
+   "GradeTotal": 10
   },
   {
    "SpecID": 14489461,
@@ -349,8 +349,8 @@
    "Grade8_5": 0,
    "Grade9": 23,
    "Grade9_5": null,
-   "Grade10": 70,
-   "GradeTotal": 94
+   "Grade10": 76,
+   "GradeTotal": 100
   },
   {
    "SpecID": 14489466,
@@ -399,10 +399,10 @@
    "Grade7": 0,
    "Grade8": 1,
    "Grade8_5": 0,
-   "Grade9": 12,
+   "Grade9": 13,
    "Grade9_5": null,
-   "Grade10": 49,
-   "GradeTotal": 62
+   "Grade10": 53,
+   "GradeTotal": 67
   },
   {
    "SpecID": 14489470,
@@ -414,8 +414,8 @@
    "Grade8_5": 0,
    "Grade9": 2,
    "Grade9_5": null,
-   "Grade10": 13,
-   "GradeTotal": 15
+   "Grade10": 14,
+   "GradeTotal": 16
   },
   {
    "SpecID": 14489471,
@@ -427,8 +427,8 @@
    "Grade8_5": 0,
    "Grade9": 2,
    "Grade9_5": null,
-   "Grade10": 11,
-   "GradeTotal": 13
+   "Grade10": 12,
+   "GradeTotal": 14
   },
   {
    "SpecID": 14489472,
@@ -440,8 +440,8 @@
    "Grade8_5": 0,
    "Grade9": 2,
    "Grade9_5": null,
-   "Grade10": 12,
-   "GradeTotal": 14
+   "Grade10": 14,
+   "GradeTotal": 16
   },
   {
    "SpecID": 14489473,
@@ -453,8 +453,8 @@
    "Grade8_5": 0,
    "Grade9": 3,
    "Grade9_5": null,
-   "Grade10": 16,
-   "GradeTotal": 19
+   "Grade10": 17,
+   "GradeTotal": 20
   },
   {
    "SpecID": 14489474,
@@ -466,8 +466,8 @@
    "Grade8_5": 0,
    "Grade9": 4,
    "Grade9_5": null,
-   "Grade10": 19,
-   "GradeTotal": 24
+   "Grade10": 20,
+   "GradeTotal": 25
   },
   {
    "SpecID": 14489475,
@@ -527,12 +527,12 @@
    "CardNumber": "160",
    "Variety": "Ultra Rare",
    "Grade7": 0,
-   "Grade8": 0,
+   "Grade8": 1,
    "Grade8_5": 0,
    "Grade9": 4,
    "Grade9_5": null,
    "Grade10": 20,
-   "GradeTotal": 24
+   "GradeTotal": 25
   },
   {
    "SpecID": 14489480,
@@ -557,8 +557,8 @@
    "Grade8_5": 0,
    "Grade9": 0,
    "Grade9_5": null,
-   "Grade10": 4,
-   "GradeTotal": 5
+   "Grade10": 5,
+   "GradeTotal": 6
   },
   {
    "SpecID": 14489482,
@@ -570,8 +570,8 @@
    "Grade8_5": 0,
    "Grade9": 2,
    "Grade9_5": null,
-   "Grade10": 17,
-   "GradeTotal": 19
+   "Grade10": 18,
+   "GradeTotal": 20
   },
   {
    "SpecID": 14489483,
@@ -583,8 +583,8 @@
    "Grade8_5": 0,
    "Grade9": 1,
    "Grade9_5": null,
-   "Grade10": 7,
-   "GradeTotal": 8
+   "Grade10": 8,
+   "GradeTotal": 9
   },
   {
    "SpecID": 14489484,
@@ -596,8 +596,8 @@
    "Grade8_5": 0,
    "Grade9": 2,
    "Grade9_5": null,
-   "Grade10": 2,
-   "GradeTotal": 4
+   "Grade10": 3,
+   "GradeTotal": 5
   },
   {
    "SpecID": 14489486,
@@ -683,12 +683,12 @@
    "CardNumber": "177",
    "Variety": "Special Illustration Rare",
    "Grade7": 0,
-   "Grade8": 2,
+   "Grade8": 3,
    "Grade8_5": 0,
-   "Grade9": 14,
+   "Grade9": 16,
    "Grade9_5": null,
-   "Grade10": 92,
-   "GradeTotal": 108
+   "Grade10": 105,
+   "GradeTotal": 124
   },
   {
    "SpecID": 14489499,
@@ -698,10 +698,10 @@
    "Grade7": 0,
    "Grade8": 2,
    "Grade8_5": 0,
-   "Grade9": 28,
+   "Grade9": 30,
    "Grade9_5": null,
-   "Grade10": 112,
-   "GradeTotal": 142
+   "Grade10": 136,
+   "GradeTotal": 168
   },
   {
    "SpecID": 14489500,
@@ -709,12 +709,12 @@
    "CardNumber": "179",
    "Variety": "Special Illustration Rare",
    "Grade7": 0,
-   "Grade8": 3,
+   "Grade8": 4,
    "Grade8_5": 0,
-   "Grade9": 29,
+   "Grade9": 32,
    "Grade9_5": null,
-   "Grade10": 117,
-   "GradeTotal": 150
+   "Grade10": 128,
+   "GradeTotal": 165
   },
   {
    "SpecID": 14489501,
@@ -726,8 +726,8 @@
    "Grade8_5": 0,
    "Grade9": 18,
    "Grade9_5": null,
-   "Grade10": 73,
-   "GradeTotal": 93
+   "Grade10": 82,
+   "GradeTotal": 102
   },
   {
    "SpecID": 14489502,
@@ -735,12 +735,12 @@
    "CardNumber": "181",
    "Variety": "Special Illustration Rare",
    "Grade7": 0,
-   "Grade8": 1,
+   "Grade8": 2,
    "Grade8_5": 0,
-   "Grade9": 14,
+   "Grade9": 17,
    "Grade9_5": null,
-   "Grade10": 99,
-   "GradeTotal": 115
+   "Grade10": 111,
+   "GradeTotal": 131
   },
   {
    "SpecID": 14489503,
@@ -750,10 +750,10 @@
    "Grade7": 0,
    "Grade8": 2,
    "Grade8_5": 0,
-   "Grade9": 6,
+   "Grade9": 7,
    "Grade9_5": null,
-   "Grade10": 56,
-   "GradeTotal": 64
+   "Grade10": 60,
+   "GradeTotal": 69
   },
   {
    "SpecID": 14489504,
@@ -763,10 +763,10 @@
    "Grade7": 0,
    "Grade8": 0,
    "Grade8_5": 0,
-   "Grade9": 6,
+   "Grade9": 7,
    "Grade9_5": null,
    "Grade10": 13,
-   "GradeTotal": 19
+   "GradeTotal": 20
   },
   {
    "SpecID": 14489505,
@@ -778,8 +778,8 @@
    "Grade8_5": 0,
    "Grade9": 4,
    "Grade9_5": null,
-   "Grade10": 42,
-   "GradeTotal": 46
+   "Grade10": 45,
+   "GradeTotal": 49
   },
   {
    "SpecID": 14489506,
@@ -812,13 +812,13 @@
    "SubjectName": "Mega Gardevoir EX",
    "CardNumber": "187",
    "Variety": "Mega Hyper Rare",
-   "Grade7": 1,
-   "Grade8": 9,
+   "Grade7": 2,
+   "Grade8": 10,
    "Grade8_5": 0,
-   "Grade9": 21,
+   "Grade9": 23,
    "Grade9_5": null,
    "Grade10": 9,
-   "GradeTotal": 41
+   "GradeTotal": 45
   },
   {
    "SpecID": 14489509,
@@ -826,12 +826,12 @@
    "CardNumber": "188",
    "Variety": "Mega Hyper Rare",
    "Grade7": 1,
-   "Grade8": 15,
+   "Grade8": 18,
    "Grade8_5": 0,
-   "Grade9": 23,
+   "Grade9": 26,
    "Grade9_5": null,
    "Grade10": 11,
-   "GradeTotal": 50
+   "GradeTotal": 56
   }
  ]
 }
