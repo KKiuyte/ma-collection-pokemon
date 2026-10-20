@@ -277,6 +277,11 @@ body {
 .overlay { position:fixed; inset:0; background:rgba(20,25,40,.55); z-index:50;
   display:flex; align-items:center; justify-content:center; padding:20px; }
 .overlay[hidden] { display:none; }
+/* bandeau bouton Retour (Android) : « Appuie encore pour quitter » */
+.exit-hint { position:fixed; left:50%; bottom:22px; transform:translateX(-50%); z-index:120;
+  background:var(--navy); color:#fff; font-weight:700; font-size:13.5px; padding:11px 18px;
+  border-radius:24px; box-shadow:0 10px 30px rgba(0,0,0,.3); white-space:nowrap; pointer-events:none; }
+.exit-hint[hidden] { display:none; }
 .modal { background:var(--surface); border-radius:20px; padding:20px; width:100%; max-width:360px;
   max-height:90vh; overflow-y:auto; position:relative; box-shadow:0 20px 60px rgba(0,0,0,.3);
   animation:pop .25s ease; }
@@ -1117,6 +1122,7 @@ async function init(){
   renderValueBox();
   loadBlocks();
   loadRarities();
+  navInit();
 }
 
 // charge la liste des raretés en arrière-plan, pour remplir le menu
@@ -1227,13 +1233,16 @@ async function loadSet(id){
   $("clear").hidden = true;
   document.querySelectorAll(".chip").forEach(c => c.classList.toggle("on", c.dataset.f==="all"));
   content.innerHTML = `<div class="msg"><div class="spin"></div>Chargement des cartes…</div>`;
+  if (await fetchSetCards(id)) render();
+  else content.innerHTML = emptyMsg(ICONS.cards, "Impossible de charger cette série. Réessaie.");
+}
+// charge les cartes d'une série dans `cards` (sans toucher aux filtres ni à l'écran)
+async function fetchSetCards(id){
   try {
     const data = await (await fetch(API + "/sets/" + id)).json();
     cards = data.cards || [];
-    render();
-  } catch {
-    content.innerHTML = emptyMsg(ICONS.cards, "Impossible de charger cette série. Réessaie.");
-  }
+    return true;
+  } catch { return false; }
 }
 
 // construit un bouton-carte réutilisable
@@ -1263,7 +1272,9 @@ let openCard = null;
 let setViewCards = [];
 
 function openModal(c){
+  if (!openCard) navPush(); // ouverture : nouvelle entrée ; flèches ◀ ▶ : on reste sur la même
   openCard = c;
+  navReplace();
   const hi = c.image ? c.image + "/high.webp" : null;
   $("mImg").innerHTML = hi ? `<img src="${hi}" alt="${c.name}">` : `<div class="noimg">${c.name}</div>`;
   $("mName").textContent = c.name;
@@ -1649,7 +1660,28 @@ function renderModalBody(){
   };
 }
 
-function closeModal(){ $("overlay").hidden = true; openCard = null; }
+function closeModal(){
+  if (!$("overlay").hidden && !navApplying && history.state && history.state.modal){
+    history.back(); // la fermeture passe par l'historique : le bouton Retour et la croix font pareil
+    return;
+  }
+  $("overlay").hidden = true; openCard = null;
+  navReplace();
+}
+// fenêtre « Mon compte » : même principe que la fiche carte
+function openAccount(){
+  if ($("syncOverlay").hidden) navPush();
+  renderAccountBody();
+  setAuthStatus(currentUser ? "Synchro active." : "");
+  $("syncOverlay").hidden = false;
+  navReplace();
+}
+function closeAccount(){
+  if ($("syncOverlay").hidden) return;
+  if (!navApplying && history.state && history.state.account){ history.back(); return; }
+  $("syncOverlay").hidden = true;
+  navReplace();
+}
 
 function passFilter(c){
   if (filter === "owned") return !!owned[c.id];
@@ -1739,6 +1771,7 @@ function render(){
   document.querySelectorAll("#viewTabs .tab").forEach(t =>
     t.classList.toggle("on", t.dataset.view === view));
   syncControls();
+  navReplace();
   if (!computing) renderValueBox();
 
   // les flèches précédente/suivante de la fiche carte n'ont de sens que dans la vue "set" ;
@@ -2103,6 +2136,7 @@ function sharedSubTabBar(){
   ).join("");
   wrap.querySelectorAll(".subtab").forEach(b => b.onclick = () => {
     if (sharedSubTab === b.dataset.sub) return;
+    navPush();
     sharedSubTab = b.dataset.sub;
     renderShared();
   });
@@ -2348,6 +2382,7 @@ function rarityBreakdown(ids){
 
 // ouvre l'onglet Collection avec cette seule rareté cochée (depuis les statistiques)
 function showCollectionByRarity(name){
+  navPush();
   view = "collection";
   filter = "all";
   search = ""; searchInput.value = ""; clearBtn.hidden = true;
@@ -2478,6 +2513,7 @@ function selectSet(id){
   setInput.value = setNameById[id] || id;
   setMenu.hidden = true;
   setInput.blur();
+  navPush();
   loadSet(id);
 }
 setInput.addEventListener("focus", () => { setInput.select(); renderSetMenu(""); setMenu.hidden = false; });
@@ -2491,7 +2527,7 @@ document.addEventListener("click", (e) => { if (!e.target.closest(".combo")) set
 $("mClose").onclick = closeModal;
 $("overlay").onclick = (e) => { if (e.target === $("overlay")) closeModal(); };
 document.addEventListener("keydown", (e) => {
-  if (e.key === "Escape"){ closeModal(); $("syncOverlay").hidden = true; return; }
+  if (e.key === "Escape"){ closeModal(); closeAccount(); return; }
   if (!openCard || $("overlay").hidden) return;
   if (e.key === "ArrowLeft" && !$("mPrev").hidden) $("mPrev").click();
   else if (e.key === "ArrowRight" && !$("mNext").hidden) $("mNext").click();
@@ -2499,12 +2535,14 @@ document.addEventListener("keydown", (e) => {
 
 const searchInput = $("search"), clearBtn = $("clear");
 searchInput.addEventListener("input", (e) => {
+  if (!search && e.target.value) navPush(); // début d'une recherche = un écran de plus
   search = e.target.value;
   if (search) view = "set"; // une recherche sort des vues d'ensemble
   clearBtn.hidden = !search;
   render();
 });
 clearBtn.addEventListener("click", () => {
+  if (history.state && history.state.search){ history.back(); searchInput.focus(); return; }
   search = "";
   searchInput.value = "";
   clearBtn.hidden = true;
@@ -2516,6 +2554,7 @@ clearBtn.addEventListener("click", () => {
 document.querySelectorAll("#viewTabs .tab").forEach(tab => {
   tab.onclick = () => {
     if (view === tab.dataset.view && !search) return;
+    navPush();
     view = tab.dataset.view;
     search = ""; searchInput.value = ""; clearBtn.hidden = true;
     render();
@@ -2674,13 +2713,9 @@ function authError(e){
   return "Erreur de connexion. Réessaie.";
 }
 
-$("syncBtn").addEventListener("click", () => {
-  renderAccountBody();
-  setAuthStatus(currentUser ? "Synchro active." : "");
-  $("syncOverlay").hidden = false;
-});
-$("syncClose").addEventListener("click", () => { $("syncOverlay").hidden = true; });
-$("syncOverlay").addEventListener("click", (e) => { if (e.target === $("syncOverlay")) $("syncOverlay").hidden = true; });
+$("syncBtn").addEventListener("click", openAccount);
+$("syncClose").addEventListener("click", closeAccount);
+$("syncOverlay").addEventListener("click", (e) => { if (e.target === $("syncOverlay")) closeAccount(); });
 
 // --- thème clair / sombre ---
 // --- easter egg : appui long (1,2 s) sur la Pokéball → menu des pages expérimentales ---
@@ -2728,6 +2763,105 @@ topBtn.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smoo
 
 // réagit à la connexion / déconnexion
 onAuthStateChanged(auth, (user) => { if (user) onLogin(user); else onLogout(); });
+
+// --- Bouton Retour (Android / navigateur) : historique interne ---
+// Chaque écran (onglet, série, recherche, fiche carte, fenêtre compte, sous-onglet Partagé)
+// est une entrée dans l'historique du navigateur : le bouton Retour revient à l'écran
+// précédent au lieu de quitter l'appli. render() garde l'entrée courante à jour (replaceState),
+// les « navigations » poussent une entrée avant de changer l'état (navPush). Une entrée « garde »
+// est posée sous l'écran de départ : y arriver affiche « Appuie encore sur Retour pour quitter »
+// et laisse 2 s pour un second appui, qui sort vraiment (plus rien en dessous) ; passé ce
+// délai, l'écran courant est reposé et on reste dans l'appli.
+let navReady = false;      // vrai une fois l'écran de départ posé (fin d'init)
+let navApplying = false;   // vrai pendant qu'on rejoue un état venu de l'historique
+let navSeq = 0;            // deux appuis rapides : seul le dernier état rejoué compte
+let exitTimer = null;
+const EXIT_DELAY_MS = 2000;
+
+function navSnapshot(){
+  return { app: 1, view, setId: currentSetId, search, filter, sortBy, rarity: rarityFilter.slice(),
+           sub: sharedSubTab, modal: openCard ? openCard.id : null,
+           account: !$("syncOverlay").hidden };
+}
+function navPush(){ if (navReady && !navApplying) history.pushState(navSnapshot(), ""); }
+function navReplace(){ if (navReady) history.replaceState(navSnapshot(), ""); }
+function navInit(){
+  const st = history.state;
+  if (st && st.app && !st.guard){
+    // Rechargement de la page (ex. le service worker recharge après une mise à jour) : l'entrée
+    // courante est déjà un écran de l'appli, la garde est déjà en dessous → on reprend l'entrée
+    // en place au lieu d'empiler une 2e garde (sinon il fallait 3 appuis pour sortir).
+    history.replaceState(navSnapshot(), "");
+  } else {
+    history.replaceState({ app: 1, guard: true }, "");
+    history.pushState(navSnapshot(), "");
+  }
+  navReady = true;
+}
+// carte à rouvrir dans la fiche : d'abord ce qui est déjà chargé, sinon l'API
+async function findCard(id){
+  const local = cards.find(c => c.id === id) || (allCards || []).find(c => c.id === id);
+  if (local) return local;
+  try {
+    const d = await (await fetch(API + "/cards/" + id)).json();
+    return d && d.id ? { id: d.id, localId: d.localId, name: d.name, image: d.image } : null;
+  } catch { return null; }
+}
+// rejoue un écran venu de l'historique
+async function navApply(st){
+  const seq = ++navSeq;
+  navApplying = true;
+  try {
+    if (!st.account) closeAccount();
+    if (!st.modal && openCard) closeModal();
+    view = st.view || "set";
+    search = st.search || ""; searchInput.value = search; clearBtn.hidden = !search;
+    filter = st.filter || "all";
+    sortBy = st.sortBy || "num-asc"; $("sortSel").value = sortBy;
+    sharedSubTab = st.sub || "feed";
+    setRarityFilter(st.rarity || []);
+    if (st.setId && st.setId !== currentSetId){
+      currentSetId = st.setId;
+      setInput.value = setNameById[st.setId] || st.setId;
+      content.innerHTML = `<div class="msg"><div class="spin"></div>Chargement des cartes…</div>`;
+      const ok = await fetchSetCards(st.setId);
+      if (seq !== navSeq) return; // un autre appui est arrivé entre-temps
+      if (!ok){ content.innerHTML = emptyMsg(ICONS.cards, "Impossible de charger cette série. Réessaie."); return; }
+    }
+    render();
+    if (st.modal && (!openCard || openCard.id !== st.modal)){
+      const c = await findCard(st.modal);
+      if (seq !== navSeq) return;
+      if (c) openModal(c);
+    }
+    if (st.account && $("syncOverlay").hidden) openAccount();
+  } finally {
+    if (seq === navSeq) navApplying = false;
+  }
+}
+function showExitHint(on){
+  let el = $("exitHint");
+  if (!el){
+    el = document.createElement("div");
+    el.id = "exitHint"; el.className = "exit-hint";
+    el.textContent = "Appuie encore sur Retour pour quitter";
+    document.body.appendChild(el);
+  }
+  el.hidden = !on;
+}
+window.addEventListener("popstate", (e) => {
+  const st = e.state;
+  if (!st || !st.app) return; // entrée qui n'est pas à nous : on laisse faire le navigateur
+  if (st.guard){
+    // écran de départ atteint : on prévient, et on repose l'écran si pas de 2e appui
+    showExitHint(true);
+    clearTimeout(exitTimer);
+    exitTimer = setTimeout(() => { history.pushState(navSnapshot(), ""); showExitHint(false); }, EXIT_DELAY_MS);
+    return;
+  }
+  clearTimeout(exitTimer); showExitHint(false);
+  navApply(st);
+});
 
 init();
 </script>
