@@ -615,6 +615,21 @@ propriété intellectuelle Nintendo).
   `grid-template-areas` fait passer la barre de progression **sous** le nom, qui récupère toute
   la largeur. Toute modification de `.stat-row` / `.stat-block-summary` doit garder les deux
   jeux d'aires cohérents (desktop en ligne, mobile empilé).
+- **Filtre Rareté à choix multiples (2026-10-20)** : `rarityFilter` est un **tableau** de raretés
+  (`[]` = toutes), une carte passe si elle a l'une d'elles (OU). UI = `<details id="rarityBox">`
+  (résumé stylé `.ctrl-select` : « Toutes les raretés » / le nom / « 3 raretés ») + liste de cases
+  `#rarityList` (44 raretés dans l'API, trop pour des puces), bouton « Toutes les raretés » en tête,
+  repli au clic ailleurs. Cache `rarityCache["série|rareté"]` par couple : `rarityMissing()` /
+  `rarityReady()` / `ensureRarityIdsForSets()` (une requête `/cards?rarity=…&id=série-` par couple
+  manquant). `setRarityFilter(list)` / `resetRarityFilter()` synchronisent état + cases + résumé.
+- **Tri par prix = liste à plat (2026-10-20)** : dans `renderGrouped()` (Ma collection, recherche),
+  un tri `price-*` saute le regroupement par série et affiche une seule grille triée globalement
+  (« · classées par prix » dans l'indice) — demandé par Ariel pour voir les plus chères en premier.
+  Les autres tris gardent les sections par série (le numéro n'a de sens que dans une série).
+- **Statistiques → Collection par rareté (2026-10-20)** : chaque ligne de « Répartition par rareté »
+  est un `<button class="stat-row stat-link">` → `showCollectionByRarity(nom)` (onglet Collection,
+  puce Toutes, cette seule rareté cochée). « Rareté inconnue » reste une ligne inerte (pas
+  filtrable : ce sont les cartes dont les infos ne sont pas encore chargées).
 - **Commandes contextuelles par onglet** : `syncControls()` (appelée dans `render()`) n'affiche
   que les commandes qui **agissent réellement** sur l'onglet courant — jamais de commande visible
   mais sans effet. Deux familles distinctes dans la colonne de gauche : **Navigation** (recherche toujours
@@ -622,7 +637,7 @@ propriété intellectuelle Nintendo).
   car il montrerait sinon la progression d'une seule série sans rapport avec la vue d'ensemble ;
   l'indice `#navHint` s'affiche hors `set`) et **Filtres de la vue** (`#filterSection` : rareté + tri). Règles : les puces
   Possédées/Manquantes n'existent que sur `set` ; `collection` ne garde que Toutes + Souhaits ;
-  la rareté n'agit que sur `set` (calcul propre à la série) ; le tri sur `set` + `collection` ;
+  la rareté agit sur `set`, la recherche et `collection` ; le tri sur `set` + `collection` ;
   `stats`/`trade` masquent puces + rareté + tri (ne restent que Navigation + Valeur estimée).
   Si le `filter` courant n'est plus disponible dans la vue, `syncControls()` le ramène à `"all"`.
   ⚠️ Piège : les conteneurs masqués via l'attribut `hidden` qui ont un `display` explicite

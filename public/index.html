@@ -183,6 +183,20 @@ body {
   padding:9px 11px; border-radius:10px; border:1px solid var(--line); background:var(--field);
   -webkit-appearance:none; appearance:none; }
 .ctrl-select:focus { outline:none; border-color:var(--accent); }
+/* menu à choix multiples (rareté) : un <details> dont le résumé ressemble au sélecteur */
+.multi summary { list-style:none; cursor:pointer; display:flex; align-items:center; gap:8px; }
+.multi summary::-webkit-details-marker { display:none; }
+.multi summary span { flex:1; min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.multi summary svg { flex:none; transition:transform .15s; }
+.multi[open] summary svg { transform:rotate(180deg); }
+.multi-list { margin-top:6px; border:1px solid var(--line); border-radius:10px; background:var(--field);
+  max-height:260px; overflow-y:auto; padding:4px; }
+.multi-opt { display:flex; align-items:center; gap:9px; padding:7px 8px; border-radius:8px;
+  font-size:13px; font-weight:600; cursor:pointer; }
+.multi-opt:hover { background:var(--surface-2); }
+.multi-opt input { accent-color:var(--accent); width:16px; height:16px; margin:0; flex:none; }
+.multi-reset { font-family:inherit; font-weight:700; font-size:12px; color:var(--accent); background:none;
+  border:none; cursor:pointer; padding:7px 8px; width:100%; text-align:left; }
 
 /* --- statistiques --- */
 .stat-list { display:flex; flex-direction:column; gap:11px; margin:0 2px 22px; }
@@ -195,6 +209,11 @@ body {
 .stat-bar-track { grid-area:bar; background:var(--track); border-radius:6px; height:10px; overflow:hidden; }
 .stat-bar-fill { background:var(--accent); height:100%; border-radius:6px; min-width:3px; transition:width .4s ease; }
 .stat-bar-fill.rarity { background:var(--ink); }
+/* ligne de rareté cliquable (Statistiques) : un bouton qui garde la mise en page de .stat-row */
+.stat-row.stat-link { font-family:inherit; color:inherit; background:none; border:none; padding:6px 4px;
+  margin:-6px -4px; border-radius:10px; cursor:pointer; text-align:left; width:calc(100% + 8px); }
+.stat-row.stat-link:hover { background:var(--surface-2); }
+.stat-row.stat-link .stat-label::after { content:" ›"; color:var(--muted); }
 .stat-value { grid-area:value; font-size:12.5px; font-weight:800; color:var(--muted);
   white-space:nowrap; text-align:right; min-width:56px; }
 
@@ -490,7 +509,12 @@ body {
         <div class="ctrl-heading">Filtres de la vue</div>
         <div id="rarityField">
           <div class="ctrl-label">Raret&eacute;</div>
-          <select id="raritySel" class="ctrl-select"><option value="">Toutes les raret&eacute;s</option></select>
+          <details class="multi" id="rarityBox">
+            <summary class="ctrl-select"><span id="raritySummary">Toutes les raret&eacute;s</span>
+              <svg class="ico ico-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+            </summary>
+            <div class="multi-list" id="rarityList"></div>
+          </details>
         </div>
         <div id="sortField">
           <div class="ctrl-label">Trier</div>
@@ -621,9 +645,9 @@ let wishlist = loadWishlist(); // { idCarte: true } des cartes "à acheter"
 let cards = [];
 let filter = "all";
 let sortBy = "num-asc";   // tri courant
-let rarityFilter = "";    // "" = toutes les raretés
+let rarityFilter = [];    // raretés cochées ([] = toutes) — une carte passe si elle a L'UNE d'elles
 let rarities = [];        // liste des raretés disponibles (pour le menu)
-const rarityCache = {};   // "idSérie|rareté" -> Set d'ids (évite de re-demander)
+const rarityCache = {};   // "idSérie|rareté" -> Set d'ids (une entrée par couple, évite de re-demander)
 let search = "";
 let allCards = null;      // toutes les cartes (chargées à la 1re recherche)
 let loadingAll = false;
@@ -1105,39 +1129,66 @@ async function loadRarities(){
     // pas de raretés disponibles : le menu reste sur "Toutes"
   }
 }
+// menu Rareté : une case par rareté (choix multiples), bouton « Toutes » pour tout décocher
 function fillRaritySelect(){
-  const sel = document.getElementById("raritySel");
-  if (!sel) return;
-  const opts = ['<option value="">Toutes les raretés</option>'];
+  const box = document.getElementById("rarityList");
+  if (!box) return;
+  const esc = t => t.replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;");
+  const html = ['<button type="button" class="multi-reset" id="rarityReset">Toutes les raretés</button>'];
   rarities.forEach(r => {
     const label = typeof r === "string" ? r : (r.name || r.id || String(r));
-    opts.push(`<option value="${label}">${label}</option>`);
+    const on = rarityFilter.includes(label) ? " checked" : "";
+    html.push(`<label class="multi-opt"><input type="checkbox" value="${esc(label)}"${on}><span>${esc(label)}</span></label>`);
   });
-  sel.innerHTML = opts.join("");
-  sel.value = rarityFilter;
+  box.innerHTML = html.join("");
+  syncRaritySummary();
 }
-// clé de cache pour une série donnée + la rareté actuellement choisie
-function rarityKey(setId){ return setId + "|" + rarityFilter; }
-// une carte a-t-elle la rareté choisie ? (suppose que sa série est déjà en cache)
+// texte du résumé du menu : « Toutes les raretés », le nom seul, ou « 3 raretés »
+function syncRaritySummary(){
+  const el = document.getElementById("raritySummary");
+  if (!el) return;
+  el.textContent = !rarityFilter.length ? "Toutes les raretés"
+    : rarityFilter.length === 1 ? rarityFilter[0]
+    : rarityFilter.length + " raretés";
+}
+// applique une liste de raretés (état + cases du menu + résumé), sans re-rendre
+function setRarityFilter(list){
+  rarityFilter = list.slice();
+  document.querySelectorAll("#rarityList input").forEach(i => { i.checked = rarityFilter.includes(i.value); });
+  syncRaritySummary();
+}
+// remet le filtre à « toutes »
+function resetRarityFilter(){ setRarityFilter([]); }
+// « cette rareté » / « ces raretés » pour les messages d'écran vide
+function rarityWord(){ return rarityFilter.length > 1 ? "ces raretés" : "cette rareté"; }
+// clé de cache pour un couple série + rareté
+function rarityKey(setId, r){ return setId + "|" + r; }
+// une carte a-t-elle l'une des raretés cochées ? (suppose sa série déjà en cache)
 function cardHasRarity(c){
   const sid = c.id.slice(0, c.id.lastIndexOf("-")) || c.id;
-  const s = rarityCache[rarityKey(sid)];
-  return s ? s.has(c.id) : false;
+  return rarityFilter.some(r => { const s = rarityCache[rarityKey(sid, r)]; return s ? s.has(c.id) : false; });
 }
-// s'assure que le cache contient, pour la rareté choisie, chacune des séries données
-// (une requête par série manquante, en parallèle ; sert la vue Série comme les vues
+// couples (série, rareté cochée) pas encore en cache
+function rarityMissing(setIds){
+  const out = [];
+  for (const sid of new Set(setIds)) for (const r of rarityFilter)
+    if (!rarityCache[rarityKey(sid, r)]) out.push([sid, r]);
+  return out;
+}
+function rarityReady(setIds){ return !rarityMissing(setIds).length; }
+// s'assure que le cache contient chaque couple (série, rareté cochée) pour les séries données
+// (une requête par couple manquant, en parallèle ; sert la vue Série comme les vues
 // qui mélangent plusieurs séries : recherche globale, Ma collection)
 async function ensureRarityIdsForSets(setIds){
-  if (!rarityFilter) return;
-  const todo = [...new Set(setIds)].filter(sid => !rarityCache[rarityKey(sid)]);
+  const todo = rarityMissing(setIds);
   if (!todo.length) return;
-  await Promise.all(todo.map(async sid => {
+  await Promise.all(todo.map(async ([sid, r]) => {
     try {
-      const url = API + "/cards?rarity=" + encodeURIComponent(rarityFilter) + "&id=" + encodeURIComponent(sid) + "-";
+      const url = API + "/cards?rarity=" + encodeURIComponent(r) + "&id=" + encodeURIComponent(sid) + "-";
       const arr = await (await fetch(url)).json();
-      rarityCache[rarityKey(sid)] = new Set((Array.isArray(arr) ? arr : []).map(c => c.id));
+      rarityCache[rarityKey(sid, r)] = new Set((Array.isArray(arr) ? arr : []).map(c => c.id));
     } catch {
-      rarityCache[rarityKey(sid)] = new Set(); // en cas d'échec, on n'affiche rien plutôt que de tout montrer
+      rarityCache[rarityKey(sid, r)] = new Set(); // en cas d'échec, on n'affiche rien plutôt que de tout montrer
     }
   }));
 }
@@ -1171,8 +1222,7 @@ async function loadSet(id){
   filter = "all";
   search = "";
   view = "set";
-  rarityFilter = "";
-  const rs = $("raritySel"); if (rs) rs.value = "";
+  resetRarityFilter();
   const si = $("search"); if (si) si.value = "";
   $("clear").hidden = true;
   document.querySelectorAll(".chip").forEach(c => c.classList.toggle("on", c.dataset.f==="all"));
@@ -1706,8 +1756,8 @@ function render(){
 // affichage normal : une seule série
 async function renderSet(){
   let list = cards.filter(passFilter);
-  if (rarityFilter){
-    if (!rarityCache[rarityKey(currentSetId)]){
+  if (rarityFilter.length){
+    if (!rarityReady([currentSetId])){
       content.innerHTML = `<div class="msg"><div class="spin"></div>Filtrage par rareté…</div>`;
       await ensureRarityIdsForSets([currentSetId]);
       if (view === "set" && !search) renderSet();
@@ -1724,7 +1774,7 @@ async function renderSet(){
   const shown = sortCards(list);
   setViewCards = shown; // pour les flèches précédente/suivante de la fiche carte
   if (!shown.length){
-    const m = rarityFilter ? "Aucune carte de cette rareté dans cette série (avec ce filtre)."
+    const m = rarityFilter.length ? `Aucune carte de ${rarityWord()} dans cette série (avec ce filtre).`
       : filter==="missing" ? "Bravo, tu as toutes les cartes de cette série !"
       : filter==="owned" ? "Aucune carte de cette série pour l'instant. Touche une carte pour l'ajouter."
       : filter==="wishlist" ? "Aucune carte de cette série dans ta liste de souhaits."
@@ -1746,6 +1796,28 @@ function distinctSetIds(list){
 
 // affichage groupé par série (réutilisé par la recherche et la vue collection)
 function renderGrouped(list, hintText){
+  // Tri par prix : le regroupement par série n'a plus de sens (on veut voir les plus chères
+  // en premier, toutes séries confondues) → une seule grille, triée globalement.
+  if (sortBy.startsWith("price")){
+    const CAP = 500;
+    const shown = sortCards(list);
+    content.innerHTML = "";
+    const hint = document.createElement("p");
+    hint.className = "hint";
+    hint.textContent = hintText(list.length, distinctSetIds(list).length) + " · classées par prix";
+    content.appendChild(hint);
+    const grid = document.createElement("div");
+    grid.className = "grid";
+    shown.slice(0, CAP).forEach(c => grid.appendChild(cardButton(c)));
+    content.appendChild(grid);
+    if (shown.length > CAP){
+      const note = document.createElement("p");
+      note.className = "hint";
+      note.textContent = "Affichage limité à 500 cartes. Utilise la recherche pour cibler.";
+      content.appendChild(note);
+    }
+    return;
+  }
   const groups = {};
   for (const c of list){
     const sid = c.id.slice(0, c.id.lastIndexOf("-")) || c.id;
@@ -1799,17 +1871,17 @@ async function renderSearch(){
     return;
   }
   let shown = results;
-  if (rarityFilter){
-    const missing = distinctSetIds(results).filter(sid => !rarityCache[rarityKey(sid)]);
-    if (missing.length){
+  if (rarityFilter.length){
+    const sets = distinctSetIds(results);
+    if (!rarityReady(sets)){
       content.innerHTML = `<div class="msg"><div class="spin"></div>Filtrage par rareté…</div>`;
-      await ensureRarityIdsForSets(missing);
+      await ensureRarityIdsForSets(sets);
       if (search) renderSearch();
       return;
     }
     shown = results.filter(cardHasRarity);
     if (!shown.length){
-      content.innerHTML = emptyMsg(ICONS.search, "Aucune carte de cette rareté ne correspond à ta recherche.");
+      content.innerHTML = emptyMsg(ICONS.search, `Aucune carte de ${rarityWord()} ne correspond à ta recherche.`);
       return;
     }
   }
@@ -1840,18 +1912,18 @@ async function renderCollection(){
     return;
   }
   let results = allCards.filter(c => source[c.id]);
-  if (rarityFilter){
-    const missing = distinctSetIds(results).filter(sid => !rarityCache[rarityKey(sid)]);
-    if (missing.length){
+  if (rarityFilter.length){
+    const sets = distinctSetIds(results);
+    if (!rarityReady(sets)){
       content.innerHTML = `<div class="msg"><div class="spin"></div>Filtrage par rareté…</div>`;
-      await ensureRarityIdsForSets(missing);
+      await ensureRarityIdsForSets(sets);
       if (allCards && view === "collection") renderCollection();
       return;
     }
     results = results.filter(cardHasRarity);
     if (!results.length){
       content.innerHTML = emptyMsg(wish ? ICONS.heart : ICONS.cards,
-        "Aucune carte de cette rareté" + (wish ? " dans ta liste de souhaits." : " dans ta collection."));
+        `Aucune carte de ${rarityWord()}` + (wish ? " dans ta liste de souhaits." : " dans ta collection."));
       return;
     }
   }
@@ -2274,6 +2346,16 @@ function rarityBreakdown(ids){
   return Object.entries(counts).sort((a, b) => b[1] - a[1]);
 }
 
+// ouvre l'onglet Collection avec cette seule rareté cochée (depuis les statistiques)
+function showCollectionByRarity(name){
+  view = "collection";
+  filter = "all";
+  search = ""; searchInput.value = ""; clearBtn.hidden = true;
+  setRarityFilter([name]);
+  render();
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
 function renderStatsContent(ids){
   content.innerHTML = "";
 
@@ -2330,6 +2412,10 @@ function renderStatsContent(ids){
   rarityHead.className = "section-head";
   rarityHead.innerHTML = `<span>Répartition par rareté</span>`;
   content.appendChild(rarityHead);
+  const rarityHint = document.createElement("p");
+  rarityHint.className = "hint";
+  rarityHint.textContent = "Touche une rareté pour voir ces cartes dans « Ma collection ».";
+  content.appendChild(rarityHint);
 
   const rarityStats = rarityBreakdown(ids);
   const rarityList = document.createElement("div");
@@ -2337,8 +2423,15 @@ function renderStatsContent(ids){
   const maxCount = Math.max(...rarityStats.map(([, n]) => n), 1);
   rarityStats.forEach(([name, count]) => {
     const pct = Math.round(count / maxCount * 100);
-    const row = document.createElement("div");
-    row.className = "stat-row";
+    // « Rareté inconnue » (infos de carte pas encore chargées) n'est pas filtrable → simple ligne
+    const known = name !== "Rareté inconnue";
+    const row = document.createElement(known ? "button" : "div");
+    row.className = "stat-row" + (known ? " stat-link" : "");
+    if (known){
+      row.type = "button";
+      row.title = "Voir mes cartes « " + name + " »";
+      row.onclick = () => showCollectionByRarity(name);
+    }
     row.innerHTML =
       `<div class="stat-label">${name}</div>
        <div class="stat-bar-track"><div class="stat-bar-fill rarity" style="width:${pct}%"></div></div>
@@ -2439,9 +2532,23 @@ document.querySelectorAll(".chip").forEach(chip => {
 
 $("sortSel").addEventListener("change", (e) => { sortBy = e.target.value; render(); });
 
-$("raritySel").addEventListener("change", (e) => {
-  rarityFilter = e.target.value; // le préchargement (si besoin) est géré par chaque vue au rendu
+// menu Rareté : chaque case cochée/décochée re-rend tout de suite (le préchargement, si
+// besoin, est géré par chaque vue au rendu) ; « Toutes les raretés » décoche tout
+$("rarityList").addEventListener("change", () => {
+  rarityFilter = [...document.querySelectorAll("#rarityList input:checked")].map(i => i.value);
+  syncRaritySummary();
   render();
+});
+$("rarityList").addEventListener("click", (e) => {
+  if (e.target.id !== "rarityReset") return;
+  if (!rarityFilter.length){ $("rarityBox").open = false; return; }
+  resetRarityFilter();
+  render();
+});
+// le menu se replie quand on touche ailleurs
+document.addEventListener("click", (e) => {
+  const box = $("rarityBox");
+  if (box && box.open && !box.contains(e.target)) box.open = false;
 });
 
 // --- fenêtre "Mon compte" (connexion) ---
