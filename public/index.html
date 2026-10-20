@@ -249,6 +249,16 @@ body {
 .qtybadge { position:absolute; top:-6px; left:-6px; min-width:20px; height:20px; padding:0 5px;
   background:var(--navy); color:#fff; border-radius:10px; display:grid; place-items:center;
   font-weight:800; font-size:10.5px; box-shadow:0 2px 5px rgba(0,0,0,.2); }
+.langbadge { position:absolute; bottom:5px; right:5px; background:rgba(28,35,51,.82); color:#fff; font-size:9px;
+  font-weight:900; letter-spacing:.05em; padding:2px 5px; border-radius:6px; pointer-events:none; }
+/* image + badge dans la même cellule d'une grille en ligne : le badge colle à l'image réelle */
+/* la largeur du conteneur borne l'image (54 % ou l'équivalent de 31vh de haut pour une carte 63×88),
+   l'image n'a plus de max-height propre : la cellule fait donc exactement la taille de l'image */
+.modal-pic { display:inline-grid; max-width:min(54%, calc(31vh * 63 / 88)); vertical-align:top; }
+.modal-pic > * { grid-area:1 / 1; }
+.modal-img .modal-pic img { max-width:100%; max-height:none; }
+.modal-pic .langbadge { position:static; justify-self:end; align-self:end; margin:0 8px 10px 0;
+  font-size:10.5px; padding:3px 7px; }
 .num { position:absolute; bottom:5px; left:5px; font-size:10px; font-weight:800; color:#fff;
   background:rgba(26,29,41,.8); padding:1px 6px; border-radius:6px;
   font-family:ui-monospace,Menlo,monospace; }
@@ -1218,7 +1228,9 @@ async function loadBlocks(){
     blocks = built;
     blocksReady = true;
     if (!setMenu.hidden) renderSetMenu(""); // rafraîchit le menu s'il est ouvert
-    if (view === "stats") render(); // les blocs viennent d'arriver : la vue statistiques peut se compléter
+    // les blocs viennent d'arriver : la vue statistiques peut se compléter, et les cartes sans
+    // photo FR peuvent maintenant tenter la photo EN (adresse construite avec le bloc)
+    if (view === "stats" || cards.some(c => !c.image)) render();
   } catch {
     // en cas d'échec, on garde le sélecteur "à plat"
   }
@@ -1245,6 +1257,29 @@ async function fetchSetCards(id){
   } catch { return false; }
 }
 
+// --- photo d'une carte : française, sinon anglaise (2026-10-20, demande d'Ariel) ---
+// Mesuré sur l'API : 3 826 cartes FR sur 22 155 n'ont pas de photo ; pour 2 186 d'entre elles la
+// version anglaise existe, toujours à la même adresse avec /en/ (vérifié sur les 18 288 cartes
+// qui ont les deux) : assets.tcgdex.net/en/{bloc}/{série}/{numéro}. Le bloc vient de
+// setBlockById (rempli en arrière-plan par loadBlocks, qui re-rend l'écran à son arrivée).
+// Pour les ~1 640 restantes, l'adresse anglaise répond 404 → `onerror` remet le cadre vide.
+const ASSETS_EN = "https://assets.tcgdex.net/en/";
+function cardImage(c){
+  if (c.image) return { base: c.image, en: false };
+  const sid = c.id.slice(0, c.id.lastIndexOf("-")) || c.id;
+  const block = setBlockById[sid];
+  if (!block || c.localId == null) return null;
+  return { base: ASSETS_EN + block + "/" + sid + "/" + c.localId, en: true };
+}
+function cardImgUrl(c, size){ const im = cardImage(c); return im ? im.base + "/" + size + ".webp" : null; }
+function noimgEl(name){ const d = document.createElement("div"); d.className = "noimg"; d.textContent = name; return d; }
+// si la photo anglaise n'existe pas non plus : cadre vide, sans badge
+function fallbackOnError(container, name){
+  const img = container.querySelector("img");
+  if (!img) return;
+  img.onerror = () => { img.replaceWith(noimgEl(name)); const b = container.querySelector(".langbadge"); if (b) b.remove(); };
+}
+
 // construit un bouton-carte réutilisable
 function cardButton(c){
   const rec = owned[c.id];
@@ -1253,13 +1288,15 @@ function cardButton(c){
   const b = document.createElement("button");
   b.className = "slot" + (has ? " owned" : (wish ? " wish" : ""));
   b.title = c.name;
-  const img = c.image ? c.image + "/low.webp" : null;
+  const im = cardImage(c);
   b.innerHTML =
-    (img ? `<img src="${img}" alt="${c.name}" loading="lazy">` : `<div class="noimg">${c.name}</div>`)
+    (im ? `<img src="${im.base}/low.webp" alt="${c.name}" loading="lazy">` : `<div class="noimg">${c.name}</div>`)
+    + (im && im.en ? `<span class="langbadge" title="Photo de la version anglaise">EN</span>` : ``)
     + (has ? `<span class="check">✓</span>` : ``)
     + (!has && wish ? `<span class="wishbadge">♥</span>` : ``)
     + (has && cardQty(rec) > 1 ? `<span class="qtybadge">×${cardQty(rec)}</span>` : ``)
     + `<span class="num">${c.localId}</span>`;
+  if (im && im.en) fallbackOnError(b, c.name);
   b.onclick = () => openModal(c);
   return b;
 }
@@ -1275,8 +1312,11 @@ function openModal(c){
   if (!openCard) navPush(); // ouverture : nouvelle entrée ; flèches ◀ ▶ : on reste sur la même
   openCard = c;
   navReplace();
-  const hi = c.image ? c.image + "/high.webp" : null;
-  $("mImg").innerHTML = hi ? `<img src="${hi}" alt="${c.name}">` : `<div class="noimg">${c.name}</div>`;
+  const im = cardImage(c);
+  $("mImg").innerHTML = im
+    ? `<span class="modal-pic"><img src="${im.base}/high.webp" alt="${c.name}">` + (im.en ? `<span class="langbadge" title="Photo de la version anglaise">EN</span>` : ``) + `</span>`
+    : `<div class="noimg">${c.name}</div>`;
+  if (im && im.en) fallbackOnError($("mImg"), c.name);
   $("mName").textContent = c.name;
   updateModalMeta();
   renderModalBody();
@@ -2032,7 +2072,7 @@ async function renderTrade(){
       row.type = "button";
       row.className = "trade-row";
       row.innerHTML =
-        (card.image ? `<img src="${card.image}/low.webp" alt="">` : `<div class="noimg" style="width:38px;height:53px;border-radius:6px;"></div>`)
+        (cardImgUrl(card, "low") ? `<img src="${cardImgUrl(card, "low")}" alt="">` : `<div class="noimg" style="width:38px;height:53px;border-radius:6px;"></div>`)
         + `<div class="trade-info">
              <div class="trade-name">${card.name}</div>
              <div class="trade-version">${e.version} · n° ${card.localId}</div>
@@ -2073,7 +2113,7 @@ function tradeRow(card, versionLabel, extra, badgeText, tier){
   row.type = "button";
   row.className = "trade-row";
   row.innerHTML =
-    (card.image ? `<img src="${card.image}/low.webp" alt="">` : `<div class="noimg" style="width:38px;height:53px;border-radius:6px;"></div>`)
+    (cardImgUrl(card, "low") ? `<img src="${cardImgUrl(card, "low")}" alt="">` : `<div class="noimg" style="width:38px;height:53px;border-radius:6px;"></div>`)
     + `<div class="trade-info">
          <div class="trade-name">${esc(card.name)}</div>
          <div class="trade-version">${esc(versionLabel)} · n° ${esc(card.localId)}${tier ? ` · <span class="trade-tier">${esc(tier)}</span>` : ""}</div>

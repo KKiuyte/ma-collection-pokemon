@@ -220,7 +220,7 @@ wishlist[idCarte] = true
    la dernière règle gagne. Une media-query placée avant la règle de base `.grid` était
    silencieusement écrasée → le responsive ne s'appliquait pas. Toute règle responsive
    va après les règles de base.
-2. **PWA : incrémenter `VERSION` dans `public/sw.js` à CHAQUE déploiement** (`"v3"` → `"v4"`…).
+2. **PWA : incrémenter `VERSION` dans `public/sw.js` à CHAQUE déploiement** (`"v3"` → `"v4"`…, v33 le 2026-10-20).
    Sinon l'ancienne version reste en cache chez les utilisateurs. Un bandeau
    « Nouvelle version disponible » gère la bascule côté client.
 3. **Service worker et navigation** : ne PAS renvoyer `index.html` pour toute navigation
@@ -630,6 +630,30 @@ propriété intellectuelle Nintendo).
   est un `<button class="stat-row stat-link">` → `showCollectionByRarity(nom)` (onglet Collection,
   puce Toutes, cette seule rareté cochée). « Rareté inconnue » reste une ligne inerte (pas
   filtrable : ce sont les cartes dont les infos ne sont pas encore chargées).
+- **Bouton Retour Android (2026-10-20)** : l'appli vit dans l'historique du navigateur. Chaque
+  écran (onglet, série, début de recherche, fiche carte, fenêtre compte, sous-onglet Partagé) est
+  une entrée (`navPush()` AVANT de changer l'état) ; `render()` garde l'entrée courante à jour
+  (`navReplace()` = `history.replaceState(navSnapshot())`). `popstate` → `navApply(st)` rejoue
+  l'écran (ferme fiche/compte, rétablit vue, série — via `fetchSetCards()`, recherche, filtres, tri,
+  raretés ; rouvre la fiche via `findCard()`). Fermer la fiche ou la fenêtre compte par la croix
+  fait `history.back()` (même chemin que le bouton Retour) ; les flèches ◀ ▶ de la fiche
+  **remplacent** l'entrée. Entrée **garde** `{app:1, guard:true}` posée sous l'écran de départ par
+  `navInit()` : y arriver affiche « Appuie encore sur Retour pour quitter » 2 s, puis repose
+  l'écran ; un 2e appui dans les 2 s quitte vraiment. ⚠️ Piège vécu : au 1er chargement le
+  service worker recharge la page (`controllerchange`) → `navInit()` repose une garde par-dessus
+  l'ancienne, il fallait 3 appuis ; d'où le test `history.state.app` : lors d'un rechargement on
+  reprend l'entrée en place. Testé en headless (18 scénarios, `scratchpad/back.py`), pas encore
+  sur le téléphone d'Ariel.
+- **Photo anglaise si la française manque (2026-10-20)** : `cardImage(c)` → `{base, en}` ;
+  `cardImgUrl(c, size)`. Adresse EN = `assets.tcgdex.net/en/{bloc}/{série}/{localId}` (bloc via
+  `setBlockById`, rempli par `loadBlocks()` qui re-rend la vue Série si des cartes n'ont pas de
+  photo FR). Vérifié sur l'API le 2026-10-20 : motif exact pour 20 886/20 886 cartes EN ;
+  3 826 cartes FR sans photo, 2 186 récupérables ainsi, ~1 640 sans rien (404 → `fallbackOnError`
+  remet `.noimg` et retire le badge). Badge `.langbadge` « EN » en bas à droite de la vignette et
+  sur l'image de la fiche (`.modal-pic`, grille en ligne image + badge dans la même cellule ; la
+  largeur est bornée par le conteneur, pas par un max-height sur l'image, sinon la cellule est
+  plus large que l'image). Utilisé par la grille, la fiche, les lignes Échange et Partagé ;
+  `scan.html` n'est pas concerné.
 - **Commandes contextuelles par onglet** : `syncControls()` (appelée dans `render()`) n'affiche
   que les commandes qui **agissent réellement** sur l'onglet courant — jamais de commande visible
   mais sans effet. Deux familles distinctes dans la colonne de gauche : **Navigation** (recherche toujours
