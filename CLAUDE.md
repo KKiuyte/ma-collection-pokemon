@@ -78,6 +78,13 @@ git add public/catalogue-fr.json && git commit && git push   # déploie
 
 ## Infrastructure en ligne
 
+- **Dépôt GitHub `KKiuyte/ma-collection-pokemon` : PUBLIC depuis le 2026-10-20** (choix d'Ariel).
+  Raison : en privé, les workflows (scraper toutes les 3 h ≈ 23 min/passage, ≈ 90 min/jour)
+  consommaient les 2 000 min/mois gratuites en ~20 jours (alerte 90 % le 2026-10-19) ; en
+  public, les minutes Actions sur runners standard sont gratuites et illimitées. Conséquence :
+  **tout ce qui est committé ou affiché dans les logs est lisible par n'importe qui** — jamais
+  d'identifiant, de jeton ni de cookie dans le dépôt, les scripts ou les traces (l'historique a
+  été vérifié propre avant la bascule : seuls des e-mails de contact y figurent).
 - **Hébergement** : Firebase Hosting → https://ma-collection-pokemon.web.app/
 - **Projet Firebase** : `ma-collection-pokemon`
   - apiKey `AIzaSyCiGgrj28Jrqn8jEGM9pWFsVhnfs-VKyiU` (clé publique, non secrète)
