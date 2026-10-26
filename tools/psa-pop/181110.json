@@ -1,5 +1,5 @@
 {
- "at": "2026-09-25T10:34:41Z",
+ "at": "2026-10-26T11:33:01Z",
  "rows": [
   {
    "SpecID": 3817571,
@@ -9,10 +9,10 @@
    "Grade7": 10,
    "Grade8": 76,
    "Grade8_5": 0,
-   "Grade9": 803,
+   "Grade9": 805,
    "Grade9_5": null,
-   "Grade10": 1344,
-   "GradeTotal": 2240
+   "Grade10": 1345,
+   "GradeTotal": 2244
   },
   {
    "SpecID": 5162686,
@@ -165,10 +165,10 @@
    "Grade7": 5,
    "Grade8": 35,
    "Grade8_5": 0,
-   "Grade9": 296,
+   "Grade9": 298,
    "Grade9_5": null,
    "Grade10": 477,
-   "GradeTotal": 815
+   "GradeTotal": 817
   },
   {
    "SpecID": 5162701,
@@ -295,10 +295,10 @@
    "Grade7": 4,
    "Grade8": 33,
    "Grade8_5": 0,
-   "Grade9": 243,
+   "Grade9": 245,
    "Grade9_5": null,
    "Grade10": 414,
-   "GradeTotal": 699
+   "GradeTotal": 701
   },
   {
    "SpecID": 3817541,
@@ -308,10 +308,10 @@
    "Grade7": 12,
    "Grade8": 67,
    "Grade8_5": 0,
-   "Grade9": 476,
+   "Grade9": 477,
    "Grade9_5": null,
    "Grade10": 1628,
-   "GradeTotal": 2191
+   "GradeTotal": 2192
   },
   {
    "SpecID": 5163806,
@@ -373,10 +373,10 @@
    "Grade7": 19,
    "Grade8": 70,
    "Grade8_5": 0,
-   "Grade9": 692,
+   "Grade9": 695,
    "Grade9_5": null,
-   "Grade10": 2458,
-   "GradeTotal": 3248
+   "Grade10": 2469,
+   "GradeTotal": 3262
   },
   {
    "SpecID": 5163808,
@@ -539,13 +539,13 @@
    "SubjectName": "Alcremie V",
    "CardNumber": "022",
    "Variety": "",
-   "Grade7": 5,
+   "Grade7": 6,
    "Grade8": 26,
    "Grade8_5": 0,
    "Grade9": 251,
    "Grade9_5": null,
    "Grade10": 447,
-   "GradeTotal": 731
+   "GradeTotal": 732
   },
   {
    "SpecID": 3986950,
@@ -555,10 +555,10 @@
    "Grade7": 4,
    "Grade8": 36,
    "Grade8_5": 0,
-   "Grade9": 438,
+   "Grade9": 439,
    "Grade9_5": null,
-   "Grade10": 1870,
-   "GradeTotal": 2360
+   "Grade10": 1874,
+   "GradeTotal": 2365
   },
   {
    "SpecID": 5163644,
@@ -609,8 +609,8 @@
    "Grade8_5": 0,
    "Grade9": 12,
    "Grade9_5": null,
-   "Grade10": 14,
-   "GradeTotal": 30
+   "Grade10": 15,
+   "GradeTotal": 31
   },
   {
    "SpecID": 5162729,
@@ -646,23 +646,23 @@
    "Grade7": 8,
    "Grade8": 40,
    "Grade8_5": 0,
-   "Grade9": 285,
+   "Grade9": 289,
    "Grade9_5": null,
    "Grade10": 295,
-   "GradeTotal": 630
+   "GradeTotal": 634
   },
   {
    "SpecID": 4008173,
    "SubjectName": "Lucario V",
    "CardNumber": "027",
    "Variety": "",
-   "Grade7": 5,
-   "Grade8": 52,
+   "Grade7": 6,
+   "Grade8": 55,
    "Grade8_5": 0,
-   "Grade9": 501,
+   "Grade9": 505,
    "Grade9_5": null,
-   "Grade10": 734,
-   "GradeTotal": 1303
+   "Grade10": 737,
+   "GradeTotal": 1315
   },
   {
    "SpecID": 4961973,
@@ -906,10 +906,10 @@
    "Grade7": 0,
    "Grade8": 17,
    "Grade8_5": 0,
-   "Grade9": 125,
+   "Grade9": 126,
    "Grade9_5": null,
    "Grade10": 150,
-   "GradeTotal": 294
+   "GradeTotal": 295
   },
   {
    "SpecID": 5162764,
@@ -1155,8 +1155,8 @@
    "Grade8_5": 0,
    "Grade9": 243,
    "Grade9_5": null,
-   "Grade10": 441,
-   "GradeTotal": 728
+   "Grade10": 442,
+   "GradeTotal": 729
   },
   {
    "SpecID": 4963251,
@@ -1777,10 +1777,10 @@
    "Grade7": 14,
    "Grade8": 103,
    "Grade8_5": 0,
-   "Grade9": 703,
+   "Grade9": 706,
    "Grade9_5": null,
-   "Grade10": 1714,
-   "GradeTotal": 2550
+   "Grade10": 1716,
+   "GradeTotal": 2555
   },
   {
    "SpecID": 5163906,
@@ -1855,10 +1855,10 @@
    "Grade7": 7,
    "Grade8": 46,
    "Grade8_5": 0,
-   "Grade9": 394,
+   "Grade9": 395,
    "Grade9_5": null,
    "Grade10": 1021,
-   "GradeTotal": 1470
+   "GradeTotal": 1471
   },
   {
    "SpecID": 5164322,
@@ -1894,10 +1894,10 @@
    "Grade7": 20,
    "Grade8": 178,
    "Grade8_5": 0,
-   "Grade9": 1006,
+   "Grade9": 1008,
    "Grade9_5": null,
-   "Grade10": 1750,
-   "GradeTotal": 2969
+   "Grade10": 1751,
+   "GradeTotal": 2972
   },
   {
    "SpecID": 5164323,
@@ -1918,12 +1918,12 @@
    "CardNumber": "074",
    "Variety": "Italian-Secret",
    "Grade7": 1,
-   "Grade8": 14,
+   "Grade8": 15,
    "Grade8_5": 0,
    "Grade9": 40,
    "Grade9_5": null,
    "Grade10": 121,
-   "GradeTotal": 178
+   "GradeTotal": 179
   },
   {
    "SpecID": 5164571,
@@ -1943,13 +1943,13 @@
    "SubjectName": "Full Art/Charizard Vmax",
    "CardNumber": "074",
    "Variety": "Secret",
-   "Grade7": 203,
-   "Grade8": 1079,
+   "Grade7": 204,
+   "Grade8": 1100,
    "Grade8_5": 7,
-   "Grade9": 7624,
+   "Grade9": 7686,
    "Grade9_5": null,
-   "Grade10": 20855,
-   "GradeTotal": 30010
+   "Grade10": 20948,
+   "GradeTotal": 30190
   },
   {
    "SpecID": 5163602,
@@ -1974,8 +1974,8 @@
    "Grade8_5": 0,
    "Grade9": 66,
    "Grade9_5": null,
-   "Grade10": 99,
-   "GradeTotal": 176
+   "Grade10": 101,
+   "GradeTotal": 178
   },
   {
    "SpecID": 4558225,
@@ -1987,8 +1987,8 @@
    "Grade8_5": 0,
    "Grade9": 23,
    "Grade9_5": null,
-   "Grade10": 192,
-   "GradeTotal": 222
+   "Grade10": 194,
+   "GradeTotal": 224
   },
   {
    "SpecID": 3700082,
@@ -1998,10 +1998,10 @@
    "Grade7": 15,
    "Grade8": 113,
    "Grade8_5": 0,
-   "Grade9": 780,
+   "Grade9": 782,
    "Grade9_5": null,
-   "Grade10": 2115,
-   "GradeTotal": 3036
+   "Grade10": 2116,
+   "GradeTotal": 3039
   },
   {
    "SpecID": 5164325,
@@ -2061,12 +2061,12 @@
    "CardNumber": "076",
    "Variety": "Secret",
    "Grade7": 22,
-   "Grade8": 126,
+   "Grade8": 127,
    "Grade8_5": 1,
-   "Grade9": 1108,
+   "Grade9": 1111,
    "Grade9_5": null,
-   "Grade10": 3220,
-   "GradeTotal": 4499
+   "Grade10": 3230,
+   "GradeTotal": 4513
   },
   {
    "SpecID": 5164326,
@@ -2102,10 +2102,10 @@
    "Grade7": 13,
    "Grade8": 122,
    "Grade8_5": 0,
-   "Grade9": 773,
+   "Grade9": 774,
    "Grade9_5": null,
    "Grade10": 1562,
-   "GradeTotal": 2480
+   "GradeTotal": 2481
   },
   {
    "SpecID": 5163741,
@@ -2154,10 +2154,10 @@
    "Grade7": 0,
    "Grade8": 12,
    "Grade8_5": 0,
-   "Grade9": 52,
+   "Grade9": 53,
    "Grade9_5": null,
    "Grade10": 129,
-   "GradeTotal": 200
+   "GradeTotal": 201
   },
   {
    "SpecID": 5164576,
@@ -2177,13 +2177,13 @@
    "SubjectName": "Full Art/Charizard V",
    "CardNumber": "079",
    "Variety": "Secret",
-   "Grade7": 488,
-   "Grade8": 1488,
-   "Grade8_5": 6,
-   "Grade9": 7981,
+   "Grade7": 494,
+   "Grade8": 1501,
+   "Grade8_5": 7,
+   "Grade9": 8049,
    "Grade9_5": null,
-   "Grade10": 18436,
-   "GradeTotal": 29226
+   "Grade10": 18538,
+   "GradeTotal": 29416
   },
   {
    "SpecID": 5163607,
@@ -2204,12 +2204,12 @@
    "CardNumber": "079",
    "Variety": "French-Secret",
    "Grade7": 6,
-   "Grade8": 20,
+   "Grade8": 21,
    "Grade8_5": 0,
-   "Grade9": 56,
+   "Grade9": 58,
    "Grade9_5": null,
-   "Grade10": 130,
-   "GradeTotal": 220
+   "Grade10": 132,
+   "GradeTotal": 225
   },
   {
    "SpecID": 5053664,
@@ -2219,10 +2219,10 @@
    "Grade7": 14,
    "Grade8": 21,
    "Grade8_5": 0,
-   "Grade9": 37,
+   "Grade9": 39,
    "Grade9_5": null,
    "Grade10": 186,
-   "GradeTotal": 267
+   "GradeTotal": 269
   },
   {
    "SpecID": 5164330,
@@ -2273,8 +2273,8 @@
    "Grade8_5": 1,
    "Grade9": 945,
    "Grade9_5": null,
-   "Grade10": 2050,
-   "GradeTotal": 3311
+   "Grade10": 2052,
+   "GradeTotal": 3313
   },
   {
    "SpecID": 5304236,
