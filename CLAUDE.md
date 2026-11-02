@@ -450,9 +450,35 @@ publier à la main dans la console, comme toujours). Accès depuis l'appli Poké
 **Étape 1 livrée (noyau)** : parcourir les sets, recherche, fiche carte, ajout d'exemplaires par
 impression avec prix, Ma collection (groupée par set, à plat pour un tri par prix), Statistiques
 (progression par set, répartition par rareté, cliquables), souhaits, compte + synchro, thème,
-bouton Retour Android (même mécanique que Pokémon). **Étape 2 à faire** : scan en direct (caméra
-dans la page, cadre, OCR continu du passcode à 8 chiffres en bas à gauche, pas de photo à
-prendre — demandé explicitement par Ariel). **Étape 3** : échange / partage si utile.
+bouton Retour Android (même mécanique que Pokémon). **Étape 2 livrée le même jour : scan en
+direct** (voir ci-dessous). **Étape 3** : échange / partage si utile.
+
+**Scan en direct (2026-11-02, bouton caméra de l'en-tête, intégré dans `index.html`, pas de page à
+part)** — demande d'Ariel : « l'appareil photo direct dans l'application avec un cadre, sans prendre
+la photo puis recadrer ». Caméra arrière en `getUserMedia` dans un overlay plein écran (`#scanOverlay`,
+z-index 45, SOUS la fiche carte à 50 : la fiche s'ouvre par-dessus la caméra et la fermer reprend la
+lecture), cadre au format carte (`.scan-frame`), petite zone `.scan-zone` en bas à gauche du cadre
+= là où **toute carte Yu-Gi-Oh! porte son passcode à 8 chiffres** (même numéro dans toutes les
+langues = l'identifiant de la base ; les images de l'API, elles, sont des répliques qui écrivent
+« Replica » à cet endroit). Boucle `scanTick()` : découpe de la zone (+ marge, `scanZoneRect()` tient
+compte du `object-fit: cover`), niveaux de gris + contraste (recette de `scan.html` Pokémon), OCR
+Tesseract.js 5 (chargé à la demande, modèle `eng`, **liste blanche `0123456789`, PSM 7**), puis
+`scanMatch()` : toutes les fenêtres de 8 chiffres du texte lu, la première qui est une carte connue
+gagne — **la base sert de somme de contrôle**, une lecture fausse qui ne correspond à rien est
+ignorée et on attend la suivante. Anti-rebond par carte (`recentScan`, 4 s comptées depuis la
+fermeture de la fiche). Saisie manuelle sous la vidéo : 8 chiffres → fiche, autre chose (ex.
+`LOB-FR005`, vieilles cartes sans passcode) → ferme le scanner et lance la recherche. Le scanner est
+un écran de l'historique (`scan` dans `navSnapshot`). ⚠️ Pièges vécus : une lecture OCR encore en
+vol quand on ferme le scanner ou qu'une fiche est ouverte ne doit rien rouvrir (test `scanLoop` /
+`openCard` APRÈS l'`await`). Testé de bout en bout en headless avec une **caméra factice** Chromium
+(`--use-file-for-fake-video-capture` + y4m où l'on dessine une carte avec le passcode au bon
+endroit, `scratchpad/ygo_scan_test.py`, 12 scénarios ; Chrome sert le fichier à la taille demandée
+par les contraintes, 1920×1080) : reconnaissance en ~1,4 s chargement compris. **Pas encore testé
+avec une vraie carte ni un vrai téléphone** : la taille de la zone et le pré-traitement (reflets des
+cartes brillantes, petite police) sont à ajuster d'après le retour d'Ariel. Pas de lecture du code
+d'impression (ex. `LOB-FR005`, à droite sous l'illustration) pour l'instant : la fiche liste les
+impressions, Ariel choisit. `window.__scanDebug()` renvoie la zone découpée et le dernier texte lu
+(diagnostic).
 
 **Source de données : API communautaire YGOPRODeck** (`db.ygoprodeck.com/api/v7/`, gratuite, sans
 clé, ≤ 20 req/s). Ses règles, respectées : stocker les données localement et **ne jamais afficher
@@ -499,7 +525,7 @@ chiffres), **code d'impression** (`LOB-FR005` accepté, préfixe accepté). Vign
 possédée dans ce set, anneau violet = possédée dans un autre set seulement. Fiche : impressions
 possédées d'abord, puis celle du set affiché (`.vcard.here`), puis par date ; 6 affichées, le reste
 sur « Voir les N autres impressions ». Testé en headless (`scratchpad/ygo_test.py`, 33 scénarios),
-pas encore sur le téléphone d'Ariel.
+pas encore sur le téléphone d'Ariel. SW « y2 » le 2026-11-02 (scan).
 
 ## Déploiement
 

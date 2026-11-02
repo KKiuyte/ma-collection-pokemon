@@ -266,6 +266,30 @@ body { font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; color:v
   transform:translateY(10px); transition:opacity .2s ease, transform .2s ease, visibility .2s; }
 .top-btn.show { opacity:1; visibility:visible; transform:translateY(0); }
 
+/* --- scanner en direct (caméra dans la page) --- */
+.scan { position:fixed; inset:0; background:#000; z-index:45; overflow:hidden; }
+.scan[hidden] { display:none; }
+.scan video { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+.scan-frame { position:absolute; left:50%; top:46%; transform:translate(-50%,-50%); width:min(78vw, 56vh * 59 / 86);
+  aspect-ratio:59/86; border:2.5px dashed rgba(255,203,61,.9); border-radius:10px; box-shadow:0 0 0 100vmax rgba(0,0,0,.45); }
+.scan-zone { position:absolute; left:2%; bottom:1%; width:42%; height:5.5%; border:2px solid var(--accent); border-radius:4px;
+  background:rgba(122,77,242,.15); }
+.scan-zone.hit { border-color:#39d27a; background:rgba(57,210,122,.3); }
+.scan-close { position:absolute; top:max(14px, env(safe-area-inset-top)); right:14px; width:40px; height:40px; border:none; border-radius:50%;
+  background:rgba(255,255,255,.18); color:#fff; font-size:24px; font-weight:900; cursor:pointer; line-height:1; z-index:2; }
+.scan-help { position:absolute; left:16px; right:16px; top:max(18px, env(safe-area-inset-top)); color:#fff; font-weight:800; font-size:14px;
+  text-align:center; text-shadow:0 1px 6px rgba(0,0,0,.6); padding-right:48px; }
+.scan-bottom { position:absolute; left:16px; right:16px; bottom:max(18px, env(safe-area-inset-bottom)); display:flex; flex-direction:column; gap:10px; }
+.scan-status { color:#fff; font-weight:800; font-size:14.5px; text-align:center; background:rgba(0,0,0,.55); border-radius:12px; padding:10px 14px;
+  min-height:40px; display:flex; align-items:center; justify-content:center; gap:8px; }
+.scan-status .mini-spin { width:14px; height:14px; border-radius:50%; border:2px solid rgba(255,255,255,.3); border-top-color:#fff;
+  animation:spin .8s linear infinite; flex:none; }
+.scan-manual { display:flex; gap:8px; }
+.scan-manual input { flex:1; min-width:0; font-family:inherit; font-weight:700; font-size:15px; padding:11px 13px; border-radius:12px; border:none;
+  background:rgba(255,255,255,.92); color:#1a1d29; }
+.scan-manual button { flex:none; font-family:inherit; font-weight:800; font-size:14px; padding:0 16px; border-radius:12px; border:none;
+  background:var(--gold); color:#1a1d29; cursor:pointer; }
+
 /* --- responsive : en fin de feuille pour l'emporter --- */
 @media (min-width:821px){ .msg { min-height:min(46vh, 360px); } }
 @media (max-width:820px){
@@ -289,6 +313,9 @@ body { font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; color:v
     </div>
     <button id="installBtn" class="installbtn" hidden title="Installer l'application" aria-label="Installer l'application">
       <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.5v11M7.5 10.5 12 15l4.5-4.5M4.5 19.5h15"/></svg>
+    </button>
+    <button id="scanBtn" class="syncbtn" title="Scanner une carte" aria-label="Scanner une carte">
+      <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2.5"/><path d="M8 7l1.4-2.5h5.2L16 7"/><circle cx="12" cy="13.5" r="3.5"/></svg>
     </button>
     <a class="syncbtn" href="../" title="Ma Collection Pok&eacute;mon" aria-label="Ma Collection Pok&eacute;mon">
       <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h5M15.5 12h5"/><circle cx="12" cy="12" r="2.5"/></svg>
@@ -374,6 +401,20 @@ body { font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; color:v
 <button id="topBtn" class="top-btn" title="Remonter en haut" aria-label="Remonter en haut">
   <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19.5V5M6 11l6-6 6 6"/></svg>
 </button>
+
+<div id="scanOverlay" class="scan" hidden>
+  <video id="scanVideo" autoplay muted playsinline></video>
+  <p class="scan-help">Place la carte dans le cadre, le num&eacute;ro en bas &agrave; gauche dans la petite zone</p>
+  <div class="scan-frame" id="scanFrame"><div class="scan-zone" id="scanZone"></div></div>
+  <button class="scan-close" id="scanClose" aria-label="Fermer le scanner">&times;</button>
+  <div class="scan-bottom">
+    <div class="scan-status" id="scanStatus">D&eacute;marrage de la cam&eacute;ra&hellip;</div>
+    <form class="scan-manual" id="scanManual">
+      <input id="scanInput" inputmode="numeric" autocomplete="off" placeholder="Ou tape les 8 chiffres (vieilles cartes sans n&deg; : le code)">
+      <button type="submit">OK</button>
+    </form>
+  </div>
+</div>
 
 <div id="overlay" class="overlay" hidden>
   <div class="modal" role="dialog" aria-modal="true">
@@ -1077,6 +1118,7 @@ function renderModalBody(){
 }
 function closeModal(){
   if (!$("overlay").hidden && !navApplying && history.state && history.state.modal){ history.back(); return; }
+  if (openCard && recentScan.has(openCard.id)) recentScan.set(openCard.id, Date.now()); // anti-rebond compté depuis la fermeture
   $("overlay").hidden = true; openCard = null; openGroups = null;
   navReplace();
 }
@@ -1097,7 +1139,7 @@ $("mClose").addEventListener("click", closeModal);
 $("overlay").addEventListener("click", (e) => { if (e.target === $("overlay")) closeModal(); });
 $("mPrev").addEventListener("click", () => stepModal(-1));
 $("mNext").addEventListener("click", () => stepModal(1));
-document.addEventListener("keydown", (e) => { if (e.key === "Escape"){ closeModal(); closeAccount(); } });
+document.addEventListener("keydown", (e) => { if (e.key === "Escape"){ closeModal(); closeAccount(); closeScanner(); } });
 
 // --- sélecteur de set ---
 function renderSetMenu(q){
@@ -1199,6 +1241,179 @@ $("syncBtn").addEventListener("click", openAccount);
 $("syncClose").addEventListener("click", closeAccount);
 $("syncOverlay").addEventListener("click", (e) => { if (e.target === $("syncOverlay")) closeAccount(); });
 
+// --- scanner en direct ---
+// Caméra affichée dans la page, cadre où poser la carte. Toutes les ~0,5 s on découpe la petite
+// zone bas-gauche du cadre (là où toute carte Yu-Gi-Oh! porte son passcode à 8 chiffres, identique
+// dans toutes les langues = l'identifiant de la base) et on la lit par OCR (Tesseract.js, chiffres
+// seulement). Dès qu'une suite de 8 chiffres correspond à une carte connue, la fiche s'ouvre ;
+// la fermer reprend la lecture. La base sert de somme de contrôle : un numéro mal lu qui ne
+// correspond à aucune carte est ignoré, on attend la lecture suivante.
+const TESSERACT_URL = "https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js";
+const SCAN_REPEAT_MS = 4000;    // même carte relue : on ne rouvre pas la fiche avant ce délai
+const scanVideo = $("scanVideo");
+let scanStream = null, scanWorker = null, scanWorkerPromise = null, scanLoop = false, scanBusy = false;
+const recentScan = new Map();   // passcode -> date de la dernière ouverture (anti-rebond par carte)
+let scanCanvas = null, lastScanText = "";
+// diagnostic (tests headless) : zone découpée, image envoyée à l'OCR et dernier texte lu
+window.__scanDebug = () => { const cv = scanStrip(); return { video: [scanVideo.videoWidth, scanVideo.videoHeight], rect: scanZoneRect(), strip: cv ? cv.toDataURL() : null, text: lastScanText }; };
+function setScanStatus(text, busy){
+  $("scanStatus").innerHTML = (busy ? `<span class="mini-spin"></span>` : "") + esc(text);
+}
+function loadTesseract(){
+  if (window.Tesseract) return Promise.resolve();
+  return new Promise((ok, ko) => {
+    const sc = document.createElement("script");
+    sc.src = TESSERACT_URL; sc.onload = ok; sc.onerror = () => ko(new Error("tesseract"));
+    document.head.appendChild(sc);
+  });
+}
+async function ensureScanWorker(){
+  if (scanWorker) return scanWorker;
+  if (!scanWorkerPromise){
+    scanWorkerPromise = (async () => {
+      await loadTesseract();
+      const w = await Tesseract.createWorker("eng");
+      await w.setParameters({ tessedit_char_whitelist: "0123456789", tessedit_pageseg_mode: "7" });
+      scanWorker = w; return w;
+    })().catch(e => { scanWorkerPromise = null; throw e; });
+  }
+  return scanWorkerPromise;
+}
+// rectangle de la zone passcode, en pixels de la vidéo (la vidéo couvre l'écran : object-fit cover)
+function scanZoneRect(){
+  const vw = scanVideo.videoWidth, vh = scanVideo.videoHeight;
+  if (!vw || !vh) return null;
+  const el = scanVideo.getBoundingClientRect();
+  const scale = Math.max(el.width / vw, el.height / vh);
+  const offX = el.left + (el.width - vw * scale) / 2, offY = el.top + (el.height - vh * scale) / 2;
+  const z = $("scanZone").getBoundingClientRect();
+  // petite marge autour de la zone dessinée : la carte n'est jamais parfaitement alignée
+  const mx = z.width * 0.06, my = z.height * 0.35;
+  const sx = (z.left - mx - offX) / scale, sy = (z.top - my - offY) / scale;
+  const sw = (z.width + 2 * mx) / scale, sh = (z.height + 2 * my) / scale;
+  return [Math.max(0, sx), Math.max(0, sy), Math.min(sw, vw - sx), Math.min(sh, vh - sy)].map(Math.round);
+}
+// découpe + niveaux de gris + contraste (même recette que la page de scan Pokémon)
+function scanStrip(){
+  const r = scanZoneRect();
+  if (!r || r[2] < 8 || r[3] < 4) return null;
+  const [sx, sy, sw, sh] = r;
+  const scale = Math.max(1, Math.min(6, 120 / sh));
+  const cv = scanCanvas || (scanCanvas = document.createElement("canvas"));
+  cv.width = Math.round(sw * scale); cv.height = Math.round(sh * scale);
+  const ctx = cv.getContext("2d", { willReadFrequently: true });
+  ctx.imageSmoothingEnabled = true; ctx.imageSmoothingQuality = "high";
+  ctx.drawImage(scanVideo, sx, sy, sw, sh, 0, 0, cv.width, cv.height);
+  const d = ctx.getImageData(0, 0, cv.width, cv.height), px = d.data;
+  let mn = 255, mx = 0, sum = 0;
+  for (let i = 0; i < px.length; i += 4){
+    const g = 0.299 * px[i] + 0.587 * px[i + 1] + 0.114 * px[i + 2];
+    px[i] = px[i + 1] = px[i + 2] = g;
+    if (g < mn) mn = g; if (g > mx) mx = g; sum += g;
+  }
+  const mean = sum / (px.length / 4), range = Math.max(1, mx - mn), invert = mean < 118;
+  for (let i = 0; i < px.length; i += 4){
+    let v = (px[i] - mn) / range * 255;
+    if (invert) v = 255 - v;
+    v = v < 128 ? Math.max(0, v * 0.55) : Math.min(255, 128 + (v - 128) * 1.7);
+    px[i] = px[i + 1] = px[i + 2] = v;
+  }
+  ctx.putImageData(d, 0, 0);
+  return cv;
+}
+// toutes les fenêtres de 8 chiffres du texte lu ; la première qui est une carte connue gagne
+function scanMatch(text){
+  const digits = String(text || "").replace(/\D/g, "");
+  for (let i = 0; i + 8 <= digits.length; i++){
+    const id = Number(digits.slice(i, i + 8));
+    if (cardsById.has(id)) return id;
+  }
+  return null;
+}
+function scanHit(id, how){
+  const now = Date.now();
+  if (how !== "manual" && now - (recentScan.get(id) || 0) < SCAN_REPEAT_MS) return;
+  recentScan.set(id, now);
+  const c = cardsById.get(id);
+  $("scanZone").classList.add("hit");
+  setTimeout(() => $("scanZone").classList.remove("hit"), 900);
+  setScanStatus(c.n + (how === "manual" ? "" : " · lu : " + String(id).padStart(8, "0")));
+  try { if (navigator.vibrate) navigator.vibrate(60); } catch {}
+  openModal(c, null);
+}
+async function scanTick(){
+  if (!scanLoop) return;
+  if (openCard || scanBusy || !scanWorker || scanVideo.readyState < 2){ setTimeout(scanTick, 250); return; }
+  scanBusy = true;
+  try {
+    const cv = scanStrip();
+    if (cv){
+      const { data } = await scanWorker.recognize(cv);
+      lastScanText = data && data.text;
+      // le scanner a pu être fermé, ou une fiche ouverte (saisie manuelle), pendant la lecture
+      if (!scanLoop){ scanBusy = false; return; }
+      if (openCard){ scanBusy = false; setTimeout(scanTick, 250); return; }
+      const id = scanMatch(data && data.text);
+      if (id) scanHit(id, "ocr");
+      else if (!openCard) setScanStatus("Lecture en cours… approche ou éloigne un peu la carte", true);
+    }
+  } catch {}
+  scanBusy = false;
+  if (scanLoop) setTimeout(scanTick, 120);
+}
+async function openScanner(){
+  if (!$("scanOverlay").hidden) return;
+  if (!DB){ alert("La base de cartes n'est pas encore chargée."); return; }
+  navPush();
+  $("scanOverlay").hidden = false;
+  navReplace();
+  recentScan.clear();
+  setScanStatus("Démarrage de la caméra…", true);
+  if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia){
+    setScanStatus("Caméra indisponible dans ce navigateur. Tape le numéro ci-dessous."); return;
+  }
+  try {
+    scanStream = await navigator.mediaDevices.getUserMedia({ audio: false,
+      video: { facingMode: { ideal: "environment" }, width: { ideal: 1920 }, height: { ideal: 1080 } } });
+    scanVideo.srcObject = scanStream;
+    await scanVideo.play();
+  } catch {
+    setScanStatus("Accès à la caméra refusé ou impossible. Tape le numéro ci-dessous."); return;
+  }
+  if ($("scanOverlay").hidden){ stopScanner(); return; } // fermé pendant la demande d'accès
+  setScanStatus("Chargement de la lecture de chiffres…", true);
+  try { await ensureScanWorker(); }
+  catch { setScanStatus("Lecture automatique indisponible (hors-ligne ?). Tape le numéro ci-dessous."); return; }
+  if ($("scanOverlay").hidden) return;
+  setScanStatus("Place la carte dans le cadre", true);
+  scanLoop = true; scanTick();
+}
+function stopScanner(){
+  scanLoop = false;
+  if (scanStream){ scanStream.getTracks().forEach(t => t.stop()); scanStream = null; }
+  scanVideo.srcObject = null;
+}
+function closeScanner(){
+  if ($("scanOverlay").hidden) return;
+  if (!navApplying && history.state && history.state.scan){ history.back(); return; }
+  stopScanner();
+  $("scanOverlay").hidden = true;
+  navReplace();
+}
+$("scanBtn").addEventListener("click", openScanner);
+$("scanClose").addEventListener("click", closeScanner);
+$("scanManual").addEventListener("submit", (e) => {
+  e.preventDefault();
+  const v = $("scanInput").value.trim();
+  if (!v) return;
+  const id = scanMatch(v);
+  if (id){ $("scanInput").value = ""; scanHit(id, "manual"); return; }
+  if (/^\d+$/.test(v)){ setScanStatus("Aucune carte avec le numéro " + v); return; }
+  // autre chose qu'un numéro (ex. LOB-FR005) : on ferme et on cherche
+  stopScanner(); $("scanOverlay").hidden = true; navReplace();
+  $("scanInput").value = ""; searchInput.value = v; searchInput.dispatchEvent(new Event("input"));
+});
+
 // --- thème ---
 const THEME_KEY = "ygo_theme";
 function applyTheme(theme){
@@ -1225,7 +1440,7 @@ let navReady = false, navApplying = false, navSeq = 0, exitTimer = null;
 const EXIT_DELAY_MS = 2000;
 function navSnapshot(){
   return { app: 1, view, setIdx: currentSetIdx, search, filter, sortBy, rarity: rarityFilter.slice(),
-           modal: openCard ? openCard.id : null, account: !$("syncOverlay").hidden };
+           modal: openCard ? openCard.id : null, account: !$("syncOverlay").hidden, scan: !$("scanOverlay").hidden };
 }
 function navPush(){ if (navReady && !navApplying) history.pushState(navSnapshot(), ""); }
 function navReplace(){ if (navReady) history.replaceState(navSnapshot(), ""); }
@@ -1240,6 +1455,7 @@ function navApply(st){
   navApplying = true;
   try {
     if (!st.account) closeAccount();
+    if (!st.scan) closeScanner();
     if (!st.modal && openCard) closeModal();
     view = st.view || "set";
     search = st.search || ""; searchInput.value = search; clearBtn.hidden = !search;
@@ -1254,6 +1470,7 @@ function navApply(st){
       if (c) openModal(c, e ? e.groups : null);
     }
     if (st.account && $("syncOverlay").hidden) openAccount();
+    if (st.scan && $("scanOverlay").hidden) openScanner();
   } finally {
     if (seq === navSeq) navApplying = false;
   }
