@@ -465,16 +465,34 @@ compte du `object-fit: cover`), gris = **canal max(R,V,B)** (pas la luminance : 
 bordure violette/bleue) puis **binarisation par seuil local** (moyenne de voisinage via image
 intégrale, noir si < 0,86 × moyenne − 4 ; polarité auto par la moyenne, 2e essai en polarité
 inverse) — la binarisation globale de Tesseract déraillait dès qu'une zone claire (bord de la boîte
-de texte) entrait dans la découpe et ne lisait plus que « 1 ». OCR Tesseract.js 5 (chargé à la
-demande, modèle `eng`, **liste blanche `0123456789`, PSM 7, `user_defined_dpi` 300**), puis
-`scanMatch()` : toutes les fenêtres de 8 chiffres du texte lu, la première qui est une carte connue
-gagne — **la base sert de somme de contrôle**, une lecture fausse qui ne correspond à rien est
-ignorée et on attend la suivante. Anti-rebond par carte (`recentScan`, 4 s comptées depuis la
-fermeture de la fiche). Saisie manuelle sous la vidéo : 8 chiffres → fiche, autre chose (ex.
-`LOB-FR005`, vieilles cartes sans passcode) → ferme le scanner et lance la recherche. Le scanner est
-un écran de l'historique (`scan` dans `navSnapshot`). ⚠️ Pièges vécus : une lecture OCR encore en
-vol quand on ferme le scanner ou qu'une fiche est ouverte ne doit rien rouvrir (test `scanLoop` /
-`openCard` APRÈS l'`await`). Testé de bout en bout en headless avec une **caméra factice** Chromium
+de texte) entrait dans la découpe et ne lisait plus que « 1 » ; les **longs traits horizontaux
+(> 15 % de la largeur) et verticaux (> 60 % de la hauteur)** sont ensuite effacés de l'image binaire
+(bords de boîte de texte, de carte, de pochette). OCR Tesseract.js 5 (chargé à la demande, modèle
+`eng`, **liste blanche `0123456789`, PSM 11 « texte épars », `user_defined_dpi` 300** — ⚠️ les PSM 6
+et 7 lisaient « 01 » sur une bande pourtant propre dès qu'un reste de bord ou le « 1st Edition » en
+contour y figurait ; 11 lit 46986414 à 97 %), puis `scanMatch(text, fuzzy)` : toutes les fenêtres
+de 8 chiffres du texte lu, la première qui est une carte connue gagne — **la base sert de somme de
+contrôle** ; sinon **une erreur tolérée** (chiffre remplacé, manqué ou en trop) si une seule carte
+correspond (signalé « 1 chiffre corrigé » et dans la fiche). Zone passcode large (54 % × 9 % du
+cadre, v « y4 ») : l'alignement n'a plus besoin d'être précis. **Code d'édition** (`readSetCode`,
+zone pointillée `#scanCodeZone` à droite sous l'illustration, 48 % × 7 % à 68,5 % de hauteur) lu
+juste après un passcode reconnu : deux passes OCR (PSM 7 puis 11, lettres+chiffres), texte
+normalisé (O→0, I→1) comparé par **distance d'édition** à chaque code connu de la carte décliné
+avec les marques de langue (`LOBFR005`, `LOBEN005`, `LOB005`…) ; accepté si ≤ 2 erreurs et qu'un
+seul set de la carte atteint ce score → la fiche s'ouvre avec **seulement les impressions de ce
+set** (+ celles déjà possédées), les autres derrière « Voir les N autres » ; sinon « Code
+d'édition non lu », toutes les impressions. Demandé par Ariel après son 1er vrai scan réussi : la
+fiche lui proposait 15 impressions. Anti-rebond par carte (`recentScan`, 4 s comptées depuis la
+fermeture de la fiche). Saisie manuelle sous la vidéo : 8 chiffres → fiche (correspondance exacte
+seulement), autre chose (ex. `LOB-FR005`, vieilles cartes sans passcode) → ferme le scanner et
+lance la recherche. Le scanner est un écran de l'historique (`scan` dans `navSnapshot`). ⚠️ Pièges
+vécus : une lecture OCR encore en vol quand on ferme le scanner ou qu'une fiche est ouverte ne
+doit rien rouvrir (test `scanLoop` / `openCard` APRÈS l'`await`) ; `scanCanvas` est partagé, ne
+jamais lancer deux découpes en parallèle (`window.__scanPause` suspend la boucle pour un
+diagnostic). **Fiche carte (y4)** : ajout d'un exemplaire **en un seul geste** (Neuve · Français ·
+Illimitée, ou langue/édition du précédent ; à ajuster sur la ligne), plus de formulaire
+préalable ; champ **« Filtrer les N impressions »** (code, set, rareté) dès que la carte en a
+plus de 6 ; quand un contexte est donné (set affiché, scan), seules ses impressions sont listées. Testé de bout en bout en headless avec une **caméra factice** Chromium
 (`--use-file-for-fake-video-capture` + y4m où l'on dessine une carte à bordure violette avec un
 petit passcode au bon endroit, `scratchpad/ygo_scan_test.py`, 12 scénarios ; Chrome sert le fichier
 à la taille demandée par les contraintes) : reconnaissance en ~1,4 s chargement compris.
@@ -536,7 +554,7 @@ chiffres), **code d'impression** (`LOB-FR005` accepté, préfixe accepté). Vign
 possédée dans ce set, anneau violet = possédée dans un autre set seulement. Fiche : impressions
 possédées d'abord, puis celle du set affiché (`.vcard.here`), puis par date ; 6 affichées, le reste
 sur « Voir les N autres impressions ». Testé en headless (`scratchpad/ygo_test.py`, 33 scénarios),
-pas encore sur le téléphone d'Ariel. SW « y3 » le 2026-11-02 (scan v2).
+pas encore sur le téléphone d'Ariel. SW « y4 » le 2026-11-02 (scan v3 : zone large, lecture floue, code d'édition, ajout en un geste).
 
 ## Déploiement
 

@@ -247,11 +247,12 @@ body { font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; color:v
   border:1px solid var(--line); background:var(--field); -webkit-appearance:none; appearance:none; }
 .copy-remove { width:28px; height:28px; border-radius:8px; border:1px solid var(--danger-border); background:var(--danger-bg); color:var(--danger-fg);
   font-size:15px; font-weight:900; cursor:pointer; line-height:1; }
-.copy-add-toggle { width:100%; font-family:inherit; font-weight:800; font-size:12.5px; cursor:pointer; padding:9px; border-radius:10px;
+.copy-add { width:100%; font-family:inherit; font-weight:800; font-size:12.5px; cursor:pointer; padding:9px; border-radius:10px;
   border:1px dashed var(--line); background:none; color:var(--accent-deep); }
-.copy-add-form { margin-top:10px; padding-top:10px; border-top:1px dashed var(--line); }
-.copy-add-form .field-row { margin-bottom:10px; }
-.copy-add-form[hidden] { display:none; }
+.vfilter { width:100%; font-family:inherit; font-weight:700; font-size:14px; color:var(--ink); padding:10px 12px; border-radius:10px;
+  border:1px solid var(--line); background:var(--field); margin-bottom:12px; -webkit-appearance:none; }
+.vfilter:focus { outline:none; border-color:var(--accent); }
+.scan-tag { text-align:center; font-size:12.5px; font-weight:800; color:var(--accent-deep); margin:-6px 0 12px; }
 .pricenote { text-align:center; font-size:11.5px; font-weight:700; color:var(--muted); margin:12px 0 0; }
 .vqty { font-weight:800; font-size:12px; color:#fff; background:var(--navy); padding:2px 9px; border-radius:999px; }
 .vcard .big-btn { padding:11px; font-size:14px; }
@@ -272,8 +273,10 @@ body { font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; color:v
 .scan video { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
 .scan-frame { position:absolute; left:50%; top:46%; transform:translate(-50%,-50%); width:min(78vw, 56vh * 59 / 86);
   aspect-ratio:59/86; border:2.5px dashed rgba(255,203,61,.9); border-radius:10px; box-shadow:0 0 0 100vmax rgba(0,0,0,.45); }
-.scan-zone { position:absolute; left:2%; bottom:1%; width:42%; height:5.5%; border:2px solid var(--accent); border-radius:4px;
+.scan-zone { position:absolute; left:1%; bottom:.5%; width:54%; height:9%; border:2px solid var(--accent); border-radius:4px;
   background:rgba(122,77,242,.15); }
+/* zone du code d'édition (ex. BLMM-FR003), à droite sous l'illustration : lue après le passcode */
+.scan-zone2 { position:absolute; right:1.5%; top:68.5%; width:48%; height:7%; border:2px dashed rgba(255,255,255,.6); border-radius:4px; }
 .scan-zone.hit { border-color:#39d27a; background:rgba(57,210,122,.3); }
 .scan-close { position:absolute; top:max(14px, env(safe-area-inset-top)); right:14px; width:40px; height:40px; border:none; border-radius:50%;
   background:rgba(255,255,255,.18); color:#fff; font-size:24px; font-weight:900; cursor:pointer; line-height:1; z-index:2; }
@@ -413,8 +416,8 @@ body { font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; color:v
 
 <div id="scanOverlay" class="scan" hidden>
   <video id="scanVideo" autoplay muted playsinline></video>
-  <p class="scan-help">Carte dans le cadre, num&eacute;ro en bas &agrave; gauche dans la petite zone. T&eacute;l&eacute;phone immobile, &agrave; 10 cm environ.</p>
-  <div class="scan-frame" id="scanFrame"><div class="scan-zone" id="scanZone"></div></div>
+  <p class="scan-help">Carte dans le cadre, le num&eacute;ro &agrave; 8 chiffres dans la zone du bas. T&eacute;l&eacute;phone immobile, &agrave; 10 cm environ.</p>
+  <div class="scan-frame" id="scanFrame"><div class="scan-zone2" id="scanCodeZone"></div><div class="scan-zone" id="scanZone"></div></div>
   <button class="scan-close" id="scanClose" aria-label="Fermer le scanner">&times;</button>
   <button class="scan-torch" id="scanTorch" hidden aria-label="Lampe" title="Lampe">
     <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.5.9 1.1 1 1.8v.3h5v-.3c.1-.7.4-1.3 1-1.8A6 6 0 0 0 12 3Z"/></svg>
@@ -1019,10 +1022,11 @@ function renderStats(){
 }
 
 // --- fiche carte ---
-let openCard = null, openGroups = null, showAllImps = false;
-function openModal(c, groups){
+let openCard = null, openGroups = null, showAllImps = false, impFilter = "", openTag = "";
+// tag = indication affichée sous le nom (ex. « Impression détectée par le scan : BLMM »)
+function openModal(c, groups, tag){
   if (!openCard) navPush();
-  openCard = c; openGroups = groups || null; showAllImps = false;
+  openCard = c; openGroups = groups || null; showAllImps = false; impFilter = ""; openTag = tag || "";
   $("mImg").innerHTML = `<img src="${imgUrl(c)}" alt="${esc(c.n)}">`;
   fallbackOnError($("mImg"), c.n);
   $("mName").textContent = c.n;
@@ -1063,12 +1067,21 @@ function renderModalBody(){
   for (const k in (rec ? rec.v : {})) if (!groups.some(g => g.key === k)){
     const [code, rarity] = k.split("|"); groups.unshift({ key: k, code, codes: [], rarity: rarity || "?", set: -1, price: 0, num: 0 });
   }
-  const shown = showAllImps ? groups : groups.slice(0, Math.max(IMPS_SHOWN, groups.filter(g => rec && rec.v[g.key]).length));
+  const fq = normalize(impFilter);
+  const matchFilter = g => !fq || normalize(g.code + " " + (g.set >= 0 ? setLabel(g.set) : "") + " " + g.rarity).includes(fq);
+  let shown;
+  if (fq) shown = groups.filter(matchFilter);                                   // filtre tapé : tout ce qui correspond
+  else if (showAllImps) shown = groups;
+  else if (ctxKeys.size) shown = groups.filter(g => ctxKeys.has(g.key) || (rec && rec.v[g.key]));   // contexte (set affiché, scan) + possédées
+  else shown = groups.slice(0, Math.max(IMPS_SHOWN, groups.filter(g => rec && rec.v[g.key]).length));
   let html = totalQty
     ? `<p class="owned-tag">✓ ${totalQty} exemplaire${totalQty>1?"s":""} · ${Object.keys(rec.v).length} impression${Object.keys(rec.v).length>1?"s":""}${val ? ` · <span class="cardvalue">${formatUsd(val)}</span>` : ""}</p>`
     : `<p class="owned-tag" style="color:var(--muted)">Pas encore dans ta collection</p>`;
+  if (openTag) html += `<p class="scan-tag">${esc(openTag)}</p>`;
   if (!groups.length) html += `<p class="hint" style="text-align:center">Aucune impression connue pour cette carte.</p>`;
+  if (groups.length > IMPS_SHOWN) html += `<input class="vfilter" id="mFilter" autocomplete="off" placeholder="Filtrer les ${groups.length} impressions : code, set, rareté" value="${esc(impFilter)}">`;
   html += `<div class="vlist">`;
+  if (fq && !shown.length) html += `<p class="hint" style="text-align:center">Aucune impression ne correspond.</p>`;
   shown.forEach(g => {
     const copies = rec && rec.v ? rec.v[g.key] : null, n = copies ? copies.length : 0;
     const p = groupPriceUsd(c, g);
@@ -1086,32 +1099,30 @@ function renderModalBody(){
       });
       html += `</div>`;
     }
-    html += n ? `<button type="button" class="copy-add-toggle">+ Ajouter un exemplaire</button>`
-              : `<button type="button" class="big-btn btn-add copy-add-toggle">Ajouter cette impression</button>`;
-    html += `<div class="copy-add-form" hidden>
-        <div class="field-row">
-          <div class="field"><label>État</label><select class="new-cond">${CONDITIONS.map(o => `<option${o==="Neuve"?" selected":""}>${o}</option>`).join("")}</select></div>
-          <div class="field"><label>Langue</label><select class="new-lang">${LANGUAGES.map(o => `<option${o==="Français"?" selected":""}>${o}</option>`).join("")}</select></div>
-          <div class="field"><label>Édition</label><select class="new-ed">${EDITIONS.map(([v, l]) => `<option value="${v}"${v===DEFAULT_EDITION?" selected":""}>${l}</option>`).join("")}</select></div>
-        </div>
-        <button type="button" class="big-btn btn-add copy-add-confirm">Confirmer l'ajout</button></div></div>`;
+    // un seul geste : l'exemplaire est ajouté (Neuve · Français · Illimitée, ou comme le précédent), à ajuster ensuite sur sa ligne
+    html += n ? `<button type="button" class="copy-add">+ Ajouter un exemplaire</button></div>`
+              : `<button type="button" class="big-btn btn-add copy-add">Ajouter cette impression</button></div>`;
   });
   html += `</div>`;
-  if (groups.length > shown.length) html += `<button type="button" class="big-btn btn-more" id="mMore">Voir les ${groups.length - shown.length} autres impressions</button>`;
+  if (!fq && groups.length > shown.length) html += `<button type="button" class="big-btn btn-more" id="mMore">Voir les ${groups.length - shown.length} autres impressions</button>`;
   html += `<p class="pricenote">Prix indicatifs TCGplayer (marché américain)${fx ? ", convertis en euros" : ""} · base du ${new Date(DB.built).toLocaleDateString("fr-FR")}</p>`;
   html += `<button class="big-btn btn-wish" id="mWish">${wishlist[c.id] ? "♥ Retirer de ma liste de souhaits" : "♡ Ajouter à ma liste de souhaits"}</button>`;
   body.innerHTML = html;
 
   const keyOf = (el) => el.closest(".vcard").dataset.key;
-  body.querySelectorAll(".copy-add-toggle").forEach(btn => btn.onclick = () => { const f = btn.nextElementSibling; if (f) f.hidden = !f.hidden; });
-  body.querySelectorAll(".copy-add-confirm").forEach(btn => btn.onclick = () => {
-    const form = btn.closest(".copy-add-form"), key = keyOf(btn);
+  body.querySelectorAll(".copy-add").forEach(btn => btn.onclick = () => {
+    const key = keyOf(btn);
     if (!owned[c.id]) owned[c.id] = { v: {} };
     if (!owned[c.id].v[key]) owned[c.id].v[key] = [];
-    owned[c.id].v[key].push(copyEntry(form.querySelector(".new-cond").value, form.querySelector(".new-lang").value, form.querySelector(".new-ed").value));
+    const prev = owned[c.id].v[key][owned[c.id].v[key].length - 1];
+    owned[c.id].v[key].push(prev ? copyEntry("Neuve", prev.lang, prev.ed) : copyEntry("Neuve", "Français", DEFAULT_EDITION));
     delete wishlist[c.id];
     saveNow(); renderModalBody(); render();
   });
+  const mf = $("mFilter");
+  if (mf){
+    mf.oninput = () => { impFilter = mf.value; renderModalBody(); const el = $("mFilter"); if (el){ el.focus(); el.setSelectionRange(el.value.length, el.value.length); } };
+  }
   const edit = (cls, field) => body.querySelectorAll(".copy-row " + cls).forEach(sel => sel.onchange = () => {
     const copies = owned[c.id] && owned[c.id].v[keyOf(sel)], cp = copies && copies[Number(sel.dataset.i)];
     if (cp){ cp[field] = sel.value; save(); }
@@ -1266,9 +1277,10 @@ const SCAN_REPEAT_MS = 4000;    // même carte relue : on ne rouvre pas la fiche
 const scanVideo = $("scanVideo");
 let scanStream = null, scanWorker = null, scanWorkerPromise = null, scanLoop = false, scanBusy = false;
 const recentScan = new Map();   // passcode -> date de la dernière ouverture (anti-rebond par carte)
-let scanCanvas = null, lastScanText = "";
+let scanCanvas = null, lastScanText = "", lastCodeText = "";
 // diagnostic (tests headless) : zone découpée, image envoyée à l'OCR et dernier texte lu
-window.__scanDebug = () => { const cv = scanStrip(false); return { video: [scanVideo.videoWidth, scanVideo.videoHeight], rect: scanZoneRect(), strip: cv ? cv.toDataURL() : null, text: lastScanText }; };
+window.__scanPause = false;
+window.__scanDebug = (t) => { if (t === "__code"){ const c = scanStrip(false, $("scanCodeZone"), 140); return { strip: c ? c.toDataURL() : null, text: lastCodeText }; } if (t != null) return scanMatch(t, true); const cv = scanStrip(false); return { video: [scanVideo.videoWidth, scanVideo.videoHeight], rect: scanZoneRect(), strip: cv ? cv.toDataURL() : null, text: lastScanText }; };
 function setScanStatus(text, busy){
   $("scanStatus").innerHTML = (busy ? `<span class="mini-spin"></span>` : "") + esc(text);
 }
@@ -1286,22 +1298,35 @@ async function ensureScanWorker(){
     scanWorkerPromise = (async () => {
       await loadTesseract();
       const w = await Tesseract.createWorker("eng");
-      await w.setParameters({ tessedit_char_whitelist: "0123456789", tessedit_pageseg_mode: "7", user_defined_dpi: "300" });
+      await w.setParameters({ tessedit_char_whitelist: "0123456789", tessedit_pageseg_mode: "11", user_defined_dpi: "300" });
+      ocrMode = "digits";
       scanWorker = w; return w;
     })().catch(e => { scanWorkerPromise = null; throw e; });
   }
   return scanWorkerPromise;
 }
 // rectangle de la zone passcode, en pixels de la vidéo (la vidéo couvre l'écran : object-fit cover)
-function scanZoneRect(){
+// deux jeux de réglages OCR : chiffres (passcode, bloc multi-lignes) et code d'édition (lettres+chiffres, une ligne)
+let ocrMode = "";
+async function setOcrMode(mode){
+  if (ocrMode === mode) return;
+  // PSM 11 = « texte épars » : Tesseract cherche des mots n'importe où dans la bande. Les modes
+  // ligne (7) et bloc (6) échouaient dès qu'un reste de bord de carte ou le texte « 1st Edition »
+  // en contour entrait dans la bande (ils lisaient « 01 » alors que 11 lit 46986414 à 97 %).
+  if (mode === "code7") await scanWorker.setParameters({ tessedit_char_whitelist: "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-", tessedit_pageseg_mode: "7" });
+  else if (mode === "code11") await scanWorker.setParameters({ tessedit_char_whitelist: "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-", tessedit_pageseg_mode: "11" });
+  else await scanWorker.setParameters({ tessedit_char_whitelist: "0123456789", tessedit_pageseg_mode: "11" });
+  ocrMode = mode;
+}
+function scanZoneRect(zoneEl, mxr, myr){
   const vw = scanVideo.videoWidth, vh = scanVideo.videoHeight;
   if (!vw || !vh) return null;
   const el = scanVideo.getBoundingClientRect();
   const scale = Math.max(el.width / vw, el.height / vh);
   const offX = el.left + (el.width - vw * scale) / 2, offY = el.top + (el.height - vh * scale) / 2;
-  const z = $("scanZone").getBoundingClientRect();
+  const z = (zoneEl || $("scanZone")).getBoundingClientRect();
   // petite marge autour de la zone dessinée : la carte n'est jamais parfaitement alignée
-  const mx = z.width * 0.06, my = z.height * 0.35;
+  const mx = z.width * (mxr ?? 0.04), my = z.height * (myr ?? 0.2);
   const sx = (z.left - mx - offX) / scale, sy = (z.top - my - offY) / scale;
   const sw = (z.width + 2 * mx) / scale, sh = (z.height + 2 * my) / scale;
   return [Math.max(0, sx), Math.max(0, sy), Math.min(sw, vw - sx), Math.min(sh, vh - sy)].map(Math.round);
@@ -1314,11 +1339,11 @@ function scanZoneRect(){
 // Tesseract (il ne lisait plus que « 1 »). Texte clair sur fond sombre (cartes Xyz noires, Lien) :
 // polarité inversée automatiquement quand la moyenne est sombre ; `flip` force l'autre polarité
 // (2e essai).
-function scanStrip(flip){
-  const r = scanZoneRect();
+function scanStrip(flip, zoneEl, targetH, mxr, myr){
+  const r = scanZoneRect(zoneEl, mxr, myr);
   if (!r || r[2] < 8 || r[3] < 4) return null;
   const [sx, sy, sw, sh] = r;
-  const scale = Math.max(1, Math.min(8, 160 / sh));
+  const scale = Math.max(1, Math.min(8, (targetH || 220) / sh));
   const cv = scanCanvas || (scanCanvas = document.createElement("canvas"));
   const W = Math.round(sw * scale), H = Math.round(sh * scale);
   cv.width = W; cv.height = H;
@@ -1337,15 +1362,38 @@ function scanStrip(flip){
     for (let x = 1; x <= W; x++){ row += g[(y - 1) * W + (x - 1)]; I[y * (W + 1) + x] = I[(y - 1) * (W + 1) + x] + row; }
   }
   const half = Math.max(7, Math.round(H / 4));
+  const bin = new Uint8Array(n); // 1 = noir
   for (let y = 0; y < H; y++){
     const y0 = Math.max(0, y - half), y1 = Math.min(H, y + half + 1);
     for (let x = 0; x < W; x++){
       const x0 = Math.max(0, x - half), x1 = Math.min(W, x + half + 1);
       const mean = (I[y1 * (W + 1) + x1] - I[y0 * (W + 1) + x1] - I[y1 * (W + 1) + x0] + I[y0 * (W + 1) + x0]) / ((y1 - y0) * (x1 - x0));
-      const v = g[y * W + x] < mean * 0.86 - 4 ? 0 : 255;
-      const i = (y * W + x) * 4; px[i] = px[i + 1] = px[i + 2] = v; px[i + 3] = 255;
+      bin[y * W + x] = g[y * W + x] < mean * 0.86 - 4 ? 1 : 0;
     }
   }
+  // efface les longs traits horizontaux (bord de la boîte de texte, cadre de l'illustration,
+  // bord de la pochette) : aucun chiffre ne fait plus de 15 % de la largeur de bande
+  const maxRun = Math.max(12, Math.round(W * 0.15));
+  for (let y = 0; y < H; y++){
+    let x = 0;
+    while (x < W){
+      if (!bin[y * W + x]){ x++; continue; }
+      let e = x; while (e < W && bin[y * W + e]) e++;
+      if (e - x > maxRun) for (let k = x; k < e; k++) bin[y * W + k] = 0;
+      x = e;
+    }
+  }
+  const maxCol = Math.round(H * 0.6); // idem pour les traits verticaux (bord de carte, de pochette)
+  for (let x = 0; x < W; x++){
+    let y = 0;
+    while (y < H){
+      if (!bin[y * W + x]){ y++; continue; }
+      let e = y; while (e < H && bin[e * W + x]) e++;
+      if (e - y > maxCol) for (let k = y; k < e; k++) bin[k * W + x] = 0;
+      y = e;
+    }
+  }
+  for (let j = 0; j < n; j++){ const v = bin[j] ? 0 : 255, i = j * 4; px[i] = px[i + 1] = px[i + 2] = v; px[i + 3] = 255; }
   ctx.putImageData(d, 0, 0);
   return cv;
 }
@@ -1356,45 +1404,130 @@ function showPeek(cv, text){
   const digits = String(text || "").replace(/\D+/g, " ").trim();
   $("scanRead").textContent = digits ? "lu : " + digits : "lu : rien";
 }
-// toutes les fenêtres de 8 chiffres du texte lu ; la première qui est une carte connue gagne
-function scanMatch(text){
+// Toutes les fenêtres de 8 chiffres du texte lu ; la première qui est une carte connue gagne.
+// Sinon (fuzzy), on tolère UNE erreur de lecture — un chiffre remplacé, manqué ou en trop — à
+// condition qu'une seule carte de la base corresponde (14 600 cartes sur 100 millions de numéros :
+// une correction qui tombe sur une autre carte valide est rare, et la fiche affiche le nom).
+function scanMatch(text, fuzzy){
   const digits = String(text || "").replace(/\D/g, "");
   for (let i = 0; i + 8 <= digits.length; i++){
     const id = Number(digits.slice(i, i + 8));
-    if (cardsById.has(id)) return id;
+    if (cardsById.has(id)) return { id, fuzzy: false };
   }
-  return null;
+  if (!fuzzy || digits.length < 7) return null;
+  const found = new Set();
+  const tryId = (str) => { if (str.length === 8){ const id = Number(str); if (cardsById.has(id)) found.add(id); } };
+  for (let i = 0; i + 7 <= digits.length; i++){
+    const w7 = digits.slice(i, i + 7);
+    for (let pos = 0; pos <= 7; pos++) for (let d = 0; d <= 9; d++) tryId(w7.slice(0, pos) + d + w7.slice(pos)); // chiffre manqué
+    if (i + 8 <= digits.length){
+      const w8 = digits.slice(i, i + 8);
+      for (let pos = 0; pos < 8; pos++) for (let d = 0; d <= 9; d++) if (String(d) !== w8[pos]) tryId(w8.slice(0, pos) + d + w8.slice(pos + 1)); // chiffre remplacé
+    }
+    if (i + 9 <= digits.length){
+      const w9 = digits.slice(i, i + 9);
+      for (let pos = 0; pos < 9; pos++) tryId(w9.slice(0, pos) + w9.slice(pos + 1)); // chiffre en trop
+    }
+    if (found.size > 1) return null;
+  }
+  return found.size === 1 ? { id: [...found][0], fuzzy: true } : null;
 }
-function scanHit(id, how){
+// Lecture du code d'édition (ex. « BLMM-FR003 », zone à droite sous l'illustration) juste après
+// un passcode reconnu. On ne cherche pas une lecture parfaite : le texte lu (deux passes OCR, en
+// ligne puis en texte épars) est comparé à chaque code connu de CETTE carte, décliné avec les
+// marques de langue courantes (LOB-FR005 → « LOBFR005 », « LOBEN005 », « LOB005 »…), par distance
+// d'édition (O/0 et I/1 confondus). Le meilleur candidat gagne s'il est à ≤ 2 erreurs et qu'un seul
+// set de la carte atteint ce score. Renvoie les impressions de ce set.
+const CODE_LANGS = ["FR", "EN", "E", "DE", "IT", "SP", "PT", ""];
+function codeNorm(t){ return String(t || "").toUpperCase().replace(/[^A-Z0-9]/g, "").replace(/O/g, "0").replace(/I/g, "1"); }
+function editDistance(a, b){
+  const m = a.length, n = b.length; if (!m) return n; if (!n) return m;
+  let prev = Array.from({ length: n + 1 }, (_, j) => j), cur = new Array(n + 1);
+  for (let i = 1; i <= m; i++){
+    cur[0] = i;
+    for (let j = 1; j <= n; j++) cur[j] = Math.min(prev[j] + 1, cur[j - 1] + 1, prev[j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1));
+    [prev, cur] = [cur, prev];
+  }
+  return prev[n];
+}
+// meilleure distance entre le texte lu et un code (sur une fenêtre glissante de la longueur du code ±1)
+function codeScore(text, code){
+  let best = Infinity;
+  for (const len of [code.length - 1, code.length, code.length + 1]){
+    if (len < 3) continue;
+    for (let i = 0; i + len <= text.length; i++) best = Math.min(best, editDistance(text.slice(i, i + len), code));
+    if (text.length < len) best = Math.min(best, editDistance(text, code));
+  }
+  return best;
+}
+async function readSetCode(card){
+  try {
+    const cv = scanStrip(false, $("scanCodeZone"), 220, 0.08, 0.3);
+    if (!cv || !scanWorker || !(card.g || []).length) return null;
+    const texts = [];
+    for (const mode of ["code7", "code11"]){
+      await setOcrMode(mode);
+      const { data } = await scanWorker.recognize(cv);
+      texts.push(codeNorm(data && data.text));
+    }
+    await setOcrMode("digits");
+    lastCodeText = texts.join(" | ");
+    const byPrefix = new Map(); // préfixe de set -> meilleure distance
+    for (const g of card.g){
+      const [pf, num] = g.code.split("-");
+      if (!pf || !num) continue;
+      for (const lang of CODE_LANGS){
+        const code = codeNorm(pf + lang + num);
+        for (const t of texts){ if (!t) continue; const d = codeScore(t, code); if (d < (byPrefix.get(pf) ?? Infinity)) byPrefix.set(pf, d); }
+      }
+    }
+    let best = Infinity, hits = [];
+    byPrefix.forEach((d, pf) => { if (d < best){ best = d; hits = [pf]; } else if (d === best) hits.push(pf); });
+    if (best > 2 || hits.length !== 1) return null;
+    const hit = hits[0];
+    return { prefix: hit, groups: card.g.filter(g => g.code.split("-")[0] === hit) };
+  } catch { try { await setOcrMode("digits"); } catch {} return null; }
+}
+async function scanHit(id, how, fuzzy){
   const now = Date.now();
   if (how !== "manual" && now - (recentScan.get(id) || 0) < SCAN_REPEAT_MS) return;
   recentScan.set(id, now);
   const c = cardsById.get(id);
   $("scanZone").classList.add("hit");
   setTimeout(() => $("scanZone").classList.remove("hit"), 900);
-  setScanStatus(c.n + (how === "manual" ? "" : " · lu : " + String(id).padStart(8, "0")));
   try { if (navigator.vibrate) navigator.vibrate(60); } catch {}
-  openModal(c, null);
+  let ctx = null;
+  if (how !== "manual"){
+    setScanStatus(c.n + " · lecture du code d'édition…", true);
+    ctx = await readSetCode(c);
+    if (!scanLoop) return; // scanner fermé entre-temps
+  }
+  setScanStatus(c.n + (how === "manual" ? "" : " · lu : " + String(id).padStart(8, "0") + (fuzzy ? " (1 chiffre corrigé)" : "")
+    + (ctx ? " · " + ctx.prefix : " · code d'édition non lu")));
+  openModal(c, ctx ? ctx.groups : null,
+    ctx ? `Impression détectée par le scan : ${ctx.prefix}` + (fuzzy ? " · numéro corrigé d'un chiffre, vérifie la carte" : "")
+        : (how === "manual" ? "" : "Code d'édition non lu : choisis l'impression ci-dessous" + (fuzzy ? " (numéro corrigé d'un chiffre, vérifie la carte)" : "")));
 }
 async function scanTick(){
   if (!scanLoop) return;
-  if (openCard || scanBusy || !scanWorker || scanVideo.readyState < 2){ setTimeout(scanTick, 250); return; }
+  if (openCard || scanBusy || !scanWorker || scanVideo.readyState < 2 || window.__scanPause){ setTimeout(scanTick, 250); return; }
   scanBusy = true;
   try {
     const cv = scanStrip(false);
     if (cv){
+      await setOcrMode("digits");
       let { data } = await scanWorker.recognize(cv);
-      let text = data && data.text, id = scanMatch(text);
-      if (!id && scanLoop && !openCard){            // 2e essai : polarité inverse (texte clair sur fond sombre mal détecté)
+      let text = data && data.text, m = scanMatch(text, true);
+      if (!m && scanLoop && !openCard){             // 2e essai : polarité inverse (texte clair sur fond sombre mal détecté)
         const cv2 = scanStrip(true);
-        if (cv2){ ({ data } = await scanWorker.recognize(cv2)); if (scanMatch(data && data.text)){ text = data.text; id = scanMatch(text); } }
+        if (cv2){ ({ data } = await scanWorker.recognize(cv2)); const m2 = scanMatch(data && data.text, true); if (m2){ text = data.text; m = m2; } }
       }
       lastScanText = text;
       // le scanner a pu être fermé, ou une fiche ouverte (saisie manuelle), pendant la lecture
       if (!scanLoop){ scanBusy = false; return; }
       if (openCard){ scanBusy = false; setTimeout(scanTick, 250); return; }
       showPeek(scanStrip(false), text);
-      if (id) scanHit(id, "ocr");
+      if (m) await scanHit(m.id, "ocr", m.fuzzy);
       else setScanStatus("Lecture en cours… tiens le téléphone immobile, numéro bien dans la zone", true);
     }
   } catch {}
@@ -1471,8 +1604,8 @@ $("scanManual").addEventListener("submit", (e) => {
   e.preventDefault();
   const v = $("scanInput").value.trim();
   if (!v) return;
-  const id = scanMatch(v);
-  if (id){ $("scanInput").value = ""; scanHit(id, "manual"); return; }
+  const m = scanMatch(v, false);
+  if (m){ $("scanInput").value = ""; scanHit(m.id, "manual"); return; }
   if (/^\d+$/.test(v)){ setScanStatus("Aucune carte avec le numéro " + v); return; }
   // autre chose qu'un numéro (ex. LOB-FR005) : on ferme et on cherche
   stopScanner(); $("scanOverlay").hidden = true; navReplace();
