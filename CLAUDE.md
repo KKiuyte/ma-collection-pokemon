@@ -47,7 +47,11 @@ public/                 ← ce qui est déployé (le site)
   graded-value.html     ← PAGE PUBLIQUE « Et si elle était gradée ? » (2026-09-17) : lit le rapport
                            PRIVÉ Firestore graded_reports/{uid} (cf. section dédiée) ; pas de lien
                            depuis l'appli pour l'instant
+  yugioh/               ← SECONDE APPLI « Ma Collection Yu-Gi-Oh! » (2026-11-02, voir section dédiée) :
+                           index.html, manifest.json, sw.js, icônes, db.json (base de cartes) et
+                           img/ (≈ 14 800 vignettes réhébergées, versionnées)
 tools/
+  ygo_build_db.py       ← construit public/yugioh/db.json + vignettes (API YGOPRODeck)
   build_hashes.py       ← génère les empreintes visuelles (à lancer en local, Python 3)
   scrape_vinted_psa.py  ← récupère les annonces Vinted « psa pokemon » → vinted-psa.json (stdlib)
   enrich_psa.py         ← OCR du n° de cert sur les photos + fiche PSA (Playwright) → enrichit
@@ -220,7 +224,7 @@ wishlist[idCarte] = true
    la dernière règle gagne. Une media-query placée avant la règle de base `.grid` était
    silencieusement écrasée → le responsive ne s'appliquait pas. Toute règle responsive
    va après les règles de base.
-2. **PWA : incrémenter `VERSION` dans `public/sw.js` à CHAQUE déploiement** (`"v3"` → `"v4"`…, v33 le 2026-10-20).
+2. **PWA : incrémenter `VERSION` dans `public/sw.js` à CHAQUE déploiement** (`"v3"` → `"v4"`…, v34 le 2026-11-02 ; l'appli Yu-Gi-Oh! a son propre `public/yugioh/sw.js`, « y1 »…).
    Sinon l'ancienne version reste en cache chez les utilisateurs. Un bandeau
    « Nouvelle version disponible » gère la bascule côté client.
 3. **Service worker et navigation** : ne PAS renvoyer `index.html` pour toute navigation
@@ -432,6 +436,70 @@ caches 7 j). Le classificateur de Claude Code bloque les scripts qui se connecte
 règle locale `Bash(/home/kiuyte/ma-collection-pokemon/.venv/bin/python3:*)` dans
 `.claude/settings.local.json` (git-ignoré) ; la commande doit COMMENCER par ce chemin (pas de
 `cd` devant) et ne pas écrire de cookies hors espace de travail.
+
+## Ma Collection Yu-Gi-Oh! — seconde appli, `public/yugioh/` (2026-11-02)
+
+Demande d'Ariel : « dupliquer l'appli pour les cartes Yu-Gi-Oh, scan rapide + collection avec prix ».
+Décisions prises ensemble : **même dépôt, même projet Firebase (un seul compte pour les deux
+applis), dossier séparé** avec sa propre PWA (`manifest.json`, `sw.js` de portée `/yugioh/`,
+`VERSION` « y1 », « y2 »… à incrémenter indépendamment de celui de Pokémon) et sa propre
+collection Firestore **`ygo_collections/{uid}`** (règle ajoutée dans `firestore.rules` — ⚠️ à
+publier à la main dans la console, comme toujours). Accès depuis l'appli Pokémon : menu easter egg
+(appui long sur la Pokéball). Lien retour : bouton ⊙ dans l'en-tête de l'appli Yu-Gi-Oh!.
+
+**Étape 1 livrée (noyau)** : parcourir les sets, recherche, fiche carte, ajout d'exemplaires par
+impression avec prix, Ma collection (groupée par set, à plat pour un tri par prix), Statistiques
+(progression par set, répartition par rareté, cliquables), souhaits, compte + synchro, thème,
+bouton Retour Android (même mécanique que Pokémon). **Étape 2 à faire** : scan en direct (caméra
+dans la page, cadre, OCR continu du passcode à 8 chiffres en bas à gauche, pas de photo à
+prendre — demandé explicitement par Ariel). **Étape 3** : échange / partage si utile.
+
+**Source de données : API communautaire YGOPRODeck** (`db.ygoprodeck.com/api/v7/`, gratuite, sans
+clé, ≤ 20 req/s). Ses règles, respectées : stocker les données localement et **ne jamais afficher
+ses images en direct** (blocage d'IP). D'où `tools/ygo_build_db.py` :
+- `public/yugioh/db.json` (~3,5 Mo, servi gzippé, chargé une fois au démarrage, réseau d'abord
+  avec repli cache dans le SW) : `rar[]`, `sets[] {c,n,d,k}`, `cards[] {id, n (FR), en, t, ty,
+  eur (Cardmarket, version la moins chère), usd (TCGplayer carte), s:[[code EN, idx rareté, prix $
+  TCGplayer de l'impression, idx set]], im:[ids d'images, illustrations alternatives comprises]}`.
+  11 661 cartes sur 14 653 ont un nom FR (sinon nom anglais). Pas de textes de carte (économie
+  de 4 Mo). 547 cartes sans aucune impression connue.
+- `public/yugioh/img/{id}.webp` : **14 825 vignettes réhébergées, versionnées dans Git** (168 px
+  de large, q70, ~130 Mo au total — la source `cards_small` fait 268 px, 320 Mo en q78, trop
+  lourd). Images **anglaises uniquement** (l'API n'a pas d'images FR). Choix assumé : Git plutôt
+  qu'un second site Hosting (le déploiement Firebase étant un instantané complet, des images
+  générées hors Git auraient été effacées par le déploiement du scraper Vinted toutes les 3 h).
+  Conséquence : la fiche carte (image à 50 % de largeur) est un peu floue sur écran haute densité.
+- Workflow **`.github/workflows/ygo-db.yml`** (lundi 04:41 UTC + manuel) : rebuild db.json (prix),
+  vignettes des nouvelles cartes, commit, déploiement Firebase lui-même.
+
+**Modèle de données** (différent de Pokémon, pas de migration commune) :
+`owned[passcode] = { v: { "<code normalisé>|<rareté>": [ {cond, lang, ed}, … ] } }`,
+`wishlist[passcode] = true`. Une « version » est une **impression** (set + rareté) ; chaque
+exemplaire a son état, sa langue et son **édition** (`1re édition` / `Illimitée` / `Inconnue`,
+défaut Illimitée). **Code normalisé** = `normCode()` : on retire les lettres de langue entre le
+tiret et le numéro (`LOB-EN005`, `LOB-E005`, `LOB-005` et la carte française `LOB-FR005` →
+`LOB-005`) ; l'API ne connaît que les codes anglais/américains, la langue de l'exemplaire est
+portée par `lang`. Dans `buildIndex()`, les impressions d'une carte sont regroupées par
+(code normalisé, rareté, set) ; le prix du groupe est celui de la version `-EN` si elle existe
+(la plus proche de la carte française), sinon le premier prix connu ; `≈` devant le prix = repli
+sur le prix TCGplayer de la carte (impression sans cote propre). Limite connue : une réédition
+qui reprend le même code et la même rareté dans un autre set (ex. LOB 25th Anniversary) partage la
+clé de stockage avec l'original.
+
+**Prix** : TCGplayer (marché américain, en $) par impression, **convertis en € avec le taux du
+jour** (`api.frankfurter.dev` — l'ancien domaine `.app` redirige sans en-tête CORS, ne pas
+l'utiliser depuis le navigateur ; repli `open.er-api.com` ; cache 20 h dans `ygo_fx`) ; sans taux,
+affichage en $. Cardmarket € disponible seulement au niveau carte (version la moins chère), affiché
+dans la fiche. Même limite qu'en Pokémon : pas de prix € par version.
+
+**Vues / UI** : onglets Set · Ma collection · Statistiques ; sélecteur de set groupé par année
+(sets ayant ≥ 1 carte, plus récent d'abord ; le dernier set ouvert est mémorisé, `ygo_last_set` ;
+au 1er lancement, le plus récent ayant ≥ 10 cartes). Recherche : nom FR/EN, **passcode** (3 à 8
+chiffres), **code d'impression** (`LOB-FR005` accepté, préfixe accepté). Vignette : anneau or =
+possédée dans ce set, anneau violet = possédée dans un autre set seulement. Fiche : impressions
+possédées d'abord, puis celle du set affiché (`.vcard.here`), puis par date ; 6 affichées, le reste
+sur « Voir les N autres impressions ». Testé en headless (`scratchpad/ygo_test.py`, 33 scénarios),
+pas encore sur le téléphone d'Ariel.
 
 ## Déploiement
 

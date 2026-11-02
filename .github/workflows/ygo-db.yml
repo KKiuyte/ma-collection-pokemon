@@ -1,0 +1,59 @@
+name: Base Yu-Gi-Oh (cartes, prix, vignettes)
+# Reconstruit public/yugioh/db.json depuis l'API YGOPRODeck (noms FR, impressions, prix) et
+# télécharge les vignettes des nouvelles cartes dans public/yugioh/img/ (l'API interdit
+# d'afficher ses images en direct : on les réhéberge). Puis commit + déploiement Firebase
+# (un commit via GITHUB_TOKEN ne déclenche pas deploy.yml, donc on déploie ici même).
+
+on:
+  schedule:
+    - cron: "41 4 * * 1"     # chaque lundi 04:41 UTC
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: ygo-db
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Dépendances
+        run: pip install --quiet pillow
+
+      - name: Construire db.json et télécharger les vignettes manquantes
+        run: python tools/ygo_build_db.py --images
+
+      - name: Committer si quelque chose a changé
+        id: commit
+        run: |
+          git add public/yugioh/db.json public/yugioh/img
+          if git diff --cached --quiet; then
+            echo "Aucun changement — rien à committer."
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          git config user.name "ygo-db-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "MàJ auto base Yu-Gi-Oh ($(date -u +%FT%TZ))"
+          git pull --rebase
+          git push
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+
+      - name: Déployer sur Firebase Hosting (si changé)
+        if: steps.commit.outputs.changed == 'true'
+        uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: ${{ secrets.GITHUB_TOKEN }}
+          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+          projectId: ma-collection-pokemon
+          channelId: live

@@ -16,6 +16,10 @@ service cloud.firestore {
     match /collections/{uid} {
       allow read, write: if request.auth != null && request.auth.uid == uid;
     }
+    // Collection Yu-Gi-Oh! (appli /yugioh/, 2026-11-02) — même principe, document séparé.
+    match /ygo_collections/{uid} {
+      allow read, write: if request.auth != null && request.auth.uid == uid;
+    }
 
     // Profil public léger : { pseudo, pseudoLower, email }. Lisible par tout membre
     // connecté (pour retrouver quelqu'un par son pseudo lors du partage à venir),
