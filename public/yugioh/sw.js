@@ -2,7 +2,7 @@
 // de l'appli Pokémon (portée ./ = /yugioh/ seulement).
 //
 // ⚠️ À CHAQUE MISE À JOUR DE CETTE APPLI, INCRÉMENTER LE NUMÉRO CI-DESSOUS (y1 → y2 …).
-const VERSION = "y2";
+const VERSION = "y3";
 
 const APP_CACHE  = "ygo-app-" + VERSION;   // la page, le manifeste, les icônes
 const DATA_CACHE = "ygo-data-" + VERSION;  // db.json (base de cartes + prix)

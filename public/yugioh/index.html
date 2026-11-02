@@ -284,6 +284,15 @@ body { font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; color:v
   min-height:40px; display:flex; align-items:center; justify-content:center; gap:8px; }
 .scan-status .mini-spin { width:14px; height:14px; border-radius:50%; border:2px solid rgba(255,255,255,.3); border-top-color:#fff;
   animation:spin .8s linear infinite; flex:none; }
+.scan-torch { position:absolute; top:max(14px, env(safe-area-inset-top)); left:14px; width:40px; height:40px; border:none; border-radius:50%;
+  background:rgba(255,255,255,.18); color:#fff; cursor:pointer; display:grid; place-items:center; z-index:2; }
+.scan-torch[hidden] { display:none; }
+.scan-torch.on { background:var(--gold); color:#1a1d29; }
+/* aperçu de la bande envoyée à la lecture + chiffres lus : pour voir ce que « voit » l'appli */
+.scan-peek { display:flex; align-items:center; gap:10px; background:rgba(0,0,0,.55); border-radius:12px; padding:6px 10px; }
+.scan-peek canvas { height:36px; width:auto; max-width:62%; border-radius:6px; background:#fff; image-rendering:auto; }
+.scan-peek span { color:#fff; font-family:ui-monospace,Menlo,monospace; font-weight:800; font-size:13px; flex:1; min-width:0;
+  overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
 .scan-manual { display:flex; gap:8px; }
 .scan-manual input { flex:1; min-width:0; font-family:inherit; font-weight:700; font-size:15px; padding:11px 13px; border-radius:12px; border:none;
   background:rgba(255,255,255,.92); color:#1a1d29; }
@@ -404,10 +413,14 @@ body { font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; color:v
 
 <div id="scanOverlay" class="scan" hidden>
   <video id="scanVideo" autoplay muted playsinline></video>
-  <p class="scan-help">Place la carte dans le cadre, le num&eacute;ro en bas &agrave; gauche dans la petite zone</p>
+  <p class="scan-help">Carte dans le cadre, num&eacute;ro en bas &agrave; gauche dans la petite zone. T&eacute;l&eacute;phone immobile, &agrave; 10 cm environ.</p>
   <div class="scan-frame" id="scanFrame"><div class="scan-zone" id="scanZone"></div></div>
   <button class="scan-close" id="scanClose" aria-label="Fermer le scanner">&times;</button>
+  <button class="scan-torch" id="scanTorch" hidden aria-label="Lampe" title="Lampe">
+    <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.5.9 1.1 1 1.8v.3h5v-.3c.1-.7.4-1.3 1-1.8A6 6 0 0 0 12 3Z"/></svg>
+  </button>
   <div class="scan-bottom">
+    <div class="scan-peek"><canvas id="scanPeek" width="300" height="40"></canvas><span id="scanRead"></span></div>
     <div class="scan-status" id="scanStatus">D&eacute;marrage de la cam&eacute;ra&hellip;</div>
     <form class="scan-manual" id="scanManual">
       <input id="scanInput" inputmode="numeric" autocomplete="off" placeholder="Ou tape les 8 chiffres (vieilles cartes sans n&deg; : le code)">
@@ -1255,7 +1268,7 @@ let scanStream = null, scanWorker = null, scanWorkerPromise = null, scanLoop = f
 const recentScan = new Map();   // passcode -> date de la dernière ouverture (anti-rebond par carte)
 let scanCanvas = null, lastScanText = "";
 // diagnostic (tests headless) : zone découpée, image envoyée à l'OCR et dernier texte lu
-window.__scanDebug = () => { const cv = scanStrip(); return { video: [scanVideo.videoWidth, scanVideo.videoHeight], rect: scanZoneRect(), strip: cv ? cv.toDataURL() : null, text: lastScanText }; };
+window.__scanDebug = () => { const cv = scanStrip(false); return { video: [scanVideo.videoWidth, scanVideo.videoHeight], rect: scanZoneRect(), strip: cv ? cv.toDataURL() : null, text: lastScanText }; };
 function setScanStatus(text, busy){
   $("scanStatus").innerHTML = (busy ? `<span class="mini-spin"></span>` : "") + esc(text);
 }
@@ -1273,7 +1286,7 @@ async function ensureScanWorker(){
     scanWorkerPromise = (async () => {
       await loadTesseract();
       const w = await Tesseract.createWorker("eng");
-      await w.setParameters({ tessedit_char_whitelist: "0123456789", tessedit_pageseg_mode: "7" });
+      await w.setParameters({ tessedit_char_whitelist: "0123456789", tessedit_pageseg_mode: "7", user_defined_dpi: "300" });
       scanWorker = w; return w;
     })().catch(e => { scanWorkerPromise = null; throw e; });
   }
@@ -1293,33 +1306,55 @@ function scanZoneRect(){
   const sw = (z.width + 2 * mx) / scale, sh = (z.height + 2 * my) / scale;
   return [Math.max(0, sx), Math.max(0, sy), Math.min(sw, vw - sx), Math.min(sh, vh - sy)].map(Math.round);
 }
-// découpe + niveaux de gris + contraste (même recette que la page de scan Pokémon)
-function scanStrip(){
+// Découpe + gris + binarisation par SEUIL LOCAL. Gris = canal le plus clair (max R,V,B) plutôt que
+// la luminance : sur une bordure violette (Fusion) ou bleue, le texte noir ressort bien mieux.
+// Puis chaque pixel est comparé à la moyenne de son voisinage (fenêtre ≈ demi-hauteur de bande) :
+// noir s'il est nettement plus sombre, blanc sinon. Robuste aux reflets, aux dégradés et aux zones
+// claires voisines (bord de la boîte de texte) qui faisaient dérailler la binarisation globale de
+// Tesseract (il ne lisait plus que « 1 »). Texte clair sur fond sombre (cartes Xyz noires, Lien) :
+// polarité inversée automatiquement quand la moyenne est sombre ; `flip` force l'autre polarité
+// (2e essai).
+function scanStrip(flip){
   const r = scanZoneRect();
   if (!r || r[2] < 8 || r[3] < 4) return null;
   const [sx, sy, sw, sh] = r;
-  const scale = Math.max(1, Math.min(6, 120 / sh));
+  const scale = Math.max(1, Math.min(8, 160 / sh));
   const cv = scanCanvas || (scanCanvas = document.createElement("canvas"));
-  cv.width = Math.round(sw * scale); cv.height = Math.round(sh * scale);
+  const W = Math.round(sw * scale), H = Math.round(sh * scale);
+  cv.width = W; cv.height = H;
   const ctx = cv.getContext("2d", { willReadFrequently: true });
   ctx.imageSmoothingEnabled = true; ctx.imageSmoothingQuality = "high";
-  ctx.drawImage(scanVideo, sx, sy, sw, sh, 0, 0, cv.width, cv.height);
-  const d = ctx.getImageData(0, 0, cv.width, cv.height), px = d.data;
-  let mn = 255, mx = 0, sum = 0;
-  for (let i = 0; i < px.length; i += 4){
-    const g = 0.299 * px[i] + 0.587 * px[i + 1] + 0.114 * px[i + 2];
-    px[i] = px[i + 1] = px[i + 2] = g;
-    if (g < mn) mn = g; if (g > mx) mx = g; sum += g;
+  ctx.drawImage(scanVideo, sx, sy, sw, sh, 0, 0, W, H);
+  const d = ctx.getImageData(0, 0, W, H), px = d.data, n = W * H;
+  const g = new Float32Array(n); let sum = 0;
+  for (let i = 0, j = 0; i < px.length; i += 4, j++){ const v = Math.max(px[i], px[i + 1], px[i + 2]); g[j] = v; sum += v; }
+  let dark = sum / n < 110; if (flip) dark = !dark;
+  if (dark) for (let j = 0; j < n; j++) g[j] = 255 - g[j];
+  // image intégrale → moyenne locale rapide
+  const I = new Float64Array((W + 1) * (H + 1));
+  for (let y = 1; y <= H; y++){
+    let row = 0;
+    for (let x = 1; x <= W; x++){ row += g[(y - 1) * W + (x - 1)]; I[y * (W + 1) + x] = I[(y - 1) * (W + 1) + x] + row; }
   }
-  const mean = sum / (px.length / 4), range = Math.max(1, mx - mn), invert = mean < 118;
-  for (let i = 0; i < px.length; i += 4){
-    let v = (px[i] - mn) / range * 255;
-    if (invert) v = 255 - v;
-    v = v < 128 ? Math.max(0, v * 0.55) : Math.min(255, 128 + (v - 128) * 1.7);
-    px[i] = px[i + 1] = px[i + 2] = v;
+  const half = Math.max(7, Math.round(H / 4));
+  for (let y = 0; y < H; y++){
+    const y0 = Math.max(0, y - half), y1 = Math.min(H, y + half + 1);
+    for (let x = 0; x < W; x++){
+      const x0 = Math.max(0, x - half), x1 = Math.min(W, x + half + 1);
+      const mean = (I[y1 * (W + 1) + x1] - I[y0 * (W + 1) + x1] - I[y1 * (W + 1) + x0] + I[y0 * (W + 1) + x0]) / ((y1 - y0) * (x1 - x0));
+      const v = g[y * W + x] < mean * 0.86 - 4 ? 0 : 255;
+      const i = (y * W + x) * 4; px[i] = px[i + 1] = px[i + 2] = v; px[i + 3] = 255;
+    }
   }
   ctx.putImageData(d, 0, 0);
   return cv;
+}
+// aperçu : ce que « voit » la lecture + les chiffres lus (aide à viser, et à diagnostiquer)
+function showPeek(cv, text){
+  const pk = $("scanPeek");
+  if (cv){ pk.width = cv.width; pk.height = cv.height; pk.getContext("2d").drawImage(cv, 0, 0); }
+  const digits = String(text || "").replace(/\D+/g, " ").trim();
+  $("scanRead").textContent = digits ? "lu : " + digits : "lu : rien";
 }
 // toutes les fenêtres de 8 chiffres du texte lu ; la première qui est une carte connue gagne
 function scanMatch(text){
@@ -1346,16 +1381,21 @@ async function scanTick(){
   if (openCard || scanBusy || !scanWorker || scanVideo.readyState < 2){ setTimeout(scanTick, 250); return; }
   scanBusy = true;
   try {
-    const cv = scanStrip();
+    const cv = scanStrip(false);
     if (cv){
-      const { data } = await scanWorker.recognize(cv);
-      lastScanText = data && data.text;
+      let { data } = await scanWorker.recognize(cv);
+      let text = data && data.text, id = scanMatch(text);
+      if (!id && scanLoop && !openCard){            // 2e essai : polarité inverse (texte clair sur fond sombre mal détecté)
+        const cv2 = scanStrip(true);
+        if (cv2){ ({ data } = await scanWorker.recognize(cv2)); if (scanMatch(data && data.text)){ text = data.text; id = scanMatch(text); } }
+      }
+      lastScanText = text;
       // le scanner a pu être fermé, ou une fiche ouverte (saisie manuelle), pendant la lecture
       if (!scanLoop){ scanBusy = false; return; }
       if (openCard){ scanBusy = false; setTimeout(scanTick, 250); return; }
-      const id = scanMatch(data && data.text);
+      showPeek(scanStrip(false), text);
       if (id) scanHit(id, "ocr");
-      else if (!openCard) setScanStatus("Lecture en cours… approche ou éloigne un peu la carte", true);
+      else setScanStatus("Lecture en cours… tiens le téléphone immobile, numéro bien dans la zone", true);
     }
   } catch {}
   scanBusy = false;
@@ -1373,10 +1413,13 @@ async function openScanner(){
     setScanStatus("Caméra indisponible dans ce navigateur. Tape le numéro ci-dessous."); return;
   }
   try {
+    // Haute résolution : on ne lit qu'une toute petite zone de l'image, chaque pixel compte
+    // (à 1080p le passcode ne fait ~12 px de haut, illisible ; à 4K le double).
     scanStream = await navigator.mediaDevices.getUserMedia({ audio: false,
-      video: { facingMode: { ideal: "environment" }, width: { ideal: 1920 }, height: { ideal: 1080 } } });
+      video: { facingMode: { ideal: "environment" }, width: { ideal: 3840 }, height: { ideal: 2160 } } });
     scanVideo.srcObject = scanStream;
     await scanVideo.play();
+    await tuneCamera();
   } catch {
     setScanStatus("Accès à la caméra refusé ou impossible. Tape le numéro ci-dessous."); return;
   }
@@ -1388,8 +1431,30 @@ async function openScanner(){
   setScanStatus("Place la carte dans le cadre", true);
   scanLoop = true; scanTick();
 }
+// Réglages caméra quand le téléphone les expose : zoom ×2 (la carte remplit le cadre en restant
+// à ~10 cm, distance où la mise au point fonctionne — à 5 cm la plupart des téléphones ne font
+// plus le point), mise au point continue, lampe torche (bouton) si disponible.
+let scanTrack = null, torchOn = false;
+async function tuneCamera(){
+  scanTrack = scanStream ? scanStream.getVideoTracks()[0] : null;
+  const caps = (scanTrack && scanTrack.getCapabilities) ? (scanTrack.getCapabilities() || {}) : {};
+  const adv = [];
+  if (caps.focusMode && caps.focusMode.includes("continuous")) adv.push({ focusMode: "continuous" });
+  if (caps.zoom && caps.zoom.max > 1) adv.push({ zoom: Math.min(caps.zoom.max, Math.max(caps.zoom.min || 1, 2)) });
+  for (const c of adv){ try { await scanTrack.applyConstraints({ advanced: [c] }); } catch {} }
+  torchOn = false;
+  $("scanTorch").hidden = !caps.torch;
+  $("scanTorch").classList.remove("on");
+}
+async function toggleTorch(){
+  if (!scanTrack) return;
+  torchOn = !torchOn;
+  try { await scanTrack.applyConstraints({ advanced: [{ torch: torchOn }] }); $("scanTorch").classList.toggle("on", torchOn); }
+  catch { torchOn = false; $("scanTorch").classList.remove("on"); }
+}
+$("scanTorch").addEventListener("click", toggleTorch);
 function stopScanner(){
-  scanLoop = false;
+  scanLoop = false; scanTrack = null;
   if (scanStream){ scanStream.getTracks().forEach(t => t.stop()); scanStream = null; }
   scanVideo.srcObject = null;
 }

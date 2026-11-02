@@ -461,8 +461,12 @@ lecture), cadre au format carte (`.scan-frame`), petite zone `.scan-zone` en bas
 = là où **toute carte Yu-Gi-Oh! porte son passcode à 8 chiffres** (même numéro dans toutes les
 langues = l'identifiant de la base ; les images de l'API, elles, sont des répliques qui écrivent
 « Replica » à cet endroit). Boucle `scanTick()` : découpe de la zone (+ marge, `scanZoneRect()` tient
-compte du `object-fit: cover`), niveaux de gris + contraste (recette de `scan.html` Pokémon), OCR
-Tesseract.js 5 (chargé à la demande, modèle `eng`, **liste blanche `0123456789`, PSM 7**), puis
+compte du `object-fit: cover`), gris = **canal max(R,V,B)** (pas la luminance : texte noir sur
+bordure violette/bleue) puis **binarisation par seuil local** (moyenne de voisinage via image
+intégrale, noir si < 0,86 × moyenne − 4 ; polarité auto par la moyenne, 2e essai en polarité
+inverse) — la binarisation globale de Tesseract déraillait dès qu'une zone claire (bord de la boîte
+de texte) entrait dans la découpe et ne lisait plus que « 1 ». OCR Tesseract.js 5 (chargé à la
+demande, modèle `eng`, **liste blanche `0123456789`, PSM 7, `user_defined_dpi` 300**), puis
 `scanMatch()` : toutes les fenêtres de 8 chiffres du texte lu, la première qui est une carte connue
 gagne — **la base sert de somme de contrôle**, une lecture fausse qui ne correspond à rien est
 ignorée et on attend la suivante. Anti-rebond par carte (`recentScan`, 4 s comptées depuis la
@@ -471,11 +475,18 @@ fermeture de la fiche). Saisie manuelle sous la vidéo : 8 chiffres → fiche, a
 un écran de l'historique (`scan` dans `navSnapshot`). ⚠️ Pièges vécus : une lecture OCR encore en
 vol quand on ferme le scanner ou qu'une fiche est ouverte ne doit rien rouvrir (test `scanLoop` /
 `openCard` APRÈS l'`await`). Testé de bout en bout en headless avec une **caméra factice** Chromium
-(`--use-file-for-fake-video-capture` + y4m où l'on dessine une carte avec le passcode au bon
-endroit, `scratchpad/ygo_scan_test.py`, 12 scénarios ; Chrome sert le fichier à la taille demandée
-par les contraintes, 1920×1080) : reconnaissance en ~1,4 s chargement compris. **Pas encore testé
-avec une vraie carte ni un vrai téléphone** : la taille de la zone et le pré-traitement (reflets des
-cartes brillantes, petite police) sont à ajuster d'après le retour d'Ariel. Pas de lecture du code
+(`--use-file-for-fake-video-capture` + y4m où l'on dessine une carte à bordure violette avec un
+petit passcode au bon endroit, `scratchpad/ygo_scan_test.py`, 12 scénarios ; Chrome sert le fichier
+à la taille demandée par les contraintes) : reconnaissance en ~1,4 s chargement compris.
+**1er essai réel d'Ariel (2026-11-02, v « y2 ») : échec sur plusieurs cartes.** Captures analysées :
+(1) pour remplir le cadre (78 vw) le téléphone est à ~5 cm, sous la distance mini de mise au point →
+flou ; (2) en 1080p le passcode fait ~12 px de haut, et noir sur bordure violette (carte Fusion
+secret rare sous pochette). Réponse (« y3 ») : capture **4K demandée** (`width/height ideal
+3840×2160`, on ne lit qu'une petite zone, chaque pixel compte), `tuneCamera()` = **zoom ×2** et
+`focusMode: continuous` via `applyConstraints` quand `getCapabilities()` les expose (le zoom permet
+de rester à ~10 cm), **bouton lampe torche** si `torch` disponible, bande cible 160 px de haut,
+seuil local ci-dessus, et un **aperçu en bas de l'écran** (`#scanPeek` = bande binarisée envoyée à
+l'OCR + « lu : … ») pour viser et diagnostiquer. À revalider avec de vraies cartes. Pas de lecture du code
 d'impression (ex. `LOB-FR005`, à droite sous l'illustration) pour l'instant : la fiche liste les
 impressions, Ariel choisit. `window.__scanDebug()` renvoie la zone découpée et le dernier texte lu
 (diagnostic).
@@ -525,7 +536,7 @@ chiffres), **code d'impression** (`LOB-FR005` accepté, préfixe accepté). Vign
 possédée dans ce set, anneau violet = possédée dans un autre set seulement. Fiche : impressions
 possédées d'abord, puis celle du set affiché (`.vcard.here`), puis par date ; 6 affichées, le reste
 sur « Voir les N autres impressions ». Testé en headless (`scratchpad/ygo_test.py`, 33 scénarios),
-pas encore sur le téléphone d'Ariel. SW « y2 » le 2026-11-02 (scan).
+pas encore sur le téléphone d'Ariel. SW « y3 » le 2026-11-02 (scan v2).
 
 ## Déploiement
 
