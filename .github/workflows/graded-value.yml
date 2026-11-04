@@ -11,6 +11,12 @@ on:
   schedule:
     - cron: "41 5 * * *"      # tous les jours à 05:41 UTC
   workflow_dispatch: {}
+  push:                        # recalcul immédiat quand le script ou le workflow change
+    branches: [main]
+    paths:
+      - tools/psa_collection_value.py
+      - tools/psa_client.py
+      - .github/workflows/graded-value.yml
 
 permissions:
   contents: write
@@ -24,9 +30,9 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 40
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: "3.12"
 
@@ -46,7 +52,7 @@ jobs:
 
       - name: Captures d'écran de diagnostic (si la connexion PSA a échoué)
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: psa-debug
           path: ${{ runner.temp }}/psa-debug
