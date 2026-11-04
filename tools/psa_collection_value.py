@@ -132,15 +132,17 @@ _http.headers.update({"User-Agent": UA})
 
 
 def tcgdex(path):
-    for attempt in range(3):
+    for attempt in range(5):
         try:
             r = _http.get(TCGDEX + path, timeout=30)
             if r.status_code == 404:
                 return None
             r.raise_for_status()
             return r.json()
-        except Exception:
-            time.sleep(1.5 * (attempt + 1))
+        except Exception as e:
+            last = e
+            time.sleep(2.0 * (attempt + 1))
+    log(f"TCGdex : échec définitif sur {path} ({last.__class__.__name__})")
     return None
 
 
@@ -336,12 +338,14 @@ def main():
     log(f"collection {uid} : {len(ids)} carte(s)")
 
     # --- TCGdex : cartes + prix
-    cards = {}
+    cards, tcgdex_failed = {}, []
     with ThreadPoolExecutor(max_workers=6) as ex:
         for cid, fr, en in ex.map(fetch_card, ids):
             if fr or en:
                 cards[cid] = {"fr": fr or {}, "en": en or {}}
-    log(f"TCGdex : {len(cards)} fiche(s) récupérée(s)")
+            else:
+                tcgdex_failed.append(cid)       # listé dans le rapport : une carte sans fiche serait sinon ignorée en silence
+    log(f"TCGdex : {len(cards)} fiche(s) récupérée(s)" + (f", {len(tcgdex_failed)} sans fiche : {' '.join(tcgdex_failed)}" if tcgdex_failed else ""))
 
     # --- éligibilité
     # `excluded` garde la trace des lignes qu'on écarte alors que l'appli, elle, affiche la carte
@@ -425,6 +429,7 @@ def main():
                    "est_france_eur": round(sum(r["psa"]["est_eur_france"] * r["qty"] for r in priced), 2)},
         "rows": priced + others,
         "excluded": excluded,
+        "tcgdex_failed": tcgdex_failed,
     }
     report["totals"]["gain_eur"] = round(report["totals"]["est_france_eur"] - report["totals"]["raw_eur"], 2)
 

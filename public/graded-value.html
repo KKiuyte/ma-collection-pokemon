@@ -152,7 +152,8 @@ function renderAll() {
   const r = REPORT, s = r.stats || {}, t = r.totals || {};
   $("#sub").innerHTML =
     `Calculé ${age(r.generated_at)} · seuil ${eur(r.threshold)} · ventes PSA sur ${r.months} mois · ` +
-    `décote France ${Math.round((r.discount || 0) * 100)} % · 1 $ = ${r.fx_usd_eur} €`;
+    `décote France ${Math.round((r.discount || 0) * 100)} % · 1 $ = ${r.fx_usd_eur} €` +
+    (s.cards_owned != null ? ` · collection lue : ${s.cards_owned} carte${s.cards_owned > 1 ? "s" : ""}` : "");
   let html = `
     <div class="note">Pour chaque carte possédée au-dessus du seuil, en état <b>Neuve</b> (vise PSA 10) ou
     <b>Excellent</b> (vise PSA 9) : prix brut Cardmarket comparé à la <b>moyenne des ventes PSA réelles</b>
@@ -273,6 +274,10 @@ function renderOthers() {
       `</div></details>`;
   }
   html += renderExcluded();
+  const tf = REPORT.tcgdex_failed || [];
+  if (tf.length)
+    html += `<details><summary>Fiches TCGdex non récupérées pendant le calcul — ${tf.length}</summary><div class="small">` +
+      `Ces cartes de ta collection n'ont pas pu être évaluées (l'API n'a pas répondu) : ${tf.map(esc).join(", ")}.</div></details>`;
   const us = s.unmatched_sets || {};
   if (Object.keys(us).length)
     html += `<p class="small" style="margin-top:12px">Séries sans correspondance PSA : ${Object.values(us).map(esc).join(", ")}.
