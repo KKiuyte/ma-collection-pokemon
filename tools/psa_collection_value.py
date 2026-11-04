@@ -344,7 +344,11 @@ def main():
     log(f"TCGdex : {len(cards)} fiche(s) récupérée(s)")
 
     # --- éligibilité
-    rows, skipped_price, skipped_cond = [], 0, 0
+    # `excluded` garde la trace des lignes qu'on écarte alors que l'appli, elle, affiche la carte
+    # au-dessus du seuil (état non gradable, prix connu en $ seulement, ou valeur cumulée de la
+    # carte ≥ seuil alors que chaque version à l'unité est en dessous) : la page les liste avec
+    # leur motif, sinon « 8 cartes à plus de 10 € dans l'appli, 4 dans la page » est inexplicable.
+    rows, excluded, skipped_price, skipped_cond = [], [], 0, 0
     for cid in ids:
         c = cards.get(cid)
         if not c:
@@ -356,24 +360,36 @@ def main():
         for version, cond, lang in copies_of(owned[cid]):
             groups.setdefault((version, cond, lang), 0)
             groups[(version, cond, lang)] += 1
+        priced_groups, card_eur_total = [], 0.0
         for (version, cond, lang), qty in groups.items():
-            target = GRADE_TARGET_BY_COND.get(cond)
-            if not target:
-                skipped_cond += qty
-                continue
             p = price_for_variant(fr, version) or price_for_variant(en, version)
-            if not p or p[1] != "EUR" or p[0] < args.threshold:
-                skipped_price += qty
-                continue
-            rows.append({
+            if p and p[1] == "EUR":
+                card_eur_total += p[0] * qty          # ce que l'appli affiche comme valeur de la carte
+            priced_groups.append((version, cond, lang, qty, p))
+        for version, cond, lang, qty, p in priced_groups:
+            base = {
                 "id": cid, "name_fr": fr.get("name") or en.get("name"), "name_en": en.get("name") or fr.get("name"),
                 "number": src.get("localId"), "set_id": set_id, "image": src.get("image"),
                 "set_name_fr": (fr.get("set") or {}).get("name") or (en.get("set") or {}).get("name"),
                 "version": version, "cond": cond, "lang": lang, "qty": qty,
-                "raw_eur": round(p[0], 2), "target_grade": target,
-            })
+            }
+            target = GRADE_TARGET_BY_COND.get(cond)
+            if not target:
+                skipped_cond += qty
+                if p and p[0] >= args.threshold:
+                    excluded.append({**base, "price": round(p[0], 2), "unit": p[1], "reason": "cond"})
+                continue
+            if not p or p[1] != "EUR" or p[0] < args.threshold:
+                skipped_price += qty
+                if p and p[1] != "EUR" and p[0] >= args.threshold:
+                    excluded.append({**base, "price": round(p[0], 2), "unit": p[1], "reason": "usd"})
+                elif p and p[1] == "EUR" and card_eur_total >= args.threshold:
+                    excluded.append({**base, "price": round(p[0], 2), "unit": "EUR", "reason": "cumul",
+                                     "card_total_eur": round(card_eur_total, 2)})
+                continue
+            rows.append({**base, "raw_eur": round(p[0], 2), "target_grade": target})
     log(f"éligibles : {len(rows)} ligne(s) (ignorées : {skipped_price} sous le seuil / sans prix €, "
-        f"{skipped_cond} par l'état)")
+        f"{skipped_cond} par l'état ; {len(excluded)} écartée(s) pourtant au-dessus du seuil dans l'appli)")
 
     # --- PSA
     ps = PsaSession(verbose=args.verbose).ensure()
@@ -404,10 +420,11 @@ def main():
                   "card_not_found": sum(1 for r in others if r.get("status") == "card_not_found"),
                   "set_not_found": sum(1 for r in others if r.get("status") == "set_not_found"),
                   "psa_error": sum(1 for r in others if r.get("status") == "psa_error"),
-                  "unmatched_sets": unmatched_sets},
+                  "excluded": len(excluded), "unmatched_sets": unmatched_sets},
         "totals": {"raw_eur": round(sum(r["raw_eur"] * r["qty"] for r in priced), 2),
                    "est_france_eur": round(sum(r["psa"]["est_eur_france"] * r["qty"] for r in priced), 2)},
         "rows": priced + others,
+        "excluded": excluded,
     }
     report["totals"]["gain_eur"] = round(report["totals"]["est_france_eur"] - report["totals"]["raw_eur"], 2)
 

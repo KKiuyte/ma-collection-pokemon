@@ -239,6 +239,21 @@ function renderList() {
   }).join("");
 }
 
+const EXCLUDED_REASONS = {
+  cond: (x) => `état « ${esc(x.cond)} » : seuls Neuve (PSA 10) et Excellent (PSA 9) sont retenus ici`,
+  usd: (x) => `prix connu seulement en $ (TCGplayer) : le seuil s'applique aux prix Cardmarket en €`,
+  cumul: (x) => `sous le seuil à l'unité — l'appli affiche le cumul de la carte (${eur(x.card_total_eur)})`,
+};
+function renderExcluded() {
+  const list = REPORT.excluded || [];
+  if (!list.length) return "";
+  return `<details><summary>Au-dessus du seuil dans l'appli, mais écartées avant PSA — ${list.length}</summary><div class="small">` +
+    list.map((x) => `${esc(x.name_fr)} #${esc(x.number)} (${esc(x.set_name_fr || x.set_id)}, ${esc(x.version)}, ${esc(x.cond)}` +
+      `${x.qty > 1 ? ` ×${x.qty}` : ""}) — ${x.unit === "USD" ? `${x.price} $` : eur(x.price)} · ` +
+      (EXCLUDED_REASONS[x.reason] ? EXCLUDED_REASONS[x.reason](x) : esc(x.reason))).join("<br>") +
+    `</div></details>`;
+}
+
 function renderOthers() {
   const rows = REPORT.rows || [], s = REPORT.stats || {};
   const groups = [
@@ -257,6 +272,7 @@ function renderOthers() {
         (r.psa && r.psa.grades ? gradesLine(r.psa) : "")).join("<br>") +
       `</div></details>`;
   }
+  html += renderExcluded();
   const us = s.unmatched_sets || {};
   if (Object.keys(us).length)
     html += `<p class="small" style="margin-top:12px">Séries sans correspondance PSA : ${Object.values(us).map(esc).join(", ")}.

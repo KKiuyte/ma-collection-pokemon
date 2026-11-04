@@ -428,7 +428,13 @@ PSA 10 ≈ 992 €, 911 ventes/6 mois).
 
 **Page `public/graded-value.html`** : Firebase (config publique, session partagée avec l'appli),
 lit le rapport, totaux, filtres note/texte, tri gain/ratio/prix, badges « via EN » et « peu de
-ventes », listes repliées des non chiffrées (sans vente / carte absente / série absente).
+ventes », listes repliées des non chiffrées (sans vente / carte absente / série absente), et depuis le
+2026-11-04 la liste **« Au-dessus du seuil dans l'appli, mais écartées avant PSA »** (`report.excluded`,
+motifs `cond` = état autre que Neuve/Excellent, `usd` = prix connu seulement en $ TCGplayer, `cumul` =
+prix unitaire sous le seuil mais valeur cumulée de la carte ≥ seuil — l'appli affiche le cumul). Ajoutée
+parce qu'Ariel voyait 8 cartes > 10 € dans l'appli et 3/4 dans la page, sans explication possible : les
+lignes écartées n'étaient que comptées dans le log du workflow (illisible sans jeton, dépôt public ou
+pas). Le rapport ne se régénère qu'au passage quotidien (ou « Run workflow » à la main).
 
 ⚠️ Limites assumées : PSA = surtout cartes anglaises (une carte FR moderne est estimée via sa
 version EN) ; la décote 15 % est une hypothèse ; contraire aux CGU PSA (usage perso, ~1 run/jour,
