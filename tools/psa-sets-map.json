@@ -126,5 +126,26 @@
   "psa_name": "Pokemon Sword & Shield Champion's Path",
   "psa_year": "2020",
   "auto": true
+ },
+ "30th|French": {
+  "none": true,
+  "why": "aucune série PSA trouvée",
+  "candidates": []
+ },
+ "30th|EN": {
+  "psa_id": "350105",
+  "psa_name": "Pokemon 30C EN-30th Celebration",
+  "psa_year": "2026",
+  "auto": true
+ },
+ "30th-c|French": {
+  "none": true,
+  "why": "aucune série PSA trouvée",
+  "candidates": []
+ },
+ "30th-c|EN": {
+  "none": true,
+  "why": "aucune série PSA trouvée",
+  "candidates": []
  }
 }
