@@ -1,7 +1,7 @@
 {
  "_meta": {
-  "fx_usd_eur": 0.8917,
-  "fx_at": "2026-11-11T06:37:24Z"
+  "fx_usd_eur": 0.8987,
+  "fx_at": "2026-11-12T11:26:04Z"
  },
  "items": {
   "9901340300": {
@@ -123000,6 +123000,704 @@
    "votes": 2,
    "at": "2026-11-12T00:48:53Z",
    "status": "ok"
+  },
+  "10775664458": {
+   "cert": "82679014",
+   "conf": 1.0,
+   "votes": 4,
+   "at": "2026-11-12T11:26:04Z",
+   "status": "ok"
+  },
+  "10775657403": {
+   "cert": "62477929",
+   "conf": 1.0,
+   "votes": 8,
+   "at": "2026-11-12T11:26:04Z",
+   "status": "ok"
+  },
+  "10774830985": {
+   "cert": "87691326",
+   "conf": 1.0,
+   "votes": 12,
+   "at": "2026-11-12T11:26:04Z",
+   "status": "ok"
+  },
+  "10774796995": {
+   "cert": "170248525",
+   "conf": 1.0,
+   "votes": 4,
+   "at": "2026-11-12T11:26:04Z",
+   "status": "ok"
+  },
+  "10775667258": {
+   "cert": "41734341",
+   "conf": 1.0,
+   "votes": 4,
+   "at": "2026-11-12T11:26:04Z",
+   "status": "ok"
+  },
+  "10775661946": {
+   "cert": "180298972",
+   "conf": 1.0,
+   "votes": 8,
+   "at": "2026-11-12T11:26:04Z",
+   "status": "ok"
+  },
+  "10775299620": {
+   "cert": "67513513",
+   "conf": 1.0,
+   "votes": 16,
+   "at": "2026-11-12T11:26:04Z",
+   "status": "ok"
+  },
+  "10774966301": {
+   "cert": "145958982",
+   "conf": 1.0,
+   "votes": 2,
+   "at": "2026-11-12T11:26:04Z",
+   "status": "ok"
+  },
+  "10775673792": {
+   "cert": "82345293",
+   "conf": 1.0,
+   "votes": 4,
+   "at": "2026-11-12T11:26:04Z",
+   "status": "ok"
+  },
+  "10775671463": {
+   "cert": "103187001",
+   "conf": 1.0,
+   "votes": 12,
+   "at": "2026-11-12T11:26:04Z",
+   "status": "ok"
+  },
+  "10775676448": {
+   "cert": "43406298",
+   "conf": 1.0,
+   "votes": 4,
+   "at": "2026-11-12T11:26:04Z",
+   "status": "ok"
+  },
+  "10774751762": {
+   "cert": "146100451",
+   "conf": 1.0,
+   "votes": 8,
+   "at": "2026-11-12T11:26:04Z",
+   "status": "ok"
+  },
+  "10775679446": {
+   "cert": "40771876",
+   "conf": 1.0,
+   "votes": 4,
+   "at": "2026-11-12T11:26:04Z",
+   "status": "ok"
+  },
+  "10775683402": {
+   "cert": "156706162",
+   "conf": 1.0,
+   "votes": 4,
+   "at": "2026-11-12T11:26:04Z",
+   "status": "ok"
+  },
+  "10774978651": {
+   "cert": "166853965",
+   "conf": 1.0,
+   "votes": 2,
+   "at": "2026-11-12T11:26:04Z",
+   "status": "ok"
+  },
+  "10774887761": {
+   "cert": "179881453",
+   "conf": 0.87,
+   "votes": 2,
+   "at": "2026-11-12T11:26:04Z",
+   "status": "ok"
+  },
+  "10774866455": {
+   "cert": "140940540",
+   "conf": 1.0,
+   "votes": 8,
+   "at": "2026-11-12T11:26:04Z",
+   "status": "ok"
+  },
+  "10776153958": {
+   "cert": "94250461",
+   "conf": 1.0,
+   "votes": 8,
+   "at": "2026-11-12T11:26:04Z",
+   "status": "ok"
+  },
+  "10775098925": {
+   "cert": "168319896",
+   "conf": 1.0,
+   "votes": 4,
+   "at": "2026-11-12T11:26:04Z",
+   "status": "ok"
+  },
+  "10774931968": {
+   "cert": null,
+   "conf": 0.0,
+   "votes": 0,
+   "at": "2026-11-12T11:26:04Z",
+   "status": "no_cert"
+  },
+  "10775600208": {
+   "cert": null,
+   "conf": 0.0,
+   "votes": 0,
+   "at": "2026-11-12T11:26:04Z",
+   "status": "no_cert"
+  },
+  "10774870930": {
+   "cert": "178047468",
+   "conf": 1.0,
+   "votes": 4,
+   "at": "2026-11-12T11:26:04Z",
+   "status": "ok"
+  },
+  "10776222465": {
+   "cert": "174933758",
+   "conf": 1.0,
+   "votes": 8,
+   "at": "2026-11-12T11:26:04Z",
+   "status": "ok"
+  },
+  "10775794935": {
+   "cert": null,
+   "conf": 0.0,
+   "votes": 0,
+   "at": "2026-11-12T11:26:04Z",
+   "status": "no_cert"
+  },
+  "10775207538": {
+   "cert": "105714101",
+   "conf": 1.0,
+   "votes": 12,
+   "at": "2026-11-12T11:26:04Z",
+   "status": "ok"
+  },
+  "10773967714": {
+   "cert": "180910330",
+   "conf": 0.83,
+   "votes": 2,
+   "at": "2026-11-12T11:26:04Z",
+   "status": "ok"
+  },
+  "10774163163": {
+   "cert": "24599312",
+   "conf": 1.0,
+   "votes": 4,
+   "at": "2026-11-12T11:26:04Z",
+   "status": "ok"
+  },
+  "10776010382": {
+   "cert": null,
+   "conf": 0.0,
+   "votes": 0,
+   "at": "2026-11-12T11:26:04Z",
+   "status": "no_cert"
+  },
+  "10775850395": {
+   "cert": null,
+   "conf": 0.0,
+   "votes": 0,
+   "at": "2026-11-12T11:26:04Z",
+   "status": "no_cert"
+  },
+  "10774278996": {
+   "cert": "133149042",
+   "conf": 1.0,
+   "votes": 8,
+   "at": "2026-11-12T11:26:04Z",
+   "status": "ok"
+  },
+  "10775919723": {
+   "cert": null,
+   "conf": 0.0,
+   "votes": 0,
+   "at": "2026-11-12T11:26:04Z",
+   "status": "no_cert"
+  },
+  "10776233291": {
+   "cert": null,
+   "conf": 0.0,
+   "votes": 0,
+   "at": "2026-11-12T11:26:04Z",
+   "status": "no_cert"
+  },
+  "10775207735": {
+   "cert": "164818054",
+   "conf": 1.0,
+   "votes": 4,
+   "at": "2026-11-12T11:26:04Z",
+   "status": "ok"
+  },
+  "10775167942": {
+   "cert": "164818051",
+   "conf": 1.0,
+   "votes": 5,
+   "at": "2026-11-12T11:26:04Z",
+   "status": "ok"
+  },
+  "10775038895": {
+   "cert": "92797689",
+   "conf": 1.0,
+   "votes": 4,
+   "at": "2026-11-12T11:26:04Z",
+   "status": "ok"
+  },
+  "10774857580": {
+   "cert": "177574912",
+   "conf": 1.0,
+   "votes": 8,
+   "at": "2026-11-12T11:26:04Z",
+   "status": "ok"
+  },
+  "10773765780": {
+   "cert": "164818121",
+   "conf": 1.0,
+   "votes": 8,
+   "at": "2026-11-12T11:26:04Z",
+   "status": "ok"
+  },
+  "10775312489": {
+   "cert": null,
+   "conf": 0.0,
+   "votes": 0,
+   "at": "2026-11-12T11:26:04Z",
+   "status": "no_cert"
+  },
+  "10774995870": {
+   "cert": "177574912",
+   "conf": 1.0,
+   "votes": 4,
+   "at": "2026-11-12T11:26:04Z",
+   "status": "ok"
+  },
+  "10774942961": {
+   "cert": null,
+   "conf": 0.0,
+   "votes": 0,
+   "at": "2026-11-12T11:26:04Z",
+   "status": "no_cert"
+  },
+  "10774226341": {
+   "cert": "44966754",
+   "conf": 1.0,
+   "votes": 12,
+   "at": "2026-11-12T11:26:04Z",
+   "status": "ok"
+  },
+  "10775627755": {
+   "cert": "67947243",
+   "conf": 1.0,
+   "votes": 4,
+   "at": "2026-11-12T11:26:04Z",
+   "status": "ok"
+  },
+  "10775641183": {
+   "cert": "159050811",
+   "conf": 1.0,
+   "votes": 2,
+   "at": "2026-11-12T11:26:04Z",
+   "status": "ok"
+  },
+  "10774324786": {
+   "cert": "157692045",
+   "conf": 1.0,
+   "votes": 10,
+   "at": "2026-11-12T11:26:04Z",
+   "status": "ok"
+  },
+  "10775018528": {
+   "cert": null,
+   "conf": 0.0,
+   "votes": 0,
+   "at": "2026-11-12T11:26:04Z",
+   "status": "no_cert"
+  },
+  "10775949334": {
+   "cert": null,
+   "conf": 0.0,
+   "votes": 0,
+   "at": "2026-11-12T11:26:04Z",
+   "status": "no_cert"
+  },
+  "10775587768": {
+   "cert": "152827383",
+   "conf": 1.0,
+   "votes": 8,
+   "at": "2026-11-12T11:26:04Z",
+   "status": "ok"
+  },
+  "10775768384": {
+   "cert": "178751276",
+   "conf": 1.0,
+   "votes": 8,
+   "at": "2026-11-12T11:26:04Z",
+   "status": "ok"
+  },
+  "10774642402": {
+   "cert": "128816638",
+   "conf": 1.0,
+   "votes": 8,
+   "at": "2026-11-12T11:26:04Z",
+   "status": "ok"
+  },
+  "10775095826": {
+   "cert": "174736065",
+   "conf": 1.0,
+   "votes": 8,
+   "at": "2026-11-12T11:26:04Z",
+   "status": "ok"
+  },
+  "10775182636": {
+   "cert": "126740881",
+   "conf": 1.0,
+   "votes": 8,
+   "at": "2026-11-12T11:26:04Z",
+   "status": "ok"
+  },
+  "10775298860": {
+   "cert": "95129544",
+   "conf": 1.0,
+   "votes": 8,
+   "at": "2026-11-12T11:26:04Z",
+   "status": "ok"
+  },
+  "10775508224": {
+   "cert": "69728967",
+   "conf": 1.0,
+   "votes": 4,
+   "at": "2026-11-12T11:26:04Z",
+   "status": "ok"
+  },
+  "10775986580": {
+   "cert": null,
+   "conf": 0.0,
+   "votes": 0,
+   "at": "2026-11-12T11:26:04Z",
+   "status": "no_cert"
+  },
+  "10775438386": {
+   "cert": "132500718",
+   "conf": 1.0,
+   "votes": 4,
+   "at": "2026-11-12T11:26:04Z",
+   "status": "ok"
+  },
+  "10774631676": {
+   "cert": "171575865",
+   "conf": 1.0,
+   "votes": 6,
+   "at": "2026-11-12T11:26:04Z",
+   "status": "ok"
+  },
+  "10774006434": {
+   "cert": null,
+   "conf": 0.0,
+   "votes": 0,
+   "at": "2026-11-12T11:26:04Z",
+   "status": "no_cert"
+  },
+  "10775791643": {
+   "cert": "178751281",
+   "conf": 1.0,
+   "votes": 8,
+   "at": "2026-11-12T11:26:04Z",
+   "status": "ok"
+  },
+  "10774539749": {
+   "cert": "103062121",
+   "conf": 1.0,
+   "votes": 8,
+   "at": "2026-11-12T11:26:04Z",
+   "status": "ok"
+  },
+  "10774975655": {
+   "cert": "64147064",
+   "conf": 1.0,
+   "votes": 8,
+   "at": "2026-11-12T11:26:04Z",
+   "status": "ok"
+  },
+  "10775908198": {
+   "cert": "168443917",
+   "conf": 1.0,
+   "votes": 4,
+   "at": "2026-11-12T11:26:04Z",
+   "status": "ok"
+  },
+  "10775682372": {
+   "cert": "135498886",
+   "conf": 1.0,
+   "votes": 4,
+   "at": "2026-11-12T11:26:04Z",
+   "status": "ok"
+  },
+  "10775345831": {
+   "cert": "177613673",
+   "conf": 1.0,
+   "votes": 6,
+   "at": "2026-11-12T11:26:04Z",
+   "status": "ok"
+  },
+  "10773768937": {
+   "cert": "164818120",
+   "conf": 1.0,
+   "votes": 7,
+   "at": "2026-11-12T11:26:04Z",
+   "status": "ok"
+  },
+  "10776233026": {
+   "cert": "174933757",
+   "conf": 1.0,
+   "votes": 8,
+   "at": "2026-11-12T11:26:04Z",
+   "status": "ok"
+  },
+  "10775468037": {
+   "cert": null,
+   "conf": 0.0,
+   "votes": 0,
+   "at": "2026-11-12T11:26:04Z",
+   "status": "no_cert"
+  },
+  "10774843980": {
+   "cert": null,
+   "conf": 0.0,
+   "votes": 0,
+   "at": "2026-11-12T11:26:04Z",
+   "status": "no_cert"
+  },
+  "10776150939": {
+   "cert": "69460739",
+   "conf": 1.0,
+   "votes": 8,
+   "at": "2026-11-12T11:26:04Z",
+   "status": "ok"
+  },
+  "10775284250": {
+   "cert": "55713936",
+   "conf": 1.0,
+   "votes": 12,
+   "at": "2026-11-12T11:26:04Z",
+   "status": "ok"
+  },
+  "10774945957": {
+   "cert": null,
+   "conf": 0.0,
+   "votes": 0,
+   "at": "2026-11-12T11:26:04Z",
+   "status": "no_cert"
+  },
+  "10775069061": {
+   "cert": "164818066",
+   "conf": 1.0,
+   "votes": 8,
+   "at": "2026-11-12T11:26:04Z",
+   "status": "ok"
+  },
+  "10775840454": {
+   "cert": "142964712",
+   "conf": 1.0,
+   "votes": 8,
+   "at": "2026-11-12T11:26:04Z",
+   "status": "ok"
+  },
+  "10776211962": {
+   "cert": "174933755",
+   "conf": 1.0,
+   "votes": 8,
+   "at": "2026-11-12T11:26:04Z",
+   "status": "ok"
+  },
+  "10775098465": {
+   "cert": "155054984",
+   "conf": 1.0,
+   "votes": 8,
+   "at": "2026-11-12T11:26:04Z",
+   "status": "ok"
+  },
+  "10774641197": {
+   "cert": "96427178",
+   "conf": 1.0,
+   "votes": 4,
+   "at": "2026-11-12T11:26:04Z",
+   "status": "ok"
+  },
+  "10775452190": {
+   "cert": "104527614",
+   "conf": 1.0,
+   "votes": 12,
+   "at": "2026-11-12T11:26:04Z",
+   "status": "ok"
+  },
+  "10773993283": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-11-12T11:26:04Z",
+   "note": "page: HTTP Error 404: Not Found"
+  },
+  "10775991062": {
+   "cert": "141487923",
+   "conf": 1.0,
+   "votes": 8,
+   "at": "2026-11-12T11:26:04Z",
+   "status": "ok"
+  },
+  "10775004376": {
+   "cert": null,
+   "conf": 0.0,
+   "votes": 0,
+   "at": "2026-11-12T11:26:04Z",
+   "status": "no_cert"
+  },
+  "10774528918": {
+   "cert": null,
+   "conf": 0.0,
+   "votes": 0,
+   "at": "2026-11-12T11:26:04Z",
+   "status": "no_cert"
+  },
+  "10776122265": {
+   "cert": "87437058",
+   "conf": 1.0,
+   "votes": 8,
+   "at": "2026-11-12T11:26:04Z",
+   "status": "ok"
+  },
+  "10775570502": {
+   "cert": null,
+   "conf": 0.0,
+   "votes": 0,
+   "at": "2026-11-12T11:26:04Z",
+   "status": "no_cert"
+  },
+  "10775068884": {
+   "cert": null,
+   "conf": 0.0,
+   "votes": 0,
+   "at": "2026-11-12T11:26:04Z",
+   "status": "no_cert"
+  },
+  "10774775307": {
+   "cert": "168414377",
+   "conf": 1.0,
+   "votes": 4,
+   "at": "2026-11-12T11:26:04Z",
+   "status": "ok"
+  },
+  "10775112099": {
+   "cert": "164818055",
+   "conf": 1.0,
+   "votes": 8,
+   "at": "2026-11-12T11:26:04Z",
+   "status": "ok"
+  },
+  "10775396333": {
+   "cert": "164641091",
+   "conf": 1.0,
+   "votes": 12,
+   "at": "2026-11-12T11:26:04Z",
+   "status": "ok"
+  },
+  "10773746700": {
+   "cert": "149026607",
+   "conf": 1.0,
+   "votes": 12,
+   "at": "2026-11-12T11:26:04Z",
+   "status": "ok"
+  },
+  "10773703996": {
+   "cert": "88337460",
+   "conf": 1.0,
+   "votes": 8,
+   "at": "2026-11-12T11:26:04Z",
+   "status": "ok"
+  },
+  "10776165218": {
+   "cert": null,
+   "conf": 0.0,
+   "votes": 0,
+   "at": "2026-11-12T11:26:04Z",
+   "status": "no_cert"
+  },
+  "10775920082": {
+   "cert": null,
+   "conf": 0.0,
+   "votes": 0,
+   "at": "2026-11-12T11:26:04Z",
+   "status": "no_cert"
+  },
+  "10774048799": {
+   "cert": "90903172",
+   "conf": 1.0,
+   "votes": 8,
+   "at": "2026-11-12T11:26:04Z",
+   "status": "ok"
+  },
+  "10776191324": {
+   "cert": "75244242",
+   "conf": 1.0,
+   "votes": 4,
+   "at": "2026-11-12T11:26:04Z",
+   "status": "ok"
+  },
+  "10776075227": {
+   "cert": "141280897",
+   "conf": 1.0,
+   "votes": 8,
+   "at": "2026-11-12T11:26:04Z",
+   "status": "ok"
+  },
+  "10775773667": {
+   "cert": "158942169",
+   "conf": 1.0,
+   "votes": 4,
+   "at": "2026-11-12T11:26:04Z",
+   "status": "ok"
+  },
+  "10774681016": {
+   "cert": "85131913",
+   "conf": 1.0,
+   "votes": 4,
+   "at": "2026-11-12T11:26:04Z",
+   "status": "ok"
+  },
+  "10772800107": {
+   "cert": "59182463",
+   "conf": 1.0,
+   "votes": 9,
+   "at": "2026-11-12T11:26:04Z",
+   "status": "ok"
+  },
+  "10773989106": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-11-12T11:26:04Z",
+   "note": "page: HTTP Error 404: Not Found"
+  },
+  "10773701438": {
+   "cert": null,
+   "conf": 0.0,
+   "votes": 0,
+   "at": "2026-11-12T11:26:04Z",
+   "status": "no_cert"
+  },
+  "10774165785": {
+   "cert": "131938926",
+   "conf": 1.0,
+   "votes": 12,
+   "at": "2026-11-12T11:26:04Z",
+   "status": "ok"
+  },
+  "10773763019": {
+   "cert": "164818124",
+   "conf": 1.0,
+   "votes": 6,
+   "at": "2026-11-12T11:26:04Z",
+   "status": "ok"
   }
  },
  "certs": {
@@ -145595,27 +146293,9 @@
    "priced_at": "2026-10-03T16:27:40Z"
   },
   "171575865": {
-   "Cert Number": "171575865",
-   "Subject": "MAGNETON-HOLO",
-   "Item Grade": "GEM MT 10",
-   "Year": "2002",
-   "Card Number": "074",
-   "Category": "TCG Cards",
-   "Brand": "POKEMON JAPANESE THE TOWN ON NO MAP",
-   "Variety": "TOWN ON NO MAP-1ST ED.",
-   "spec_id": "1965616",
-   "source": "session",
-   "pop": 317,
-   "pop_higher": 0,
-   "pop_url": "https://www.psacard.com/pop/tcg-cards/2002/pokemon-japanese-town-no-map/114452",
-   "est_usd": 493.16,
-   "est_low": 250,
-   "est_high": 650,
-   "sales": 16,
-   "sales_months": 6,
-   "confidence": "Moderate",
-   "checked_at": "2026-10-03T16:27:40Z",
-   "priced_at": "2026-10-03T16:27:40Z"
+   "error": "no data",
+   "checked_at": "2026-11-12T11:26:04Z",
+   "priced_at": "2026-11-12T11:26:04Z"
   },
   "171575870": {
    "Cert Number": "171575870",
@@ -167944,27 +168624,9 @@
    "priced_at": "2026-10-10T17:22:59Z"
   },
   "40771876": {
-   "Cert Number": "40771876",
-   "Subject": "JOLTEON-HOLO",
-   "Item Grade": "MINT 9",
-   "Year": "2013",
-   "Card Number": "BW91",
-   "Category": "TCG Cards",
-   "Brand": "POKEMON BLACK & WHITE PROMO",
-   "Variety": "SYLVEON COLL-PROMO",
-   "spec_id": "2122393",
-   "source": "session",
-   "pop": 163,
-   "pop_higher": 13,
-   "pop_url": "https://www.psacard.com/pop/tcg-cards/2013/pokemon-black-white-promo/114698",
-   "est_usd": 495.38,
-   "est_low": 324,
-   "est_high": 659.93,
-   "sales": 10,
-   "sales_months": 6,
-   "confidence": "Moderate",
-   "checked_at": "2026-10-10T17:22:59Z",
-   "priced_at": "2026-10-10T17:22:59Z"
+   "error": "no data",
+   "checked_at": "2026-11-12T11:26:04Z",
+   "priced_at": "2026-11-12T11:26:04Z"
   },
   "82030658": {
    "Cert Number": "82030658",
@@ -167990,27 +168652,9 @@
    "priced_at": "2026-10-10T17:22:59Z"
   },
   "41734341": {
-   "Cert Number": "41734341",
-   "Subject": "HYDREIGON-HOLO",
-   "Item Grade": "MINT 9",
-   "Year": "2012",
-   "Card Number": "103",
-   "Category": "TCG Cards",
-   "Brand": "POKEMON BLACK & WHITE NEXT DESTINIES",
-   "Variety": "NEXT DESTINIES",
-   "spec_id": "1848780",
-   "source": "session",
-   "pop": 161,
-   "pop_higher": 14,
-   "pop_url": "https://www.psacard.com/pop/tcg-cards/2012/pokemon-black-white-next-destinies/103390",
-   "est_usd": 1207.43,
-   "est_low": 535,
-   "est_high": 3000,
-   "sales": 7,
-   "sales_months": 6,
-   "confidence": "Low",
-   "checked_at": "2026-10-10T17:22:59Z",
-   "priced_at": "2026-10-10T17:22:59Z"
+   "error": "no data",
+   "checked_at": "2026-11-12T11:26:04Z",
+   "priced_at": "2026-11-12T11:26:04Z"
   },
   "93496093": {
    "Cert Number": "93496093",
@@ -170338,27 +170982,9 @@
    "priced_at": "2026-10-10T21:50:19Z"
   },
   "44966754": {
-   "Cert Number": "44966754",
-   "Subject": "SLOWKING-HOLO",
-   "Item Grade": "NM-MT 8",
-   "Year": "2000",
-   "Card Number": "14",
-   "Category": "TCG Cards",
-   "Brand": "POKEMON NEO GENESIS 1ST EDITION",
-   "Variety": "1ST EDITION",
-   "spec_id": "1761533",
-   "source": "session",
-   "pop": 1467,
-   "pop_higher": 612,
-   "pop_url": "https://www.psacard.com/pop/tcg-cards/2000/pokemon-neo-genesis-1st-edition/86708",
-   "est_usd": 498.79,
-   "est_low": 219,
-   "est_high": 1300,
-   "sales": 87,
-   "sales_months": 6,
-   "confidence": "High",
-   "checked_at": "2026-10-11T05:55:44Z",
-   "priced_at": "2026-10-11T05:55:44Z"
+   "error": "no data",
+   "checked_at": "2026-11-12T11:26:04Z",
+   "priced_at": "2026-11-12T11:26:04Z"
   },
   "152115895": {
    "Cert Number": "152115895",
@@ -191283,7 +191909,7 @@
    "pop_higher": 69,
    "pop_url": "https://www.psacard.com/pop/tcg-cards/2003/pokemon-aquapolis/87129",
    "checked_at": "2026-10-16T11:32:29Z",
-   "priced_at": "2026-10-16T11:32:29Z"
+   "priced_at": "2026-11-12T11:26:04Z"
   },
   "113068688": {
    "Cert Number": "113068688",
@@ -288785,7 +289411,13 @@
    "pop_higher": 0,
    "pop_url": "https://www.psacard.com/pop/tcg-cards/2026/pokemon-french-por-fr-perfect-order/334602",
    "checked_at": "2026-11-03T17:08:52Z",
-   "priced_at": "2026-11-03T17:08:52Z"
+   "priced_at": "2026-11-12T11:26:04Z",
+   "est_usd": 172.65,
+   "est_low": 159.32,
+   "est_high": 190.38,
+   "sales": 3,
+   "sales_months": 6,
+   "confidence": "Low"
   },
   "164818121": {
    "Cert Number": "164818121",
@@ -288802,7 +289434,7 @@
    "pop_higher": 0,
    "pop_url": "https://www.psacard.com/pop/tcg-cards/2026/pokemon-french-asc-fr-ascended-heroes/331010",
    "checked_at": "2026-11-03T17:08:52Z",
-   "priced_at": "2026-11-03T17:08:52Z"
+   "priced_at": "2026-11-12T11:26:04Z"
   },
   "164818120": {
    "Cert Number": "164818120",
@@ -288819,7 +289451,7 @@
    "pop_higher": 0,
    "pop_url": "https://www.psacard.com/pop/tcg-cards/2026/pokemon-french-asc-fr-ascended-heroes/331010",
    "checked_at": "2026-11-03T17:08:52Z",
-   "priced_at": "2026-11-03T17:08:52Z"
+   "priced_at": "2026-11-12T11:26:04Z"
   },
   "153764042": {
    "Cert Number": "153764042",
@@ -319269,6 +319901,271 @@
    "error": "no data",
    "checked_at": "2026-11-12T00:48:53Z",
    "priced_at": "2026-11-12T00:48:53Z"
+  },
+  "174933757": {
+   "error": "no data",
+   "checked_at": "2026-11-12T11:26:04Z",
+   "priced_at": "2026-11-12T11:26:04Z"
+  },
+  "174933758": {
+   "error": "no data",
+   "checked_at": "2026-11-12T11:26:04Z",
+   "priced_at": "2026-11-12T11:26:04Z"
+  },
+  "174933755": {
+   "error": "no data",
+   "checked_at": "2026-11-12T11:26:04Z",
+   "priced_at": "2026-11-12T11:26:04Z"
+  },
+  "75244242": {
+   "error": "no data",
+   "checked_at": "2026-11-12T11:26:04Z",
+   "priced_at": "2026-11-12T11:26:04Z"
+  },
+  "94250461": {
+   "error": "no data",
+   "checked_at": "2026-11-12T11:26:04Z",
+   "priced_at": "2026-11-12T11:26:04Z"
+  },
+  "69460739": {
+   "error": "no data",
+   "checked_at": "2026-11-12T11:26:04Z",
+   "priced_at": "2026-11-12T11:26:04Z"
+  },
+  "87437058": {
+   "error": "no data",
+   "checked_at": "2026-11-12T11:26:04Z",
+   "priced_at": "2026-11-12T11:26:04Z"
+  },
+  "141280897": {
+   "error": "no data",
+   "checked_at": "2026-11-12T11:26:04Z",
+   "priced_at": "2026-11-12T11:26:04Z"
+  },
+  "141487923": {
+   "error": "no data",
+   "checked_at": "2026-11-12T11:26:04Z",
+   "priced_at": "2026-11-12T11:26:04Z"
+  },
+  "168443917": {
+   "error": "no data",
+   "checked_at": "2026-11-12T11:26:04Z",
+   "priced_at": "2026-11-12T11:26:04Z"
+  },
+  "142964712": {
+   "error": "no data",
+   "checked_at": "2026-11-12T11:26:04Z",
+   "priced_at": "2026-11-12T11:26:04Z"
+  },
+  "178751281": {
+   "error": "no data",
+   "checked_at": "2026-11-12T11:26:04Z",
+   "priced_at": "2026-11-12T11:26:04Z"
+  },
+  "158942169": {
+   "error": "no data",
+   "checked_at": "2026-11-12T11:26:04Z",
+   "priced_at": "2026-11-12T11:26:04Z"
+  },
+  "156706162": {
+   "error": "no data",
+   "checked_at": "2026-11-12T11:26:04Z",
+   "priced_at": "2026-11-12T11:26:04Z"
+  },
+  "82345293": {
+   "error": "no data",
+   "checked_at": "2026-11-12T11:26:04Z",
+   "priced_at": "2026-11-12T11:26:04Z"
+  },
+  "152827383": {
+   "error": "no data",
+   "checked_at": "2026-11-12T11:26:04Z",
+   "priced_at": "2026-11-12T11:26:04Z"
+  },
+  "69728967": {
+   "error": "no data",
+   "checked_at": "2026-11-12T11:26:04Z",
+   "priced_at": "2026-11-12T11:26:04Z"
+  },
+  "104527614": {
+   "error": "no data",
+   "checked_at": "2026-11-12T11:26:04Z",
+   "priced_at": "2026-11-12T11:26:04Z"
+  },
+  "132500718": {
+   "error": "no data",
+   "checked_at": "2026-11-12T11:26:04Z",
+   "priced_at": "2026-11-12T11:26:04Z"
+  },
+  "164641091": {
+   "error": "no data",
+   "checked_at": "2026-11-12T11:26:04Z",
+   "priced_at": "2026-11-12T11:26:04Z"
+  },
+  "177613673": {
+   "error": "no data",
+   "checked_at": "2026-11-12T11:26:04Z",
+   "priced_at": "2026-11-12T11:26:04Z"
+  },
+  "67513513": {
+   "error": "no data",
+   "checked_at": "2026-11-12T11:26:04Z",
+   "priced_at": "2026-11-12T11:26:04Z"
+  },
+  "95129544": {
+   "error": "no data",
+   "checked_at": "2026-11-12T11:26:04Z",
+   "priced_at": "2026-11-12T11:26:04Z"
+  },
+  "55713936": {
+   "error": "no data",
+   "checked_at": "2026-11-12T11:26:04Z",
+   "priced_at": "2026-11-12T11:26:04Z"
+  },
+  "164818054": {
+   "error": "no data",
+   "checked_at": "2026-11-12T11:26:04Z",
+   "priced_at": "2026-11-12T11:26:04Z"
+  },
+  "105714101": {
+   "error": "no data",
+   "checked_at": "2026-11-12T11:26:04Z",
+   "priced_at": "2026-11-12T11:26:04Z"
+  },
+  "126740881": {
+   "error": "no data",
+   "checked_at": "2026-11-12T11:26:04Z",
+   "priced_at": "2026-11-12T11:26:04Z"
+  },
+  "164818051": {
+   "error": "no data",
+   "checked_at": "2026-11-12T11:26:04Z",
+   "priced_at": "2026-11-12T11:26:04Z"
+  },
+  "164818055": {
+   "error": "no data",
+   "checked_at": "2026-11-12T11:26:04Z",
+   "priced_at": "2026-11-12T11:26:04Z"
+  },
+  "155054984": {
+   "error": "no data",
+   "checked_at": "2026-11-12T11:26:04Z",
+   "priced_at": "2026-11-12T11:26:04Z"
+  },
+  "174736065": {
+   "error": "no data",
+   "checked_at": "2026-11-12T11:26:04Z",
+   "priced_at": "2026-11-12T11:26:04Z"
+  },
+  "164818066": {
+   "error": "no data",
+   "checked_at": "2026-11-12T11:26:04Z",
+   "priced_at": "2026-11-12T11:26:04Z"
+  },
+  "177574912": {
+   "error": "no data",
+   "checked_at": "2026-11-12T11:26:04Z",
+   "priced_at": "2026-11-12T11:26:04Z"
+  },
+  "166853965": {
+   "error": "no data",
+   "checked_at": "2026-11-12T11:26:04Z",
+   "priced_at": "2026-11-12T11:26:04Z"
+  },
+  "64147064": {
+   "error": "no data",
+   "checked_at": "2026-11-12T11:26:04Z",
+   "priced_at": "2026-11-12T11:26:04Z"
+  },
+  "179881453": {
+   "error": "no data",
+   "checked_at": "2026-11-12T11:26:04Z",
+   "priced_at": "2026-11-12T11:26:04Z"
+  },
+  "178047468": {
+   "error": "no data",
+   "checked_at": "2026-11-12T11:26:04Z",
+   "priced_at": "2026-11-12T11:26:04Z"
+  },
+  "140940540": {
+   "error": "no data",
+   "checked_at": "2026-11-12T11:26:04Z",
+   "priced_at": "2026-11-12T11:26:04Z"
+  },
+  "87691326": {
+   "error": "no data",
+   "checked_at": "2026-11-12T11:26:04Z",
+   "priced_at": "2026-11-12T11:26:04Z"
+  },
+  "170248525": {
+   "error": "no data",
+   "checked_at": "2026-11-12T11:26:04Z",
+   "priced_at": "2026-11-12T11:26:04Z"
+  },
+  "168414377": {
+   "error": "no data",
+   "checked_at": "2026-11-12T11:26:04Z",
+   "priced_at": "2026-11-12T11:26:04Z"
+  },
+  "146100451": {
+   "error": "no data",
+   "checked_at": "2026-11-12T11:26:04Z",
+   "priced_at": "2026-11-12T11:26:04Z"
+  },
+  "85131913": {
+   "error": "no data",
+   "checked_at": "2026-11-12T11:26:04Z",
+   "priced_at": "2026-11-12T11:26:04Z"
+  },
+  "128816638": {
+   "error": "no data",
+   "checked_at": "2026-11-12T11:26:04Z",
+   "priced_at": "2026-11-12T11:26:04Z"
+  },
+  "96427178": {
+   "error": "no data",
+   "checked_at": "2026-11-12T11:26:04Z",
+   "priced_at": "2026-11-12T11:26:04Z"
+  },
+  "157692045": {
+   "error": "no data",
+   "checked_at": "2026-11-12T11:26:04Z",
+   "priced_at": "2026-11-12T11:26:04Z"
+  },
+  "133149042": {
+   "error": "no data",
+   "checked_at": "2026-11-12T11:26:04Z",
+   "priced_at": "2026-11-12T11:26:04Z"
+  },
+  "131938926": {
+   "error": "no data",
+   "checked_at": "2026-11-12T11:26:04Z",
+   "priced_at": "2026-11-12T11:26:04Z"
+  },
+  "24599312": {
+   "error": "no data",
+   "checked_at": "2026-11-12T11:26:04Z",
+   "priced_at": "2026-11-12T11:26:04Z"
+  },
+  "180910330": {
+   "error": "no data",
+   "checked_at": "2026-11-12T11:26:04Z",
+   "priced_at": "2026-11-12T11:26:04Z"
+  },
+  "149026607": {
+   "error": "no data",
+   "checked_at": "2026-11-12T11:26:04Z",
+   "priced_at": "2026-11-12T11:26:04Z"
+  },
+  "88337460": {
+   "error": "no data",
+   "checked_at": "2026-11-12T11:26:04Z",
+   "priced_at": "2026-11-12T11:26:04Z"
+  },
+  "59182463": {
+   "error": "no data",
+   "checked_at": "2026-11-12T11:26:04Z",
+   "priced_at": "2026-11-12T11:26:04Z"
   }
  }
 }
