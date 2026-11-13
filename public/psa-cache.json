@@ -125798,6 +125798,705 @@
    "votes": 4,
    "at": "2026-11-13T11:08:56Z",
    "status": "ok"
+  },
+  "10795191428": {
+   "cert": null,
+   "conf": 0.0,
+   "votes": 0,
+   "at": "2026-11-13T19:48:40Z",
+   "status": "no_cert"
+  },
+  "10795114314": {
+   "cert": "180595069",
+   "conf": 1.0,
+   "votes": 8,
+   "at": "2026-11-13T19:48:40Z",
+   "status": "ok"
+  },
+  "10795053577": {
+   "cert": "108973177",
+   "conf": 1.0,
+   "votes": 8,
+   "at": "2026-11-13T19:48:40Z",
+   "status": "ok"
+  },
+  "10796120703": {
+   "cert": "54005039",
+   "conf": 1.0,
+   "votes": 6,
+   "at": "2026-11-13T19:48:40Z",
+   "status": "ok"
+  },
+  "10795980685": {
+   "cert": null,
+   "conf": 0.0,
+   "votes": 0,
+   "at": "2026-11-13T19:48:40Z",
+   "status": "no_cert"
+  },
+  "10795146553": {
+   "cert": "73197915",
+   "conf": 1.0,
+   "votes": 8,
+   "at": "2026-11-13T19:48:40Z",
+   "status": "ok"
+  },
+  "10792538077": {
+   "cert": "99629086",
+   "conf": 1.0,
+   "votes": 8,
+   "at": "2026-11-13T19:48:40Z",
+   "status": "ok"
+  },
+  "10795013965": {
+   "cert": null,
+   "conf": 0.0,
+   "votes": 0,
+   "at": "2026-11-13T19:48:40Z",
+   "status": "no_cert"
+  },
+  "10795208609": {
+   "cert": null,
+   "conf": 0.0,
+   "votes": 0,
+   "at": "2026-11-13T19:48:40Z",
+   "status": "no_cert"
+  },
+  "10794870070": {
+   "cert": "72917841",
+   "conf": 1.0,
+   "votes": 8,
+   "at": "2026-11-13T19:48:40Z",
+   "status": "ok"
+  },
+  "10794845018": {
+   "cert": "161992724",
+   "conf": 1.0,
+   "votes": 6,
+   "at": "2026-11-13T19:48:40Z",
+   "status": "ok"
+  },
+  "10792665450": {
+   "cert": "92547355",
+   "conf": 1.0,
+   "votes": 6,
+   "at": "2026-11-13T19:48:40Z",
+   "status": "ok"
+  },
+  "10790515650": {
+   "cert": "65707176",
+   "conf": 1.0,
+   "votes": 4,
+   "at": "2026-11-13T19:48:40Z",
+   "status": "ok"
+  },
+  "10795474929": {
+   "cert": "75874666",
+   "conf": 1.0,
+   "votes": 8,
+   "at": "2026-11-13T19:48:40Z",
+   "status": "ok"
+  },
+  "10795952673": {
+   "cert": "96058395",
+   "conf": 1.0,
+   "votes": 6,
+   "at": "2026-11-13T19:48:40Z",
+   "status": "ok"
+  },
+  "10796196997": {
+   "cert": null,
+   "conf": 0.0,
+   "votes": 0,
+   "at": "2026-11-13T19:48:40Z",
+   "status": "no_cert"
+  },
+  "10796107396": {
+   "cert": null,
+   "conf": 0.0,
+   "votes": 0,
+   "at": "2026-11-13T19:48:40Z",
+   "status": "no_cert"
+  },
+  "10795805021": {
+   "cert": "154380153",
+   "conf": 1.0,
+   "votes": 6,
+   "at": "2026-11-13T19:48:40Z",
+   "status": "ok"
+  },
+  "10795699529": {
+   "cert": null,
+   "conf": 0.0,
+   "votes": 0,
+   "at": "2026-11-13T19:48:40Z",
+   "status": "no_cert"
+  },
+  "10795292573": {
+   "cert": null,
+   "conf": 0.0,
+   "votes": 0,
+   "at": "2026-11-13T19:48:40Z",
+   "status": "no_cert"
+  },
+  "10796264480": {
+   "cert": null,
+   "conf": 0.0,
+   "votes": 0,
+   "at": "2026-11-13T19:48:40Z",
+   "status": "no_cert"
+  },
+  "10795259472": {
+   "cert": null,
+   "conf": 0.0,
+   "votes": 0,
+   "at": "2026-11-13T19:48:40Z",
+   "status": "no_cert"
+  },
+  "10795605250": {
+   "cert": "180595074",
+   "conf": 1.0,
+   "votes": 8,
+   "at": "2026-11-13T19:48:40Z",
+   "status": "ok"
+  },
+  "10795159357": {
+   "cert": null,
+   "conf": 0.0,
+   "votes": 0,
+   "at": "2026-11-13T19:48:40Z",
+   "status": "no_cert"
+  },
+  "10795114341": {
+   "cert": null,
+   "conf": 0.0,
+   "votes": 0,
+   "at": "2026-11-13T19:48:40Z",
+   "status": "no_cert"
+  },
+  "10795966515": {
+   "cert": "79595073",
+   "conf": 1.0,
+   "votes": 6,
+   "at": "2026-11-13T19:48:40Z",
+   "status": "ok"
+  },
+  "10795884433": {
+   "cert": "180595071",
+   "conf": 1.0,
+   "votes": 8,
+   "at": "2026-11-13T19:48:40Z",
+   "status": "ok"
+  },
+  "10795178768": {
+   "cert": "154879745",
+   "conf": 0.99,
+   "votes": 4,
+   "at": "2026-11-13T19:48:40Z",
+   "status": "ok"
+  },
+  "10795081528": {
+   "cert": "180885780",
+   "conf": 1.0,
+   "votes": 8,
+   "at": "2026-11-13T19:48:40Z",
+   "status": "ok"
+  },
+  "10795038840": {
+   "cert": "112653410",
+   "conf": 1.0,
+   "votes": 4,
+   "at": "2026-11-13T19:48:40Z",
+   "status": "ok"
+  },
+  "10795382880": {
+   "cert": null,
+   "conf": 0.0,
+   "votes": 0,
+   "at": "2026-11-13T19:48:40Z",
+   "status": "no_cert"
+  },
+  "10795120515": {
+   "cert": "92504835",
+   "conf": 1.0,
+   "votes": 12,
+   "at": "2026-11-13T19:48:40Z",
+   "status": "ok"
+  },
+  "10796001221": {
+   "cert": "67550380",
+   "conf": 1.0,
+   "votes": 8,
+   "at": "2026-11-13T19:48:40Z",
+   "status": "ok"
+  },
+  "10796040063": {
+   "cert": null,
+   "conf": 0.0,
+   "votes": 0,
+   "at": "2026-11-13T19:48:40Z",
+   "status": "no_cert"
+  },
+  "10796120425": {
+   "cert": "141758425",
+   "conf": 1.0,
+   "votes": 4,
+   "at": "2026-11-13T19:48:40Z",
+   "status": "ok"
+  },
+  "10794565219": {
+   "cert": "152795549",
+   "conf": 1.0,
+   "votes": 8,
+   "at": "2026-11-13T19:48:40Z",
+   "status": "ok"
+  },
+  "10795658378": {
+   "cert": "180595075",
+   "conf": 1.0,
+   "votes": 8,
+   "at": "2026-11-13T19:48:40Z",
+   "status": "ok"
+  },
+  "10795986609": {
+   "cert": "87180844",
+   "conf": 1.0,
+   "votes": 4,
+   "at": "2026-11-13T19:48:40Z",
+   "status": "ok"
+  },
+  "10795925961": {
+   "cert": null,
+   "status": "no_photo",
+   "at": "2026-11-13T19:48:40Z",
+   "note": "page: HTTP Error 404: Not Found"
+  },
+  "10795727730": {
+   "cert": "180595076",
+   "conf": 1.0,
+   "votes": 6,
+   "at": "2026-11-13T19:48:40Z",
+   "status": "ok"
+  },
+  "10795321524": {
+   "cert": "180595073",
+   "conf": 1.0,
+   "votes": 8,
+   "at": "2026-11-13T19:48:40Z",
+   "status": "ok"
+  },
+  "10795210645": {
+   "cert": null,
+   "conf": 0.0,
+   "votes": 0,
+   "at": "2026-11-13T19:48:40Z",
+   "status": "no_cert"
+  },
+  "10795025999": {
+   "cert": "62576362",
+   "conf": 1.0,
+   "votes": 4,
+   "at": "2026-11-13T19:48:40Z",
+   "status": "ok"
+  },
+  "10795168756": {
+   "cert": "180595067",
+   "conf": 1.0,
+   "votes": 8,
+   "at": "2026-11-13T19:48:40Z",
+   "status": "ok"
+  },
+  "10796183582": {
+   "cert": "141758424",
+   "conf": 1.0,
+   "votes": 4,
+   "at": "2026-11-13T19:48:40Z",
+   "status": "ok"
+  },
+  "10795048771": {
+   "cert": "71132050",
+   "conf": 1.0,
+   "votes": 8,
+   "at": "2026-11-13T19:48:40Z",
+   "status": "ok"
+  },
+  "10795071125": {
+   "cert": "180885781",
+   "conf": 1.0,
+   "votes": 8,
+   "at": "2026-11-13T19:48:40Z",
+   "status": "ok"
+  },
+  "10795456655": {
+   "cert": "151699040",
+   "conf": 1.0,
+   "votes": 16,
+   "at": "2026-11-13T19:48:40Z",
+   "status": "ok"
+  },
+  "10796268482": {
+   "cert": "53547623",
+   "conf": 1.0,
+   "votes": 2,
+   "at": "2026-11-13T19:48:40Z",
+   "status": "ok"
+  },
+  "10795131750": {
+   "cert": "92504834",
+   "conf": 1.0,
+   "votes": 12,
+   "at": "2026-11-13T19:48:40Z",
+   "status": "ok"
+  },
+  "10795613245": {
+   "cert": "125852144",
+   "conf": 1.0,
+   "votes": 8,
+   "at": "2026-11-13T19:48:40Z",
+   "status": "ok"
+  },
+  "10795554900": {
+   "cert": "161170562",
+   "conf": 1.0,
+   "votes": 8,
+   "at": "2026-11-13T19:48:40Z",
+   "status": "ok"
+  },
+  "10795356284": {
+   "cert": null,
+   "conf": 0.0,
+   "votes": 0,
+   "at": "2026-11-13T19:48:40Z",
+   "status": "no_cert"
+  },
+  "10795802419": {
+   "cert": "111008559",
+   "conf": 1.0,
+   "votes": 2,
+   "at": "2026-11-13T19:48:40Z",
+   "status": "ok"
+  },
+  "10795787787": {
+   "cert": "75560425",
+   "conf": 1.0,
+   "votes": 4,
+   "at": "2026-11-13T19:48:40Z",
+   "status": "ok"
+  },
+  "10795142601": {
+   "cert": "120530921",
+   "conf": 1.0,
+   "votes": 12,
+   "at": "2026-11-13T19:48:40Z",
+   "status": "ok"
+  },
+  "10793738878": {
+   "cert": null,
+   "conf": 0.0,
+   "votes": 0,
+   "at": "2026-11-13T19:48:40Z",
+   "status": "no_cert"
+  },
+  "10794956309": {
+   "cert": "109468599",
+   "conf": 1.0,
+   "votes": 8,
+   "at": "2026-11-13T19:48:40Z",
+   "status": "ok"
+  },
+  "10795801683": {
+   "cert": "108158420",
+   "conf": 1.0,
+   "votes": 8,
+   "at": "2026-11-13T19:48:40Z",
+   "status": "ok"
+  },
+  "10795625529": {
+   "cert": "105496781",
+   "conf": 1.0,
+   "votes": 4,
+   "at": "2026-11-13T19:48:40Z",
+   "status": "ok"
+  },
+  "10795403795": {
+   "cert": null,
+   "conf": 0.0,
+   "votes": 0,
+   "at": "2026-11-13T19:48:40Z",
+   "status": "no_cert"
+  },
+  "10795335855": {
+   "cert": null,
+   "conf": 0.0,
+   "votes": 0,
+   "at": "2026-11-13T19:48:40Z",
+   "status": "no_cert"
+  },
+  "10795535483": {
+   "cert": "82411267",
+   "conf": 1.0,
+   "votes": 12,
+   "at": "2026-11-13T19:48:40Z",
+   "status": "ok"
+  },
+  "10795147791": {
+   "cert": "80280603",
+   "conf": 1.0,
+   "votes": 12,
+   "at": "2026-11-13T19:48:40Z",
+   "status": "ok"
+  },
+  "10796187754": {
+   "cert": null,
+   "conf": 0.0,
+   "votes": 0,
+   "at": "2026-11-13T19:48:40Z",
+   "status": "no_cert"
+  },
+  "10563582147": {
+   "cert": "165223172",
+   "conf": 1.0,
+   "votes": 8,
+   "at": "2026-11-13T19:48:40Z",
+   "status": "ok"
+  },
+  "10796309011": {
+   "cert": "99327688",
+   "conf": 1.0,
+   "votes": 8,
+   "at": "2026-11-13T19:48:40Z",
+   "status": "ok"
+  },
+  "10795832572": {
+   "cert": "124615913",
+   "conf": 1.0,
+   "votes": 8,
+   "at": "2026-11-13T19:48:40Z",
+   "status": "ok"
+  },
+  "10794262240": {
+   "cert": "128460814",
+   "conf": 1.0,
+   "votes": 8,
+   "at": "2026-11-13T19:48:40Z",
+   "status": "ok"
+  },
+  "10795438974": {
+   "cert": "101167342",
+   "conf": 1.0,
+   "votes": 4,
+   "at": "2026-11-13T19:48:40Z",
+   "status": "ok"
+  },
+  "10795404451": {
+   "cert": "150293427",
+   "conf": 1.0,
+   "votes": 8,
+   "at": "2026-11-13T19:48:40Z",
+   "status": "ok"
+  },
+  "10795091486": {
+   "cert": "103048982",
+   "conf": 1.0,
+   "votes": 8,
+   "at": "2026-11-13T19:48:40Z",
+   "status": "ok"
+  },
+  "10794782348": {
+   "cert": "102670730",
+   "conf": 1.0,
+   "votes": 8,
+   "at": "2026-11-13T19:48:40Z",
+   "status": "ok"
+  },
+  "10795577841": {
+   "cert": "142255539",
+   "conf": 1.0,
+   "votes": 2,
+   "at": "2026-11-13T19:48:40Z",
+   "status": "ok"
+  },
+  "10795575433": {
+   "cert": "103258668",
+   "conf": 1.0,
+   "votes": 4,
+   "at": "2026-11-13T19:48:40Z",
+   "status": "ok"
+  },
+  "10795535018": {
+   "cert": "160243277",
+   "conf": 1.0,
+   "votes": 6,
+   "at": "2026-11-13T19:48:40Z",
+   "status": "ok"
+  },
+  "10795361831": {
+   "cert": "132163356",
+   "conf": 1.0,
+   "votes": 8,
+   "at": "2026-11-13T19:48:40Z",
+   "status": "ok"
+  },
+  "10794537144": {
+   "cert": "91488991",
+   "conf": 1.0,
+   "votes": 8,
+   "at": "2026-11-13T19:48:40Z",
+   "status": "ok"
+  },
+  "10795681989": {
+   "cert": "142255517",
+   "conf": 1.0,
+   "votes": 2,
+   "at": "2026-11-13T19:48:40Z",
+   "status": "ok"
+  },
+  "10795635299": {
+   "cert": "142255544",
+   "conf": 1.0,
+   "votes": 4,
+   "at": "2026-11-13T19:48:40Z",
+   "status": "ok"
+  },
+  "10795723414": {
+   "cert": "146847652",
+   "conf": 1.0,
+   "votes": 12,
+   "at": "2026-11-13T19:48:40Z",
+   "status": "ok"
+  },
+  "10795412731": {
+   "cert": "150293453",
+   "conf": 1.0,
+   "votes": 8,
+   "at": "2026-11-13T19:48:40Z",
+   "status": "ok"
+  },
+  "10795284360": {
+   "cert": "142159707",
+   "conf": 1.0,
+   "votes": 8,
+   "at": "2026-11-13T19:48:40Z",
+   "status": "ok"
+  },
+  "10794979993": {
+   "cert": "70049054",
+   "conf": 1.0,
+   "votes": 8,
+   "at": "2026-11-13T19:48:40Z",
+   "status": "ok"
+  },
+  "10795659560": {
+   "cert": null,
+   "conf": 0.0,
+   "votes": 0,
+   "at": "2026-11-13T19:48:40Z",
+   "status": "no_cert"
+  },
+  "10795456632": {
+   "cert": "101167345",
+   "conf": 1.0,
+   "votes": 2,
+   "at": "2026-11-13T19:48:40Z",
+   "status": "ok"
+  },
+  "10795352330": {
+   "cert": null,
+   "conf": 0.0,
+   "votes": 0,
+   "at": "2026-11-13T19:48:40Z",
+   "status": "no_cert"
+  },
+  "10794626941": {
+   "cert": "121595630",
+   "conf": 1.0,
+   "votes": 8,
+   "at": "2026-11-13T19:48:40Z",
+   "status": "ok"
+  },
+  "10795328509": {
+   "cert": "144004356",
+   "conf": 1.0,
+   "votes": 4,
+   "at": "2026-11-13T19:48:40Z",
+   "status": "ok"
+  },
+  "10795519637": {
+   "cert": "34998307",
+   "conf": 1.0,
+   "votes": 6,
+   "at": "2026-11-13T19:48:40Z",
+   "status": "ok"
+  },
+  "10795611840": {
+   "cert": "142255516",
+   "conf": 1.0,
+   "votes": 2,
+   "at": "2026-11-13T19:48:40Z",
+   "status": "ok"
+  },
+  "10795717668": {
+   "cert": "178531486",
+   "conf": 1.0,
+   "votes": 12,
+   "at": "2026-11-13T19:48:40Z",
+   "status": "ok"
+  },
+  "10795136965": {
+   "cert": "177071437",
+   "conf": 1.0,
+   "votes": 10,
+   "at": "2026-11-13T19:48:40Z",
+   "status": "ok"
+  },
+  "10792844014": {
+   "cert": "164591290",
+   "conf": 1.0,
+   "votes": 8,
+   "at": "2026-11-13T19:48:40Z",
+   "status": "ok"
+  },
+  "10790954086": {
+   "cert": "151635438",
+   "conf": 1.0,
+   "votes": 4,
+   "at": "2026-11-13T19:48:40Z",
+   "status": "ok"
+  },
+  "10795126393": {
+   "cert": "172884400",
+   "conf": 1.0,
+   "votes": 12,
+   "at": "2026-11-13T19:48:40Z",
+   "status": "ok"
+  },
+  "10795211648": {
+   "cert": null,
+   "conf": 0.0,
+   "votes": 0,
+   "at": "2026-11-13T19:48:40Z",
+   "status": "no_cert"
+  },
+  "10795414185": {
+   "cert": "100733279",
+   "conf": 1.0,
+   "votes": 8,
+   "at": "2026-11-13T19:48:40Z",
+   "status": "ok"
+  },
+  "10795327707": {
+   "cert": "166837410",
+   "conf": 1.0,
+   "votes": 4,
+   "at": "2026-11-13T19:48:40Z",
+   "status": "ok"
+  },
+  "10794820368": {
+   "cert": "87390323",
+   "conf": 1.0,
+   "votes": 2,
+   "at": "2026-11-13T19:48:40Z",
+   "status": "ok"
   }
  },
  "certs": {
@@ -154641,27 +155340,9 @@
    "priced_at": "2026-10-06T06:28:56Z"
   },
   "70049054": {
-   "Cert Number": "70049054",
-   "Subject": "FA/JOLTEON VMAX",
-   "Item Grade": "MINT 9",
-   "Year": "2021",
-   "Card Number": "184",
-   "Category": "TCG Cards",
-   "Brand": "POKEMON SWSH BLACK STAR PROMO",
-   "Variety": "JOLTEON VMAX PREM.COLL",
-   "spec_id": "6343389",
-   "source": "session",
-   "pop": 7317,
-   "pop_higher": 3813,
-   "pop_url": "https://www.psacard.com/pop/tcg-cards/2021/pokemon-swsh-black-star-promo/188712",
-   "est_usd": 104.74,
-   "est_low": 60.37,
-   "est_high": 202.9,
-   "sales": 206,
-   "sales_months": 6,
-   "confidence": "High",
-   "checked_at": "2026-10-06T06:28:56Z",
-   "priced_at": "2026-10-06T06:28:56Z"
+   "error": "no data",
+   "checked_at": "2026-11-13T19:48:40Z",
+   "priced_at": "2026-11-13T19:48:40Z"
   },
   "150293461": {
    "Cert Number": "150293461",
@@ -154780,7 +155461,7 @@
    "pop_higher": 0,
    "pop_url": "https://www.psacard.com/pop/tcg-cards/2025/pokemon-german-pfl-de-phantasmal-flames/322167",
    "checked_at": "2026-11-08T22:13:31Z",
-   "priced_at": "2026-11-08T22:13:31Z"
+   "priced_at": "2026-11-13T19:48:40Z"
   },
   "101037610": {
    "Cert Number": "101037610",
@@ -162469,27 +163150,9 @@
    "priced_at": "2026-10-08T01:04:12Z"
   },
   "124615913": {
-   "Cert Number": "124615913",
-   "Subject": "UMBREON-GOLD STAR",
-   "Item Grade": "MINT 9",
-   "Year": "2021",
-   "Card Number": "17",
-   "Category": "TCG Cards",
-   "Brand": "POKEMON CELEBRATIONS CLASSIC COLLECTION",
-   "Variety": "CLASSIC COLL-POP SERIES 5",
-   "spec_id": "5851707",
-   "source": "session",
-   "pop": 14932,
-   "pop_higher": 20246,
-   "pop_url": "https://www.psacard.com/pop/tcg-cards/2021/pokemon-celebrations-classic-collection/200655",
-   "est_usd": 111.23,
-   "est_low": 61,
-   "est_high": 235.5,
-   "sales": 622,
-   "sales_months": 6,
-   "confidence": "High",
-   "checked_at": "2026-10-08T01:04:12Z",
-   "priced_at": "2026-10-08T01:04:12Z"
+   "error": "no data",
+   "checked_at": "2026-11-13T19:48:40Z",
+   "priced_at": "2026-11-13T19:48:40Z"
   },
   "75666397": {
    "Cert Number": "75666397",
@@ -178748,27 +179411,9 @@
    "priced_at": "2026-10-13T06:52:08Z"
   },
   "132163356": {
-   "Cert Number": "132163356",
-   "Subject": "DROWZEE",
-   "Item Grade": "GEM MT 10",
-   "Year": "2023",
-   "Card Number": "086",
-   "Category": "TCG Cards",
-   "Brand": "POKEMON JAPANESE SV1V-VIOLET ex",
-   "Variety": "ART RARE",
-   "spec_id": "8219161",
-   "source": "session",
-   "pop": 10658,
-   "pop_higher": 0,
-   "pop_url": "https://www.psacard.com/pop/tcg-cards/2023/pokemon-japanese-sv1v-violet-ex/230288",
-   "est_usd": 81.77,
-   "est_low": 40,
-   "est_high": 950,
-   "sales": 379,
-   "sales_months": 6,
-   "confidence": "High",
-   "checked_at": "2026-10-13T06:52:08Z",
-   "priced_at": "2026-10-13T06:52:08Z"
+   "error": "no data",
+   "checked_at": "2026-11-13T19:48:40Z",
+   "priced_at": "2026-11-13T19:48:40Z"
   },
   "142943894": {
    "Cert Number": "142943894",
@@ -185106,7 +185751,7 @@
    "pop_higher": 0,
    "pop_url": "https://www.psacard.com/pop/tcg-cards/2001/pokemon-italian-neo-revelation/314825",
    "checked_at": "2026-10-14T21:46:51Z",
-   "priced_at": "2026-11-09T19:53:30Z"
+   "priced_at": "2026-11-13T19:48:40Z"
   },
   "119657205": {
    "Cert Number": "119657205",
@@ -219550,7 +220195,7 @@
    "pop_higher": 752,
    "pop_url": "https://www.psacard.com/pop/tcg-cards/1999/pokemon-french/57668",
    "checked_at": "2026-10-20T19:21:38Z",
-   "priced_at": "2026-11-10T14:59:09Z"
+   "priced_at": "2026-11-13T19:48:40Z"
   },
   "90985232": {
    "Cert Number": "90985232",
@@ -225646,7 +226291,7 @@
    "pop_higher": 0,
    "pop_url": "https://www.psacard.com/pop/tcg-cards/2022/pokemon-sword-shield-silver-tempest/222927",
    "checked_at": "2026-10-21T17:18:31Z",
-   "priced_at": "2026-10-21T17:18:31Z"
+   "priced_at": "2026-11-13T19:48:40Z"
   },
   "71113462": {
    "Cert Number": "71113462",
@@ -228861,7 +229506,7 @@
    "pop_higher": 183,
    "pop_url": "https://www.psacard.com/pop/tcg-cards/2024/pokemon-german-ssp-de-surging-sparks/285275",
    "checked_at": "2026-10-22T04:58:04Z",
-   "priced_at": "2026-10-22T04:58:04Z"
+   "priced_at": "2026-11-13T19:48:40Z"
   },
   "94928227": {
    "Cert Number": "94928227",
@@ -273566,7 +274211,7 @@
    "pop_higher": 2,
    "pop_url": "https://www.psacard.com/pop/tcg-cards/2008/pokemon-french-diamond-pearl-secret-wonders/190015",
    "checked_at": "2026-10-30T18:04:15Z",
-   "priced_at": "2026-11-08T00:43:17Z"
+   "priced_at": "2026-11-13T19:48:40Z"
   },
   "164335031": {
    "Cert Number": "164335031",
@@ -278712,7 +279357,7 @@
    "pop_higher": 59,
    "pop_url": "https://www.psacard.com/pop/tcg-cards/2010/pokemon-french-platinum-supreme-victors/236822",
    "checked_at": "2026-10-31T19:21:30Z",
-   "priced_at": "2026-10-31T19:21:30Z"
+   "priced_at": "2026-11-13T19:48:40Z"
   },
   "165204606": {
    "Cert Number": "165204606",
@@ -320317,8 +320962,8 @@
   },
   "177071437": {
    "error": "no data",
-   "checked_at": "2026-11-10T21:20:46Z",
-   "priced_at": "2026-11-10T21:20:46Z"
+   "checked_at": "2026-11-13T19:48:40Z",
+   "priced_at": "2026-11-13T19:48:40Z"
   },
   "61900112": {
    "error": "no data",
@@ -320337,8 +320982,8 @@
   },
   "172884400": {
    "error": "no data",
-   "checked_at": "2026-11-10T21:20:46Z",
-   "priced_at": "2026-11-10T21:20:46Z"
+   "checked_at": "2026-11-13T19:48:40Z",
+   "priced_at": "2026-11-13T19:48:40Z"
   },
   "123924914": {
    "error": "no data",
@@ -322734,6 +323379,266 @@
    "error": "no data",
    "checked_at": "2026-11-13T11:08:56Z",
    "priced_at": "2026-11-13T11:08:56Z"
+  },
+  "99327688": {
+   "error": "no data",
+   "checked_at": "2026-11-13T19:48:40Z",
+   "priced_at": "2026-11-13T19:48:40Z"
+  },
+  "53547623": {
+   "error": "no data",
+   "checked_at": "2026-11-13T19:48:40Z",
+   "priced_at": "2026-11-13T19:48:40Z"
+  },
+  "141758424": {
+   "error": "no data",
+   "checked_at": "2026-11-13T19:48:40Z",
+   "priced_at": "2026-11-13T19:48:40Z"
+  },
+  "54005039": {
+   "error": "no data",
+   "checked_at": "2026-11-13T19:48:40Z",
+   "priced_at": "2026-11-13T19:48:40Z"
+  },
+  "141758425": {
+   "error": "no data",
+   "checked_at": "2026-11-13T19:48:40Z",
+   "priced_at": "2026-11-13T19:48:40Z"
+  },
+  "67550380": {
+   "error": "no data",
+   "checked_at": "2026-11-13T19:48:40Z",
+   "priced_at": "2026-11-13T19:48:40Z"
+  },
+  "96058395": {
+   "error": "no data",
+   "checked_at": "2026-11-13T19:48:40Z",
+   "priced_at": "2026-11-13T19:48:40Z"
+  },
+  "180595071": {
+   "error": "no data",
+   "checked_at": "2026-11-13T19:48:40Z",
+   "priced_at": "2026-11-13T19:48:40Z"
+  },
+  "154380153": {
+   "error": "no data",
+   "checked_at": "2026-11-13T19:48:40Z",
+   "priced_at": "2026-11-13T19:48:40Z"
+  },
+  "108158420": {
+   "error": "no data",
+   "checked_at": "2026-11-13T19:48:40Z",
+   "priced_at": "2026-11-13T19:48:40Z"
+  },
+  "75560425": {
+   "error": "no data",
+   "checked_at": "2026-11-13T19:48:40Z",
+   "priced_at": "2026-11-13T19:48:40Z"
+  },
+  "180595076": {
+   "error": "no data",
+   "checked_at": "2026-11-13T19:48:40Z",
+   "priced_at": "2026-11-13T19:48:40Z"
+  },
+  "146847652": {
+   "error": "no data",
+   "checked_at": "2026-11-13T19:48:40Z",
+   "priced_at": "2026-11-13T19:48:40Z"
+  },
+  "142255517": {
+   "error": "no data",
+   "checked_at": "2026-11-13T19:48:40Z",
+   "priced_at": "2026-11-13T19:48:40Z"
+  },
+  "180595075": {
+   "error": "no data",
+   "checked_at": "2026-11-13T19:48:40Z",
+   "priced_at": "2026-11-13T19:48:40Z"
+  },
+  "142255544": {
+   "error": "no data",
+   "checked_at": "2026-11-13T19:48:40Z",
+   "priced_at": "2026-11-13T19:48:40Z"
+  },
+  "105496781": {
+   "error": "no data",
+   "checked_at": "2026-11-13T19:48:40Z",
+   "priced_at": "2026-11-13T19:48:40Z"
+  },
+  "125852144": {
+   "error": "no data",
+   "checked_at": "2026-11-13T19:48:40Z",
+   "priced_at": "2026-11-13T19:48:40Z"
+  },
+  "142255516": {
+   "error": "no data",
+   "checked_at": "2026-11-13T19:48:40Z",
+   "priced_at": "2026-11-13T19:48:40Z"
+  },
+  "180595074": {
+   "error": "no data",
+   "checked_at": "2026-11-13T19:48:40Z",
+   "priced_at": "2026-11-13T19:48:40Z"
+  },
+  "142255539": {
+   "error": "no data",
+   "checked_at": "2026-11-13T19:48:40Z",
+   "priced_at": "2026-11-13T19:48:40Z"
+  },
+  "161170562": {
+   "error": "no data",
+   "checked_at": "2026-11-13T19:48:40Z",
+   "priced_at": "2026-11-13T19:48:40Z"
+  },
+  "82411267": {
+   "error": "no data",
+   "checked_at": "2026-11-13T19:48:40Z",
+   "priced_at": "2026-11-13T19:48:40Z"
+  },
+  "160243277": {
+   "error": "no data",
+   "checked_at": "2026-11-13T19:48:40Z",
+   "priced_at": "2026-11-13T19:48:40Z"
+  },
+  "34998307": {
+   "error": "no data",
+   "checked_at": "2026-11-13T19:48:40Z",
+   "priced_at": "2026-11-13T19:48:40Z"
+  },
+  "151699040": {
+   "error": "no data",
+   "checked_at": "2026-11-13T19:48:40Z",
+   "priced_at": "2026-11-13T19:48:40Z"
+  },
+  "101167345": {
+   "error": "no data",
+   "checked_at": "2026-11-13T19:48:40Z",
+   "priced_at": "2026-11-13T19:48:40Z"
+  },
+  "101167342": {
+   "error": "no data",
+   "checked_at": "2026-11-13T19:48:40Z",
+   "priced_at": "2026-11-13T19:48:40Z"
+  },
+  "100733279": {
+   "error": "no data",
+   "checked_at": "2026-11-13T19:48:40Z",
+   "priced_at": "2026-11-13T19:48:40Z"
+  },
+  "144004356": {
+   "error": "no data",
+   "checked_at": "2026-11-13T19:48:40Z",
+   "priced_at": "2026-11-13T19:48:40Z"
+  },
+  "180595073": {
+   "error": "no data",
+   "checked_at": "2026-11-13T19:48:40Z",
+   "priced_at": "2026-11-13T19:48:40Z"
+  },
+  "154879745": {
+   "error": "no data",
+   "checked_at": "2026-11-13T19:48:40Z",
+   "priced_at": "2026-11-13T19:48:40Z"
+  },
+  "180595067": {
+   "error": "no data",
+   "checked_at": "2026-11-13T19:48:40Z",
+   "priced_at": "2026-11-13T19:48:40Z"
+  },
+  "80280603": {
+   "error": "no data",
+   "checked_at": "2026-11-13T19:48:40Z",
+   "priced_at": "2026-11-13T19:48:40Z"
+  },
+  "180595069": {
+   "error": "no data",
+   "checked_at": "2026-11-13T19:48:40Z",
+   "priced_at": "2026-11-13T19:48:40Z"
+  },
+  "103048982": {
+   "error": "no data",
+   "checked_at": "2026-11-13T19:48:40Z",
+   "priced_at": "2026-11-13T19:48:40Z"
+  },
+  "180885780": {
+   "error": "no data",
+   "checked_at": "2026-11-13T19:48:40Z",
+   "priced_at": "2026-11-13T19:48:40Z"
+  },
+  "180885781": {
+   "error": "no data",
+   "checked_at": "2026-11-13T19:48:40Z",
+   "priced_at": "2026-11-13T19:48:40Z"
+  },
+  "108973177": {
+   "error": "no data",
+   "checked_at": "2026-11-13T19:48:40Z",
+   "priced_at": "2026-11-13T19:48:40Z"
+  },
+  "161992724": {
+   "error": "no data",
+   "checked_at": "2026-11-13T19:48:40Z",
+   "priced_at": "2026-11-13T19:48:40Z"
+  },
+  "87390323": {
+   "error": "no data",
+   "checked_at": "2026-11-13T19:48:40Z",
+   "priced_at": "2026-11-13T19:48:40Z"
+  },
+  "102670730": {
+   "error": "no data",
+   "checked_at": "2026-11-13T19:48:40Z",
+   "priced_at": "2026-11-13T19:48:40Z"
+  },
+  "121595630": {
+   "error": "no data",
+   "checked_at": "2026-11-13T19:48:40Z",
+   "priced_at": "2026-11-13T19:48:40Z"
+  },
+  "152795549": {
+   "error": "no data",
+   "checked_at": "2026-11-13T19:48:40Z",
+   "priced_at": "2026-11-13T19:48:40Z"
+  },
+  "91488991": {
+   "error": "no data",
+   "checked_at": "2026-11-13T19:48:40Z",
+   "priced_at": "2026-11-13T19:48:40Z"
+  },
+  "128460814": {
+   "error": "no data",
+   "checked_at": "2026-11-13T19:48:40Z",
+   "priced_at": "2026-11-13T19:48:40Z"
+  },
+  "164591290": {
+   "error": "no data",
+   "checked_at": "2026-11-13T19:48:40Z",
+   "priced_at": "2026-11-13T19:48:40Z"
+  },
+  "92547355": {
+   "error": "no data",
+   "checked_at": "2026-11-13T19:48:40Z",
+   "priced_at": "2026-11-13T19:48:40Z"
+  },
+  "99629086": {
+   "error": "no data",
+   "checked_at": "2026-11-13T19:48:40Z",
+   "priced_at": "2026-11-13T19:48:40Z"
+  },
+  "151635438": {
+   "error": "no data",
+   "checked_at": "2026-11-13T19:48:40Z",
+   "priced_at": "2026-11-13T19:48:40Z"
+  },
+  "65707176": {
+   "error": "no data",
+   "checked_at": "2026-11-13T19:48:40Z",
+   "priced_at": "2026-11-13T19:48:40Z"
+  },
+  "165223172": {
+   "error": "no data",
+   "checked_at": "2026-11-13T19:48:40Z",
+   "priced_at": "2026-11-13T19:48:40Z"
   }
  }
 }
