@@ -124398,6 +124398,706 @@
    "votes": 8,
    "at": "2026-11-12T20:01:06Z",
    "status": "ok"
+  },
+  "10785522585": {
+   "cert": null,
+   "conf": 0.0,
+   "votes": 0,
+   "at": "2026-11-13T01:54:17Z",
+   "status": "no_cert"
+  },
+  "10784184419": {
+   "cert": "48225100",
+   "conf": 1.0,
+   "votes": 8,
+   "at": "2026-11-13T01:54:17Z",
+   "status": "ok"
+  },
+  "10786030226": {
+   "cert": null,
+   "conf": 0.0,
+   "votes": 0,
+   "at": "2026-11-13T01:54:17Z",
+   "status": "no_cert"
+  },
+  "10783347911": {
+   "cert": null,
+   "conf": 0.0,
+   "votes": 0,
+   "at": "2026-11-13T01:54:17Z",
+   "status": "no_cert"
+  },
+  "10785042245": {
+   "cert": "102685614",
+   "conf": 1.0,
+   "votes": 8,
+   "at": "2026-11-13T01:54:17Z",
+   "status": "ok"
+  },
+  "10784312827": {
+   "cert": null,
+   "conf": 0.0,
+   "votes": 0,
+   "at": "2026-11-13T01:54:17Z",
+   "status": "no_cert"
+  },
+  "10784055844": {
+   "cert": null,
+   "conf": 0.0,
+   "votes": 0,
+   "at": "2026-11-13T01:54:17Z",
+   "status": "no_cert"
+  },
+  "10785187224": {
+   "cert": "45414972",
+   "conf": 1.0,
+   "votes": 8,
+   "at": "2026-11-13T01:54:17Z",
+   "status": "ok"
+  },
+  "10784174983": {
+   "cert": "61148448",
+   "conf": 1.0,
+   "votes": 8,
+   "at": "2026-11-13T01:54:17Z",
+   "status": "ok"
+  },
+  "10783909160": {
+   "cert": null,
+   "conf": 0.0,
+   "votes": 0,
+   "at": "2026-11-13T01:54:17Z",
+   "status": "no_cert"
+  },
+  "10784158302": {
+   "cert": "46703345",
+   "conf": 1.0,
+   "votes": 8,
+   "at": "2026-11-13T01:54:17Z",
+   "status": "ok"
+  },
+  "10785014275": {
+   "cert": "63186414",
+   "conf": 1.0,
+   "votes": 4,
+   "at": "2026-11-13T01:54:17Z",
+   "status": "ok"
+  },
+  "10784788976": {
+   "cert": "97725722",
+   "conf": 1.0,
+   "votes": 8,
+   "at": "2026-11-13T01:54:17Z",
+   "status": "ok"
+  },
+  "10784787230": {
+   "cert": "160764861",
+   "conf": 1.0,
+   "votes": 2,
+   "at": "2026-11-13T01:54:17Z",
+   "status": "ok"
+  },
+  "10784095471": {
+   "cert": "69362583",
+   "conf": 1.0,
+   "votes": 8,
+   "at": "2026-11-13T01:54:17Z",
+   "status": "ok"
+  },
+  "10784356377": {
+   "cert": "164300247",
+   "conf": 1.0,
+   "votes": 4,
+   "at": "2026-11-13T01:54:17Z",
+   "status": "ok"
+  },
+  "10783781982": {
+   "cert": "180931159",
+   "conf": 1.0,
+   "votes": 4,
+   "at": "2026-11-13T01:54:17Z",
+   "status": "ok"
+  },
+  "10784125929": {
+   "cert": "113250460",
+   "conf": 1.0,
+   "votes": 8,
+   "at": "2026-11-13T01:54:17Z",
+   "status": "ok"
+  },
+  "10784146407": {
+   "cert": "137363539",
+   "conf": 1.0,
+   "votes": 8,
+   "at": "2026-11-13T01:54:17Z",
+   "status": "ok"
+  },
+  "10784116910": {
+   "cert": "169459772",
+   "conf": 1.0,
+   "votes": 8,
+   "at": "2026-11-13T01:54:17Z",
+   "status": "ok"
+  },
+  "10784796411": {
+   "cert": "97725725",
+   "conf": 1.0,
+   "votes": 8,
+   "at": "2026-11-13T01:54:17Z",
+   "status": "ok"
+  },
+  "10784323803": {
+   "cert": "24823650",
+   "conf": 1.0,
+   "votes": 8,
+   "at": "2026-11-13T01:54:17Z",
+   "status": "ok"
+  },
+  "10784429745": {
+   "cert": "152121403",
+   "conf": 1.0,
+   "votes": 8,
+   "at": "2026-11-13T01:54:17Z",
+   "status": "ok"
+  },
+  "10784082302": {
+   "cert": "96543361",
+   "conf": 1.0,
+   "votes": 8,
+   "at": "2026-11-13T01:54:17Z",
+   "status": "ok"
+  },
+  "10785553112": {
+   "cert": "166463827",
+   "conf": 1.0,
+   "votes": 12,
+   "at": "2026-11-13T01:54:17Z",
+   "status": "ok"
+  },
+  "10784426307": {
+   "cert": "179718397",
+   "conf": 1.0,
+   "votes": 2,
+   "at": "2026-11-13T01:54:17Z",
+   "status": "ok"
+  },
+  "10784135691": {
+   "cert": "26425849",
+   "conf": 1.0,
+   "votes": 8,
+   "at": "2026-11-13T01:54:17Z",
+   "status": "ok"
+  },
+  "10784462777": {
+   "cert": "179718392",
+   "conf": 1.0,
+   "votes": 4,
+   "at": "2026-11-13T01:54:17Z",
+   "status": "ok"
+  },
+  "10784184680": {
+   "cert": "140574916",
+   "conf": 1.0,
+   "votes": 6,
+   "at": "2026-11-13T01:54:17Z",
+   "status": "ok"
+  },
+  "10777617218": {
+   "cert": "154332048",
+   "conf": 1.0,
+   "votes": 12,
+   "at": "2026-11-13T01:54:17Z",
+   "status": "ok"
+  },
+  "10784508707": {
+   "cert": "100299920",
+   "conf": 1.0,
+   "votes": 6,
+   "at": "2026-11-13T01:54:17Z",
+   "status": "ok"
+  },
+  "10785722976": {
+   "cert": "92682092",
+   "conf": 1.0,
+   "votes": 4,
+   "at": "2026-11-13T01:54:17Z",
+   "status": "ok"
+  },
+  "10785136004": {
+   "cert": "134224984",
+   "conf": 1.0,
+   "votes": 8,
+   "at": "2026-11-13T01:54:17Z",
+   "status": "ok"
+  },
+  "10784106705": {
+   "cert": "138117950",
+   "conf": 1.0,
+   "votes": 4,
+   "at": "2026-11-13T01:54:17Z",
+   "status": "ok"
+  },
+  "10783962785": {
+   "cert": "55590756",
+   "conf": 1.0,
+   "votes": 2,
+   "at": "2026-11-13T01:54:17Z",
+   "status": "ok"
+  },
+  "10784963147": {
+   "cert": "87515306",
+   "conf": 1.0,
+   "votes": 4,
+   "at": "2026-11-13T01:54:17Z",
+   "status": "ok"
+  },
+  "10784742217": {
+   "cert": "168078177",
+   "conf": 1.0,
+   "votes": 8,
+   "at": "2026-11-13T01:54:17Z",
+   "status": "ok"
+  },
+  "10783831682": {
+   "cert": "129299434",
+   "conf": 1.0,
+   "votes": 12,
+   "at": "2026-11-13T01:54:17Z",
+   "status": "ok"
+  },
+  "10784104502": {
+   "cert": "162093817",
+   "conf": 1.0,
+   "votes": 8,
+   "at": "2026-11-13T01:54:17Z",
+   "status": "ok"
+  },
+  "10784634119": {
+   "cert": "38881875",
+   "conf": 1.0,
+   "votes": 6,
+   "at": "2026-11-13T01:54:17Z",
+   "status": "ok"
+  },
+  "10784317871": {
+   "cert": null,
+   "conf": 0.0,
+   "votes": 0,
+   "at": "2026-11-13T01:54:17Z",
+   "status": "no_cert"
+  },
+  "10784556607": {
+   "cert": "164025056",
+   "conf": 1.0,
+   "votes": 8,
+   "at": "2026-11-13T01:54:17Z",
+   "status": "ok"
+  },
+  "10785816969": {
+   "cert": "168189669",
+   "conf": 1.0,
+   "votes": 6,
+   "at": "2026-11-13T01:54:17Z",
+   "status": "ok"
+  },
+  "10784617359": {
+   "cert": "85139649",
+   "conf": 1.0,
+   "votes": 4,
+   "at": "2026-11-13T01:54:17Z",
+   "status": "ok"
+  },
+  "10785074206": {
+   "cert": "112020013",
+   "conf": 1.0,
+   "votes": 8,
+   "at": "2026-11-13T01:54:17Z",
+   "status": "ok"
+  },
+  "10784099190": {
+   "cert": "164075147",
+   "conf": 1.0,
+   "votes": 12,
+   "at": "2026-11-13T01:54:17Z",
+   "status": "ok"
+  },
+  "10783677404": {
+   "cert": null,
+   "conf": 0.0,
+   "votes": 0,
+   "at": "2026-11-13T01:54:17Z",
+   "status": "no_cert"
+  },
+  "10784403069": {
+   "cert": "179718393",
+   "conf": 1.0,
+   "votes": 4,
+   "at": "2026-11-13T01:54:17Z",
+   "status": "ok"
+  },
+  "10785719682": {
+   "cert": "85889028",
+   "conf": 1.0,
+   "votes": 8,
+   "at": "2026-11-13T01:54:17Z",
+   "status": "ok"
+  },
+  "10785181513": {
+   "cert": "125872978",
+   "conf": 1.0,
+   "votes": 8,
+   "at": "2026-11-13T01:54:17Z",
+   "status": "ok"
+  },
+  "10785082158": {
+   "cert": null,
+   "conf": 0.0,
+   "votes": 0,
+   "at": "2026-11-13T01:54:17Z",
+   "status": "no_cert"
+  },
+  "10785708564": {
+   "cert": "148574504",
+   "conf": 1.0,
+   "votes": 8,
+   "at": "2026-11-13T01:54:17Z",
+   "status": "ok"
+  },
+  "10784809521": {
+   "cert": "153458188",
+   "conf": 1.0,
+   "votes": 8,
+   "at": "2026-11-13T01:54:17Z",
+   "status": "ok"
+  },
+  "10784471688": {
+   "cert": "179344421",
+   "conf": 1.0,
+   "votes": 16,
+   "at": "2026-11-13T01:54:17Z",
+   "status": "ok"
+  },
+  "10785153135": {
+   "cert": "179344451",
+   "conf": 1.0,
+   "votes": 16,
+   "at": "2026-11-13T01:54:17Z",
+   "status": "ok"
+  },
+  "10783943462": {
+   "cert": null,
+   "conf": 0.0,
+   "votes": 0,
+   "at": "2026-11-13T01:54:17Z",
+   "status": "no_cert"
+  },
+  "10785521431": {
+   "cert": "102185226",
+   "conf": 1.0,
+   "votes": 8,
+   "at": "2026-11-13T01:54:17Z",
+   "status": "ok"
+  },
+  "10785504848": {
+   "cert": "162090932",
+   "conf": 1.0,
+   "votes": 2,
+   "at": "2026-11-13T01:54:17Z",
+   "status": "ok"
+  },
+  "10783901939": {
+   "cert": "23000982",
+   "conf": 1.0,
+   "votes": 8,
+   "at": "2026-11-13T01:54:17Z",
+   "status": "ok"
+  },
+  "10784768291": {
+   "cert": "158069335",
+   "conf": 1.0,
+   "votes": 8,
+   "at": "2026-11-13T01:54:17Z",
+   "status": "ok"
+  },
+  "10785205111": {
+   "cert": "179344441",
+   "conf": 1.0,
+   "votes": 16,
+   "at": "2026-11-13T01:54:17Z",
+   "status": "ok"
+  },
+  "10784696622": {
+   "cert": "179344434",
+   "conf": 1.0,
+   "votes": 16,
+   "at": "2026-11-13T01:54:17Z",
+   "status": "ok"
+  },
+  "10784310408": {
+   "cert": null,
+   "conf": 0.0,
+   "votes": 0,
+   "at": "2026-11-13T01:54:17Z",
+   "status": "no_cert"
+  },
+  "10784024967": {
+   "cert": "65138643",
+   "conf": 1.0,
+   "votes": 8,
+   "at": "2026-11-13T01:54:17Z",
+   "status": "ok"
+  },
+  "10783528276": {
+   "cert": "78185400",
+   "conf": 1.0,
+   "votes": 12,
+   "at": "2026-11-13T01:54:17Z",
+   "status": "ok"
+  },
+  "10784829442": {
+   "cert": "104219431",
+   "conf": 1.0,
+   "votes": 8,
+   "at": "2026-11-13T01:54:17Z",
+   "status": "ok"
+  },
+  "10784773670": {
+   "cert": "108001509",
+   "conf": 1.0,
+   "votes": 8,
+   "at": "2026-11-13T01:54:17Z",
+   "status": "ok"
+  },
+  "10783579244": {
+   "cert": "169835683",
+   "conf": 1.0,
+   "votes": 8,
+   "at": "2026-11-13T01:54:17Z",
+   "status": "ok"
+  },
+  "10785533572": {
+   "cert": "142352182",
+   "conf": 1.0,
+   "votes": 8,
+   "at": "2026-11-13T01:54:17Z",
+   "status": "ok"
+  },
+  "10785089198": {
+   "cert": "134224988",
+   "conf": 1.0,
+   "votes": 8,
+   "at": "2026-11-13T01:54:17Z",
+   "status": "ok"
+  },
+  "10783949502": {
+   "cert": "71127089",
+   "conf": 1.0,
+   "votes": 4,
+   "at": "2026-11-13T01:54:17Z",
+   "status": "ok"
+  },
+  "10784227885": {
+   "cert": "137975560",
+   "conf": 1.0,
+   "votes": 6,
+   "at": "2026-11-13T01:54:17Z",
+   "status": "ok"
+  },
+  "10784734138": {
+   "cert": "94200651",
+   "conf": 1.0,
+   "votes": 8,
+   "at": "2026-11-13T01:54:17Z",
+   "status": "ok"
+  },
+  "10783636495": {
+   "cert": "167884741",
+   "conf": 1.0,
+   "votes": 8,
+   "at": "2026-11-13T01:54:17Z",
+   "status": "ok"
+  },
+  "10785280387": {
+   "cert": "127464608",
+   "conf": 1.0,
+   "votes": 6,
+   "at": "2026-11-13T01:54:17Z",
+   "status": "ok"
+  },
+  "10785225991": {
+   "cert": "97499286",
+   "conf": 1.0,
+   "votes": 12,
+   "at": "2026-11-13T01:54:17Z",
+   "status": "ok"
+  },
+  "10785195980": {
+   "cert": "148020977",
+   "conf": 1.0,
+   "votes": 8,
+   "at": "2026-11-13T01:54:17Z",
+   "status": "ok"
+  },
+  "10785127765": {
+   "cert": "70738992",
+   "conf": 1.0,
+   "votes": 12,
+   "at": "2026-11-13T01:54:17Z",
+   "status": "ok"
+  },
+  "10785115010": {
+   "cert": "134224989",
+   "conf": 1.0,
+   "votes": 8,
+   "at": "2026-11-13T01:54:17Z",
+   "status": "ok"
+  },
+  "10785103569": {
+   "cert": "134224990",
+   "conf": 1.0,
+   "votes": 8,
+   "at": "2026-11-13T01:54:17Z",
+   "status": "ok"
+  },
+  "10783770558": {
+   "cert": "171815942",
+   "conf": 1.0,
+   "votes": 8,
+   "at": "2026-11-13T01:54:17Z",
+   "status": "ok"
+  },
+  "10783387991": {
+   "cert": null,
+   "conf": 0.76,
+   "votes": 1,
+   "at": "2026-11-13T01:54:17Z",
+   "status": "no_cert"
+  },
+  "10784034517": {
+   "cert": null,
+   "conf": 0.0,
+   "votes": 0,
+   "at": "2026-11-13T01:54:17Z",
+   "status": "no_cert"
+  },
+  "10783876320": {
+   "cert": null,
+   "conf": 0.0,
+   "votes": 0,
+   "at": "2026-11-13T01:54:17Z",
+   "status": "no_cert"
+  },
+  "10785123114": {
+   "cert": "134224983",
+   "conf": 1.0,
+   "votes": 8,
+   "at": "2026-11-13T01:54:17Z",
+   "status": "ok"
+  },
+  "10785091338": {
+   "cert": "87258943",
+   "conf": 1.0,
+   "votes": 8,
+   "at": "2026-11-13T01:54:17Z",
+   "status": "ok"
+  },
+  "10784957239": {
+   "cert": "88150354",
+   "conf": 1.0,
+   "votes": 8,
+   "at": "2026-11-13T01:54:17Z",
+   "status": "ok"
+  },
+  "10784387281": {
+   "cert": "166248131",
+   "conf": 1.0,
+   "votes": 4,
+   "at": "2026-11-13T01:54:17Z",
+   "status": "ok"
+  },
+  "10782516710": {
+   "cert": "98367924",
+   "conf": 1.0,
+   "votes": 12,
+   "at": "2026-11-13T01:54:17Z",
+   "status": "ok"
+  },
+  "10784617851": {
+   "cert": null,
+   "conf": 0.0,
+   "votes": 0,
+   "at": "2026-11-13T01:54:17Z",
+   "status": "no_cert"
+  },
+  "10784411822": {
+   "cert": "179718395",
+   "conf": 1.0,
+   "votes": 2,
+   "at": "2026-11-13T01:54:17Z",
+   "status": "ok"
+  },
+  "10783706586": {
+   "cert": "139324523",
+   "conf": 1.0,
+   "votes": 8,
+   "at": "2026-11-13T01:54:17Z",
+   "status": "ok"
+  },
+  "10783371694": {
+   "cert": "160730824",
+   "conf": 1.0,
+   "votes": 8,
+   "at": "2026-11-13T01:54:17Z",
+   "status": "ok"
+  },
+  "10784642927": {
+   "cert": "116355705",
+   "conf": 1.0,
+   "votes": 8,
+   "at": "2026-11-13T01:54:17Z",
+   "status": "ok"
+  },
+  "10785155608": {
+   "cert": "102762353",
+   "conf": 1.0,
+   "votes": 12,
+   "at": "2026-11-13T01:54:17Z",
+   "status": "ok"
+  },
+  "10784910722": {
+   "cert": "85620544",
+   "conf": 1.0,
+   "votes": 4,
+   "at": "2026-11-13T01:54:17Z",
+   "status": "ok"
+  },
+  "10784871812": {
+   "cert": "82277428",
+   "conf": 1.0,
+   "votes": 4,
+   "at": "2026-11-13T01:54:17Z",
+   "status": "ok"
+  },
+  "10784122132": {
+   "cert": null,
+   "conf": 0.0,
+   "votes": 0,
+   "at": "2026-11-13T01:54:17Z",
+   "status": "no_cert"
+  },
+  "10783624039": {
+   "cert": "142753938",
+   "conf": 1.0,
+   "votes": 8,
+   "at": "2026-11-13T01:54:17Z",
+   "status": "ok"
+  },
+  "10784441270": {
+   "cert": "128141464",
+   "conf": 1.0,
+   "votes": 4,
+   "at": "2026-11-13T01:54:17Z",
+   "status": "ok"
   }
  },
  "certs": {
@@ -146472,21 +147172,9 @@
    "priced_at": "2026-10-03T05:25:03Z"
   },
   "134224984": {
-   "Cert Number": "134224984",
-   "Subject": "HAXORUS",
-   "Item Grade": "GEM MT 10",
-   "Year": "2025",
-   "Card Number": "147",
-   "Category": "TCG Cards",
-   "Brand": "POKEMON SPANISH BLK ES-BLACK BOLT",
-   "Variety": "ILLUSTRATION RARE",
-   "spec_id": "14094330",
-   "source": "session",
-   "pop": 1,
-   "pop_higher": 0,
-   "pop_url": "https://www.psacard.com/pop/tcg-cards/2025/pokemon-spanish-blk-es-black-bolt/310582",
-   "checked_at": "2026-10-03T16:27:40Z",
-   "priced_at": "2026-10-03T16:27:40Z"
+   "error": "no data",
+   "checked_at": "2026-11-13T01:54:17Z",
+   "priced_at": "2026-11-13T01:54:17Z"
   },
   "152795791": {
    "Cert Number": "152795791",
@@ -146506,21 +147194,9 @@
    "priced_at": "2026-11-07T13:12:33Z"
   },
   "134224983": {
-   "Cert Number": "134224983",
-   "Subject": "TEAM ROCKET'S CROBAT",
-   "Item Grade": "GEM MT 10",
-   "Year": "2025",
-   "Card Number": "242",
-   "Category": "TCG Cards",
-   "Brand": "POKEMON SPANISH DRI ES-DESTINED RIVALS",
-   "Variety": "HYPER RARE",
-   "spec_id": "13537438",
-   "source": "session",
-   "pop": 1,
-   "pop_higher": 0,
-   "pop_url": "https://www.psacard.com/pop/tcg-cards/2025/pokemon-spanish-dri-es-destined-rivals/303824",
-   "checked_at": "2026-10-03T16:27:40Z",
-   "priced_at": "2026-10-03T16:27:40Z"
+   "error": "no data",
+   "checked_at": "2026-11-13T01:54:17Z",
+   "priced_at": "2026-11-13T01:54:17Z"
   },
   "152795794": {
    "Cert Number": "152795794",
@@ -146540,38 +147216,14 @@
    "priced_at": "2026-11-07T13:12:33Z"
   },
   "134224989": {
-   "Cert Number": "134224989",
-   "Subject": "WHIMSICOTT ex",
-   "Item Grade": "GEM MT 10",
-   "Year": "2025",
-   "Card Number": "165",
-   "Category": "TCG Cards",
-   "Brand": "POKEMON SPANISH WHT ES-WHITE FLARE",
-   "Variety": "SPECIAL ILLUSTRATION RARE",
-   "spec_id": "14093996",
-   "source": "session",
-   "pop": 2,
-   "pop_higher": 0,
-   "pop_url": "https://www.psacard.com/pop/tcg-cards/2025/pokemon-spanish-wht-es-white-flare/310577",
-   "checked_at": "2026-10-03T16:27:40Z",
-   "priced_at": "2026-10-03T16:27:40Z"
+   "error": "no data",
+   "checked_at": "2026-11-13T01:54:17Z",
+   "priced_at": "2026-11-13T01:54:17Z"
   },
   "134224990": {
-   "Cert Number": "134224990",
-   "Subject": "HILDA",
-   "Item Grade": "GEM MT 10",
-   "Year": "2025",
-   "Card Number": "171",
-   "Category": "TCG Cards",
-   "Brand": "POKEMON SPANISH WHT ES-WHITE FLARE",
-   "Variety": "SPECIAL ILLUSTRATION RARE",
-   "spec_id": "14094002",
-   "source": "session",
-   "pop": 2,
-   "pop_higher": 0,
-   "pop_url": "https://www.psacard.com/pop/tcg-cards/2025/pokemon-spanish-wht-es-white-flare/310577",
-   "checked_at": "2026-10-03T16:27:40Z",
-   "priced_at": "2026-10-03T16:27:40Z"
+   "error": "no data",
+   "checked_at": "2026-11-13T01:54:17Z",
+   "priced_at": "2026-11-13T01:54:17Z"
   },
   "152795787": {
    "Cert Number": "152795787",
@@ -146591,21 +147243,9 @@
    "priced_at": "2026-11-07T13:12:33Z"
   },
   "134224988": {
-   "Cert Number": "134224988",
-   "Subject": "GENESECT ex",
-   "Item Grade": "GEM MT 10",
-   "Year": "2025",
-   "Card Number": "169",
-   "Category": "TCG Cards",
-   "Brand": "POKEMON SPANISH BLK ES-BLACK BOLT",
-   "Variety": "SPECIAL ILLUSTRATION RARE",
-   "spec_id": "14094353",
-   "source": "session",
-   "pop": 5,
-   "pop_higher": 0,
-   "pop_url": "https://www.psacard.com/pop/tcg-cards/2025/pokemon-spanish-blk-es-black-bolt/310582",
-   "checked_at": "2026-10-03T16:27:40Z",
-   "priced_at": "2026-10-03T16:27:40Z"
+   "error": "no data",
+   "checked_at": "2026-11-13T01:54:17Z",
+   "priced_at": "2026-11-13T01:54:17Z"
   },
   "99173202": {
    "Cert Number": "99173202",
@@ -213148,7 +213788,7 @@
    "pop_higher": 2,
    "pop_url": "https://www.psacard.com/pop/tcg-cards/2023/pokemon-sword-shield-crown-zenith/229016",
    "checked_at": "2026-10-20T00:25:35Z",
-   "priced_at": "2026-10-20T00:25:35Z"
+   "priced_at": "2026-11-13T01:54:17Z"
   },
   "146101794": {
    "Cert Number": "146101794",
@@ -319626,8 +320266,8 @@
   },
   "162090932": {
    "error": "no data",
-   "checked_at": "2026-11-11T06:37:24Z",
-   "priced_at": "2026-11-11T06:37:24Z"
+   "checked_at": "2026-11-13T01:54:17Z",
+   "priced_at": "2026-11-13T01:54:17Z"
   },
   "57927326": {
    "error": "no data",
@@ -321163,6 +321803,296 @@
    "error": "no data",
    "checked_at": "2026-11-12T20:01:06Z",
    "priced_at": "2026-11-12T20:01:06Z"
+  },
+  "168189669": {
+   "error": "no data",
+   "checked_at": "2026-11-13T01:54:17Z",
+   "priced_at": "2026-11-13T01:54:17Z"
+  },
+  "92682092": {
+   "error": "no data",
+   "checked_at": "2026-11-13T01:54:17Z",
+   "priced_at": "2026-11-13T01:54:17Z"
+  },
+  "85889028": {
+   "error": "no data",
+   "checked_at": "2026-11-13T01:54:17Z",
+   "priced_at": "2026-11-13T01:54:17Z"
+  },
+  "148574504": {
+   "error": "no data",
+   "checked_at": "2026-11-13T01:54:17Z",
+   "priced_at": "2026-11-13T01:54:17Z"
+  },
+  "166463827": {
+   "error": "no data",
+   "checked_at": "2026-11-13T01:54:17Z",
+   "priced_at": "2026-11-13T01:54:17Z"
+  },
+  "142352182": {
+   "error": "no data",
+   "checked_at": "2026-11-13T01:54:17Z",
+   "priced_at": "2026-11-13T01:54:17Z"
+  },
+  "102185226": {
+   "error": "no data",
+   "checked_at": "2026-11-13T01:54:17Z",
+   "priced_at": "2026-11-13T01:54:17Z"
+  },
+  "127464608": {
+   "error": "no data",
+   "checked_at": "2026-11-13T01:54:17Z",
+   "priced_at": "2026-11-13T01:54:17Z"
+  },
+  "97499286": {
+   "error": "no data",
+   "checked_at": "2026-11-13T01:54:17Z",
+   "priced_at": "2026-11-13T01:54:17Z"
+  },
+  "179344441": {
+   "error": "no data",
+   "checked_at": "2026-11-13T01:54:17Z",
+   "priced_at": "2026-11-13T01:54:17Z"
+  },
+  "45414972": {
+   "error": "no data",
+   "checked_at": "2026-11-13T01:54:17Z",
+   "priced_at": "2026-11-13T01:54:17Z"
+  },
+  "102762353": {
+   "error": "no data",
+   "checked_at": "2026-11-13T01:54:17Z",
+   "priced_at": "2026-11-13T01:54:17Z"
+  },
+  "179344451": {
+   "error": "no data",
+   "checked_at": "2026-11-13T01:54:17Z",
+   "priced_at": "2026-11-13T01:54:17Z"
+  },
+  "70738992": {
+   "error": "no data",
+   "checked_at": "2026-11-13T01:54:17Z",
+   "priced_at": "2026-11-13T01:54:17Z"
+  },
+  "87258943": {
+   "error": "no data",
+   "checked_at": "2026-11-13T01:54:17Z",
+   "priced_at": "2026-11-13T01:54:17Z"
+  },
+  "112020013": {
+   "error": "no data",
+   "checked_at": "2026-11-13T01:54:17Z",
+   "priced_at": "2026-11-13T01:54:17Z"
+  },
+  "102685614": {
+   "error": "no data",
+   "checked_at": "2026-11-13T01:54:17Z",
+   "priced_at": "2026-11-13T01:54:17Z"
+  },
+  "63186414": {
+   "error": "no data",
+   "checked_at": "2026-11-13T01:54:17Z",
+   "priced_at": "2026-11-13T01:54:17Z"
+  },
+  "87515306": {
+   "error": "no data",
+   "checked_at": "2026-11-13T01:54:17Z",
+   "priced_at": "2026-11-13T01:54:17Z"
+  },
+  "88150354": {
+   "error": "no data",
+   "checked_at": "2026-11-13T01:54:17Z",
+   "priced_at": "2026-11-13T01:54:17Z"
+  },
+  "85620544": {
+   "error": "no data",
+   "checked_at": "2026-11-13T01:54:17Z",
+   "priced_at": "2026-11-13T01:54:17Z"
+  },
+  "82277428": {
+   "error": "no data",
+   "checked_at": "2026-11-13T01:54:17Z",
+   "priced_at": "2026-11-13T01:54:17Z"
+  },
+  "104219431": {
+   "error": "no data",
+   "checked_at": "2026-11-13T01:54:17Z",
+   "priced_at": "2026-11-13T01:54:17Z"
+  },
+  "153458188": {
+   "error": "no data",
+   "checked_at": "2026-11-13T01:54:17Z",
+   "priced_at": "2026-11-13T01:54:17Z"
+  },
+  "97725725": {
+   "error": "no data",
+   "checked_at": "2026-11-13T01:54:17Z",
+   "priced_at": "2026-11-13T01:54:17Z"
+  },
+  "97725722": {
+   "error": "no data",
+   "checked_at": "2026-11-13T01:54:17Z",
+   "priced_at": "2026-11-13T01:54:17Z"
+  },
+  "160764861": {
+   "error": "no data",
+   "checked_at": "2026-11-13T01:54:17Z",
+   "priced_at": "2026-11-13T01:54:17Z"
+  },
+  "108001509": {
+   "error": "no data",
+   "checked_at": "2026-11-13T01:54:17Z",
+   "priced_at": "2026-11-13T01:54:17Z"
+  },
+  "158069335": {
+   "error": "no data",
+   "checked_at": "2026-11-13T01:54:17Z",
+   "priced_at": "2026-11-13T01:54:17Z"
+  },
+  "94200651": {
+   "error": "no data",
+   "checked_at": "2026-11-13T01:54:17Z",
+   "priced_at": "2026-11-13T01:54:17Z"
+  },
+  "179344434": {
+   "error": "no data",
+   "checked_at": "2026-11-13T01:54:17Z",
+   "priced_at": "2026-11-13T01:54:17Z"
+  },
+  "38881875": {
+   "error": "no data",
+   "checked_at": "2026-11-13T01:54:17Z",
+   "priced_at": "2026-11-13T01:54:17Z"
+  },
+  "85139649": {
+   "error": "no data",
+   "checked_at": "2026-11-13T01:54:17Z",
+   "priced_at": "2026-11-13T01:54:17Z"
+  },
+  "164025056": {
+   "error": "no data",
+   "checked_at": "2026-11-13T01:54:17Z",
+   "priced_at": "2026-11-13T01:54:17Z"
+  },
+  "100299920": {
+   "error": "no data",
+   "checked_at": "2026-11-13T01:54:17Z",
+   "priced_at": "2026-11-13T01:54:17Z"
+  },
+  "179344421": {
+   "error": "no data",
+   "checked_at": "2026-11-13T01:54:17Z",
+   "priced_at": "2026-11-13T01:54:17Z"
+  },
+  "179718392": {
+   "error": "no data",
+   "checked_at": "2026-11-13T01:54:17Z",
+   "priced_at": "2026-11-13T01:54:17Z"
+  },
+  "128141464": {
+   "error": "no data",
+   "checked_at": "2026-11-13T01:54:17Z",
+   "priced_at": "2026-11-13T01:54:17Z"
+  },
+  "152121403": {
+   "error": "no data",
+   "checked_at": "2026-11-13T01:54:17Z",
+   "priced_at": "2026-11-13T01:54:17Z"
+  },
+  "179718397": {
+   "error": "no data",
+   "checked_at": "2026-11-13T01:54:17Z",
+   "priced_at": "2026-11-13T01:54:17Z"
+  },
+  "179718395": {
+   "error": "no data",
+   "checked_at": "2026-11-13T01:54:17Z",
+   "priced_at": "2026-11-13T01:54:17Z"
+  },
+  "179718393": {
+   "error": "no data",
+   "checked_at": "2026-11-13T01:54:17Z",
+   "priced_at": "2026-11-13T01:54:17Z"
+  },
+  "166248131": {
+   "error": "no data",
+   "checked_at": "2026-11-13T01:54:17Z",
+   "priced_at": "2026-11-13T01:54:17Z"
+  },
+  "164300247": {
+   "error": "no data",
+   "checked_at": "2026-11-13T01:54:17Z",
+   "priced_at": "2026-11-13T01:54:17Z"
+  },
+  "24823650": {
+   "error": "no data",
+   "checked_at": "2026-11-13T01:54:17Z",
+   "priced_at": "2026-11-13T01:54:17Z"
+  },
+  "137975560": {
+   "error": "no data",
+   "checked_at": "2026-11-13T01:54:17Z",
+   "priced_at": "2026-11-13T01:54:17Z"
+  },
+  "140574916": {
+   "error": "no data",
+   "checked_at": "2026-11-13T01:54:17Z",
+   "priced_at": "2026-11-13T01:54:17Z"
+  },
+  "164075147": {
+   "error": "no data",
+   "checked_at": "2026-11-13T01:54:17Z",
+   "priced_at": "2026-11-13T01:54:17Z"
+  },
+  "65138643": {
+   "error": "no data",
+   "checked_at": "2026-11-13T01:54:17Z",
+   "priced_at": "2026-11-13T01:54:17Z"
+  },
+  "55590756": {
+   "error": "no data",
+   "checked_at": "2026-11-13T01:54:17Z",
+   "priced_at": "2026-11-13T01:54:17Z"
+  },
+  "71127089": {
+   "error": "no data",
+   "checked_at": "2026-11-13T01:54:17Z",
+   "priced_at": "2026-11-13T01:54:17Z"
+  },
+  "129299434": {
+   "error": "no data",
+   "checked_at": "2026-11-13T01:54:17Z",
+   "priced_at": "2026-11-13T01:54:17Z"
+  },
+  "171815942": {
+   "error": "no data",
+   "checked_at": "2026-11-13T01:54:17Z",
+   "priced_at": "2026-11-13T01:54:17Z"
+  },
+  "139324523": {
+   "error": "no data",
+   "checked_at": "2026-11-13T01:54:17Z",
+   "priced_at": "2026-11-13T01:54:17Z"
+  },
+  "167884741": {
+   "error": "no data",
+   "checked_at": "2026-11-13T01:54:17Z",
+   "priced_at": "2026-11-13T01:54:17Z"
+  },
+  "142753938": {
+   "error": "no data",
+   "checked_at": "2026-11-13T01:54:17Z",
+   "priced_at": "2026-11-13T01:54:17Z"
+  },
+  "160730824": {
+   "error": "no data",
+   "checked_at": "2026-11-13T01:54:17Z",
+   "priced_at": "2026-11-13T01:54:17Z"
+  },
+  "98367924": {
+   "error": "no data",
+   "checked_at": "2026-11-13T01:54:17Z",
+   "priced_at": "2026-11-13T01:54:17Z"
   }
  }
 }
