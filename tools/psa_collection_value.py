@@ -52,6 +52,7 @@ GRADE_TARGET_BY_COND = {"Neuve": 10, "Excellent": 9}
 GRADES_SHOWN = (10, 9, 8)   # notes chiffrées pour chaque carte (l'API les renvoie toutes d'un coup)
 POP_TTL_DAYS = 30
 MIN_SALES = 3        # en dessous, la moyenne d'une fenêtre n'est pas fiable : on élargit
+BACKUP_KEEP_DAYS = 30  # sauvegardes quotidiennes de la collection (collections_backup/{uid}/days/{date})
 NOW = dt.datetime.now(dt.timezone.utc)
 
 
@@ -114,16 +115,65 @@ def resolve_uid(db, uid=None, email=None):
 
 
 def load_owned(args):
+    """(cards, uid, document complet ou None en test local)."""
     if args.owned_json:
         with open(args.owned_json, encoding="utf-8") as f:
             d = json.load(f)
-        return d.get("cards", d), args.uid or "local"
+        return d.get("cards", d), args.uid or "local", None
     db = firestore_client()
     uid = resolve_uid(db, args.uid or os.environ.get("GRADED_UID"))
     snap = db.collection("collections").document(uid).get()
     if not snap.exists:
         raise SystemExit(f"Collection : collections/{uid} introuvable")
-    return (snap.to_dict() or {}).get("cards", {}) or {}, uid
+    data = snap.to_dict() or {}
+    return data.get("cards", {}) or {}, uid, data
+
+
+# ------------------------------------------------------------------ sauvegarde / restauration
+# Chaque sauvegarde de l'appli envoie la collection ENTIÈRE : un second téléphone sur le même
+# compte peut écraser des ajouts (vécu en novembre 2026). D'où une copie quotidienne, gardée
+# BACKUP_KEEP_DAYS jours, restaurable avec --restore AAAA-MM-JJ (workflow « Run workflow »).
+def _backup_col(db, uid):
+    return db.collection("collections_backup").document(uid).collection("days")
+
+
+def backup_collection(db, uid, data, now=None):
+    now = now or NOW
+    today = now.strftime("%Y-%m-%d")
+    cards = data.get("cards") or {}
+    _backup_col(db, uid).document(today).set({
+        "cards": cards, "wishlist": data.get("wishlist") or {}, "updatedAt": data.get("updatedAt"),
+        "savedAt": iso(now), "cards_count": len(cards),
+    })
+    cutoff = (now - dt.timedelta(days=BACKUP_KEEP_DAYS)).strftime("%Y-%m-%d")
+    removed = 0
+    for d in _backup_col(db, uid).stream():
+        if d.id < cutoff:           # ids = dates ISO (ou date-avant-restauration-HHMM) : ordre lexical = chronologique
+            d.reference.delete()
+            removed += 1
+    log(f"sauvegarde collections_backup/{uid}/days/{today} : {len(cards)} carte(s)"
+        + (f" ; {removed} ancienne(s) supprimée(s)" if removed else ""))
+
+
+def restore_collection(db, uid, date, now=None):
+    now = now or NOW
+    col = _backup_col(db, uid)
+    snap = col.document(date).get()
+    if not snap.exists:
+        available = sorted(d.id for d in col.stream())
+        raise SystemExit(f"Sauvegarde {date} introuvable. Disponibles : {', '.join(available) or 'aucune'}")
+    b = snap.to_dict() or {}
+    ref = db.collection("collections").document(uid)
+    cur = ref.get()
+    if cur.exists:   # l'état écrasé reste récupérable lui aussi
+        keep = cur.to_dict() or {}
+        col.document(now.strftime("%Y-%m-%d") + "-avant-restauration-" + now.strftime("%H%M")).set({
+            "cards": keep.get("cards") or {}, "wishlist": keep.get("wishlist") or {}, "updatedAt": keep.get("updatedAt"),
+            "savedAt": iso(now), "cards_count": len(keep.get("cards") or {}),
+        })
+    ref.set({"cards": b.get("cards") or {}, "wishlist": b.get("wishlist") or {}, "updatedAt": int(now.timestamp() * 1000)})
+    log(f"collection restaurée depuis la sauvegarde {date} : {len(b.get('cards') or {})} carte(s) "
+        f"(l'état précédent, {len((cur.to_dict() or {}).get('cards') or {}) if cur.exists else 0} carte(s), est conservé dans les sauvegardes)")
 
 
 # ------------------------------------------------------------------ TCGdex
@@ -329,9 +379,19 @@ def main():
     ap.add_argument("--out", help="écrire aussi le rapport JSON ici (chemin NON public)")
     ap.add_argument("--max-cards", type=int, default=0, help="limiter (test)")
     ap.add_argument("--verbose", action="store_true")
+    ap.add_argument("--restore", metavar="AAAA-MM-JJ", help="restaurer la collection depuis cette sauvegarde quotidienne, puis s'arrêter")
     args = ap.parse_args()
 
-    owned, uid = load_owned(args)
+    if args.restore:
+        if not re.fullmatch(r"\d{4}-\d{2}-\d{2}(-avant-restauration-\d{4})?", args.restore):
+            raise SystemExit("--restore attend une date AAAA-MM-JJ")
+        db = firestore_client()
+        restore_collection(db, resolve_uid(db, args.uid or os.environ.get("GRADED_UID")), args.restore)
+        return
+
+    owned, uid, cloud_doc = load_owned(args)
+    if cloud_doc is not None and not args.dry_run:
+        backup_collection(firestore_client(), uid, cloud_doc)
     ids = list(owned.keys())
     if args.max_cards:
         ids = ids[:args.max_cards]

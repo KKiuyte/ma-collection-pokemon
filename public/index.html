@@ -319,6 +319,10 @@ body {
 .btn-remove { background:var(--danger-bg); color:var(--danger-fg); border:1px solid var(--danger-border); margin-top:14px; }
 .btn-wish { background:var(--wish-bg); color:var(--wish-fg); border:1px solid var(--wish-border); margin-top:12px; }
 .owned-tag { text-align:center; font-weight:800; color:var(--accent-deep); margin:0 0 12px; }
+.syncnote { text-align:center; font-size:12.5px; font-weight:700; color:var(--muted); margin:0 0 12px; }
+.syncnote.bad { color:#d0392b; }
+.copy-add-toggle:disabled, .copy-add-confirm:disabled, .copy-remove:disabled, #mWish:disabled { opacity:.45; cursor:not-allowed; }
+.linkbtn { background:none; border:0; padding:0; font:inherit; color:var(--accent-deep); text-decoration:underline; cursor:pointer; }
 .field { margin-bottom:14px; }
 .field-row { display:flex; gap:12px; }
 .field-row .field { flex:1; min-width:0; }
@@ -679,6 +683,17 @@ const setBlockById = {};  // id de série -> id de bloc
 let blocksReady = false;  // structure des blocs chargée ?
 let saveTimer = null;      // pour regrouper les sauvegardes en ligne
 let currentUser = null;    // utilisateur connecté (null = déconnecté)
+// État de la synchro avec le nuage. Les ajouts/retraits sont BLOQUÉS tant que la version en ligne
+// n'a pas été chargée : chaque sauvegarde envoie la collection ENTIÈRE, donc une modification faite
+// sur une vieille copie locale (autre téléphone du même compte ouvert en réseau faible) écraserait
+// les ajouts faits ailleurs. "ready" aussi quand personne n'est connecté (rien à écraser en ligne).
+let syncState = "pending";   // "pending" | "ready" | "failed"
+function setSyncState(st){
+  syncState = st;
+  if (openCard && !$("overlay").hidden) renderModalBody();
+}
+function canEdit(){ return syncState === "ready"; }
+window.__sync = { get: () => syncState, set: setSyncState }; // diagnostic / tests
 let userProfile = null;    // profil public { pseudo, pseudoLower, email } ou null
 let profileLoadFailed = false; // la lecture du profil a échoué (réseau) : ne pas confondre avec "pas de pseudo"
 let pseudoEditing = false; // affiche le champ de modification du pseudo (geste explicite, pas d'édition directe)
@@ -789,10 +804,12 @@ function listenCloud(){
   if (cloudUnsub) cloudUnsub();
   cloudUnsub = onSnapshot(doc(db, "collections", currentUser.uid), (snap) => {
     if (snap.metadata.hasPendingWrites) return; // ignore nos propres écritures
+    if (snap.metadata.fromCache) return;        // pas la version serveur : on ne remplace rien
     const data = snap.exists() ? snap.data() : {};
     owned = migrate(data.cards || {});
     wishlist = data.wishlist || {};
     saveLocal(); render();
+    if (syncState !== "ready") setSyncState("ready"); // ex. getDoc en échec puis réseau revenu
   });
 }
 
@@ -812,6 +829,13 @@ async function onLogin(user){
     setAuthStatus("Impossible de vérifier ton pseudo (connexion). Ouvre « Mon compte » pour réessayer.", false);
   else if (!userProfile || !userProfile.pseudo)
     setAuthStatus("Choisis un pseudo ci-dessous pour pouvoir partager ta collection plus tard.");
+  await syncFromCloud(user, interactive);
+}
+
+// Charge la version en ligne (ou envoie la locale s'il n'y en a pas), puis écoute le temps réel.
+// Tant que ce n'est pas fait, les ajouts/retraits sont bloqués (voir syncState).
+async function syncFromCloud(user, interactive){
+  setSyncState("pending");
   try {
     const ref = doc(db, "collections", user.uid);
     const snap = await getDoc(ref);
@@ -830,9 +854,13 @@ async function onLogin(user){
       await saveCloud(); // rien en ligne : on envoie la collection locale
     }
     render();
-  } catch {}
+    setSyncState("ready");
+  } catch {
+    setSyncState("failed"); // hors-ligne ou réseau faible : on ne touche à rien, bouton Réessayer dans la fiche
+  }
   listenCloud();
 }
+function retrySync(){ if (currentUser) syncFromCloud(currentUser, false); }
 
 function onLogout(){
   if (cloudUnsub){ cloudUnsub(); cloudUnsub = null; }
@@ -844,6 +872,7 @@ function onLogout(){
   updateAccountButton();
   renderAccountBody();
   setAuthStatus("Déconnecté. Ta collection reste sur cet appareil.");
+  setSyncState("ready");
 }
 
 // --- pseudo (profil public, base du partage à venir) ---
@@ -1606,6 +1635,9 @@ function renderModalBody(){
     ? `<p class="owned-tag">✓ ${totalQty} exemplaire${totalQty>1?"s":""} · ${variantCount(rec)} version${variantCount(rec)>1?"s":""}${
         val ? ` · <span class="cardvalue">${formatPrice(val)}${val.partial ? "+" : ""}</span>` : ""}</p>`
     : `<p class="owned-tag" style="color:var(--muted)">Pas encore dans ta collection</p>`;
+  if (!canEdit()) html += syncState === "failed"
+    ? `<p class="syncnote bad">Impossible de joindre le nuage : ajouts et retraits bloqués pour ne pas écraser la collection en ligne. <button type="button" class="linkbtn" id="mRetrySync">Réessayer</button></p>`
+    : `<p class="syncnote">Synchronisation avec le nuage… les ajouts et retraits seront possibles dans un instant.</p>`;
 
   html += `<div class="vlist">`;
   list.forEach(name => {
@@ -1658,6 +1690,10 @@ function renderModalBody(){
   }
   html += `<button class="big-btn btn-wish" id="mWish">${wish ? "♥ Retirer de ma liste de souhaits" : "♡ Ajouter à ma liste de souhaits"}</button>`;
   body.innerHTML = html;
+  if (!canEdit()){
+    body.querySelectorAll(".copy-add-toggle,.copy-add-confirm,.copy-remove,.vcond,.vlang,#mWish").forEach(el => el.disabled = true);
+    const rb = $("mRetrySync"); if (rb) rb.onclick = () => { rb.disabled = true; rb.textContent = "Nouvel essai…"; retrySync(); };
+  }
 
   // ouvre/ferme le petit formulaire état+langue avant d'ajouter un exemplaire
   body.querySelectorAll(".copy-add-toggle").forEach(btn => btn.onclick = () => {
@@ -1669,6 +1705,7 @@ function renderModalBody(){
     const name = btn.dataset.name;
     const cond = form.querySelector(".new-cond").value;
     const lang = form.querySelector(".new-lang").value;
+    if (!canEdit()) return;
     if (!owned[c.id]) owned[c.id] = { v: {} };
     if (!owned[c.id].v[name]) owned[c.id].v[name] = [];
     owned[c.id].v[name].push(copyEntry(cond, lang));
@@ -1678,14 +1715,17 @@ function renderModalBody(){
   body.querySelectorAll(".copy-row .vcond").forEach(sel => sel.onchange = () => {
     const copies = owned[c.id] && owned[c.id].v ? owned[c.id].v[sel.dataset.name] : null;
     const cp = copies && copies[Number(sel.dataset.i)];
+    if (!canEdit()){ renderModalBody(); return; }
     if (cp){ cp.cond = sel.value; save(); }
   });
   body.querySelectorAll(".copy-row .vlang").forEach(sel => sel.onchange = () => {
     const copies = owned[c.id] && owned[c.id].v ? owned[c.id].v[sel.dataset.name] : null;
     const cp = copies && copies[Number(sel.dataset.i)];
+    if (!canEdit()){ renderModalBody(); return; }
     if (cp){ cp.lang = sel.value; save(); }
   });
   body.querySelectorAll(".copy-remove").forEach(btn => btn.onclick = () => {
+    if (!canEdit()) return;
     const r = owned[c.id];
     const copies = r && r.v ? r.v[btn.dataset.name] : null;
     if (copies){
@@ -1696,6 +1736,7 @@ function renderModalBody(){
     saveNow(); renderModalBody(); render();
   });
   $("mWish").onclick = () => {
+    if (!canEdit()) return;
     if (wishlist[c.id]) delete wishlist[c.id]; else wishlist[c.id] = true;
     saveNow(); renderModalBody(); render();
   };

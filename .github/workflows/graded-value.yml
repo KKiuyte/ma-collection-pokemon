@@ -5,12 +5,20 @@ name: Estimation gradée (PSA) de la collection
 #
 # Secrets nécessaires : FIREBASE_SERVICE_ACCOUNT (déjà utilisé pour le déploiement ; le compte
 # de service doit avoir le rôle Cloud Datastore User), PSA_EMAIL, PSA_PASSWORD.
+# Au passage, la collection est copiée dans collections_backup/{uid}/days/{date} (30 jours) ;
+# « Run workflow » avec une date dans le champ « restore » la remet en place (et sauvegarde
+# l'état écrasé sous {date}-avant-restauration-HHMM).
 # Le seul fichier du dépôt modifié est tools/psa-sets-map.json (correspondances de séries).
 
 on:
   schedule:
     - cron: "41 5 * * *"      # tous les jours à 05:41 UTC
-  workflow_dispatch: {}
+  workflow_dispatch:
+    inputs:
+      restore:
+        description: "Restaurer la collection depuis la sauvegarde de cette date (AAAA-MM-JJ). Vide = calcul normal."
+        required: false
+        default: ""
   push:                        # recalcul immédiat quand le script ou le workflow change
     branches: [main]
     paths:
@@ -41,7 +49,16 @@ jobs:
           pip install --quiet requests firebase-admin playwright playwright-stealth
           python -m playwright install --with-deps chromium
 
+      - name: Restaurer la collection depuis une sauvegarde (si demandé)
+        if: github.event.inputs.restore != ''
+        env:
+          FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+          PSA_EMAIL: ${{ secrets.PSA_EMAIL }}
+          RESTORE: ${{ github.event.inputs.restore }}
+        run: python tools/psa_collection_value.py --restore "$RESTORE"
+
       - name: Calculer l'estimation et écrire le rapport
+        if: github.event.inputs.restore == ''
         env:
           FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
           PSA_EMAIL: ${{ secrets.PSA_EMAIL }}

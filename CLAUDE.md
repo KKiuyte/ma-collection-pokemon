@@ -141,6 +141,31 @@ git add public/catalogue-fr.json && git commit && git push   # déploie
 - **Données des cartes et prix** : API communautaire **TCGdex** (`https://api.tcgdex.net/v2/fr`).
   Rien n'est auto-hébergé.
 
+## Synchronisation nuage — garde-fou et sauvegardes (2026-11-15)
+
+Vécu : Ariel ajoute des cartes sur son téléphone, son fils (même compte) ouvre l'appli sur le sien
+avec une vieille copie locale et modifie une carte avant que la version en ligne soit chargée → sa
+collection entière écrase celle du nuage (chaque `saveCloud()` envoie TOUT le document), puis le
+téléphone d'Ariel reçoit cette version par `onSnapshot` : ajouts perdus (cf. aussi les 3 cartes
+30e Anniversaire absentes du rapport gradé le 2026-11-04). Deux réponses :
+1. **`syncState`** (`"pending"` → `"ready"` / `"failed"`) dans `index.html` : les ajouts/retraits,
+   changements d'état/langue et souhaits de la fiche sont **bloqués** (`canEdit()`, boutons
+   `disabled`, message `.syncnote`) tant que `syncFromCloud()` n'a pas chargé la version en ligne.
+   `ready` aussi sans compte (rien à écraser) et à la déconnexion ; `failed` (hors-ligne) garde le
+   blocage avec un bouton **Réessayer** (`retrySync()`), et `listenCloud()` débloque dès qu'une
+   version serveur arrive (`fromCache` ignoré). Hors-ligne connecté = lecture seule, assumé.
+   `window.__sync` (get/set) sert aux tests (`scratchpad/sync_gate_test.py`, 8 scénarios).
+   ⚠️ L'appli Yu-Gi-Oh! a la même mécanique de sauvegarde entière et **n'a pas encore ce garde-fou**.
+2. **Sauvegarde quotidienne** par `tools/psa_collection_value.py` (workflow `graded-value.yml`, avant
+   tout calcul) : `collections_backup/{uid}/days/{AAAA-MM-JJ}` = `{cards, wishlist, updatedAt, savedAt,
+   cards_count}`, purge après `BACKUP_KEEP_DAYS = 30` (ids triés = chronologie). Aucune règle Firestore
+   ne couvre cette collection → inaccessible depuis l'appli (refus par défaut), seul le compte de
+   service y écrit. **Restauration** : Actions → « Estimation gradée » → Run workflow → champ
+   `restore` = la date ; `--restore` remet `collections/{uid}` et conserve l'état écrasé sous
+   `{date}-avant-restauration-HHMM`. L'appli ouverte reçoit la restauration en direct. Testé avec un
+   faux Firestore en mémoire (`scratchpad/backup_test.py`, 11 scénarios).
+3. Non fait (proposé) : écrire carte par carte (`FieldPath`) au lieu du document entier.
+
 ## Modèle de données
 
 ```js
@@ -224,7 +249,7 @@ wishlist[idCarte] = true
    la dernière règle gagne. Une media-query placée avant la règle de base `.grid` était
    silencieusement écrasée → le responsive ne s'appliquait pas. Toute règle responsive
    va après les règles de base.
-2. **PWA : incrémenter `VERSION` dans `public/sw.js` à CHAQUE déploiement** (`"v3"` → `"v4"`…, v34 le 2026-11-02 ; l'appli Yu-Gi-Oh! a son propre `public/yugioh/sw.js`, « y1 »…).
+2. **PWA : incrémenter `VERSION` dans `public/sw.js` à CHAQUE déploiement** (`"v3"` → `"v4"`…, v35 le 2026-11-15 ; l'appli Yu-Gi-Oh! a son propre `public/yugioh/sw.js`, « y1 »…).
    Sinon l'ancienne version reste en cache chez les utilisateurs. Un bandeau
    « Nouvelle version disponible » gère la bascule côté client.
 3. **Service worker et navigation** : ne PAS renvoyer `index.html` pour toute navigation
