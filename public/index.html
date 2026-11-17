@@ -708,6 +708,10 @@ function setSyncState(st){
 }
 function canEdit(){ return syncState === "ready"; }
 window.__sync = { get: () => syncState, set: setSyncState }; // diagnostic / tests
+window.__test = { // tests headless seulement
+  openCard: async (id) => { const c = await findCard(id); if (c) openModal(c); return !!c; },
+  blockOf: (sid) => setBlockById[sid],
+};
 let userProfile = null;    // profil public { pseudo, pseudoLower, email } ou null
 let profileLoadFailed = false; // la lecture du profil a échoué (réseau) : ne pas confondre avec "pas de pseudo"
 let pseudoEditing = false; // affiche le champ de modification du pseudo (geste explicite, pas d'édition directe)
@@ -1275,6 +1279,7 @@ async function loadBlocks(){
     // les blocs viennent d'arriver : la vue statistiques peut se compléter, et les cartes sans
     // photo FR peuvent maintenant tenter la photo EN (adresse construite avec le bloc)
     if (view === "stats" || cards.some(c => !c.image)) render();
+    if (openCard && !$("overlay").hidden) renderModalBody(); // les versions proposées dépendent du bloc
   } catch {
     // en cas d'échec, on garde le sélecteur "à plat"
   }
@@ -1700,7 +1705,13 @@ function renderModalBody(){
   if (loading) html += `<p class="hint" style="text-align:center;margin:10px 0 0">Recherche des autres versions…</p>`;
   // TCGdex publie parfois les versions (Reverse Holo surtout) plusieurs jours après la sortie
   // d'une série : on laisse ajouter une version absente de sa liste, sans prix en attendant
-  const missing = loading ? [] : VARIANT_ORDER.filter(n => !list.includes(n));
+  // « 1re édition » et « Promo » (Wizards) n'existent que dans les blocs Base (dont Gym et les
+  // promos Wizards) et Neo : on ne les propose pas pour une série moderne. Bloc inconnu
+  // (loadBlocks pas encore passé ou en échec) → on propose tout, dans le doute.
+  const blockOfCard = setBlockById[c.id.slice(0, c.id.lastIndexOf("-")) || c.id];
+  const oldEra = !blockOfCard || blockOfCard === "base" || blockOfCard === "neo";
+  const missing = loading ? [] : VARIANT_ORDER.filter(n =>
+    !list.includes(n) && (oldEra || (n !== "1re édition" && n !== "Promo")));
   if (missing.length){
     html += `<details class="extra-versions">
       <summary>Il manque une version ?</summary>

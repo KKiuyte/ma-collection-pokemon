@@ -248,8 +248,12 @@ wishlist[idCarte] = true
     Une fois l'exemplaire confirmé, la version vit dans `owned[id].v` comme les autres (donc
     persistée et synchronisée) ; retirer le dernier exemplaire l'oublie aussi côté
     `extraVariants`. Sans prix tant que TCGdex ne la référence pas (`priceForVariant` fait
-    comme avant). Chips désactivées pendant la synchro (`canEdit()`). Testé en headless
-    (`scratchpad/extra_version_test.py`, 15 scénarios, API `/cards/{id}` simulée).
+    comme avant). Chips désactivées pendant la synchro (`canEdit()`). **v37** : « 1re édition » et
+    « Promo » ne sont proposées que pour les blocs `base` (Gym et promos Wizards compris) et
+    `neo`, ou si le bloc est inconnu (`setBlockById` vide) ; `loadBlocks()` re-rend la fiche
+    ouverte à l'arrivée des blocs. `window.__test` (`openCard(id)`, `blockOf(sid)`) sert aux
+    tests. Testé en headless (`scratchpad/extra_version_test.py`, 17 scénarios, API
+    `/cards/{id}` simulée, me06 et base1).
 - Regroupement des séries par **bloc/génération** via `/series` et `/series/{id}`.
 
 ## ⚠️ Pièges connus (déjà rencontrés — ne pas refaire)
@@ -258,7 +262,7 @@ wishlist[idCarte] = true
    la dernière règle gagne. Une media-query placée avant la règle de base `.grid` était
    silencieusement écrasée → le responsive ne s'appliquait pas. Toute règle responsive
    va après les règles de base.
-2. **PWA : incrémenter `VERSION` dans `public/sw.js` à CHAQUE déploiement** (`"v3"` → `"v4"`…, v36 le 2026-11-17 ; l'appli Yu-Gi-Oh! a son propre `public/yugioh/sw.js`, « y1 »…).
+2. **PWA : incrémenter `VERSION` dans `public/sw.js` à CHAQUE déploiement** (`"v3"` → `"v4"`…, v37 le 2026-11-17 ; l'appli Yu-Gi-Oh! a son propre `public/yugioh/sw.js`, « y1 »…).
    Sinon l'ancienne version reste en cache chez les utilisateurs. Un bandeau
    « Nouvelle version disponible » gère la bascule côté client.
 3. **Service worker et navigation** : ne PAS renvoyer `index.html` pour toute navigation
