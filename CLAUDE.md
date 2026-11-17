@@ -238,9 +238,18 @@ wishlist[idCarte] = true
     `variants.reverse` restait à `false` pour toute la série (`cardCount.reverse: 0`).
     Décidé de ne rien coder côté appli (2026-08-03) : c'est un délai de publication TCGdex,
     pas un manque permanent ni un bug d'ici — se corrige tout seul quand ils republient
-    l'API. Se reproduira probablement à chaque sortie de série récente ; si ça devient
-    gênant, l'idée mise de côté était un bouton « ajouter quand même une autre version »
-    sur la fiche carte (contournerait `variantCache` pour n'importe quelle version).
+    l'API. S'est reproduit avec « Règne Delta » (`me06`, sortie 06/11/2026 : variantes
+    ajoutées au dépôt source le 15/11, API toujours à `reverse: 0` le 17/11). **Réponse
+    livrée le 2026-11-17 (v36)** : dans la fiche carte, bloc replié « Il manque une version ? »
+    (`<details class="extra-versions">`, affiché dès que `variantCache` est chargé et qu'une
+    version de `VARIANT_ORDER` manque) → chips `.extra-version` ; un clic range la version dans
+    `extraVariants[id]` (Set, **mémoire de session seulement**), `variantsFor()` l'ajoute à la
+    liste avec l'étiquette `.vtag` « non référencée » et son formulaire état+langue s'ouvre.
+    Une fois l'exemplaire confirmé, la version vit dans `owned[id].v` comme les autres (donc
+    persistée et synchronisée) ; retirer le dernier exemplaire l'oublie aussi côté
+    `extraVariants`. Sans prix tant que TCGdex ne la référence pas (`priceForVariant` fait
+    comme avant). Chips désactivées pendant la synchro (`canEdit()`). Testé en headless
+    (`scratchpad/extra_version_test.py`, 15 scénarios, API `/cards/{id}` simulée).
 - Regroupement des séries par **bloc/génération** via `/series` et `/series/{id}`.
 
 ## ⚠️ Pièges connus (déjà rencontrés — ne pas refaire)
@@ -249,7 +258,7 @@ wishlist[idCarte] = true
    la dernière règle gagne. Une media-query placée avant la règle de base `.grid` était
    silencieusement écrasée → le responsive ne s'appliquait pas. Toute règle responsive
    va après les règles de base.
-2. **PWA : incrémenter `VERSION` dans `public/sw.js` à CHAQUE déploiement** (`"v3"` → `"v4"`…, v35 le 2026-11-15 ; l'appli Yu-Gi-Oh! a son propre `public/yugioh/sw.js`, « y1 »…).
+2. **PWA : incrémenter `VERSION` dans `public/sw.js` à CHAQUE déploiement** (`"v3"` → `"v4"`…, v36 le 2026-11-17 ; l'appli Yu-Gi-Oh! a son propre `public/yugioh/sw.js`, « y1 »…).
    Sinon l'ancienne version reste en cache chez les utilisateurs. Un bandeau
    « Nouvelle version disponible » gère la bascule côté client.
 3. **Service worker et navigation** : ne PAS renvoyer `index.html` pour toute navigation

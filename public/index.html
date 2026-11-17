@@ -356,6 +356,17 @@ body {
 .copy-add-form { margin-top:10px; padding-top:10px; border-top:1px dashed var(--line); }
 .copy-add-form .field-row { margin-bottom:10px; }
 .copy-add-form[hidden] { display:none; }
+.vtag { font-size:10px; font-weight:800; text-transform:uppercase; letter-spacing:.04em; color:var(--muted);
+  border:1px solid var(--line); border-radius:6px; padding:1px 5px; vertical-align:middle; }
+.extra-versions { margin-top:10px; }
+.extra-versions > summary { cursor:pointer; font-size:12.5px; font-weight:800; color:var(--accent-deep);
+  text-align:center; list-style:none; padding:6px; }
+.extra-versions > summary::-webkit-details-marker { display:none; }
+.extra-versions .hint { margin:6px 0 8px; text-align:center; }
+.extra-chips { display:flex; flex-wrap:wrap; gap:8px; justify-content:center; }
+.extra-version { font-family:inherit; font-weight:800; font-size:12.5px; cursor:pointer; padding:7px 11px;
+  border-radius:10px; border:1px dashed var(--line); background:none; color:var(--accent-deep); }
+.extra-version:disabled { opacity:.45; cursor:not-allowed; }
 .pricenote { text-align:center; font-size:11.5px; font-weight:700; color:var(--muted);
   margin:12px 0 0; }
 
@@ -633,6 +644,9 @@ const VARIANT_LABELS = {
 };
 const VARIANT_ORDER = ["Normale", "Reverse Holo", "Holo", "1re édition", "Promo"];
 const variantCache = {}; // idCarte -> liste des versions disponibles
+const extraVariants = {}; // idCarte -> versions ajoutées à la main dans la fiche (TCGdex ne les connaît
+                          // pas encore, séries récentes) ; mémoire de session seulement : une fois un
+                          // exemplaire ajouté, la version vit dans owned[id].v comme les autres
 const rarityByCard = {}; // idCarte -> rareté (récupérée avec les versions)
 const pricingByCard = {}; // idCarte -> données de prix (Cardmarket / TCGplayer)
 const variantsDetailedByCard = {}; // idCarte -> tableau variants_detailed TCGdex (prix par version)
@@ -1445,13 +1459,16 @@ function updateModalMeta(){
 function variantsFor(cardId){
   const avail = variantCache[cardId] || null;
   const ownedNames = owned[cardId] && owned[cardId].v ? Object.keys(owned[cardId].v) : [];
-  const set = new Set([...(avail || [DEFAULT_VARIANT]), ...ownedNames]);
+  const extra = extraVariants[cardId] ? [...extraVariants[cardId]] : [];
+  const set = new Set([...(avail || [DEFAULT_VARIANT]), ...ownedNames, ...extra]);
   const list = [...set];
   list.sort((a, b) => {
     const ia = VARIANT_ORDER.indexOf(a), ib = VARIANT_ORDER.indexOf(b);
     return (ia < 0 ? 99 : ia) - (ib < 0 ? 99 : ib);
   });
-  return { list, loading: !avail };
+  // unknown : versions affichées que TCGdex ne référence pas (encore) pour cette carte
+  const unknown = avail ? list.filter(n => !avail.includes(n)) : [];
+  return { list, loading: !avail, unknown };
 }
 
 // --- prix estimés (données TCGdex : Cardmarket en €, TCGplayer en $) ---
@@ -1626,7 +1643,7 @@ function renderValueBox(msg, busy){
 function renderModalBody(){
   const c = openCard, body = $("mBody");
   const rec = owned[c.id];
-  const { list, loading } = variantsFor(c.id);
+  const { list, loading, unknown } = variantsFor(c.id);
   const wish = !!wishlist[c.id];
   const totalQty = cardQty(rec);
 
@@ -1645,7 +1662,8 @@ function renderModalBody(){
     const n = copies ? copies.length : 0;
     const p = priceForVariant(c.id, name);
     html += `<div class="vcard${n ? " has" : ""}">
-      <div class="vhead"><span class="vname">${name}</span>
+      <div class="vhead"><span class="vname">${name}${
+          unknown.includes(name) ? ` <span class="vtag" title="TCGdex ne connaît pas encore cette version pour cette carte">non référencée</span>` : ``}</span>
         <span class="vright">${p ? `<span class="vprice" title="${p.source}">${formatPrice(p)}</span>` : ``}${
           n ? `<span class="vqty">×${n}</span>` : ``}</span></div>`;
     if (n){
@@ -1680,6 +1698,16 @@ function renderModalBody(){
   });
   html += `</div>`;
   if (loading) html += `<p class="hint" style="text-align:center;margin:10px 0 0">Recherche des autres versions…</p>`;
+  // TCGdex publie parfois les versions (Reverse Holo surtout) plusieurs jours après la sortie
+  // d'une série : on laisse ajouter une version absente de sa liste, sans prix en attendant
+  const missing = loading ? [] : VARIANT_ORDER.filter(n => !list.includes(n));
+  if (missing.length){
+    html += `<details class="extra-versions">
+      <summary>Il manque une version ?</summary>
+      <p class="hint">TCGdex ne connaît pas toujours toutes les versions d'une série récente (les Reverse Holo arrivent souvent quelques jours après la sortie). Tu peux ajouter l'exemplaire quand même : il restera sans prix tant que la version n'est pas référencée.</p>
+      <div class="extra-chips">${missing.map(n => `<button type="button" class="extra-version" data-name="${n}">+ ${n}</button>`).join("")}</div>
+    </details>`;
+  }
   const src = pricingByCard[c.id];
   if (src){
     const cm = src.cardmarket, tp = src.tcgplayer;
@@ -1691,10 +1719,19 @@ function renderModalBody(){
   html += `<button class="big-btn btn-wish" id="mWish">${wish ? "♥ Retirer de ma liste de souhaits" : "♡ Ajouter à ma liste de souhaits"}</button>`;
   body.innerHTML = html;
   if (!canEdit()){
-    body.querySelectorAll(".copy-add-toggle,.copy-add-confirm,.copy-remove,.vcond,.vlang,#mWish").forEach(el => el.disabled = true);
+    body.querySelectorAll(".copy-add-toggle,.copy-add-confirm,.copy-remove,.vcond,.vlang,.extra-version,#mWish").forEach(el => el.disabled = true);
     const rb = $("mRetrySync"); if (rb) rb.onclick = () => { rb.disabled = true; rb.textContent = "Nouvel essai…"; retrySync(); };
   }
 
+  // version absente de TCGdex : on l'affiche dans la liste et on ouvre directement son formulaire
+  body.querySelectorAll(".extra-version").forEach(btn => btn.onclick = () => {
+    if (!canEdit()) return;
+    if (!extraVariants[c.id]) extraVariants[c.id] = new Set();
+    extraVariants[c.id].add(btn.dataset.name);
+    renderModalBody();
+    const form = body.querySelector(`.copy-add-form[data-name="${btn.dataset.name}"]`);
+    if (form){ form.hidden = false; form.scrollIntoView({ block: "nearest" }); }
+  });
   // ouvre/ferme le petit formulaire état+langue avant d'ajouter un exemplaire
   body.querySelectorAll(".copy-add-toggle").forEach(btn => btn.onclick = () => {
     const form = btn.nextElementSibling;
@@ -1730,7 +1767,10 @@ function renderModalBody(){
     const copies = r && r.v ? r.v[btn.dataset.name] : null;
     if (copies){
       copies.splice(Number(btn.dataset.i), 1);
-      if (!copies.length) delete r.v[btn.dataset.name]; // plus aucun exemplaire : version retirée
+      if (!copies.length){
+        delete r.v[btn.dataset.name]; // plus aucun exemplaire : version retirée
+        if (extraVariants[c.id]) extraVariants[c.id].delete(btn.dataset.name); // (et oubliée si ajoutée à la main)
+      }
       if (!Object.keys(r.v).length) delete owned[c.id]; // plus aucune version : carte non possédée
     }
     saveNow(); renderModalBody(); render();
