@@ -90,6 +90,10 @@ git add public/catalogue-fr.json && git commit && git push   # déploie
   d'identifiant, de jeton ni de cookie dans le dépôt, les scripts ou les traces (l'historique a
   été vérifié propre avant la bascule : seuls des e-mails de contact y figurent).
 - **Hébergement** : Firebase Hosting → https://ma-collection-pokemon.web.app/
+  ⚠️ Quota de stockage Hosting (offre gratuite, 10 Go, toutes versions confondues) dépassé le
+  2026-11-20 (429 `RESOURCE_EXHAUSTED`, chaque version ≈ 150 Mo × déploiements toutes les 3 h).
+  Réglé le 2026-11-22 par Ariel : console → Hosting → Historique des versions → ⋮ → Paramètres
+  de stockage des versions → **5 versions conservées**. Si le 429 revient, vérifier ce réglage.
 - **Projet Firebase** : `ma-collection-pokemon`
   - apiKey `AIzaSyCiGgrj28Jrqn8jEGM9pWFsVhnfs-VKyiU` (clé publique, non secrète)
   - messagingSenderId `1058168439830`
