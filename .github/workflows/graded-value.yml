@@ -8,6 +8,10 @@ name: Estimation gradée (PSA) de la collection
 # Au passage, la collection est copiée dans collections_backup/{uid}/days/{date} (30 jours) ;
 # « Run workflow » avec une date dans le champ « restore » la remet en place (et sauvegarde
 # l'état écrasé sous {date}-avant-restauration-HHMM).
+#
+# ⏸ Depuis le 2026-11-22, le passage quotidien ne fait QUE la sauvegarde (PSA refusait la
+# session depuis le 17/11 et la page n'est pas utilisée). L'estimation PSA reste lançable à la
+# main : « Run workflow » en cochant « estimate ».
 # Le seul fichier du dépôt modifié est tools/psa-sets-map.json (correspondances de séries).
 
 on:
@@ -19,12 +23,11 @@ on:
         description: "Restaurer la collection depuis la sauvegarde de cette date (AAAA-MM-JJ). Vide = calcul normal."
         required: false
         default: ""
-  push:                        # recalcul immédiat quand le script ou le workflow change
-    branches: [main]
-    paths:
-      - tools/psa_collection_value.py
-      - tools/psa_client.py
-      - .github/workflows/graded-value.yml
+      estimate:
+        description: "Calculer aussi l'estimation PSA (sinon : sauvegarde seule)"
+        type: boolean
+        required: false
+        default: false
 
 permissions:
   contents: write
@@ -45,9 +48,20 @@ jobs:
           python-version: "3.12"
 
       - name: Installer les dépendances
+        run: pip install --quiet requests firebase-admin
+
+      - name: Installer le navigateur (estimation PSA seulement)
+        if: github.event.inputs.estimate == 'true' && github.event.inputs.restore == ''
         run: |
-          pip install --quiet requests firebase-admin playwright playwright-stealth
+          pip install --quiet playwright playwright-stealth
           python -m playwright install --with-deps chromium
+
+      - name: Sauvegarder la collection
+        if: github.event.inputs.estimate != 'true' && (github.event.inputs.restore == '' || github.event.inputs.restore == null)
+        env:
+          FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+          PSA_EMAIL: ${{ secrets.PSA_EMAIL }}
+        run: python tools/psa_collection_value.py --backup-only
 
       - name: Restaurer la collection depuis une sauvegarde (si demandé)
         if: github.event.inputs.restore != ''
@@ -58,7 +72,7 @@ jobs:
         run: python tools/psa_collection_value.py --restore "$RESTORE"
 
       - name: Calculer l'estimation et écrire le rapport
-        if: github.event.inputs.restore == ''
+        if: github.event.inputs.estimate == 'true' && github.event.inputs.restore == ''
         env:
           FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
           PSA_EMAIL: ${{ secrets.PSA_EMAIL }}
@@ -68,7 +82,7 @@ jobs:
         run: python tools/psa_collection_value.py --threshold 10 --months 6 --discount 0.15
 
       - name: Captures d'écran de diagnostic (si la connexion PSA a échoué)
-        if: always()
+        if: always() && github.event.inputs.estimate == 'true'
         uses: actions/upload-artifact@v5
         with:
           name: psa-debug
@@ -77,7 +91,7 @@ jobs:
           retention-days: 7
 
       - name: Committer les caches PSA (séries, population) s'ils ont changé
-        if: always()
+        if: always() && github.event.inputs.estimate == 'true'
         run: |
           git add tools/psa-sets-map.json tools/psa-pop
           [ -f tools/psa-sets-index.json ] && git add tools/psa-sets-index.json

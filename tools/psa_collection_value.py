@@ -379,6 +379,7 @@ def main():
     ap.add_argument("--out", help="écrire aussi le rapport JSON ici (chemin NON public)")
     ap.add_argument("--max-cards", type=int, default=0, help="limiter (test)")
     ap.add_argument("--verbose", action="store_true")
+    ap.add_argument("--backup-only", action="store_true", help="sauvegarder la collection puis s'arrêter (pas de PSA)")
     ap.add_argument("--restore", metavar="AAAA-MM-JJ", help="restaurer la collection depuis cette sauvegarde quotidienne, puis s'arrêter")
     args = ap.parse_args()
 
@@ -392,6 +393,8 @@ def main():
     owned, uid, cloud_doc = load_owned(args)
     if cloud_doc is not None and not args.dry_run:
         backup_collection(firestore_client(), uid, cloud_doc)
+    if args.backup_only:
+        return
     ids = list(owned.keys())
     if args.max_cards:
         ids = ids[:args.max_cards]

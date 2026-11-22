@@ -14,9 +14,12 @@ name: Scraper + enrichissement Vinted PSA
 # récentes ; à ~10 s d'OCR par annonce, il faut ~100 annonces toutes les 3 h pour suivre.
 # Fiches PSA via le compte connecté (tRPC, pas de quota) : 100 par passage (~6 s chacune).
 
+# ⏸ Passages automatiques désactivés le 2026-11-22 (Ariel n'utilise pas la page ; les
+# déploiements toutes les 3 h remplissaient le quota de stockage Firebase Hosting).
+# Pour réactiver : remettre le bloc schedule ci-dessous.
+#   schedule:
+#     - cron: "17 */3 * * *"
 on:
-  schedule:
-    - cron: "17 */3 * * *"
   workflow_dispatch: {}
 
 permissions:
