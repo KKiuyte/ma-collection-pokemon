@@ -1,46 +1,11 @@
 {
- "generated_at": "2026-11-22T01:23:41Z",
+ "generated_at": "2026-11-22T11:35:12Z",
  "source": "vinted.fr",
  "query": "psa pokemon",
- "count": 106,
- "with_grade": 94,
- "with_number": 26,
+ "count": 162,
+ "with_grade": 155,
+ "with_number": 52,
  "items": [
-  {
-   "id": "10915849898",
-   "url": "https://www.vinted.fr/items/10915849898-pokemon-pikachu-van-gogh-grijze-vilten-hoed-psa-10",
-   "title": "Pokémon Pikachu Van Gogh grijze vilten hoed PSA 10",
-   "brand": "Pokémon",
-   "condition": "Neuf sans étiquette",
-   "price": 1300.0,
-   "total_price": 1365.7,
-   "currency": "EUR",
-   "grade": "10",
-   "number": null,
-   "image": "https://images1.vinted.net/t/05_01645_SftpaEY62E3mNgQysXKoKFsZ/310x430/463beff6.webp?s=2dacaad93bfd850d042492b215f616df2b60b818",
-   "psa": {
-    "cert": "90741384",
-    "subject": "PIKACHU/GREY FELT HAT",
-    "grade": "GEM MT 10",
-    "grade_num": 10,
-    "year": "2023",
-    "card_number": "085",
-    "category": "TCG Cards",
-    "confidence": "High",
-    "pop": 50980,
-    "pop_higher": 0,
-    "pop_url": "https://www.psacard.com/pop/tcg-cards/2023/pokemon-svp-en-scarlet-violet-black-star-promos/230299",
-    "sales": 1445,
-    "sales_months": 6,
-    "est_usd": 2679.09,
-    "est_low_usd": 1.32,
-    "est_high_usd": 9200,
-    "est_eur": 2437.7,
-    "ratio": 0.53,
-    "deal": true,
-    "status": "priced"
-   }
-  },
   {
    "id": "10912353188",
    "url": "https://www.vinted.fr/items/10912353188-pokemon-carte-psa-9-tortank-mint-cel-bs-2-celebrations-anniversaire-25-ans-francais-gradee",
@@ -77,106 +42,246 @@
    }
   },
   {
-   "id": "10914754057",
-   "url": "https://www.vinted.fr/items/10914754057-bulbasaur-001032-japanese-psa-10",
-   "title": "Bulbasaur 001/032 Japanese PSA 10",
-   "brand": "Pokémon",
-   "condition": "Neuf sans étiquette",
-   "price": 85.0,
-   "total_price": 89.95,
-   "currency": "EUR",
-   "grade": "10",
-   "number": "001/032",
-   "image": "https://images1.vinted.net/t/03_00bda_QaL7322EcYN3edEXXUBoZ1wx/310x430/c8670a80.webp?s=3f02ed6bf4dbd66631f299baf04319370789d5a5",
-   "psa": {
-    "cert": "151022463",
-    "subject": "BULBASAUR",
-    "grade": "GEM MT 10",
-    "grade_num": 10,
-    "year": "2023",
-    "card_number": "001",
-    "category": "TCG Cards",
-    "confidence": "High",
-    "pop": 9064,
-    "pop_higher": 0,
-    "pop_url": "https://www.psacard.com/pop/tcg-cards/2023/pokemon-japanese-clf-trading-card-game-classic-venusaur-lugia-ex-deck/252123",
-    "sales": 168,
-    "sales_months": 6,
-    "est_usd": 65.39,
-    "est_low_usd": 29.6,
-    "est_high_usd": 350,
-    "est_eur": 59.5,
-    "ratio": 1.43,
-    "deal": false,
-    "status": "priced"
-   }
-  },
-  {
-   "id": "10915095987",
-   "url": "https://www.vinted.fr/items/10915095987-pokemon-karte-diancie-2016-xy-radiant-collection-psa-9",
-   "title": "Pokemon Karte Diancie 2016 XY Radiant Collection PSA 9",
+   "id": "10917475109",
+   "url": "https://www.vinted.fr/items/10917475109-umbreon-psa-10",
+   "title": "Umbreon psa 10",
    "brand": "Pokémon",
    "condition": "Très bon état",
-   "price": 79.0,
-   "total_price": 83.65,
+   "price": 540.0,
+   "total_price": 567.7,
    "currency": "EUR",
-   "grade": "9",
+   "grade": "10",
    "number": null,
-   "image": "https://images1.vinted.net/t/05_01323_SPBax85zgaPBwHxcEX8vQKR3/310x430/bfac47d3.webp?s=5d9f749854d2778682b3b1e36b7132a94ba52b11",
+   "image": "https://images1.vinted.net/t/06_01577_LaxjDC9pF5LJqSLhK4Yso9qz/310x430/1e52709e.webp?s=8d244b2e1415f4fb1bfb74c7dd0dfac6b343ac0b",
    "psa": {
-    "cert": "140332972",
-    "subject": "DIANCIE",
-    "grade": "MINT 9",
-    "grade_num": 9,
-    "year": "2016",
-    "card_number": "RC22",
+    "cert": "103062121",
+    "subject": "UMBREON ex",
+    "grade": "GEM MT 10",
+    "grade_num": 10,
+    "year": "2024",
+    "card_number": "217",
     "category": "TCG Cards",
-    "confidence": "Moderate",
-    "pop": 97,
-    "pop_higher": 25,
-    "pop_url": "https://www.psacard.com/pop/tcg-cards/2016/pokemon-xy-generations-radiant-collection/134532",
-    "sales": 9,
+    "confidence": "High",
+    "pop": 84149,
+    "pop_higher": 0,
+    "pop_url": "https://www.psacard.com/pop/tcg-cards/2024/pokemon-japanese-sv8a-terastal-fest-ex/288603",
+    "sales": 1423,
     "sales_months": 6,
-    "est_usd": 58.47,
-    "est_low_usd": 40,
-    "est_high_usd": 100,
-    "est_eur": 53.2,
-    "ratio": 1.48,
+    "est_usd": 648.6,
+    "est_low_usd": 24.99,
+    "est_high_usd": 11400,
+    "est_eur": 590.16,
+    "ratio": 0.92,
     "deal": false,
     "status": "priced"
    }
   },
   {
-   "id": "10914927317",
-   "url": "https://www.vinted.fr/items/10914927317-bulbasaur-001032-japanese-001032-psa-10",
-   "title": "Bulbasaur 001/032 Japanese 001/032 PSA 10",
+   "id": "10920635605",
+   "url": "https://www.vinted.fr/items/10920635605-pokemon-card-mewtwo-ex-go-074071-s10b-jap-psa-10",
+   "title": "Pokémon card Mewtwo ex - GO 074/071 - s10b - Jap - PSA 10",
    "brand": "Pokémon",
-   "condition": "Neuf sans étiquette",
-   "price": 95.0,
-   "total_price": 100.45,
+   "condition": "Très bon état",
+   "price": 229.99,
+   "total_price": 242.19,
    "currency": "EUR",
    "grade": "10",
-   "number": "001/032",
-   "image": "https://images1.vinted.net/t/06_01775_h7uurFHVQZZEGSfKuaRBXYhk/310x430/c383a776.webp?s=d8193b18e2238bc79bf447a01a2374fdb903fbb1",
+   "number": "074/071",
+   "image": "https://images1.vinted.net/t/01_012da_fwxk2GtGKhTgW96vLPSPULHP/310x430/06851bbf.webp?s=6538b2de3cb951cc7450b0d70fb82a5d801e3f62",
    "psa": {
-    "cert": "151022463",
-    "subject": "BULBASAUR",
+    "cert": "163223448",
+    "subject": "FA/MEWTWO V",
+    "grade": "GEM MT 10",
+    "grade_num": 10,
+    "year": "2022",
+    "card_number": "074",
+    "category": "TCG Cards",
+    "confidence": "High",
+    "pop": 8234,
+    "pop_higher": 0,
+    "pop_url": "https://www.psacard.com/pop/tcg-cards/2022/pokemon-go-japanese/215688",
+    "sales": 82,
+    "sales_months": 6,
+    "est_usd": 245.78,
+    "est_low_usd": 93.19,
+    "est_high_usd": 399.99,
+    "est_eur": 223.64,
+    "ratio": 1.03,
+    "deal": false,
+    "status": "priced"
+   }
+  },
+  {
+   "id": "10919279580",
+   "url": "https://www.vinted.fr/items/10919279580-regidrago-v-184-psa-10",
+   "title": "Regidrago V #184 PSA 10",
+   "brand": "Pokémon",
+   "condition": "Neuf sans étiquette",
+   "price": 110.0,
+   "total_price": 116.2,
+   "currency": "EUR",
+   "grade": "10",
+   "number": null,
+   "image": "https://images1.vinted.net/t/05_02076_DXTig8mQtL8Wvxu7gW6vCiLr/310x430/5ac6e9cb.webp?s=9303cd6838fafe76a25979774ffb3a1513906e07",
+   "psa": {
+    "cert": "70692811",
+    "subject": "FA/REGIDRAGO V",
+    "grade": "GEM MT 10",
+    "grade_num": 10,
+    "year": "2022",
+    "card_number": "184",
+    "category": "TCG Cards",
+    "confidence": "High",
+    "pop": 5008,
+    "pop_higher": 0,
+    "pop_url": "https://www.psacard.com/pop/tcg-cards/2022/pokemon-sword-shield-silver-tempest/222927",
+    "sales": 227,
+    "sales_months": 6,
+    "est_usd": 114.45,
+    "est_low_usd": 76,
+    "est_high_usd": 192.02,
+    "est_eur": 104.14,
+    "ratio": 1.06,
+    "deal": false,
+    "status": "priced"
+   }
+  },
+  {
+   "id": "10920650539",
+   "url": "https://www.vinted.fr/items/10920650539-pokemon-card-shining-magikarp-25th-anniversary-edition-010025-s8a-p-jap-psa-10",
+   "title": "Pokémon card Shining Magikarp - 25th Anniversary Edition 010/025 s8a-P - jap - PSA 10",
+   "brand": "Pokémon",
+   "condition": "Très bon état",
+   "price": 239.99,
+   "total_price": 252.69,
+   "currency": "EUR",
+   "grade": "10",
+   "number": "010/025",
+   "image": "https://images1.vinted.net/t/06_00bc6_uNu5yFMm6FvKWWrTRsuTqvaP/310x430/b5332eca.webp?s=f971f631cd7220035a22db2a0ba166963cfac9f1",
+   "psa": {
+    "cert": "166091464",
+    "subject": "SHINING MAGIKARP-HOLO",
+    "grade": "GEM MT 10",
+    "grade_num": 10,
+    "year": "2021",
+    "card_number": "010",
+    "category": "TCG Cards",
+    "confidence": "High",
+    "pop": 23501,
+    "pop_higher": 0,
+    "pop_url": "https://www.psacard.com/pop/tcg-cards/2021/pokemon-japanese-promo-card-pack-25th-anniversary-edition/201768",
+    "sales": 218,
+    "sales_months": 6,
+    "est_usd": 225.22,
+    "est_low_usd": 80.69,
+    "est_high_usd": 459.44,
+    "est_eur": 204.93,
+    "ratio": 1.17,
+    "deal": false,
+    "status": "priced"
+   }
+  },
+  {
+   "id": "10918951287",
+   "url": "https://www.vinted.fr/items/10918951287-lucario-vastro-psa-10",
+   "title": "Lucario Vastro Psa 10",
+   "brand": "Pokémon",
+   "condition": "Neuf avec étiquette",
+   "price": 125.0,
+   "total_price": 131.95,
+   "currency": "EUR",
+   "grade": "10",
+   "number": null,
+   "image": "https://images1.vinted.net/t/06_01f26_8APxV4RB8DXZNC9DX5JwDPFP/310x430/b1e54f4e.webp?s=48e739ca7f6414bea5d0c87b9a882d28fb0e1e1b",
+   "psa": {
+    "cert": "119657027",
+    "subject": "FA/LUCARIO VSTAR",
     "grade": "GEM MT 10",
     "grade_num": 10,
     "year": "2023",
-    "card_number": "001",
+    "card_number": "291",
+    "category": "TCG Cards",
+    "confidence": "Low",
+    "pop": 114,
+    "pop_higher": 0,
+    "pop_url": "https://www.psacard.com/pop/tcg-cards/2023/pokemon-sword-shield-black-star-promos/229417",
+    "sales": 3,
+    "sales_months": 6,
+    "est_usd": 113.56,
+    "est_low_usd": 109.81,
+    "est_high_usd": 118.02,
+    "est_eur": 103.33,
+    "ratio": 1.21,
+    "deal": false,
+    "status": "priced"
+   }
+  },
+  {
+   "id": "10919294032",
+   "url": "https://www.vinted.fr/items/10919294032-pokemon-haunter-mbg-022-mega-starter-set-mega-gengar-ex-japanese-psa-10-mint",
+   "title": "Pokemon Haunter mBG 022 Mega Starter Set Mega Gengar Ex Japanese Psa 10 Mint",
+   "brand": "Pokémon",
+   "condition": "Neuf avec étiquette",
+   "price": 89.99,
+   "total_price": 95.19,
+   "currency": "EUR",
+   "grade": "10",
+   "number": null,
+   "image": "https://images1.vinted.net/t/05_00d85_6ftUESwhZAMLBt3i9tfzZbY7/310x430/7663af85.webp?s=5b8f58104687572533545df4304f46d03a1d6cd4",
+   "psa": {
+    "cert": "157312265",
+    "subject": "HAUNTER",
+    "grade": "GEM MT 10",
+    "grade_num": 10,
+    "year": "2025",
+    "card_number": "022",
     "category": "TCG Cards",
     "confidence": "High",
-    "pop": 9064,
+    "pop": 21409,
     "pop_higher": 0,
-    "pop_url": "https://www.psacard.com/pop/tcg-cards/2023/pokemon-japanese-clf-trading-card-game-classic-venusaur-lugia-ex-deck/252123",
-    "sales": 168,
+    "pop_url": "https://www.psacard.com/pop/tcg-cards/2025/pokemon-japanese-mbg-mega-starter-set-gengar-ex/316158",
+    "sales": 632,
     "sales_months": 6,
-    "est_usd": 65.39,
-    "est_low_usd": 29.6,
-    "est_high_usd": 350,
-    "est_eur": 59.5,
-    "ratio": 1.6,
+    "est_usd": 75.67,
+    "est_low_usd": 30,
+    "est_high_usd": 300,
+    "est_eur": 68.85,
+    "ratio": 1.31,
+    "deal": false,
+    "status": "priced"
+   }
+  },
+  {
+   "id": "10919487960",
+   "url": "https://www.vinted.fr/items/10919487960-carta-pokemon-giratina-v-origine-perduta-psa-10-chinese",
+   "title": "Carta Pokémon Giratina V origine perduta psa 10 Chinese",
+   "brand": "Pokémon",
+   "condition": "Très bon état",
+   "price": 520.0,
+   "total_price": 546.7,
+   "currency": "EUR",
+   "grade": "10",
+   "number": null,
+   "image": "https://images1.vinted.net/t/06_00be2_cChT9FfQmEe3u6quCxAkdzXC/310x430/7ae781b8.webp?s=1f2d507a1edc2c7899ece892bfbf667eacc3ea31",
+   "psa": {
+    "cert": "143419332",
+    "subject": "GIRATINA V",
+    "grade": "GEM MT 10",
+    "grade_num": 10,
+    "year": "2024",
+    "card_number": "150",
+    "category": "TCG Cards",
+    "confidence": "High",
+    "pop": 3365,
+    "pop_higher": 0,
+    "pop_url": "https://www.psacard.com/pop/tcg-cards/2024/pokemon-simplified-chinese-cs6b-c-marine-shadow-banish/283398",
+    "sales": null,
+    "sales_months": null,
+    "est_usd": 410.0,
+    "est_low_usd": 375.0,
+    "est_high_usd": 468.0,
+    "est_eur": 373.06,
+    "ratio": 1.39,
     "deal": false,
     "status": "priced"
    }
@@ -217,1127 +322,676 @@
    }
   },
   {
-   "id": "10914877208",
-   "url": "https://www.vinted.fr/items/10914877208-pokemon-torchic-promo-psa-8",
-   "title": "Pokémon Torchic Promo PSA 8",
-   "brand": "Pokémon",
-   "condition": "Neuf sans étiquette",
-   "price": 400.0,
-   "total_price": 420.7,
-   "currency": "EUR",
-   "grade": "8",
-   "number": null,
-   "image": "https://images1.vinted.net/t/01_01ab8_nQquqivQ6JNeKdVgvxTP34QW/310x430/31e319db.webp?s=2848041f2aa8a3765fac76748a4ff3b20d442606",
-   "psa": {
-    "cert": "96130024",
-    "subject": "TORCHIC-HOLO",
-    "grade": "NM-MT 8",
-    "grade_num": 8,
-    "year": "2003",
-    "card_number": "018",
-    "category": "TCG Cards",
-    "confidence": "Low",
-    "pop": 46,
-    "pop_higher": 205,
-    "pop_url": "https://www.psacard.com/pop/tcg-cards/2003/pokemon-japanese-adv-p-promo/31716",
-    "sales": 4,
-    "sales_months": 6,
-    "est_usd": 225.58,
-    "est_low_usd": 156,
-    "est_high_usd": 310,
-    "est_eur": 205.26,
-    "ratio": 1.95,
-    "deal": false,
-    "status": "priced"
-   }
-  },
-  {
-   "id": "10915106744",
-   "url": "https://www.vinted.fr/items/10915106744-pkm-458-carte-gradee-lucario-vstar-swsh291-eb00-promo-psa-9-francais",
-   "title": "[PKM-458] Carte gradée Lucario Vstar SWSH291 EB00 : Promo - PSA 9 - Français",
+   "id": "10919152136",
+   "url": "https://www.vinted.fr/items/10919152136-skarmory-fb-crosshatch-psa-9-platinum-pokemon",
+   "title": "Skarmory FB crosshatch PSA 9 platinum pokemon",
    "brand": "Pokémon",
    "condition": "Très bon état",
-   "price": 95.0,
-   "total_price": 100.45,
+   "price": 210.0,
+   "total_price": 221.2,
    "currency": "EUR",
    "grade": "9",
    "number": null,
-   "image": "https://images1.vinted.net/t/06_00b78_GZGNwkCfB9XJ9XkxvyM6UVVW/310x430/f678adbf.webp?s=dca7ea0b1ea6477ab8af198a265d3a7241902b94",
+   "image": "https://images1.vinted.net/t/01_0225d_7EVDDAnY4i7pZbQTyGLSBJCg/310x430/d3ce481e.webp?s=b08da7f1ac73a0fa0a4b1af66a2b804000eb6c1c",
    "psa": {
-    "cert": "121822814",
-    "subject": "FA/LUCARIO VSTAR",
+    "cert": "88665911",
+    "subject": "SKARMORY FB-HOLO",
     "grade": "MINT 9",
     "grade_num": 9,
-    "year": "2023",
-    "card_number": "291",
+    "year": "2009",
+    "card_number": "83",
     "category": "TCG Cards",
-    "confidence": "Low",
-    "pop": 173,
-    "pop_higher": 129,
-    "pop_url": "https://www.psacard.com/pop/tcg-cards/2023/pokemon-swsh-black-star-promo/229417",
-    "sales": 6,
-    "sales_months": 12,
-    "est_usd": 43.69,
-    "est_low_usd": 35,
-    "est_high_usd": 57.93,
-    "est_eur": 39.75,
-    "ratio": 2.39,
-    "deal": false,
-    "status": "priced"
-   }
-  },
-  {
-   "id": "10914024528",
-   "url": "https://www.vinted.fr/items/10914024528-mew-53108-psa-9",
-   "title": "Mew 53/108 PSA 9",
-   "brand": "Pokémon",
-   "condition": "Très bon état",
-   "price": 330.0,
-   "total_price": 347.2,
-   "currency": "EUR",
-   "grade": "9",
-   "number": "53/108",
-   "image": "https://images1.vinted.net/t/06_00f26_HsDNDZHwncFvYpGx1chx3vDv/310x430/cef24c40.webp?s=b88d44e3ac5188c50ff90f73610aac02daa020f7",
-   "psa": {
-    "cert": "52680445",
-    "subject": "MEW-HOLO",
-    "grade": "MINT 9",
-    "grade_num": 9,
-    "year": "2016",
-    "card_number": "53",
-    "category": "TCG Cards",
-    "confidence": "High",
-    "pop": 4942,
-    "pop_higher": 277,
-    "pop_url": "https://www.psacard.com/pop/tcg-cards/2016/pokemon-xy-evolutions/139659",
-    "sales": 181,
+    "confidence": "Moderate",
+    "pop": 211,
+    "pop_higher": 57,
+    "pop_url": "https://www.psacard.com/pop/tcg-cards/2009/pokemon-platinum-supreme-victors/90094",
+    "sales": 12,
     "sales_months": 6,
-    "est_usd": 110.46,
-    "est_low_usd": 35,
-    "est_high_usd": 400,
-    "est_eur": 100.51,
-    "ratio": 3.28,
+    "est_usd": 97.34,
+    "est_low_usd": 35.55,
+    "est_high_usd": 185,
+    "est_eur": 88.57,
+    "ratio": 2.37,
     "deal": false,
     "status": "priced"
    }
   },
   {
-   "id": "10915819442",
-   "url": "https://www.vinted.fr/items/10915819442-2011-psa-6-call-of-legends-stamped-reverse-prerelease-snorlax-promo-33",
-   "title": "2011 PSA 6 - Call of legends Stamped reverse Prerelease Snorlax Promo 33",
-   "brand": "Pokémon",
-   "condition": "Neuf avec étiquette",
-   "price": 890.0,
-   "total_price": 935.2,
-   "currency": "EUR",
-   "grade": "6",
-   "number": null,
-   "image": "https://images1.vinted.net/t/06_022a1_MU7XQN24EiLWeKZ4G6abyEeM/310x430/4f9057d1.webp?s=a089f358297878c98e54c0f894ff1c7160ddaaf0",
-   "psa": {
-    "cert": "179497909",
-    "subject": "SNORLAX-HOLO",
-    "grade": "EX-MT 6",
-    "grade_num": 6,
-    "year": "2011",
-    "card_number": "33",
-    "category": "TCG Cards",
-    "confidence": "Low",
-    "pop": 62,
-    "pop_higher": 405,
-    "pop_url": "https://www.psacard.com/pop/tcg-cards/2011/pokemon-call-legends/98660",
-    "sales": 5,
-    "sales_months": 12,
-    "est_usd": 215.7,
-    "est_low_usd": 65,
-    "est_high_usd": 481,
-    "est_eur": 196.27,
-    "ratio": 4.53,
-    "deal": false,
-    "status": "priced"
-   }
-  },
-  {
-   "id": "10916250492",
-   "url": "https://www.vinted.fr/items/10916250492-alakazam-fr-psa8-pokemon-psa",
-   "title": "Alakazam fr psa8 #pokémon #psa",
-   "brand": "Pokémon",
-   "condition": "Neuf avec étiquette",
-   "price": 400.0,
-   "total_price": 420.7,
-   "currency": "EUR",
-   "grade": "8",
-   "number": null,
-   "image": "https://images1.vinted.net/t/03_00d03_mxRERFqT8nyfZBZkcJZPrpz2/310x430/8d9092f4.webp?s=6252b6d2eeca821ac956c1105c0e6439ef578950",
-   "psa": {
-    "cert": "85486068",
-    "subject": "ALAKAZAM-HOLO",
-    "grade": "NM-MT 8",
-    "grade_num": 8,
-    "year": "1999",
-    "card_number": "1",
-    "category": "TCG Cards",
-    "confidence": null,
-    "pop": 22,
-    "pop_higher": 9,
-    "pop_url": "https://www.psacard.com/pop/tcg-cards/1999/pokemon-french/57668",
-    "sales": null,
-    "sales_months": null,
-    "status": "no_estimate"
-   }
-  },
-  {
-   "id": "10916224907",
-   "url": "https://www.vinted.fr/items/10916224907-venusaur-198-di-151-psa-8",
-   "title": "Venusaur  198  di 151 Psa 8",
-   "brand": "Pokémon",
-   "condition": "Neuf avec étiquette",
-   "price": 150.0,
-   "total_price": 158.2,
-   "currency": "EUR",
-   "grade": "8",
-   "number": null,
-   "image": "https://images1.vinted.net/t/05_00208_GMuhTjhb4M8akBAwgDvZjvpx/310x430/056a0462.webp?s=2f84f1d123d3a359e95ae1c5c2003920d6aa263e",
-   "psa": {
-    "cert": null,
-    "status": "no_cert"
-   }
-  },
-  {
-   "id": "10916131325",
-   "url": "https://www.vinted.fr/items/10916131325-umbreon-67-yu-nagaba-psa-10",
-   "title": "Umbreon 67 YU Nagaba PSA 10",
-   "brand": "Pokémon",
-   "condition": "Neuf avec étiquette",
-   "price": 320.0,
-   "total_price": 336.7,
-   "currency": "EUR",
-   "grade": "10",
-   "number": null,
-   "image": "https://images1.vinted.net/t/06_0239e_3KU1kDxwWACtuv7RTAGi1F5S/310x430/07055914.webp?s=225e933b4304cef07386272ea3a8998871919b66",
-   "psa": {
-    "cert": "80207881",
-    "status": "pending"
-   }
-  },
-  {
-   "id": "10916002487",
-   "url": "https://www.vinted.fr/items/10916002487-charizard-ex-tg-ita-psa-4",
-   "title": "Charizard ex tg ita PSA 4",
-   "brand": "Pokémon",
-   "condition": "Très bon état",
-   "price": 500.0,
-   "total_price": 525.7,
-   "currency": "EUR",
-   "grade": "4",
-   "number": null,
-   "image": "https://images1.vinted.net/t/05_0091a_xCZpo1Z1Rv1ScTxXsmxDpQjA/310x430/134140ef.webp?s=6cf0ba9e7eafc724084281122a90f0e6c5d242c3",
-   "psa": {
-    "cert": null,
-    "status": "no_cert"
-   }
-  },
-  {
-   "id": "10915986444",
-   "url": "https://www.vinted.fr/items/10915986444-charizard-dragon-ita-psa-1",
-   "title": "Charizard dragon ita psa 1",
-   "brand": "Pokémon",
-   "condition": "Très bon état",
-   "price": 400.0,
-   "total_price": 420.7,
-   "currency": "EUR",
-   "grade": "1",
-   "number": null,
-   "image": "https://images1.vinted.net/t/04_00778_pHgwNvsMWZoYtT1p7a4xSnhZ/310x430/279153c5.webp?s=a29f8f129fb1135439dac99ce255da4bc1393565",
-   "psa": {
-    "cert": null,
-    "status": "no_cert"
-   }
-  },
-  {
-   "id": "10915958563",
-   "url": "https://www.vinted.fr/items/10915958563-shedinja-072063-ar-psa-10-pokemon-m1s-giapponese",
-   "title": "Shedinja 072/063 AR – PSA 10 – Pokémon M1S – Giapponese 🇯🇵",
-   "brand": "Pokémon",
-   "condition": "Neuf sans étiquette",
-   "price": 50.0,
-   "total_price": 53.2,
-   "currency": "EUR",
-   "grade": "10",
-   "number": "072/063",
-   "image": "https://images1.vinted.net/t/01_00882_JSyYzVRkiVXKPEtPoPz5bZK9/310x430/55ad8f80.webp?s=38bf4412e05b2b0c458b996733535e2a14473b31",
-   "psa": {
-    "cert": null,
-    "status": "no_cert"
-   }
-  },
-  {
-   "id": "10915898021",
-   "url": "https://www.vinted.fr/items/10915898021-umbreon-goldstar-25th-celebration-psa-10",
-   "title": "Umbreon goldstar 25th celebration PSA 10",
-   "brand": "Pokémon",
-   "condition": "Neuf sans étiquette",
-   "price": 400.0,
-   "total_price": 420.7,
-   "currency": "EUR",
-   "grade": "10",
-   "number": null,
-   "image": "https://images1.vinted.net/t/03_00838_vDQ4FpETk55xohifrKCwckXH/310x430/8f1d780e.webp?s=2e874b2fd795f7171ba4d67cf685ab9d6784c040",
-   "psa": {
-    "cert": "161812117",
-    "status": "pending"
-   }
-  },
-  {
-   "id": "10915874474",
-   "url": "https://www.vinted.fr/items/10915874474-carte-pokemon-mega-dracolosse-ex-290217-psa-10-fr",
-   "title": "Carte Pokémon Méga-Dracolosse ex 290/217 PSA 10 FR",
-   "brand": "Pokémon",
-   "condition": "Neuf sans étiquette",
-   "price": 1099.0,
-   "total_price": 1154.65,
-   "currency": "EUR",
-   "grade": "10",
-   "number": "290/217",
-   "image": "https://images1.vinted.net/t/01_013db_wb3o75vKQxydREZCwe63zr8T/310x430/856bedb4.webp?s=fd456dfbd277e3e7833045ccc4aa50f2f723b95d",
-   "psa": {
-    "cert": "164818121",
-    "subject": "MEGA DRAGONITE ex",
-    "grade": "GEM MT 10",
-    "grade_num": 10,
-    "year": "2026",
-    "card_number": "290",
-    "category": "TCG Cards",
-    "confidence": null,
-    "pop": 141,
-    "pop_higher": 0,
-    "pop_url": "https://www.psacard.com/pop/tcg-cards/2026/pokemon-french-asc-fr-ascended-heroes/331010",
-    "sales": null,
-    "sales_months": null,
-    "status": "no_estimate"
-   }
-  },
-  {
-   "id": "10915867257",
-   "url": "https://www.vinted.fr/items/10915867257-pokemon-psa-10-set-m1l-064-m1l-065-m1l-087-bulbasaur-ivysaur-mega-venusaur-ex",
-   "title": "Pokemon PSA 10 Set (m1L 064, m1L 065, m1L 087) Bulbasaur, Ivysaur, Mega Venusaur ex",
-   "brand": "Pokémon",
-   "condition": "Très bon état",
-   "price": 280.0,
-   "total_price": 294.7,
-   "currency": "EUR",
-   "grade": "10",
-   "number": null,
-   "image": "https://images1.vinted.net/t/06_00700_2snDdC5FqnpJLWCTEUT1jq1a/310x430/82d17b35.webp?s=445724a91d9adda29d30077344b11004eefba54e",
-   "psa": {
-    "cert": null,
-    "status": "no_cert"
-   }
-  },
-  {
-   "id": "10915839521",
-   "url": "https://www.vinted.fr/items/10915839521-mewtwo-charizard-psa-10",
-   "title": "Mewtwo & charizard PSA 10",
-   "brand": "Pokémon",
-   "condition": "Neuf sans étiquette",
-   "price": 1.0,
-   "total_price": 1.75,
-   "currency": "EUR",
-   "grade": "10",
-   "number": null,
-   "image": "https://images1.vinted.net/t/01_021a7_xCg41dpu4hujcQYnz3JKuB6E/310x430/f9253a86.webp?s=7c03740fdc8ad904ba81b9c478f7f28bbc197189",
-   "psa": {
-    "cert": null,
-    "status": "no_cert"
-   }
-  },
-  {
-   "id": "10915817950",
-   "url": "https://www.vinted.fr/items/10915817950-2023-psyduck-psa-10",
-   "title": "2023 Psyduck Psa 10",
+   "id": "10920456246",
+   "url": "https://www.vinted.fr/items/10920456246-silvally-gx-cec-227-cosmic-eclipse-psa-9",
+   "title": "Silvally GX CEC 227 Cosmic Eclipse psa 9",
    "brand": "Pokémon",
    "condition": "Neuf sans étiquette",
    "price": 135.0,
    "total_price": 142.45,
    "currency": "EUR",
-   "grade": "10",
+   "grade": "9",
    "number": null,
-   "image": "https://images1.vinted.net/t/04_0263b_E5j7kkum4epa9DMvDHNCTZVj/310x430/3492be2b.webp?s=077e36c62853fdca0e7e466b610a25575d01542b",
+   "image": "https://images1.vinted.net/t/05_01e3a_5VHfKmokYWY4dmHkw72AWoFi/310x430/e22684f9.webp?s=7c33391da706e621921c089b4bfa5aeb72be3b0a",
+   "psa": {
+    "cert": "79707491",
+    "subject": "FA/SILVALLY GX",
+    "grade": "MINT 9",
+    "grade_num": 9,
+    "year": "2019",
+    "card_number": "227",
+    "category": "TCG Cards",
+    "confidence": "Moderate",
+    "pop": 332,
+    "pop_higher": 344,
+    "pop_url": "https://www.psacard.com/pop/tcg-cards/2019/pokemon-sun-moon-cosmic-eclipse/171151",
+    "sales": 13,
+    "sales_months": 6,
+    "est_usd": 55.52,
+    "est_low_usd": 31,
+    "est_high_usd": 79.99,
+    "est_eur": 50.52,
+    "ratio": 2.67,
+    "deal": false,
+    "status": "priced"
+   }
+  },
+  {
+   "id": "10919015140",
+   "url": "https://www.vinted.fr/items/10919015140-milotic-crosshatch-holo-2009-pokemon-platinum-psa-9",
+   "title": "Milotic Crosshatch holo 2009 Pokémon Platinum PSA 9",
+   "brand": "Pokémon",
+   "condition": "Très bon état",
+   "price": 695.0,
+   "total_price": 730.45,
+   "currency": "EUR",
+   "grade": "9",
+   "number": null,
+   "image": "https://images1.vinted.net/t/04_00ec1_G32kU5RFztuFffMsW9j7DzSi/310x430/a181f2b8.webp?s=8458ef66cfa41cf6823d445eefe7f19a98fd429b",
+   "psa": {
+    "cert": "88665907",
+    "subject": "MILOTIC C-HOLO",
+    "grade": "MINT 9",
+    "grade_num": 9,
+    "year": "2009",
+    "card_number": "35",
+    "category": "TCG Cards",
+    "confidence": "Moderate",
+    "pop": 410,
+    "pop_higher": 135,
+    "pop_url": "https://www.psacard.com/pop/tcg-cards/2009/pokemon-platinum-supreme-victors/90094",
+    "sales": 10,
+    "sales_months": 6,
+    "est_usd": 176.88,
+    "est_low_usd": 46,
+    "est_high_usd": 500,
+    "est_eur": 160.94,
+    "ratio": 4.32,
+    "deal": false,
+    "status": "priced"
+   }
+  },
+  {
+   "id": "10919317426",
+   "url": "https://www.vinted.fr/items/10919317426-ludicolo-holo-black-star-promo-psa-8-pokemon",
+   "title": "Ludicolo Holo Black Star Promo PSA 8 pokemon",
+   "brand": "Pokémon",
+   "condition": "Très bon état",
+   "price": 210.0,
+   "total_price": 221.2,
+   "currency": "EUR",
+   "grade": "8",
+   "number": null,
+   "image": "https://images1.vinted.net/t/03_01d77_LgZQRWc8fbow83t4c6Lf8ffA/310x430/d27bd5ff.webp?s=07532fc7e185d8044c7b1367760491dcff400080",
+   "psa": {
+    "cert": "82909177",
+    "subject": "LUDICOLO-HOLO",
+    "grade": "NM-MT 8",
+    "grade_num": 8,
+    "year": "2004",
+    "card_number": "020",
+    "category": "TCG Cards",
+    "confidence": "Moderate",
+    "pop": 87,
+    "pop_higher": 130,
+    "pop_url": "https://www.psacard.com/pop/tcg-cards/2004/pokemon-black-star-promo/122810",
+    "sales": 9,
+    "sales_months": 6,
+    "est_usd": 47.7,
+    "est_low_usd": 25,
+    "est_high_usd": 75,
+    "est_eur": 43.4,
+    "ratio": 4.84,
+    "deal": false,
+    "status": "priced"
+   }
+  },
+  {
+   "id": "10920728098",
+   "url": "https://www.vinted.fr/items/10920728098-azumarill-holo-japanese-psa-9-neo-destiny-pokemon",
+   "title": "Azumarill Holo japanese PSA 9 neo destiny pokemon",
+   "brand": "Pokémon",
+   "condition": "Très bon état",
+   "price": 190.0,
+   "total_price": 200.2,
+   "currency": "EUR",
+   "grade": "9",
+   "number": null,
+   "image": "https://images1.vinted.net/t/05_003d9_3dZFLfpgsTDdWLiHdshunwBi/310x430/126c1f68.webp?s=95ec5eaae91bcdf75bde6c6bd4731ff232763e4c",
+   "psa": {
+    "cert": "75848234",
+    "status": "pending"
+   }
+  },
+  {
+   "id": "10920706850",
+   "url": "https://www.vinted.fr/items/10920706850-gengar-vmax-211s-p-chinese-psa-10",
+   "title": "Gengar vmax 211/s-p Chinese PSA 10",
+   "brand": "Pokémon",
+   "condition": "Très bon état",
+   "price": 2500.0,
+   "total_price": 2625.7,
+   "currency": "EUR",
+   "grade": "10",
+   "number": "211/s-p",
+   "image": "https://images1.vinted.net/t/05_0117b_Bt9DzA91MK8xfN9BFUxpt2iK/310x430/902bf736.webp?s=ef20998bda54e42d47f17dfe9421b0776c82851f",
+   "psa": {
+    "cert": "158710739",
+    "status": "pending"
+   }
+  },
+  {
+   "id": "10920685334",
+   "url": "https://www.vinted.fr/items/10920685334-pokemon-card-milotic-ex-sar-super-electric-breaker-131106-sv8-jap-psa-10",
+   "title": "Pokémon card Milotic ex SAR - Super Electric Breaker 131/106 - sv8 - Jap - PSA 10",
+   "brand": "Pokémon",
+   "condition": "Très bon état",
+   "price": 159.99,
+   "total_price": 168.69,
+   "currency": "EUR",
+   "grade": "10",
+   "number": "131/106",
+   "image": "https://images1.vinted.net/t/05_0235a_752iNVdi4qREMuSguivVL3Az/310x430/684aa198.webp?s=262b3ca57a22800614cb63dc4afae8095e726556",
+   "psa": {
+    "cert": "171083091",
+    "status": "pending"
+   }
+  },
+  {
+   "id": "10920671467",
+   "url": "https://www.vinted.fr/items/10920671467-reshiram-charizard-gx-unb-194-psa-9",
+   "title": "Reshiram & Charizard GX (UNB 194) PSA 9",
+   "brand": "Pokémon",
+   "condition": "Neuf sans étiquette",
+   "price": 240.0,
+   "total_price": 252.7,
+   "currency": "EUR",
+   "grade": "9",
+   "number": null,
+   "image": "https://images1.vinted.net/t/03_00e7d_wmvULZaGWeHoYn1JGgWcKwyG/310x430/fb0569d5.webp?s=22350dfca8262f51703cc9a615e199c52ce9383a",
+   "psa": {
+    "cert": "44523442",
+    "status": "pending"
+   }
+  },
+  {
+   "id": "10920670682",
+   "url": "https://www.vinted.fr/items/10920670682-alakazam-ex-psa-9-201165-lingua-italiana",
+   "title": "Alakazam ex Psa 9 201/165 lingua italiana",
+   "brand": "Pokémon",
+   "condition": "Neuf avec étiquette",
+   "price": 140.0,
+   "total_price": 147.7,
+   "currency": "EUR",
+   "grade": "9",
+   "number": "201/165",
+   "image": "https://images1.vinted.net/t/01_020c8_iCR3abJZr8HSFBjUL195zMVP/310x430/aeee5d44.webp?s=0e93f1f08610927e44c467b0ed18bb720de6dea7",
+   "psa": {
+    "cert": "136595630",
+    "status": "pending"
+   }
+  },
+  {
+   "id": "10920667067",
+   "url": "https://www.vinted.fr/items/10920667067-pokemon-card-reshiram-charizard-gx-unbroken-bonds-20214-2019-eng-psa-9",
+   "title": "Pokémon card Reshiram & Charizard GX - Unbroken Bonds 20/214 2019 - Eng - PSA 9",
+   "brand": "Pokémon",
+   "condition": "Très bon état",
+   "price": 109.99,
+   "total_price": 116.19,
+   "currency": "EUR",
+   "grade": "9",
+   "number": "20/214",
+   "image": "https://images1.vinted.net/t/01_008d7_FDvxFnWATbhXKLWj8yKPrxDC/310x430/e3cbbb13.webp?s=9ddfcd5bc9f266989374dd7639a752b38913a1db",
+   "psa": {
+    "cert": "152964748",
+    "status": "pending"
+   }
+  },
+  {
+   "id": "10920654475",
+   "url": "https://www.vinted.fr/items/10920654475-azumarill-holo-japanese-psa-8-neo-genesis-pokemon",
+   "title": "Azumarill Holo Japanese psa 8 Neo Genesis Pokémon",
+   "brand": "Pokémon",
+   "condition": "Très bon état",
+   "price": 99.5,
+   "total_price": 105.18,
+   "currency": "EUR",
+   "grade": "8",
+   "number": null,
+   "image": "https://images1.vinted.net/t/03_01ff8_dNMwb8QHwqYBZRKtJZ5ouUqT/310x430/83c7e49c.webp?s=b6412fad4c6109d87dd34f92eed1df426486c40b",
+   "psa": {
+    "cert": "146878894",
+    "status": "pending"
+   }
+  },
+  {
+   "id": "10920652240",
+   "url": "https://www.vinted.fr/items/10920652240-carte-gradee-psa-8",
+   "title": "Carte gradée PSA 8",
+   "brand": "Pokémon",
+   "condition": "Très bon état",
+   "price": 10.0,
+   "total_price": 11.2,
+   "currency": "EUR",
+   "grade": "8",
+   "number": null,
+   "image": "https://images1.vinted.net/t/04_00fd1_yBdd43e6D44wbJxxvpXCkqzG/310x430/51300349.webp?s=0b78b9fa0d081455f4d955a1c3a9674a9e01674d",
    "psa": {
     "cert": null,
     "status": "no_cert"
    }
   },
   {
-   "id": "10915778166",
-   "url": "https://www.vinted.fr/items/10915778166-mew-ex-sv4a-347-jap-psa-10",
-   "title": "Mew ex sv4a 347 Jap PSA 10",
+   "id": "10920613708",
+   "url": "https://www.vinted.fr/items/10920613708-prix-carte-gradee-psa-9",
+   "title": "Prix carte gradée PSA 9",
    "brand": "Pokémon",
    "condition": "Très bon état",
-   "price": 800.0,
-   "total_price": 840.7,
-   "currency": "EUR",
-   "grade": "10",
-   "number": null,
-   "image": "https://images1.vinted.net/t/04_025d8_qFMJKAZef3tHwFtc88cwnrzo/310x430/c6fbb622.webp?s=158506cfaddd10d279e1430dbff22084ac552e4d",
-   "psa": {
-    "cert": "102269867",
-    "status": "pending"
-   }
-  },
-  {
-   "id": "10915728850",
-   "url": "https://www.vinted.fr/items/10915728850-charizard-4102-psa-10-gem-mint-30th-celebration-classic-collection-2026",
-   "title": "Charizard 4/102 PSA 10 Gem Mint | 30th Celebration Classic Collection 2026",
-   "brand": "Pokémon",
-   "condition": "Très bon état",
-   "price": 800.0,
-   "total_price": 840.7,
-   "currency": "EUR",
-   "grade": "10",
-   "number": "4/102",
-   "image": "https://images1.vinted.net/t/01_01990_oG48ZGgneHeW6r4yh8m8F4n9/310x430/544595f2.webp?s=7411967fa7ccc15b4d10e85101752ed1bd0b6377",
-   "psa": {
-    "cert": "180445508",
-    "status": "pending"
-   }
-  },
-  {
-   "id": "10915714397",
-   "url": "https://www.vinted.fr/items/10915714397-charizard-4102-psa-10-gem-mint-30th-celebration-classic-collection-2026",
-   "title": "Charizard 4/102 PSA 10 Gem Mint | 30th Celebration Classic Collection 2026",
-   "brand": "Pokémon",
-   "condition": "Très bon état",
-   "price": 800.0,
-   "total_price": 840.7,
-   "currency": "EUR",
-   "grade": "10",
-   "number": "4/102",
-   "image": "https://images1.vinted.net/t/03_00929_hK2ZcfG7dxD5gKSvwjPhNNje/310x430/7f5cdadd.webp?s=9213927acc786e703e0065f33b09e7ccbed251b9",
-   "psa": {
-    "cert": "180445507",
-    "status": "pending"
-   }
-  },
-  {
-   "id": "10915473165",
-   "url": "https://www.vinted.fr/items/10915473165-rayquaza-tg20tg30-psa-9-silver-tempest",
-   "title": "Rayquaza tg20/tg30 PSA 9 silver tempest",
-   "brand": "Pokémon",
-   "condition": "Neuf sans étiquette",
-   "price": 260.0,
-   "total_price": 273.7,
-   "currency": "EUR",
-   "grade": "9",
-   "number": null,
-   "image": "https://images1.vinted.net/t/03_022c0_cpnX9je77NdMRBoiiWGDZqh4/310x430/db7d1212.webp?s=b273e85b0db6138185c85eaa003ddd48cb1cad2d",
-   "psa": {
-    "cert": "71600352",
-    "status": "pending"
-   }
-  },
-  {
-   "id": "10915446265",
-   "url": "https://www.vinted.fr/items/10915446265-carte-grade-psa-9-pokemon-sulfura-electhor-et-artikodin-gx-6668-full-art-destinees-occultes",
-   "title": "Carte gradé psa 9 Pokémon Sulfura, Électhor et Artikodin GX 66/68 Full Art - Destinées Occultes",
-   "brand": "Pokémon",
-   "condition": "Neuf sans étiquette",
-   "price": 85.0,
-   "total_price": 89.95,
-   "currency": "EUR",
-   "grade": "9",
-   "number": "66/68",
-   "image": "https://images1.vinted.net/t/04_01095_iSGzBZt9FfrWHazXzQZpuMX1/310x430/e796c8e1.webp?s=74e22dffd444fea681f2ea8ceec44caf48e77eb8",
-   "psa": {
-    "cert": "127464608",
-    "status": "pending"
-   }
-  },
-  {
-   "id": "10915355147",
-   "url": "https://www.vinted.fr/items/10915355147-vente-flash-mew-bubble-psa-9-vendu-avec-le-cadre",
-   "title": "Vente flash!! Mew bubble psa 9 vendu avec le cadre",
-   "brand": "Pokémon",
-   "condition": "Neuf avec étiquette",
-   "price": 420.0,
-   "total_price": 441.7,
-   "currency": "EUR",
-   "grade": "9",
-   "number": null,
-   "image": "https://images1.vinted.net/t/01_001e7_azgwHYJxXLdV3MUPmsoN8MHT/310x430/908caf9b.webp?s=b1e11c9241cd908b1106fb04352cf8f918eadd57",
-   "psa": {
-    "cert": "126920740",
-    "status": "pending"
-   }
-  },
-  {
-   "id": "10915342630",
-   "url": "https://www.vinted.fr/items/10915342630-pokemon-psa-9-elecktrike",
-   "title": "Pokemon Psa 9 Elecktrike",
-   "brand": "Pokémon",
-   "condition": "Neuf sans étiquette",
    "price": 25.0,
    "total_price": 26.95,
    "currency": "EUR",
    "grade": "9",
    "number": null,
-   "image": "https://images1.vinted.net/t/03_01a83_53cXFtcefG1WhydpbQHxVSZX/310x430/1743e409.webp?s=837affc506a729f0e907ffa0fbb3e15163edff89",
+   "image": "https://images1.vinted.net/t/04_00b21_jcMXbyQW7QKpyz9KR3jY6xj1/310x430/fd75433d.webp?s=a090b6956d86d7e86d7212ecf8c20197c6187aac",
    "psa": {
     "cert": null,
     "status": "no_cert"
    }
   },
   {
-   "id": "10915330688",
-   "url": "https://www.vinted.fr/items/10915330688-mew-ex-rc24rc25-legendary-treasures-reverse-psa-6",
-   "title": "Mew EX RC24/RC25 – Legendary Treasures – Reverse – PSA 6",
+   "id": "10920564131",
+   "url": "https://www.vinted.fr/items/10920564131-carte-gradee-japonaise-psa-8",
+   "title": "Carte gradée japonaise PSA 8",
    "brand": "Pokémon",
    "condition": "Très bon état",
-   "price": 260.0,
-   "total_price": 273.7,
+   "price": 12.0,
+   "total_price": 13.3,
    "currency": "EUR",
-   "grade": "6",
+   "grade": "8",
    "number": null,
-   "image": "https://images1.vinted.net/t/02_01574_7jKSSphAH59vYC4YXuQm99Rs/310x430/e4c6ad37.webp?s=67ae41ab5ddc3f488f0ad0304b4d45a672768606",
-   "psa": {
-    "cert": "142144186",
-    "status": "pending"
-   }
-  },
-  {
-   "id": "10915322116",
-   "url": "https://www.vinted.fr/items/10915322116-pikachu-v-222-psa-10",
-   "title": "Pikachu V 222 Psa 10",
-   "brand": "Pokémon",
-   "condition": "Neuf sans étiquette",
-   "price": 320.0,
-   "total_price": 336.7,
-   "currency": "EUR",
-   "grade": "10",
-   "number": null,
-   "image": "https://images1.vinted.net/t/06_01fe8_AeeB3bwNdve7fUe9RE2uy3fv/310x430/ce141d4e.webp?s=b85bfa818aa4261f0dbb51fdd3e891d958f7aa92",
+   "image": "https://images1.vinted.net/t/02_021d4_LJD5QQ2CxthFapENjJr4ngG9/310x430/95c45392.webp?s=a8f773a2aa19a073e55b2c19f2310762e56728be",
    "psa": {
     "cert": null,
     "status": "no_cert"
    }
   },
   {
-   "id": "10915319613",
-   "url": "https://www.vinted.fr/items/10915319613-vendo-carta-pokemon-giapponese-psa-10-mega-charizard-y-ex-mur-766742-in-foglio",
-   "title": "Vendo Carta Pokémon giapponese PSA 10 Mega Charizard Y ex MUR 766/742 in foglio",
+   "id": "10920546559",
+   "url": "https://www.vinted.fr/items/10920546559-pokemon-cards-gengar-ex-114119-full-art-forze-spettrali-ita-psa-1-poor-pop-2",
+   "title": "Pokémon cards Gengar ex 114/119 full art Forze Spettrali ita PSA 1 poor POP 2",
    "brand": "Pokémon",
-   "condition": "Très bon état",
-   "price": 650.0,
-   "total_price": 683.2,
+   "condition": "Satisfaisant",
+   "price": 390.0,
+   "total_price": 410.2,
    "currency": "EUR",
-   "grade": "10",
-   "number": "766/742",
-   "image": "https://images1.vinted.net/t/06_00686_y5uT4kw2UzQxKmbVs436qUeV/310x430/9ce0caa2.webp?s=37bf68b4e3b3a8a85b1d5a0d456e0ae6b71ce84b",
+   "grade": "1",
+   "number": "114/119",
+   "image": "https://images1.vinted.net/t/06_01cb7_T5x8DcQiBXSY4gfkTxBRFLwo/310x430/1dd7d3b1.webp?s=8d1ba39427f613927c450858d2fccdd846ba8f96",
    "psa": {
-    "cert": "176299750",
+    "cert": "154332052",
     "status": "pending"
    }
   },
   {
-   "id": "10915295324",
-   "url": "https://www.vinted.fr/items/10915295324-charizard-vmax-ultra-premium-coll-swsh261-psa-9",
-   "title": "Charizard vmax ultra Premium coll SWSH261 PSA 9",
+   "id": "10920544714",
+   "url": "https://www.vinted.fr/items/10920544714-crabominable-sm-47-sm-black-star-promos-psa-7",
+   "title": "Crabominable SM 47 SM Black Star Promos PSA 7",
    "brand": "Pokémon",
    "condition": "Neuf sans étiquette",
-   "price": 90.0,
-   "total_price": 95.2,
+   "price": 86.0,
+   "total_price": 91.0,
    "currency": "EUR",
-   "grade": "9",
+   "grade": "7",
    "number": null,
-   "image": "https://images1.vinted.net/t/05_01104_AnBEze2RjVaZEYZcPko36SGA/310x430/c7f0b6c0.webp?s=36a84f6391a801614003510c9984456b3537596a",
+   "image": "https://images1.vinted.net/t/06_021c9_BVocnr4L9JioycrQZEeiVfMT/310x430/e6311c29.webp?s=cd67bcf7e9aec7275cc85ce605bf82c931f1f5fd",
    "psa": {
-    "cert": "72136234",
+    "cert": "54670830",
     "status": "pending"
    }
   },
   {
-   "id": "10915274969",
-   "url": "https://www.vinted.fr/items/10915274969-umbreon-vmax-climax-244-psa-9",
-   "title": "Umbreon vmax climax 244 PSA 9",
+   "id": "10920504940",
+   "url": "https://www.vinted.fr/items/10920504940-mega-gengar-ex-jp-psa-10",
+   "title": "Mega Gengar Ex JP PSA 10",
    "brand": "Pokémon",
    "condition": "Neuf sans étiquette",
-   "price": 100.0,
-   "total_price": 105.7,
-   "currency": "EUR",
-   "grade": "9",
-   "number": null,
-   "image": "https://images1.vinted.net/t/05_02635_ze2GLYV8JVf9Dj99rV5RCHxe/310x430/87286e4a.webp?s=2416772d6ed6ff7f99595a9e376bbe0604c822df",
-   "psa": {
-    "cert": "84660149",
-    "status": "pending"
-   }
-  },
-  {
-   "id": "10915254779",
-   "url": "https://www.vinted.fr/items/10915254779-mew-holo-votare-universe-psa-10",
-   "title": "Mew holo votare universe PSA 10",
-   "brand": "Pokémon",
-   "condition": "Neuf sans étiquette",
-   "price": 50.0,
-   "total_price": 53.2,
+   "price": 400.0,
+   "total_price": 420.7,
    "currency": "EUR",
    "grade": "10",
    "number": null,
-   "image": "https://images1.vinted.net/t/04_00090_ovWUkCRiP1NDjEqk5uu4aosQ/310x430/d21e1fb8.webp?s=623157d655c563b175429f4ed7646db2730cb9e1",
+   "image": "https://images1.vinted.net/t/01_0170b_bgeM8zfyrzaPK9hsFwDfC3Wt/310x430/0792fe2f.webp?s=9c550d375b512380ca92e169590c6934eadc12e8",
    "psa": {
-    "cert": "79356458",
+    "cert": "152911075",
     "status": "pending"
    }
   },
   {
-   "id": "10915230634",
-   "url": "https://www.vinted.fr/items/10915230634-espeon-neo-2-promo-psa-9",
-   "title": "Espeon neo 2 promo PSA 9",
+   "id": "10920483689",
+   "url": "https://www.vinted.fr/items/10920483689-gengar-classic-collection-psa-10-2026-japanese",
+   "title": "Gengar  classic collection psa 10 2026 japanese",
    "brand": "Pokémon",
    "condition": "Neuf sans étiquette",
-   "price": 220.0,
-   "total_price": 231.7,
-   "currency": "EUR",
-   "grade": "9",
-   "number": null,
-   "image": "https://images1.vinted.net/t/06_01fa3_ThpJgfFCkavBuuzvXtPhLszb/310x430/a0c51c0a.webp?s=bbe4953028729439bef501d84fb2ce4ad7b33b50",
-   "psa": {
-    "cert": "62501966",
-    "status": "pending"
-   }
-  },
-  {
-   "id": "10915207444",
-   "url": "https://www.vinted.fr/items/10915207444-charizard-vmax-starter-set-sc-001-psa-10",
-   "title": "Charizard vmax starter set sc 001 PSA 10",
-   "brand": "Pokémon",
-   "condition": "Neuf sans étiquette",
-   "price": 150.0,
-   "total_price": 158.2,
+   "price": 180.0,
+   "total_price": 189.7,
    "currency": "EUR",
    "grade": "10",
    "number": null,
-   "image": "https://images1.vinted.net/t/03_024a7_qz7WJNjFwxGAkfXfHfkDcPeL/310x430/6f1d27a1.webp?s=aeec66c104576a4f7bd9ea30dbf2c9f4f839a64f",
+   "image": "https://images1.vinted.net/t/01_00fc9_SzeMft3FvcLM4NYL8q6mSKPB/310x430/6246cbc0.webp?s=b2fa657c678d370ae5e224a39ae4eb13b19d88e8",
    "psa": {
-    "cert": "63450499",
+    "cert": "180011411",
     "status": "pending"
    }
   },
   {
-   "id": "10915201383",
-   "url": "https://www.vinted.fr/items/10915201383-pokemon-30-ans-noctali-ex-mentali-ex-psa-10-japonais-sequentiel",
-   "title": "pokémon 30 ans – noctali ex & mentali ex psa 10 japonais – séquentiel",
+   "id": "10920475440",
+   "url": "https://www.vinted.fr/items/10920475440-mega-charizard-ex-jp-psa-10",
+   "title": "Mega Charizard Ex JP PSA 10",
    "brand": "Pokémon",
-   "condition": "Neuf avec étiquette",
+   "condition": "Neuf sans étiquette",
    "price": 750.0,
    "total_price": 788.2,
    "currency": "EUR",
    "grade": "10",
    "number": null,
-   "image": "https://images1.vinted.net/t/01_01915_yZPrLXcXC6dycLKPF7ZcNVZb/310x430/c67359eb.webp?s=be9ab019f6b766e1a6b9a8aa7c6eb722b630df82",
+   "image": "https://images1.vinted.net/t/05_01bf2_An2yPb8z7g18Hgw5GaMkyT3S/310x430/1b17ef9d.webp?s=7f6ef9b470a77311fbdf5416ec7a00a16a2a0ecf",
+   "psa": {
+    "cert": "145171007",
+    "status": "pending"
+   }
+  },
+  {
+   "id": "10920461698",
+   "url": "https://www.vinted.fr/items/10920461698-pokemon-charizard-085742-psa-10-jap",
+   "title": "Pokèmon - Charizard 085/742 PSA 10 JAP",
+   "brand": "Pokémon",
+   "condition": "Neuf avec étiquette",
+   "price": 1.0,
+   "total_price": 1.75,
+   "currency": "EUR",
+   "grade": "10",
+   "number": "085/742",
+   "image": "https://images1.vinted.net/t/03_000c2_rz31ywBT6Fe6ehEoWZRgZN8v/310x430/cc652442.webp?s=de654d9b5f22c8839595eb9732df425320c17720",
    "psa": {
     "cert": null,
     "status": "no_cert"
    }
   },
   {
-   "id": "10915190685",
-   "url": "https://www.vinted.fr/items/10915190685-carte-pokemon-ectoplasma-obscur-dark-gengar-holo-ndeg94-neo-destiny-jp-2001-psa-4",
-   "title": "Carte Pokémon Ectoplasma Obscur / Dark Gengar Holo n°94 – Neo Destiny JP 2001 – PSA 4",
+   "id": "10920459173",
+   "url": "https://www.vinted.fr/items/10920459173-pikachu-classic-collection-30-psa-10-english",
+   "title": "Pikachu classic collection 30 psa 10 english",
    "brand": "Pokémon",
-   "condition": "Bon état",
-   "price": 249.5,
-   "total_price": 262.68,
+   "condition": "Neuf sans étiquette",
+   "price": 200.0,
+   "total_price": 210.7,
    "currency": "EUR",
-   "grade": "4",
+   "grade": "10",
    "number": null,
-   "image": "https://images1.vinted.net/t/05_01882_5wP21wHtMdA2Y5wfSbDT27Pe/310x430/58e893f4.webp?s=c27b8024dae880f878ea5e86e1ecd8621d1d8f42",
+   "image": "https://images1.vinted.net/t/01_005d9_CYjD6qR1Ne2qhfo9kK4hnLjn/310x430/5bd292e3.webp?s=1714a9f055eaaf8c81dccd452214d8feec86a2a6",
    "psa": {
-    "cert": "158148118",
+    "cert": "180011414",
     "status": "pending"
    }
   },
   {
-   "id": "10915181319",
-   "url": "https://www.vinted.fr/items/10915181319-charizard-votare-universe-psa-9",
-   "title": "Charizard votare universe PSA 9",
+   "id": "10920449228",
+   "url": "https://www.vinted.fr/items/10920449228-rayquaza-m6-jap-11076-psa-9",
+   "title": "Rayquaza M6 jap 110/76 PSA 9",
+   "brand": "Pokémon",
+   "condition": "Neuf avec étiquette",
+   "price": 249.9,
+   "total_price": 263.1,
+   "currency": "EUR",
+   "grade": "9",
+   "number": "110/76",
+   "image": "https://images1.vinted.net/t/03_0087c_kUNhxN3heHBexcH9ts2MLbS7/310x430/4b512392.webp?s=665ed230e5771b10b8acb7be96bd8d496ff46ca2",
+   "psa": {
+    "cert": "174096728",
+    "status": "pending"
+   }
+  },
+  {
+   "id": "10920396336",
+   "url": "https://www.vinted.fr/items/10920396336-pokemon-fossil-1st-edition-hypno-non-holo-23-1999-psa-8",
+   "title": "Pokemon Fossil 1st Edition Hypno non holo 23 1999 PSA 8",
    "brand": "Pokémon",
    "condition": "Neuf sans étiquette",
+   "price": 160.0,
+   "total_price": 168.7,
+   "currency": "EUR",
+   "grade": "8",
+   "number": null,
+   "image": "https://images1.vinted.net/t/06_0008e_gtpXoZpksWyzNALnFY4igx7o/310x430/26f45cdb.webp?s=44eaffa1dd904e11e3f37d43624d37bd7c18356d",
+   "psa": {
+    "cert": "92121085",
+    "status": "pending"
+   }
+  },
+  {
+   "id": "10920391087",
+   "url": "https://www.vinted.fr/items/10920391087-pokemon-kaarten-meowth-persian-2023-jpn-psa-95-gem-mt",
+   "title": "Pokemon Kaarten Meowth & Persian 2023 JPN PSA 9.5 GEM MT",
+   "brand": "Pokémon",
+   "condition": "Très bon état",
+   "price": 35.0,
+   "total_price": 37.45,
+   "currency": "EUR",
+   "grade": "9",
+   "number": null,
+   "image": "https://images1.vinted.net/t/01_00c64_iVJA5CdoRQztDH1tvVh8d1n3/310x430/61901b6b.webp?s=96b9423d16eaa4be385677ac501446ce4f33140f",
+   "psa": {
+    "cert": null,
+    "status": "no_cert"
+   }
+  },
+  {
+   "id": "10920377410",
+   "url": "https://www.vinted.fr/items/10920377410-latios-illustration-rare-203-scintille-folgoranti-ssp-2024-ita-psa-9",
+   "title": "Latios Illustration Rare #203 Scintille Folgoranti / SSP 2024 ITA– PSA 9",
+   "brand": "Pokémon",
+   "condition": "Neuf avec étiquette",
    "price": 100.0,
    "total_price": 105.7,
    "currency": "EUR",
    "grade": "9",
    "number": null,
-   "image": "https://images1.vinted.net/t/01_00ab1_Jij7qMTJrQGtX5scyqotyzHa/310x430/4f60a4a5.webp?s=1be97e465dbbb0d740cf7542cf6f41162a46ae3a",
+   "image": "https://images1.vinted.net/t/03_00b6f_c28jZUgy3S8nvK116ZpQYY8V/310x430/89becb37.webp?s=f3746dd3df817ec7a6aff3e715248da86084746b",
    "psa": {
-    "cert": "76069348",
+    "cert": "156527850",
     "status": "pending"
    }
   },
   {
-   "id": "10915180866",
-   "url": "https://www.vinted.fr/items/10915180866-tyranitar-29-psa-5",
-   "title": "Tyranitar 29 psa 5",
+   "id": "10920332742",
+   "url": "https://www.vinted.fr/items/10920332742-reshiram-et-dracaufeu-sm201-psa-8-eng",
+   "title": "Reshiram et Dracaufeu SM201 PSA 8 ENG",
    "brand": "Pokémon",
    "condition": "Neuf sans étiquette",
-   "price": 580.0,
-   "total_price": 609.7,
+   "price": 180.0,
+   "total_price": 189.7,
    "currency": "EUR",
-   "grade": "5",
+   "grade": "8",
    "number": null,
-   "image": "https://images1.vinted.net/t/01_00671_P8bNL2PEVQUwWBfZRx3h9v5Z/310x430/210113dd.webp?s=bf6f88b14a83bd3791661a1765061530c608b1bb",
-   "psa": {
-    "cert": "143016071",
-    "status": "pending"
-   }
-  },
-  {
-   "id": "10915170792",
-   "url": "https://www.vinted.fr/items/10915170792-starmie-break-2016-xy-evolutions-bgs-mint-9-pokemon-karte-psa",
-   "title": "Starmie BREAK 2016 XY Evolutions BGS Mint 9 Pokémon Karte psa",
-   "brand": "Pokémon",
-   "condition": "Très bon état",
-   "price": 22.99,
-   "total_price": 24.84,
-   "currency": "EUR",
-   "grade": null,
-   "number": null,
-   "image": "https://images1.vinted.net/t/02_008f6_ZrMy9gCvL8HB5QG8JSaLDHTB/310x430/e7ef58bc.webp?s=1e6b5529b7f442c272ad0172a7a710851db6a329",
+   "image": "https://images1.vinted.net/t/06_014a1_ZT6W56GLRRKLkdusibnXnnoY/310x430/f03756e5.webp?s=4381a52ae6b3a4cc7eac96ff013fecbb63b71081",
    "psa": {
     "cert": null,
     "status": "no_cert"
    }
   },
   {
-   "id": "10915167181",
-   "url": "https://www.vinted.fr/items/10915167181-carte-pokemon-raikou-holo-ndeg243-neo-revelation-jp-2000-psa-8",
-   "title": "Carte Pokémon Raikou Holo n°243 – Neo Revelation JP 2000 – PSA 8",
-   "brand": "Pokémon",
-   "condition": "Très bon état",
-   "price": 159.5,
-   "total_price": 168.18,
-   "currency": "EUR",
-   "grade": "8",
-   "number": null,
-   "image": "https://images1.vinted.net/t/01_00771_kB32neuKiMkamFomiYcHepx6/310x430/ed330f16.webp?s=caba75923db3b44b7cc54d82c7108aee796ff924",
-   "psa": {
-    "cert": "158843850",
-    "status": "pending"
-   }
-  },
-  {
-   "id": "10915147146",
-   "url": "https://www.vinted.fr/items/10915147146-pkm-432-carte-gradee-magicarpe-203193-ev02-evolutions-a-paldea-psa-9-francais",
-   "title": "[PKM-432] Carte gradée Magicarpe 203/193 EV02 : Évolutions à paldea - PSA 9 - Français",
-   "brand": "Pokémon",
-   "condition": "Très bon état",
-   "price": 499.0,
-   "total_price": 524.65,
-   "currency": "EUR",
-   "grade": "9",
-   "number": "203/193",
-   "image": "https://images1.vinted.net/t/05_01061_8BXs3chVVjVvAtwvZ5CtFVFX/310x430/a4d56b74.webp?s=c36740f5568bd1836b48126197222ec1fe7a1c8c",
-   "psa": {
-    "cert": "112880849",
-    "subject": "MAGIKARP",
-    "grade": "MINT 9",
-    "grade_num": 9,
-    "year": "2023",
-    "card_number": "203",
-    "category": "TCG Cards",
-    "confidence": null,
-    "pop": 164,
-    "pop_higher": 82,
-    "pop_url": "https://www.psacard.com/pop/tcg-cards/2023/pokemon-french-pal-fr-paldea-evolved/243960",
-    "sales": null,
-    "sales_months": null,
-    "status": "no_estimate"
-   }
-  },
-  {
-   "id": "10915125849",
-   "url": "https://www.vinted.fr/items/10915125849-umbreon-pre-059-psa-9-pokemon-evoluzioni-prismatiche",
-   "title": "Umbreon PRE 059 psa 9 pokemon Evoluzioni Prismatiche",
-   "brand": "Pokémon",
-   "condition": "Très bon état",
-   "price": 85.0,
-   "total_price": 89.95,
-   "currency": "EUR",
-   "grade": "9",
-   "number": null,
-   "image": "https://images1.vinted.net/t/01_0212e_mdHdJuUSGvse14HQDdPsxqFz/310x430/5242bac6.webp?s=373e48855086f2056e495f92e8778f109962e75e",
-   "psa": {
-    "cert": "110893387",
-    "subject": "UMBREON",
-    "grade": "MINT 9",
-    "grade_num": 9,
-    "year": "2025",
-    "card_number": "059",
-    "category": "TCG Cards",
-    "confidence": null,
-    "pop": 61,
-    "pop_higher": 12,
-    "pop_url": "https://www.psacard.com/pop/tcg-cards/2025/pokemon-italian-pre-prismatic-evolutions/292611",
-    "sales": null,
-    "sales_months": null,
-    "status": "no_estimate"
-   }
-  },
-  {
-   "id": "10915124157",
-   "url": "https://www.vinted.fr/items/10915124157-magnifique-carte-gradee-pokemon-japonaise-psa-9-celebi-ndeg251-holo-promo-old-back-1996-nintendo",
-   "title": "Magnifique carte gradée Pokemon Japonaise PSA 9 Celebi N°251 Holo Promo Old Back 1996 Nintendo",
-   "brand": "Pokémon",
-   "condition": "Très bon état",
-   "price": 575.0,
-   "total_price": 604.45,
-   "currency": "EUR",
-   "grade": "9",
-   "number": null,
-   "image": "https://images1.vinted.net/t/06_010c8_DiSVKMxvjCWEwB25TfppAvq6/310x430/4b027d03.webp?s=30e2cfa22e564922c23dc2e2daf1ad0e079a168a",
-   "psa": {
-    "cert": "84566162",
-    "status": "pending"
-   }
-  },
-  {
-   "id": "10915107586",
-   "url": "https://www.vinted.fr/items/10915107586-pkm-342-carte-gradee-leviator-obscur-882-25-ans-eb75-celebrations-psa-9-francais",
-   "title": "[PKM-342] Carte gradée Leviator obscur 8/82 (25 ans) EB7.5 : Célébrations - PSA 9 - Français",
-   "brand": "Pokémon",
-   "condition": "Très bon état",
-   "price": 99.0,
-   "total_price": 104.65,
-   "currency": "EUR",
-   "grade": "9",
-   "number": "8/82",
-   "image": "https://images1.vinted.net/t/06_00372_efrPfpmAsnjZgHAPoc46NMmh/310x430/fff2119e.webp?s=fc66131da164c9846d559baa93af768ae9092dc5",
-   "psa": {
-    "cert": "126036316",
-    "subject": "LEVIATOR OBSCUR-HOLO",
-    "grade": "MINT 9",
-    "grade_num": 9,
-    "year": "2021",
-    "card_number": "8",
-    "category": "TCG Cards",
-    "confidence": null,
-    "pop": 50,
-    "pop_higher": 146,
-    "pop_url": "https://www.psacard.com/pop/tcg-cards/2021/pokemon-celebrations-classic-collection/200655",
-    "sales": null,
-    "sales_months": null,
-    "status": "no_estimate"
-   }
-  },
-  {
-   "id": "10915076840",
-   "url": "https://www.vinted.fr/items/10915076840-altaria-194-japanese-psa-10",
-   "title": "Altaria 194 japanese PSA 10",
+   "id": "10920328792",
+   "url": "https://www.vinted.fr/items/10920328792-charizard-v-psa-10",
+   "title": "Charizard V PSA 10",
    "brand": "Pokémon",
    "condition": "Neuf sans étiquette",
-   "price": 44.0,
-   "total_price": 46.9,
+   "price": 475.0,
+   "total_price": 499.45,
    "currency": "EUR",
    "grade": "10",
    "number": null,
-   "image": "https://images1.vinted.net/t/05_00768_4xYbTtArpcak3U1YzWL7BkXj/310x430/051b56e6.webp?s=4f68e0c35781feb77d24e08ff77134d0ce9c5bae",
+   "image": "https://images1.vinted.net/t/06_0062e_mjD5Di9BL6R6Ty4WfyLUPnBn/310x430/9389e87d.webp?s=e3548bb33bdcc9ddb336989ee19c0fab1212e4dc",
    "psa": {
-    "cert": "156722051",
+    "cert": "52027590",
     "status": "pending"
    }
   },
   {
-   "id": "10915063732",
-   "url": "https://www.vinted.fr/items/10915063732-pokemon-penny-239091-special-illustration-rare-psa-8",
-   "title": "Pokemon Penny 239/091 Special Illustration Rare PSA 8",
+   "id": "10920312053",
+   "url": "https://www.vinted.fr/items/10920312053-vendo-pokemon-psa-10-m-charizard-ex-107-holo-xy-flashfire-ultra-rare-2014-english",
+   "title": "Vendo Pokemon PSA 10 M Charizard Ex #107 Holo XY Flashfire Ultra Rare 2014 English",
    "brand": "Pokémon",
    "condition": "Très bon état",
-   "price": 24.99,
-   "total_price": 26.94,
-   "currency": "EUR",
-   "grade": "8",
-   "number": "239/091",
-   "image": "https://images1.vinted.net/t/03_01b6b_fJu1zsNjq6mk9avjTneTnNnY/310x430/3fd04572.webp?s=4b53f1952c8a6cfd5743c19bf12de45db08e3d56",
-   "psa": {
-    "cert": "132163009",
-    "status": "pending"
-   }
-  },
-  {
-   "id": "10915045445",
-   "url": "https://www.vinted.fr/items/10915045445-celebi-vmax-german-pokemon-karte-cgc-85-chilling-reign-psa",
-   "title": "Celebi VMAX German Pokémon Karte CGC 8.5 Chilling Reign psa",
-   "brand": "Pokémon",
-   "condition": "Très bon état",
-   "price": 24.99,
-   "total_price": 26.94,
-   "currency": "EUR",
-   "grade": null,
-   "number": null,
-   "image": "https://images1.vinted.net/t/01_006ed_Y9Vc3WejLTJvGohsMKXvCrvt/310x430/be211114.webp?s=9c1d869eede3c7a698b108bb99fa7b8e9a53c633",
-   "psa": {
-    "cert": null,
-    "status": "no_cert"
-   }
-  },
-  {
-   "id": "10915018241",
-   "url": "https://www.vinted.fr/items/10915018241-aegislash-ex-087171-japanisch-pgs-95-mint-pokemon-karte-psa",
-   "title": "Aegislash EX 087/171 Japanisch PGS 9.5 Mint+ Pokemon Karte psa",
-   "brand": "Pokémon",
-   "condition": "Très bon état",
-   "price": 19.99,
-   "total_price": 21.69,
-   "currency": "EUR",
-   "grade": null,
-   "number": "087/171",
-   "image": "https://images1.vinted.net/t/01_00dab_HM2WrGFgtWNXjWywtQGXoPix/310x430/daf9ea84.webp?s=cf995590412256d10befd925a1a8f7ac9c7ef44b",
-   "psa": {
-    "cert": null,
-    "status": "no_cert"
-   }
-  },
-  {
-   "id": "10914995253",
-   "url": "https://www.vinted.fr/items/10914995253-cgc-9-pokemon-karte-bisasam-detective-pikachu-japanisch-psa",
-   "title": "CGC 9 Pokémon Karte Bisasam Detective Pikachu Japanisch psa",
-   "brand": "Pokémon",
-   "condition": "Très bon état",
-   "price": 24.99,
-   "total_price": 26.94,
-   "currency": "EUR",
-   "grade": null,
-   "number": null,
-   "image": "https://images1.vinted.net/t/05_023ce_KRFXUzeULqSJTFuSvLN55EG7/310x430/e5fdeb2b.webp?s=5a45d2b85c4cc3c3ea263e36a9d3fd4f5ab6fd47",
-   "psa": {
-    "cert": null,
-    "status": "no_cert"
-   }
-  },
-  {
-   "id": "10914989800",
-   "url": "https://www.vinted.fr/items/10914989800-mega-dragonite-ex-232193-ma-psa-10-japanese-mega-dream-ex-m2a-pokemon-2025",
-   "title": "Mega Dragonite ex 232/193 MA PSA 10 Japanese Mega Dream ex M2a Pokemon 2025",
-   "brand": "Pokémon",
-   "condition": "Neuf sans étiquette",
-   "price": 49.99,
-   "total_price": 53.19,
-   "currency": "EUR",
-   "grade": "10",
-   "number": "232/193",
-   "image": "https://images1.vinted.net/t/04_001cf_ERhFVdbbamLqmYuFzU9FAj98/310x430/15652027.webp?s=51fcb4ae6738ef817f4e319701d709efced5781a",
-   "psa": {
-    "cert": "142676773",
-    "status": "pending"
-   }
-  },
-  {
-   "id": "10914979936",
-   "url": "https://www.vinted.fr/items/10914979936-rayquaza-021play-promo-psa-8",
-   "title": "Rayquaza 021/PLAY Promo PSA 8",
-   "brand": "Pokémon",
-   "condition": "Neuf avec étiquette",
-   "price": 1800.0,
-   "total_price": 1890.7,
-   "currency": "EUR",
-   "grade": "8",
-   "number": "021/PLAY",
-   "image": "https://images1.vinted.net/t/06_0072c_3owmtWqgw3bzpJKCmZWLncZg/310x430/b0b43f47.webp?s=733e63a6cb07bdb53b6ae910451980e0dcb70166",
-   "psa": {
-    "cert": "129677878",
-    "status": "pending"
-   }
-  },
-  {
-   "id": "10914970871",
-   "url": "https://www.vinted.fr/items/10914970871-pokemon-meganium-3122-league-promo-aog-85-nm-mint-psa",
-   "title": "Pokemon Meganium 3/122 League Promo AOG 8.5 NM-MINT psa",
-   "brand": "Pokémon",
-   "condition": "Très bon état",
-   "price": 39.99,
-   "total_price": 42.69,
-   "currency": "EUR",
-   "grade": null,
-   "number": "3/122",
-   "image": "https://images1.vinted.net/t/04_00c23_Wk2aRP557eZ4qQHnSnMDUpFz/310x430/ae5ad160.webp?s=882fcca0da9d6f2947ca1bf8a764f0cb68da78ce",
-   "psa": {
-    "cert": null,
-    "status": "no_cert"
-   }
-  },
-  {
-   "id": "10914953471",
-   "url": "https://www.vinted.fr/items/10914953471-pokemon-151-japanische-ponyta-master-ball-reverse-holo-psa-8",
-   "title": "🔥 Pokémon 151 – Japanische Ponyta Master Ball Reverse Holo PSA 8 🔥",
-   "brand": "Pokémon",
-   "condition": "Neuf avec étiquette",
-   "price": 25.0,
-   "total_price": 26.95,
-   "currency": "EUR",
-   "grade": "8",
-   "number": null,
-   "image": "https://images1.vinted.net/t/05_021a2_xof1ctbBdScmEW2ofZRGpd8L/310x430/4c1324d3.webp?s=380d3129e90e96f50f79fc46184f6f17c1a7fa9a",
-   "psa": {
-    "cert": "100192231",
-    "status": "pending"
-   }
-  },
-  {
-   "id": "10914934890",
-   "url": "https://www.vinted.fr/items/10914934890-snorunt-200-m2a-mega-dream-ex-psa-mint-9",
-   "title": "Snorunt 200 m2a Mega Dream ex PSA Mint 9",
-   "brand": "Pokémon",
-   "condition": "Très bon état",
-   "price": 27.5,
-   "total_price": 29.58,
-   "currency": "EUR",
-   "grade": null,
-   "number": null,
-   "image": "https://images1.vinted.net/t/06_016aa_mouL6bUvd8szn8Wt5VHSZsJt/310x430/5d2ade1e.webp?s=e0d0ce214672825172f642e34bef6d0a74934d27",
-   "psa": {
-    "cert": "150041311",
-    "status": "pending"
-   }
-  },
-  {
-   "id": "10914913517",
-   "url": "https://www.vinted.fr/items/10914913517-pikachu-toploaderpsa-holder",
-   "title": "Pikachu toploader/psa Holder",
-   "brand": "Pokémon",
-   "condition": "Très bon état",
-   "price": 15.0,
-   "total_price": 16.45,
-   "currency": "EUR",
-   "grade": null,
-   "number": null,
-   "image": "https://images1.vinted.net/t/05_01562_GHuLLYaQZTyTrmuMPrLmS4qn/310x430/58d19e8f.webp?s=8945ef6029ee32b54315f79e9e552cc2f26e0a80",
-   "psa": {
-    "cert": null,
-    "status": "no_cert"
-   }
-  },
-  {
-   "id": "10914908423",
-   "url": "https://www.vinted.fr/items/10914908423-pokemon-charmandercharmeleon-psa-10-japanese",
-   "title": "Pokemon Charmander/Charmeleon PSA 10 japanese",
-   "brand": "Pokémon",
-   "condition": "Neuf avec étiquette",
-   "price": 220.0,
-   "total_price": 231.7,
+   "price": 500.0,
+   "total_price": 525.7,
    "currency": "EUR",
    "grade": "10",
    "number": null,
-   "image": "https://images1.vinted.net/t/05_0220a_t98834cv7Zc2BqbLmE2camkT/310x430/8f4ec4cc.webp?s=eb4026d181486ebe1b02f20b3060a2f4dc2afe19",
+   "image": "https://images1.vinted.net/t/01_02674_H97BRdprwYVxCMdpfUoMYuwV/310x430/ff2e7bb8.webp?s=9ce92be1bb39755129b706b3a5c06f35f7d0452e",
    "psa": {
-    "cert": "96970749",
+    "cert": "27235909",
     "status": "pending"
    }
   },
   {
-   "id": "10914895561",
-   "url": "https://www.vinted.fr/items/10914895561-leafeon-vstar-210-s12a-vstar-universe-psa-gem-mint-10",
-   "title": "Leafeon vstar 210 s12a VSTAR Universe PSA Gem Mint 10",
-   "brand": "Pokémon",
-   "condition": "Très bon état",
-   "price": 100.0,
-   "total_price": 105.7,
-   "currency": "EUR",
-   "grade": null,
-   "number": null,
-   "image": "https://images1.vinted.net/t/05_02410_BzsupJW48zyhh1ZQTLqf96Y8/310x430/9f0fad27.webp?s=39e85a9a1a52a982decfa12450d70099e4f87c4a",
-   "psa": {
-    "cert": "73973673",
-    "status": "pending"
-   }
-  },
-  {
-   "id": "10914884775",
-   "url": "https://www.vinted.fr/items/10914884775-rockets-nidoking-ex-216-psa-10",
-   "title": "Rocket's nidoking ex 216 psa 10",
+   "id": "10920295335",
+   "url": "https://www.vinted.fr/items/10920295335-mew-antico-promo-2000-ita-psa-9",
+   "title": "Mew Antico Promo 2000 ITA– PSA 9",
    "brand": "Pokémon",
    "condition": "Neuf avec étiquette",
-   "price": 80.0,
-   "total_price": 84.7,
-   "currency": "EUR",
-   "grade": "10",
-   "number": null,
-   "image": "https://images1.vinted.net/t/03_008d4_YD2pGGG8mQrSo9JYwuPDXHkr/310x430/d2b28552.webp?s=d2e817572a770023257abc98af3e6eb897d0bb30",
-   "psa": {
-    "cert": "161873642",
-    "status": "pending"
-   }
-  },
-  {
-   "id": "10914880360",
-   "url": "https://www.vinted.fr/items/10914880360-carte-pokemon-charmillon-beautifly-ar-194193-jp-psa-9",
-   "title": "Carte Pokémon Charmillon / Beautifly AR 194/193 JP – PSA 9",
-   "brand": "Pokémon",
-   "condition": "Très bon état",
-   "price": 24.5,
-   "total_price": 26.43,
+   "price": 320.0,
+   "total_price": 336.7,
    "currency": "EUR",
    "grade": "9",
-   "number": "194/193",
-   "image": "https://images1.vinted.net/t/05_01530_bKi5Wjoiv3FB9qbpjHHiZy9q/310x430/abf320f5.webp?s=9ff46ec0197ec3461536e55d63e5aebead1389c7",
-   "psa": {
-    "cert": "157564380",
-    "status": "pending"
-   }
-  },
-  {
-   "id": "10914873749",
-   "url": "https://www.vinted.fr/items/10914873749-rockets-moltres-ex-208-psa-10",
-   "title": "Rocket's moltres ex 208 psa 10",
-   "brand": "Pokémon",
-   "condition": "Neuf avec étiquette",
-   "price": 80.0,
-   "total_price": 84.7,
-   "currency": "EUR",
-   "grade": "10",
    "number": null,
-   "image": "https://images1.vinted.net/t/03_02599_zaRiQamAYiV942BrVLhUfuby/310x430/d105c724.webp?s=6e136157d615f92b134e5f61eb8d627bbea1fe06",
+   "image": "https://images1.vinted.net/t/05_02059_2vbuGGK8DH6bxA1kDnyFN2xd/310x430/f853568d.webp?s=3fac652f4ba4755cba89fd1e8c92b730a09c4d46",
    "psa": {
-    "cert": "161873641",
+    "cert": "62846025",
     "status": "pending"
    }
   },
   {
-   "id": "10914866663",
-   "url": "https://www.vinted.fr/items/10914866663-mistys-psyduck-193-psa-10",
-   "title": "Misty's psyduck 193 psa 10",
+   "id": "10920288796",
+   "url": "https://www.vinted.fr/items/10920288796-mega-charizard-ex-oricorio-ex-psa-10-secuencial",
+   "title": "Mega Charizard Ex & Oricorio Ex PSA 10 Secuencial",
    "brand": "Pokémon",
-   "condition": "Neuf avec étiquette",
+   "condition": "Neuf sans étiquette",
    "price": 300.0,
    "total_price": 315.7,
    "currency": "EUR",
    "grade": "10",
    "number": null,
-   "image": "https://images1.vinted.net/t/06_026bd_4p1pD7RGCekAmKUu9Ffk2jym/310x430/476a08fd.webp?s=e6da4ddae195c3c0fb477b87dba306560c181966",
+   "image": "https://images1.vinted.net/t/01_00070_enP4yHzxkA6yp9woFYCVXxFZ/310x430/5968e2fa.webp?s=69250694f8ed9c29d819166c1ce6e4c7f0ee11cf",
    "psa": {
-    "cert": "161873640",
+    "cert": null,
+    "status": "no_cert"
+   }
+  },
+  {
+   "id": "10920256206",
+   "url": "https://www.vinted.fr/items/10920256206-glaceon-gx-hif-sv55-hidden-fates-psa-9",
+   "title": "Glaceon gx HIF SV55 Hidden Fates PSA 9",
+   "brand": "Pokémon",
+   "condition": "Neuf sans étiquette",
+   "price": 104.0,
+   "total_price": 109.9,
+   "currency": "EUR",
+   "grade": "9",
+   "number": null,
+   "image": "https://images1.vinted.net/t/05_0103d_3n6YPV7WqRWjna5yc2KPZDE2/310x430/2eb11433.webp?s=ad53f886124e074e6e957b5823cb6c47ae931f07",
+   "psa": {
+    "cert": "53136055",
     "status": "pending"
    }
   },
   {
-   "id": "10914857743",
-   "url": "https://www.vinted.fr/items/10914857743-mega-feraligatr-ex-274-psa-10",
-   "title": "Mega feraligatr ex 274 psa 10",
+   "id": "10920241564",
+   "url": "https://www.vinted.fr/items/10920241564-pikachu-v-brs-157-ingles-psa-9",
+   "title": "Pikachu V (BRS 157) inglés psa 9",
    "brand": "Pokémon",
    "condition": "Neuf avec étiquette",
-   "price": 150.0,
-   "total_price": 158.2,
+   "price": 130.0,
+   "total_price": 137.2,
+   "currency": "EUR",
+   "grade": "9",
+   "number": null,
+   "image": "https://images1.vinted.net/t/06_01411_u2SBiQ8QnvDBmeofXJQJtAfN/310x430/b70a15e5.webp?s=0247d4b6476c6fe1f796eb003aeeaf6f6d0ed99f",
+   "psa": {
+    "cert": "154902339",
+    "status": "pending"
+   }
+  },
+  {
+   "id": "10920222173",
+   "url": "https://www.vinted.fr/items/10920222173-lugia-psa-9-tempesta-argentata-it",
+   "title": "Lugia PSA 9 Tempesta Argentata It",
+   "brand": "Pokémon",
+   "condition": "Neuf avec étiquette",
+   "price": 580.0,
+   "total_price": 609.7,
+   "currency": "EUR",
+   "grade": "9",
+   "number": null,
+   "image": "https://images1.vinted.net/t/05_000b3_yStGFZ49pqUAvEMrJ2cPgFfy/310x430/f976dfd8.webp?s=0b7114e3c95967be257148f4ef9a56f3f8517e3c",
+   "psa": {
+    "cert": "95197739",
+    "status": "pending"
+   }
+  },
+  {
+   "id": "10920201986",
+   "url": "https://www.vinted.fr/items/10920201986-japanse-clefairy-2019-psa-10",
+   "title": "Japanse clefairy 2019 psa 10",
+   "brand": "Pokémon",
+   "condition": "Neuf sans étiquette",
+   "price": 260.0,
+   "total_price": 273.7,
    "currency": "EUR",
    "grade": "10",
    "number": null,
-   "image": "https://images1.vinted.net/t/04_026c5_N1XVNhWzZeeoBanJm3R1ufzr/310x430/1335e9d0.webp?s=eec66d35f06815ef6c9bd9a095fec38a0575b1ec",
+   "image": "https://images1.vinted.net/t/05_012ac_Tm2M9Bi2B5HzZb2R3tj1mkVT/310x430/e59a048f.webp?s=d78dbadfe4401ef0be35ae2b5d85351de2d0a211",
    "psa": {
-    "cert": "161873638",
+    "cert": "119861487",
     "status": "pending"
    }
   },
   {
-   "id": "10914848711",
-   "url": "https://www.vinted.fr/items/10914848711-mega-froslass-ex-265-psa-10",
-   "title": "Mega froslass ex 265 psa 10",
+   "id": "10920184927",
+   "url": "https://www.vinted.fr/items/10920184927-hydreigon-ex-171-sv11w-jp-psa-10",
+   "title": "Hydreigon ex 171 sv11w jp psa 10",
+   "brand": "Pokémon",
+   "condition": "Très bon état",
+   "price": 95.0,
+   "total_price": 100.45,
+   "currency": "EUR",
+   "grade": "10",
+   "number": null,
+   "image": "https://images1.vinted.net/t/04_01178_ycT4v8oYd1jogLvdM5vVp8se/310x430/fdc340f0.webp?s=6b5ee4a0d876868addb164e8335bdd4f54cef1af",
+   "psa": {
+    "cert": "139524917",
+    "status": "pending"
+   }
+  },
+  {
+   "id": "10920147731",
+   "url": "https://www.vinted.fr/items/10920147731-surfing-pikachu-black-label-pristine-10-psa-10",
+   "title": "Surfing Pikachu black label Pristine 10. PSA 10.",
    "brand": "Pokémon",
    "condition": "Neuf avec étiquette",
    "price": 70.0,
@@ -1345,186 +999,305 @@
    "currency": "EUR",
    "grade": "10",
    "number": null,
-   "image": "https://images1.vinted.net/t/05_024bc_VNEdMmdJa3QMZRaKrCH1fb1k/310x430/777a5ffb.webp?s=605c09da640634ab60e1a5c6cb496a95c891912c",
+   "image": "https://images1.vinted.net/t/05_01e64_XavQeA2Bkvqs3WMWC5EawaGm/310x430/50b5720a.webp?s=d35a6ebf16f5f8d643102db67b452f21577429b4",
    "psa": {
-    "cert": "161873639",
-    "status": "pending"
+    "cert": null,
+    "status": "no_cert"
    }
   },
   {
-   "id": "10914838103",
-   "url": "https://www.vinted.fr/items/10914838103-alakazam-4-lvx-holo-1st-edition-psa-9",
-   "title": "Alakazam #4 LV.X Holo 1st edition PSA 9",
+   "id": "10920120448",
+   "url": "https://www.vinted.fr/items/10920120448-lucario-v-astro-swsh291-ita-psa-9-pokemon-promo-etb-zenit-regale",
+   "title": "Lucario V astro swsh291 ita psa 9 Pokémon promo etb zenit regale",
    "brand": "Pokémon",
-   "condition": "Neuf sans étiquette",
-   "price": 680.0,
-   "total_price": 714.7,
+   "condition": "Très bon état",
+   "price": 45.0,
+   "total_price": 47.95,
    "currency": "EUR",
    "grade": "9",
    "number": null,
-   "image": "https://images1.vinted.net/t/03_00a36_zQYGWWnoeZcfeX8t1a6bkFPg/310x430/a959baf6.webp?s=34570c20449112d0f7d4d8fbf48002e68a6a1101",
+   "image": "https://images1.vinted.net/t/04_023c5_9Sb326oRm4TeiNgkibMa8tRD/310x430/deb1267d.webp?s=06a9b87a365cf3337e7b414431e258422da74f7e",
    "psa": {
-    "cert": "165195439",
-    "status": "pending"
+    "cert": null,
+    "status": "no_cert"
    }
   },
   {
-   "id": "10914721854",
-   "url": "https://www.vinted.fr/items/10914721854-chi-yu-ex-psa-10",
-   "title": "CHI-YU ex psa 10",
+   "id": "10920114093",
+   "url": "https://www.vinted.fr/items/10920114093-2025-pokemon-jpn-fukuokas-pikachu-289-psa-10",
+   "title": "2025 Pòkemon JPN | Fukuoka's Pikachu 289 ~ PSA 10",
    "brand": "Pokémon",
-   "condition": "Neuf sans étiquette",
+   "condition": "Neuf avec étiquette",
+   "price": 185.0,
+   "total_price": 194.95,
+   "currency": "EUR",
+   "grade": "10",
+   "number": null,
+   "image": "https://images1.vinted.net/t/01_007fa_JT4WL4f1yEHDxQ3jFn9Syhd7/310x430/08e55bf5.webp?s=7bc1683cec86afe1b92d496bad911718a0ea312d",
+   "psa": {
+    "cert": null,
+    "status": "no_cert"
+   }
+  },
+  {
+   "id": "10920086925",
+   "url": "https://www.vinted.fr/items/10920086925-2025-pokemon-jpn-hiroshimas-pikachu-261-psa-10",
+   "title": "2025 Pòkemon JPN | Hiroshima's Pikachu 261 ~ PSA 10",
+   "brand": "Pokémon",
+   "condition": "Neuf avec étiquette",
+   "price": 210.0,
+   "total_price": 221.2,
+   "currency": "EUR",
+   "grade": "10",
+   "number": null,
+   "image": "https://images1.vinted.net/t/05_0085c_ktfgXMu7e5chjwaiZgnRGDgJ/310x430/ebad6dcd.webp?s=dd54d7080c1ad809586b25d2880edcf54e482ff1",
+   "psa": {
+    "cert": null,
+    "status": "no_cert"
+   }
+  },
+  {
+   "id": "10920079830",
+   "url": "https://www.vinted.fr/items/10920079830-mega-gengar-ex-black-label-pristine-10-psa-10",
+   "title": "Mega Gengar EX Black label Pristine 10. PSA 10",
+   "brand": "Pokémon",
+   "condition": "Neuf avec étiquette",
+   "price": 60.0,
+   "total_price": 63.7,
+   "currency": "EUR",
+   "grade": "10",
+   "number": null,
+   "image": "https://images1.vinted.net/t/04_01c74_RArC8aFFqQN2cKtekBgZuSbZ/310x430/e6880131.webp?s=9c9d26c2febc2442aed9eef05b5818b5ff8f5ddd",
+   "psa": {
+    "cert": null,
+    "status": "no_cert"
+   }
+  },
+  {
+   "id": "10920043540",
+   "url": "https://www.vinted.fr/items/10920043540-2025-pokemon-jpn-tohokus-pikachu-260-psa-10",
+   "title": "2025 Pòkemon JPN | Tohoku's Pikachu 260 ~ PSA 10",
+   "brand": "Pokémon",
+   "condition": "Neuf avec étiquette",
+   "price": 180.0,
+   "total_price": 189.7,
+   "currency": "EUR",
+   "grade": "10",
+   "number": null,
+   "image": "https://images1.vinted.net/t/02_026c1_3ib8zo5QkkWtxvFqM19L7oJP/310x430/d946ce66.webp?s=163d642f76f3a2755182c987c1b5c1890cdb79f2",
+   "psa": {
+    "cert": null,
+    "status": "no_cert"
+   }
+  },
+  {
+   "id": "10920024066",
+   "url": "https://www.vinted.fr/items/10920024066-blastoise-25th-black-label-cgc-pristine-10-psa-10",
+   "title": "Blastoise 25th Black Label CGC Pristine 10. PSA 10.",
+   "brand": "Pokémon",
+   "condition": "Neuf avec étiquette",
    "price": 120.0,
    "total_price": 126.7,
    "currency": "EUR",
    "grade": "10",
    "number": null,
-   "image": "https://images1.vinted.net/t/02_008eb_iqvQKjXq4k2k8wDb1Cx3dsJp/310x430/63e29edb.webp?s=4744634aec3efe2abd99ea03b8b267f7f0c5a0f5",
-   "psa": {
-    "cert": "86300140",
-    "status": "pending"
-   }
-  },
-  {
-   "id": "10914706448",
-   "url": "https://www.vinted.fr/items/10914706448-zoroark-vstar-psa-10",
-   "title": "Zoroark VSTAR psa 10",
-   "brand": "Pokémon",
-   "condition": "Neuf sans étiquette",
-   "price": 90.0,
-   "total_price": 95.2,
-   "currency": "EUR",
-   "grade": "10",
-   "number": null,
-   "image": "https://images1.vinted.net/t/04_00e01_Ug38rFR5FFH93t5gtet1sQ3T/310x430/e84ff61b.webp?s=dc783afa53f1630bb5af479644e363574db0bbad",
-   "psa": {
-    "cert": "93052687",
-    "status": "pending"
-   }
-  },
-  {
-   "id": "10914668546",
-   "url": "https://www.vinted.fr/items/10914668546-209-galarian-obstagoon-art-rare-psa-10",
-   "title": "#209 Galarian Obstagoon Art Rare Psa 10",
-   "brand": "Pokémon",
-   "condition": "Très bon état",
-   "price": 35.0,
-   "total_price": 37.45,
-   "currency": "EUR",
-   "grade": "10",
-   "number": null,
-   "image": "https://images1.vinted.net/t/03_02027_7bCGmL653RafKjTXLJJqRC4A/310x430/2e681e8d.webp?s=1d340c89879a09431ad480c3e309efcc8816540e",
-   "psa": {
-    "cert": "157815450",
-    "status": "pending"
-   }
-  },
-  {
-   "id": "10914628278",
-   "url": "https://www.vinted.fr/items/10914628278-mewtwo-v-pokemon-go-elite-trainer-box-swsh229-psa-10-gem-mint",
-   "title": "Mewtwo V- Pokémon GO élite trainer box SWSH229 PSA 10 Gem mint",
-   "brand": "Pokémon",
-   "condition": "Neuf sans étiquette",
-   "price": 170.0,
-   "total_price": 179.2,
-   "currency": "EUR",
-   "grade": "10",
-   "number": null,
-   "image": "https://images1.vinted.net/t/01_00fd3_uKZ2QG5wYjPchhZk7KNBxxcD/310x430/62c6069e.webp?s=db9c4e25988dc6c26f13c1468fb9822ef1d4f53d",
-   "psa": {
-    "cert": "67311203",
-    "status": "pending"
-   }
-  },
-  {
-   "id": "10914575025",
-   "url": "https://www.vinted.fr/items/10914575025-uniek-setje-psa-9-wiggyltuff-52",
-   "title": "Uniek setje psa 9 Wiggyltuff #52",
-   "brand": "Pokémon",
-   "condition": "Neuf avec étiquette",
-   "price": 500.0,
-   "total_price": 525.7,
-   "currency": "EUR",
-   "grade": "9",
-   "number": null,
-   "image": "https://images1.vinted.net/t/03_01abb_5ocELHARxf7AUBuEXBiVxwVh/310x430/d80d94b9.webp?s=982f59be187749b680c519b791ea5f89a5846493",
+   "image": "https://images1.vinted.net/t/03_0137d_i5zxp1oH5XxdfK914r6yM7cW/310x430/8f1a7a91.webp?s=d92f2344d267cca3e764b30c13255f5182fd8970",
    "psa": {
     "cert": null,
     "status": "no_cert"
    }
   },
   {
-   "id": "10914492890",
-   "url": "https://www.vinted.fr/items/10914492890-psa-10-charmander-charmeleon-pokemon-card-151-pokemon-sv2a-168-169-art-rare-lotto-gradate-giapponese",
-   "title": "PSA 10 Charmander Charmeleon Pokemon Card 151 Pokemon SV2a 168 169 Art Rare Lotto Gradate Giapponese",
+   "id": "10919979124",
+   "url": "https://www.vinted.fr/items/10919979124-rayquaza-vmax-tg29tg30-psa-10",
+   "title": "Rayquaza VMax TG29/TG30 - PSA 10",
    "brand": "Pokémon",
    "condition": "Très bon état",
-   "price": 269.0,
-   "total_price": 283.15,
+   "price": 200.0,
+   "total_price": 210.7,
    "currency": "EUR",
    "grade": "10",
    "number": null,
-   "image": "https://images1.vinted.net/t/04_026ba_2w3TZP7vJMFDLK54DydKtuuk/310x430/3f6e41b8.webp?s=48da566b0015417848784ec6cf8c812a67f83ccf",
+   "image": "https://images1.vinted.net/t/05_02074_aVtncront82oythaZxmMbkC5/310x430/2812e9f7.webp?s=d11e5e80f66d74ffa3cbed575864e8a4ba8bcf83",
    "psa": {
-    "cert": "131660579",
+    "cert": "158663119",
     "status": "pending"
    }
   },
   {
-   "id": "10914459775",
-   "url": "https://www.vinted.fr/items/10914459775-ninjask-art-rare-jp-psa-9",
-   "title": "Ninjask Art Rare (JP) PSA 9",
+   "id": "10919953027",
+   "url": "https://www.vinted.fr/items/10919953027-marnie-super-rare-holo-cgc-9-psa-9",
+   "title": "Marnie super rare holo CGC 9. PSA 9.",
    "brand": "Pokémon",
-   "condition": "Neuf sans étiquette",
-   "price": 19.5,
-   "total_price": 21.18,
+   "condition": "Neuf avec étiquette",
+   "price": 50.0,
+   "total_price": 53.2,
    "currency": "EUR",
    "grade": "9",
    "number": null,
-   "image": "https://images1.vinted.net/t/05_007f6_sgaqThMYyYdBmf6zJ67igfpQ/310x430/881dd043.webp?s=de982db89088cf64ccfaddd9911df2a6a01af1bb",
+   "image": "https://images1.vinted.net/t/04_025ba_cY3Bq6h8z3CGfrr5XHhh3jRT/310x430/feb9e477.webp?s=da5d979eea1454694cff490f93e973ccaace327c",
    "psa": {
     "cert": null,
     "status": "no_cert"
    }
   },
   {
-   "id": "10914442786",
-   "url": "https://www.vinted.fr/items/10914442786-raticate-gem-mt-psa-10",
-   "title": "Raticate gem mt psa 10",
-   "brand": "Pokémon",
+   "id": "10919921826",
+   "url": "https://www.vinted.fr/items/10919921826-zoro-psa-10-manga",
+   "title": "Zoro PSA 10 manga",
+   "brand": "OnePiece",
    "condition": "Neuf avec étiquette",
-   "price": 40.0,
-   "total_price": 42.7,
+   "price": 4000.0,
+   "total_price": 4200.7,
    "currency": "EUR",
    "grade": "10",
    "number": null,
-   "image": "https://images1.vinted.net/t/06_00c3a_RyN8Nu7dN5e1fAMhJinha5Ec/310x430/a43e4410.webp?s=a2e64f74ad65d7b4e824cbd5fc1c8caca067a85a",
+   "image": "https://images1.vinted.net/t/05_01a14_iaPHTQFySquxwkaGmNvfCqYG/310x430/f8092242.webp?s=d511e5a0d5bba0698c76928addee68ea2c3b87e6",
    "psa": {
-    "cert": "158925786",
+    "cert": "95340931",
     "status": "pending"
    }
   },
   {
-   "id": "10914430291",
-   "url": "https://www.vinted.fr/items/10914430291-mew-53108-xy-evolutions-eng-psa-9-pokemon",
-   "title": "Mew 53/108 Xy Evolutions ENG Psa 9 Pokemon",
+   "id": "10919875710",
+   "url": "https://www.vinted.fr/items/10919875710-pokemon-suicune-v-gg38-crown-zenith-ita-psa-9-mint",
+   "title": "Pokémon Suicune V GG38 Crown Zenith ITA – PSA 9 Mint",
    "brand": "Pokémon",
-   "condition": "Très bon état",
-   "price": 199.99,
-   "total_price": 210.69,
+   "condition": "Neuf avec étiquette",
+   "price": 115.0,
+   "total_price": 121.45,
    "currency": "EUR",
    "grade": "9",
-   "number": "53/108",
-   "image": "https://images1.vinted.net/t/02_0240d_F4SG554KkTXucYL9hJxdt57L/310x430/c022eb3c.webp?s=fa1546c4fc71d82e432e221e1be13addeb98981a",
+   "number": null,
+   "image": "https://images1.vinted.net/t/05_0102b_CDx9wasz1kvtHecRig5CdeVz/310x430/c00ae36a.webp?s=f300074e97e32808a748ad3213e8dc143007b353",
    "psa": {
-    "cert": "54862566",
+    "cert": "148942422",
     "status": "pending"
    }
   },
   {
-   "id": "10914422073",
-   "url": "https://www.vinted.fr/items/10914422073-lot-de-pikachu-psa-9",
-   "title": "Lot de pikachu psa 9",
+   "id": "10919870681",
+   "url": "https://www.vinted.fr/items/10919870681-poke-kid-cgc-9-psa-9",
+   "title": "Poké Kid CGC 9 psa 9",
+   "brand": "Pokémon",
+   "condition": "Neuf avec étiquette",
+   "price": 45.0,
+   "total_price": 47.95,
+   "currency": "EUR",
+   "grade": "9",
+   "number": null,
+   "image": "https://images1.vinted.net/t/04_01cc0_LzDbxV1xqLqB6WNnPR5C3R8H/310x430/b6d6efaa.webp?s=947beb41ec8bec36395eb69c9d23feb510a6124b",
+   "psa": {
+    "cert": null,
+    "status": "no_cert"
+   }
+  },
+  {
+   "id": "10919868015",
+   "url": "https://www.vinted.fr/items/10919868015-pokemon-psa-10-dark-alakazam-65-holo-team-rocket-1998-japanese",
+   "title": "Pokemon PSA 10 Dark Alakazam #65 Holo Team Rocket 1998 Japanese",
+   "brand": "Pokémon",
+   "condition": "Neuf avec étiquette",
+   "price": 1200.0,
+   "total_price": 1260.7,
+   "currency": "EUR",
+   "grade": "10",
+   "number": null,
+   "image": "https://images1.vinted.net/t/03_013c6_Jo6bspoV27qCGZcPT9nWR3pq/310x430/37dfc8d2.webp?s=3e968abcac17bed4d00cbe65ea2f6d9ea0c0691d",
+   "psa": {
+    "cert": "42088234",
+    "status": "pending"
+   }
+  },
+  {
+   "id": "10919813466",
+   "url": "https://www.vinted.fr/items/10919813466-pokemon-magikarp-203193-collezione-classica-30deg-anniversario-ita-mint-potenziale-psa-10",
+   "title": "Pokémon Magikarp 203/193 - Collezione Classica 30° Anniversario ITA - Mint / Potenziale PSA 10",
+   "brand": "Pokémon",
+   "condition": "Neuf sans étiquette",
+   "price": 85.0,
+   "total_price": 89.95,
+   "currency": "EUR",
+   "grade": "10",
+   "number": "203/193",
+   "image": "https://images1.vinted.net/t/01_026af_NxT3dsibJNY2L97MY8L1Cy9g/310x430/0cef847d.webp?s=7fdc7d32a3e077776313ad173a9770e2eecc60e1",
+   "psa": {
+    "cert": null,
+    "status": "no_cert"
+   }
+  },
+  {
+   "id": "10919799543",
+   "url": "https://www.vinted.fr/items/10919799543-pikachu-wcs-2023-psa-10",
+   "title": "Pikachu wcs 2023 psa 10",
+   "brand": "Pokémon",
+   "condition": "Neuf sans étiquette",
+   "price": 650.0,
+   "total_price": 683.2,
+   "currency": "EUR",
+   "grade": "10",
+   "number": null,
+   "image": "https://images1.vinted.net/t/06_0115b_RzLcg5z54nhHYCiQyDewBzng/310x430/8fddca75.webp?s=0be25df0ddb89c1b4941f6ca215080bd0ebb3cf3",
+   "psa": {
+    "cert": "143308379",
+    "status": "pending"
+   }
+  },
+  {
+   "id": "10919741756",
+   "url": "https://www.vinted.fr/items/10919741756-2025-pokemon-jpn-pikachu-set-tohoku-hiroshima-fukuoka-260-261-289-psa-10-sequenziali",
+   "title": "2025 Pòkemon JPN | Pikachu Set Tohoku Hiroshima Fukuoka 260 261 289 ~ PSA 10 Sequenziali",
+   "brand": "Pokémon",
+   "condition": "Neuf avec étiquette",
+   "price": 650.0,
+   "total_price": 683.2,
+   "currency": "EUR",
+   "grade": "10",
+   "number": null,
+   "image": "https://images1.vinted.net/t/05_00f1e_3jQTtVoUieLse2bxYjjgwceh/310x430/e8ab09f0.webp?s=ccd82cf8fd1ca48c27b01105d377c27701e3772c",
+   "psa": {
+    "cert": null,
+    "status": "no_cert"
+   }
+  },
+  {
+   "id": "10919704167",
+   "url": "https://www.vinted.fr/items/10919704167-pokemon-glurak-vstar-universe-sar-211-psa-10-gem-mint",
+   "title": "🔥 Pokémon Glurak VSTAR Universe SAR #211 – Psa 10 Gem Mint  🔥",
+   "brand": "Pokémon",
+   "condition": "Neuf sans étiquette",
+   "price": 220.0,
+   "total_price": 231.7,
+   "currency": "EUR",
+   "grade": "10",
+   "number": null,
+   "image": "https://images1.vinted.net/t/06_007ee_em4pGJTqJmSTCX9C3iiuoahQ/310x430/44eca991.webp?s=8145c8dab5197bcc366e06890ff40d2abb09bef8",
+   "psa": {
+    "cert": "157434594",
+    "status": "pending"
+   }
+  },
+  {
+   "id": "10919700253",
+   "url": "https://www.vinted.fr/items/10919700253-carte-one-piece-sanji-op06-119-psa-10",
+   "title": "Carte One Piece Sanji OP06-119 PSA 10",
+   "brand": "OnePiece",
+   "condition": "Neuf avec étiquette",
+   "price": 1050.0,
+   "total_price": 1103.2,
+   "currency": "EUR",
+   "grade": "10",
+   "number": null,
+   "image": "https://images1.vinted.net/t/06_0083e_mPSqjG9hHeuUC2ytZPDJo7CY/310x430/8ef95f94.webp?s=5fcbed47505da484ff54a604431ab9c8b38c7b94",
+   "psa": {
+    "cert": "165119629",
+    "status": "pending"
+   }
+  },
+  {
+   "id": "10919686738",
+   "url": "https://www.vinted.fr/items/10919686738-pikachu-japanese-promo-psa-9",
+   "title": "Pikachu Japanese Promo Psa 9.",
    "brand": "Pokémon",
    "condition": "Très bon état",
    "price": 2000.0,
@@ -1532,214 +1305,1649 @@
    "currency": "EUR",
    "grade": "9",
    "number": null,
-   "image": "https://images1.vinted.net/t/05_0205d_BowgFmqmwEmWTxoxPUXM9BAG/310x430/d241faf0.webp?s=ddf92fee7cc4acdc4261a1428eb4a14134d16f06",
+   "image": "https://images1.vinted.net/t/06_01fe5_WZh4QX4CawKUzChNXwydNCz5/310x430/ae145979.webp?s=b728de68693c758e0a9d857f6bf333e274f2ab93",
    "psa": {
-    "cert": "120451208",
+    "cert": "101535791",
     "status": "pending"
    }
   },
   {
-   "id": "10914368769",
-   "url": "https://www.vinted.fr/items/10914368769-magneton-sv8-112-112106-super-electric-breaker-jap-psa-psa-10-kanda",
-   "title": "Magneton (sv8 112) 112/106 - Super Electric Breaker - Jap - PSA psa 10 - Kanda",
-   "brand": "Pokémon",
-   "condition": "Neuf avec étiquette",
-   "price": 79.99,
-   "total_price": 84.69,
-   "currency": "EUR",
-   "grade": "10",
-   "number": "112/106",
-   "image": "https://images1.vinted.net/t/05_02683_nCyDMxt9t4J2Z3CGbVDPmJrE/310x430/931a950f.webp?s=7398145a14bc50812fcb027056b40055d316b088",
-   "psa": {
-    "cert": "98958671",
-    "status": "pending"
-   }
-  },
-  {
-   "id": "10914251687",
-   "url": "https://www.vinted.fr/items/10914251687-carte-pokemon-rare-aeromite-2964-jungle-fr-2000-wizards-psa-10-gem-mt-neuf",
-   "title": "Carte Pokémon Rare Aéromite 29/64 Jungle FR 2000 Wizards - PSA 10 GEM MT (Neuf)",
-   "brand": "Pokémon",
-   "condition": "Neuf avec étiquette",
-   "price": 219.0,
-   "total_price": 230.65,
-   "currency": "EUR",
-   "grade": "10",
-   "number": "29/64",
-   "image": "https://images1.vinted.net/t/05_01b9b_1ffHCMMzMvFf2rB1J6zxW5po/310x430/d9c731cc.webp?s=5fb06d0f264454d0a4d1f6e5f5e93d9175f8df53",
-   "psa": {
-    "cert": "78687789",
-    "status": "pending"
-   }
-  },
-  {
-   "id": "10914236004",
-   "url": "https://www.vinted.fr/items/10914236004-alakazam-201-psa-9",
-   "title": "Alakazam 201 PSA 9",
-   "brand": "Pokémon",
-   "condition": "Très bon état",
-   "price": 104.9,
-   "total_price": 110.85,
-   "currency": "EUR",
-   "grade": "9",
-   "number": null,
-   "image": "https://images1.vinted.net/t/04_02180_86rMu1aNmuw2Lrj3s4Y6xChS/310x430/0f20d2b5.webp?s=15e3db6d3a3523cd8826c00adbc864fdee919f65",
-   "psa": {
-    "cert": "88572456",
-    "status": "pending"
-   }
-  },
-  {
-   "id": "10914199250",
-   "url": "https://www.vinted.fr/items/10914199250-venomoth-base-set-2-psa-10",
-   "title": "Venomoth Base Set 2 PSA 10",
-   "brand": "Pokémon",
-   "condition": "Très bon état",
-   "price": 299.0,
-   "total_price": 314.65,
-   "currency": "EUR",
-   "grade": "10",
-   "number": null,
-   "image": "https://images1.vinted.net/t/03_0092e_YyRxYRF3NzVCk9wxvvptpg55/310x430/b3706ae4.webp?s=f8a046fca84d67ee58acd379e9650a492743d3f1",
-   "psa": {
-    "cert": "61589323",
-    "status": "pending"
-   }
-  },
-  {
-   "id": "10914191446",
-   "url": "https://www.vinted.fr/items/10914191446-kogas-muk-gym-challenge-psa-10",
-   "title": "Koga's Muk Gym Challenge PSA 10",
-   "brand": "Pokémon",
-   "condition": "Très bon état",
-   "price": 249.0,
-   "total_price": 262.15,
-   "currency": "EUR",
-   "grade": "10",
-   "number": null,
-   "image": "https://images1.vinted.net/t/01_00163_deqLn8EFRE79Y3WPKuLbf5gT/310x430/fca41102.webp?s=e3105236c03303ce4cd5e13d2f767d7f899124b1",
-   "psa": {
-    "cert": "61595100",
-    "status": "pending"
-   }
-  },
-  {
-   "id": "10914175866",
-   "url": "https://www.vinted.fr/items/10914175866-flygon-art-rare-jp-psa-9",
-   "title": "Flygon Art Rare (JP) PSA 9",
+   "id": "10919590249",
+   "url": "https://www.vinted.fr/items/10919590249-regigigas-vstar-zenith-supreme-psa-9",
+   "title": "Regigigas vstar zénith suprême psa 9",
    "brand": "Pokémon",
    "condition": "Neuf sans étiquette",
-   "price": 22.0,
-   "total_price": 23.8,
+   "price": 80.0,
+   "total_price": 84.7,
    "currency": "EUR",
    "grade": "9",
    "number": null,
-   "image": "https://images1.vinted.net/t/04_01390_DJ1H7ejN1X25eG3uE4nBDcom/310x430/8fab856a.webp?s=755ed6f53c98bc2b228834105b1425f6e88053f0",
+   "image": "https://images1.vinted.net/t/05_021c7_9m5VYeNttYGBt2whF1EofRBP/310x430/c0d3fe9b.webp?s=ed5f677556750b9310f08e53d789c904cc6f24d0",
    "psa": {
-    "cert": "141864528",
-    "status": "pending"
+    "cert": null,
+    "status": "no_cert"
    }
   },
   {
-   "id": "10914064179",
-   "url": "https://www.vinted.fr/items/10914064179-pokemon-leafeon-ex-144131-sar-evoluzioni-prismatiche-psa-10-ita",
-   "title": "Pokemon Leafeon EX 144/131 SAR Evoluzioni Prismatiche PSA 10 ITA",
+   "id": "10919577445",
+   "url": "https://www.vinted.fr/items/10919577445-bayleef-28-1st-edition-psa-8-neo-genesis-2000",
+   "title": "Bayleef #28 | 1st Edition PSA 8 | Neo Genesis 2000",
    "brand": "Pokémon",
    "condition": "Très bon état",
-   "price": 650.0,
-   "total_price": 683.2,
+   "price": 49.99,
+   "total_price": 53.19,
    "currency": "EUR",
-   "grade": "10",
-   "number": "144/131",
-   "image": "https://images1.vinted.net/t/05_00dbd_PjRUvzek1YjrvNfBXWhRKCpm/310x430/575b9df2.webp?s=73fd7c6c1da849809da6b172f01e115db79772e8",
+   "grade": "8",
+   "number": null,
+   "image": "https://images1.vinted.net/t/05_00222_1toXCrcppmYoJbynL98kvFQm/310x430/5d3dc915.webp?s=891b8c4edd24d11989be03792234466d7c4b293c",
    "psa": {
-    "cert": "118737038",
+    "cert": null,
+    "status": "no_cert"
+   }
+  },
+  {
+   "id": "10919548536",
+   "url": "https://www.vinted.fr/items/10919548536-chikorita-psa-7-1st-edition-neo-genesis-2000",
+   "title": "Chikorita PSA 7 + 1st Edition | Neo Genesis 2000",
+   "brand": "Pokémon",
+   "condition": "Très bon état",
+   "price": 35.0,
+   "total_price": 37.45,
+   "currency": "EUR",
+   "grade": "7",
+   "number": null,
+   "image": "https://images1.vinted.net/t/05_0269a_4JFkz4RWxj89Zi2y2qLGmQCE/310x430/af98822e.webp?s=7ad5e4d4ba641e0ddf4b9f4af2941d3d1b8e6561",
+   "psa": {
+    "cert": null,
+    "status": "no_cert"
+   }
+  },
+  {
+   "id": "10919546462",
+   "url": "https://www.vinted.fr/items/10919546462-rowlett-090-psa-9",
+   "title": "Rowlett 090 PSA 9",
+   "brand": "Pokémon",
+   "condition": "Neuf sans étiquette",
+   "price": 50.0,
+   "total_price": 53.2,
+   "currency": "EUR",
+   "grade": "9",
+   "number": null,
+   "image": "https://images1.vinted.net/t/04_01232_Jxr1XSx8zSWEueBARRxdot3G/310x430/2862326b.webp?s=8827517a1b4501a74cf42bb8234231d2928ea025",
+   "psa": {
+    "cert": null,
+    "status": "no_cert"
+   }
+  },
+  {
+   "id": "10919518242",
+   "url": "https://www.vinted.fr/items/10919518242-tyrunt-074-psa-9",
+   "title": "Tyrunt 074 PSA 9",
+   "brand": "Pokémon",
+   "condition": "Neuf sans étiquette",
+   "price": 45.0,
+   "total_price": 47.95,
+   "currency": "EUR",
+   "grade": "9",
+   "number": null,
+   "image": "https://images1.vinted.net/t/03_011f3_Ya69opzvp7aM62X8DXfenKjQ/310x430/07b82182.webp?s=4290c1a6833b44a9a365d1f461331df01655673f",
+   "psa": {
+    "cert": null,
+    "status": "no_cert"
+   }
+  },
+  {
+   "id": "10919496547",
+   "url": "https://www.vinted.fr/items/10919496547-talonflame-psa-9-pokemon-perfect-order-2026",
+   "title": "Talonflame PSA 9 | Pokemon Perfect Order 2026",
+   "brand": "Pokémon",
+   "condition": "Très bon état",
+   "price": 32.0,
+   "total_price": 34.3,
+   "currency": "EUR",
+   "grade": "9",
+   "number": null,
+   "image": "https://images1.vinted.net/t/05_002f9_VVMhNQLXdPSnjwqV5aK6D1ZP/310x430/fcf556ad.webp?s=24d6060c3d91a84b866ad9b516e1f2d33f87dd49",
+   "psa": {
+    "cert": null,
+    "status": "no_cert"
+   }
+  },
+  {
+   "id": "10919485790",
+   "url": "https://www.vinted.fr/items/10919485790-pecharunt-psa-9-shrouded-fable-etb-2024",
+   "title": "Pecharunt PSA 9 | Shrouded Fable ETB 2024",
+   "brand": "Pokémon",
+   "condition": "Très bon état",
+   "price": 30.0,
+   "total_price": 32.2,
+   "currency": "EUR",
+   "grade": "9",
+   "number": null,
+   "image": "https://images1.vinted.net/t/02_00ce3_j6adJa16UFcabLVvmsSb4ubP/310x430/40d1dc2d.webp?s=73fe94fcffb36ac2ca207fe7c2491a0786708b4c",
+   "psa": {
+    "cert": null,
+    "status": "no_cert"
+   }
+  },
+  {
+   "id": "10919469050",
+   "url": "https://www.vinted.fr/items/10919469050-zoroark-psa-9-black-star-promo-2022",
+   "title": "Zoroark PSA 9 | Black Star Promo 2022",
+   "brand": "Pokémon",
+   "condition": "Très bon état",
+   "price": 32.0,
+   "total_price": 34.3,
+   "currency": "EUR",
+   "grade": "9",
+   "number": null,
+   "image": "https://images1.vinted.net/t/05_01e9f_dBcgs9ZEaHnNs44ZHfNqXrtx/310x430/ee9b8260.webp?s=a7dce45cfcd8345a0e8c2784b3665925f84b1097",
+   "psa": {
+    "cert": null,
+    "status": "no_cert"
+   }
+  },
+  {
+   "id": "10919425700",
+   "url": "https://www.vinted.fr/items/10919425700-charizard-speciale-delivery-psa-8",
+   "title": "Charizard speciale delivery psa 8",
+   "brand": "Pokémon",
+   "condition": "Très bon état",
+   "price": 320.0,
+   "total_price": 336.7,
+   "currency": "EUR",
+   "grade": "8",
+   "number": null,
+   "image": "https://images1.vinted.net/t/01_0043d_Y3hquUf1EoSwhYzxfhbwjmgX/310x430/961191b6.webp?s=3071b260a8c38e5f043bad14f8d43af7a8bd7334",
+   "psa": {
+    "cert": "180067544",
     "status": "pending"
    }
   },
   {
-   "id": "10914058572",
-   "url": "https://www.vinted.fr/items/10914058572-carta-pokemon-blaines-arcanine-psa-8",
-   "title": "Carta pokemon Blaine's arcanine PSA 8",
+   "id": "10919365098",
+   "url": "https://www.vinted.fr/items/10919365098-victini-208-psa-9",
+   "title": "Victini 208 PSA 9",
+   "brand": "Pokémon",
+   "condition": "Neuf sans étiquette",
+   "price": 45.0,
+   "total_price": 47.95,
+   "currency": "EUR",
+   "grade": "9",
+   "number": null,
+   "image": "https://images1.vinted.net/t/02_0194d_j1MC8jHKMw6xzSaCEzKDenLe/310x430/f0dfdb49.webp?s=35779bc016af8c67ec2b9b444e9729af5e6325ca",
+   "psa": {
+    "cert": null,
+    "status": "no_cert"
+   }
+  },
+  {
+   "id": "10919314587",
+   "url": "https://www.vinted.fr/items/10919314587-pikachu-35-pokemon-evolutions-psa-10",
+   "title": "Pikachu #35 Pokemon Evolutions PSA 10",
+   "brand": "Pokémon",
+   "condition": "Neuf sans étiquette",
+   "price": 175.0,
+   "total_price": 184.45,
+   "currency": "EUR",
+   "grade": "10",
+   "number": null,
+   "image": "https://images1.vinted.net/t/05_01953_GzZYvrTAAaXxg8LGXpQoJgb1/310x430/d4ee937c.webp?s=bc4d5686834478f830f9b8c95ecd792df78010fb",
+   "psa": {
+    "cert": "62686229",
+    "status": "pending"
+   }
+  },
+  {
+   "id": "10919298350",
+   "url": "https://www.vinted.fr/items/10919298350-team-rockets-spidops-187-psa-10",
+   "title": "Team Rocket's Spidops #187 PSA 10",
+   "brand": "Pokémon",
+   "condition": "Neuf sans étiquette",
+   "price": 105.0,
+   "total_price": 110.95,
+   "currency": "EUR",
+   "grade": "10",
+   "number": null,
+   "image": "https://images1.vinted.net/t/02_0022b_DnPXaTD1L3kJPUBtt3VmmCfv/310x430/ed8704db.webp?s=c97524a1c394388953e51d2766e025b940310ec5",
+   "psa": {
+    "cert": "121650096",
+    "status": "pending"
+   }
+  },
+  {
+   "id": "10919294867",
+   "url": "https://www.vinted.fr/items/10919294867-psa-10-ionos-bellibolt-ex-125100-ar-sv9",
+   "title": "PSA 10  Iono’s Bellibolt ex 125/100 AR SV9",
+   "brand": "Pokémon",
+   "condition": "Très bon état",
+   "price": 129.0,
+   "total_price": 136.15,
+   "currency": "EUR",
+   "grade": "10",
+   "number": "125/100",
+   "image": "https://images1.vinted.net/t/02_0002e_oe2w1t6RLDDXuv87BP5rkmXV/310x430/c5a3cb28.webp?s=084469cc69fde2252acc4b7d8e3fd27f457525f3",
+   "psa": {
+    "cert": "123496686",
+    "status": "pending"
+   }
+  },
+  {
+   "id": "10919279672",
+   "url": "https://www.vinted.fr/items/10919279672-pokemon-kaart-raichu-gx-2068-hidden-fates-psa-9-mint",
+   "title": "Pokémon kaart Raichu GX 20/68 – Hidden Fates – PSA 9 Mint",
    "brand": "Pokémon",
    "condition": "Neuf avec étiquette",
+   "price": 35.0,
+   "total_price": 37.45,
+   "currency": "EUR",
+   "grade": "9",
+   "number": "20/68",
+   "image": "https://images1.vinted.net/t/05_02577_5BqbtZByrFYuL7SuJD7KhRYE/310x430/3872ac9e.webp?s=c9b47a387421418c2734ea83febba5ec5e5b93e5",
+   "psa": {
+    "cert": null,
+    "status": "no_cert"
+   }
+  },
+  {
+   "id": "10919266410",
+   "url": "https://www.vinted.fr/items/10919266410-dialga-fan-club-5000-holo-promo-psa-9-pokemon",
+   "title": "Dialga fan club 5.000 holo promo psa 9 pokemon",
+   "brand": "Pokémon",
+   "condition": "Très bon état",
+   "price": 295.0,
+   "total_price": 310.45,
+   "currency": "EUR",
+   "grade": "9",
+   "number": null,
+   "image": "https://images1.vinted.net/t/06_01b19_AyMPAcf7jWcSKEZyk1ECUxzd/310x430/ef3f9228.webp?s=d611657337dbe49a751e1563fe6122b9f0afb00b",
+   "psa": {
+    "cert": "141937213",
+    "status": "pending"
+   }
+  },
+  {
+   "id": "10919256087",
+   "url": "https://www.vinted.fr/items/10919256087-coppia-psa-9",
+   "title": "Coppia psa 9",
+   "brand": "Pokémon",
+   "condition": "Très bon état",
+   "price": 1600.0,
+   "total_price": 1680.7,
+   "currency": "EUR",
+   "grade": "9",
+   "number": null,
+   "image": "https://images1.vinted.net/t/05_0052f_tpQsYVmsnJKkXeVykB5WLQpa/310x430/cb548300.webp?s=6ddb0eeb3b6ae7fb97b0429641b90b153ea87cdf",
+   "psa": {
+    "cert": null,
+    "status": "no_cert"
+   }
+  },
+  {
+   "id": "10919249723",
+   "url": "https://www.vinted.fr/items/10919249723-mewtwo-ex-battle-boost-psa-10-prima-edizione",
+   "title": "Mewtwo ex battle boost psa 10 prima edizione",
+   "brand": "Pokémon",
+   "condition": "Très bon état",
+   "price": 400.0,
+   "total_price": 420.7,
+   "currency": "EUR",
+   "grade": "10",
+   "number": null,
+   "image": "https://images1.vinted.net/t/06_0016a_brUdp4BJzMWSayKEukBXwMco/310x430/0e5f5a16.webp?s=d255b26b611be2115013f00f5e3b9a63d86abc07",
+   "psa": {
+    "cert": "84465408",
+    "status": "pending"
+   }
+  },
+  {
+   "id": "10919240406",
+   "url": "https://www.vinted.fr/items/10919240406-carte-pokemon-mewtwo-gx-76-psa-10",
+   "title": "Carte Pokémon mewtwo gx #76 PSA 10",
+   "brand": "Pokémon",
+   "condition": "Très bon état",
+   "price": 500.0,
+   "total_price": 525.7,
+   "currency": "EUR",
+   "grade": "10",
+   "number": null,
+   "image": "https://images1.vinted.net/t/05_00162_H8tf1juijgmh6uM6TjY9KPN1/310x430/95c74acf.webp?s=9bf5a2eafacdf3bcb52f547c64d5fb1fae4d0b26",
+   "psa": {
+    "cert": null,
+    "status": "no_cert"
+   }
+  },
+  {
+   "id": "10919223455",
+   "url": "https://www.vinted.fr/items/10919223455-glaceon-psa-10-jap-paris-only",
+   "title": "Glaceon PSA 10 jap Paris only",
+   "brand": "Pokémon",
+   "condition": "Neuf avec étiquette",
+   "price": 120.0,
+   "total_price": 126.7,
+   "currency": "EUR",
+   "grade": "10",
+   "number": null,
+   "image": "https://images1.vinted.net/t/05_021ce_nq8twxEHqb7HpxZyRqptVDhA/310x430/ee15bbca.webp?s=e6230128a79614c81664b454d202a9cc49e851a1",
+   "psa": {
+    "cert": null,
+    "status": "no_cert"
+   }
+  },
+  {
+   "id": "10919205335",
+   "url": "https://www.vinted.fr/items/10919205335-echange-scelle-pokemon-fr-contre-psa-10-jap",
+   "title": "Échange scellé Pokémon FR contre PSA 10 JAP",
+   "brand": "Pokémon",
+   "condition": "Neuf avec étiquette",
+   "price": 1800.0,
+   "total_price": 1890.7,
+   "currency": "EUR",
+   "grade": "10",
+   "number": null,
+   "image": "https://images1.vinted.net/t/04_01fd5_t592diToJdXoSnG343E5HY3o/310x430/369528f2.webp?s=852d1093f96df300490f34b5e4a33b92aa081368",
+   "psa": {
+    "cert": null,
+    "status": "no_cert"
+   }
+  },
+  {
+   "id": "10919200570",
+   "url": "https://www.vinted.fr/items/10919200570-psa-7-latios-2004-pokemon-advanced-action-cards-lenticular-rarissima",
+   "title": "PSA 7 LATIOS 2004 Pokémon Advanced Action Cards Lenticular rarissima",
+   "brand": "Pokémon",
+   "condition": "Très bon état",
+   "price": 90.0,
+   "total_price": 95.2,
+   "currency": "EUR",
+   "grade": "7",
+   "number": null,
+   "image": "https://images1.vinted.net/t/06_017b7_nLfxv3N1iy9HKWGzUxdgghBq/310x430/e0b30fa9.webp?s=474a9cb07e2b5c5b9746ec7779c0386ca87d090c",
+   "psa": {
+    "cert": "109947316",
+    "status": "pending"
+   }
+  },
+  {
+   "id": "10919163010",
+   "url": "https://www.vinted.fr/items/10919163010-metagross-psa-10-jap",
+   "title": "Metagross PSA 10 Jap",
+   "brand": "Pokémon",
+   "condition": "Neuf avec étiquette",
+   "price": 90.0,
+   "total_price": 95.2,
+   "currency": "EUR",
+   "grade": "10",
+   "number": null,
+   "image": "https://images1.vinted.net/t/05_01d23_Ekieo8cVc9bwe2RWZzb7J5es/310x430/4e690210.webp?s=95c27befb8899c08a28ec1edd76f0b7cedb5aa80",
+   "psa": {
+    "cert": null,
+    "status": "no_cert"
+   }
+  },
+  {
+   "id": "10919134370",
+   "url": "https://www.vinted.fr/items/10919134370-absol-psa-10-paris-only",
+   "title": "Absol PSA 10 Paris only",
+   "brand": "Pokémon",
+   "condition": "Neuf avec étiquette",
+   "price": 75.0,
+   "total_price": 79.45,
+   "currency": "EUR",
+   "grade": "10",
+   "number": null,
+   "image": "https://images1.vinted.net/t/05_00769_6g38xXNqCrK5ypy4CDqmRnpV/310x430/6fd94f7c.webp?s=cd33158ae52cb2bcfb0018ac19548f644f074c6f",
+   "psa": {
+    "cert": null,
+    "status": "no_cert"
+   }
+  },
+  {
+   "id": "10919113282",
+   "url": "https://www.vinted.fr/items/10919113282-supporti-carte-gradate-psa",
+   "title": "Supporti carte gradate PSA",
+   "brand": "Pokémon",
+   "condition": "Très bon état",
+   "price": 12.0,
+   "total_price": 13.3,
+   "currency": "EUR",
+   "grade": null,
+   "number": null,
+   "image": "https://images1.vinted.net/t/06_005cd_NKJvnZE2dPSjM7rcHUPUjDF8/310x430/f206c65e.webp?s=7991da00fd8112eeb254fbada2d94bcd0d3ebe4b",
+   "psa": {
+    "cert": null,
+    "status": "no_cert"
+   }
+  },
+  {
+   "id": "10919092730",
+   "url": "https://www.vinted.fr/items/10919092730-psa-9-here-comes-team-rocket-113108-secret-rare-pokemon-xy-evolutions",
+   "title": "PSA 9 Here Comes Team Rocket! #113/108 Secret Rare - Pokémon XY Evolutions",
+   "brand": "Pokémon",
+   "condition": "Neuf avec étiquette",
+   "price": 30.0,
+   "total_price": 32.2,
+   "currency": "EUR",
+   "grade": "9",
+   "number": "113/108",
+   "image": "https://images1.vinted.net/t/04_00464_rjDc6SQU5srHqgaAQWZshsLQ/310x430/d11020ed.webp?s=5eeec3d07d7616b5fcb48bddb7e7651e786302e0",
+   "psa": {
+    "cert": null,
+    "status": "no_cert"
+   }
+  },
+  {
+   "id": "10919047436",
+   "url": "https://www.vinted.fr/items/10919047436-dark-dragonite-holo-15-psa-7",
+   "title": "Dark dragonite - holo 15 psa 7",
+   "brand": "Pokémon",
+   "condition": "Très bon état",
+   "price": 675.0,
+   "total_price": 709.45,
+   "currency": "EUR",
+   "grade": "7",
+   "number": null,
+   "image": "https://images1.vinted.net/t/04_0214d_Y8Faf55dGPAcpMkYBLkQ8hXP/310x430/31323013.webp?s=dad4a06077e88123447e871c07405935ce783de0",
+   "psa": {
+    "cert": "170958313",
+    "status": "pending"
+   }
+  },
+  {
+   "id": "10919016998",
+   "url": "https://www.vinted.fr/items/10919016998-psa-8-zapdos-ex-192165-ultra-rare-pokemon-151-full-art",
+   "title": "PSA 8 Zapdos ex #192/165 Ultra Rare - Pokémon 151 (Full Art)",
+   "brand": "Pokémon",
+   "condition": "Neuf avec étiquette",
+   "price": 47.5,
+   "total_price": 50.58,
+   "currency": "EUR",
+   "grade": "8",
+   "number": "192/165",
+   "image": "https://images1.vinted.net/t/03_01cdd_sWRNcAowApix2jAh23KsxyBf/310x430/146a00d6.webp?s=f900f32ecbd8941ba12785ac6dfcb84cee4d1d2b",
+   "psa": {
+    "cert": null,
+    "status": "no_cert"
+   }
+  },
+  {
+   "id": "10918960634",
+   "url": "https://www.vinted.fr/items/10918960634-mew-ex-psa-9-2013-shiny-024020-sr-1st-ed-pokemon-japanese-mint",
+   "title": "Mew EX PSA 9 2013 Shiny 024/020 SR 1st ED Pokemon Japanese MINT",
+   "brand": "Pokémon",
+   "condition": "Très bon état",
+   "price": 1849.9,
+   "total_price": 1943.1,
+   "currency": "EUR",
+   "grade": "9",
+   "number": "024/020",
+   "image": "https://images1.vinted.net/t/02_0019e_kQnqrYT3FaurkNVspY3MAYjC/310x430/f2285304.webp?s=7c913b502948b231b18439701cae1112411e7642",
+   "psa": {
+    "cert": "92149945",
+    "status": "pending"
+   }
+  },
+  {
+   "id": "10918941884",
+   "url": "https://www.vinted.fr/items/10918941884-psa-10",
+   "title": "PSA 10",
+   "brand": "Pokémon",
+   "condition": "Neuf avec étiquette",
+   "price": 82.0,
+   "total_price": 86.8,
+   "currency": "EUR",
+   "grade": "10",
+   "number": null,
+   "image": "https://images1.vinted.net/t/06_00dbd_Wk37ksqmoQMuHVQA8PCerxTg/310x430/fc377a73.webp?s=7a71de33d2651f52d71b0dc425af71afb4a480e7",
+   "psa": {
+    "cert": null,
+    "status": "no_cert"
+   }
+  },
+  {
+   "id": "10918863816",
+   "url": "https://www.vinted.fr/items/10918863816-sylveroy-cavalier-deffroi-alt-psa-10",
+   "title": "Sylveroy Cavalier d'Effroi Alt PSA 10",
+   "brand": "Pokémon",
+   "condition": "Neuf avec étiquette",
+   "price": 380.0,
+   "total_price": 399.7,
+   "currency": "EUR",
+   "grade": "10",
+   "number": null,
+   "image": "https://images1.vinted.net/t/05_01dab_DV38MzvzKAGLEgNfeAnxwhr4/310x430/0679217d.webp?s=758d59125cd4235dded150307a4bd48315b0eab7",
+   "psa": {
+    "cert": "71132034",
+    "status": "pending"
+   }
+  },
+  {
+   "id": "10918773806",
+   "url": "https://www.vinted.fr/items/10918773806-raichu-211-psa-9-ita",
+   "title": "Raichu 211 PSA 9 ITA",
+   "brand": "Pokémon",
+   "condition": "Neuf sans étiquette",
+   "price": 80.0,
+   "total_price": 84.7,
+   "currency": "EUR",
+   "grade": "9",
+   "number": null,
+   "image": "https://images1.vinted.net/t/06_01ca5_2Gcsdh7gLekcroW3wiiBrB3X/310x430/fad8d611.webp?s=e20ebc1efde03f3d836bbea7920c3ca79f2ec5c6",
+   "psa": {
+    "cert": null,
+    "status": "no_cert"
+   }
+  },
+  {
+   "id": "10918734505",
+   "url": "https://www.vinted.fr/items/10918734505-yveltal-071-psa-19-jap",
+   "title": "Yveltal 071 PSA 19 JAP",
+   "brand": "Pokémon",
+   "condition": "Neuf avec étiquette",
+   "price": 75.0,
+   "total_price": 79.45,
+   "currency": "EUR",
+   "grade": "1",
+   "number": null,
+   "image": "https://images1.vinted.net/t/06_021b6_67yn49EdC6HMG1aUf7BLJGxr/310x430/375cfd0d.webp?s=98010e3e6021962731933d5ce9af15436c6b899f",
+   "psa": {
+    "cert": null,
+    "status": "no_cert"
+   }
+  },
+  {
+   "id": "10918718615",
+   "url": "https://www.vinted.fr/items/10918718615-pikachu-promo-psa",
+   "title": "Pikachu promo PSA",
+   "brand": "Pokémon",
+   "condition": "Neuf sans étiquette",
+   "price": 140.0,
+   "total_price": 147.7,
+   "currency": "EUR",
+   "grade": null,
+   "number": null,
+   "image": "https://images1.vinted.net/t/06_00e43_vG7LL8Zi6SRJozevxkjUm5dU/310x430/b5da0b7f.webp?s=f8531fe914dbd37d3b46edaface63359dd98c32e",
+   "psa": {
+    "cert": "164818057",
+    "status": "pending"
+   }
+  },
+  {
+   "id": "10918713300",
+   "url": "https://www.vinted.fr/items/10918713300-triopikeur-19102-psa-9",
+   "title": "Triopikeur 19/102 PSA 9",
+   "brand": "Pokémon",
+   "condition": "Neuf sans étiquette",
+   "price": 60.0,
+   "total_price": 63.7,
+   "currency": "EUR",
+   "grade": "9",
+   "number": "19/102",
+   "image": "https://images1.vinted.net/t/02_00547_3SMs5R8Qnr1Ciu5ZNBTrwDKy/310x430/336bfdf4.webp?s=69bdddf67489d7a21f3601aad5900d790673e06f",
+   "psa": {
+    "cert": null,
+    "status": "no_cert"
+   }
+  },
+  {
+   "id": "10918702979",
+   "url": "https://www.vinted.fr/items/10918702979-taupiqueur-47102-psa-10",
+   "title": "Taupiqueur 47/102 PSA 10",
+   "brand": "Pokémon",
+   "condition": "Neuf sans étiquette",
+   "price": 80.0,
+   "total_price": 84.7,
+   "currency": "EUR",
+   "grade": "10",
+   "number": "47/102",
+   "image": "https://images1.vinted.net/t/05_02313_cm36WS3eDMuFEZb1ssNeL9qg/310x430/337df947.webp?s=70944019513149039ec82a1e81f86752af745f31",
+   "psa": {
+    "cert": null,
+    "status": "no_cert"
+   }
+  },
+  {
+   "id": "10918698380",
+   "url": "https://www.vinted.fr/items/10918698380-dracaufeu-psa",
+   "title": "Dracaufeu PSA",
+   "brand": "Pokémon",
+   "condition": "Neuf sans étiquette",
+   "price": 120.0,
+   "total_price": 126.7,
+   "currency": "EUR",
+   "grade": null,
+   "number": null,
+   "image": "https://images1.vinted.net/t/01_00635_8PYw6XEKgAnYPJWzkoiZjseS/310x430/31a43ad7.webp?s=82943026eb0410a0e638cdeef65ce40f546b68fc",
+   "psa": {
+    "cert": "164818061",
+    "status": "pending"
+   }
+  },
+  {
+   "id": "10918653866",
+   "url": "https://www.vinted.fr/items/10918653866-psyduck-promo-20-psa-9",
+   "title": "Psyduck promo 20 PSA 9",
+   "brand": "Pokémon",
+   "condition": "Neuf sans étiquette",
+   "price": 300.0,
+   "total_price": 315.7,
+   "currency": "EUR",
+   "grade": "9",
+   "number": null,
+   "image": "https://images1.vinted.net/t/06_00a89_VTJUnj6ZN8niQuf2crtEb7GW/310x430/fd9d6751.webp?s=38df8cf4f62c8e11a3aadc2764292c6379908687",
+   "psa": {
+    "cert": "154058146",
+    "status": "pending"
+   }
+  },
+  {
+   "id": "10918601098",
+   "url": "https://www.vinted.fr/items/10918601098-pokemon-charizard-ex-223197-psa-9",
+   "title": "Pokémon Charizard EX 223/197, PSA 9",
+   "brand": "Pokémon",
+   "condition": "Neuf avec étiquette",
+   "price": 300.0,
+   "total_price": 315.7,
+   "currency": "EUR",
+   "grade": "9",
+   "number": "223/197",
+   "image": "https://images1.vinted.net/t/06_01703_JaUNVSZJSdJFaHUGwq5YhLN3/310x430/2d2490b1.webp?s=658c1d659f72f072b21b41adf11f312249149e3b",
+   "psa": {
+    "cert": "109593750",
+    "status": "pending"
+   }
+  },
+  {
+   "id": "10918594603",
+   "url": "https://www.vinted.fr/items/10918594603-dracaufeu-niv-x-143147-psa-6",
+   "title": "Dracaufeu niv X 143/147 PSA 6",
+   "brand": "Pokémon",
+   "condition": "Neuf sans étiquette",
+   "price": 275.0,
+   "total_price": 289.45,
+   "currency": "EUR",
+   "grade": "6",
+   "number": "143/147",
+   "image": "https://images1.vinted.net/t/06_0169c_eu8GkCvJE8SFaCAo4vk7zXhX/310x430/bbb8637e.webp?s=bda5971a9af52b17067b2d54c2eb85ac64d96cc6",
+   "psa": {
+    "cert": "71132050",
+    "subject": "DRACAUFEU G NIV.X",
+    "grade": "EX-MT 6",
+    "grade_num": 6,
+    "year": "2010",
+    "card_number": "143",
+    "category": "TCG Cards",
+    "confidence": null,
+    "pop": 13,
+    "pop_higher": 59,
+    "pop_url": "https://www.psacard.com/pop/tcg-cards/2010/pokemon-french-platinum-supreme-victors/236822",
+    "sales": null,
+    "sales_months": null,
+    "status": "no_estimate"
+   }
+  },
+  {
+   "id": "10918527453",
+   "url": "https://www.vinted.fr/items/10918527453-gem-pack-volume-2-cbb2c-umbreon-06-1515-psa-10-simplified-chinese",
+   "title": "Gem Pack Volume 2 - CBB2C - Umbreon 06 15/15 PSA 10 - Simplified Chinese",
+   "brand": "Pokémon",
+   "condition": "Très bon état",
+   "price": 160.0,
+   "total_price": 168.7,
+   "currency": "EUR",
+   "grade": "10",
+   "number": "15/15",
+   "image": "https://images1.vinted.net/t/05_004ac_56GH3MwzLfkorfPWVW4G2vzH/310x430/53586a1f.webp?s=62c70a527cfc3607f3cee0d2b4d3f5ec4d72ed09",
+   "psa": {
+    "cert": "168166486",
+    "status": "pending"
+   }
+  },
+  {
+   "id": "10918518679",
+   "url": "https://www.vinted.fr/items/10918518679-carte-pokemon-alcremie-vmax-086076-psa-95",
+   "title": "Carte Pokémon Alcremie VMAX 086/076 PSA 9.5",
+   "brand": "Pokémon",
+   "condition": "Neuf sans étiquette",
+   "price": 12.0,
+   "total_price": 13.3,
+   "currency": "EUR",
+   "grade": "9",
+   "number": "086/076",
+   "image": "https://images1.vinted.net/t/01_00e66_bJcamLwemBDGhma2PyEgTEj2/310x430/b9d013b1.webp?s=4a0eb4303d1505d698920cd2e9cb359aee9cec8d",
+   "psa": {
+    "cert": null,
+    "status": "no_cert"
+   }
+  },
+  {
+   "id": "10918447399",
+   "url": "https://www.vinted.fr/items/10918447399-mega-dragonite-ex-sar-246193-m2a-jp-psa-10-gem-mint-pokemon",
+   "title": "Mega Dragonite ex SAR 246/193 M2a JP - PSA 10 Gem Mint Pokémon",
+   "brand": "Pokémon",
+   "condition": "Très bon état",
+   "price": 230.0,
+   "total_price": 242.2,
+   "currency": "EUR",
+   "grade": "10",
+   "number": "246/193",
+   "image": "https://images1.vinted.net/t/06_00181_fffQ1Ms3gshaB3rdwNYfnGGc/310x430/33d2a066.webp?s=7ff5f0734c3a2db22b55b1bc21b1486068345395",
+   "psa": {
+    "cert": "154734193",
+    "status": "pending"
+   }
+  },
+  {
+   "id": "10918441939",
+   "url": "https://www.vinted.fr/items/10918441939-mr-mime-043092-town-on-no-map-2002-1st-edition-psa-10-japanese",
+   "title": "Mr. Mime 043/092 – Town on No Map 2002 – 1st Edition – PSA 10 – Japanese",
+   "brand": "Pokémon",
+   "condition": "Très bon état",
+   "price": 450.0,
+   "total_price": 473.2,
+   "currency": "EUR",
+   "grade": "10",
+   "number": "043/092",
+   "image": "https://images1.vinted.net/t/02_00e73_noyhoj44g9GC1dBYewsKagNK/310x430/d91fc7a7.webp?s=d2b1fae1fc79d6a017931268d5acfc2b91ec1f2b",
+   "psa": {
+    "cert": null,
+    "status": "no_cert"
+   }
+  },
+  {
+   "id": "10918416427",
+   "url": "https://www.vinted.fr/items/10918416427-pokemon-greninja-2024-106-psa-kaart",
+   "title": "Pokémon Greninja 2024 #106 PSA kaart",
+   "brand": "Pokémon",
+   "condition": "Très bon état",
+   "price": 108.0,
+   "total_price": 114.1,
+   "currency": "EUR",
+   "grade": null,
+   "number": null,
+   "image": "https://images1.vinted.net/t/01_01330_bxKJJGhoQKHg8zXjiMfWdb9J/310x430/216d9f2a.webp?s=087880e0828f78e36e8311bf1306079dcd24d083",
+   "psa": {
+    "cert": "177713451",
+    "status": "pending"
+   }
+  },
+  {
+   "id": "10918409184",
+   "url": "https://www.vinted.fr/items/10918409184-sylveon-gx-073-gx-battle-boost-2017-japanese-psa-10",
+   "title": "Sylveon GX 073 - GX Battle Boost 2017 - Japanese - PSA 10",
+   "brand": "Pokémon",
+   "condition": "Très bon état",
+   "price": 190.0,
+   "total_price": 200.2,
+   "currency": "EUR",
+   "grade": "10",
+   "number": null,
+   "image": "https://images1.vinted.net/t/01_009f2_GhzkaTnVPDUvD1TtWHiPt2za/310x430/f5a59bda.webp?s=c6b40b3c3b0275b791320889618110125f1c14d1",
+   "psa": {
+    "cert": null,
+    "status": "no_cert"
+   }
+  },
+  {
+   "id": "10918375470",
+   "url": "https://www.vinted.fr/items/10918375470-houndoom-holo-864-neo-revelation-2001-psa-7-english",
+   "title": "Houndoom Holo 8/64 – Neo Revelation 2001 – PSA 7 – English",
+   "brand": "Pokémon",
+   "condition": "Très bon état",
+   "price": 525.0,
+   "total_price": 551.95,
+   "currency": "EUR",
+   "grade": "7",
+   "number": "8/64",
+   "image": "https://images1.vinted.net/t/04_0198b_zFvhXcxUFbdeBd9KXaLoCBj6/310x430/3291f908.webp?s=016e345fcc8fc97e917a7adca72457d040382191",
+   "psa": {
+    "cert": null,
+    "status": "no_cert"
+   }
+  },
+  {
+   "id": "10918331965",
+   "url": "https://www.vinted.fr/items/10918331965-psa-10-lugia-v-alt-art-cs6ac-146-sr-pokemon",
+   "title": "PSA 10 Lugia V Alt Art CS6aC 146 SR Pokemon",
+   "brand": "Pokémon",
+   "condition": "Très bon état",
+   "price": 450.0,
+   "total_price": 473.2,
+   "currency": "EUR",
+   "grade": "10",
+   "number": null,
+   "image": "https://images1.vinted.net/t/05_0102f_j6AsQaFSgGnNvoYKmHLBfWZ3/310x430/9529c1fb.webp?s=6eed2c01d704657ff4e458b17139d3bebac16ff4",
+   "psa": {
+    "cert": null,
+    "status": "no_cert"
+   }
+  },
+  {
+   "id": "10918318343",
+   "url": "https://www.vinted.fr/items/10918318343-pokemon-milotic-ex-004015-psa-3",
+   "title": "Pokemon Milotic ex 004/015 PSA 3",
+   "brand": "Pokémon",
+   "condition": "Neuf sans étiquette",
+   "price": 85.0,
+   "total_price": 89.95,
+   "currency": "EUR",
+   "grade": "3",
+   "number": "004/015",
+   "image": "https://images1.vinted.net/t/04_01558_XhRfnc3qDRno1NBB7hSemESR/310x430/6329d8de.webp?s=e04b7972cd22d98e1a99044f2b82dc7895710789",
+   "psa": {
+    "cert": "178947217",
+    "status": "pending"
+   }
+  },
+  {
+   "id": "10918316401",
+   "url": "https://www.vinted.fr/items/10918316401-bulbasaur-clf-001032-jp-psa-10",
+   "title": "Bulbasaur CLF 001/032 JP PSA 10",
+   "brand": "Pokémon",
+   "condition": "Neuf sans étiquette",
+   "price": 80.0,
+   "total_price": 84.7,
+   "currency": "EUR",
+   "grade": "10",
+   "number": "001/032",
+   "image": "https://images1.vinted.net/t/01_00954_Cipb7Te4sLWtBtYYpqF18YjW/310x430/ac045283.webp?s=a3d824e6ab8d5ed0c416e6e3b9d3d895ce0673cc",
+   "psa": {
+    "cert": null,
+    "status": "no_cert"
+   }
+  },
+  {
+   "id": "10918315545",
+   "url": "https://www.vinted.fr/items/10918315545-psa-4-giovanni-team-rocket-promo-coffe-boss-270sv-p",
+   "title": "PSA 4 Giovanni Team Rocket Promo Coffe BOSS 270/SV-P",
+   "brand": "Pokémon",
+   "condition": "Neuf avec étiquette",
+   "price": 50.0,
+   "total_price": 53.2,
+   "currency": "EUR",
+   "grade": "4",
+   "number": "270/SV-P",
+   "image": "https://images1.vinted.net/t/05_01791_73ZZcNK9AnSztxdsnksPxzj9/310x430/bf1450e2.webp?s=8653f5b24c5eddb721225c676d99bac7d447f166",
+   "psa": {
+    "cert": null,
+    "status": "no_cert"
+   }
+  },
+  {
+   "id": "10918309429",
+   "url": "https://www.vinted.fr/items/10918309429-zekrom-psa-10-pokemon",
+   "title": "Zekrom psa 10 pokemon",
+   "brand": "Pokémon",
+   "condition": "Très bon état",
+   "price": 56.0,
+   "total_price": 59.5,
+   "currency": "EUR",
+   "grade": "10",
+   "number": null,
+   "image": "https://images1.vinted.net/t/05_001b9_ciE93BLR2dMR47LMdC5JiSgJ/310x430/56732cb4.webp?s=391633072d384fd38a571134e54dc32c89d88319",
+   "psa": {
+    "cert": null,
+    "status": "no_cert"
+   }
+  },
+  {
+   "id": "10918306540",
+   "url": "https://www.vinted.fr/items/10918306540-pokemon-gengar-psa-10-030707-cbb3-2025",
+   "title": "Pokémon gengar psa 10 0307/07 cbb3 2025",
+   "brand": "Pokémon",
+   "condition": "Neuf avec étiquette",
+   "price": 350.0,
+   "total_price": 368.2,
+   "currency": "EUR",
+   "grade": "10",
+   "number": null,
+   "image": "https://images1.vinted.net/t/04_01689_VbCti7T2FKeXPSv1T3F5YCQj/310x430/f82e20ea.webp?s=1096db17fb185bf9f3180f7ead31af1e2b8e4ecd",
+   "psa": {
+    "cert": "142121898",
+    "status": "pending"
+   }
+  },
+  {
+   "id": "10918297301",
+   "url": "https://www.vinted.fr/items/10918297301-ho-oh-legend-psa-9-1-edizione",
+   "title": "Ho oh legend psa 9 1 edizione",
+   "brand": "Pokémon",
+   "condition": "Très bon état",
+   "price": 900.0,
+   "total_price": 945.7,
+   "currency": "EUR",
+   "grade": "9",
+   "number": null,
+   "image": "https://images1.vinted.net/t/04_01077_7q599iiN6cdvq7mDLAgj3BYm/310x430/f6970109.webp?s=232aaaf06ccb99a8ad922824219043af88df82d7",
+   "psa": {
+    "cert": "97914583",
+    "status": "pending"
+   }
+  },
+  {
+   "id": "10918287146",
+   "url": "https://www.vinted.fr/items/10918287146-pokemon-eevee-173-prismatic-evolutions-psa-10",
+   "title": "💎 Pokémon Eevee 173 – Prismatic Evolutions – PSA 10",
+   "brand": "Pokémon",
+   "condition": "Neuf sans étiquette",
+   "price": 135.0,
+   "total_price": 142.45,
+   "currency": "EUR",
+   "grade": "10",
+   "number": null,
+   "image": "https://images1.vinted.net/t/02_01815_Wv84zyQboBQhLnerwFzs3wo1/310x430/37effa4b.webp?s=2c08845c855d5cbde5843a183d73ae635963bd6c",
+   "psa": {
+    "cert": "171453904",
+    "status": "pending"
+   }
+  },
+  {
+   "id": "10918285716",
+   "url": "https://www.vinted.fr/items/10918285716-giratina-v-150131-set-pokemon-2024-cs6b-cs-super-rare-psa-10",
+   "title": "Giratina V 150/131-Set Pokémon 2024 CS6b CS-Super Rare-PSA 10",
+   "brand": "Pokémon",
+   "condition": "Très bon état",
+   "price": 520.0,
+   "total_price": 546.7,
+   "currency": "EUR",
+   "grade": "10",
+   "number": "150/131-",
+   "image": "https://images1.vinted.net/t/05_02286_RrBXv9SnKiynque2YJHQ1d46/310x430/52dad10e.webp?s=145f65afacbbfdd0626792ea9f94f673fd04e9c5",
+   "psa": {
+    "cert": null,
+    "status": "no_cert"
+   }
+  },
+  {
+   "id": "10918263767",
+   "url": "https://www.vinted.fr/items/10918263767-psa-9-mega-charizard-x",
+   "title": "Psa 9 Mega charizard X",
+   "brand": "Pokémon",
+   "condition": "Neuf sans étiquette",
+   "price": 79.95,
+   "total_price": 84.65,
+   "currency": "EUR",
+   "grade": "9",
+   "number": null,
+   "image": "https://images1.vinted.net/t/05_00f6e_Xu4FtwXf3DB4wqfGse2qYjNV/310x430/40a4ae48.webp?s=103d893a2b3e04f9f5a0cb728167cff967dd9eef",
+   "psa": {
+    "cert": null,
+    "status": "no_cert"
+   }
+  },
+  {
+   "id": "10918254213",
+   "url": "https://www.vinted.fr/items/10918254213-miaouss-ar-psa-10",
+   "title": "Miaouss AR PSA 10",
+   "brand": "Pokémon",
+   "condition": "Neuf avec étiquette",
+   "price": 180.0,
+   "total_price": 189.7,
+   "currency": "EUR",
+   "grade": "10",
+   "number": null,
+   "image": "https://images1.vinted.net/t/03_0190e_PCUGTuVwjtBxcuyTnPKsdymx/310x430/5047d544.webp?s=57f46bc3f8550b49e397cd05ae926833e72e1edb",
+   "psa": {
+    "cert": "152833109",
+    "status": "pending"
+   }
+  },
+  {
+   "id": "10918244719",
+   "url": "https://www.vinted.fr/items/10918244719-noadkoko-dalola-psa-10-089-sv7a",
+   "title": "Noadkoko d'Alola psa 10 089 sv7a",
+   "brand": "Pokémon",
+   "condition": "Neuf sans étiquette",
+   "price": 80.0,
+   "total_price": 84.7,
+   "currency": "EUR",
+   "grade": "10",
+   "number": null,
+   "image": "https://images1.vinted.net/t/05_007f0_2ZyDpxdzRjMK3w61GJMdzs1N/310x430/f39299ee.webp?s=03ec61c97ffc6cc7813966386e47284d8dd6201b",
+   "psa": {
+    "cert": null,
+    "status": "no_cert"
+   }
+  },
+  {
+   "id": "10918228307",
+   "url": "https://www.vinted.fr/items/10918228307-leggere-descrizione-pop-5-espeon-deoxys-gx-tag-team-ita-psa-10",
+   "title": "!Leggere Descrizione! (POP 5) Espeon & Deoxys GX tag team ita Psa 10",
+   "brand": "Pokémon",
+   "condition": "Neuf avec étiquette",
+   "price": 2290.0,
+   "total_price": 2405.2,
+   "currency": "EUR",
+   "grade": "10",
+   "number": null,
+   "image": "https://images1.vinted.net/t/04_0071c_oVPwvHTCxipXgsHDzMFEkN4y/310x430/29f8aded.webp?s=9b8c6cd3aa7a18d5729b99b4ff4e11be98e52487",
+   "psa": {
+    "cert": "117934270",
+    "status": "pending"
+   }
+  },
+  {
+   "id": "10918212936",
+   "url": "https://www.vinted.fr/items/10918212936-lot-dracaufeu-vstar-et-mewtwo-vstar-charizard-vstar-mewtwo-vstar-psa-10-s12a",
+   "title": "Lot Dracaufeu vstar et Mewtwo vstar / Charizard vstar & Mewtwo vstar PSA 10 s12a",
+   "brand": "Pokémon",
+   "condition": "Neuf sans étiquette",
+   "price": 500.0,
+   "total_price": 525.7,
+   "currency": "EUR",
+   "grade": "10",
+   "number": null,
+   "image": "https://images1.vinted.net/t/01_01ac7_YVW9hmKNJ4TLAinQJMuLMr8f/310x430/85910e8e.webp?s=07b004de5db4250cc9b37f4910c48136b5d79607",
+   "psa": {
+    "cert": null,
+    "status": "no_cert"
+   }
+  },
+  {
+   "id": "10918195996",
+   "url": "https://www.vinted.fr/items/10918195996-mega-ectoplasma-ex-mega-gengar-ex-240193-psa-10-m2a-mega-dream-ex-japanese",
+   "title": "Méga-Ectoplasma-ex / Mega Gengar ex 240/193 PSA 10 M2a MEGA Dream ex Japanese",
+   "brand": "Pokémon",
+   "condition": "Neuf sans étiquette",
+   "price": 490.0,
+   "total_price": 515.2,
+   "currency": "EUR",
+   "grade": "10",
+   "number": "240/193",
+   "image": "https://images1.vinted.net/t/05_025f9_v3DKQ9QvoGoyghmLUKsreomi/310x430/1e1c8cef.webp?s=896d81bc8e0acce407efc9480608a4348b1d0472",
+   "psa": {
+    "cert": "171809624",
+    "status": "pending"
+   }
+  },
+  {
+   "id": "10918184586",
+   "url": "https://www.vinted.fr/items/10918184586-pokemon-pikachu-020m-p-psa-10-promo-mcdonalds-2025-japanese-japonaise",
+   "title": "Pokémon Pikachu 020/M-P PSA 10 Promo McDonald's 2025 Japanese Japonaise",
+   "brand": "Pokémon",
+   "condition": "Neuf sans étiquette",
+   "price": 90.0,
+   "total_price": 95.2,
+   "currency": "EUR",
+   "grade": "10",
+   "number": "020/M-P",
+   "image": "https://images1.vinted.net/t/01_00088_p9LwmsrttKrUWYFcaAHu4s9s/310x430/7a7bddb0.webp?s=ffa6fc7c8b15cb2adf16b82b128edc8126a39e10",
+   "psa": {
+    "cert": "129528797",
+    "status": "pending"
+   }
+  },
+  {
+   "id": "10918173881",
+   "url": "https://www.vinted.fr/items/10918173881-pokemon-ectoplasma-gengar-074071-psa-10-s10a-dark-phantasma-chr-japanese",
+   "title": "Pokémon Ectoplasma / Gengar 074/071 PSA 10 s10a Dark Phantasma CHR Japanese",
+   "brand": "Pokémon",
+   "condition": "Neuf sans étiquette",
+   "price": 130.0,
+   "total_price": 137.2,
+   "currency": "EUR",
+   "grade": "10",
+   "number": "074/071",
+   "image": "https://images1.vinted.net/t/06_02156_aevTcWdSbFcmSZxo6eza2Z2h/310x430/9d55e9df.webp?s=5aa4c033aabebbe804f935d53a5199f06cadc734",
+   "psa": {
+    "cert": "149698047",
+    "status": "pending"
+   }
+  },
+  {
+   "id": "10918167394",
+   "url": "https://www.vinted.fr/items/10918167394-mega-dracolosse-ex-mega-dragonite-ex-246193-psa-10-m2a-mega-dream-ex-japanese",
+   "title": "Méga-Dracolosse-ex / Mega Dragonite ex 246/193 PSA 10 M2a MEGA Dream ex Japanese",
+   "brand": "Pokémon",
+   "condition": "Neuf sans étiquette",
+   "price": 250.0,
+   "total_price": 263.2,
+   "currency": "EUR",
+   "grade": "10",
+   "number": "246/193",
+   "image": "https://images1.vinted.net/t/06_00546_uGs5aWnHhk5vLbwfVssw2Pfe/310x430/5229681e.webp?s=e268ac632f95a71e7eb6fc50984fd569b30065cd",
+   "psa": {
+    "cert": "164377165",
+    "status": "pending"
+   }
+  },
+  {
+   "id": "10918161884",
+   "url": "https://www.vinted.fr/items/10918161884-pokemon-mega-latias-ex-088063-psa-10-m1s-mega-symphonia-sar-japanese-japonaise",
+   "title": "Pokémon Méga-Latias-ex 088/063 PSA 10 M1S Mega Symphonia SAR Japanese Japonaise",
+   "brand": "Pokémon",
+   "condition": "Neuf sans étiquette",
+   "price": 90.0,
+   "total_price": 95.2,
+   "currency": "EUR",
+   "grade": "10",
+   "number": "088/063",
+   "image": "https://images1.vinted.net/t/03_02286_WWnXvJuFVXm7SNS8A3uzC3Jv/310x430/7ce1d73d.webp?s=8029f72741a3b01812629fb83035a0bcc1b9e866",
+   "psa": {
+    "cert": "139066793",
+    "status": "pending"
+   }
+  },
+  {
+   "id": "10918156273",
+   "url": "https://www.vinted.fr/items/10918156273-arcanin-de-hisui-hisuian-arcanine-075071-psa-10-s10a-dark-phantasma-japanese",
+   "title": "Arcanin de Hisui / Hisuian Arcanine 075/071 PSA 10 s10a Dark Phantasma Japanese",
+   "brand": "Pokémon",
+   "condition": "Neuf sans étiquette",
+   "price": 70.0,
+   "total_price": 74.2,
+   "currency": "EUR",
+   "grade": "10",
+   "number": "075/071",
+   "image": "https://images1.vinted.net/t/05_01ddd_dFKHcncFShHkjDjvcvxswdS5/310x430/320ad9ea.webp?s=b34d86d516617ddd9171c99b8c0e19132163a6a2",
+   "psa": {
+    "cert": null,
+    "status": "no_cert"
+   }
+  },
+  {
+   "id": "10918151192",
+   "url": "https://www.vinted.fr/items/10918151192-pokemon-noctunoir-dusknoir-198184-psa-10-s8b-vmax-climax-chr-japanese",
+   "title": "Pokémon Noctunoir / Dusknoir 198/184 PSA 10 s8b VMAX Climax CHR Japanese",
+   "brand": "Pokémon",
+   "condition": "Neuf sans étiquette",
+   "price": 50.0,
+   "total_price": 53.2,
+   "currency": "EUR",
+   "grade": "10",
+   "number": "198/184",
+   "image": "https://images1.vinted.net/t/03_00d01_RoEX4mELSoPbpYqrjxGry5DK/310x430/218b562c.webp?s=323b10e66ca019fdd3ab069ec203ad49abe3b7c9",
+   "psa": {
+    "cert": null,
+    "status": "no_cert"
+   }
+  },
+  {
+   "id": "10918145186",
+   "url": "https://www.vinted.fr/items/10918145186-pokemon-reshiram-020025-psa-10-s8a-p-25th-anniversary-promo-japanese-japonaise",
+   "title": "Pokémon Reshiram 020/025 PSA 10 s8a-P 25th Anniversary promo Japanese Japonaise",
+   "brand": "Pokémon",
+   "condition": "Neuf sans étiquette",
+   "price": 160.0,
+   "total_price": 168.7,
+   "currency": "EUR",
+   "grade": "10",
+   "number": "020/025",
+   "image": "https://images1.vinted.net/t/01_01c43_rKiGvu6BDBVPfs7kP258CvCD/310x430/07dabf2a.webp?s=34ae64835278a71d0ceaa4b89884f4c15ffaddde",
+   "psa": {
+    "cert": "176425205",
+    "status": "pending"
+   }
+  },
+  {
+   "id": "10918137846",
+   "url": "https://www.vinted.fr/items/10918137846-pokemon-mewtwo-vstar-221172-psa-10-s12a-vstar-universe-sar-japanese-japonaise",
+   "title": "Pokémon Mewtwo VSTAR 221/172 PSA 10 s12a VSTAR Universe SAR Japanese Japonaise",
+   "brand": "Pokémon",
+   "condition": "Neuf sans étiquette",
    "price": 260.0,
    "total_price": 273.7,
    "currency": "EUR",
-   "grade": "8",
-   "number": null,
-   "image": "https://images1.vinted.net/t/01_02540_ZfrercxUEQ5vn893sG5Bq77f/310x430/9393908a.webp?s=e7378aee3a3511201baa7c3c84902262f9c1fa45",
+   "grade": "10",
+   "number": "221/172",
+   "image": "https://images1.vinted.net/t/03_01739_2cqLo8MJ122FPMFXxShXss4K/310x430/eb737823.webp?s=915d0c5d4d9c25ce5bafd52d04dc9ea95264a9ab",
    "psa": {
-    "cert": null,
-    "status": "no_cert"
+    "cert": "160994784",
+    "status": "pending"
    }
   },
   {
-   "id": "10914034816",
-   "url": "https://www.vinted.fr/items/10914034816-pokemon-sylveon-ex-156131-sar-evoluzioni-prismatiche-psa-10-ita",
-   "title": "Pokemon Sylveon EX 156/131 SAR Evoluzioni Prismatiche PSA 10 ITA",
+   "id": "10918132446",
+   "url": "https://www.vinted.fr/items/10918132446-pokemon-reshiram-de-n-ns-reshiram-109100-psa-10-sv9-battle-partners-japanese",
+   "title": "Pokémon Reshiram de N / N's Reshiram 109/100 PSA 10 SV9 Battle Partners Japanese",
    "brand": "Pokémon",
-   "condition": "Très bon état",
-   "price": 650.0,
-   "total_price": 683.2,
+   "condition": "Neuf sans étiquette",
+   "price": 70.0,
+   "total_price": 74.2,
    "currency": "EUR",
    "grade": "10",
-   "number": "156/131",
-   "image": "https://images1.vinted.net/t/06_018de_trwzEbLeNxgNcjjS4L43axZj/310x430/54a2368c.webp?s=8af9749b4f2da698fd1890638716b9c8d29c9125",
-   "psa": {
-    "cert": "118737037",
-    "status": "pending"
-   }
-  },
-  {
-   "id": "10914025218",
-   "url": "https://www.vinted.fr/items/10914025218-carta-pokemon-jab-scyther-psa-9",
-   "title": "Carta Pokemon jab scyther PSA 9",
-   "brand": "Pokémon",
-   "condition": "Neuf avec étiquette",
-   "price": 240.0,
-   "total_price": 252.7,
-   "currency": "EUR",
-   "grade": "9",
-   "number": null,
-   "image": "https://images1.vinted.net/t/01_001bf_KXAGd8qmo21nTGMsBiYLn4Hc/310x430/0200eb3b.webp?s=bc7bcf9a6062c883e9165db9cc451afc9cfb0622",
+   "number": "109/100",
+   "image": "https://images1.vinted.net/t/05_01b30_a2Zh3VR9dckXHvv1hiWz3SUu/310x430/176c4b9d.webp?s=258c3f995f6851b328db3126a71b0d1347c19cfe",
    "psa": {
     "cert": null,
     "status": "no_cert"
    }
   },
   {
-   "id": "10913987713",
-   "url": "https://www.vinted.fr/items/10913987713-pokemon-poissirene-psa-9",
-   "title": "Pokemon poissirene Psa 9",
+   "id": "10918125609",
+   "url": "https://www.vinted.fr/items/10918125609-pokemon-poltchageist-068066-psa-10-sv5a-crimson-haze-ar-japanese-japonaise",
+   "title": "Pokémon Poltchageist 068/066 PSA 10 SV5a Crimson Haze AR Japanese Japonaise",
    "brand": "Pokémon",
-   "condition": "Très bon état",
-   "price": 95.0,
-   "total_price": 100.45,
+   "condition": "Neuf sans étiquette",
+   "price": 40.0,
+   "total_price": 42.7,
    "currency": "EUR",
-   "grade": "9",
-   "number": null,
-   "image": "https://images1.vinted.net/t/03_008b5_kaCQA16teXq37GVT4Xk7EvZJ/310x430/7db741ce.webp?s=427fb3a4e31d4531d78f692c325496e80c11ed67",
+   "grade": "10",
+   "number": "068/066",
+   "image": "https://images1.vinted.net/t/03_00680_DYi3UpZWB6f8ZpYuFLD4C8hR/310x430/eb87ff43.webp?s=e9934b7d2e8293eda499f4076f9f46de2c4590c8",
    "psa": {
-    "cert": "70296886",
+    "cert": null,
+    "status": "no_cert"
+   }
+  },
+  {
+   "id": "10918118043",
+   "url": "https://www.vinted.fr/items/10918118043-psa-10-ns-zekrom-ar-210193-mega-dream-ex-m2a-carte-pokemon-japonaise-2025",
+   "title": "PSA 10 N's Zekrom AR 210/193 MEGA Dream ex M2a Carte Pokemon Japonaise 2025",
+   "brand": "Pokémon",
+   "condition": "Neuf avec étiquette",
+   "price": 1.0,
+   "total_price": 1.75,
+   "currency": "EUR",
+   "grade": "10",
+   "number": "210/193",
+   "image": "https://images1.vinted.net/t/03_0053e_BKcpY83CpadnAYcF2ZKA6HrU/310x430/07fc84de.webp?s=385dad9cadc162d5973d59776518137d5861aeee",
+   "psa": {
+    "cert": null,
+    "status": "no_cert"
+   }
+  },
+  {
+   "id": "10918107848",
+   "url": "https://www.vinted.fr/items/10918107848-pokemon-oyacodon-dondozo-082078-psa-10-sv1s-scarlet-ex-japanese-japonaise",
+   "title": "Pokémon Oyacodon / Dondozo 082/078 PSA 10 SV1S Scarlet ex Japanese Japonaise",
+   "brand": "Pokémon",
+   "condition": "Neuf sans étiquette",
+   "price": 55.0,
+   "total_price": 58.45,
+   "currency": "EUR",
+   "grade": "10",
+   "number": "082/078",
+   "image": "https://images1.vinted.net/t/02_00f79_HYBn6E3g3Ff8LHUKQCkFtHr1/310x430/9a442d81.webp?s=6813ded4ef654533e8bf149f462393a2b9dc5fcb",
+   "psa": {
+    "cert": null,
+    "status": "no_cert"
+   }
+  },
+  {
+   "id": "10918102139",
+   "url": "https://www.vinted.fr/items/10918102139-pokemon-mega-latias-ex-079063-psa-10-m1s-mega-symphonia-sr-japanese-japonaise",
+   "title": "Pokémon Méga-Latias-ex 079/063 PSA 10 M1S Mega Symphonia SR Japanese Japonaise",
+   "brand": "Pokémon",
+   "condition": "Neuf sans étiquette",
+   "price": 60.0,
+   "total_price": 63.7,
+   "currency": "EUR",
+   "grade": "10",
+   "number": "079/063",
+   "image": "https://images1.vinted.net/t/01_0023d_E1EujymYYoTbiVx5ZnDpY2SW/310x430/cfd9d218.webp?s=7f28dfc3d3a846e56bf5b5de5a13024957a75961",
+   "psa": {
+    "cert": null,
+    "status": "no_cert"
+   }
+  },
+  {
+   "id": "10918082801",
+   "url": "https://www.vinted.fr/items/10918082801-pokemon-pikachu-173165-psa-10-sv2a-pokemon-card-151-japanese-japonaise",
+   "title": "Pokémon Pikachu 173/165 PSA 10 SV2a Pokémon Card 151 Japanese Japonaise",
+   "brand": "Pokémon",
+   "condition": "Neuf sans étiquette",
+   "price": 120.0,
+   "total_price": 126.7,
+   "currency": "EUR",
+   "grade": "10",
+   "number": "173/165",
+   "image": "https://images1.vinted.net/t/05_0240b_v41DADxK2cF2yak2nNYAc9dx/310x430/8f6334ba.webp?s=94c10f0d0fcf5975a894007e48fb540bacb1af6a",
+   "psa": {
+    "cert": "172021830",
     "status": "pending"
    }
   },
   {
-   "id": "10913943744",
-   "url": "https://www.vinted.fr/items/10913943744-pokemon-kokiyas-psa-8",
-   "title": "Pokemon Kokiyas Psa 8",
+   "id": "10918061416",
+   "url": "https://www.vinted.fr/items/10918061416-2024-pokemon-csh-cs-vaporeon-vmax-005-psa-9",
+   "title": "2024 Pokemon CSH CS Vaporeon Vmax #005 PSA 9",
    "brand": "Pokémon",
-   "condition": "Très bon état",
-   "price": 95.0,
-   "total_price": 100.45,
+   "condition": "Neuf sans étiquette",
+   "price": 30.0,
+   "total_price": 32.2,
+   "currency": "EUR",
+   "grade": "9",
+   "number": null,
+   "image": "https://images1.vinted.net/t/01_002ac_Q8V72jP64vVTGpzr5tnxJBJD/310x430/cb4ff9a7.webp?s=a65125752890816c010539b10681f66880500a3b",
+   "psa": {
+    "cert": null,
+    "status": "no_cert"
+   }
+  },
+  {
+   "id": "10918061017",
+   "url": "https://www.vinted.fr/items/10918061017-pokemon-draco-dragonair-182165-psa-10-sv2a-pokemon-card-151-japanese",
+   "title": "Pokémon Draco / Dragonair 182/165 PSA 10 SV2a Pokémon Card 151 Japanese",
+   "brand": "Pokémon",
+   "condition": "Neuf sans étiquette",
+   "price": 70.0,
+   "total_price": 74.2,
+   "currency": "EUR",
+   "grade": "10",
+   "number": "182/165",
+   "image": "https://images1.vinted.net/t/02_00ca9_PnyhzzM1DhgpNUyATNGzs6b4/310x430/9ed2f52c.webp?s=7c5fb9eda84fcee8afd0f5586bdfefc86eda8951",
+   "psa": {
+    "cert": null,
+    "status": "no_cert"
+   }
+  },
+  {
+   "id": "10918055879",
+   "url": "https://www.vinted.fr/items/10918055879-pokemon-regigigas-vstar-233172-psa-10-s12a-vstar-universe-sar-japanese",
+   "title": "Pokémon Regigigas VSTAR 233/172 PSA 10 s12a VSTAR Universe SAR Japanese",
+   "brand": "Pokémon",
+   "condition": "Neuf sans étiquette",
+   "price": 80.0,
+   "total_price": 84.7,
+   "currency": "EUR",
+   "grade": "10",
+   "number": "233/172",
+   "image": "https://images1.vinted.net/t/06_01a4b_BjthSQokNeecQMsPDrNwyRZi/310x430/414b2231.webp?s=284ecfc24910efb4e3ce655e0c526f6e57fef8bc",
+   "psa": {
+    "cert": null,
+    "status": "no_cert"
+   }
+  },
+  {
+   "id": "10918053316",
+   "url": "https://www.vinted.fr/items/10918053316-2025-pokemon-cbb1-cs-fuecoco-09-psa-8",
+   "title": "2025 Pokemon CBB1 CS Fuecoco  #09 PSA 8",
+   "brand": "Pokémon",
+   "condition": "Neuf sans étiquette",
+   "price": 30.0,
+   "total_price": 32.2,
    "currency": "EUR",
    "grade": "8",
    "number": null,
-   "image": "https://images1.vinted.net/t/03_02659_ivQjXAnBN8sYU1op1T85fFyV/310x430/06fd8c5a.webp?s=46713088bcc043e4eb1007458590c7ad3cb4eb4d",
+   "image": "https://images1.vinted.net/t/01_01fff_dXGM8agpgRMCBKbrevcjqFRB/310x430/79833e09.webp?s=3d88d4120df42a56a66726716d94c50afc70723e",
    "psa": {
-    "cert": "74132562",
+    "cert": null,
+    "status": "no_cert"
+   }
+  },
+  {
+   "id": "10918050322",
+   "url": "https://www.vinted.fr/items/10918050322-pokemon-zekrom-de-n-ns-zekrom-210193-psa-10-m2a-mega-dream-ex-ar-japanese",
+   "title": "Pokémon Zekrom de N / N's Zekrom 210/193 PSA 10 M2a MEGA Dream ex AR Japanese",
+   "brand": "Pokémon",
+   "condition": "Neuf sans étiquette",
+   "price": 50.0,
+   "total_price": 53.2,
+   "currency": "EUR",
+   "grade": "10",
+   "number": "210/193",
+   "image": "https://images1.vinted.net/t/05_016a3_eDJoSV3tV5k1zFiGd9T6eNno/310x430/964d21c6.webp?s=0682c651335bc9fa8c180706fd257b26bf1ef918",
+   "psa": {
+    "cert": null,
+    "status": "no_cert"
+   }
+  },
+  {
+   "id": "10918026042",
+   "url": "https://www.vinted.fr/items/10918026042-pokemon-raichu-004015-psa-10-s8a-g-25th-anniversary-golden-box-promo-japanese",
+   "title": "Pokémon Raichu 004/015 PSA 10 s8a-G 25th Anniversary Golden Box Promo Japanese",
+   "brand": "Pokémon",
+   "condition": "Neuf sans étiquette",
+   "price": 60.0,
+   "total_price": 63.7,
+   "currency": "EUR",
+   "grade": "10",
+   "number": "004/015",
+   "image": "https://images1.vinted.net/t/06_00f62_k3MefPiDLFeaYiZtz9fn7XAk/310x430/772fc88b.webp?s=b60565bae39ef013f917e073797a916beb23f66f",
+   "psa": {
+    "cert": null,
+    "status": "no_cert"
+   }
+  },
+  {
+   "id": "10918023814",
+   "url": "https://www.vinted.fr/items/10918023814-2010-pokemon-hg-ss-copycat-holo-90-psa-8",
+   "title": "2010 Pokemon HG & SS Copycat - Holo #90 PSA 8",
+   "brand": "Pokémon",
+   "condition": "Neuf sans étiquette",
+   "price": 40.0,
+   "total_price": 42.7,
+   "currency": "EUR",
+   "grade": "8",
+   "number": null,
+   "image": "https://images1.vinted.net/t/02_023af_drdE2EYojyeESF2NVDKoWzMd/310x430/801f0452.webp?s=39b342399626e88cc47bd09a3a0d395b32a6324a",
+   "psa": {
+    "cert": null,
+    "status": "no_cert"
+   }
+  },
+  {
+   "id": "10917991008",
+   "url": "https://www.vinted.fr/items/10917991008-2024-pokemon-sv-p-in-pikachu-100-psa-9",
+   "title": "2024 Pokemon SV-P in Pikachu #100 PSA 9",
+   "brand": "Pokémon",
+   "condition": "Neuf sans étiquette",
+   "price": 40.0,
+   "total_price": 42.7,
+   "currency": "EUR",
+   "grade": "9",
+   "number": null,
+   "image": "https://images1.vinted.net/t/04_01285_ckHdFfu7MZw7H11bPX1DkWPC/310x430/2f3cc17f.webp?s=95f9751270537fffe695ba7facd10fbf3815330f",
+   "psa": {
+    "cert": null,
+    "status": "no_cert"
+   }
+  },
+  {
+   "id": "10917981617",
+   "url": "https://www.vinted.fr/items/10917981617-2022-pokemon-csm1a-cs-charizard-gx-004-psa-9",
+   "title": "2022 Pokemon CSM1a CS Charizard GX #004 PSA 9",
+   "brand": "Pokémon",
+   "condition": "Neuf sans étiquette",
+   "price": 40.0,
+   "total_price": 42.7,
+   "currency": "EUR",
+   "grade": "9",
+   "number": null,
+   "image": "https://images1.vinted.net/t/04_010c1_D3zn6XMf8rFN7hAQthjsthBb/310x430/dd3fdf25.webp?s=a55183ea02acab0fb62c0f68ed5cebd4f95afcf9",
+   "psa": {
+    "cert": null,
+    "status": "no_cert"
+   }
+  },
+  {
+   "id": "10917974186",
+   "url": "https://www.vinted.fr/items/10917974186-2004-pokemon-ludicolo-holo-black-star-promo-020-psa-6",
+   "title": "2004 Pokemon Ludicolo - Holo Black Star Promo #020 PSA 6",
+   "brand": "Pokémon",
+   "condition": "Neuf sans étiquette",
+   "price": 60.0,
+   "total_price": 63.7,
+   "currency": "EUR",
+   "grade": "6",
+   "number": null,
+   "image": "https://images1.vinted.net/t/01_0200d_NczcK5WoMBrq39xhX9qEifoG/310x430/b364796d.webp?s=b109c28a131ee9cced2ecb07d1e2099da38cecc0",
+   "psa": {
+    "cert": null,
+    "status": "no_cert"
+   }
+  },
+  {
+   "id": "10917967450",
+   "url": "https://www.vinted.fr/items/10917967450-2021-pokemon-zeraora-v-166198-alternate-art-psa-10-chilling-reign",
+   "title": "2021 Pokémon Zeraora V 166/198 Alternate Art PSA 10 – Chilling Reign",
+   "brand": "Pokémon",
+   "condition": "Très bon état",
+   "price": 215.0,
+   "total_price": 226.45,
+   "currency": "EUR",
+   "grade": "10",
+   "number": "166/198",
+   "image": "https://images1.vinted.net/t/06_021fc_y75YqVMgeeKLWwh8BEozW6hm/310x430/6846e852.webp?s=37950114bc2c65556d0027b6f1bedbbb18d31fe2",
+   "psa": {
+    "cert": "181342781",
     "status": "pending"
+   }
+  },
+  {
+   "id": "10917966978",
+   "url": "https://www.vinted.fr/items/10917966978-2017-pokemon-sun-moon-stufful-holo-110-psa",
+   "title": "2017 Pokemon Sun & Moon Stufful - Holo #110 PSA",
+   "brand": "Pokémon",
+   "condition": "Neuf sans étiquette",
+   "price": 60.0,
+   "total_price": 63.7,
+   "currency": "EUR",
+   "grade": null,
+   "number": null,
+   "image": "https://images1.vinted.net/t/06_00e48_iDnuY9bgByCvgZaLy7MT9zEe/310x430/6944c330.webp?s=317d094e6c3cde049868bd3d4f8296494bc5504e",
+   "psa": {
+    "cert": null,
+    "status": "no_cert"
+   }
+  },
+  {
+   "id": "10917932681",
+   "url": "https://www.vinted.fr/items/10917932681-pokemon-mega-momartik-ex-233193-sar-psa-10-japonais",
+   "title": "Pokémon Méga Momartik ex 233/193 SAR – PSA 10 – Japonais",
+   "brand": "Pokémon",
+   "condition": "Très bon état",
+   "price": 78.0,
+   "total_price": 82.6,
+   "currency": "EUR",
+   "grade": "10",
+   "number": "233/193",
+   "image": "https://images1.vinted.net/t/02_0161a_hVbVQtk6VXW6hAyJ7cJNmcfc/310x430/a205cf43.webp?s=04dc3b00bba190c6e28f164ea8d2f5ec41fc2922",
+   "psa": {
+    "cert": null,
+    "status": "no_cert"
+   }
+  },
+  {
+   "id": "10917897571",
+   "url": "https://www.vinted.fr/items/10917897571-carte-psa-e-bgs-giapponesi",
+   "title": "Carte psa e bgs giapponesi",
+   "brand": "Pokémon",
+   "condition": "Neuf avec étiquette",
+   "price": 120.0,
+   "total_price": 126.7,
+   "currency": "EUR",
+   "grade": null,
+   "number": null,
+   "image": "https://images1.vinted.net/t/01_025ba_cmvgFAqJ1RyfoRKsSjzcGmNF/310x430/278540b3.webp?s=f8903034f6563ed429045df5e99dbe1e4ffe1e70",
+   "psa": {
+    "cert": null,
+    "status": "no_cert"
+   }
+  },
+  {
+   "id": "10917875711",
+   "url": "https://www.vinted.fr/items/10917875711-lotto-carte-jappo-psa-10",
+   "title": "lotto carte jappo psa 10",
+   "brand": "Pokémon",
+   "condition": "Neuf avec étiquette",
+   "price": 90.0,
+   "total_price": 95.2,
+   "currency": "EUR",
+   "grade": "10",
+   "number": null,
+   "image": "https://images1.vinted.net/t/03_01061_x1e3KH1b3ShbSu2QDi8aFsmf/310x430/60977dd3.webp?s=9d6680bb1f4542e71a2deae73ee9f272a96ed137",
+   "psa": {
+    "cert": null,
+    "status": "no_cert"
+   }
+  },
+  {
+   "id": "10917817273",
+   "url": "https://www.vinted.fr/items/10917817273-carte-pokemon-pikachu-van-gogh-psa-10",
+   "title": "Carte Pokémon Pikachu Van Gogh PSA 10",
+   "brand": "Pokémon",
+   "condition": "Neuf sans étiquette",
+   "price": 2300.0,
+   "total_price": 2415.7,
+   "currency": "EUR",
+   "grade": "10",
+   "number": null,
+   "image": "https://images1.vinted.net/t/01_01bd2_tkcQx3wVVfXpWmmNnkxPnXc3/310x430/46c89c25.webp?s=3a4ff04bea612c91a4f16c90da3397a2a35cf716",
+   "psa": {
+    "cert": null,
+    "status": "no_cert"
+   }
+  },
+  {
+   "id": "10917778750",
+   "url": "https://www.vinted.fr/items/10917778750-pikachu-028-gx-battle-boost-sun-and-moon-psa-9",
+   "title": "Pikachu 028 gx battle boost sun and moon psa 9",
+   "brand": "Pokémon",
+   "condition": "Très bon état",
+   "price": 65.0,
+   "total_price": 68.95,
+   "currency": "EUR",
+   "grade": "9",
+   "number": null,
+   "image": "https://images1.vinted.net/t/03_024b9_a3Rrqvp8FPXsWtdb9tvHF35M/310x430/53cce183.webp?s=de16dca6ddb977034ffecc1efe3f8f1ffff770bd",
+   "psa": {
+    "cert": null,
+    "status": "no_cert"
+   }
+  },
+  {
+   "id": "10917743136",
+   "url": "https://www.vinted.fr/items/10917743136-pokemon-tcg-ho-oh-gx-psa-10-sv50sv94-shiny-vault-holo-full-art-deutsch",
+   "title": "Pokemon TCG Ho Oh GX PSA 10 SV50/SV94 Shiny Vault Holo Full Art Deutsch",
+   "brand": "Pokémon",
+   "condition": "Très bon état",
+   "price": 155.0,
+   "total_price": 163.45,
+   "currency": "EUR",
+   "grade": "10",
+   "number": null,
+   "image": "https://images1.vinted.net/t/03_00b5b_neKdy9rPUZs3FgKQJbY5zUoe/310x430/9dc08219.webp?s=3f1f9f5b7a9b27cb7597f8fbf73e9b612fabf9cf",
+   "psa": {
+    "cert": "97038870",
+    "subject": "FA/HO-OH GX",
+    "grade": "GEM MT 10",
+    "grade_num": 10,
+    "year": "2019",
+    "card_number": "SV50",
+    "category": "TCG Cards",
+    "confidence": null,
+    "pop": 34,
+    "pop_higher": 0,
+    "pop_url": "https://www.psacard.com/pop/tcg-cards/2019/pokemon-sun-moon-hidden-fates/169494",
+    "sales": null,
+    "sales_months": null,
+    "status": "no_estimate"
+   }
+  },
+  {
+   "id": "10917607923",
+   "url": "https://www.vinted.fr/items/10917607923-pokemon-celebi-v-175s-p-psa-10-gem-mini-giapponese-promo-2021",
+   "title": "Pokémon Celebi V 175/S-P PSA 10 gem mini Giapponese Promo 2021",
+   "brand": "Pokémon",
+   "condition": "Très bon état",
+   "price": 280.0,
+   "total_price": 294.7,
+   "currency": "EUR",
+   "grade": "10",
+   "number": "175/S-P",
+   "image": "https://images1.vinted.net/t/06_01286_BBwg351fQcGQiQAxd4917ytB/310x430/3eb54af1.webp?s=0f7686268b0b95e11cd47271dd944629aa41b79b",
+   "psa": {
+    "cert": "107391446",
+    "status": "pending"
+   }
+  },
+  {
+   "id": "10917572593",
+   "url": "https://www.vinted.fr/items/10917572593-psa-9-electrike-ar-073063-art-rare-sv9a-heat-wave-arena",
+   "title": "Psa 9 Electrike Ar 073/063 - Art Rare Sv9a Heat Wave Arena",
+   "brand": "Pokémon",
+   "condition": "Neuf avec étiquette",
+   "price": 25.0,
+   "total_price": 26.95,
+   "currency": "EUR",
+   "grade": "9",
+   "number": "073/063",
+   "image": "https://images1.vinted.net/t/01_019d8_SJBuMmPMtVP47Foh4DWf3X6o/310x430/b8b09049.webp?s=2d7dd463bcac99fff4e12bdf96ef0cc0745d8a59",
+   "psa": {
+    "cert": null,
+    "status": "no_cert"
    }
   },
   {
@@ -1760,23 +2968,6 @@
    }
   },
   {
-   "id": "10913800319",
-   "url": "https://www.vinted.fr/items/10913800319-bumper-graded-guard-lime-psa",
-   "title": "Bumper Graded Guard Lime PSA",
-   "brand": "Pokémon",
-   "condition": "Neuf avec étiquette",
-   "price": 8.0,
-   "total_price": 9.1,
-   "currency": "EUR",
-   "grade": null,
-   "number": null,
-   "image": "https://images1.vinted.net/t/05_02122_AZyYtq7f9hvpLS6xte544Jsh/310x430/3bd87658.webp?s=cbbf0af14fdd91b462f23aa9a574f29e06095de8",
-   "psa": {
-    "cert": null,
-    "status": "no_cert"
-   }
-  },
-  {
    "id": "10913439763",
    "url": "https://www.vinted.fr/items/10913439763-carte-pokemon-grade-psa-ccc-et-pca",
    "title": "Carte Pokémon gradé psa ccc et pca",
@@ -1791,57 +2982,6 @@
    "psa": {
     "cert": null,
     "status": "no_cert"
-   }
-  },
-  {
-   "id": "10913394505",
-   "url": "https://www.vinted.fr/items/10913394505-pokemon-zoroark-de-n-ex-242193-sar-psa-9-japonais",
-   "title": "Pokémon Zoroark de N ex 242/193 SAR – PSA 9 – Japonais",
-   "brand": "Pokémon",
-   "condition": "Très bon état",
-   "price": 70.0,
-   "total_price": 74.2,
-   "currency": "EUR",
-   "grade": "9",
-   "number": "242/193",
-   "image": "https://images1.vinted.net/t/01_0002a_642fPCF6uhZwTQdyju4GH4LN/310x430/8c539c93.webp?s=9aa6b38550502a34ac4a5b0fb80b440f8d8c397a",
-   "psa": {
-    "cert": "156961983",
-    "status": "pending"
-   }
-  },
-  {
-   "id": "10913371892",
-   "url": "https://www.vinted.fr/items/10913371892-pokemon-pikachu-psa-9",
-   "title": "Pokemon pikachu PSA 9",
-   "brand": "Pokémon",
-   "condition": "Neuf avec étiquette",
-   "price": 30.0,
-   "total_price": 32.2,
-   "currency": "EUR",
-   "grade": "9",
-   "number": null,
-   "image": "https://images1.vinted.net/t/06_00a3e_kMhXnTU1wG2re4oTuZB6JwYZ/310x430/fe6ad9de.webp?s=7cecb6e5c6954ba1f06251d08912bbfbe39e098b",
-   "psa": {
-    "cert": "144857479",
-    "status": "pending"
-   }
-  },
-  {
-   "id": "10913229840",
-   "url": "https://www.vinted.fr/items/10913229840-dark-charizard-4-psa-7-pokemon-rocket",
-   "title": "Dark Charizard #4 PSA 7 | Pokemon Rocket",
-   "brand": "Pokémon",
-   "condition": "Neuf sans étiquette",
-   "price": 400.0,
-   "total_price": 420.7,
-   "currency": "EUR",
-   "grade": "7",
-   "number": null,
-   "image": "https://images1.vinted.net/t/05_0021a_p9Vb1hupNCywV6YaJ7dcjrdb/310x430/ba26a5ed.webp?s=19633ff22b35756a0e0f7af943b52ba7714af3d9",
-   "psa": {
-    "cert": "82909330",
-    "status": "pending"
    }
   },
   {
@@ -1862,23 +3002,6 @@
    }
   },
   {
-   "id": "10911984404",
-   "url": "https://www.vinted.fr/items/10911984404-pokemon-mewtwo-052-psa-8-nm-mt-151-ultra-premium-collection-italiano",
-   "title": "Pokémon Mewtwo 052 PSA 8 NM-MT 151 Ultra-Premium Collection Italiano",
-   "brand": "Pokémon",
-   "condition": "Neuf sans étiquette",
-   "price": 74.99,
-   "total_price": 79.44,
-   "currency": "EUR",
-   "grade": "8",
-   "number": null,
-   "image": "https://images1.vinted.net/t/06_019d2_eDPUVQVDZzhWUptVXQUUNoV2/310x430/eb627909.webp?s=686c605dcddd2d4ab54bba214c49c4cd631c17dc",
-   "psa": {
-    "cert": "142652738",
-    "status": "pending"
-   }
-  },
-  {
    "id": "10911853691",
    "url": "https://www.vinted.fr/items/10911853691-carte-pokemon-psa-9-eevee-evoli-ar-078066-sv5a",
    "title": "Carte Pokémon - PSA 9 - Eevee Evoli AR 078/066 SV5a",
@@ -1894,167 +3017,14 @@
     "cert": "104009618",
     "status": "pending"
    }
-  },
-  {
-   "id": "10911835602",
-   "url": "https://www.vinted.fr/items/10911835602-carte-pokemon-psa-9-eevee-evoli-ar-promo-etb-173-svp",
-   "title": "Carte Pokémon - PSA 9 - Eevee Evoli AR Promo ETB 173 SVP",
-   "brand": "Pokémon",
-   "condition": "Très bon état",
-   "price": 39.5,
-   "total_price": 42.18,
-   "currency": "EUR",
-   "grade": "9",
-   "number": null,
-   "image": "https://images1.vinted.net/t/06_01236_DHpNJQTwXqXQ2omZicu9TGNG/310x430/b4e535e0.webp?s=690b6f9a335dafe27aef9f6baaf0fe51e5f21cc3",
-   "psa": {
-    "cert": "111879798",
-    "status": "pending"
-   }
-  },
-  {
-   "id": "10911775440",
-   "url": "https://www.vinted.fr/items/10911775440-carte-pokemon-psa-9-mega-lucario-ex-088063-m1",
-   "title": "Carte Pokémon - PSA 9 - Mega Lucario Ex 088/063 M1",
-   "brand": "Pokémon",
-   "condition": "Très bon état",
-   "price": 69.5,
-   "total_price": 73.68,
-   "currency": "EUR",
-   "grade": "9",
-   "number": "088/063",
-   "image": "https://images1.vinted.net/t/05_00dc5_Zdo8BtMEEHJahjvHUEJhUAnu/310x430/590b32d9.webp?s=f947669ca9af2648da3114408aa7fd8188e7967c",
-   "psa": {
-    "cert": "139110535",
-    "status": "pending"
-   }
-  },
-  {
-   "id": "10911341788",
-   "url": "https://www.vinted.fr/items/10911341788-pokemon-ramoloss-de-morgane-sabrinas-slowpoke-psa-8-gym-2-1999-japonais",
-   "title": "Pokémon Ramoloss de Morgane / Sabrina’s Slowpoke PSA 8 – Gym 2 1999 Japonais",
-   "brand": "Pokémon",
-   "condition": "Très bon état",
-   "price": 39.99,
-   "total_price": 42.69,
-   "currency": "EUR",
-   "grade": "8",
-   "number": null,
-   "image": "https://images1.vinted.net/t/02_01d7e_Y3TabzMAvxbEvubvKxw81uv3/310x430/b148dde9.webp?s=6bd3a3f3b9e392b7220d0850abc75820a4d5453f",
-   "psa": {
-    "cert": "162704197",
-    "status": "pending"
-   }
-  },
-  {
-   "id": "10911197098",
-   "url": "https://www.vinted.fr/items/10911197098-pokemon-pikachu-van-gogh-umbreon-ex-dondozo-psa-slabs",
-   "title": "Pokémon Pikachu van gogh Umbreon ex Dondozo PSA Slabs",
-   "brand": "Pokémon",
-   "condition": "Très bon état",
-   "price": 25.0,
-   "total_price": 26.95,
-   "currency": "EUR",
-   "grade": null,
-   "number": null,
-   "image": "https://images1.vinted.net/t/06_00aa8_JMHaLbBqKsZivqMNyEupmCtx/310x430/d840781d.webp?s=3728375a0d74fe3b2ff5b74a25016a0e31ad31e2",
-   "psa": {
-    "cert": "177212385",
-    "status": "pending"
-   }
-  },
-  {
-   "id": "10910474439",
-   "url": "https://www.vinted.fr/items/10910474439-psa-10-kingdra-chr-clair-vmax-climax-pokemon-s8b-190184-gradata-giapponese-japanese-full-art-2021",
-   "title": "PSA 10 Kingdra CHR Clair VMAX Climax Pokemon S8b 190/184 Gradata Giapponese Japanese Full Art 2021",
-   "brand": "Pokémon",
-   "condition": "Très bon état",
-   "price": 69.0,
-   "total_price": 73.15,
-   "currency": "EUR",
-   "grade": "10",
-   "number": "190/184",
-   "image": "https://images1.vinted.net/t/05_0012c_AqDh5orhhYnAeVc2hnk8nxoP/310x430/60af02ab.webp?s=d958c5594f58542ea21f6765f821717e1b82725b",
-   "psa": {
-    "cert": "76891038",
-    "status": "pending"
-   }
-  },
-  {
-   "id": "10909643447",
-   "url": "https://www.vinted.fr/items/10909643447-psa-magasine-2026-october",
-   "title": "PSA magasine 2026 October",
-   "brand": "Pokémon",
-   "condition": "Neuf sans étiquette",
-   "price": 14.0,
-   "total_price": 15.4,
-   "currency": "EUR",
-   "grade": null,
-   "number": null,
-   "image": "https://images1.vinted.net/t/06_01937_PftvnGGhrJxLi7WzEDskChSE/310x430/8e594679.webp?s=ad8990a31acad94f6c94657d19e93bcdcdfd4d81",
-   "psa": {
-    "cert": null,
-    "status": "no_cert"
-   }
-  },
-  {
-   "id": "10908972499",
-   "url": "https://www.vinted.fr/items/10908972499-carte-pokemon-venusaur-psa-10",
-   "title": "Carte Pokémon Venusaur PSA 10",
-   "brand": "Pokémon",
-   "condition": "Très bon état",
-   "price": 59.0,
-   "total_price": 62.65,
-   "currency": "EUR",
-   "grade": "10",
-   "number": null,
-   "image": "https://images1.vinted.net/t/03_01c19_TLNXVTdMLqxZjvmv7nA2C4wc/310x430/2991f72d.webp?s=7bd9c6c2ec55d7f4540917675a446b761a4e2e0c",
-   "psa": {
-    "cert": "64426651",
-    "status": "pending"
-   }
-  },
-  {
-   "id": "10908092180",
-   "url": "https://www.vinted.fr/items/10908092180-carte-mewtwo-183-ar-sv2a-2023-jp-pokemon-psa-10-japanese-card",
-   "title": "Carte Mewtwo 183 AR SV2a 2023 JP Pokemon PSA 10 Japanese Card 🇯🇵",
-   "brand": "Pokémon",
-   "condition": "Très bon état",
-   "price": 95.0,
-   "total_price": 100.45,
-   "currency": "EUR",
-   "grade": "10",
-   "number": null,
-   "image": "https://images1.vinted.net/t/01_01a3f_8LsoEyFu73Wj9mu9Z7c3v3BX/310x430/5a672948.webp?s=2931cc2e112162db0efeafd46e736cb0b53290e1",
-   "psa": {
-    "cert": "141266739",
-    "status": "pending"
-   }
-  },
-  {
-   "id": "10906603522",
-   "url": "https://www.vinted.fr/items/10906603522-pokemon-psa-10-9-6-karten-lot-flareon-budew-ogerpon-roxie",
-   "title": "Pokémon PSA 10 & 9 – 6 Karten Lot | Flareon, Budew, Ogerpon, Roxie",
-   "brand": "Pokémon",
-   "condition": "Très bon état",
-   "price": 199.99,
-   "total_price": 210.69,
-   "currency": "EUR",
-   "grade": "10",
-   "number": null,
-   "image": "https://images1.vinted.net/t/03_00eca_916SMJfNWDu7JEGi6r3We5BH/310x430/cd5cfcee.webp?s=baf2022c6f2cef4990e859814f5982935d4fc240",
-   "psa": {
-    "cert": null,
-    "status": "no_cert"
-   }
   }
  ],
- "enriched_at": "2026-11-22T01:24:09Z",
+ "enriched_at": "2026-11-22T11:35:39Z",
  "fx_usd_eur": 0.9099,
  "psa_stats": {
-  "cert_read": 82,
-  "priced": 10,
-  "deals": 1,
+  "cert_read": 83,
+  "priced": 13,
+  "deals": 0,
   "cache_certs": 10365
  }
 }
