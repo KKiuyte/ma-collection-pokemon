@@ -287,8 +287,10 @@ wishlist[idCarte] = true
 
 But : repérer sur Vinted les cartes Pokémon gradées **PSA** vendues sous leur valeur.
 Demandé par Ariel. PSA choisi (pas PCA) car marché plus liquide. Chaîne en 3 temps,
-tournant dans **`.github/workflows/scrape-vinted-psa.yml`** (cron toutes les 6 h, +
-`workflow_dispatch`), qui déploie Firebase lui-même (un commit via `GITHUB_TOKEN` ne
+tournant dans **`.github/workflows/scrape-vinted-psa.yml`** (**⏸ cron désactivé le
+2026-11-22** à la demande d'Ariel, qui n'utilise pas la page : ses déploiements toutes les 3 h
+avaient rempli le quota de stockage Firebase Hosting — 429 `RESOURCE_EXHAUSTED` depuis le 20/11 ;
+reste lançable par `workflow_dispatch`), qui déploie Firebase lui-même (un commit via `GITHUB_TOKEN` ne
 redéclenche pas `deploy.yml`).
 
 1. **`tools/scrape_vinted_psa.py`** (stdlib seule) → `public/vinted-psa.json`.
@@ -444,6 +446,11 @@ accepte le cookie `cf_clearance`) ; seule la connexion elle-même demande Chromi
   DÉCLENCHE le challenge — garder `X-Requested-With` + `Referer` seulement ; (3) un 403
   « Just a moment » isolé arrive même avec une session valide → attendre et réessayer
   avant de se reconnecter ; détecter le challenge sur `<title>Just a moment`, pas ailleurs.
+
+**⏸ Depuis le 2026-11-22, le passage quotidien ne fait plus que la sauvegarde** (`--backup-only`) :
+PSA refusait la session depuis le 17/11 (« connecté mais la session n'est pas acceptée » — l'API
+des prix ne répond plus `salesSummary`, cause non diagnostiquée) et Ariel n'utilise pas la page.
+Estimation lançable à la main : Run workflow, case `estimate`. Plus de déclenchement sur `push`.
 
 **Pipeline `tools/psa_collection_value.py`** (workflow `graded-value.yml`, 1×/jour 05:41 UTC) :
 collection Firestore (SDK Admin, compte de service `github-deploy@…` avec rôle Cloud Datastore
