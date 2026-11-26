@@ -151,6 +151,16 @@ body {
 .fill { height:100%; width:0; background:var(--accent); border-radius:3px;
   transition:width .5s cubic-bezier(.2,.8,.2,1); }
 .count { font-size:11px; color:var(--muted); font-weight:700; margin-top:5px; }
+/* master set : toutes les versions de la série (Normale, Reverse Holo, Holo…) */
+.master { margin-top:8px; font-size:11.5px; color:var(--muted); font-weight:700; line-height:1.45; }
+.master[hidden] { display:none; }
+.master b { color:var(--ink); }
+.master .bar { margin-top:5px; }
+.master-btn { font-family:inherit; font-weight:700; font-size:12px; cursor:pointer; padding:6px 10px;
+  border-radius:8px; border:1px solid var(--line); background:var(--field); color:var(--ink); }
+.master-link { font-family:inherit; font-weight:700; font-size:11.5px; cursor:pointer; padding:0;
+  border:none; background:none; color:var(--accent-deep); text-decoration:underline; }
+.master-warn { margin-top:4px; color:var(--accent-deep); }
 
 /* --- recherche --- */
 .searchbar { position:relative; }
@@ -504,6 +514,7 @@ body {
     <button class="chip on" data-f="all">Toutes</button>
     <button class="chip" data-f="owned">Poss&eacute;d&eacute;es</button>
     <button class="chip" data-f="missing">Manquantes</button>
+    <button class="chip" data-f="incomplete">&Agrave; compl&eacute;ter</button>
     <button class="chip" data-f="wishlist">Souhaits &hearts;</button>
   </div>
 
@@ -520,6 +531,7 @@ body {
           </div>
           <div class="bar"><div class="fill" id="fill"></div></div>
           <div class="count"><span id="have">0</span> / <span id="total">0</span></div>
+          <div class="master" id="master" hidden></div>
         </div>
 
         <div class="searchbar">
@@ -1819,6 +1831,7 @@ function closeAccount(){
 function passFilter(c){
   if (filter === "owned") return !!owned[c.id];
   if (filter === "missing") return !owned[c.id];
+  if (filter === "incomplete") return missingVersions(c.id).length > 0;
   if (filter === "wishlist") return !!wishlist[c.id];
   return true;
 }
@@ -1861,6 +1874,95 @@ function sortCards(list){
   return arr;
 }
 
+// --- master set : toutes les versions de la série courante (2026-11-26, demande d'Ariel) ---
+// La progression classique compte les CARTES (une carte possédée en Normale compte même s'il
+// manque sa Reverse). Ici on compte chaque version référencée par TCGdex (variantCache, une
+// requête /cards/{id} par carte, cache 24 h partagé avec les prix) + les versions possédées
+// que TCGdex ne référence pas (encore). Une carte dont les versions ne sont pas encore chargées
+// n'est pas comptée : on propose alors de les charger (bouton), jamais de chiffre partiel muet.
+let masterBusy = false;
+let masterProgress = "";
+const masterFailed = new Set(); // cartes dont la requête a échoué (versions = repli « Normale »)
+
+// versions d'une carte qui manquent encore (référencées par TCGdex, aucun exemplaire)
+function missingVersions(cardId){
+  const avail = variantCache[cardId];
+  const ov = owned[cardId] && owned[cardId].v ? owned[cardId].v : {};
+  if (!avail) return Object.keys(ov).length ? [] : [DEFAULT_VARIANT]; // pas encore chargée
+  return avail.filter(n => !(ov[n] && ov[n].length));
+}
+function masterStats(list){
+  let total = 0, have = 0, unknown = 0, anyReverse = false;
+  const missingBy = {};
+  for (const c of list){
+    const avail = variantCache[c.id];
+    if (!avail){ unknown++; continue; }
+    if (avail.includes("Reverse Holo")) anyReverse = true;
+    const ov = owned[c.id] && owned[c.id].v ? owned[c.id].v : {};
+    const names = new Set([...avail, ...Object.keys(ov).filter(n => ov[n] && ov[n].length)]);
+    for (const n of names){
+      total++;
+      if (ov[n] && ov[n].length) have++;
+      else missingBy[n] = (missingBy[n] || 0) + 1;
+    }
+  }
+  return { total, have, unknown, anyReverse, missingBy };
+}
+function renderMaster(){
+  const box = $("master");
+  if (!box) return;
+  if (!cards.length){ box.hidden = true; return; }
+  box.hidden = false;
+  if (masterBusy){
+    box.innerHTML = `<span class="mini-spin"></span> Master set : chargement des versions… ${masterProgress}`;
+    return;
+  }
+  const st = masterStats(cards);
+  if (st.unknown){
+    box.innerHTML = `<button class="master-btn" id="masterBtn">Compter le master set (toutes les versions)</button>`
+      + (st.unknown < cards.length ? `<div>${st.unknown} carte${st.unknown > 1 ? "s" : ""} encore à vérifier</div>` : "");
+    $("masterBtn").onclick = computeMaster;
+    return;
+  }
+  const miss = st.total - st.have;
+  const detail = VARIANT_ORDER.concat(Object.keys(st.missingBy).filter(n => !VARIANT_ORDER.includes(n)))
+    .filter(n => st.missingBy[n]).map(n => `${st.missingBy[n]} ${n}`).join(" · ");
+  let html = `Master set : <b>${st.have} / ${st.total}</b> versions`
+    + `<div class="bar"><div class="fill" style="width:${st.total ? Math.round(st.have / st.total * 100) : 0}%"></div></div>`
+    + (miss ? `<div>Il t'en manque <b>${miss}</b> : ${detail}</div>`
+              + (filter !== "incomplete" ? `<button class="master-link" id="masterShow">Voir les cartes à compléter</button>` : "")
+            : `<div>Master set complet, bravo !</div>`);
+  const failed = cards.filter(c => masterFailed.has(c.id)).length;
+  if (failed) html += `<div class="master-warn">${failed} carte${failed > 1 ? "s" : ""} non vérifiée${failed > 1 ? "s" : ""} (réseau) — <button class="master-link" id="masterRetry">réessayer</button></div>`;
+  if (!st.anyReverse) html += `<div class="master-warn">Aucune Reverse Holo référencée par TCGdex pour cette série. Si elle en a (série récente : TCGdex les ajoute parfois avec retard), le total est sous-estimé.</div>`;
+  box.innerHTML = html;
+  if ($("masterShow")) $("masterShow").onclick = () => { navPush(); filter = "incomplete"; render(); };
+  if ($("masterRetry")) $("masterRetry").onclick = computeMaster;
+}
+async function computeMaster(){
+  if (masterBusy) return;
+  const setId = currentSetId;
+  const ids = cards.filter(c => !variantCache[c.id] || masterFailed.has(c.id)).map(c => c.id);
+  ids.forEach(id => { if (masterFailed.has(id)) metaTs[id] = 0; }); // force la nouvelle tentative
+  masterBusy = true; masterProgress = "";
+  renderMaster();
+  const todo = ids.filter(metaStale);
+  let done = 0;
+  const CHUNK = 6; // comme fetchMissingMeta : quelques cartes à la fois
+  for (let i = 0; i < todo.length; i += CHUNK){
+    await Promise.all(todo.slice(i, i + CHUNK).map(async id => {
+      const ok = await fetchMeta(id);
+      if (ok) masterFailed.delete(id); else masterFailed.add(id);
+      done++;
+    }));
+    masterProgress = `${done} / ${todo.length}`;
+    if (currentSetId === setId) renderMaster();
+  }
+  persistMeta();
+  masterBusy = false;
+  if (currentSetId === setId) render();
+}
+
 // N'affiche que les commandes qui agissent réellement sur l'onglet courant.
 // Deux familles : « Navigation » (Série + recherche, toujours là, mènent à la vue Série)
 // et « Filtres de la vue » (puces + rareté + tri, propres à ce qu'on regarde).
@@ -1871,7 +1973,7 @@ function syncControls(){
 
   // Puces : Manquantes/Possédées n'ont de sens que dans une série ; dans « Ma collection »
   // on ne garde que Toutes + Souhaits (Possédées ferait doublon avec Toutes).
-  const chipVis = { all: isSet || isColl, owned: isSet, missing: isSet, wishlist: isSet || isColl };
+  const chipVis = { all: isSet || isColl, owned: isSet, missing: isSet, incomplete: isSet, wishlist: isSet || isColl };
   if (!chipVis[filter]) filter = "all"; // le filtre courant n'existe plus ici → retour à Toutes
   document.querySelectorAll(".chip").forEach(c => {
     c.hidden = !chipVis[c.dataset.f];
@@ -1900,6 +2002,7 @@ function render(){
   $("have").textContent = have;
   $("total").textContent = total;
   $("fill").style.width = total ? Math.round(have/total*100) + "%" : "0%";
+  renderMaster();
   updateSub();
   document.querySelectorAll("#viewTabs .tab").forEach(t =>
     t.classList.toggle("on", t.dataset.view === view));
@@ -1937,11 +2040,14 @@ async function renderSet(){
     if (view === "set" && !search) renderSet();
     return;
   }
+  // « À compléter » a besoin des versions de chaque carte : on les charge si besoin
+  if (filter === "incomplete" && !masterBusy && cards.some(c => !variantCache[c.id])) computeMaster();
   const shown = sortCards(list);
   setViewCards = shown; // pour les flèches précédente/suivante de la fiche carte
   if (!shown.length){
     const m = rarityFilter.length ? `Aucune carte de ${rarityWord()} dans cette série (avec ce filtre).`
       : filter==="missing" ? "Bravo, tu as toutes les cartes de cette série !"
+      : filter==="incomplete" ? "Bravo, tu as toutes les versions de cette série (master set) !"
       : filter==="owned" ? "Aucune carte de cette série pour l'instant. Touche une carte pour l'ajouter."
       : filter==="wishlist" ? "Aucune carte de cette série dans ta liste de souhaits."
       : "Aucune carte à afficher.";

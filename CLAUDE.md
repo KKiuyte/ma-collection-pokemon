@@ -266,7 +266,7 @@ wishlist[idCarte] = true
    la dernière règle gagne. Une media-query placée avant la règle de base `.grid` était
    silencieusement écrasée → le responsive ne s'appliquait pas. Toute règle responsive
    va après les règles de base.
-2. **PWA : incrémenter `VERSION` dans `public/sw.js` à CHAQUE déploiement** (`"v3"` → `"v4"`…, v37 le 2026-11-17 ; l'appli Yu-Gi-Oh! a son propre `public/yugioh/sw.js`, « y1 »…).
+2. **PWA : incrémenter `VERSION` dans `public/sw.js` à CHAQUE déploiement** (`"v3"` → `"v4"`…, v38 le 2026-11-26 ; l'appli Yu-Gi-Oh! a son propre `public/yugioh/sw.js`, « y1 »…).
    Sinon l'ancienne version reste en cache chez les utilisateurs. Un bandeau
    « Nouvelle version disponible » gère la bascule côté client.
 3. **Service worker et navigation** : ne PAS renvoyer `index.html` pour toute navigation
@@ -800,6 +800,15 @@ propriété intellectuelle Nintendo).
   repli au clic ailleurs. Cache `rarityCache["série|rareté"]` par couple : `rarityMissing()` /
   `rarityReady()` / `ensureRarityIdsForSets()` (une requête `/cards?rarity=…&id=série-` par couple
   manquant). `setRarityFilter(list)` / `resetRarityFilter()` synchronisent état + cases + résumé.
+- **Master set (2026-11-26, v38)** : sous la progression de la série (`#master`, `renderMaster()`),
+  compte **chaque version** (Normale, Reverse Holo, Holo…) et pas seulement chaque carte. Total =
+  versions référencées par TCGdex (`variantCache`) + versions possédées non référencées ; détail des
+  manquantes par version. Les versions demandent une requête `/cards/{id}` par carte : bouton
+  « Compter le master set » (`computeMaster()`, par lots de 6, échecs réseau signalés + réessayer),
+  puis affichage direct grâce au cache 24 h. Puce **« À compléter »** (`filter = "incomplete"`, vue
+  Série seulement, `missingVersions()`). Avertissement si aucune Reverse n'est référencée pour la série
+  (retard TCGdex sur les séries récentes, cf. me04/me06). Testé en headless (API et Firebase simulés,
+  12 vérifications), pas encore sur le téléphone d'Ariel.
 - **Tri par prix = liste à plat (2026-10-20)** : dans `renderGrouped()` (Ma collection, recherche),
   un tri `price-*` saute le regroupement par série et affiche une seule grille triée globalement
   (« · classées par prix » dans l'indice) — demandé par Ariel pour voir les plus chères en premier.
